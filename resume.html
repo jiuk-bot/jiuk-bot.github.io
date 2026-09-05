@@ -2,6 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
+<title>윤지욱 · 이력서 (광고 세일즈 / 어카운트 매니저)</title>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
 
@@ -13,6 +14,7 @@
     --blue-dark:#3a6396;
     --band:#eef1f5;
     --line:#d5dbe3;
+    --th:#eef2f7;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   @page{size:A4;}
@@ -21,72 +23,60 @@
     color:var(--ink);
     -webkit-print-color-adjust:exact;
     print-color-adjust:exact;
-    font-size:10px;
+    font-size:10.5px;
     line-height:1.5;
   }
 
-  /* ── Top headline ── */
   .headline{ font-size:19px; font-weight:800; letter-spacing:-.5px; }
   .headline-en{ font-size:11px; color:var(--sub); margin-top:2px; font-weight:500; }
 
-  .section-label{ font-size:13px; font-weight:800; margin:16px 0 6px; }
-  .summary p{ font-size:10.5px; color:#2b3038; line-height:1.7; }
-  .summary strong{ color:var(--blue-dark); font-weight:700; }
+  .idbar{ display:flex; align-items:flex-end; justify-content:space-between; margin:14px 0 4px; }
+  .name-en{ font-size:38px; font-weight:800; letter-spacing:-1px; line-height:1; }
+  .name-ko{ font-size:12px; color:var(--sub); margin-top:5px; letter-spacing:5px;}
 
-  /* ── Name + contact ── */
-  .idbar{ display:flex; align-items:center; justify-content:space-between; margin:20px 0 6px; }
-  .name-en{ font-size:44px; font-weight:800; letter-spacing:-1px; line-height:1; }
-  .name-ko{ font-size:12px; color:var(--sub); text-align:right; margin-top:4px; letter-spacing:6px;}
-  .contact{ display:grid; grid-template-columns:auto auto; gap:10px 22px; font-size:11px; color:#2b3038;}
-  .contact > div{ display:flex; align-items:center; gap:8px; }
-  .ic{ width:19px; height:19px; border-radius:50%; background:var(--blue); flex:none;
-       display:flex; align-items:center; justify-content:center; line-height:0;}
-  .ic svg{ display:block; }
+  /* ── 섹션 제목 ── */
+  .sec-title{ font-size:13px; font-weight:800; margin:18px 0 6px; padding-left:12px; position:relative;}
+  .sec-title::before{ content:''; position:absolute; left:0; top:2px; width:5px; height:14px;
+                      background:var(--blue); border-radius:1px;}
 
-  /* ── Gray band (edu / career summary / lang / cert) ── */
-  .band{ background:var(--band); border-left:5px solid var(--blue); padding:16px 18px;
-         margin:8px 0 6px; display:grid; grid-template-columns:1fr 1fr; gap:8px 30px;}
-  .bl h4{ font-size:12px; font-weight:800; margin-bottom:6px; padding-left:10px; position:relative;}
-  .bl h4::before{ content:''; position:absolute; left:0; top:1px; width:4px; height:13px;
-                  background:var(--blue); border-radius:1px;}
-  .bl h4 .yrs{ font-weight:600; color:var(--sub); font-size:10px; margin-left:6px;}
-  .bl ul{ list-style:none; }
-  .bl li{ font-size:10px; color:#2b3038; padding-left:10px; position:relative; margin:3px 0; line-height:1.55;}
-  .bl li::before{ content:'•'; position:absolute; left:0; color:var(--blue); }
-  .bl .edu{ font-weight:700; }
-  .bl .edu-sub{ color:var(--sub); font-weight:500; }
+  /* ── 이력서 표 ── */
+  table.rt{ width:100%; border-collapse:collapse; }
+  table.rt th, table.rt td{ border:1px solid var(--line); padding:6px 9px; font-size:10px; vertical-align:middle; }
+  table.rt th{ background:var(--th); color:#2b3038; font-weight:700; text-align:center; white-space:nowrap; }
+  table.rt td{ color:#2b3038; }
+  table.rt td.l{ text-align:left; }
+  table.rt td.c{ text-align:center; white-space:nowrap; }
+  table.rt .duty{ line-height:1.6; }
+  table.rt .duty span{ display:block; padding-left:9px; position:relative; }
+  table.rt .duty span::before{ content:'•'; position:absolute; left:0; color:var(--blue); }
 
-  /* ── Career experience ── */
-  .career-title{ font-size:13px; font-weight:800; margin:14px 0 4px; padding-left:12px; position:relative;}
-  .career-title::before{ content:''; position:absolute; left:0; top:2px; width:5px; height:14px;
-                         background:var(--blue); border-radius:1px;}
+  /* ── 프로젝트 기술서 ── */
+  .pj{ border:1px solid var(--line); border-radius:6px; margin-top:12px; overflow:hidden; page-break-inside:avoid; }
+  .pj-top{ display:flex; background:var(--band); border-bottom:1px solid var(--line); }
+  .pj-top div{ padding:5px 9px; font-size:9.5px; border-right:1px solid var(--line); }
+  .pj-top div:last-child{ border-right:0; }
+  .pj-top .co{ font-weight:800; color:#20262e; }
+  .pj-top .k{ color:var(--sub); }
+  .pj-name{ padding:8px 11px; font-size:11.5px; font-weight:800; color:#20262e; background:#fff; border-bottom:1px solid var(--line); }
+  .pj-meta{ display:flex; flex-wrap:wrap; gap:0; border-bottom:1px solid var(--line); }
+  .pj-meta div{ font-size:9.5px; padding:5px 11px; color:#2b3038; }
+  .pj-meta .lbl{ color:var(--blue-dark); font-weight:700; }
+  .pj-body{ padding:8px 12px 11px; }
+  .grp{ margin-top:8px; }
+  .grp:first-child{ margin-top:0; }
+  .grp-h{ font-size:10px; font-weight:800; color:#20262e; margin-bottom:3px; padding-left:9px; position:relative; }
+  .grp-h::before{ content:''; position:absolute; left:0; top:2px; width:3px; height:11px; background:var(--blue); border-radius:1px; }
+  .grp ul{ list-style:none; }
+  .grp li{ font-size:10px; color:#2b3038; padding-left:11px; position:relative; margin:2.5px 0; line-height:1.55; }
+  .grp li::before{ content:'•'; position:absolute; left:0; color:var(--blue); }
+  .grp li em{ font-style:normal; color:var(--blue-dark); font-weight:700; }
+  .grp li b{ font-weight:800; color:#20262e; }
+  .grp.result li{ background:#f6f9fc; }
 
-  .job{ padding-left:20px; position:relative; margin-top:12px; border-left:1.5px solid var(--line); margin-left:10px;}
-  .job::before{ content:''; position:absolute; left:-6.75px; top:2px; width:11px; height:11px;
-                border-radius:50%; background:#fff; border:2px solid var(--blue);}
-  .job.now::before{ background:var(--blue); }
-  .brk{ page-break-before:always; }
-  .job-head{ display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
-  .job-date{ font-size:10px; color:var(--sub); font-weight:600;}
-  .job-co{ font-size:12px; font-weight:800;}
-  .job-role{ font-size:10px; color:var(--sub); font-weight:500;}
-  .job-desc{ font-size:9.5px; color:var(--sub); margin:1px 0 2px;}
-  .tag-now{ font-size:8.5px; background:var(--blue); color:#fff; padding:1px 7px; border-radius:9px; font-weight:700;}
-
-  .proj{ margin-top:8px; page-break-inside:avoid; }
-  .proj-t{ font-size:11px; font-weight:800; padding-left:15px; position:relative; color:#20262e;}
-  .proj-t::before{ content:'▶'; position:absolute; left:0; top:1px; font-size:8px; color:var(--blue);}
-  .bullets{ list-style:none; margin:3px 0 0 15px;}
-  .bullets > li{ font-size:10px; padding-left:11px; position:relative; margin:4px 0; line-height:1.55;}
-  .bullets > li::before{ content:'•'; position:absolute; left:0; color:var(--blue); font-weight:700;}
-  .bullets b{ font-weight:800; color:#20262e;}
-  .bullets .d{ display:block; color:#3a414b; font-size:9.5px; margin-top:1px;}
-  .bullets em{ font-style:normal; color:var(--blue-dark); font-weight:700;}
-
-  .footer-quote{ margin-top:26px; font-size:16px; font-weight:800; page-break-inside:avoid;}
-  .footer-quote::before{ content:'“'; color:var(--blue); font-size:24px; vertical-align:-4px; margin-right:2px;}
+  .footer-quote{ margin-top:24px; font-size:15px; font-weight:800; page-break-inside:avoid;}
+  .footer-quote::before{ content:'“'; color:var(--blue); font-size:22px; vertical-align:-4px; margin-right:2px;}
   .footer-quote span{ font-weight:600; color:#2b3038; }
-  .sign{ text-align:right; margin-top:22px; font-size:10px; color:var(--sub);}
+  .sign{ text-align:right; margin-top:20px; font-size:10px; color:var(--sub);}
   .sign b{ color:var(--ink); font-size:11px;}
 
   /* ── 웹 열람용 (스크린) — 사이트 공통 nav ── */
@@ -107,7 +97,7 @@
     .nav-links a.active{ color:#3182F6; }
     .nav-links a.cta{ background:#3182F6; color:#fff; padding:8px 14px; }
     .nav-links a.cta:hover{ background:#1b64da; }
-    .paper{ max-width:840px; margin:26px auto 40px; background:#fff;
+    .paper{ max-width:860px; margin:26px auto 40px; background:#fff;
             padding:42px 48px 58px; border-radius:12px; box-shadow:0 6px 34px rgba(0,0,0,.10); }
   }
 </style>
@@ -120,7 +110,7 @@
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="portfolio.html">Portfolio</a>
-        <a href="resume.html" class="active">경력기술서</a>
+        <a href="resume.html" class="active">이력서</a>
         <a class="cta" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">▶ Live Demo</a>
       </div>
     </div>
@@ -131,216 +121,435 @@
   <div class="headline">데이터로 광고주와 동반성장하는 광고 세일즈</div>
   <div class="headline-en">Ad Sales / Account Manager — Growth Through Data</div>
 
-  <div class="section-label">SUMMARY</div>
-  <div class="summary">
-    <p>
-      광고를 대신 운영하는 데 그치지 않고, <strong>데이터로 광고주의 비즈니스 성과를 함께 끌어올리는</strong> 광고 세일즈입니다.
-      '리드 단가'가 아닌 '실제 매출'을 기준으로 삼아 원인을 찾고, 그 데이터로 광고주를 설득해 <strong>동반성장</strong>을 만들어왔습니다.<br>
-      치과 임플란트 <strong>ROAS 103%→336%(3.3배)·취급고 9.4배</strong> 성장, KB국민은행(집행 약 8억) <strong>앱실행 단가 최대 41% 개선</strong>,
-      셀프스토리지 B2B 가맹 세일즈에서 <strong>리드~계약 클로징까지 단독 완주</strong>했습니다.
-    </p>
-  </div>
-
   <div class="idbar">
     <div>
       <div class="name-en">JIUK.YOON</div>
       <div class="name-ko">윤 지 욱</div>
     </div>
-    <div class="contact">
-      <div><span class="ic"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18"/><path d="M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg></span>1997.12.24</div>
-      <div><span class="ic"><svg viewBox="0 0 24 24" width="11" height="11" fill="#fff"><path d="M12 3.2 21 11h-2.4v9.5h-4.9v-5.8h-3.4v5.8H5.4V11H3z"/></svg></span>경기도 용인시</div>
-      <div><span class="ic"><svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="#fff" stroke-width="2"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M4 7l8 5.5L20 7"/></svg></span>jiuk2038@gmail.com</div>
-      <div><span class="ic"><svg viewBox="0 0 24 24" width="10" height="10" fill="#fff"><path d="M6.5 2h3l1.6 4.6-2.1 1.4a12.5 12.5 0 005 5l1.4-2.1L21 12.5v3a2 2 0 01-2.1 2A16.5 16.5 0 014.5 4.1 2 2 0 016.5 2z"/></svg></span>010-5540-2038</div>
-    </div>
   </div>
 
-  <div class="band">
-    <div class="bl">
-      <h4>EDUCATION</h4>
-      <ul>
-        <li><span class="edu">가천대학교</span><br><span class="edu-sub">2016.03 – 2023.08 · 패션디자인학과 (3.58/4.5)</span></li>
-      </ul>
-    </div>
-    <div class="bl">
-      <h4>LANGUAGE &amp; CERTIFICATE</h4>
-      <ul>
-        <li>OPIc – IM2 (Intermediate Mid 2)</li>
-        <li>GAIQ (Google Analytics Individual Qualification)</li>
-      </ul>
-    </div>
-    <div class="bl" style="grid-column:1 / -1; margin-top:2px;">
-      <h4>TOTAL CAREER EXPERIENCE <span class="yrs">4 years 2 months</span></h4>
-      <ul style="columns:2; column-gap:30px;">
-        <li>다매체 퍼포먼스 마케팅 · 광고주 성과 컨설팅 (치과 임플란트, 재직 중)</li>
-        <li>금융 브랜드 캠페인 대행 · 데이터 기반 광고주 제안 (KB국민은행, 4개월)</li>
-        <li>B2B 가맹 세일즈 &amp; 가맹점주 광고대행 (셀프스토리지, 1년)</li>
-        <li>뷰티 커머스 스마트스토어 운영 (6개월)</li>
-        <li>뷰티 아카데미 브랜드 마케팅 (1년)</li>
-        <li>의류 커스터마이징 중개 플랫폼 창업 · 대표 (8개월)</li>
-      </ul>
-    </div>
-  </div>
+  <!-- 인적사항 -->
+  <div class="sec-title">인적사항</div>
+  <table class="rt">
+    <tr>
+      <th style="width:12%">이름</th><td class="c" style="width:21%">윤지욱 (JIUK YOON)</td>
+      <th style="width:12%">생년월일</th><td class="c" style="width:21%">1997.12.24</td>
+      <th style="width:12%">휴대폰</th><td class="c">010-5540-2038</td>
+    </tr>
+    <tr>
+      <th>E-mail</th><td class="l" colspan="3">jiuk2038@gmail.com</td>
+      <th>주소</th><td class="l">경기도 용인시</td>
+    </tr>
+  </table>
 
-  <div class="career-title">CAREER EXPERIENCE</div>
+  <!-- 학력사항 -->
+  <div class="sec-title">학력사항</div>
+  <table class="rt">
+    <tr><th style="width:22%">재학기간</th><th>학교명 및 전공</th><th style="width:20%">소재지</th></tr>
+    <tr>
+      <td class="c">2016.03 ~ 2023.08</td>
+      <td class="l">가천대학교 · 패션디자인학과 (학사, 3.58 / 4.5)</td>
+      <td class="c">경기 성남시</td>
+    </tr>
+  </table>
 
-  <!-- 글로벌랩스 -->
-  <div class="job now">
-    <div class="job-head">
-      <span class="job-date">2026.01 – 현재</span>
-      <span class="job-co">글로벌랩스 (Global Labs)</span>
-      <span class="job-role">마케팅 팀장 / Ad Performance &amp; Account Management</span>
-      <span class="tag-now">재직 중</span>
-    </div>
-    <div class="job-desc">메디컬 에이전시 · 다매체(구글·메타·틱톡) 퍼포먼스 마케팅 및 광고주 성과 컨설팅 총괄</div>
+  <!-- 경력사항 -->
+  <div class="sec-title">경력사항</div>
+  <table class="rt">
+    <tr>
+      <th style="width:18%">근무기간</th><th style="width:20%">근무회사</th>
+      <th style="width:12%">부서</th><th style="width:10%">직위</th><th>담당직무</th>
+    </tr>
+    <tr>
+      <td class="c">2026.01 ~ 현재</td>
+      <td class="c">글로벌랩스<br>(Global Labs)</td>
+      <td class="c">마케팅</td><td class="c">팀장</td>
+      <td class="l duty">
+        <span>메디컬 에이전시 다매체(구글·메타·틱톡) 퍼포먼스 마케팅 / 광고주 성과 컨설팅 총괄</span>
+        <span>AI 성과 대시보드 직접 개발</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="c">2025.09 ~ 2025.12</td>
+      <td class="c">블루오렌지<br>커뮤니케이션즈</td>
+      <td class="c">퍼포먼스 마케팅</td><td class="c">퍼포먼스<br>마케터</td>
+      <td class="l duty">
+        <span>KB국민은행 브랜드·앱전환 캠페인 대행 (집행 약 8억)</span>
+        <span>데이터 기반 전략 광고주 제안·설득</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="c">2024.07 ~ 2025.06</td>
+      <td class="c">㈜공유창고<br>(박스풀)</td>
+      <td class="c">마케팅</td><td class="c">매니저</td>
+      <td class="l duty">
+        <span>셀프스토리지 가맹세일즈 창업설명회 발표·현장 클로징</span>
+        <span>가맹점주 대상 광고대행 및 성과 개선 컨설팅</span>
+      </td>
+    </tr>
+    <tr>
+      <td class="c">2017.07 ~ 2017.11</td>
+      <td class="c">㈜세아상역</td>
+      <td class="c">해외영업팀</td><td class="c">인턴</td>
+      <td class="l duty">
+        <span>Talbot·BB 브랜드 해외영업 실무 지원</span>
+      </td>
+    </tr>
+  </table>
 
-    <div class="proj">
-      <div class="proj-t">치과 임플란트 다매체 퍼포먼스 마케팅 &amp; 지역 예산 컨설팅 <span style="font-weight:600;color:var(--sub);font-size:9px;">(3인 / 기여도 90%)</span></div>
-      <ul class="bullets">
-        <li><b>광고주 동반성장</b>
-          <span class="d">'리드 단가'가 아니라 '지역별 CAC·내원율·ROAS'로 성과를 봐야 한다는 관점을 데이터로 제안·설득 → 고효율 지역 중심 예산 재배분·볼륨 증액으로 <em>취급고 0.6억(1월)→5.5억(6월) 약 9.4배↑</em></span></li>
-        <li><b>성과</b>
-          <span class="d"><em>ROAS 103%→336%(3.3배)</em>, 내원율 0.2%→7.1%(<em>약 36배</em>), 지역 CAC <em>약 25% 개선</em>, 누적 리드 <b>8,900건+</b> 운영</span></li>
-        <li><b>운영</b>
-          <span class="d">채널·소재·오디언스 A/B 테스트로 리드 볼륨과 품질을 함께 관리, 신규 매체(틱톡)의 주 타겟(시니어) 규모를 데이터로 검증 후 제안</span></li>
-      </ul>
-    </div>
+  <!-- 자격증 -->
+  <div class="sec-title">자격증</div>
+  <table class="rt">
+    <tr><th style="width:18%">취득일자</th><th>자격증</th><th style="width:22%">자격번호</th><th style="width:18%">발급처</th></tr>
+    <tr><td class="c">2026.09.05</td><td class="l">GAIQ (Google Analytics Individual Qualification)</td><td class="c">-</td><td class="c">Google</td></tr>
+    <tr><td class="c">2025.07.25</td><td class="l">OPIc (영어) - IM2 (Intermediate Mid 2)</td><td class="c">C5508926593</td><td class="c">ACTFL</td></tr>
+  </table>
 
-    <div class="proj">
-      <div class="proj-t">AI 마케팅 성과 분석 대시보드 직접 구현 <span style="font-weight:600;color:var(--sub);font-size:9px;">(1인 / 100%)</span></div>
-      <ul class="bullets">
-        <li><b>바이브코딩 자체 개발</b>
-          <span class="d">구글·메타·틱톡 API를 연동한 성과 대시보드를 직접 구축 → 월 5억+ 취급고·다매체를 <b>소수 인원이 운영 가능</b>하도록 데이터 가공 시간 최소화</span></li>
-        <li><b>주요 기능</b>
-          <span class="d">실시간 KPI·A/B 테스트 플래닝·코호트 분석 + '언제·무엇을·왜 했는지'를 자연어로 답하는 운영 히스토리 챗봇까지 설계·구축해 의사결정 속도 향상</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 블루오렌지 (KB) -->
-  <div class="job">
-    <div class="job-head">
-      <span class="job-date">2025.09 – 2025.12</span>
-      <span class="job-co">블루오렌지커뮤니케이션즈</span>
-      <span class="job-role">퍼포먼스 마케터 / KB국민은행 담당</span>
-    </div>
-    <div class="job-desc">KB국민은행 브랜드·앱전환 캠페인 대행 (집행 약 8억) — 데이터 기반 전략을 광고주에게 제안·설득</div>
-
-    <div class="proj">
-      <div class="proj-t">KB 스타틴즈 서비스 캠페인 (집행 5억, 5채널)</div>
-      <ul class="bullets">
-        <li><b>신규 매체 발굴·제안</b>
-          <span class="d">유튜브·인스타·토스·틱톡 4채널 라이브 후, 10대 타겟에 맞는 교육앱 '콴다'를 직접 발굴·제안해 5채널로 확장 (콴다 <em>VTR 99%·CPV 채널 평균 대비 -67%</em>, 최고 효율)</span></li>
-        <li><b>데이터로 통념 반박</b>
-          <span class="d">'틱톡=10대' 통념과 달리 노출·조회의 <em>69%가 45세 이상</em>임을 실측 검증 → 연령 축소·학부모 관심사 재집중 제안, CPV 3배 높던 리타겟 예산을 관심사로 이관(<em>CPV -38%</em>)</span></li>
-        <li><b>성과</b>
-          <span class="d"><em>앱실행 단가 41% 개선</em>, 총 앱실행 약 1.7만건 규모 브랜드 캠페인 운영</span></li>
-      </ul>
-    </div>
-
-    <div class="proj">
-      <div class="proj-t">KB 패밀리뱅킹 브랜드 캠페인 (집행 약 3억) → 앱실행 단가 29% 개선</div>
-      <ul class="bullets">
-        <li><b>DMP 기반 전략 제안·설득</b>
-          <span class="d">1st-party DMP를 마이데이터·모임통장·자녀 적금/펀드 등으로 초세분화, '신규 획득'보다 '자녀 보유 고객 활성화'가 효율적임을 데이터로 규명해 광고주에게 주도적으로 제안·설득</span></li>
-        <li><b>효율 기반 채널 재배분</b>
-          <span class="d">채널별 실행당 비용 격차를 근거로 비효율 채널 예산을 고효율 채널(토스)로 이관 → <em>앱실행 단가 29% 개선</em></span></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 공유창고 -->
-  <div class="job brk">
-    <div class="job-head">
-      <span class="job-date">2024.07 – 2025.06 (1y)</span>
-      <span class="job-co">㈜공유창고 (박스풀)</span>
-      <span class="job-role">마케팅 매니저</span>
-    </div>
-    <div class="job-desc">셀프스토리지 가맹 세일즈(B2B) + 가맹점주 대상 광고대행·성과 개선 컨설팅</div>
-
-    <div class="proj">
-      <div class="proj-t">셀프스토리지 창업설명회 — 콜→현장 B2B 가맹 세일즈 풀퍼널 <span style="font-weight:600;color:var(--sub);font-size:9px;">(2인 / 70%)</span></div>
-      <ul class="bullets">
-        <li><b>제안서 발표부터 클로징까지 단독 완주</b>
-          <span class="d">가맹 제안서를 직접 작성해 창업설명회에서 발표(세일즈 피칭), 리드 모집~계약 클로징까지 단독 완주 → <em>실제 가맹 계약 1건 성사</em></span></li>
-        <li><b>전환되는 구조로 세일즈 재설계</b>
-          <span class="d">'참석자 수 늘리기'가 아니라 '전환되는 단계로 구조 전환' — 단체 설명회를 1:1 실물 체험형 현장 상담으로 표준화. 개설 가맹점주 2개 지점 로컬 광고 직접 대행·운영</span></li>
-      </ul>
-    </div>
-
-    <div class="proj">
-      <div class="proj-t">가맹창업 리드 유입 Meta 캠페인 (AI 콘텐츠 전략) <span style="font-weight:600;color:var(--sub);font-size:9px;">(1인 / 100%)</span></div>
-      <ul class="bullets">
-        <li><b>데이터 검증 기반 소재 전략 전환</b>
-          <span class="d">AI 쇼츠를 직접 기획·제작하고 A/B 테스트로 검증 → 전면 AI 콘텐츠 전략으로 전환해 동일 예산 대비 상담신청 전환 <em>+67.7%</em>, <em>CPA -38.6%</em> (CTR 6.7%→9.56%)</span></li>
-      </ul>
-    </div>
-
-    <div class="proj">
-      <div class="proj-t">짐보관 서비스 — GA4 퍼널 재설계 &amp; 타이밍 리타게팅 <span style="font-weight:600;color:var(--sub);font-size:9px;">(1인 / 100%)</span></div>
-      <ul class="bullets">
-        <li><b>구매 여정 분석 기반 퍼널 재구성</b>
-          <span class="d">결제까지 평균 3.89일 걸리는 고관여 상품임을 GA4로 파악 → 채널 역할 분리(검색=유입·블로그=신뢰·Meta=리마인드)와 결제 타이밍에 맞춰 퍼널·리타게팅 재설계 → <em>신규고객 +63%, 리타게팅 CVR 62%</em></span></li>
-      </ul>
-    </div>
-
-    <div class="proj">
-      <div class="proj-t">무인 게임룸 실시간 결제 전환율 개선 <span style="font-weight:600;color:var(--sub);font-size:9px;">(2인 / 50%, 제안·설계)</span></div>
-      <ul class="bullets">
-        <li><b>전환 병목 진단 → 매출 구조 확보</b>
-          <span class="d">GA4로 예약 페이지 조회 1,698회·결제 0건의 병목('즉시 결제 불가')을 진단 → 실시간 결제 시스템 도입 제안·설계로 실매출 전환 퍼널 확보, <em>취미공간 매출 16배↑</em></span></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 어스텀 창업 -->
-  <div class="job">
-    <div class="job-head">
-      <span class="job-date">2022.05 – 2023.04 (8M)</span>
-      <span class="job-co">어스텀 (Ustom)</span>
-      <span class="job-role">의류 커스터마이징 중개 플랫폼 창업 · 대표</span>
-    </div>
-    <div class="proj">
-      <div class="proj-t">사업 기획 및 실행 리더십</div>
-      <ul class="bullets">
-        <li><b>신규 비즈니스 모델 구축</b>
-          <span class="d">커스터마이징 수요를 중개 플랫폼 모델로 구조화 — 서비스·UI/UX 구조 설계 주도, 대표로서 사업 전반 기획·사업화 추진</span></li>
-        <li><b>정부지원사업 선정</b>
-          <span class="d">경기도 차세대융합기술연구원 ‘대학생 융합기술 창업지원사업’ 선정, 총 1,000만 원 창업지원금 수혜</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- 세아상역 -->
-  <div class="job">
-    <div class="job-head">
-      <span class="job-date">2017.07 – 2017.11 (5M)</span>
-      <span class="job-co">㈜세아상역</span>
-      <span class="job-role">해외영업팀 / 인턴</span>
-    </div>
-    <div class="proj">
-      <div class="proj-t">Talbot/BB 브랜드 해외영업 실무 지원</div>
-      <ul class="bullets">
-        <li><b>해외영업 실무 경험</b>
-          <span class="d">원단 샘플 정리·입고 및 Swatch 제작, 샘플 Tag·Label 부착, 사무 보조 및 발송 업무 지원</span></li>
-      </ul>
-    </div>
-  </div>
+  <!-- 수상내용 -->
+  <div class="sec-title">수상내용</div>
+  <table class="rt">
+    <tr><th style="width:14%">수상일자</th><th style="width:30%">대회명</th><th>수상내역</th><th style="width:26%">기관</th></tr>
+    <tr><td class="c">2025</td><td class="l">2025 청년창업체험단</td><td class="l">최종 선정 (지원금 300만 원)</td><td class="c">경기도경제과학진흥원</td></tr>
+  </table>
 
   <!-- 기타활동 -->
-  <div class="job">
-    <div class="job-head">
-      <span class="job-date">2023.04 – 2024.04</span>
-      <span class="job-co">기타활동 (사이드 프로젝트)</span>
-      <span class="job-role">뷰티 커머스 · 뷰티학원 브랜드 마케팅</span>
+  <div class="sec-title">기타활동</div>
+  <table class="rt">
+    <tr><th style="width:18%">기간</th><th style="width:26%">활동명</th><th>주요 활동</th></tr>
+    <tr>
+      <td class="c">2023.11 ~ 2024.04</td><td class="l">뷰티 커머스 스마트스토어 운영</td>
+      <td class="l">커머스 제로베이스 런칭, 상세페이지 30건 기획·디자인, 월 매출 +167%</td>
+    </tr>
+    <tr>
+      <td class="c">2023.04 ~ 2024.03</td><td class="l">뷰티학원 운영 서포트</td>
+      <td class="l">브랜드 SNS 운영, 팔로워 0명 → 1,000명 달성, 카카오채널 상담 124건 유도</td>
+    </tr>
+  </table>
+
+  <!-- ══════════ 프로젝트 기술서 ══════════ -->
+  <div class="sec-title" style="margin-top:24px;">프로젝트 기술서</div>
+
+  <!-- P1 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜글로벌랩스</div><div class="k">부서 · 마케팅</div><div class="k">직급 · 팀장</div></div>
+    <div class="pj-name">치과 임플란트 다매체 퍼포먼스 마케팅 &amp; 지역 예산 컨설팅</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2026.01 ~ 현재</div>
+      <div><span class="lbl">활용 도구·스킬</span> 구글·메타·틱톡 / GA4 / 데이터 분석</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 3인 / 90%</div>
     </div>
-    <div class="proj">
-      <div class="proj-t">뷰티 커머스 스마트스토어 운영 &amp; 뷰티학원 브랜드 SNS</div>
-      <ul class="bullets">
-        <li><b>커머스 제로베이스 런칭</b>
-          <span class="d">상세페이지 30건 기획·디자인, SEO 기반 콘텐츠 설계로 검색 노출 확대 → 월 매출 <em>+167%</em></span></li>
-        <li><b>브랜드 SNS 리드 전환</b>
-          <span class="d">뷰티학원 공식 SNS 운영 — 팔로워 0→1,000명 달성, 카카오채널 수강 상담 124건 유도 (메시지 흐름 설계~콘텐츠 운영 기획·관리)</span></li>
-      </ul>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li>취급고 <em>0.6억(1월) → 5.5억(6월), 약 9.4배↑</em></li>
+          <li>최종 <em>ROAS 103% → 336%(3.3배)</em>, 내원율 0.2% → 7.1%(<em>약 36배</em>)</li>
+          <li>지역 CAC <em>약 25% 개선</em> / 누적 리드 <b>8,900건+</b> 운영</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>치과 임플란트는 온라인 리드가 실제 매출이 되려면 '오프라인 병원 내원'까지 이어져야 하는 구조 — ROAS 극대화를 위해 내원 전환까지 역산해 운영</li>
+          <li>오프라인 방문(내원)이 필요한 고객을 지역별로 광고 캠페인에서 분리·분류해 운영 (지역 단위 캠페인 구조 설계)</li>
+          <li>지역별 내원율·CAC·ROAS를 데이터로 집계하고, 리드 CPA가 아닌 '지역별 CAC'까지 추적해 지역별 효율을 분석</li>
+          <li>내원율이 높아 ROAS가 우수한 핵심 지역을 식별하고, 저효율 지역은 감액·정리로 예산 누수를 차단</li>
+          <li>핵심 지역에 광고비 볼륨 증액을 데이터로 광고주에게 설득 → 고효율 지역 중심으로 취급고를 확대</li>
+          <li>구글·메타·틱톡 3개 매체와 매체별 소재·오디언스를 A/B 테스트하며 리드 볼륨과 품질을 함께 관리</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>'리드 단가'가 아니라 '지역별 CAC'로 성과를 봐야 한다는 관점을 데이터로 광고주에게 제안 → 내원율 높은 핵심 지역으로 예산을 재배분 및 예산 볼륨 증액 설득</li>
+          <li>신규 매체(틱톡)에서의 주 타겟(시니어) 규모 확인 후 제안</li>
+          <li>결과적으로 취급고·ROAS·내원율이 동반 상승하며 예산 확장 사이클을 확보</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P2 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜글로벌랩스</div><div class="k">부서 · 마케팅</div><div class="k">직급 · 팀장</div></div>
+    <div class="pj-name">AI 마케팅 성과 분석 대시보드 직접 구현</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2026.01 ~ 현재</div>
+      <div><span class="lbl">활용 도구·스킬</span> AI 바이브 코딩 / 구글·메타·틱톡 API</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 1인 / 100%</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li>월 평균 <em>5억+ 취급고·다매체를 소수 인원이 운영 가능</em>하도록 데이터 가공 시간 최소화</li>
+          <li>실시간 KPI·히스토리 챗봇으로 의사결정 속도 향상 및 계획 유동 조정 체계 확립</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>구글·메타·틱톡 광고 성과 데이터를 자동 가공하는 대시보드 구현 (AI 바이브 코딩)</li>
+          <li>실시간 성과 통합 조회 · A/B 테스트 플래닝 · 코호트 분석 · KPI 관리</li>
+          <li>운영 히스토리 관리 챗봇 — 언제·무엇을·왜 했는지 자연어로 즉시 질의응답</li>
+          <li>실시간 KPI 달성율 체크로 일·주·월 계획을 유동 조정</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>매일 반복되던 3채널·월 평균 5억 취급고 관리에 수작업 데이터 가공을 없애야 소수 인원 운영이 가능하다고 판단 → 단순 조회 툴을 넘어 운영 히스토리 챗봇·실시간 KPI 달성율 체크까지 직접 설계·구축 (AI 산출물은 직접 검증·판단 후 반영)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜블루오렌지커뮤니케이션즈</div><div class="k">부서 · 퍼포먼스 마케팅</div><div class="k">직급 · 퍼포먼스 마케터</div></div>
+    <div class="pj-name">KB국민은행 스타틴즈 서비스 캠페인 (5채널)</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2025.09 ~ 2025.12</div>
+      <div><span class="lbl">활용 도구·스킬</span> 유튜브·인스타·토스·틱톡·콴다 / KB 1st-party DMP</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 1인 / 100%</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li><em>앱실행 단가 41% 개선</em></li>
+          <li>신규 발굴 매체 콴다: <em>VTR 99%(5채널 중 1위)</em> · CPV 채널 평균 대비 약 -67%(최고 효율)</li>
+          <li>총 앱실행 약 1.7만건 규모 브랜드 캠페인 운영</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>KB국민은행 10대(청소년) 대상 금융 브랜드 '스타틴즈'의 앱 실행·회원가입을 유도하는 대형 브랜드 캠페인 (집행 5억)</li>
+          <li>유튜브·인스타·토스·틱톡 4채널로 라이브 후, 학생 타겟에 맞는 신규 매체인 10대 교육앱 '콴다'를 직접 발굴·제안해 5채널로 확장</li>
+          <li>타겟을 연령(미성년 13-19)·관심사(학부모·자녀·가족)·KB DMP(학원비 납부·상품 가입)·콘텐츠 타겟으로 설계하고 예산을 균등 분배로 라이브</li>
+          <li>앱실행 단가·CPV·전환 볼륨 추이를 매일 추적하며 저효율 타겟은 감액, 고효율 타겟으로 예산 이관 (타겟·소재·매체 3단계 능동 재배분)</li>
+          <li>채널별 최적화: 매체별 저효율 소재·오디언스 순차 OFF, 인스타는 미성년 타겟 저효율로 OFF 후 관심사·KB DMP 비중으로 예산 재편</li>
+          <li>틱톡은 연령별 노출 비율 데이터 검증 후 13-44 연령으로 축소 운영·관심사 세그먼트 보강</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>'틱톡=10대' 통념과 달리 노출·조회의 <em>69%가 45세+</em>임을 실측 데이터로 검증 → 연령 축소·학부모 관심사 추가로 코어 타겟 재집중을 제안</li>
+          <li>모수가 적어 CPV 높던 리타겟 예산을 관심사 타겟으로 이관(관심사 <em>CPV -38%</em>)해 앱실행 단가를 개선</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P4 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜블루오렌지커뮤니케이션즈</div><div class="k">부서 · 퍼포먼스 마케팅</div><div class="k">직급 · 퍼포먼스 마케터</div></div>
+    <div class="pj-name">KB국민은행 패밀리뱅킹 브랜드 캠페인</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2025.09 ~ 2025.12</div>
+      <div><span class="lbl">활용 도구·스킬</span> 유튜브·토스·인스타 / KB 1st-party DMP</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 1인 / 100%</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li><em>앱실행 단가 29% 개선</em></li>
+          <li>일자별 성과 추이 기반 채널 재배분으로 효율 안정화</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>KB국민은행 가족 단위 금융 서비스(자녀 적금·펀드, 모임통장 등)의 앱 실행을 유도하는 브랜드 캠페인 (집행 약 3억)</li>
+          <li>유튜브·토스·인스타 3채널을 일자별 성과 추이 기반으로 운영하며 채널 예산을 지속 재배분</li>
+          <li>KB 1st-party DMP를 마이데이터 연동·모임통장 가입·자녀 적금/펀드·공과금 결제이력·노후/연금 가입자 등으로 초세분화해 타겟 구조 설계</li>
+          <li>세그먼트별 앱실행 단가·전환 효율을 비교해 효율 높은 세그먼트로 예산·소재 비중을 집중</li>
+          <li>채널별 실행당 비용 격차를 근거로 비효율 채널 예산을 고효율 채널(토스)로 이관</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>'신규 획득'보다 '관련 세그먼트(자녀 보유 고객) 활성화'가 효율적이라는 점을 DMP 세그먼트 데이터로 규명 → 관련 세그먼트 집중 운영 전략을 광고주에게 주도적으로 제안·설득해 앱실행 단가를 개선</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P5 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜공유창고(박스풀)</div><div class="k">부서 · 마케팅</div><div class="k">직급 · 매니저</div></div>
+    <div class="pj-name">셀프스토리지 창업설명회 — 콜→현장 B2B 가맹 세일즈 풀퍼널</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2024.07 ~ 2025.06</div>
+      <div><span class="lbl">활용 도구·스킬</span> 네이버 블로그 / 메타 / GA4 / Kling AI / Capcut</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 2인 / 70%</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li><em>실제 가맹 계약 1건 성사</em> / 가맹 리드확보 캠페인 동일비용 대비 +67.7%, CPA -38.6%(타겟 적중 40%→70%)</li>
+          <li>공감형 AI 영상 소재로 CTR 6.7%→9.56% · 소재 CPA -24%</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>셀프스토리지 가맹 창업을 판매하는 B2B 세일즈 — 블로그·META로 창업설명회 리드 모집</li>
+          <li>가맹 제안서를 직접 작성해 창업설명회에서 발표(세일즈 피칭)</li>
+          <li>단체 설명회 → 1:1 실물 체험형 현장 상담으로 세일즈 프로세스 재설계, 리드~계약 클로징까지 단독 완주</li>
+          <li>개설 가맹점주 2개 지점 로컬 디지털 광고를 직접 대행·운영하고 AI 영상 소재 제작 및 운영</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>'참석자 수를 늘린다'가 아니라 '전환되는 단계로 구조를 바꿔야 한다'로 판단 — 현장 체험이 신뢰·전환을 만든다는 가설로 세일즈를 현장 중심으로 표준화</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P6 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜공유창고(박스풀)</div><div class="k">부서 · 마케팅</div><div class="k">직급 · 매니저</div></div>
+    <div class="pj-name">가맹창업 리드 유입 Meta 광고 캠페인 (AI 콘텐츠 전략)</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2024.07 ~ 2025.06</div>
+      <div><span class="lbl">활용 도구·스킬</span> 메타 / AI 영상 콘텐츠 / GA4</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 1인 / 100%</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li>동일 예산 대비 상담신청 전환 <em>+67.7%</em>, CPA <em>-38.6%</em></li>
+          <li>AI 쇼츠 A/B 테스트로 CTR 6.7%→9.56%(+42.7%p) · 소재 CPA -24%</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>셀프스토리지 가맹창업 잠재고객 대상 Meta 리드 유입 광고 캠페인 운영</li>
+          <li>AI 쇼츠 영상 콘텐츠를 직접 기획·제작하고 A/B 테스트로 성과 검증</li>
+          <li>테스트 결과를 근거로 전면 AI 콘텐츠 전략으로 소재 구성을 전환</li>
+          <li>타겟 적합도 기준을 데이터 기반으로 재설계해 리드 품질 개선</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>A/B 테스트로 AI 쇼츠 콘텐츠가 기존 이미지 소재 대비 CTR·CPA 모두 우수함을 검증 → 전면 AI 콘텐츠 전략으로 전환하는 의사결정으로 상담신청 전환·CPA를 동반 개선</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P7 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜공유창고(박스풀)</div><div class="k">부서 · 마케팅</div><div class="k">직급 · 매니저</div></div>
+    <div class="pj-name">짐보관(셀프스토리지) 서비스 — GA4 퍼널 재설계 &amp; 타이밍 리타게팅</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2024.07 ~ 2025.06</div>
+      <div><span class="lbl">활용 도구·스킬</span> GA4 / 메타(픽셀·리타게팅) / 검색광고 / 네이버 블로그</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 1인 / 100%</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li><em>신규고객 +63%</em>, 리타게팅 CVR 62% 달성</li>
+          <li>결제까지의 유저 여정을 데이터로 재설계해 퍼널·리타게팅 구조를 신규 확립</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>박스풀 짐보관(셀프스토리지) 서비스의 신규 고객(결제) 유입을 위한 B2C 퍼포먼스 마케팅</li>
+          <li>GA4 고객 여정 분석으로 결제까지 평균 3.89일·채널별 기여 단계가 다름을 확인 → '즉시결제가 아닌 고관여 상품'으로 정의</li>
+          <li>결제 여정을 4단계 퍼널로 재설계: ① 검색광고 첫 유입 → ② 블로그 후기·차별점 리뷰로 정보·신뢰 지점 마련 → ③ Meta 리타게팅으로 결제 직전(3.89일 타이밍) 재접촉 → ④ 클릭 시 예약 페이지 직접 랜딩+프로모션으로 이탈 최소화</li>
+          <li>타겟 정교화: 자사·경쟁사 홈페이지 방문자 + 유사타겟 2% + 픽셀 세분화로 실구매 가능성 높은 유저에 집중</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>'결제까지 평균 3.89일 걸리는 고관여 상품'이라는 GA4 데이터에서 단발 노출로는 전환이 안 된다고 판단 → 채널 역할(검색=유입·블로그=신뢰·Meta=리마인드)과 결제 소요시간에 맞춰 퍼널·리타게팅 타이밍을 재설계한 것이 신규고객 +63%의 핵심</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P8 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">㈜공유창고(박스풀)</div><div class="k">부서 · 마케팅</div><div class="k">직급 · 매니저</div></div>
+    <div class="pj-name">무인 게임룸 실시간 결제 전환율 개선</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2024.07 ~ 2025.06</div>
+      <div><span class="lbl">활용 도구·스킬</span> GA4 / UX 구조 개선</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 2인 / 50% (제안·설계 참여)</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li><em>취미공간 매출 16배↑</em> — 실매출 전환 퍼널 신규 확보</li>
+          <li>예약 페이지 조회 738회 대비 결제 16건 발생 (기존 결제 0건 → 전환 발생)</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>GA4 분석으로 예약 페이지 조회 1,698회에도 결제 0건인 전환 병목을 발견</li>
+          <li>병목 원인이 '즉시 결제 불가' 구조임을 GA4 데이터와 경쟁사 예약시스템, 예약 진척율 모니터링으로 진단</li>
+          <li>실시간 결제 시스템 도입을 제안하고 설계에 참여</li>
+          <li>예약~결제 UI 구조를 개선해 실매출 전환 퍼널을 확보</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>'조회수는 월 1,698회 발생했으나 결제가 0건'이라는 데이터에서 즉시결제 불가가 근본 병목이라 판단 → 실시간 결제 도입을 제안·설계해 매출 전환 구조를 신규 확보</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- P9 -->
+  <div class="pj">
+    <div class="pj-top"><div class="co">어스텀 (Ustom)</div><div class="k">부서 · 사업부</div><div class="k">직급 · 대표</div></div>
+    <div class="pj-name">의류 커스터마이징 중개 플랫폼 창업</div>
+    <div class="pj-meta">
+      <div><span class="lbl">기간</span> 2022.05 ~ 2023.04</div>
+      <div><span class="lbl">활용 도구·스킬</span> 서비스 기획 / UI·UX 구조 설계 / 사업화</div>
+      <div><span class="lbl">팀구성 / 기여도</span> 1인 / 100%</div>
+    </div>
+    <div class="pj-body">
+      <div class="grp result">
+        <div class="grp-h">업무 성과</div>
+        <ul>
+          <li><em>정부지원사업 선정</em>(창업지원금 1,000만 원)</li>
+          <li>서비스 기획부터 사업화까지 리더십 경험</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">주요 실행내용</div>
+        <ul>
+          <li>커스터마이징 수요를 중개 플랫폼으로 구조화한 신규 비즈니스 모델 기획</li>
+          <li>서비스·UI/UX 구조 설계 주도</li>
+          <li>대표자로서 사업 전반 기획·사업화 추진</li>
+        </ul>
+      </div>
+      <div class="grp">
+        <div class="grp-h">핵심 의사결정</div>
+        <ul>
+          <li>커스터마이징 수요를 중개 플랫폼 모델로 구조화 — 대표로서 서비스 기획부터 정부지원 유치·사업화까지 주도</li>
+        </ul>
+      </div>
     </div>
   </div>
 
