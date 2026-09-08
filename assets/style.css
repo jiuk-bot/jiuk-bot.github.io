@@ -85,10 +85,10 @@ a.inline:hover { text-decoration: underline; }
 .btn-ghost:hover { background: var(--bg-soft); }
 
 /* ── 임팩트 통계 ── */
-.stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 40px; }
-.stat { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
-.stat .cat { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
-.stat .big { font-size: 38px; font-weight: 800; color: var(--blue); letter-spacing: -.03em; line-height: 1.1; }
+.stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-top: 40px; }
+.stat { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: flex; flex-direction: column; }
+.stat .cat { font-size: 13px; color: var(--muted); font-weight: 600; margin-bottom: 8px; min-height: 2.6em; }
+.stat .big { font-size: 30px; font-weight: 800; color: var(--blue); letter-spacing: -.03em; line-height: 1.2; }
 .stat .desc { font-size: 14px; color: var(--body); margin-top: 8px; }
 
 /* ── 탐색 카드 ── */
