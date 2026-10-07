@@ -27,6 +27,8 @@
     font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;
     color:var(--ink); background:#f4f5f7; line-height:1.6;
     -webkit-font-smoothing:antialiased;
+    word-break:keep-all;          /* 한국어 어절 단위 줄바꿈 (단어 중간 끊김 방지) */
+    overflow-wrap:break-word;
   }
   a{color:inherit;text-decoration:none;}
 
@@ -227,6 +229,34 @@
   .rc-stat .rl{ font-size:11.5px; color:#777; margin-top:7px; line-height:1.4; }
   .rc-note{ font-size:11px; color:#999; margin-top:14px; line-height:1.5; }
 
+  /* ── 왜 에이블리 비주얼 카드 ── */
+  .whyc{ display:flex; flex-direction:column; }
+  .whyc-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .whyc-ic{ width:48px; height:48px; border-radius:14px; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:24px; }
+  .whyc-no{ font-size:13px; font-weight:800; color:#fff; background:var(--primary); width:28px; height:28px; border-radius:9px; display:flex; align-items:center; justify-content:center; }
+  .whyc h3{ font-size:16.5px; margin-bottom:14px; line-height:1.35; }
+  .whyc p{ font-size:13.5px; color:#555; line-height:1.65; margin-top:14px; }
+  .whyc p b{ color:var(--ink); font-weight:700; }
+  .viz{ background:#fafbfc; border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .viz-eq{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  .viz-big{ font-size:24px; font-weight:800; color:var(--primary); line-height:1.1; }
+  .viz-cap{ font-size:11.5px; color:var(--sub); font-weight:600; margin-top:3px; }
+  .viz-op{ font-size:22px; font-weight:300; color:var(--sub); }
+  .chip3{ display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .chip3 .c{ background:#fff; border:1px solid var(--line2); border-radius:8px; padding:7px 11px; font-size:12.5px; font-weight:700; color:#444; }
+  .chip3 .x{ color:var(--primary); font-weight:800; }
+  .viz-arrow{ font-size:12px; font-weight:700; color:var(--sub); margin:9px 0 7px; }
+  .viz-result{ background:var(--soft); color:var(--primary-dark); font-weight:700; font-size:13px; padding:9px 13px; border-radius:9px; display:inline-block; }
+  .flow{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .flow .box{ background:#fff; border:1px solid var(--line2); border-radius:8px; padding:8px 11px; font-size:12px; font-weight:700; color:#444; }
+  .flow .box.hl{ background:var(--primary); color:#fff; border-color:var(--primary); }
+  .flow .ar{ color:var(--primary); font-weight:800; }
+  .viz-badge{ margin-top:11px; font-size:11.5px; font-weight:700; color:var(--primary); background:#fff; border:1px dashed var(--primary); border-radius:999px; padding:5px 12px; display:inline-block; }
+  .chbar{ display:flex; gap:7px; flex-wrap:wrap; margin-bottom:11px; }
+  .chbar .ch{ font-size:12px; font-weight:700; padding:6px 12px; border-radius:999px; }
+  .chbar .on{ background:#eef1f5; color:#888; }
+  .chbar .off{ background:var(--soft); color:var(--primary); border:1px dashed var(--primary); }
+
   /* 타임라인 */
   .timeline{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .tl{ position:relative; padding:22px; border:1px solid var(--line); border-radius:16px; background:#fff; }
@@ -409,34 +439,68 @@
       <h2>강남언니의 타겟이 <span class="hl">가장 밀집한 채널</span>, 에이블리.</h2>
       <p class="lead">"1,000만 여성 쇼핑 유저를 내 고객으로" — 에이블리 디스플레이 광고의 강점이 강남언니의 과제와 정확히 맞물립니다.</p>
 
-      <div class="card" style="padding:8px 26px;">
-        <div class="why">
-          <div class="ic">🎯</div>
-          <div>
-            <h3>① 오디언스가 사실상 겹친다</h3>
-            <p>에이블리 월 <b>1,000만 여성</b>의 중심은 2030 여성. 강남언니 핵심 타겟(2030 여성)과 정확히 같은 층입니다. 에이블리에는 <b>강남언니가 아직 못 만난 신규 여성 유저 풀</b>이 대규모로 존재합니다.<span class="src pub">공개</span></p>
+      <div class="grid g2">
+        <!-- ① 오디언스 겹침 -->
+        <div class="card whyc">
+          <div class="whyc-top"><span class="whyc-ic">🎯</span><span class="whyc-no">01</span></div>
+          <h3>오디언스가 사실상 겹친다</h3>
+          <div class="viz">
+            <div class="viz-eq">
+              <div><div class="viz-big">1,000만</div><div class="viz-cap">에이블리 월 여성</div></div>
+              <div class="viz-op">≈</div>
+              <div><div class="viz-big">2030 여성</div><div class="viz-cap">강남언니 핵심 타겟</div></div>
+            </div>
           </div>
+          <p>에이블리 1,000만 여성의 중심이 <b>2030 여성</b>. 강남언니가 <b>아직 못 만난 신규 여성 풀</b>이 대규모로 존재합니다.<span class="src pub">공개</span></p>
         </div>
-        <div class="why">
-          <div class="ic">💳</div>
-          <div>
-            <h3>② 구매 데이터로 "시술 관심층"을 저격</h3>
-            <p>에이블리는 1st-party <b>결제·구매 데이터</b>를 보유합니다. 뷰티·패션에 적극 소비하는 2030 여성 = 미용의료 관심이 높은 유저. 인구통계 × 카테고리 × 결제정보를 AND로 조합해 <b>정밀 타겟팅</b>합니다.<span class="src pub">공개</span></p>
+
+        <!-- ② 결제 데이터 타겟팅 -->
+        <div class="card whyc">
+          <div class="whyc-top"><span class="whyc-ic">💳</span><span class="whyc-no">02</span></div>
+          <h3>구매 데이터로 "시술 관심층" 저격</h3>
+          <div class="viz">
+            <div class="chip3">
+              <span class="c">인구통계</span><span class="x">×</span>
+              <span class="c">뷰티 카테고리</span><span class="x">×</span>
+              <span class="c">결제 정보</span>
+            </div>
+            <div class="viz-arrow">↓ AND 조합</div>
+            <div class="viz-result">미용의료 관심 높은 유저 정밀 타겟</div>
           </div>
+          <p>에이블리는 1st-party <b>결제·구매 데이터</b> 보유. 뷰티·패션에 적극 소비하는 2030 여성 = 시술 관심층입니다.<span class="src pub">공개</span></p>
         </div>
-        <div class="why">
-          <div class="ic">🔗</div>
-          <div>
-            <h3>③ 이커머스 유일 '아웃링크' = 앱설치 직결</h3>
-            <p>에이블리 디스플레이 광고는 이커머스 앱 중 <b>유일하게 외부 아웃링크를 지원</b>합니다. 스플래시·전면동영상에서 바로 <b>강남언니 앱스토어·상담예약</b>으로 연결 — 설치·전환까지 끊김 없이 이어집니다.<span class="src pub">공개</span></p>
+
+        <!-- ③ 아웃링크 -->
+        <div class="card whyc">
+          <div class="whyc-top"><span class="whyc-ic">🔗</span><span class="whyc-no">03</span></div>
+          <h3>이커머스 유일 '아웃링크' = 앱설치 직결</h3>
+          <div class="viz">
+            <div class="flow">
+              <span class="box">스플래시·전면</span>
+              <span class="ar">→</span>
+              <span class="box hl">강남언니 앱스토어</span>
+              <span class="ar">→</span>
+              <span class="box">설치·상담예약</span>
+            </div>
+            <div class="viz-badge">이커머스 앱 중 유일 아웃링크 지원</div>
           </div>
+          <p>스플래시·전면동영상에서 <b>바로 앱스토어로 연결</b> — 설치·전환까지 끊김 없이 이어집니다.<span class="src pub">공개</span></p>
         </div>
-        <div class="why">
-          <div class="ic">📈</div>
-          <div>
-            <h3>④ 아직 안 쓰는 '증분 채널'</h3>
-            <p>강남언니는 이미 인스타·페북·OOH에 집행 중이지만, <b>에이블리는 미집행</b>. 기존 채널과 중복되지 않는 순수 증분 도달을 확보할 수 있는 신규 채널입니다.<span class="src as">가정</span></p>
+
+        <!-- ④ 증분 채널 -->
+        <div class="card whyc">
+          <div class="whyc-top"><span class="whyc-ic">📈</span><span class="whyc-no">04</span></div>
+          <h3>아직 안 쓰는 '증분 채널'</h3>
+          <div class="viz">
+            <div class="chbar">
+              <span class="ch on">인스타 ✓</span>
+              <span class="ch on">페북 ✓</span>
+              <span class="ch on">OOH ✓</span>
+              <span class="ch off">에이블리 — 신규</span>
+            </div>
+            <div class="viz-result">기존 채널과 안 겹치는 순수 증분 도달</div>
           </div>
+          <p>이미 인스타·페북·OOH 집행 중이지만 <b>에이블리는 미집행</b>. 중복 없는 새 도달을 확보합니다.<span class="src as">가정</span></p>
         </div>
       </div>
     </div></div>
