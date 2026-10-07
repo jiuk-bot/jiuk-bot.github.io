@@ -291,6 +291,25 @@
   .etcchip b{ display:block; color:var(--ink); font-weight:700; margin-bottom:2px; }
   .etcchip span{ color:var(--sub); font-size:11.5px; }
 
+  /* ── 업종→지면 매핑 ── */
+  .maprow{ display:flex; align-items:center; gap:10px; padding:11px 0; border-bottom:1px solid var(--line); }
+  .maprow:last-child{ border-bottom:0; }
+  .mapfrom{ flex:0 0 86px; font-size:13px; font-weight:800; color:var(--c); text-align:center; line-height:1.3; }
+  .mapfrom small{ display:block; font-size:10.5px; font-weight:600; color:var(--sub); margin-top:1px; }
+  .maparrow{ color:var(--primary); font-weight:800; font-size:16px; }
+  .mapto{ flex:1; background:var(--soft); border-radius:10px; padding:10px 14px; font-size:14px; font-weight:800; color:var(--ink); line-height:1.3; }
+  .mapto small{ display:block; font-size:11.5px; font-weight:600; color:var(--sub); margin-top:2px; }
+
+  /* ── 검증 3스텝 ── */
+  .vsteps{ margin-top:12px; }
+  .vstep{ display:flex; align-items:flex-start; gap:12px; position:relative; padding-bottom:16px; }
+  .vstep:last-child{ padding-bottom:0; }
+  .vstep .vn{ flex:0 0 26px; width:26px; height:26px; border-radius:50%; background:var(--primary); color:#fff;
+              font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; z-index:1; }
+  .vstep:not(:last-child)::before{ content:''; position:absolute; left:12px; top:26px; bottom:0; width:2px; background:#f3c7bb; }
+  .vstep .vt{ font-size:14px; font-weight:800; color:var(--ink); }
+  .vstep .vd{ font-size:12px; color:var(--sub); margin-top:2px; }
+
   /* 타임라인 */
   .timeline{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .tl{ position:relative; padding:22px; border:1px solid var(--line); border-radius:16px; background:#fff; }
@@ -859,15 +878,30 @@
       <div class="grid g2">
         <div class="card">
           <h3>📌 그래서, 강남언니 추천 지면</h3>
-          <ul class="ck" style="margin-top:6px;">
-            <li><b>종료 팝업</b> — 노스카나(의약품)와 동일 지면, 전환 회수</li>
-            <li><b>혜택 탭 Top</b> — 뷰티 브랜드 선례, 쿠폰 소구</li>
-            <li><b>스플래시 · 전면</b> — 콘텐츠 브랜드 선례, 론칭 인지</li>
-          </ul>
+          <p class="cd" style="margin-bottom:6px;">업종 선례를 그대로 강남언니 지면에 매핑했습니다.</p>
+          <div class="maprow">
+            <span class="mapfrom" style="--c:#d9772e;">💊 의료<small>노스카나</small></span>
+            <span class="maparrow">→</span>
+            <span class="mapto">종료 팝업<small>전환 회수 · CTR 최고</small></span>
+          </div>
+          <div class="maprow">
+            <span class="mapfrom" style="--c:#b06bd6;">💄 뷰티<small>조말론·달바</small></span>
+            <span class="maparrow">→</span>
+            <span class="mapto">혜택 탭 Top<small>쿠폰 소구</small></span>
+          </div>
+          <div class="maprow">
+            <span class="mapfrom" style="--c:#2b2f36;">🎬 콘텐츠<small>지니TV·영화</small></span>
+            <span class="maparrow">→</span>
+            <span class="mapto">스플래시 · 전면<small>론칭 인지</small></span>
+          </div>
         </div>
         <div class="card" style="background:var(--soft);border-color:transparent;">
           <h3>📊 예상 성과는 이렇게 검증</h3>
-          <p class="cd">본 제안의 노출·CTR 추정은 소개서 <b>공개 벤치마크</b> 기준입니다. 집행 전 에이블리에 <b>유사 업종(의료·뷰티) 레퍼런스 데이터</b>를 요청해 CPI·전환 기대치를 함께 검증한 뒤, 파일럿으로 실측 기준선을 확정하는 것을 제안합니다.</p>
+          <div class="vsteps">
+            <div class="vstep"><span class="vn">1</span><div><div class="vt">공개 벤치마크로 추정</div><div class="vd">소개서 노출·CTR + 유사 업종 CPI 5개 평균</div></div></div>
+            <div class="vstep"><span class="vn">2</span><div><div class="vt">ad-biz 레퍼런스로 검증</div><div class="vd">유사 업종(의료·뷰티) 실성과 데이터 요청</div></div></div>
+            <div class="vstep"><span class="vn">3</span><div><div class="vt">초기 집행으로 실측 확정</div><div class="vd">1개월 집행 후 실제 CPI 기준선 고정</div></div></div>
+          </div>
         </div>
       </div>
     </div></div>
