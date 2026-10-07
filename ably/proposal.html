@@ -185,6 +185,18 @@
               opacity:.22; pointer-events:none; background:center bottom/contain no-repeat;
               background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><g fill='%23ffffff'><path d='M60 16 C37 16 29 35 31 56 C32 73 37 97 40 114 L50 112 C46 89 45 66 47 53 C49 39 53 33 60 33 C67 33 71 39 73 53 C75 66 74 89 70 112 L80 114 C83 97 88 73 89 56 C91 35 83 16 60 16 Z'/><ellipse cx='60' cy='45' rx='15' ry='18'/><path d='M29 120 C29 91 43 79 60 79 C77 79 91 91 91 120 Z'/></g></svg>"); }
   .adbody{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:4px; }
+
+  /* ── 지면별 역할 카드 ── */
+  .rolecard{ display:flex; flex-direction:column; }
+  .role-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+  .role-ic{ font-size:24px; }
+  .rolecard h3{ font-size:16px; margin-bottom:14px; line-height:1.3; min-height:2.4em; display:flex; align-items:center; }
+  .role-why{ display:flex; flex-direction:column; gap:9px; }
+  .rw{ font-size:13px; color:#444; padding-left:20px; position:relative; line-height:1.45; }
+  .rw::before{ content:'✓'; position:absolute; left:0; top:1px; color:var(--primary); font-weight:800; font-size:11px; }
+  .rw b{ color:var(--ink); font-weight:700; }
+  .role-ref{ margin-top:14px; font-size:11.5px; font-weight:700; color:var(--sub);
+             background:#f4f5f7; border-radius:999px; padding:5px 12px; align-self:flex-start; }
   .madv{ font-size:10.5px; font-weight:700; color:var(--primary); background:var(--soft);
          border-radius:6px; padding:4px 9px; display:inline-block; margin-top:7px; line-height:1.4; }
 
@@ -295,7 +307,13 @@
   .refc .rh .ri{ font-size:22px; }
   .refc .rh .rn{ font-size:18px; font-weight:800; margin-top:6px; }
   .refc .rh .rcat{ font-size:12px; opacity:.92; margin-top:2px; }
+  .refc .rh-logo{ background:#fff; height:78px; display:flex; align-items:center; justify-content:center;
+                  gap:16px; padding:14px 16px; border-bottom:1px solid var(--line); }
+  .refc .rh-logo img{ max-height:34px; max-width:110px; width:auto; object-fit:contain; display:block; }
+  .refc .rtag{ font-size:12.5px; font-weight:800; margin-bottom:10px; }
   .refc .rbd{ padding:16px 18px; background:#fff; flex:1; }
+  .rc-logochip{ background:#fff; border-radius:10px; width:fit-content; padding:7px 12px; margin-bottom:12px; }
+  .rc-logochip img{ height:22px; width:auto; display:block; }
   .refc .rslot{ font-size:11.5px; font-weight:700; color:var(--primary); background:var(--soft); border-radius:999px; padding:5px 12px; display:inline-block; margin-bottom:11px; }
   .refc .rp{ font-size:13px; color:#555; line-height:1.55; }
   .refc .rp b{ color:var(--ink); }
@@ -422,8 +440,8 @@
   <section>
     <div class="pad"><div class="wrap">
       <div class="eyebrow"><span class="no">01</span> 광고주 진단</div>
-      <h2>강남언니는 지금, <span class="hl">신규 유저 획득 경쟁</span>의 한가운데.</h2>
-      <p class="lead">국내 미용의료 플랫폼 1위. 핵심 자산도, 당면 과제도 모두 <b>"2030 여성 신규 유입"</b>에 걸려 있습니다.</p>
+      <h2>강남언니의 다음 과제는 <span class="hl">'쿠폰 사용 결제'</span> 전환.</h2>
+      <p class="lead">국내 미용의료 플랫폼 1위 — 신규 유입(830만)은 이미 충분합니다. 이제 <b>받은 쿠폰이 실제 결제로 이어지는 '수익화'</b>가 핵심 과제입니다.</p>
 
       <div class="stats" style="margin-bottom:12px;">
         <div><div class="n">830<em>만</em></div><div class="l">국내 누적 회원</div></div>
@@ -436,7 +454,7 @@
       <div class="grid g3">
         <div class="card">
           <h3>핵심 KPI</h3>
-          <p class="cd">앱 신규 설치 → 시술 정보 탐색 → <b>병원 상담·예약</b>. 설치부터 상담예약까지가 매출의 시작점.</p>
+          <p class="cd">앱 유입 → 쿠폰 수령 → 시술 탐색 → <b>쿠폰 사용 결제</b>. 받은 쿠폰의 결제 전환이 매출로 이어짐.</p>
         </div>
         <div class="card">
           <h3>현재 마케팅</h3>
@@ -444,7 +462,7 @@
         </div>
         <div class="card">
           <h3>당면 과제</h3>
-          <p class="cd">기존 채널의 CPI 상승·중복 도달. <b>겹치지 않는 신규 2030 여성 풀</b>과 새 채널이 필요.<span class="src as">가정</span></p>
+          <p class="cd">신규 유입은 충분(830만). 과제는 <b>쿠폰의 결제 전환(수익화)</b>과 구매력 있는 유저 확보.<span class="src as">가정</span></p>
         </div>
       </div>
     </div></div>
@@ -543,18 +561,18 @@
         <!-- ③ 아웃링크 -->
         <div class="card whyc">
           <div class="whyc-top"><span class="whyc-ic">🔗</span><span class="whyc-no">03</span></div>
-          <h3>이커머스 유일 '아웃링크' = 앱설치 직결</h3>
+          <h3>이커머스 유일 '아웃링크' = 쿠폰 받기·결제 직결</h3>
           <div class="viz">
             <div class="flow">
               <span class="box">스플래시·전면</span>
               <span class="ar">→</span>
               <span class="box hl">강남언니 앱스토어</span>
               <span class="ar">→</span>
-              <span class="box">설치·상담예약</span>
+              <span class="box">쿠폰 받기·결제</span>
             </div>
             <div class="viz-badge">이커머스 앱 중 유일 아웃링크 지원</div>
           </div>
-          <div class="take"><span>클릭 한 번에 <b>앱 설치·상담예약 직결</b></span><span class="src pub">공개</span></div>
+          <div class="take"><span>클릭 한 번에 <b>쿠폰 받기·결제 직결</b></span><span class="src pub">공개</span></div>
         </div>
 
         <!-- ④ 증분 채널 -->
@@ -592,6 +610,7 @@
 
       <div class="refcase">
         <div class="rc-brand">
+          <div class="rc-logochip"><img src="assets/logo-noscana.png" alt="노스카나"></div>
           <div class="rc-cat">💊 일반의약품 · 의료</div>
           <div class="rc-name">노스카나</div>
           <div class="rc-sub">동국제약 · 여드름 흉터</div>
@@ -763,19 +782,33 @@
       <h3 style="margin:30px 0 12px;">지면별 역할 — 왜 이 구좌인가</h3>
       <div class="grid g3">
         <div class="card">
-          <span class="phase burst">인지 (버스트)</span>
-          <h3 style="margin-top:10px;">전면 동영상 · 스플래시</h3>
-          <p class="cd">앱 첫 화면 독점 + 일 200~250만 <b>최대 노출</b>. 아직 강남언니를 모르는 2030 여성에게 <b>빠르게 인지·신뢰</b>를 심는 역할. 전면 동영상으로 '신뢰·전문성' 메시지 전달 — 콘텐츠 브랜드(지니TV)가 쓴 지면.</p>
+        <div class="card rolecard">
+          <div class="role-top"><span class="phase burst">인지 · 버스트</span><span class="role-ic">📣</span></div>
+          <h3>전면 동영상 · 스플래시</h3>
+          <div class="role-why">
+            <div class="rw"><b>일 200~250만</b> 첫 화면 독점 노출</div>
+            <div class="rw">2030 여성에게 <b>빠른 인지·신뢰</b></div>
+          </div>
+          <span class="role-ref">콘텐츠 브랜드(지니TV) 선례</span>
         </div>
-        <div class="card">
-          <span class="phase conv">전환 (상시)</span>
-          <h3 style="margin-top:10px;">종료 팝업 · 혜택 탭 Top</h3>
-          <p class="cd">종료 팝업 = <b>CTR 2.5% 전 지면 최고 + 노스카나(의약품)가 쓴 검증 지면</b>. 혜택 탭 = 쿠폰 탐색 중 고의도 맥락 → '신규설치 쿠폰' 소구 최적. <b>인지된 유저를 설치로 회수</b>.</p>
+        <div class="card rolecard">
+          <div class="role-top"><span class="phase conv">전환 · 상시</span><span class="role-ic">🎟️</span></div>
+          <h3>종료 팝업 · 혜택 탭 Top</h3>
+          <div class="role-why">
+            <div class="rw"><b>CTR 2.5%</b> 전 지면 최고 (종료팝업)</div>
+            <div class="rw"><b>쿠폰 소구</b> → 쿠폰 사용 결제로 회수</div>
+            <div class="rw">노스카나(의약품) 검증 지면</div>
+          </div>
+          <span class="role-ref">전환 핵심 — 결제 KPI 직결</span>
         </div>
-        <div class="card">
-          <span class="phase always">리마인드 (상시)</span>
-          <h3 style="margin-top:10px;">검색 · 마이페이지</h3>
-          <p class="cd">주 200만 노출을 <b>저비용(250만/주)</b>으로 상시 확보. 능동 탐색(검색)·재방문(마이) 맥락에서 꾸준히 리마인드하며 <b>CPI 효율 지면에 예산 집중</b>.</p>
+        <div class="card rolecard">
+          <div class="role-top"><span class="phase always">리마인드 · 상시</span><span class="role-ic">🔁</span></div>
+          <h3>검색 · 마이페이지</h3>
+          <div class="role-why">
+            <div class="rw">주 200만 노출 <b>저비용(250만/주)</b></div>
+            <div class="rw">탐색·재방문 맥락 꾸준히 리마인드</div>
+          </div>
+          <span class="role-ref">효율 지면에 예산 집중</span>
         </div>
       </div>
     </div></div>
@@ -785,8 +818,8 @@
   <section style="background:#fafbfc;">
     <div class="pad"><div class="wrap">
       <div class="eyebrow"><span class="no">06</span> 기대 성과</div>
-      <h2>광고 성과의 기준은 <span class="hl">앱 설치(CPI)</span>.</h2>
-      <p class="lead">아웃링크 → 앱스토어 → 설치까지 MMP(앱스플라이어)로 측정합니다. 설치 수는 <b>유사 업종 앱설치 CPI 평균</b>을 기준으로 추정했습니다.</p>
+      <h2>성과 기준은 <span class="hl">쿠폰 사용 결제</span>.</h2>
+      <p class="lead">신규 유입은 충분하니, 성과를 '앱 설치'가 아니라 <b>받은 쿠폰이 실제 결제로 이어졌는가</b>로 봅니다. 광고 유입은 MMP로, <b>쿠폰 사용 결제는 강남언니 결제 데이터(purchase event)</b>로 측정합니다.</p>
 
       <div class="funnel" style="margin-bottom:14px;">
         <div class="fstep">
@@ -794,16 +827,20 @@
           <div><div class="fv">3,300만</div><div class="fl">3개월 합산 · 소개서 기준 <span class="src pub">공개</span></div></div>
         </div>
         <div class="fstep">
-          <div class="fbar" style="background:#ff9a86;width:38%;">앱 설치 ~2.4만 <span style="font-size:11px;opacity:.9;">◀ 광고 KPI (MMP 측정)</span></div>
-          <div><div class="fv">~24,000</div><div class="fl">1억 ÷ CPI 4,100원 <span class="src bm">벤치마크</span></div></div>
+          <div class="fbar" style="background:#ff9a86;width:40%;">유입·쿠폰 수령 ~2.4만</div>
+          <div><div class="fv">~24,000</div><div class="fl">1억 ÷ 유입단가 4,100원 <span class="src bm">벤치마크</span></div></div>
+        </div>
+        <div class="fstep">
+          <div class="fbar" style="background:#db3b57;width:22%;">쿠폰 사용 결제 <span style="font-size:11px;opacity:.9;">◀ 성과 KPI</span></div>
+          <div><div class="fv">ROAS</div><div class="fl">강남언니 결제데이터 측정 <span class="src as">전환</span></div></div>
         </div>
       </div>
       <div class="card" style="background:#f7f8fa;border:1px dashed var(--line2);padding:14px 18px;margin-bottom:22px;">
-        <p class="cd" style="margin:0;">⌁ <b>설치 이후 상담예약·시술 전환</b>은 강남언니 앱 내부에서 발생해 광고 측정(MMP) 범위 밖입니다. 광고 KPI는 <b>앱 설치(CPI)</b>로 두고, 후속 전환·LTV는 강남언니 1st-party 데이터와 결합해 공동 분석할 것을 제안합니다.</p>
+        <p class="cd" style="margin:0;">⌁ <b>쿠폰 사용 결제</b>는 강남언니 앱 내 결제 이벤트로, <b>MMP purchase event 연동</b>이면 광고 단위로 측정됩니다. 광고 유입단가(CPI)를 선행지표로, <b>쿠폰 사용 결제·ROAS를 최종 KPI</b>로 두고 지면·예산을 공동 최적화합니다.</p>
       </div>
 
       <!-- CPI 산출 근거 (유사 업종 5개 평균) -->
-      <h3 style="font-size:16px;margin-bottom:10px;">CPI 산출 근거 — 유사 업종 앱설치 벤치마크 5개 평균</h3>
+      <h3 style="font-size:16px;margin-bottom:10px;">유입단가(CPI) 산출 근거 — 유사 업종 벤치마크 5개 평균 <span style="font-size:12px;font-weight:600;color:var(--sub);">· 결제 전 선행지표</span></h3>
       <table style="margin-bottom:12px;">
         <tr><th>참고 기준</th><th>출처</th><th class="r">CPI (원)</th></tr>
         <tr><td>한국 앱 평균</td><td>글로벌 CPI 벤치 $1.8~3.5 중앙값</td><td class="r">~3,600</td></tr>
@@ -816,11 +853,11 @@
       <p class="note" style="margin-bottom:22px;">※ 환율 ~1,350원/$ 적용. 강남언니와 가까운 <b>헬스케어·뷰티·쇼핑</b> 업종 중심으로 선정했습니다. 위는 주로 서치·평균 벤치마크라, <b>디스플레이 브랜딩 CPI는 이보다 높게 나올 수 있어</b> 보수적으로 4,000~6,000원 band로 관리하며, 집행 전 에이블리 ad-biz 레퍼런스로 실측 검증합니다. <span class="src bm">벤치마크</span></p>
 
       <div class="grid g3">
-        <div class="card soft"><div class="big">~4,100원</div><div class="cap">예상 CPI (유사 업종 평균)</div><div class="cd">헬스·뷰티·쇼핑 5개 벤치 평균<span class="src bm">벤치마크</span></div></div>
-        <div class="card soft"><div class="big">~2.4만</div><div class="cap">예상 신규 앱 설치</div><div class="cd">3개월 1억 기준 (보수 1.7~2.4만)<span class="src bm">벤치마크</span></div></div>
-        <div class="card soft"><div class="big">+순증</div><div class="cap">증분 도달</div><div class="cd">기존 인스타·OOH와 겹치지 않는 신규 2030 여성</div></div>
+        <div class="card soft"><div class="big">~4,100원</div><div class="cap">유입단가 (CPI · 선행지표)</div><div class="cd">헬스·뷰티·쇼핑 5개 벤치 평균<span class="src bm">벤치마크</span></div></div>
+        <div class="card soft"><div class="big">~2.4만</div><div class="cap">예상 유입·쿠폰 수령</div><div class="cd">3개월 1억 기준 (보수 1.7~2.4만)<span class="src bm">벤치마크</span></div></div>
+        <div class="card soft"><div class="big">ROAS</div><div class="cap">쿠폰 사용 결제 (성과 KPI)</div><div class="cd">강남언니 결제데이터로 측정·최적화<span class="src as">전환</span></div></div>
       </div>
-      <p class="note">· 광고로 측정하는 목표는 <b>앱 설치(CPI)</b>. 초기 1개월 집행으로 실측 CPI 기준선을 확보한 뒤 지면·예산을 최적화합니다.</p>
+      <p class="note">· 성과 KPI는 <b>쿠폰 사용 결제·ROAS</b>. 초기 1개월 집행으로 유입단가(CPI)·결제 전환율 기준선을 확보한 뒤 지면·예산을 최적화합니다.</p>
     </div></div>
   </section>
 
@@ -830,14 +867,14 @@
       <div class="eyebrow"><span class="no">07</span> 측정 · 리포팅 · 의료광고 심의</div>
       <h2>데이터로 증명하고, <span class="hl">리스크는 미리</span> 막습니다.</h2>
 
-      <h3 style="margin-bottom:12px;">측정 → 최적화 → 확대 (핵심 KPI = 앱 설치 CPI)</h3>
+      <h3 style="margin-bottom:12px;">측정 → 최적화 → 확대 (성과 KPI = 쿠폰 사용 결제·ROAS)</h3>
       <div class="steps" style="margin-bottom:14px;">
-        <div class="step4"><div class="sn">STEP 1</div><div class="si">📲</div><div class="st">설치 추적</div><div class="sd">앱스플라이어(MMP) 연동으로 설치·이벤트 측정</div></div>
-        <div class="step4"><div class="sn">STEP 2</div><div class="si">📊</div><div class="st">일 단위 리포팅</div><div class="sd">지면별 CPI·CTR·설치율을 매일 집계</div></div>
-        <div class="step4"><div class="sn">STEP 3</div><div class="si">⚙️</div><div class="st">지면 최적화</div><div class="sd">고효율 지면 유지, 비효율 지면 감액</div></div>
-        <div class="step4"><div class="sn">STEP 4</div><div class="si">📈</div><div class="st">상시 확대</div><div class="sd">검증된 CPI 기준선으로 볼륨 확장</div></div>
+        <div class="step4"><div class="sn">STEP 1</div><div class="si">📲</div><div class="st">유입·결제 추적</div><div class="sd">MMP + purchase event로 유입·쿠폰 사용 결제 측정</div></div>
+        <div class="step4"><div class="sn">STEP 2</div><div class="si">📊</div><div class="st">일 단위 리포팅</div><div class="sd">지면별 CPI·CTR·결제전환율을 매일 집계</div></div>
+        <div class="step4"><div class="sn">STEP 3</div><div class="si">⚙️</div><div class="st">지면 최적화</div><div class="sd">ROAS 높은 지면 유지, 비효율 지면 감액</div></div>
+        <div class="step4"><div class="sn">STEP 4</div><div class="si">📈</div><div class="st">상시 확대</div><div class="sd">검증된 결제 ROAS 기준선으로 볼륨 확장</div></div>
       </div>
-      <p class="note" style="margin-bottom:26px;">· 설치 이후 상담예약·시술 전환은 강남언니 1st-party 데이터와 결합해 사후 검증합니다.</p>
+      <p class="note" style="margin-bottom:26px;">· 쿠폰 사용 결제·시술 전환은 강남언니 결제 데이터(purchase event)와 결합해 측정·검증합니다.</p>
 
       <div class="card" style="background:var(--soft);border-color:transparent;display:flex;gap:16px;align-items:flex-start;">
         <div style="font-size:30px;">🛡️</div>
@@ -859,28 +896,25 @@
 
       <div class="refgrid">
         <div class="refc">
-          <div class="rh" style="background:linear-gradient(135deg,#ff5160,#ff7a5c);">
-            <div class="ri">💊</div><div class="rn">노스카나</div><div class="rcat">일반의약품 · 의료</div>
-          </div>
+          <div class="rh-logo" style="border-top:4px solid #ff5160;"><img src="assets/logo-noscana.png" alt="노스카나"></div>
           <div class="rbd">
+            <div class="rtag" style="color:#d9772e;">💊 노스카나 · 일반의약품(의료)</div>
             <span class="rslot">종료 팝업</span>
             <p class="rp">의료 광고가 <b>심의 통과 후 집행된 직접 선례</b> — 강남언니에 가장 가까운 업종입니다.</p>
           </div>
         </div>
         <div class="refc">
-          <div class="rh" style="background:linear-gradient(135deg,#8e7cff,#b08cff);">
-            <div class="ri">💄</div><div class="rn">조말론 · 달바</div><div class="rcat">뷰티</div>
-          </div>
+          <div class="rh-logo" style="border-top:4px solid #b08cff;"><img src="assets/logo-jomalone.png" alt="조말론"><img src="assets/logo-dalba.png" alt="달바"></div>
           <div class="rbd">
+            <div class="rtag" style="color:#8e5fd0;">💄 조말론 · 달바 · 뷰티</div>
             <span class="rslot">혜택 탭 Top · 배송조회</span>
-            <p class="rp">미용 관심 유저가 <b>혜택 지면에서 반응</b> — 쿠폰·프로모션 소구가 유효합니다.</p>
+            <p class="rp">미용 관심 유저가 <b>혜택 지면에서 적극 반응</b> — 강남언니 신규설치 쿠폰팩 소구에 유효.</p>
           </div>
         </div>
         <div class="refc">
-          <div class="rh" style="background:linear-gradient(135deg,#2b2f36,#4a505a);">
-            <div class="ri">🎬</div><div class="rn">지니TV · 영화</div><div class="rcat">콘텐츠 · 엔터</div>
-          </div>
+          <div class="rh-logo" style="border-top:4px solid #2b2f36;"><img src="assets/logo-genietv.png" alt="지니TV" style="max-height:46px;border-radius:9px;"></div>
           <div class="rbd">
+            <div class="rtag" style="color:#444;">🎬 지니TV · 영화 · 콘텐츠</div>
             <span class="rslot">스플래시 · 전면</span>
             <p class="rp">대규모 인지 지면의 <b>도달력</b> — 론칭 버스트 단계에 유효합니다.</p>
           </div>
