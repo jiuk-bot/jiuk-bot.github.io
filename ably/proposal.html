@@ -179,6 +179,12 @@
   .mchips{ display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-top:8px; }
   .mchips .mc{ font-size:11.5px; font-weight:700; color:#555; background:#f4f5f7; border-radius:999px; padding:5px 11px; }
   .mchips .mc.price{ background:var(--soft); color:var(--primary); }
+
+  /* ── 뷰티 실루엣 (오리지널 CSS 일러스트) ── */
+  .beautyfig{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:86%; height:74%;
+              opacity:.22; pointer-events:none; background:center bottom/contain no-repeat;
+              background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><g fill='%23ffffff'><path d='M60 16 C37 16 29 35 31 56 C32 73 37 97 40 114 L50 112 C46 89 45 66 47 53 C49 39 53 33 60 33 C67 33 71 39 73 53 C75 66 74 89 70 112 L80 114 C83 97 88 73 89 56 C91 35 83 16 60 16 Z'/><ellipse cx='60' cy='45' rx='15' ry='18'/><path d='M29 120 C29 91 43 79 60 79 C77 79 91 91 91 120 Z'/></g></svg>"); }
+  .adbody{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:4px; }
   .madv{ font-size:10.5px; font-weight:700; color:var(--primary); background:var(--soft);
          border-radius:6px; padding:4px 9px; display:inline-block; margin-top:7px; line-height:1.4; }
 
@@ -615,11 +621,14 @@
             <div class="scr">
               <div class="statusbar light"><span>9:41</span><span class="ic">●●●  100%</span></div>
               <div class="adslot" style="flex:1;">
+                <div class="beautyfig"></div>
                 <span class="adtag">AD · Splash</span>
-                <span class="lb">강남언니</span>
-                <div class="bt">내 선택에<br>확신을.</div>
-                <div class="sm">830만이 보는 진짜 후기</div>
-                <span class="cta">앱 다운로드</span>
+                <div class="adbody">
+                  <span class="lb">강남언니</span>
+                  <div class="bt">내 선택에<br>확신을.</div>
+                  <div class="sm">830만이 보는 진짜 후기</div>
+                  <span class="cta">앱 다운로드</span>
+                </div>
               </div>
             </div>
           </div>
