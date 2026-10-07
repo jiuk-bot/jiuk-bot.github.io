@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>강남언니 × 에이블리 디스플레이 광고 제안 — 윤지욱</title>
+<meta name="description" content="강남언니 신규 유저 획득을 위한 에이블리 디스플레이 광고 제안서. 1,000만 2030 여성 오디언스 × 구매 데이터 타겟팅 × 아웃링크 앱설치." />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+
+  :root{
+    --primary:#ff5160;
+    --primary-dark:#db3b57;
+    --soft:#fff2ea;
+    --soft-hover:#ffe5dc;
+    --ink:#1f1f1f;
+    --sub:#777777;
+    --line:#e5e7eb;
+    --line2:#dddddd;
+    --canvas:#ffffff;
+    --shadow:0 4px 48px rgba(0,0,0,.08);
+    --shadow-sm:0 2px 16px rgba(0,0,0,.06);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;
+    color:var(--ink); background:#f4f5f7; line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* ── nav ── */
+  .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85);
+        backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:960px; margin:0 auto; padding:14px 24px; display:flex;
+              align-items:center; justify-content:space-between; }
+  .nav-logo{ font-weight:800; font-size:17px; }
+  .nav-logo .dot{ color:var(--primary); }
+  .nav-links{ display:flex; gap:4px; align-items:center; }
+  .nav-links a{ color:var(--sub); font-weight:600; font-size:14px; padding:8px 11px; border-radius:10px; }
+  .nav-links a:hover{ background:#f4f5f7; color:var(--ink); }
+  .nav-links a.active{ color:var(--primary); }
+  .nav-links a.cta{ background:var(--primary); color:#fff; }
+  .nav-links a.cta:hover{ background:var(--primary-dark); }
+
+  .doc{ max-width:960px; margin:0 auto; }
+  section{ background:var(--canvas); }
+  .pad{ padding:64px 56px; }
+  .wrap{ max-width:760px; margin:0 auto; }
+
+  /* ── 섹션 공통 ── */
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:700;
+            color:var(--primary); margin-bottom:14px; letter-spacing:.2px; }
+  .eyebrow .no{ font-size:12px; font-weight:800; color:#fff; background:var(--primary);
+                width:26px; height:26px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; }
+  h2{ font-size:30px; font-weight:700; line-height:1.3; letter-spacing:-.5px; margin-bottom:14px; }
+  h2 .hl{ color:var(--primary); }
+  .lead{ font-size:17px; color:#444; margin-bottom:28px; }
+  h3{ font-size:19px; font-weight:700; margin:0 0 10px; letter-spacing:-.3px; }
+
+  /* ── HERO (표지) ── */
+  .hero{ background:linear-gradient(135deg,#ff5160 0%,#ff7a5c 100%); color:#fff; position:relative; overflow:hidden; }
+  .hero::after{ content:''; position:absolute; right:-120px; top:-120px; width:420px; height:420px;
+                background:rgba(255,255,255,.12); border-radius:50%; }
+  .hero::before{ content:''; position:absolute; left:-80px; bottom:-140px; width:320px; height:320px;
+                background:rgba(255,255,255,.08); border-radius:50%; }
+  .hero .pad{ padding:88px 56px; position:relative; z-index:1; }
+  .hero .kicker{ font-size:14px; font-weight:700; opacity:.92; margin-bottom:22px; letter-spacing:.3px; }
+  .hero .combo{ display:flex; align-items:center; gap:18px; margin-bottom:26px; flex-wrap:wrap; }
+  .hero .brandchip{ background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.35);
+                    padding:10px 20px; border-radius:999px; font-weight:800; font-size:20px; }
+  .hero .x{ font-size:22px; font-weight:300; opacity:.85; }
+  .hero h1{ font-size:44px; font-weight:800; line-height:1.25; letter-spacing:-1px; margin-bottom:18px; }
+  .hero p{ font-size:18px; opacity:.95; max-width:620px; line-height:1.6; }
+  .hero .meta{ margin-top:40px; display:flex; gap:28px; flex-wrap:wrap; font-size:14px; opacity:.95; }
+  .hero .meta b{ font-weight:700; }
+  .hero .meta .k{ opacity:.8; margin-right:7px; }
+
+  /* 데이터 출처 레전드 */
+  .legend{ display:flex; gap:8px; flex-wrap:wrap; margin-top:22px; }
+  .tag{ font-size:11.5px; font-weight:700; padding:4px 10px; border-radius:999px; }
+  .tag.pub{ background:rgba(255,255,255,.2); color:#fff; }
+  .tag.bm{ background:rgba(255,255,255,.14); color:#fff; }
+  .tag.as{ background:rgba(255,255,255,.1); color:#fff; border:1px dashed rgba(255,255,255,.5); }
+
+  /* 본문 데이터 소스 칩 (섹션 내) */
+  .src{ font-size:10.5px; font-weight:700; padding:2px 7px; border-radius:6px; vertical-align:middle; margin-left:6px; }
+  .src.pub{ background:#eef6ff; color:#2f6fd6; }
+  .src.bm{ background:#eefaf0; color:#2e9e52; }
+  .src.as{ background:#fff4ec; color:#d9772e; border:1px dashed #f0b483; }
+
+  /* 카드 그리드 */
+  .grid{ display:grid; gap:16px; }
+  .grid.g2{ grid-template-columns:repeat(2,1fr); }
+  .grid.g3{ grid-template-columns:repeat(3,1fr); }
+  .grid.g4{ grid-template-columns:repeat(4,1fr); }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; box-shadow:var(--shadow-sm); }
+  .card.soft{ background:var(--soft); border-color:transparent; }
+  .card .big{ font-size:30px; font-weight:800; color:var(--primary); line-height:1.1; margin-bottom:4px; }
+  .card .cap{ font-size:13px; color:var(--sub); font-weight:600; }
+  .card .cd{ font-size:13.5px; color:#555; margin-top:6px; line-height:1.5; }
+
+  /* 스탯 바 (강남언니 현황) */
+  .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--line);
+          border-radius:16px; overflow:hidden; }
+  .stats > div{ padding:22px 18px; border-right:1px solid var(--line); }
+  .stats > div:last-child{ border-right:0; }
+  .stats .n{ font-size:26px; font-weight:800; color:var(--ink); }
+  .stats .n em{ font-style:normal; color:var(--primary); }
+  .stats .l{ font-size:12.5px; color:var(--sub); font-weight:600; margin-top:4px; }
+
+  /* 왜 에이블리 — 논리 카드 */
+  .why{ display:flex; gap:18px; align-items:flex-start; padding:22px 0; border-bottom:1px solid var(--line); }
+  .why:last-child{ border-bottom:0; }
+  .why .ic{ flex:0 0 52px; width:52px; height:52px; border-radius:14px; background:var(--soft);
+            display:flex; align-items:center; justify-content:center; font-size:24px; }
+  .why h3{ margin-bottom:5px; }
+  .why p{ font-size:14.5px; color:#555; }
+  .why p b{ color:var(--ink); font-weight:700; }
+
+  /* 표 */
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  th,td{ padding:12px 14px; text-align:left; border-bottom:1px solid var(--line); }
+  th{ background:#fafafa; font-weight:700; font-size:12.5px; color:#444; }
+  td{ color:#333; }
+  tr:last-child td{ border-bottom:0; }
+  td.r,th.r{ text-align:right; }
+  tr.total td{ background:var(--soft); font-weight:800; color:var(--ink); border-top:2px solid var(--primary); }
+  .phase{ display:inline-block; font-size:11px; font-weight:700; padding:3px 9px; border-radius:999px; }
+  .phase.burst{ background:#ffe9e2; color:#d9772e; }
+  .phase.always{ background:#eef6ff; color:#2f6fd6; }
+  .phase.conv{ background:#eefaf0; color:#2e9e52; }
+
+  /* 퍼널 */
+  .funnel{ display:flex; flex-direction:column; gap:10px; }
+  .fstep{ display:flex; align-items:center; gap:16px; }
+  .fbar{ height:52px; border-radius:12px; display:flex; align-items:center; padding:0 20px;
+         color:#fff; font-weight:700; font-size:15px; }
+  .fstep .fv{ font-size:15px; font-weight:800; color:var(--ink); white-space:nowrap; }
+  .fstep .fl{ font-size:12.5px; color:var(--sub); }
+
+  /* 타임라인 */
+  .timeline{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .tl{ position:relative; padding:22px; border:1px solid var(--line); border-radius:16px; background:#fff; }
+  .tl .step{ font-size:12px; font-weight:800; color:var(--primary); margin-bottom:8px; }
+  .tl h3{ font-size:16px; margin-bottom:6px; }
+  .tl p{ font-size:13px; color:#666; }
+
+  /* 제안자 */
+  .author{ background:var(--ink); color:#fff; }
+  .author .pad{ padding:56px; }
+  .author h2{ color:#fff; }
+  .author .hl{ color:#ff9a86; }
+  .author .ac{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:24px; }
+  .author .acard{ background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
+                  border-radius:14px; padding:20px; }
+  .author .acard .t{ font-size:14px; font-weight:700; color:#ff9a86; margin-bottom:6px; }
+  .author .acard p{ font-size:13.5px; color:#d8d8d8; line-height:1.55; }
+
+  ul.ck{ list-style:none; }
+  ul.ck li{ font-size:14.5px; color:#444; padding-left:26px; position:relative; margin:9px 0; line-height:1.55; }
+  ul.ck li::before{ content:'✓'; position:absolute; left:0; color:var(--primary); font-weight:800; }
+
+  .note{ font-size:12.5px; color:var(--sub); margin-top:14px; line-height:1.6; }
+
+  footer{ background:#fafafa; padding:30px 56px; text-align:center; font-size:12px; color:var(--sub); border-top:1px solid var(--line); }
+  .disclaimer{ background:#fffdf7; border:1px dashed #e8c98f; border-radius:12px; padding:16px 18px;
+               font-size:12.5px; color:#8a6d33; line-height:1.6; margin-top:20px; }
+
+  @media (max-width:720px){
+    .pad{ padding:44px 24px; } .hero .pad{ padding:60px 24px; }
+    .hero h1{ font-size:32px; } h2{ font-size:24px; }
+    .grid.g2,.grid.g3,.grid.g4,.stats,.timeline,.author .ac{ grid-template-columns:1fr; }
+    .stats > div{ border-right:0; border-bottom:1px solid var(--line); }
+    .nav-links a:not(.cta){ display:none; }
+  }
+
+  /* ── 인쇄 / PDF ── */
+  @media print{
+    @page{ size:A4; margin:0; }
+    body{ background:#fff; }
+    .nav{ display:none; }
+    section{ page-break-inside:avoid; }
+    .hero{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">JIUK<span class="dot">.</span>YOON</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="resume.html">이력서</a>
+      <a href="proposal.html" class="active">제안서</a>
+      <a class="cta" href="#plan">미디어 플랜 ↓</a>
+    </div>
+  </div>
+</nav>
+
+<div class="doc">
+
+  <!-- ══════ 표지 ══════ -->
+  <section class="hero">
+    <div class="pad">
+      <div class="kicker">ABLY DISPLAY AD · 신규 광고주 제안</div>
+      <div class="combo">
+        <span class="brandchip">강남언니</span>
+        <span class="x">×</span>
+        <span class="brandchip">ABLY</span>
+      </div>
+      <h1>1,000만 2030 여성을<br>강남언니의 새 고객으로.</h1>
+      <p>에이블리 디스플레이 광고로, 구매력 있는 2030 여성에게 정밀 도달해
+         강남언니 앱 설치와 상담예약을 늘리는 신규 유저 획득 제안입니다.</p>
+      <div class="meta">
+        <div><span class="k">제안 상품</span><b>에이블리 디스플레이 광고 (아웃링크)</b></div>
+        <div><span class="k">제안자</span><b>윤지욱</b></div>
+        <div><span class="k">작성일</span><b>2026.10</b></div>
+      </div>
+      <div class="legend">
+        <span class="tag pub">● 공개 데이터</span>
+        <span class="tag bm">● 업계 벤치마크</span>
+        <span class="tag as">◌ 추정/가정</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════ 01 광고주 진단 ══════ -->
+  <section>
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">01</span> 광고주 진단</div>
+      <h2>강남언니는 지금, <span class="hl">신규 유저 획득 경쟁</span>의 한가운데.</h2>
+      <p class="lead">국내 미용의료 플랫폼 1위. 핵심 자산도, 당면 과제도 모두 <b>"2030 여성 신규 유입"</b>에 걸려 있습니다.</p>
+
+      <div class="stats" style="margin-bottom:28px;">
+        <div><div class="n">830<em>만</em></div><div class="l">누적 회원<span class="src pub">공개</span></div></div>
+        <div><div class="n">83<em>%</em></div><div class="l">여성 사용자</div></div>
+        <div><div class="n">210<em>만</em></div><div class="l">2030 여성 (최대 비중)</div></div>
+        <div><div class="n">4,500<em>+</em></div><div class="l">연결 병원</div></div>
+      </div>
+
+      <div class="grid g3">
+        <div class="card">
+          <h3>핵심 KPI</h3>
+          <p class="cd">앱 신규 설치 → 시술 정보 탐색 → <b>병원 상담·예약</b>. 설치부터 상담예약까지가 매출의 시작점.</p>
+        </div>
+        <div class="card">
+          <h3>현재 마케팅</h3>
+          <p class="cd">인스타·페북 퍼포먼스 + 버스·쉘터 OOH 브랜드전("결정은 강남언니"). 바비톡과 치열한 점유 경쟁.<span class="src pub">공개</span></p>
+        </div>
+        <div class="card">
+          <h3>당면 과제</h3>
+          <p class="cd">기존 채널의 CPI 상승·중복 도달. <b>겹치지 않는 신규 2030 여성 풀</b>과 새 채널이 필요.<span class="src as">가정</span></p>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ══════ 02 왜 에이블리 ══════ -->
+  <section style="background:#fafbfc;">
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">02</span> 왜 에이블리인가</div>
+      <h2>강남언니의 타겟이 <span class="hl">가장 밀집한 채널</span>, 에이블리.</h2>
+      <p class="lead">"1,000만 여성 쇼핑 유저를 내 고객으로" — 에이블리 디스플레이 광고의 강점이 강남언니의 과제와 정확히 맞물립니다.</p>
+
+      <div class="card" style="padding:8px 26px;">
+        <div class="why">
+          <div class="ic">🎯</div>
+          <div>
+            <h3>① 오디언스가 사실상 겹친다</h3>
+            <p>에이블리 월 <b>1,000만 여성</b>의 중심은 2030 여성. 강남언니 핵심 타겟(2030 여성 210만)과 정확히 같은 층입니다. 에이블리에는 <b>강남언니가 아직 못 만난 신규 여성 유저 풀</b>이 대규모로 존재합니다.<span class="src pub">공개</span></p>
+          </div>
+        </div>
+        <div class="why">
+          <div class="ic">💳</div>
+          <div>
+            <h3>② 구매 데이터로 "시술 관심층"을 저격</h3>
+            <p>에이블리는 1st-party <b>결제·구매 데이터</b>를 보유합니다. 뷰티·패션에 적극 소비하는 2030 여성 = 미용의료 관심이 높은 유저. 인구통계 × 카테고리 × 결제정보를 AND로 조합해 <b>정밀 타겟팅</b>합니다.<span class="src pub">공개</span></p>
+          </div>
+        </div>
+        <div class="why">
+          <div class="ic">🔗</div>
+          <div>
+            <h3>③ 이커머스 유일 '아웃링크' = 앱설치 직결</h3>
+            <p>에이블리 디스플레이 광고는 이커머스 앱 중 <b>유일하게 외부 아웃링크를 지원</b>합니다. 스플래시·전면동영상에서 바로 <b>강남언니 앱스토어·상담예약</b>으로 연결 — 설치·전환까지 끊김 없이 이어집니다.<span class="src pub">공개</span></p>
+          </div>
+        </div>
+        <div class="why">
+          <div class="ic">📈</div>
+          <div>
+            <h3>④ 아직 안 쓰는 '증분 채널'</h3>
+            <p>강남언니는 이미 인스타·페북·OOH에 집행 중이지만, <b>에이블리는 미집행</b>. 기존 채널과 중복되지 않는 순수 증분 도달을 확보할 수 있는 신규 채널입니다.<span class="src as">가정</span></p>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ══════ 03 미디어 플랜 ══════ -->
+  <section id="plan">
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">03</span> 미디어 플랜 · 2주 파일럿</div>
+      <h2>론칭 버스트로 <span class="hl">터뜨리고</span>, 상시 지면으로 <span class="hl">거둔다</span>.</h2>
+      <p class="lead">대규모 인지(전면·스플래시)로 앱 설치를 끌어올린 뒤, 상시 지면·종료팝업으로 전환을 회수하는 2주 구조. <b>프로모션가 기준</b>으로 설계했습니다.</p>
+
+      <table>
+        <tr>
+          <th>단계</th><th>광고 상품</th><th>기간</th><th class="r">단가(프로모션)</th><th class="r">소계</th><th class="r">예상 노출</th>
+        </tr>
+        <tr><td><span class="phase burst">론칭</span></td><td>프리미엄 브랜딩 전면(동영상)</td><td>2일</td><td class="r">1,000만/일</td><td class="r">2,000만</td><td class="r">~450만</td></tr>
+        <tr><td><span class="phase burst">론칭</span></td><td>스플래시 배너</td><td>3일</td><td class="r">500만/일</td><td class="r">1,500만</td><td class="r">~675만</td></tr>
+        <tr><td><span class="phase always">상시</span></td><td>혜택탭 Top 배너(이미지)</td><td>7일</td><td class="r">100만/일</td><td class="r">700만</td><td class="r">~70만</td></tr>
+        <tr><td><span class="phase always">상시</span></td><td>검색 페이지 배너</td><td>1주</td><td class="r">250만/주</td><td class="r">250만</td><td class="r">~200만</td></tr>
+        <tr><td><span class="phase conv">전환</span></td><td>종료 팝업 배너 (CTR 2.5%)</td><td>2일</td><td class="r">200만/일</td><td class="r">400만</td><td class="r">~30만</td></tr>
+        <tr class="total"><td colspan="2">합계</td><td>2주</td><td class="r">—</td><td class="r">4,850만</td><td class="r">~1,425만</td></tr>
+      </table>
+      <p class="note">· 단가·노출·CTR은 에이블리 디스플레이 광고 소개서(2025.08) 공개 기준 <span class="src pub">공개</span> · VAT 별도 · CPD(구좌제), 1일/1주 단위 부킹<br>
+         · 타겟팅: 연령(20~39) × 카테고리(뷰티) × 결제정보(뷰티·패션 활성 구매자) AND 조합</p>
+    </div></div>
+  </section>
+
+  <!-- ══════ 04 기대 성과 ══════ -->
+  <section style="background:#fafbfc;">
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">04</span> 기대 성과</div>
+      <h2>노출에서 멈추지 않고, <span class="hl">상담예약까지 역산</span>합니다.</h2>
+      <p class="lead">의료 플랫폼의 진짜 성과는 '설치'가 아니라 '상담예약'. 리드가 아닌 전환까지 역산해 목표를 세웁니다.</p>
+
+      <div class="funnel" style="margin-bottom:22px;">
+        <div class="fstep">
+          <div class="fbar" style="background:#ff5160;width:100%;">노출 ~1,425만</div>
+          <div><div class="fv">1,425만</div><div class="fl">소개서 기준 <span class="src pub">공개</span></div></div>
+        </div>
+        <div class="fstep">
+          <div class="fbar" style="background:#ff7a5c;width:72%;">클릭·아웃링크 유입 ~11.9만</div>
+          <div><div class="fv">119,000</div><div class="fl">소재별 CTR 가중 <span class="src pub">공개</span></div></div>
+        </div>
+        <div class="fstep">
+          <div class="fbar" style="background:#ff9a86;width:46%;">앱 설치 ~1.2만</div>
+          <div><div class="fv">11,900</div><div class="fl">클릭→설치 10% 가정 <span class="src as">가정</span></div></div>
+        </div>
+        <div class="fstep">
+          <div class="fbar" style="background:#ffb9a6;width:26%;">상담예약 ~1,200건</div>
+          <div><div class="fv">1,190</div><div class="fl">설치→상담예약 10% 가정 <span class="src as">가정</span></div></div>
+        </div>
+      </div>
+
+      <div class="grid g3">
+        <div class="card soft"><div class="big">~4,080원</div><div class="cap">예상 CPI (설치당 비용)</div><div class="cd">4,850만 ÷ 1.19만 설치<span class="src bm">벤치마크</span></div></div>
+        <div class="card soft"><div class="big">~4.1만원</div><div class="cap">예상 상담예약 CPA</div><div class="cd">4,850만 ÷ 1,190 예약<span class="src as">가정</span></div></div>
+        <div class="card soft"><div class="big">+순증</div><div class="cap">증분 도달</div><div class="cd">기존 인스타·OOH와 겹치지 않는 신규 2030 여성</div></div>
+      </div>
+      <p class="note">· 전환율(클릭→설치, 설치→상담예약)은 업계 벤치마크 기반 보수적 가정입니다. 실제 집행 시 소재·랜딩 최적화로 개선 여지가 큽니다.<br>
+         · 목표는 CPI가 아니라 <b>상담예약 CPA</b>. 파일럿에서 CPA 기준선을 확보한 뒤 상시 집행 규모를 역산합니다.</p>
+    </div></div>
+  </section>
+
+  <!-- ══════ 05 측정·심의 ══════ -->
+  <section>
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">05</span> 측정 · 리포팅 · 의료광고 심의</div>
+      <h2>데이터로 증명하고, <span class="hl">리스크는 미리</span> 막습니다.</h2>
+      <div class="grid g2">
+        <div class="card">
+          <h3>📊 측정 & 재집행 기준</h3>
+          <ul class="ck" style="margin-top:6px;">
+            <li>앱스플라이어(MMP) 연동으로 설치·이벤트 추적</li>
+            <li>지면별 CPI·CTR·설치율 일 단위 리포팅</li>
+            <li>핵심 KPI = <b>상담예약당 비용(CPA)</b></li>
+            <li>CPA 목표 달성 지면만 남기고 비효율 지면 감액 → 상시 확대</li>
+          </ul>
+        </div>
+        <div class="card" style="background:var(--soft);border-color:transparent;">
+          <h3>🛡️ 의료광고 심의 고려 (차별화)</h3>
+          <p class="cd">강남언니·바비톡은 의료광고 사전심의 이슈를 겪은 업종입니다. <b>개별 병원·시술 소구가 아닌 '플랫폼 브랜드(앱 설치)' 소재</b>로 설계해 심의 리스크를 사전 차단합니다.</p>
+          <p class="cd" style="margin-top:8px;color:var(--primary-dark);font-weight:600;">· 치과 임플란트 의료 광고를 직접 운영하며 의료광고 정책 제약을 다뤄본 경험 기반.</p>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ══════ 06 넥스트 스텝 ══════ -->
+  <section style="background:#fafbfc;">
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">06</span> 넥스트 스텝</div>
+      <h2>작게 검증하고, <span class="hl">크게 확장</span>합니다.</h2>
+      <div class="timeline">
+        <div class="tl"><div class="step">STEP 1 · 2주</div><h3>파일럿 집행</h3><p>론칭 버스트 + 상시 지면으로 CPI·상담예약 CPA 기준선 확보.</p></div>
+        <div class="tl"><div class="step">STEP 2 · 1주</div><h3>성과 검증</h3><p>지면별 효율 분석, 고효율 지면·소재·타겟 도출. 소재 A/B 반영.</p></div>
+        <div class="tl"><div class="step">STEP 3 · 상시</div><h3>상시 집행 확대</h3><p>효율 지면 중심 월 단위 부킹, 시즌·프로모션 연동으로 볼륨 확장.</p></div>
+      </div>
+      <div style="margin-top:28px;text-align:center;">
+        <div style="font-size:19px;font-weight:700;margin-bottom:6px;">광고 문의</div>
+        <div style="color:var(--sub);font-size:14px;">에이블리 광고사업실 · ad-biz@a-bly.com</div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ══════ 제안자 ══════ -->
+  <section class="author">
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow" style="color:#ff9a86;"><span class="no" style="background:#ff9a86;color:#1f1f1f;">✎</span> 제안자</div>
+      <h2>이 제안을 쓴 사람, <span class="hl">윤지욱</span>.</h2>
+      <p class="lead" style="color:#cfcfcf;">의료 광고주의 '상담·내원 전환'을 데이터로 키워본 퍼포먼스 마케터이자, 광고주를 설득해 예산을 확장시켜 온 세일즈입니다.</p>
+      <div class="ac">
+        <div class="acard"><div class="t">의료 퍼포먼스</div><p>치과 임플란트 다매체 운영 — 리드가 아닌 <b>지역 CAC·내원 전환</b>까지 역산. 취급고 9.4배·ROAS 3.3배.</p></div>
+        <div class="acard"><div class="t">의료광고 정책</div><p>의료광고 제약을 직접 다루며 <b>심의 리스크를 반영한 소재 운영</b> 경험.</p></div>
+        <div class="acard"><div class="t">광고주 설득</div><p>KB국민은행 8억 캠페인 등 데이터로 광고주에게 <b>예산 증액을 제안·설득</b>해 온 세일즈.</p></div>
+      </div>
+      <div style="margin-top:26px;">
+        <a href="resume.html" style="display:inline-block;background:#ff5160;color:#fff;font-weight:700;padding:13px 24px;border-radius:12px;margin-right:10px;">이력서 보기</a>
+        <a href="index.html" style="display:inline-block;background:rgba(255,255,255,.1);color:#fff;font-weight:700;padding:13px 24px;border-radius:12px;border:1px solid rgba(255,255,255,.2);">포트폴리오 홈</a>
+      </div>
+    </div></div>
+  </section>
+
+  <footer>
+    <div class="disclaimer">
+      ⚠️ 본 제안서는 <b>에이블리 광고 사업 개발 매니저(브랜드) 지원을 위해 윤지욱이 작성한 가상 제안서</b>입니다.
+      모든 수치는 공개 자료(에이블리 광고 소개서·보도자료, 강남언니 공개 통계)와 업계 벤치마크 기반 <b>추정치</b>이며,
+      에이블리·강남언니의 실제 내부 데이터나 집행 결과가 아닙니다. 강남언니는 제안 대상으로 가정한 예시 광고주입니다.
+    </div>
+    <div style="margin-top:16px;">© 2026 윤지욱 (JIUK.YOON) · 강남언니 × 에이블리 디스플레이 광고 제안 (가상)</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
