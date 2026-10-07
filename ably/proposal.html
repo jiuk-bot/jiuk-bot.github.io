@@ -257,6 +257,40 @@
   .chbar .on{ background:#eef1f5; color:#888; }
   .chbar .off{ background:var(--soft); color:var(--primary); border:1px dashed var(--primary); }
 
+  /* ── 추천 배너 ── */
+  .reco-banner{ display:flex; align-items:center; gap:14px; background:var(--soft);
+                border-left:4px solid var(--primary); border-radius:12px; padding:16px 20px; margin:24px 0; }
+  .reco-banner .rb-badge{ background:var(--primary); color:#fff; font-weight:800; font-size:13px;
+                          padding:7px 15px; border-radius:999px; white-space:nowrap; }
+  .reco-banner .rb-txt{ font-size:14.5px; color:#444; line-height:1.6; }
+  .reco-banner .rb-txt b{ color:var(--primary-dark); }
+
+  /* ── 측정 4스텝 플로우 ── */
+  .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .step4{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 16px; text-align:center; position:relative; }
+  .step4 .sn{ position:absolute; top:11px; left:14px; font-size:11px; font-weight:800; color:var(--primary); }
+  .step4 .si{ font-size:28px; }
+  .step4 .st{ font-size:14.5px; font-weight:700; margin:9px 0 5px; }
+  .step4 .sd{ font-size:12px; color:#777; line-height:1.5; }
+
+  /* ── 08 레퍼런스 케이스 카드 ── */
+  .refgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+  .refc{ border:1px solid var(--line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow-sm); display:flex; flex-direction:column; }
+  .refc .rh{ padding:18px; color:#fff; }
+  .refc .rh .ri{ font-size:22px; }
+  .refc .rh .rn{ font-size:18px; font-weight:800; margin-top:6px; }
+  .refc .rh .rcat{ font-size:12px; opacity:.92; margin-top:2px; }
+  .refc .rbd{ padding:16px 18px; background:#fff; flex:1; }
+  .refc .rslot{ font-size:11.5px; font-weight:700; color:var(--primary); background:var(--soft); border-radius:999px; padding:5px 12px; display:inline-block; margin-bottom:11px; }
+  .refc .rp{ font-size:13px; color:#555; line-height:1.55; }
+  .refc .rp b{ color:var(--ink); }
+
+  /* ── 기타 지면 칩 ── */
+  .etcchips{ display:flex; gap:10px; flex-wrap:wrap; }
+  .etcchip{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px 16px; font-size:13px; }
+  .etcchip b{ display:block; color:var(--ink); font-weight:700; margin-bottom:2px; }
+  .etcchip span{ color:var(--sub); font-size:11.5px; }
+
   /* 타임라인 */
   .timeline{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
   .tl{ position:relative; padding:22px; border:1px solid var(--line); border-radius:16px; background:#fff; }
@@ -291,6 +325,8 @@
     .grid.g2,.grid.g3,.grid.g4,.stats,.timeline,.author .ac{ grid-template-columns:1fr; }
     .phones{ grid-template-columns:repeat(2,1fr); }
     .mediacard,.chartrow,.refcase{ grid-template-columns:1fr; }
+    .steps{ grid-template-columns:repeat(2,1fr); }
+    .refgrid{ grid-template-columns:1fr; }
     .stats > div{ border-right:0; border-bottom:1px solid var(--line); }
     .nav-links a:not(.cta){ display:none; }
   }
@@ -538,6 +574,12 @@
         </div>
       </div>
 
+      <div class="reco-banner">
+        <span class="rb-badge">추천</span>
+        <span class="rb-txt">노스카나가 성과를 낸 <b>종료 팝업</b>을 포함해, 강남언니는 아래 <b>4개 지면을 우선 집행</b>할 것을 추천합니다.</span>
+      </div>
+
+      <h3 style="margin-bottom:14px;">강남언니 추천 지면 TOP 4</h3>
       <div class="phones">
         <!-- 스플래시 -->
         <div class="mock">
@@ -626,8 +668,18 @@
       </div>
       <p class="note" style="margin-bottom:28px;">· 목업은 지면 이해를 돕기 위한 예시이며 실제 소재가 아닙니다. 모든 지면은 <b>아웃링크</b>로 강남언니 앱스토어·상담예약 페이지에 연결됩니다.</p>
 
+      <!-- 이 외 지면 -->
+      <h3 style="margin-bottom:12px;">이 외 지면도 있습니다 <span style="font-size:13px;font-weight:600;color:var(--sub);">· 확장·상시용</span></h3>
+      <div class="etcchips" style="margin-bottom:28px;">
+        <div class="etcchip"><b>배송조회 페이지</b><span>1일 · 15만 노출</span></div>
+        <div class="etcchip"><b>검색 페이지</b><span>1주 · 200만 노출</span></div>
+        <div class="etcchip"><b>마이페이지</b><span>1주 · 200만 노출</span></div>
+        <div class="etcchip"><b>혜택 탭 리스트</b><span>1주 · 50만 노출</span></div>
+        <div class="etcchip"><b>커뮤니티 리스트</b><span>1주 · 10만 노출</span></div>
+      </div>
+
       <!-- 전체 단가표 -->
-      <h3 style="margin-bottom:12px;">전체 광고 상품 · 단가표</h3>
+      <h3 style="margin-bottom:12px;">전체 광고 상품 · 단가표 <span style="font-size:13px;font-weight:600;color:var(--primary);">★ = 추천 지면</span></h3>
       <table>
         <tr>
           <th>광고 상품</th><th>부킹</th><th>노출 / CTR</th><th class="r">정상가</th><th class="r">프로모션가</th><th style="text-align:center;">추천</th>
@@ -652,6 +704,7 @@
           <li><b>전환(설치):</b> 종료 팝업 + 혜택 탭 Top — CTR 최고 지면 + 쿠폰 소구로 설치 회수 (노스카나와 동일 지면군)</li>
           <li><b>상시(리마인드):</b> 검색·마이페이지 — 주 200만 노출을 저비용으로 상시 확보</li>
         </ul>
+        <div style="margin-top:12px;font-size:13.5px;font-weight:700;color:var(--primary-dark);">↓ 이 조합을 2주 미디어믹스로 구체화하면 — 다음 섹션</div>
       </div>
     </div></div>
   </section>
@@ -719,21 +772,22 @@
     <div class="pad"><div class="wrap">
       <div class="eyebrow"><span class="no">07</span> 측정 · 리포팅 · 의료광고 심의</div>
       <h2>데이터로 증명하고, <span class="hl">리스크는 미리</span> 막습니다.</h2>
-      <div class="grid g2">
-        <div class="card">
-          <h3>📊 측정 & 재집행 기준</h3>
-          <ul class="ck" style="margin-top:6px;">
-            <li>앱스플라이어(MMP) 연동으로 설치·이벤트 추적</li>
-            <li>지면별 CPI·CTR·설치율 일 단위 리포팅</li>
-            <li>핵심 KPI = <b>앱 설치당 비용(CPI)</b> · 설치율</li>
-            <li>CPI 효율 지면만 남기고 비효율 지면 감액 → 상시 확대</li>
-            <li>상담예약·시술 전환은 강남언니 내부 데이터와 결합해 사후 검증</li>
-          </ul>
-        </div>
-        <div class="card" style="background:var(--soft);border-color:transparent;">
-          <h3>🛡️ 의료광고 심의 고려 (차별화)</h3>
+
+      <h3 style="margin-bottom:12px;">측정 → 최적화 → 확대 (핵심 KPI = 앱 설치 CPI)</h3>
+      <div class="steps" style="margin-bottom:14px;">
+        <div class="step4"><div class="sn">STEP 1</div><div class="si">📲</div><div class="st">설치 추적</div><div class="sd">앱스플라이어(MMP) 연동으로 설치·이벤트 측정</div></div>
+        <div class="step4"><div class="sn">STEP 2</div><div class="si">📊</div><div class="st">일 단위 리포팅</div><div class="sd">지면별 CPI·CTR·설치율을 매일 집계</div></div>
+        <div class="step4"><div class="sn">STEP 3</div><div class="si">⚙️</div><div class="st">지면 최적화</div><div class="sd">고효율 지면 유지, 비효율 지면 감액</div></div>
+        <div class="step4"><div class="sn">STEP 4</div><div class="si">📈</div><div class="st">상시 확대</div><div class="sd">검증된 CPI 기준선으로 볼륨 확장</div></div>
+      </div>
+      <p class="note" style="margin-bottom:26px;">· 설치 이후 상담예약·시술 전환은 강남언니 1st-party 데이터와 결합해 사후 검증합니다.</p>
+
+      <div class="card" style="background:var(--soft);border-color:transparent;display:flex;gap:16px;align-items:flex-start;">
+        <div style="font-size:30px;">🛡️</div>
+        <div>
+          <h3 style="margin-bottom:8px;">의료광고 심의 고려 <span class="src as">차별화</span></h3>
           <p class="cd">강남언니·바비톡은 의료광고 사전심의 이슈를 겪은 업종입니다. <b>개별 병원·시술 소구가 아닌 '플랫폼 브랜드(앱 설치)' 소재</b>로 설계해 심의 리스크를 사전 차단합니다.</p>
-          <p class="cd" style="margin-top:8px;color:var(--primary-dark);font-weight:600;">· 치과 임플란트 의료 광고를 직접 운영하며 의료광고 정책 제약을 다뤄본 경험 기반.</p>
+          <p class="cd" style="margin-top:8px;color:var(--primary-dark);font-weight:700;">· 치과 임플란트 의료 광고를 직접 운영하며 의료광고 정책 제약을 다뤄본 경험 기반.</p>
         </div>
       </div>
     </div></div>
@@ -746,24 +800,36 @@
       <h2>비슷한 업종은 <span class="hl">어떤 지면에서</span> 성과를 냈나.</h2>
       <p class="lead">에이블리 공개 집행 사례 기준, 의료·뷰티·콘텐츠 브랜드가 실제로 집행한 지면입니다. 이를 근거로 강남언니에게 지면을 추천합니다.</p>
 
-      <table>
-        <tr>
-          <th>브랜드</th><th>업종</th><th>집행 지면</th><th>강남언니 시사점</th>
-        </tr>
-        <tr>
-          <td><b>노스카나</b> (동국제약)</td><td>일반의약품 · 의료</td><td>종료 팝업 등</td>
-          <td>의료 광고가 <b>심의 통과 후 집행된 직접 선례</b> — 강남언니에 가장 가까움</td>
-        </tr>
-        <tr>
-          <td><b>조말론·달바</b></td><td>뷰티</td><td>혜택 탭 Top · 배송조회</td>
-          <td>미용 관심 유저가 혜택 지면에서 반응 — 쿠폰 소구 유효</td>
-        </tr>
-        <tr>
-          <td><b>지니TV·영화</b> (스파이더맨 등)</td><td>콘텐츠 · 엔터</td><td>스플래시 · 전면</td>
-          <td>대규모 인지 지면의 도달력 — 론칭 버스트에 유효</td>
-        </tr>
-      </table>
-      <p class="note" style="margin-bottom:24px;">· 브랜드·지면은 에이블리 공개 집행 사례(소개서·레퍼런스 페이지)에서 관측 <span class="src pub">공개</span> · <b>브랜드별 정량 성과(노출·CTR·전환)는 비공개</b>로, 집행 전 에이블리 레퍼런스(ad-biz@a-bly.com)로 확인 권장</p>
+      <div class="refgrid">
+        <div class="refc">
+          <div class="rh" style="background:linear-gradient(135deg,#ff5160,#ff7a5c);">
+            <div class="ri">💊</div><div class="rn">노스카나</div><div class="rcat">일반의약품 · 의료</div>
+          </div>
+          <div class="rbd">
+            <span class="rslot">종료 팝업</span>
+            <p class="rp">의료 광고가 <b>심의 통과 후 집행된 직접 선례</b> — 강남언니에 가장 가까운 업종입니다.</p>
+          </div>
+        </div>
+        <div class="refc">
+          <div class="rh" style="background:linear-gradient(135deg,#8e7cff,#b08cff);">
+            <div class="ri">💄</div><div class="rn">조말론 · 달바</div><div class="rcat">뷰티</div>
+          </div>
+          <div class="rbd">
+            <span class="rslot">혜택 탭 Top · 배송조회</span>
+            <p class="rp">미용 관심 유저가 <b>혜택 지면에서 반응</b> — 쿠폰·프로모션 소구가 유효합니다.</p>
+          </div>
+        </div>
+        <div class="refc">
+          <div class="rh" style="background:linear-gradient(135deg,#2b2f36,#4a505a);">
+            <div class="ri">🎬</div><div class="rn">지니TV · 영화</div><div class="rcat">콘텐츠 · 엔터</div>
+          </div>
+          <div class="rbd">
+            <span class="rslot">스플래시 · 전면</span>
+            <p class="rp">대규모 인지 지면의 <b>도달력</b> — 론칭 버스트 단계에 유효합니다.</p>
+          </div>
+        </div>
+      </div>
+      <p class="note" style="margin:16px 0 24px;">· 브랜드·지면은 에이블리 공개 집행 사례(소개서·레퍼런스 페이지)에서 관측 <span class="src pub">공개</span> · <b>브랜드별 정량 성과(노출·CTR·전환)는 비공개</b>로, 집행 전 에이블리 레퍼런스(ad-biz@a-bly.com)로 확인 권장</p>
 
       <div class="grid g2">
         <div class="card">
