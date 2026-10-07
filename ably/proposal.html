@@ -157,6 +157,11 @@
   .phone .notch{ position:absolute; top:0; left:50%; transform:translateX(-50%); width:44%; height:15px;
           background:#1f1f1f; border-radius:0 0 11px 11px; z-index:3; }
   .phone .scr{ position:absolute; inset:0; display:flex; flex-direction:column; }
+  .statusbar{ flex:0 0 19px; height:19px; display:flex; align-items:center; justify-content:space-between;
+              padding:0 11px 0 14px; font-size:8px; font-weight:800; z-index:2; position:relative; }
+  .statusbar.light{ color:#fff; }
+  .statusbar.dark{ color:#1f1f1f; background:#fff; }
+  .statusbar .ic{ letter-spacing:.5px; }
   .appbar{ height:30px; background:#fff; border-bottom:1px solid #f0f0f0; display:flex; align-items:flex-end;
           justify-content:center; padding-bottom:4px; font-size:9px; font-weight:800; color:var(--primary); letter-spacing:.5px; }
   .tabbar{ display:flex; gap:7px; padding:6px 8px; font-size:7.5px; color:#c2c2c2; border-bottom:1px solid #f4f4f4; }
@@ -607,6 +612,7 @@
         <div class="mock">
           <div class="phone"><div class="notch"></div>
             <div class="scr">
+              <div class="statusbar light"><span>9:41</span><span class="ic">●●●  100%</span></div>
               <div class="adslot" style="flex:1;">
                 <span class="adtag">AD · Splash</span>
                 <span class="lb">강남언니</span>
@@ -626,6 +632,7 @@
         <div class="mock">
           <div class="phone"><div class="notch"></div>
             <div class="scr">
+              <div class="statusbar light"><span>9:41</span><span class="ic">●●●  100%</span></div>
               <div class="adslot" style="flex:1;background:#1f1f1f;">
                 <span class="adtag">AD · Full Video</span>
                 <div style="width:42px;height:42px;border-radius:50%;background:rgba(255,81,96,.95);display:flex;align-items:center;justify-content:center;font-size:15px;">▶</div>
@@ -645,6 +652,7 @@
         <div class="mock">
           <div class="phone"><div class="notch"></div>
             <div class="scr">
+              <div class="statusbar dark"><span>9:41</span><span class="ic">●●●  100%</span></div>
               <div class="appbar">ABLY</div>
               <div class="tabbar"><span>홈</span><span class="on">혜택</span><span>카테고리</span><span>MY</span></div>
               <div style="padding:7px;">
@@ -667,6 +675,7 @@
         <div class="mock">
           <div class="phone"><div class="notch"></div>
             <div class="scr">
+              <div class="statusbar dark"><span>9:41</span><span class="ic">●●●  100%</span></div>
               <div class="appbar">ABLY</div>
               <div class="feed"><div class="it"></div><div class="it"></div><div class="it"></div><div class="it"></div></div>
               <div style="position:absolute;inset:0;top:30px;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;">
@@ -688,7 +697,7 @@
           <span class="madv">이탈 직전 마지막 터치 — CTR 2.5% 최고 클릭</span>
         </div>
       </div>
-      <p class="note" style="margin-bottom:28px;">· 목업은 지면 이해를 돕기 위한 예시이며 실제 소재가 아닙니다. 모든 지면은 <b>아웃링크</b>로 강남언니 앱스토어·상담예약 페이지에 연결됩니다.</p>
+      <p class="note" style="margin-bottom:28px;">· 목업은 지면 이해를 돕기 위한 예시이며 실제 소재가 아닙니다. 모든 지면은 <b>아웃링크</b>로 강남언니 앱스토어·상담예약 페이지에 연결됩니다. · 실제 게재 예시는 <a href="https://ablyda.oopy.io/product" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700;">에이블리 공식 디스플레이 광고 소개서</a>에서 확인할 수 있습니다.</p>
 
       <!-- 이 외 지면 -->
       <h3 style="margin-bottom:12px;">이 외 지면도 있습니다 <span style="font-size:13px;font-weight:600;color:var(--sub);">· 확장·상시용</span></h3>
