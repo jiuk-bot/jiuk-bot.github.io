@@ -234,10 +234,13 @@
   .whyc-top{ display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
   .whyc-ic{ width:48px; height:48px; border-radius:14px; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:24px; }
   .whyc-no{ font-size:13px; font-weight:800; color:#fff; background:var(--primary); width:28px; height:28px; border-radius:9px; display:flex; align-items:center; justify-content:center; }
-  .whyc h3{ font-size:16.5px; margin-bottom:14px; line-height:1.35; }
-  .whyc p{ font-size:13.5px; color:#555; line-height:1.65; margin-top:14px; }
-  .whyc p b{ color:var(--ink); font-weight:700; }
-  .viz{ background:#fafbfc; border:1px solid var(--line); border-radius:12px; padding:16px; }
+  .whyc h3{ font-size:16.5px; margin-bottom:13px; line-height:1.35; min-height:2.7em;
+            display:flex; align-items:center; }
+  .whyc .take{ font-size:13.5px; color:#555; line-height:1.55; margin-top:13px;
+               display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .whyc .take b{ color:var(--ink); font-weight:700; }
+  .viz{ background:#fafbfc; border:1px solid var(--line); border-radius:12px; padding:16px;
+        min-height:150px; display:flex; flex-direction:column; justify-content:center; }
   .viz-eq{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
   .viz-big{ font-size:24px; font-weight:800; color:var(--primary); line-height:1.1; }
   .viz-cap{ font-size:11.5px; color:var(--sub); font-weight:600; margin-top:3px; }
@@ -506,7 +509,7 @@
               <div><div class="viz-big">2030 여성</div><div class="viz-cap">강남언니 핵심 타겟</div></div>
             </div>
           </div>
-          <p>에이블리 1,000만 여성의 중심이 <b>2030 여성</b>. 강남언니가 <b>아직 못 만난 신규 여성 풀</b>이 대규모로 존재합니다.<span class="src pub">공개</span></p>
+          <div class="take"><span>강남언니가 <b>아직 못 만난 신규 여성 풀</b></span><span class="src pub">공개</span></div>
         </div>
 
         <!-- ② 결제 데이터 타겟팅 -->
@@ -522,7 +525,7 @@
             <div class="viz-arrow">↓ AND 조합</div>
             <div class="viz-result">미용의료 관심 높은 유저 정밀 타겟</div>
           </div>
-          <p>에이블리는 1st-party <b>결제·구매 데이터</b> 보유. 뷰티·패션에 적극 소비하는 2030 여성 = 시술 관심층입니다.<span class="src pub">공개</span></p>
+          <div class="take"><span>뷰티·패션 소비 2030 여성 = <b>시술 관심층</b></span><span class="src pub">공개</span></div>
         </div>
 
         <!-- ③ 아웃링크 -->
@@ -539,7 +542,7 @@
             </div>
             <div class="viz-badge">이커머스 앱 중 유일 아웃링크 지원</div>
           </div>
-          <p>스플래시·전면동영상에서 <b>바로 앱스토어로 연결</b> — 설치·전환까지 끊김 없이 이어집니다.<span class="src pub">공개</span></p>
+          <div class="take"><span>클릭 한 번에 <b>앱 설치·상담예약 직결</b></span><span class="src pub">공개</span></div>
         </div>
 
         <!-- ④ 증분 채널 -->
@@ -555,7 +558,7 @@
             </div>
             <div class="viz-result">기존 채널과 안 겹치는 순수 증분 도달</div>
           </div>
-          <p>이미 인스타·페북·OOH 집행 중이지만 <b>에이블리는 미집행</b>. 중복 없는 새 도달을 확보합니다.<span class="src as">가정</span></p>
+          <div class="take"><span>타 채널엔 집행 중, <b>에이블리만 미집행</b></span><span class="src as">가정</span></div>
         </div>
       </div>
     </div></div>
