@@ -171,6 +171,42 @@
   .mock .mt{ font-size:13px; font-weight:700; }
   .mock .md{ font-size:11px; color:var(--sub); margin-top:2px; }
   .mock .mp{ font-size:11px; font-weight:700; color:var(--primary); margin-top:3px; }
+  .madv{ font-size:10.5px; font-weight:700; color:var(--primary); background:var(--soft);
+         border-radius:6px; padding:4px 9px; display:inline-block; margin-top:7px; line-height:1.4; }
+
+  /* ── 매체 소개 (MAU·오디언스) ── */
+  .mediacard{ display:grid; grid-template-columns:290px 1fr; border-radius:20px; overflow:hidden;
+              box-shadow:var(--shadow); margin-bottom:18px; }
+  .mediacard .mau{ background:linear-gradient(135deg,#ff5160,#ff7a5c); color:#fff; padding:30px 30px; }
+  .mediacard .mau .lbl{ font-size:14px; font-weight:700; opacity:.92; letter-spacing:.5px; }
+  .mediacard .mau .num{ font-size:54px; font-weight:800; line-height:1; margin:12px 0 14px; letter-spacing:-2px; }
+  .mediacard .mau .num span{ font-size:22px; font-weight:700; letter-spacing:0; }
+  .mediacard .mau .sub{ font-size:11.5px; opacity:.88; border-top:1px solid rgba(255,255,255,.3); padding-top:11px; }
+  .mediacard .pts{ background:#fff; padding:28px 32px; display:flex; flex-direction:column; justify-content:center; gap:15px; }
+  .mediacard .pts div{ font-size:14.5px; color:#333; padding-left:20px; position:relative; }
+  .mediacard .pts div::before{ content:''; position:absolute; left:0; top:7px; width:9px; height:9px; border-radius:50%; background:var(--primary); }
+  .mediacard .pts b{ color:var(--primary); font-weight:800; }
+
+  .chartrow{ display:grid; grid-template-columns:1.55fr 1fr; gap:16px; }
+  .barchart{ display:flex; align-items:flex-end; justify-content:space-around; gap:10px; padding:14px 6px 0; }
+  .bar{ flex:1; display:flex; flex-direction:column; align-items:center; }
+  .bar .v{ font-size:16px; font-weight:800; margin-bottom:7px; color:#333; }
+  .bar .col{ width:100%; max-width:44px; background:linear-gradient(180deg,#ff9a86,#ffc2b3); border-radius:8px 8px 0 0; }
+  .bar.hi .col{ background:linear-gradient(180deg,#ff5160,#e8414f); }
+  .bar.hi .v{ color:var(--primary); }
+  .bar .lb{ font-size:11.5px; color:var(--sub); margin-top:8px; }
+  .barnote{ background:var(--soft); text-align:center; font-size:14px; font-weight:700; color:#444; padding:11px; border-radius:12px; margin-top:12px; }
+  .barnote b{ color:var(--primary); }
+  .donutwrap{ display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; padding-top:6px; }
+  .donut{ width:148px; height:148px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+          background:conic-gradient(var(--primary) 0 93%, #ececec 93% 100%); }
+  .donut .hole{ width:98px; height:98px; background:#fff; border-radius:50%; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .donut .hole .p{ font-size:30px; font-weight:800; color:var(--ink); line-height:1; }
+  .donut .hole .t{ font-size:12px; color:var(--sub); margin-top:3px; }
+  .donutcap{ font-size:13px; color:#555; text-align:center; margin-top:14px; line-height:1.5; }
+  .donutcap b{ color:var(--primary); }
+  .overlap{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-top:16px; }
+  .overlap .onum{ font-size:30px; font-weight:800; color:var(--primary); white-space:nowrap; }
 
   /* 타임라인 */
   .timeline{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
@@ -293,10 +329,62 @@
     </div></div>
   </section>
 
-  <!-- ══════ 02 왜 에이블리 ══════ -->
+  <!-- ══════ 02 매체 소개 ══════ -->
   <section style="background:#fafbfc;">
     <div class="pad"><div class="wrap">
-      <div class="eyebrow"><span class="no">02</span> 왜 에이블리인가</div>
+      <div class="eyebrow"><span class="no">02</span> 매체 소개 · 잠재고객 규모</div>
+      <h2>10대부터 40대까지, <span class="hl">이만큼의 잠재고객</span>이 모여 있습니다.</h2>
+      <p class="lead">쿠팡 다음 에이블리 — 버티컬 커머스 최초 월 이용자수 1,000만 돌파. 강남언니의 핵심 타겟(2030 여성)이 여기 다 모여 있습니다.</p>
+
+      <div class="mediacard">
+        <div class="mau">
+          <div class="lbl">MAU</div>
+          <div class="num">1,067<span>만 명</span></div>
+          <div class="sub">2026.7 월간 활성 이용자 · 출처: 와이즈앱 <span class="src pub" style="background:rgba(255,255,255,.2);color:#fff;">공개</span></div>
+        </div>
+        <div class="pts">
+          <div>3년 연속 전문몰 앱 <b>설치자·사용자 수 1위</b></div>
+          <div>국내 종합몰+전문몰 통합 순위 <b>쿠팡에 이어 2위</b></div>
+          <div>버티컬 커머스 <b>최초 월 1,000만 돌파</b> (1,067만 명)</div>
+        </div>
+      </div>
+
+      <div class="chartrow">
+        <div class="card">
+          <h3 style="font-size:16px;">연령대별 유저 분포</h3>
+          <div class="barchart">
+            <div class="bar"><div class="v">19%</div><div class="col" style="height:80px"></div><div class="lb">10대 이하</div></div>
+            <div class="bar hi"><div class="v">31%</div><div class="col" style="height:130px"></div><div class="lb">20대</div></div>
+            <div class="bar"><div class="v">21%</div><div class="col" style="height:88px"></div><div class="lb">30대</div></div>
+            <div class="bar"><div class="v">20%</div><div class="col" style="height:84px"></div><div class="lb">40대</div></div>
+            <div class="bar"><div class="v">9%</div><div class="col" style="height:38px"></div><div class="lb">50대 이상</div></div>
+          </div>
+          <div class="barnote">10 / 20 / 30대 유저가 전체 <b>71%</b></div>
+        </div>
+        <div class="card">
+          <h3 style="font-size:16px;text-align:center;">여성 유저 비율</h3>
+          <div class="donutwrap">
+            <div class="donut"><div class="hole"><div class="p">93%</div><div class="t">여성</div></div></div>
+            <div class="donutcap">1020 여성 10명 중 <b>9명</b>이<br>이용하는 압도적 트래픽</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card soft overlap">
+        <div class="onum">≈ 500만 명+</div>
+        <div style="flex:1;min-width:230px;font-size:14.5px;color:#444;line-height:1.6;">
+          에이블리 월 이용자 중 <b>20·30대 여성</b>(여성 93% × 20·30대 52%) ≈ <b>약 500만 명</b>.
+          강남언니가 <b>매달 새로 만날 수 있는 핵심 잠재고객 풀</b>입니다.<span class="src as">추정</span>
+        </div>
+      </div>
+      <p class="note">· MAU·연령·성비는 에이블리 공개 매체 소개 자료 기준 <span class="src pub">공개</span> · 교집합 규모는 공개 비율을 곱한 추정치입니다 <span class="src as">추정</span></p>
+    </div></div>
+  </section>
+
+  <!-- ══════ 03 왜 에이블리 ══════ -->
+  <section>
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">03</span> 왜 에이블리인가</div>
       <h2>강남언니의 타겟이 <span class="hl">가장 밀집한 채널</span>, 에이블리.</h2>
       <p class="lead">"1,000만 여성 쇼핑 유저를 내 고객으로" — 에이블리 디스플레이 광고의 강점이 강남언니의 과제와 정확히 맞물립니다.</p>
 
@@ -333,18 +421,26 @@
     </div></div>
   </section>
 
-  <!-- ══════ 03 광고 상품 (목업) ══════ -->
+  <!-- ══════ 04 광고 상품 · 지면 & 단가 ══════ -->
   <section>
     <div class="pad"><div class="wrap">
-      <div class="eyebrow"><span class="no">03</span> 광고 상품 · 이렇게 노출됩니다</div>
-      <h2>이미 다른 브랜드들은, <span class="hl">이 지면으로 2030을 잡고 있습니다.</span></h2>
-      <p class="lead">넷플릭스 등 외부 브랜드가 에이블리 디스플레이 광고로 2030 여성에게 도달 중입니다. 강남언니 소재를 얹으면 이렇게 보입니다.</p>
+      <div class="eyebrow"><span class="no">04</span> 광고 상품 · 지면 & 단가</div>
+      <h2>10~40대 1,067만이 매일 지나는 지면에, <span class="hl">강남언니를 얹습니다.</span></h2>
+      <p class="lead">콘텐츠·뷰티는 물론 <b>일반의약품까지</b> 이미 이 지면으로 2030 여성을 만나고 있습니다. 강남언니 소재를 얹으면 이렇게 보입니다.</p>
 
       <div class="advchips">
-        <span class="advchip">🎬 넷플릭스 <b>전면 동영상</b></span>
-        <span class="advchip">👟 푸마·널디 <b>브랜드 노출</b></span>
-        <span class="advchip">💳 금융·앱 <b>아웃링크 설치</b></span>
-        <span class="advchip">→ 다음은 <b>강남언니</b> 차례</span>
+        <span class="advchip">🎬 지니TV·영화 <b>콘텐츠</b></span>
+        <span class="advchip">💄 조말론·달바 <b>뷰티</b></span>
+        <span class="advchip">💊 노스카나 <b>일반의약품(의료)</b></span>
+        <span class="advchip">→ 다음은 <b>강남언니</b></span>
+      </div>
+
+      <div class="card soft" style="margin-bottom:24px;display:flex;gap:14px;align-items:flex-start;">
+        <div style="font-size:24px;">💊</div>
+        <div style="font-size:14px;color:#444;line-height:1.6;">
+          <b>검증된 선례 —</b> 일반의약품 <b>노스카나</b>(동국제약, 여드름 흉터)가 <b>광고심의를 거쳐</b> 종료 팝업 등으로 이미 집행 중입니다.
+          <b>의료·미용 광고가 이미 에이블리 디스플레이에서 돌아간다</b>는 뜻 — 미용의료 플랫폼 강남언니에게 가장 중요한 선례입니다.<span class="src pub">공개(소개서)</span>
+        </div>
       </div>
 
       <div class="phones">
@@ -364,6 +460,7 @@
           <div class="mt">스플래시 배너</div>
           <div class="md">앱 첫 화면 전체 · 일 200~250만 노출</div>
           <div class="mp">프로모션 500만/일</div>
+          <span class="madv">앱 켜면 100% 첫 화면 독점 — 최대 도달·인지</span>
         </div>
 
         <!-- 전면 동영상 -->
@@ -382,6 +479,7 @@
           <div class="mt">프리미엄 브랜딩 전면</div>
           <div class="md">앱 전면 동영상 · CTR 1~3%</div>
           <div class="mp">프로모션 1,000만/일</div>
+          <span class="madv">풀스크린 몰입 영상 — 브랜드 스토리 각인</span>
         </div>
 
         <!-- 혜택탭 Top -->
@@ -403,6 +501,7 @@
           <div class="mt">혜택 탭 Top 배너</div>
           <div class="md">혜택탭 상단 · CTR 0.8~1.2%</div>
           <div class="mp">프로모션 100만/일</div>
+          <span class="madv">혜택 탐색 중 노출 — 쿠폰·프로모션 소구 최적</span>
         </div>
 
         <!-- 종료 팝업 -->
@@ -427,16 +526,45 @@
           <div class="mt">종료 팝업 배너</div>
           <div class="md">앱 종료 시 · CTR 2.5% (최고)</div>
           <div class="mp">프로모션 200만/일</div>
+          <span class="madv">이탈 직전 마지막 터치 — CTR 2.5% 최고 클릭</span>
         </div>
       </div>
-      <p class="note">· 목업은 지면 이해를 돕기 위한 예시이며 실제 소재가 아닙니다. 모든 지면은 <b>아웃링크</b>로 강남언니 앱스토어·상담예약 페이지에 연결됩니다. 지면·단가 출처: 에이블리 디스플레이 광고 소개서(2025.08) <span class="src pub">공개</span></p>
+      <p class="note" style="margin-bottom:28px;">· 목업은 지면 이해를 돕기 위한 예시이며 실제 소재가 아닙니다. 모든 지면은 <b>아웃링크</b>로 강남언니 앱스토어·상담예약 페이지에 연결됩니다.</p>
+
+      <!-- 전체 단가표 -->
+      <h3 style="margin-bottom:12px;">전체 광고 상품 · 단가표</h3>
+      <table>
+        <tr>
+          <th>광고 상품</th><th>부킹</th><th>노출 / CTR</th><th class="r">정상가</th><th class="r">프로모션가</th><th style="text-align:center;">추천</th>
+        </tr>
+        <tr style="background:#fff6f3;"><td><b>프리미엄 브랜딩 전면</b> (동영상)</td><td>1일</td><td>200~250만 / 1~3%</td><td class="r">1,500만</td><td class="r"><b>1,000만</b></td><td style="text-align:center;color:var(--primary);font-weight:800;">★</td></tr>
+        <tr style="background:#fff6f3;"><td><b>스플래시 배너</b></td><td>1일</td><td>200~250만</td><td class="r">750만</td><td class="r"><b>500만</b></td><td style="text-align:center;color:var(--primary);font-weight:800;">★</td></tr>
+        <tr style="background:#fff6f3;"><td><b>종료 팝업 배너</b></td><td>1일</td><td>15만 / 2.5%</td><td class="r">300만</td><td class="r"><b>200만</b></td><td style="text-align:center;color:var(--primary);font-weight:800;">★</td></tr>
+        <tr style="background:#fff6f3;"><td><b>혜택 탭 Top 배너</b></td><td>1일</td><td>10만 / 0.8~1.2%</td><td class="r">200/150만</td><td class="r"><b>120/100만</b></td><td style="text-align:center;color:var(--primary);font-weight:800;">★</td></tr>
+        <tr><td>배송조회 페이지 배너</td><td>1일</td><td>15만 / 0.4%</td><td class="r">200/150만</td><td class="r">120/100만</td><td></td></tr>
+        <tr><td>검색 페이지 배너</td><td>1주</td><td>200만 / 0.2%</td><td class="r">300만</td><td class="r">250만</td><td></td></tr>
+        <tr><td>마이페이지 배너</td><td>1주</td><td>200만 / 0.2%</td><td class="r">300만</td><td class="r">250만</td><td></td></tr>
+        <tr><td>혜택 탭 리스트 배너</td><td>1주</td><td>50만 / 0.3%</td><td class="r">300만</td><td class="r">250만</td><td></td></tr>
+        <tr><td>커뮤니티 리스트 배너</td><td>1주</td><td>10만 / 0.3%</td><td class="r">300만</td><td class="r">150만</td><td></td></tr>
+      </table>
+      <p class="note">· VAT 별도 · CPD(구좌제), 1일/1주 단위 부킹 · 단가는 동영상/이미지 구분 · 출처: 에이블리 디스플레이 광고 소개서(2025.08) <span class="src pub">공개</span></p>
+
+      <!-- 추천 조합 -->
+      <div class="card soft" style="margin-top:18px;">
+        <h3 style="margin-bottom:10px;">강남언니 추천 상품 조합 <span class="src as" style="margin-left:4px;">제안</span></h3>
+        <ul class="ck">
+          <li><b>론칭(인지):</b> 프리미엄 전면 동영상 + 스플래시 — 1,067만에게 대규모 도달로 앱 설치를 끌어올림</li>
+          <li><b>전환(설치):</b> 종료 팝업 + 혜택 탭 Top — CTR 최고 지면 + 쿠폰 소구로 설치 회수 (노스카나와 동일 지면군)</li>
+          <li><b>상시(리마인드):</b> 검색·마이페이지 — 주 200만 노출을 저비용으로 상시 확보</li>
+        </ul>
+      </div>
     </div></div>
   </section>
 
-  <!-- ══════ 04 미디어 플랜 ══════ -->
+  <!-- ══════ 05 미디어 플랜 ══════ -->
   <section id="plan">
     <div class="pad"><div class="wrap">
-      <div class="eyebrow"><span class="no">04</span> 미디어 플랜 · 2주 파일럿</div>
+      <div class="eyebrow"><span class="no">05</span> 미디어 플랜 · 2주 파일럿</div>
       <h2>론칭 버스트로 <span class="hl">터뜨리고</span>, 상시 지면으로 <span class="hl">거둔다</span>.</h2>
       <p class="lead">대규모 인지(전면·스플래시)로 앱 설치를 끌어올린 뒤, 상시 지면·종료팝업으로 전환을 회수하는 2주 구조. <b>프로모션가 기준</b>으로 설계했습니다.</p>
 
@@ -459,7 +587,7 @@
   <!-- ══════ 04 기대 성과 ══════ -->
   <section style="background:#fafbfc;">
     <div class="pad"><div class="wrap">
-      <div class="eyebrow"><span class="no">05</span> 기대 성과</div>
+      <div class="eyebrow"><span class="no">06</span> 기대 성과</div>
       <h2>광고 성과의 기준은 <span class="hl">앱 설치(CPI)</span>.</h2>
       <p class="lead">아웃링크 → 앱스토어 → 설치까지는 MMP(앱스플라이어)로 정확히 측정됩니다. 광고 KPI는 <b>앱 설치</b>로 명확히 잡고, 설치 이후 상담예약·시술 전환은 강남언니 1st-party 데이터로 사후 확인합니다.</p>
 
@@ -494,7 +622,7 @@
   <!-- ══════ 05 측정·심의 ══════ -->
   <section>
     <div class="pad"><div class="wrap">
-      <div class="eyebrow"><span class="no">06</span> 측정 · 리포팅 · 의료광고 심의</div>
+      <div class="eyebrow"><span class="no">07</span> 측정 · 리포팅 · 의료광고 심의</div>
       <h2>데이터로 증명하고, <span class="hl">리스크는 미리</span> 막습니다.</h2>
       <div class="grid g2">
         <div class="card">
@@ -516,10 +644,53 @@
     </div></div>
   </section>
 
-  <!-- ══════ 06 넥스트 스텝 ══════ -->
+  <!-- ══════ 08 유사 업종 레퍼런스 ══════ -->
+  <section>
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="no">08</span> 유사 업종 집행 레퍼런스</div>
+      <h2>비슷한 업종은 <span class="hl">어떤 지면에서</span> 성과를 냈나.</h2>
+      <p class="lead">에이블리 공개 집행 사례 기준, 의료·뷰티·콘텐츠 브랜드가 실제로 집행한 지면입니다. 이를 근거로 강남언니에게 지면을 추천합니다.</p>
+
+      <table>
+        <tr>
+          <th>브랜드</th><th>업종</th><th>집행 지면</th><th>강남언니 시사점</th>
+        </tr>
+        <tr>
+          <td><b>노스카나</b> (동국제약)</td><td>일반의약품 · 의료</td><td>종료 팝업 등</td>
+          <td>의료 광고가 <b>심의 통과 후 집행된 직접 선례</b> — 강남언니에 가장 가까움</td>
+        </tr>
+        <tr>
+          <td><b>조말론·달바</b></td><td>뷰티</td><td>혜택 탭 Top · 배송조회</td>
+          <td>미용 관심 유저가 혜택 지면에서 반응 — 쿠폰 소구 유효</td>
+        </tr>
+        <tr>
+          <td><b>지니TV·영화</b> (스파이더맨 등)</td><td>콘텐츠 · 엔터</td><td>스플래시 · 전면</td>
+          <td>대규모 인지 지면의 도달력 — 론칭 버스트에 유효</td>
+        </tr>
+      </table>
+      <p class="note" style="margin-bottom:24px;">· 브랜드·지면은 에이블리 공개 집행 사례(소개서·레퍼런스 페이지)에서 관측 <span class="src pub">공개</span> · <b>브랜드별 정량 성과(노출·CTR·전환)는 비공개</b>로, 집행 전 에이블리 레퍼런스(ad-biz@a-bly.com)로 확인 권장</p>
+
+      <div class="grid g2">
+        <div class="card">
+          <h3>📌 그래서, 강남언니 추천 지면</h3>
+          <ul class="ck" style="margin-top:6px;">
+            <li><b>종료 팝업</b> — 노스카나(의약품)와 동일 지면, 전환 회수</li>
+            <li><b>혜택 탭 Top</b> — 뷰티 브랜드 선례, 쿠폰 소구</li>
+            <li><b>스플래시 · 전면</b> — 콘텐츠 브랜드 선례, 론칭 인지</li>
+          </ul>
+        </div>
+        <div class="card" style="background:var(--soft);border-color:transparent;">
+          <h3>📊 예상 성과는 이렇게 검증</h3>
+          <p class="cd">본 제안의 노출·CTR 추정은 소개서 <b>공개 벤치마크</b> 기준입니다. 집행 전 에이블리에 <b>유사 업종(의료·뷰티) 레퍼런스 데이터</b>를 요청해 CPI·전환 기대치를 함께 검증한 뒤, 파일럿으로 실측 기준선을 확정하는 것을 제안합니다.</p>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ══════ 09 넥스트 스텝 ══════ -->
   <section style="background:#fafbfc;">
     <div class="pad"><div class="wrap">
-      <div class="eyebrow"><span class="no">07</span> 넥스트 스텝</div>
+      <div class="eyebrow"><span class="no">09</span> 넥스트 스텝</div>
       <h2>작게 검증하고, <span class="hl">크게 확장</span>합니다.</h2>
       <div class="timeline">
         <div class="tl"><div class="step">STEP 1 · 2주</div><h3>파일럿 집행</h3><p>론칭 버스트 + 상시 지면으로 CPI·설치율 기준선 확보.</p></div>
