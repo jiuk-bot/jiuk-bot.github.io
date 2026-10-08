@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>AM 광고주 모니터링 대시보드 (데모) · 윤지욱</title>
-<meta name="description" content="여러 광고주와 하위 캠페인의 성과를 기준일·일/주/월/전체 단위로 조정하고, 두 기간을 비교(화살표 변화율)하는 AM 모니터링 대시보드 데모 (가상 데이터)." />
+<meta name="description" content="여러 광고주·캠페인의 노출·CTR·CPC·CVR·CPM·CPA를 기간 비교하고, 광고주별 KPI 설정과 메모 히스토리까지 관리하는 AM 모니터링 대시보드 데모." />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
@@ -14,99 +14,99 @@
   body{ font-family:'Pretendard','Apple SD Gothic Neo',sans-serif; color:var(--ink); background:#f4f5f7; line-height:1.5; word-break:keep-all; -webkit-font-smoothing:antialiased; }
   a{color:inherit;text-decoration:none;}
   .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.9); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
-  .nav-inner{ max-width:1100px; margin:0 auto; padding:13px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .nav-inner{ max-width:1160px; margin:0 auto; padding:13px 24px; display:flex; align-items:center; justify-content:space-between; }
   .nav-logo{ font-weight:800; font-size:17px; } .nav-logo .dot{ color:var(--primary); }
   .nav-links a{ color:var(--sub); font-weight:600; font-size:14px; padding:8px 11px; border-radius:10px; }
-  .nav-links a:hover{ background:#f4f5f7; color:var(--ink); }
-  .wrap{ max-width:1100px; margin:0 auto; padding:26px 24px 60px; }
+  .wrap{ max-width:1160px; margin:0 auto; padding:26px 24px 60px; }
   .head{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px; }
   .head h1{ font-size:24px; font-weight:800; letter-spacing:-.4px; }
   .head .sub{ font-size:13.5px; color:var(--sub); margin-top:4px; }
   .badge-demo{ font-size:11.5px; font-weight:800; color:var(--primary); background:var(--soft); padding:6px 12px; border-radius:999px; }
-
   .tabs{ display:flex; gap:6px; margin:20px 0 18px; border-bottom:1px solid var(--line); }
   .tab{ font-size:14.5px; font-weight:700; color:var(--sub); padding:11px 16px; cursor:pointer; border-bottom:2px solid transparent; }
   .tab.active{ color:var(--primary); border-bottom-color:var(--primary); }
 
-  /* 컨트롤 */
-  .ovcontrols{ display:flex; gap:22px; flex-wrap:wrap; align-items:center; margin-bottom:14px; }
-  .octl label{ font-size:12.5px; font-weight:700; color:var(--sub); margin-right:8px; }
-  input[type=date], select{ font-family:inherit; font-size:14px; font-weight:700; padding:8px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--ink); }
-  .seg{ display:inline-flex; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
-  .seg button{ font-family:inherit; font-size:13.5px; font-weight:700; padding:8px 15px; border:0; background:#fff; color:var(--sub); cursor:pointer; border-right:1px solid var(--line); }
-  .seg button:last-child{ border-right:0; }
-  .seg button.on{ background:var(--primary); color:#fff; }
-  .periodinfo{ background:var(--soft); color:var(--primary-dark); font-size:13.5px; font-weight:700; padding:12px 16px; border-radius:11px; margin-bottom:16px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-  .periodinfo .pp{ background:#fff; border-radius:8px; padding:3px 9px; font-size:12.5px; }
-  .periodinfo .vs{ color:var(--sub); }
+  .ovcontrols{ display:flex; gap:20px; flex-wrap:wrap; align-items:center; margin-bottom:10px; }
+  .octl{ display:flex; align-items:center; gap:7px; }
+  .octl label{ font-size:12.5px; font-weight:700; color:var(--sub); }
+  input[type=date], select{ font-family:inherit; font-size:13.5px; font-weight:700; padding:7px 10px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); }
+  .seg{ display:inline-flex; border:1px solid var(--line); border-radius:9px; overflow:hidden; }
+  .seg button{ font-family:inherit; font-size:13.5px; font-weight:700; padding:7px 14px; border:0; background:#fff; color:var(--sub); cursor:pointer; border-right:1px solid var(--line); }
+  .seg button:last-child{ border-right:0; } .seg button.on{ background:var(--primary); color:#fff; }
+  .clrbtn{ font-family:inherit; font-size:12px; font-weight:700; border:1px solid var(--line); background:#fff; color:var(--sub); border-radius:8px; padding:6px 10px; cursor:pointer; }
+  .periodinfo{ background:var(--soft); color:var(--primary-dark); font-size:13.5px; font-weight:700; padding:11px 15px; border-radius:11px; margin:12px 0 16px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .periodinfo .pp{ background:#fff; border-radius:8px; padding:3px 9px; font-size:12.5px; } .periodinfo .vs{ color:var(--sub); }
 
   .sum{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
   .sumc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px 20px; box-shadow:var(--shadow); }
   .sumc .n{ font-size:25px; font-weight:800; } .sumc .n.warn{ color:var(--warn); }
   .sumc .l{ font-size:12.5px; color:var(--sub); font-weight:600; margin-top:2px; }
 
-  .advhead{ display:grid; grid-template-columns:1.7fr repeat(3,1fr) 1.1fr 38px; gap:12px; padding:2px 20px 8px; font-size:11px; font-weight:700; color:#b0b0b0; }
+  .GRID{ display:grid; grid-template-columns:2fr 1.3fr 1fr 1fr .9fr 70px 30px; gap:10px; align-items:center; }
+  .advhead{ padding:2px 20px 8px; font-size:11px; font-weight:700; color:#b0b0b0; }
   .advhead > div{ text-align:center; } .advhead > div:first-child{ text-align:left; }
-
   .adv{ background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); margin-bottom:12px; overflow:hidden; }
   .adv.flag{ border-color:#f6c9c9; }
-  .adv-top{ display:grid; grid-template-columns:1.7fr repeat(3,1fr) 1.1fr 38px; gap:12px; align-items:center; padding:16px 20px; cursor:pointer; }
-  .adv-name{ font-size:16px; font-weight:800; } .adv-cat{ font-size:12px; color:var(--sub); font-weight:600; margin-top:2px; }
-  .cell{ text-align:center; } .cell .v{ font-size:16px; font-weight:800; } .cell .p{ font-size:11px; color:#aaa; margin-top:1px; }
-  .delta{ font-size:12px; font-weight:800; margin-top:3px; } .delta.up{ color:var(--ok); } .delta.down{ color:var(--warn); } .delta.flat{ color:#bbb; }
-  .status{ text-align:center; } .st-ok{ font-size:12px; font-weight:800; color:var(--ok); background:var(--okbg); padding:5px 10px; border-radius:999px; }
-  .st-warn{ font-size:11.5px; font-weight:800; color:var(--warn); background:var(--warnbg); padding:5px 9px; border-radius:999px; }
-  .caret{ text-align:center; color:#bbb; font-size:13px; transition:transform .2s; }
-  .adv.open .caret{ transform:rotate(180deg); }
-  .camps{ display:none; border-top:1px solid var(--line); background:#fafbfc; padding:8px 20px 14px; }
-  .adv.open .camps{ display:block; }
-  .camphead{ font-size:11px; font-weight:700; color:#b0b0b0; padding:6px 0 2px; }
-  .camp{ display:grid; grid-template-columns:1.7fr repeat(3,1fr) 1.1fr 38px; gap:12px; align-items:center; padding:12px 0; border-bottom:1px solid #eef0f3; font-size:13px; }
-  .camp:last-child{ border-bottom:0; }
-  .camp .cn{ font-weight:700; } .camp .plat{ font-size:10px; font-weight:800; color:var(--sub); background:#eef1f5; padding:2px 7px; border-radius:6px; display:inline-block; margin-left:5px; }
+  .adv-top{ padding:15px 20px; cursor:pointer; }
+  .advc0 .adv-name{ font-size:15.5px; font-weight:800; } .advc0 .adv-cat{ font-size:11.5px; color:var(--sub); font-weight:600; margin-top:1px; }
+  .kpisel{ margin-top:6px; font-size:11px; font-weight:700; padding:3px 7px; border:1px solid var(--line); border-radius:7px; background:#fff; max-width:140px; }
+  .cell{ text-align:center; } .cell .v{ font-size:15px; font-weight:800; } .cell.big .v{ font-size:17px; color:var(--primary-dark); }
+  .cell .p{ font-size:10.5px; color:#aaa; margin-top:1px; } .kpitag{ font-size:9.5px; font-weight:800; color:var(--sub); background:#f1f3f6; border-radius:5px; padding:1px 6px; display:inline-block; margin-bottom:3px; }
+  .delta{ font-size:11.5px; font-weight:800; margin-top:2px; } .delta.up{ color:var(--ok); } .delta.down{ color:var(--warn); } .delta.flat{ color:#bbb; }
+  .status{ text-align:center; } .st-ok{ font-size:11.5px; font-weight:800; color:var(--ok); background:var(--okbg); padding:5px 9px; border-radius:999px; } .st-warn{ font-size:11px; font-weight:800; color:var(--warn); background:var(--warnbg); padding:5px 8px; border-radius:999px; }
+  .memobtn{ font-family:inherit; font-size:12px; font-weight:700; border:1px solid var(--line); background:#fff; border-radius:8px; padding:6px 7px; cursor:pointer; color:#555; }
+  .memobtn b{ color:var(--primary); }
+  .caret{ text-align:center; color:#bbb; font-size:13px; transition:transform .2s; } .adv.open .caret{ transform:rotate(180deg); }
+  .camps{ display:none; border-top:1px solid var(--line); background:#fafbfc; padding:12px 16px 14px; } .adv.open .camps{ display:block; }
+  .mscroll{ overflow-x:auto; }
+  .mtable{ width:100%; border-collapse:collapse; font-size:12.5px; min-width:720px; }
+  .mtable th,.mtable td{ padding:8px 10px; text-align:right; border-bottom:1px solid #eef0f3; white-space:nowrap; } .mtable th:first-child,.mtable td:first-child{ text-align:left; }
+  .mtable th{ font-size:11px; color:#888; font-weight:700; } .mtable td .mv{ font-weight:800; } .mtable td .md{ font-size:10px; font-weight:700; }
+  .plat{ font-size:9.5px; font-weight:800; color:var(--sub); background:#eef1f5; padding:2px 6px; border-radius:5px; margin-left:5px; }
 
-  /* 일자별 탭 */
   .controls{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:18px; }
   .controls label{ font-size:12.5px; font-weight:700; color:var(--sub); margin-right:6px; }
   .cmp{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
-  .cmpc{ flex:1; min-width:150px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); }
-  .cmpc .cl{ font-size:12px; color:var(--sub); font-weight:700; } .cmpc .cvv{ font-size:22px; font-weight:800; margin-top:4px; }
-  .cmpc .cd{ font-size:12.5px; font-weight:800; margin-top:4px; }
+  .cmpc{ flex:1; min-width:160px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); }
+  .cmpc .cl{ font-size:11.5px; color:var(--sub); font-weight:700; } .cmpc .cvv{ font-size:21px; font-weight:800; margin-top:4px; } .cmpc .cd{ font-size:12.5px; font-weight:800; margin-top:4px; }
   .chartbox{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow); margin-bottom:18px; }
-  table{ width:100%; border-collapse:collapse; font-size:13px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
-  th,td{ padding:9px 12px; text-align:right; border-bottom:1px solid #eef0f3; } th:first-child,td:first-child{ text-align:left; }
-  th{ background:#fafafa; font-weight:700; font-size:12px; color:#555; } tr:last-child td{ border-bottom:0; }
-  tr.recent td{ background:#fff8f6; }
+  table.dt{ width:100%; border-collapse:collapse; font-size:13px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  table.dt th,table.dt td{ padding:9px 12px; text-align:right; border-bottom:1px solid #eef0f3; } table.dt th:first-child,table.dt td:first-child{ text-align:left; }
+  table.dt th{ background:#fafafa; font-weight:700; font-size:12px; color:#555; } table.dt tr.recent td{ background:#fff8f6; }
+
+  .modal{ position:fixed; inset:0; background:rgba(0,0,0,.42); display:flex; align-items:center; justify-content:center; z-index:100; }
+  .modal.hide{ display:none; }
+  .modal-box{ background:#fff; border-radius:18px; width:min(500px,92vw); max-height:84vh; overflow:auto; padding:22px; }
+  .modal-head{ display:flex; align-items:center; justify-content:space-between; font-size:16px; font-weight:800; margin-bottom:14px; }
+  .modal-head .x{ cursor:pointer; color:#999; font-size:18px; }
+  #memoText{ width:100%; min-height:82px; font-family:inherit; font-size:14px; border:1px solid var(--line); border-radius:10px; padding:11px; resize:vertical; }
+  .savebtn{ margin-top:10px; background:var(--primary); color:#fff; font-weight:800; font-size:14px; border:0; border-radius:10px; padding:10px 20px; cursor:pointer; }
+  .memoitem{ border:1px solid var(--line); border-radius:10px; padding:11px 13px; margin-top:10px; font-size:13.5px; line-height:1.55; }
+  .memoitem .mt{ font-size:11.5px; color:var(--sub); font-weight:700; display:flex; justify-content:space-between; margin-bottom:4px; }
+  .memoitem .mt .del{ cursor:pointer; color:#caa; }
+  .empty{ font-size:13px; color:#aaa; text-align:center; padding:16px; }
 
   .hide{ display:none; }
   .disc{ font-size:12px; background:#fffdf7; border:1px dashed #e8c98f; border-radius:12px; padding:14px 16px; margin-top:22px; line-height:1.6; color:#8a6d33; }
   code{ font-family:ui-monospace,Menlo,monospace; }
-  @media (max-width:860px){
-    .advhead,.adv-top,.camp{ grid-template-columns:1.4fr 1fr 1fr 34px; }
-    .advhead > div:nth-child(4),.adv-top .cell:nth-child(4),.camp .cell:nth-child(4){ display:none; }
-    .advhead > div:nth-child(5),.adv-top .status,.camp .status{ display:none; }
+  @media (max-width:880px){
+    .GRID{ grid-template-columns:1.6fr 1.3fr 66px 28px; }
+    .advhead > div:nth-child(3),.advhead > div:nth-child(4),.advhead > div:nth-child(5){ display:none; }
+    .adv-top .cell:not(.big),.adv-top .status{ display:none; }
   }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="index.html">JIUK<span class="dot">.</span>YOON</a>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="proposal.html">제안서</a>
-      <a href="cases.html">상세 케이스</a>
-    </div>
-  </div>
-</nav>
+<nav class="nav"><div class="nav-inner">
+  <a class="nav-logo" href="index.html">JIUK<span class="dot">.</span>YOON</a>
+  <div class="nav-links"><a href="index.html">Home</a><a href="proposal.html">제안서</a><a href="cases.html">상세 케이스</a></div>
+</div></nav>
 
 <div class="wrap">
   <div class="head">
-    <div>
-      <h1>AM 광고주 모니터링 대시보드</h1>
-      <div class="sub">여러 광고주·하위 캠페인의 성과를 기준일·단위로 조정하고, 두 기간을 비교합니다.</div>
-    </div>
+    <div><h1>AM 광고주 모니터링 대시보드</h1>
+      <div class="sub">광고주별 KPI·메모 관리 + 기간 비교(노출·CTR·CPC·CVR·CPM·CPA).</div></div>
     <span class="badge-demo">● 데모 · 가상 데이터</span>
   </div>
 
@@ -118,17 +118,18 @@
   <!-- Overview -->
   <div id="overview">
     <div class="ovcontrols">
-      <div class="octl"><label>기준일</label><input type="date" id="endDate"></div>
-      <div class="octl"><label>단위</label>
-        <div class="seg" id="unitSeg">
-          <button data-w="1">일</button><button data-w="7" class="on">주</button><button data-w="30">월</button><button data-w="0">전체</button>
-        </div>
-      </div>
+      <div class="octl"><label>빠른 설정</label><div class="seg" id="unitSeg">
+        <button data-w="1">일</button><button data-w="7" class="on">주</button><button data-w="30">월</button><button data-w="0">전체</button></div></div>
+    </div>
+    <div class="ovcontrols">
+      <div class="octl"><label>현재 기간</label><input type="date" id="cs"> ~ <input type="date" id="ce"></div>
+      <div class="octl"><label>비교 기간</label><input type="date" id="ps"> ~ <input type="date" id="pe">
+        <button class="clrbtn" id="clrCmp">비교 해제</button></div>
     </div>
     <div class="periodinfo" id="periodInfo"></div>
     <div class="sum" id="sum"></div>
-    <div class="advhead">
-      <div>광고주 / 캠페인</div><div>노출</div><div>전환율</div><div>전환</div><div>상태</div><div></div>
+    <div class="advhead GRID">
+      <div>광고주 / KPI</div><div>선택 KPI</div><div>노출</div><div>전환</div><div>상태</div><div>메모</div><div></div>
     </div>
     <div id="advList"></div>
   </div>
@@ -137,170 +138,212 @@
   <div id="daily" class="hide">
     <div class="controls">
       <div><label>광고주</label><select id="selAdv"></select></div>
-      <div><label>지표</label><select id="selMetric">
-        <option value="imp">노출수</option><option value="clicks">클릭수</option>
-        <option value="conv">전환수</option><option value="cvr" selected>전환율</option>
-      </select></div>
+      <div><label>지표</label><select id="selMetric"></select></div>
       <div><label>기간</label><select id="selRange">
-        <option value="14">최근 14일</option><option value="30">최근 30일</option><option value="60">최근 60일</option>
-      </select></div>
+        <option value="14">최근 14일</option><option value="30">최근 30일</option><option value="60">최근 60일</option></select></div>
     </div>
     <div class="cmp" id="cmp"></div>
     <div class="chartbox"><canvas id="chart" height="110"></canvas></div>
-    <table id="dtable"></table>
+    <table class="dt" id="dtable"></table>
   </div>
 
-  <div class="disc">⚠️ 본 대시보드는 <b>윤지욱이 AM 유지 전략을 보여주기 위해 제작한 데모</b>로, 모든 광고주·수치는 <b>가상 데이터</b>입니다. 실제 집행 데이터가 아닙니다. (엑셀 업로드 / 구글·메타·틱톡 API 연동으로 실데이터 수집 가능)</div>
+  <div class="disc">⚠️ 본 대시보드는 <b>윤지욱이 AM 유지 전략을 보여주기 위해 제작한 데모</b>로, 모든 광고주·수치는 <b>가상 데이터</b>입니다. (엑셀 업로드 / 구글·메타·틱톡 API 연동으로 실데이터 수집 가능) · 메모·KPI 설정은 <b>이 브라우저에만 저장</b>됩니다.</div>
   <div class="disc" style="background:#f3f7ff;border-color:#bcd4f5;color:#2f5a9e;">
-    🔒 <b>광고주 데이터 보안 관리 (실제 운영 시)</b> — 데이터 유출 가능성을 원천 차단하기 위해, 대시보드는 <b>담당자 로컬 환경(개인 노트북)에서만 구동</b>(localhost)하며 외부 서버·클라우드에 광고주 데이터를 저장·배포하지 않습니다. API 연동 토큰·인증키는 <code style="background:#e6eefb;padding:1px 5px;border-radius:4px;">.env</code>로 분리해 환경변수로 관리하고, 데이터는 <b>읽기 전용(read-only) 조회</b>·접근 권한 최소화 원칙으로 다룹니다.
+    🔒 <b>광고주 데이터 보안 관리 (실제 운영 시)</b> — 데이터 유출 가능성을 원천 차단하기 위해, 대시보드는 <b>담당자 로컬 환경(개인 노트북)에서만 구동</b>(localhost)하며 외부 서버·클라우드에 광고주 데이터를 저장·배포하지 않습니다. API 토큰·인증키는 <code style="background:#e6eefb;padding:1px 5px;border-radius:4px;">.env</code>로 분리해 환경변수로 관리하고, 데이터는 <b>읽기 전용(read-only)</b>·접근 권한 최소화 원칙으로 다룹니다.
+  </div>
+</div>
+
+<!-- Memo modal -->
+<div id="memoModal" class="modal hide">
+  <div class="modal-box">
+    <div class="modal-head"><span><span id="memoAdv"></span> · 메모 히스토리</span><span class="x" onclick="closeMemo()">✕</span></div>
+    <textarea id="memoText" placeholder="예: 10/8 전환율 ▼22% — 소재 피로도 의심. A/B 소재 2종 제안 예정. / 다음 주 QBR에서 구좌 확장 논의"></textarea>
+    <button class="savebtn" onclick="saveMemo()">메모 저장</button>
+    <div id="memoList"></div>
   </div>
 </div>
 
 <script>
 const DAYS=90;
-function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
-function gen(base,drift,dip,seed,noise,rate){const r=mulberry32(seed);const o=[];for(let i=0;i<DAYS;i++){let v=base*(1+drift*(i/(DAYS-1)))*(1+(r()*2-1)*noise);if(dip&&i>=DAYS-7){const t=(i-(DAYS-8))/7;v*=(1-dip*t);}o.push(rate?Math.max(0.0005,v):Math.max(1,Math.round(v)));}return o;}
-const C=(b,dr,dp,s,n=0.07)=>gen(b,dr,dp,s,n,false);
-const R=(b,dr,dp,s,n=0.06)=>gen(b,dr,dp,s,n,true);
+function mul(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function gen(base,drift,dip,seed,noise,rate){const r=mul(seed);const o=[];for(let i=0;i<DAYS;i++){let v=base*(1+drift*(i/(DAYS-1)))*(1+(r()*2-1)*noise);if(dip&&i>=DAYS-7){const t=(i-(DAYS-8))/7;v*=(1-dip*t);}o.push(rate?Math.max(0.0005,v):Math.max(1,Math.round(v)));}return o;}
+const C=(b,dr,dp,s,n=0.07)=>gen(b,dr,dp,s,n,false), R=(b,dr,dp,s,n=0.06)=>gen(b,dr,dp,s,n,true);
 
 const CFG=[
  {name:'강남언니',cat:'미용의료',camps:[
-   {name:'디스플레이 신규획득',plat:'ABLY DA',imp:C(70000,0.12,0,101),ctr:R(0.011,0.05,0,102),cvr:R(0.07,0.10,0,103)},
-   {name:'리타겟팅',plat:'META',imp:C(30000,0.05,0,104),ctr:R(0.013,0,0,105),cvr:R(0.09,0.06,0,106)},
+   {name:'디스플레이 신규획득',plat:'ABLY DA',imp:C(70000,0.12,0,101),ctr:R(0.011,0.05,0,102),cvr:R(0.07,0.10,0,103),cpc:R(950,0.03,0,107)},
+   {name:'리타겟팅',plat:'META',imp:C(30000,0.05,0,104),ctr:R(0.013,0,0,105),cvr:R(0.09,0.06,0,106),cpc:R(1100,0.02,0,108)},
  ]},
  {name:'뷰티브랜드 B',cat:'뷰티',camps:[
-   {name:'론칭 버스트',plat:'ABLY DA',imp:C(55000,0,0,201),ctr:R(0.009,0,0,202),cvr:R(0.06,0,0.42,203)},
-   {name:'상시 전환',plat:'META',imp:C(35000,-0.03,0,204),ctr:R(0.010,0,0,205),cvr:R(0.055,0,0.34,206)},
+   {name:'론칭 버스트',plat:'ABLY DA',imp:C(55000,0,0,201),ctr:R(0.009,0,0,202),cvr:R(0.06,0,0.42,203),cpc:R(700,0,0.1,207)},
+   {name:'상시 전환',plat:'META',imp:C(35000,-0.03,0,204),ctr:R(0.010,0,0,205),cvr:R(0.055,0,0.34,206),cpc:R(760,0.04,0,208)},
  ]},
  {name:'패션몰 C',cat:'패션',camps:[
-   {name:'전환 캠페인',plat:'GOOGLE',imp:C(90000,0.10,0,301),ctr:R(0.013,0.04,0,302),cvr:R(0.05,0.08,0,303)},
-   {name:'트래픽',plat:'ABLY DA',imp:C(60000,0.06,0,304),ctr:R(0.012,0,0,305),cvr:R(0.045,0.04,0,306)},
+   {name:'전환 캠페인',plat:'GOOGLE',imp:C(90000,0.10,0,301),ctr:R(0.013,0.04,0,302),cvr:R(0.05,0.08,0,303),cpc:R(520,0,0,307)},
+   {name:'트래픽',plat:'ABLY DA',imp:C(60000,0.06,0,304),ctr:R(0.012,0,0,305),cvr:R(0.045,0.04,0,306),cpc:R(480,0,0,308)},
  ]},
  {name:'핀테크 D',cat:'금융앱',camps:[
-   {name:'앱설치',plat:'TIKTOK',imp:C(120000,0,0.48,401),ctr:R(0.007,0,0,402),cvr:R(0.10,0,0,403)},
-   {name:'리마케팅',plat:'GOOGLE',imp:C(40000,0,0.30,404),ctr:R(0.009,0,0,405),cvr:R(0.12,0,0,406)},
+   {name:'앱설치',plat:'TIKTOK',imp:C(120000,0,0.48,401),ctr:R(0.007,0,0,402),cvr:R(0.10,0,0,403),cpc:R(1300,0.05,0,407)},
+   {name:'리마케팅',plat:'GOOGLE',imp:C(40000,0,0.30,404),ctr:R(0.009,0,0,405),cvr:R(0.12,0,0,406),cpc:R(1500,0,0,408)},
  ]},
 ];
+const DATES=[];{const t=new Date();for(let i=DAYS-1;i>=0;i--){const d=new Date(t);d.setDate(t.getDate()-i);DATES.push({iso:d.toISOString().slice(0,10),label:`${d.getMonth()+1}/${d.getDate()}`});}}
 
-/* 날짜 (최근 90일, 오늘 종료) */
-const DATES=[];{const t=new Date();for(let i=DAYS-1;i>=0;i--){const d=new Date(t);d.setDate(t.getDate()-i);
-  DATES.push({d, iso:d.toISOString().slice(0,10), label:`${d.getMonth()+1}/${d.getDate()}`});}}
-
-function build(){
-  return CFG.map(a=>{
-    const camps=a.camps.map(c=>{
-      const clicks=c.imp.map((v,i)=>Math.max(1,Math.round(v*c.ctr[i])));
-      const conv=clicks.map((v,i)=>Math.max(0,Math.round(v*c.cvr[i])));
-      return {name:c.name,plat:c.plat,imp:c.imp,clicks,conv};
-    });
-    const agg=k=>DATES.map((_,i)=>camps.reduce((s,c)=>s+c[k][i],0));
-    return {name:a.name,cat:a.cat,camps,imp:agg('imp'),clicks:agg('clicks'),conv:agg('conv')};
+function build(){return CFG.map(a=>{
+  const camps=a.camps.map(c=>{
+    const clicks=c.imp.map((v,i)=>Math.max(1,Math.round(v*c.ctr[i])));
+    const conv=clicks.map((v,i)=>Math.max(0,Math.round(v*c.cvr[i])));
+    const spend=clicks.map((v,i)=>Math.round(v*c.cpc[i]));
+    return {name:c.name,plat:c.plat,imp:c.imp,clicks,conv,spend};
   });
-}
+  const agg=k=>DATES.map((_,i)=>camps.reduce((s,c)=>s+c[k][i],0));
+  return {name:a.name,cat:a.cat,camps,imp:agg('imp'),clicks:agg('clicks'),conv:agg('conv'),spend:agg('spend')};
+});}
 const DATA=build();
 
-/* 유틸 */
-const sumv=(arr,s,e)=>{let t=0;for(let i=s;i<=e;i++)t+=arr[i];return t;};
-function metricVal(o,m,s,e){ if(m==='cvr'){const cl=sumv(o.clicks,s,e);return cl?sumv(o.conv,s,e)/cl:0;} return sumv(o[m],s,e); }
+/* 지표 정의 */
+const MET={imp:{l:'노출',t:'cnt',g:'up'},clicks:{l:'클릭',t:'cnt',g:'up'},ctr:{l:'CTR',t:'rate',g:'up'},
+  cvr:{l:'전환율',t:'rate',g:'up'},conv:{l:'전환',t:'cnt',g:'up'},cpc:{l:'CPC',t:'won',g:'down'},
+  cpm:{l:'CPM',t:'won',g:'down'},cpa:{l:'CPA',t:'won',g:'down'},spend:{l:'광고비',t:'won',g:'flat'}};
+const MKEYS=['imp','clicks','ctr','cvr','conv','cpc','cpm','cpa'];
+const sumv=(a,s,e)=>{let t=0;for(let i=s;i<=e;i++)t+=a[i];return t;};
+function mval(o,m,s,e){const S=k=>sumv(o[k],s,e);switch(m){
+  case 'imp':case 'clicks':case 'conv':case 'spend':return S(m);
+  case 'ctr':return S('imp')?S('clicks')/S('imp'):0;
+  case 'cvr':return S('clicks')?S('conv')/S('clicks'):0;
+  case 'cpc':return S('clicks')?S('spend')/S('clicks'):0;
+  case 'cpm':return S('imp')?S('spend')/S('imp')*1000:0;
+  case 'cpa':return S('conv')?S('spend')/S('conv'):0;}}
 const fmt=n=>n>=10000?(n/10000).toFixed(1)+'만':Math.round(n).toLocaleString();
-const pct=n=>(n*100).toFixed(2)+'%';
-const vfmtM=(m,v)=>m==='cvr'?pct(v):fmt(v);
-const change=(c,p)=>p?((c-p)/p*100):null;
-function deltaHtml(ch){ if(ch===null)return '<div class="delta flat">–</div>';
-  const cls=Math.abs(ch)<3?'flat':(ch>0?'up':'down'); const ar=Math.abs(ch)<3?'–':(ch>0?'▲':'▼');
-  return `<div class="delta ${cls}">${ar} ${Math.abs(ch).toFixed(0)}%</div>`; }
+function mfmt(m,v){const t=MET[m].t;return t==='rate'?(v*100).toFixed(2)+'%':t==='won'?Math.round(v).toLocaleString()+'원':fmt(v);}
+const change=(c,p)=>(p!==null&&p!==0)?((c-p)/p*100):null;
+function deltaHtml(ch,g){if(ch===null)return '<div class="delta flat">–</div>';const flat=Math.abs(ch)<3;const bad=g==='up'?ch<0:(g==='down'?ch>0:false);const cls=flat?'flat':(bad?'down':'up');const ar=flat?'–':(ch>0?'▲':'▼');return `<div class="delta ${cls}">${ar} ${Math.abs(ch).toFixed(0)}%</div>`;}
+function isFlag(m,ch){if(ch===null)return false;return MET[m].g==='up'?ch<=-12:(MET[m].g==='down'?ch>=15:false);}
 
-/* 기간 계산 */
-function win(endIdx,W){ if(W===0)return{cs:0,ce:endIdx,ps:null,pe:null};
-  let cs=endIdx-W+1,ce=endIdx,ps=cs-W,pe=cs-1; if(cs<0)cs=0; if(ps<0){ps=null;pe=null;} return{cs,ce,ps,pe}; }
+/* 저장 */
+const KPI=JSON.parse(localStorage.getItem('amdemo_kpi')||'{}');
+const MEMO=JSON.parse(localStorage.getItem('amdemo_memo')||'{}');
+const saveKPI=()=>localStorage.setItem('amdemo_kpi',JSON.stringify(KPI));
+const saveMemoLS=()=>localStorage.setItem('amdemo_memo',JSON.stringify(MEMO));
+function getKPI(n){return KPI[n]||'cvr';}
+window.setKPI=(n,v)=>{KPI[n]=v;saveKPI();renderOverview();};
 
-/* ===== Overview ===== */
-let OV={endIdx:DAYS-1, W:7};
+/* 기간 */
+const idx=iso=>DATES.findIndex(d=>d.iso===iso);
+function getRanges(){
+  let cs=idx(document.getElementById('cs').value),ce=idx(document.getElementById('ce').value);
+  let ps=idx(document.getElementById('ps').value),pe=idx(document.getElementById('pe').value);
+  if(cs<0)cs=DAYS-7; if(ce<0)ce=DAYS-1; if(cs>ce)[cs,ce]=[ce,cs];
+  const hasCmp=document.getElementById('ps').value&&document.getElementById('pe').value&&ps>=0&&pe>=0;
+  if(hasCmp&&ps>pe)[ps,pe]=[pe,ps];
+  return {cs,ce,ps:hasCmp?ps:null,pe:hasCmp?pe:null};
+}
+function setInputs(cs,ce,ps,pe){
+  document.getElementById('cs').value=DATES[cs].iso; document.getElementById('ce').value=DATES[ce].iso;
+  document.getElementById('ps').value=ps===null?'':DATES[ps].iso; document.getElementById('pe').value=pe===null?'':DATES[pe].iso;
+}
+
 function renderOverview(){
-  const {endIdx,W}=OV; const {cs,ce,ps,pe}=win(endIdx,W);
-  // period info
-  const unitName={1:'일',7:'주',30:'월',0:'전체'}[W];
-  let info;
-  if(W===0){ info=`📅 기준일 <span class="pp">${DATES[endIdx].label}</span> · <b>전체 기간</b> <span class="pp">${DATES[cs].label} ~ ${DATES[ce].label}</span>`; }
-  else { const curR=W===1?DATES[ce].label:`${DATES[cs].label}~${DATES[ce].label}`;
-    const prevR=ps===null?'비교 기간 없음':(W===1?DATES[pe].label:`${DATES[ps].label}~${DATES[pe].label}`);
-    info=`📅 기준일 <span class="pp">${DATES[endIdx].label}</span> · 단위 <b>${unitName}(${W===1?'1일':W+'일'})</b> · <span class="pp">${curR}</span> <span class="vs">vs</span> <span class="pp">${prevR}</span>`; }
-  document.getElementById('periodInfo').innerHTML=info;
-
+  const {cs,ce,ps,pe}=getRanges();
+  const curR=cs===ce?DATES[ce].label:`${DATES[cs].label}~${DATES[ce].label}`;
+  const cmpR=ps===null?'비교 없음':(ps===pe?DATES[pe].label:`${DATES[ps].label}~${DATES[pe].label}`);
+  document.getElementById('periodInfo').innerHTML=`📊 현재 <span class="pp">${curR}</span> <span class="vs">vs</span> 비교 <span class="pp">${cmpR}</span>`;
   let flags=0;
-  const rows=DATA.map((a,idx)=>{
-    const m=(mk)=>{const cur=metricVal(a,mk,cs,ce);const prev=(ps!==null)?metricVal(a,mk,ps,pe):null;return{cur,prev,ch:change(cur,prev)};};
-    const imp=m('imp'),cvr=m('cvr'),conv=m('conv');
-    const warnCvr=cvr.ch!==null&&cvr.ch<=-10, warnImp=imp.ch!==null&&imp.ch<=-15;
-    const flagged=warnCvr||warnImp; if(flagged)flags++;
-    const status=flagged?`<span class="st-warn">⚠ ${warnCvr?'전환율':'노출'} 하락</span>`:(ps!==null?`<span class="st-ok">정상</span>`:`<span style="font-size:11px;color:#bbb">–</span>`);
-    const cell=(o,mk)=>`<div class="cell"><div class="v">${vfmtM(mk,o.cur)}</div>${o.prev!==null?`<div class="p">전기 ${vfmtM(mk,o.prev)}</div>`:''}${deltaHtml(o.ch)}</div>`;
-    const camps=a.camps.map(c=>{
-      const cm=(mk)=>{const cur=metricVal(c,mk,cs,ce);const prev=(ps!==null)?metricVal(c,mk,ps,pe):null;return{cur,prev,ch:change(cur,prev)};};
-      const ci=cm('imp'),cc=cm('cvr'),cv=cm('conv');
-      return `<div class="camp"><div class="cn">${c.name}<span class="plat">${c.plat}</span></div>
-        ${cell(ci,'imp')}${cell(cc,'cvr')}${cell(cv,'conv')}<div></div><div></div></div>`;
+  const rows=DATA.map(a=>{
+    const kpi=getKPI(a.name);
+    const stat=m=>{const cur=mval(a,m,cs,ce);const prev=ps===null?null:mval(a,m,ps,pe);return {cur,prev,ch:change(cur,prev)};};
+    const k=stat(kpi), imp=stat('imp'), conv=stat('conv');
+    const flagged=isFlag(kpi,k.ch); if(flagged)flags++;
+    const status=flagged?`<span class="st-warn">⚠ ${MET[kpi].l} 악화</span>`:(ps!==null?`<span class="st-ok">정상</span>`:`<span style="font-size:11px;color:#bbb">–</span>`);
+    const cellK=`<div class="cell big"><div class="kpitag">${MET[kpi].l}</div><div class="v">${mfmt(kpi,k.cur)}</div>${k.prev!==null?`<div class="p">전기 ${mfmt(kpi,k.prev)}</div>`:''}${deltaHtml(k.ch,MET[kpi].g)}</div>`;
+    const cellS=(o,m)=>`<div class="cell"><div class="v">${mfmt(m,o.cur)}</div>${deltaHtml(o.ch,MET[m].g)}</div>`;
+    const opts=MKEYS.map(m=>`<option value="${m}" ${m===kpi?'selected':''}>${MET[m].l}</option>`).join('');
+    const mc=(MEMO[a.name]||[]).length;
+    // 캠페인 지표 테이블
+    const cols=['imp','clicks','ctr','cvr','conv','cpc','cpm','cpa'];
+    const thead=`<tr><th>캠페인</th>${cols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>`;
+    const body=a.camps.map(c=>{
+      const tds=cols.map(m=>{const cur=mval(c,m,cs,ce);const prev=ps===null?null:mval(c,m,ps,pe);const ch=change(cur,prev);
+        return `<td><div class="mv">${mfmt(m,cur)}</div>${ch===null?'':`<div class="md ${(MET[m].g==='up'?ch<0:ch>0)&&Math.abs(ch)>=3?'delta down':(Math.abs(ch)<3?'delta flat':'delta up')}">${Math.abs(ch)<3?'–':(ch>0?'▲':'▼')}${Math.abs(ch).toFixed(0)}%</div>`}</td>`;}).join('');
+      return `<tr><td>${c.name}<span class="plat">${c.plat}</span></td>${tds}</tr>`;
     }).join('');
     return `<div class="adv ${flagged?'flag':''}">
-      <div class="adv-top" onclick="this.parentNode.classList.toggle('open')">
-        <div><div class="adv-name">${a.name}</div><div class="adv-cat">${a.cat} · 캠페인 ${a.camps.length}개</div></div>
-        ${cell(imp,'imp')}${cell(cvr,'cvr')}${cell(conv,'conv')}
-        <div class="status">${status}</div><div class="caret">▼</div>
+      <div class="adv-top GRID" onclick="this.parentNode.classList.toggle('open')">
+        <div class="advc0"><div class="adv-name">${a.name}</div><div class="adv-cat">${a.cat} · 캠페인 ${a.camps.length}개</div>
+          <select class="kpisel" onclick="event.stopPropagation()" onchange="setKPI('${a.name}',this.value)">${opts}</select></div>
+        ${cellK}${cellS(imp,'imp')}${cellS(conv,'conv')}
+        <div class="status">${status}</div>
+        <button class="memobtn" onclick="event.stopPropagation();openMemo('${a.name}')">📝${mc?` <b>${mc}</b>`:''}</button>
+        <div class="caret">▼</div>
       </div>
-      <div class="camps"><div class="camphead">하위 캠페인 · 현재 기간 / 전기 / 변화율</div>${camps}</div>
+      <div class="camps"><div class="mscroll"><table class="mtable">${thead}${body}</table></div>
+        <div style="font-size:11px;color:#aaa;margin-top:8px;">※ 각 셀: 현재 기간 값 · 전기 대비 변화율</div></div>
     </div>`;
   }).join('');
   document.getElementById('advList').innerHTML=rows;
   document.getElementById('sum').innerHTML=
     `<div class="sumc"><div class="n">${DATA.length}</div><div class="l">관리 광고주</div></div>
-     <div class="sumc"><div class="n ${flags?'warn':''}">${flags}</div><div class="l">⚠ 주의 필요 (기간 하락)</div></div>
+     <div class="sumc"><div class="n ${flags?'warn':''}">${flags}</div><div class="l">⚠ 주의 필요 (KPI 악화)</div></div>
      <div class="sumc"><div class="n">${DATA.reduce((s,a)=>s+a.camps.length,0)}</div><div class="l">총 캠페인</div></div>`;
 }
 
-/* ===== Daily ===== */
+/* 메모 */
+let memoAdv='';
+window.openMemo=n=>{memoAdv=n;document.getElementById('memoAdv').textContent=n;document.getElementById('memoText').value='';renderMemo();document.getElementById('memoModal').classList.remove('hide');};
+window.closeMemo=()=>document.getElementById('memoModal').classList.add('hide');
+window.saveMemo=()=>{const t=document.getElementById('memoText').value.trim();if(!t)return;const d=new Date();
+  const ts=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+  (MEMO[memoAdv]=MEMO[memoAdv]||[]).unshift({ts,text:t});saveMemoLS();document.getElementById('memoText').value='';renderMemo();renderOverview();};
+window.delMemo=i=>{MEMO[memoAdv].splice(i,1);saveMemoLS();renderMemo();renderOverview();};
+function renderMemo(){const list=MEMO[memoAdv]||[];
+  document.getElementById('memoList').innerHTML=list.length?list.map((m,i)=>`<div class="memoitem"><div class="mt"><span>🕒 ${m.ts}</span><span class="del" onclick="delMemo(${i})">삭제</span></div><div>${m.text.replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div></div>`).join(''):'<div class="empty">아직 메모가 없습니다. 위에 작성해 저장하세요.</div>';}
+
+/* 일자별 */
 let chart;
+function dseries(o,m){return DATES.map((_,i)=>{switch(m){case 'imp':case 'clicks':case 'conv':case 'spend':return o[m][i];
+  case 'ctr':return o.imp[i]?o.clicks[i]/o.imp[i]*100:0; case 'cvr':return o.clicks[i]?o.conv[i]/o.clicks[i]*100:0;
+  case 'cpc':return o.clicks[i]?o.spend[i]/o.clicks[i]:0; case 'cpm':return o.imp[i]?o.spend[i]/o.imp[i]*1000:0; case 'cpa':return o.conv[i]?o.spend[i]/o.conv[i]:0;}});}
 function renderDaily(){
-  const ai=+document.getElementById('selAdv').value, m=document.getElementById('selMetric').value, range=+document.getElementById('selRange').value;
-  const a=DATA[ai]; const full=(m==='cvr')?a.clicks.map((cl,i)=>cl?a.conv[i]/a.clicks[i]*100:0):a[m];
-  const s=DAYS-range, labels=DATES.slice(s).map(d=>d.label), series=full.slice(s);
-  const isRate=m==='cvr';
-  const cur=metricVal(a,m,DAYS-7,DAYS-1)*(isRate?100:1), prev=metricVal(a,m,DAYS-14,DAYS-8)*(isRate?100:1), ch=change(cur,prev);
-  const vf=v=>isRate?v.toFixed(2)+'%':fmt(v);
-  const label={imp:'노출수',clicks:'클릭수',conv:'전환수',cvr:'전환율'}[m];
+  const ai=+document.getElementById('selAdv').value,m=document.getElementById('selMetric').value,range=+document.getElementById('selRange').value;
+  const a=DATA[ai],full=dseries(a,m),s=DAYS-range,labels=DATES.slice(s).map(d=>d.label),series=full.slice(s);
+  const isRate=MET[m].t==='rate';
+  const cur=mval(a,m,DAYS-7,DAYS-1),prev=mval(a,m,DAYS-14,DAYS-8),ch=change(cur,prev);
+  const vf=v=>mfmt(m,v),L=MET[m].l,good=MET[m].g;
+  const chGood=ch===null?true:(good==='up'?ch>=0:ch<=0);
   document.getElementById('cmp').innerHTML=
-    `<div class="cmpc"><div class="cl">${label} · 최근 7일 (${DATES[DAYS-7].label}~${DATES[DAYS-1].label})</div><div class="cvv">${vf(cur)}</div></div>
-     <div class="cmpc"><div class="cl">${label} · 직전 7일 (${DATES[DAYS-14].label}~${DATES[DAYS-8].label})</div><div class="cvv" style="color:var(--sub)">${vf(prev)}</div></div>
-     <div class="cmpc"><div class="cl">변화율</div><div class="cvv" style="color:${ch>=0?'var(--ok)':'var(--warn)'}">${ch>=0?'+':''}${ch.toFixed(1)}%</div>
-       <div class="cd" style="color:${ch>=0?'var(--ok)':'var(--warn)'}">${ch>=0?'▲ 상승':'▼ 하락'}</div></div>`;
+    `<div class="cmpc"><div class="cl">${L} · 최근 7일 (${DATES[DAYS-7].label}~${DATES[DAYS-1].label})</div><div class="cvv">${vf(cur)}</div></div>
+     <div class="cmpc"><div class="cl">${L} · 직전 7일 (${DATES[DAYS-14].label}~${DATES[DAYS-8].label})</div><div class="cvv" style="color:var(--sub)">${vf(prev)}</div></div>
+     <div class="cmpc"><div class="cl">변화율</div><div class="cvv" style="color:${chGood?'var(--ok)':'var(--warn)'}">${ch>=0?'+':''}${ch===null?'–':ch.toFixed(1)+'%'}</div><div class="cd" style="color:${chGood?'var(--ok)':'var(--warn)'}">${ch===null?'':(ch>0?'▲':'▼')} ${chGood?'양호':'주의'}</div></div>`;
   const n=series.length;
   if(chart)chart.destroy();
   chart=new Chart(document.getElementById('chart'),{type:'line',
-    data:{labels,datasets:[{label,data:series,borderColor:'#ff5160',backgroundColor:'rgba(255,81,96,.08)',fill:true,tension:.3,
-      pointRadius:series.map((_,i)=>i>=n-7?3:0),pointBackgroundColor:'#ff5160',borderWidth:2.5}]},
-    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${label}: ${isRate?c.parsed.y.toFixed(2)+'%':c.parsed.y.toLocaleString()}`}}},
-      scales:{y:{beginAtZero:!isRate,grid:{color:'#f0f0f0'},ticks:{callback:v=>isRate?v+'%':fmt(v)}},x:{grid:{display:false}}}}});
-  let rows='<tr><th>날짜</th><th>노출</th><th>클릭</th><th>전환</th><th>전환율</th></tr>';
-  for(let i=DAYS-1;i>=DAYS-14;i--){const cvr=a.clicks[i]?(a.conv[i]/a.clicks[i]*100):0;
+    data:{labels,datasets:[{label:L,data:series,borderColor:'#ff5160',backgroundColor:'rgba(255,81,96,.08)',fill:true,tension:.3,pointRadius:series.map((_,i)=>i>=n-7?3:0),pointBackgroundColor:'#ff5160',borderWidth:2.5}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${L}: ${mfmt(m,isRate?c.parsed.y/100:c.parsed.y)}`}}},
+      scales:{y:{beginAtZero:MET[m].t==='cnt',grid:{color:'#f0f0f0'},ticks:{callback:v=>isRate?v+'%':fmt(v)}},x:{grid:{display:false}}}}});
+  let rows='<tr><th>날짜</th><th>노출</th><th>클릭</th><th>CTR</th><th>CVR</th><th>전환</th><th>CPC</th><th>CPA</th></tr>';
+  for(let i=DAYS-1;i>=DAYS-14;i--){const ctr=a.imp[i]?a.clicks[i]/a.imp[i]*100:0,cvr=a.clicks[i]?a.conv[i]/a.clicks[i]*100:0,cpc=a.clicks[i]?a.spend[i]/a.clicks[i]:0,cpa=a.conv[i]?a.spend[i]/a.conv[i]:0;
     rows+=`<tr class="${i>=DAYS-7?'recent':''}"><td>${DATES[i].label}${i>=DAYS-7?' <span style="color:var(--primary);font-weight:800">·최근7</span>':''}</td>
-      <td>${a.imp[i].toLocaleString()}</td><td>${a.clicks[i].toLocaleString()}</td><td>${a.conv[i].toLocaleString()}</td><td>${cvr.toFixed(2)}%</td></tr>`;}
+      <td>${a.imp[i].toLocaleString()}</td><td>${a.clicks[i].toLocaleString()}</td><td>${ctr.toFixed(2)}%</td><td>${cvr.toFixed(2)}%</td><td>${a.conv[i].toLocaleString()}</td><td>${Math.round(cpc).toLocaleString()}원</td><td>${Math.round(cpa).toLocaleString()}원</td></tr>`;}
   document.getElementById('dtable').innerHTML=rows;
 }
 
 /* init */
-const endInput=document.getElementById('endDate');
-endInput.max=DATES[DAYS-1].iso; endInput.min=DATES[59].iso; endInput.value=DATES[DAYS-1].iso;
-endInput.onchange=()=>{const i=DATES.findIndex(d=>d.iso===endInput.value); OV.endIdx=i<0?DAYS-1:i; renderOverview();};
+['cs','ce','ps','pe'].forEach(id=>{const el=document.getElementById(id);el.min=DATES[0].iso;el.max=DATES[DAYS-1].iso;el.onchange=renderOverview;});
+setInputs(DAYS-7,DAYS-1,DAYS-14,DAYS-8);
 document.querySelectorAll('#unitSeg button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('#unitSeg button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
-  OV.W=+b.dataset.w; renderOverview();});
-document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{
-  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active')); t.classList.add('active');
-  const id=t.dataset.tab;
-  document.getElementById('overview').classList.toggle('hide',id!=='overview');
-  document.getElementById('daily').classList.toggle('hide',id!=='daily');
-  if(id==='daily')renderDaily();});
+  document.querySelectorAll('#unitSeg button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const W=+b.dataset.w;const E=DAYS-1;
+  if(W===0)setInputs(0,E,null,null);
+  else if(W===1)setInputs(E,E,E-1,E-1);
+  else setInputs(E-W+1,E,E-2*W+1,E-W);
+  renderOverview();});
+document.getElementById('clrCmp').onclick=()=>{document.getElementById('ps').value='';document.getElementById('pe').value='';renderOverview();};
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  const id=t.dataset.tab;document.getElementById('overview').classList.toggle('hide',id!=='overview');document.getElementById('daily').classList.toggle('hide',id!=='daily');if(id==='daily')renderDaily();});
 document.getElementById('selAdv').innerHTML=DATA.map((a,i)=>`<option value="${i}">${a.name}</option>`).join('');
+document.getElementById('selMetric').innerHTML=MKEYS.map(m=>`<option value="${m}" ${m==='cvr'?'selected':''}>${MET[m].l}</option>`).join('');
 ['selAdv','selMetric','selRange'].forEach(id=>document.getElementById(id).onchange=renderDaily);
+document.getElementById('memoModal').onclick=e=>{if(e.target.id==='memoModal')closeMemo();};
 renderOverview();
 </script>
 </body>
