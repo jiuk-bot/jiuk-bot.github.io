@@ -349,6 +349,16 @@
   .b5 .b5l{ font-size:10.5px; color:var(--sub); margin-top:7px; } .b5.lo .b5l{ color:var(--warn); font-weight:700; }
   .mini{ background:#fafbfc; border:1px solid var(--line); border-radius:12px; padding:15px; } .mini .mt2{ font-size:13px; font-weight:800; color:var(--primary-dark); margin-bottom:6px; }
 
+  /* ── 부진 진단 카드 ── */
+  .dxlist{ display:flex; flex-direction:column; gap:10px; margin-top:14px; }
+  .dxc{ border:1px solid #f0d8d0; border-radius:12px; padding:12px 14px; background:#fffdfc; }
+  .dxc-top{ display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:9px; }
+  .dx-sym{ font-size:12.5px; font-weight:800; color:#555; background:#fff2ee; border-radius:7px; padding:5px 11px; white-space:nowrap; }
+  .dx-sym .dn{ color:var(--warn); } .dx-sym .dnu{ color:var(--warn); }
+  .dx-dg{ font-size:11.5px; color:var(--sub); font-weight:700; } .dx-dg b{ color:#8a6d33; }
+  .dx-rx{ font-size:13.5px; font-weight:800; color:var(--primary-dark); display:flex; align-items:center; gap:7px; }
+  .dx-rx .rxar{ color:var(--primary); font-size:15px; }
+
   /* ── 데이터 수집 → 대시보드 ── */
   .dsrc{ display:grid; grid-template-columns:1.1fr auto 1fr; gap:16px; align-items:center; }
   .dsrc .din{ display:flex; flex-direction:column; gap:9px; }
@@ -529,22 +539,33 @@
           <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 단계적 증액</span><span style="font-size:22px;">🟢</span></div>
           <p class="cd" style="margin-top:4px;">무작정 늘리지 않습니다. <b>리스크 낮은 순서</b>로 증액하고, 구좌의 '천장 신호'를 보고 다음 단계로 올립니다.</p>
           <div class="ladder">
-            <div class="rung"><span class="rn">1</span><div><div class="rt"><b>기존 구좌 점진 증액</b> <span style="color:#2e9e52;font-size:11px;">· 1순위(리스크 최저)</span></div><div class="rc">효율 유지되는 선까지 일예산을 <b>+20~30%씩 점진</b> 증액 · 한 번에 급증 금지(ML 학습 리셋 방지)</div></div></div>
-            <div class="rung"><span class="rn">2</span><div><div class="rt"><b>타겟팅 확장 · 소재 갱신</b></div><div class="rc">증액 중 효율이 꺾이면(CPA↑·CTR↓·CPC↑ 등 천장 신호) 곧바로 신규 구좌 X — <b>먼저 타겟팅을 확장하거나 소재를 갱신</b>해 도달 풀을 넓힘</div></div></div>
-            <div class="rung"><span class="rn">3</span><div><div class="rt"><b>신규 구좌·지면 추가</b></div><div class="rc">타겟팅·소재로도 안 풀리고 <b>타겟 자체가 한정(소진)</b>이면 → 새 지면을 추가해 도달 풀을 확장</div></div></div>
-            <div class="rung"><span class="rn">4</span><div><div class="rt"><b>포맷 업셀 · 시즌 집중</b></div><div class="rc">이미지→전면 동영상 상위 포맷 / 성수기·프로모션 타이밍에 일시 대폭 증액</div></div></div>
+            <div class="rung"><span class="rn">1</span><div><div class="rt">💹 <b>기존 구좌 점진 증액</b> <span style="color:#2e9e52;font-size:11px;">· 1순위(리스크 최저)</span></div><div class="rc">효율 유지되는 선까지 일예산을 <b>+20~30%씩 점진</b> 증액 · 한 번에 급증 금지(ML 학습 리셋 방지)</div></div></div>
+            <div class="rung"><span class="rn">2</span><div><div class="rt">🎯 <b>타겟팅 확장 · 소재 갱신</b></div><div class="rc">증액 중 효율이 꺾이면(CPA↑·CTR↓·CPC↑ 등 천장 신호) 곧바로 신규 구좌 X — <b>먼저 타겟팅을 확장하거나 소재를 갱신</b>해 도달 풀을 넓힘</div></div></div>
+            <div class="rung"><span class="rn">3</span><div><div class="rt">➕ <b>신규 구좌·지면 추가</b></div><div class="rc">타겟팅·소재로도 안 풀리고 <b>타겟 자체가 한정(소진)</b>이면 → 새 지면을 추가해 도달 풀을 확장</div></div></div>
+            <div class="rung"><span class="rn">4</span><div><div class="rt">🎬 <b>포맷 업셀 · 시즌 집중</b></div><div class="rc">이미지→전면 동영상 상위 포맷 / 성수기·프로모션 타이밍에 일시 대폭 증액</div></div></div>
           </div>
         </div>
         <div class="card" style="border-top:3px solid var(--primary);">
           <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 원인별 처방</span><span style="font-size:22px;">🔴</span></div>
           <p class="cd" style="margin-top:4px;">"안 난다"로 끝내지 않고 <b>CPA 상승을 지표로 분해</b>해 원인을 특정하고, 원인에 맞게 처방합니다.</p>
-          <table class="dmx">
-            <tr><th>증상 (지표)</th><th>진단</th><th>처방</th></tr>
-            <tr><td class="sym">CTR↓ · CVR 유지</td><td class="dg">소재 피로도</td><td class="rx">소재 교체·로테이션</td></tr>
-            <tr><td class="sym">CTR 유지 · CVR↓</td><td class="dg">타겟 소진 / LP 이슈</td><td class="rx">오디언스 확장 · LP 개선</td></tr>
-            <tr><td class="sym">CPM↑ 단독</td><td class="dg">구좌 경쟁·과열</td><td class="rx">입찰 조정 · 구좌 변경</td></tr>
-            <tr><td class="sym">노출↓ · 소진율↓</td><td class="dg">구좌 천장 / 학습</td><td class="rx">예산 재배분 → 타 구좌 라이브</td></tr>
-          </table>
+          <div class="dxlist">
+            <div class="dxc">
+              <div class="dxc-top"><span class="dx-sym">CTR <span class="dn">↓</span> · CVR 유지</span><span class="dx-dg">진단 · <b>소재 피로도</b></span></div>
+              <div class="dx-rx"><span class="rxar">→</span> 소재 교체 · 로테이션</div>
+            </div>
+            <div class="dxc">
+              <div class="dxc-top"><span class="dx-sym">CTR 유지 · CVR <span class="dn">↓</span></span><span class="dx-dg">진단 · <b>타겟 소진 / LP 이슈</b></span></div>
+              <div class="dx-rx"><span class="rxar">→</span> 오디언스 확장 · LP 개선</div>
+            </div>
+            <div class="dxc">
+              <div class="dxc-top"><span class="dx-sym">CPM <span class="dnu">↑</span> 단독</span><span class="dx-dg">진단 · <b>구좌 경쟁·과열</b></span></div>
+              <div class="dx-rx"><span class="rxar">→</span> 입찰 조정 · 구좌 변경</div>
+            </div>
+            <div class="dxc">
+              <div class="dxc-top"><span class="dx-sym">노출 <span class="dn">↓</span> · 소진율 <span class="dn">↓</span></span><span class="dx-dg">진단 · <b>구좌 천장 / 학습</b></span></div>
+              <div class="dx-rx"><span class="rxar">→</span> 예산 재배분 → 타 구좌 라이브</div>
+            </div>
+          </div>
         </div>
       </div>
 
