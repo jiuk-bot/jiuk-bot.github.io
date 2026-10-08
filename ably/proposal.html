@@ -292,6 +292,15 @@
   .reco-banner .rb-txt{ font-size:14.5px; color:#444; line-height:1.6; }
   .reco-banner .rb-txt b{ color:var(--primary-dark); }
 
+  /* ── 플라이휠 ── */
+  .flywheel{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; background:#fff; border:1px solid var(--line);
+             border-radius:14px; padding:16px 18px; box-shadow:var(--shadow-sm); }
+  .flywheel .fw{ background:var(--soft); color:var(--primary-dark); font-weight:800; font-size:13.5px; padding:8px 14px; border-radius:999px; }
+  .flywheel .fwar{ color:var(--primary); font-weight:800; font-size:15px; }
+  .flywheel .fwloop{ margin-left:auto; font-size:12px; font-weight:700; color:var(--sub); background:#f4f5f7; border-radius:999px; padding:6px 12px; }
+  .amsub{ font-size:17px; font-weight:800; margin:28px 0 12px; padding-left:12px; position:relative; }
+  .amsub::before{ content:''; position:absolute; left:0; top:3px; width:5px; height:16px; background:var(--primary); border-radius:2px; }
+
   /* ── 측정 4스텝 플로우 ── */
   .steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
   .step4{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px 16px; text-align:center; position:relative; }
@@ -441,20 +450,54 @@
   <section style="background:#fafbfc;">
     <div class="pad"><div class="wrap">
       <div class="eyebrow"><span class="no" style="width:auto;padding:0 9px;">AM</span> 광고주 운영 전략</div>
-      <h2>제안에서 끝내지 않고, <span class="hl">함께 키워 오래 갑니다.</span></h2>
-      <p class="lead">신규 광고주 발굴 → 제안·집행 → 성과로 증액 설득 → 장기 리텐션. <b>광고주의 매출이 커져야 광고비도 커진다</b>는 관점으로 계정을 운영합니다.</p>
+      <h2>제안에서 끝내지 않고, <span class="hl">성과로 증액하고 오래 갑니다.</span></h2>
+      <p class="lead"><b>광고주의 매출이 커져야 광고비도 커진다</b> — 성과를 증명해 신뢰를 쌓고, 그 신뢰가 증액·장기 유지로 돌아오는 '플라이휠'로 계정을 운영합니다.</p>
 
-      <div class="steps">
-        <div class="step4"><div class="sn">STEP 1</div><div class="si">🔍</div><div class="st">발굴 · 제안</div><div class="sd">광고주 비즈니스·니즈를 진단하고 <b>데이터 기반 맞춤 전략</b>을 제안</div></div>
-        <div class="step4"><div class="sn">STEP 2</div><div class="si">🚀</div><div class="st">집행</div><div class="sd">리스크 낮은 초기 집행으로 <b>빠르게 성과를 증명</b>(CPI·결제 기준선 확보)</div></div>
-        <div class="step4"><div class="sn">STEP 3</div><div class="si">📈</div><div class="st">증액</div><div class="sd">성과(ROAS·결제) 데이터로 <b>증액을 설득</b>해 예산을 확장</div></div>
-        <div class="step4"><div class="sn">STEP 4</div><div class="si">🤝</div><div class="st">유지 · 확대</div><div class="sd">정기 리포팅·지면 최적화·<b>신규 니즈 발굴</b>로 장기 파트너십</div></div>
+      <div class="flywheel">
+        <span class="fw">제안 · 집행</span><span class="fwar">→</span>
+        <span class="fw">성과 증명</span><span class="fwar">→</span>
+        <span class="fw">신뢰 → 증액</span><span class="fwar">→</span>
+        <span class="fw">데이터 · 최적화</span>
+        <span class="fwloop">↻ 반복 — 광고주 매출·LTV ↑</span>
       </div>
 
-      <div class="card soft" style="margin-top:16px;display:flex;gap:14px;align-items:flex-start;">
+      <!-- 증액: 두 갈래 -->
+      <div class="amsub">증액 — 잘 될 땐 넓히고, 안 될 땐 살린다</div>
+      <div class="grid g2">
+        <div class="card" style="border-top:3px solid #2e9e52;">
+          <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 확장 업셀</span><span style="font-size:22px;">🟢</span></div>
+          <p class="cd" style="margin-top:4px;">검증된 효율을 근거로 <b>아직 안 쓰는 지면(구좌)·신규 포맷을 지속 제안</b> → 성과를 더 끌어올리며 광고비를 증액. <b>"이 지면도 효과 볼 겁니다"를 데이터로</b> 설득합니다.</p>
+        </div>
+        <div class="card" style="border-top:3px solid var(--primary);">
+          <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 데이터 회복</span><span style="font-size:22px;">🔴</span></div>
+          <p class="cd" style="margin-top:4px;">"추천 지면 써봤는데 성과가 안 난다"는 순간이 <b>이탈 직전</b>. 광고 데이터를 분석해 처방합니다:</p>
+          <ul class="ck" style="margin-top:8px;">
+            <li>지면(구좌)에 문제 → <b>구좌 변경 제안</b></li>
+            <li>데이터상 지면은 정상 → <b>타겟팅·소재 변경</b>을 데이터로 설득</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 유지: AI 대시보드 선제 -->
+      <div class="amsub">유지 — AI 대시보드로 '먼저' 움직인다</div>
+      <p class="cd" style="margin-bottom:14px;">광고주가 직접 운영하거나 대행사가 운영하면 내가 운영에 깊이 개입하기 어렵습니다. 그래서 <b>광고주 데이터를 내가 직접 만든 <a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="color:var(--primary);font-weight:700;">AI 성과 대시보드</a>에 연결</b>해, 운영권이 없어도 데이터로 먼저 움직입니다.</p>
+      <div class="steps">
+        <div class="step4"><div class="sn">01</div><div class="si">🔗</div><div class="st">데이터 연결</div><div class="sd">광고주 계정을 AI 대시보드에 연동</div></div>
+        <div class="step4"><div class="sn">02</div><div class="si">🚨</div><div class="st">하락 감지</div><div class="sd">7일간 목표 KPI 하락세 광고주 자동 감지</div></div>
+        <div class="step4"><div class="sn">03</div><div class="si">🔍</div><div class="st">원인 분석</div><div class="sd">해당 광고주 데이터를 분석해 원인 진단</div></div>
+        <div class="step4"><div class="sn">04</div><div class="si">📬</div><div class="st">선제 제안</div><div class="sd">주간·월간 단위로 개선안을 먼저 제안</div></div>
+      </div>
+      <div class="advchips" style="margin-top:12px;">
+        <span class="advchip">A/B 테스트</span>
+        <span class="advchip">소재 교체</span>
+        <span class="advchip">구좌 확장</span>
+        <span class="advchip">예산 재배분 (일시 축소 → 다른 구좌 라이브)</span>
+      </div>
+
+      <div class="card soft" style="margin-top:18px;display:flex;gap:14px;align-items:flex-start;">
         <div style="font-size:24px;">✅</div>
         <div style="font-size:14px;color:#444;line-height:1.65;">
-          <b>실제 적용 —</b> 글로벌랩스에서 <b>'리드 단가가 아닌 지역 CAC'</b>라는 관점을 데이터로 광고주에게 설득해 예산 증액을 이끌어 <b>취급고 9.4배</b>를 만들었고, KB국민은행 캠페인에서는 <b>신규 매체(콴다)를 직접 발굴·제안</b>해 광고주의 도달 니즈를 충족시켰습니다. 같은 방식으로 강남언니의 결제 성과를 키워 예산을 확장하겠습니다.
+          <b>실제 적용 —</b> 글로벌랩스에서 데이터로 광고주를 설득하고 매체를 확장해 <b>취급고 9.4배</b>(예산 확장 사이클 확보)를 만들었습니다. 이 증액·유지 엔진을 직접 구축한 <b>AI 성과 대시보드</b>로 돌립니다.
         </div>
       </div>
     </div></div>
