@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · 상세 케이스 — 데이터로 광고주를 설득한 이야기</title>
+<meta name="description" content="글로벌랩스 치과 임플란트 '양→질' 전환·매체 확장, 박스풀 셀프스토리지 리드 스코어링·현장 전환. 광고주를 데이터로 설득한 2가지 BD 케이스." />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  :root{ --primary:#ff5160; --primary-dark:#db3b57; --soft:#fff2ea; --ink:#1f1f1f; --sub:#777;
+         --line:#e5e7eb; --line2:#ddd; --shadow:0 4px 48px rgba(0,0,0,.08); --shadow-sm:0 2px 16px rgba(0,0,0,.06); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Pretendard','Apple SD Gothic Neo',sans-serif; color:var(--ink); background:#f4f5f7;
+        line-height:1.6; word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased; }
+  a{color:inherit;text-decoration:none;}
+  .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:960px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .nav-logo{ font-weight:800; font-size:17px; } .nav-logo .dot{ color:var(--primary); }
+  .nav-links{ display:flex; gap:4px; } .nav-links a{ color:var(--sub); font-weight:600; font-size:14px; padding:8px 11px; border-radius:10px; }
+  .nav-links a:hover{ background:#f4f5f7; color:var(--ink); } .nav-links a.active{ color:var(--primary); }
+  .doc{ max-width:960px; margin:0 auto; } section{ background:#fff; }
+  .pad{ padding:60px 56px; } .wrap{ max-width:780px; margin:0 auto; }
+  .hero{ background:linear-gradient(135deg,#ff5160,#ff7a5c); color:#fff; }
+  .hero h1{ font-size:38px; font-weight:800; line-height:1.25; letter-spacing:-1px; margin-bottom:14px; }
+  .hero p{ font-size:17px; opacity:.95; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:800; color:var(--primary); margin-bottom:14px; }
+  .eyebrow .cno{ background:var(--primary); color:#fff; padding:4px 11px; border-radius:8px; font-size:12px; }
+  h2{ font-size:28px; font-weight:800; line-height:1.3; letter-spacing:-.5px; margin-bottom:12px; }
+  h2 .hl{ color:var(--primary); }
+  .lead{ font-size:16px; color:#555; margin-bottom:26px; }
+  h3{ font-size:17px; font-weight:800; margin:26px 0 12px; padding-left:12px; position:relative; }
+  h3::before{ content:''; position:absolute; left:0; top:3px; width:5px; height:16px; background:var(--primary); border-radius:2px; }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; box-shadow:var(--shadow-sm); }
+  .card.soft{ background:var(--soft); border-color:transparent; }
+  .grid{ display:grid; gap:14px; } .g2{ grid-template-columns:1fr 1fr; } .g3{ grid-template-columns:1fr 1fr 1fr; }
+  .cd{ font-size:14px; color:#555; line-height:1.6; } .cd b{ color:var(--ink); }
+
+  /* 문제 카드 */
+  .prob{ background:#fff7f5; border:1px solid #f6d5cc; border-radius:14px; padding:18px 20px; font-size:14.5px; color:#8a4b3a; line-height:1.65; }
+  .prob b{ color:var(--primary-dark); }
+
+  /* 매체 확장 플로우 */
+  .mflow{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; align-items:stretch; }
+  .mstep{ border:1px solid var(--line); border-radius:14px; padding:16px 12px; text-align:center; background:#fff; position:relative; }
+  .mstep .mnum{ font-size:11px; font-weight:800; color:var(--primary); }
+  .mstep .mmed{ font-size:14px; font-weight:800; margin:6px 0 10px; color:var(--ink); }
+  .mstep .mlead{ font-size:22px; font-weight:800; color:var(--primary); line-height:1; }
+  .mstep .mlead span{ font-size:12px; color:var(--sub); font-weight:600; }
+  .mstep .mcpa{ font-size:11.5px; color:#555; margin-top:7px; background:#f4f5f7; border-radius:999px; padding:3px 8px; display:inline-block; }
+  .mstep .mnote{ font-size:11px; color:var(--sub); margin-top:8px; line-height:1.4; }
+
+  /* 지역 내원율 바 */
+  .vbar{ display:flex; align-items:flex-end; gap:30px; justify-content:center; padding:10px 0; height:190px; }
+  .vb{ display:flex; flex-direction:column; align-items:center; justify-content:flex-end; }
+  .vb .vv{ font-size:22px; font-weight:800; margin-bottom:7px; }
+  .vb .vcol{ width:68px; border-radius:10px 10px 0 0; }
+  .vb.hi .vv{ color:var(--primary); } .vb.hi .vcol{ background:linear-gradient(180deg,#ff5160,#e8414f); }
+  .vb.lo .vv{ color:#aaa; } .vb.lo .vcol{ background:linear-gradient(180deg,#d9d9d9,#eee); }
+  .vb .vlb{ font-size:13px; color:#555; margin-top:9px; font-weight:700; }
+
+  /* before→after */
+  .ba{ display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:center; }
+  .bacard{ border:1px solid var(--line); border-radius:14px; padding:18px; text-align:center; }
+  .bacard.before{ background:#fafafa; } .bacard.after{ background:var(--soft); border-color:transparent; }
+  .bacard .bt{ font-size:12px; font-weight:800; color:var(--sub); margin-bottom:8px; }
+  .bacard.after .bt{ color:var(--primary-dark); }
+  .bacard .bv{ font-size:16px; font-weight:800; color:var(--ink); line-height:1.4; }
+  .ba .arrow{ font-size:24px; color:var(--primary); font-weight:800; }
+
+  .bigstat{ display:flex; gap:16px; flex-wrap:wrap; }
+  .bigstat .bs{ flex:1; min-width:150px; background:var(--soft); border-radius:14px; padding:20px; text-align:center; }
+  .bigstat .bs .n{ font-size:30px; font-weight:800; color:var(--primary); line-height:1; }
+  .bigstat .bs .c{ font-size:12.5px; color:#555; font-weight:600; margin-top:6px; }
+
+  /* 리드 스코어링 */
+  .leads{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .lead-c{ border-radius:14px; padding:20px; }
+  .lead-c.top{ background:var(--soft); border:2px solid var(--primary); }
+  .lead-c.low{ background:#fafafa; border:1px solid var(--line); }
+  .lead-c .tier{ font-size:12px; font-weight:800; margin-bottom:8px; }
+  .lead-c.top .tier{ color:var(--primary-dark); } .lead-c.low .tier{ color:var(--sub); }
+  .lead-c h4{ font-size:15px; margin-bottom:6px; } .lead-c p{ font-size:13px; color:#555; line-height:1.55; }
+
+  ul.ck{ list-style:none; } ul.ck li{ font-size:14px; color:#444; padding-left:24px; position:relative; margin:9px 0; line-height:1.55; }
+  ul.ck li::before{ content:'✓'; position:absolute; left:0; color:var(--primary); font-weight:800; }
+  ul.ck li b{ color:var(--ink); }
+  .note{ font-size:12px; color:var(--sub); margin-top:14px; }
+  .insight{ background:#1f1f1f; color:#fff; border-radius:16px; padding:22px 24px; margin-top:20px; }
+  .insight .il{ font-size:12px; font-weight:800; color:#ff9a86; margin-bottom:7px; }
+  .insight p{ font-size:15px; line-height:1.6; } .insight p b{ color:#ff9a86; }
+  footer{ background:#fafafa; padding:30px 56px; text-align:center; font-size:12px; color:var(--sub); border-top:1px solid var(--line); }
+
+  @media (max-width:720px){
+    .pad{ padding:40px 22px; } .hero h1{ font-size:28px; } h2{ font-size:22px; }
+    .mflow,.g2,.g3,.leads{ grid-template-columns:1fr; } .ba{ grid-template-columns:1fr; } .ba .arrow{ transform:rotate(90deg); }
+    .nav-links a:not(.active){ display:none; }
+  }
+  @media print{ @page{ size:A4; margin:0; } .nav{ display:none; } section{ page-break-inside:avoid; } *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">JIUK<span class="dot">.</span>YOON</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="cases.html" class="active">상세 케이스</a>
+      <a href="resume.html">이력서</a>
+      <a href="proposal.html">제안서</a>
+    </div>
+  </div>
+</nav>
+
+<div class="doc">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="pad"><div class="wrap">
+      <div style="font-size:14px;font-weight:700;opacity:.9;margin-bottom:16px;">PORTFOLIO · 상세 케이스</div>
+      <h1>데이터로 광고주를<br>설득한 2가지 이야기.</h1>
+      <p>"리드를 더 많이"가 아니라 "왜·어떻게"를 데이터로 풀어 광고주의 생각을 바꾸고, 매체를 확장하고, 전환 구조를 재설계한 실제 과정입니다.</p>
+    </div></div>
+  </section>
+
+  <!-- ══════ CASE 1 글로벌랩스 ══════ -->
+  <section>
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="cno">CASE 1</span> 글로벌랩스 · 치과 임플란트</div>
+      <h2>'리드 수량'을 믿던 광고주를, <span class="hl">'질(ROAS)'로 전환</span>시키다.</h2>
+      <p class="lead">광고주는 "DB를 더 많이"를 원했지만, 진짜 매출은 '내원으로 이어지는 질 좋은 리드'에서 나왔습니다. 매체를 확장해 볼륨을 키우면서도, 데이터로 '양→질' 관점을 설득한 과정입니다.</p>
+
+      <h3>① 과제 — 볼륨과 효율의 충돌</h3>
+      <div class="prob">
+        광고주는 <b>일 리드 300개+</b>를 원했지만, 수익을 내려면 <b>내부 목표 CPA(6만원 이내)</b>를 지켜야 했습니다.
+        당시 <b>구글애즈 단독</b> 운영으로는 일 <b>70개</b>를 넘기는 순간 CPA가 목표치에 도달 — 볼륨과 효율이 동시에 벽에 부딪혔습니다.
+      </div>
+
+      <h3>② 실행 — 단계적 매체 확장</h3>
+      <div class="mflow">
+        <div class="mstep"><div class="mnum">START</div><div class="mmed">구글애즈 단독</div><div class="mlead">70<span>개/일</span></div><div class="mcpa">CPA 6만 한계</div></div>
+        <div class="mstep"><div class="mnum">+ META</div><div class="mmed">메타 확장</div><div class="mlead">150<span>개/일</span></div><div class="mcpa">CPA 4.5만</div><div class="mnote">단, 내원율 메타 2% &lt; 구글 4%</div></div>
+        <div class="mstep"><div class="mnum">+ 구글 2계정</div><div class="mmed">계정 분리</div><div class="mlead">200<span>개/일</span></div><div class="mcpa">자가잠식 최소화</div><div class="mnote">연령 타겟 / 관심사 타겟 분리</div></div>
+        <div class="mstep"><div class="mnum">+ TikTok</div><div class="mmed">틱톡 확장</div><div class="mlead">250<span>개/일</span></div><div class="mcpa">CPA 4만대</div><div class="mnote">KB서 검증한 시니어(45+) 볼륨</div></div>
+      </div>
+      <p class="note">· 구글 2계정을 '연령 타겟 / 관심사 타겟'으로 나눠 계정 간 경쟁(자가잠식)을 최소화 → 광고주가 원한 구글 80 : 메타 20 비율을 유지하며 볼륨 확대.</p>
+
+      <h3>③ 전환점 — '양'이 아니라 '질'</h3>
+      <div class="grid g2" style="align-items:center;">
+        <div>
+          <p class="cd" style="margin-bottom:12px;">지역·매체별 <b>내원율·ROAS를 통계화</b>하자, <b>치과와 가까운 지역일수록 내원율이 압도적으로 높았습니다.</b> 수량만 늘리는 건 비효율 — 고효율 지역에 집중하는 게 답이었습니다.</p>
+          <ul class="ck">
+            <li>치과 인근 = 내원율↑ → <b>지역에 따라 최대 15배 격차</b></li>
+            <li>저효율 매체(메타 ROAS 120%)는 <b>OFF</b></li>
+          </ul>
+        </div>
+        <div class="card">
+          <div style="font-size:13px;font-weight:800;color:#555;margin-bottom:6px;text-align:center;">지역별 내원율</div>
+          <div class="vbar">
+            <div class="vb hi"><div class="vv">15%</div><div class="vcol" style="height:150px;"></div><div class="vlb">경기남부</div></div>
+            <div class="vb lo"><div class="vv">1%</div><div class="vcol" style="height:12px;"></div><div class="vlb">경북</div></div>
+          </div>
+        </div>
+      </div>
+
+      <h3>④ 설득 — 관점 전환 + 정산 구조 재설계</h3>
+      <div class="ba" style="margin-bottom:16px;">
+        <div class="bacard before"><div class="bt">기존 정산</div><div class="bv">DB당 정산<br><span style="font-size:12px;font-weight:600;color:#999;">→ '수량' 압박 구조</span></div></div>
+        <div class="arrow">→</div>
+        <div class="bacard after"><div class="bt">전환 후</div><div class="bv">CPA 투명 공개 +<br>광고비 커미션<br><span style="font-size:12px;font-weight:600;color:var(--primary-dark);">→ '질(ROAS)'에 정렬</span></div></div>
+      </div>
+      <p class="cd">고효율 지역에 집중하면 CPA가 다소 올라도 ROAS는 더 좋아진다는 <b>예측 데이터로 광고주를 설득</b>했고, 수량 중심의 'DB당 정산'을 <b>성과(ROAS)에 정렬되는 커미션 구조</b>로 함께 바꿨습니다.</p>
+
+      <h3>⑤ 결과</h3>
+      <div class="bigstat">
+        <div class="bs"><div class="n">150%→300%+</div><div class="c">월평균 ROAS</div></div>
+        <div class="bs"><div class="n">1 → 4개</div><div class="c">운영 매체 확장</div></div>
+        <div class="bs"><div class="n">9.4배</div><div class="c">취급고 (0.6→5.5억)</div></div>
+      </div>
+      <div class="insight">
+        <div class="il">INSIGHT</div>
+        <p>광고주는 '리드 수량 = 매출'이라 믿었지만, 실제 매출은 <b>지역·매체별 내원율·ROAS</b>에서 나왔습니다. 숫자로 관점을 바꾸면, 광고주는 <b>스스로 '질 중심'으로 예산을 재배분</b>합니다.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ══════ CASE 2 박스풀 ══════ -->
+  <section style="background:#fafbfc;">
+    <div class="pad"><div class="wrap">
+      <div class="eyebrow"><span class="cno">CASE 2</span> 박스풀 · 셀프스토리지 B2B 세일즈</div>
+      <h2>'참석자 수'가 아니라, <span class="hl">'전환 구조'를 바꾸다.</span></h2>
+      <p class="lead">리드마다 중요도를 평가해 역량을 집중하고, "정말 되나?"라는 공통 불안을 현장 체험으로 해소하는 세일즈 구조로 재설계한 과정입니다.</p>
+
+      <h3>① 리드 스코어링 — 어떤 리드가 계약이 되는가</h3>
+      <p class="cd" style="margin-bottom:14px;">1차 콜에서 <b>임대인/임차 의향</b>만 구분해도 최종 계약율이 <b>10배</b> 차이 났습니다. 셀프스토리지는 공간임대업이라, 손익 구조상 잘 맞는 리드가 정해져 있었습니다.</p>
+      <div class="leads">
+        <div class="lead-c top">
+          <div class="tier">★ 최우선 리드 (계약율 高)</div>
+          <h4>임대인 + 장기 공실 상가</h4>
+          <p>상가 보유 + 6개월 이상 공실 → 공간을 놀리느니 셀프스토리지로 수익화하려는 니즈가 가장 강함</p>
+        </div>
+        <div class="lead-c low">
+          <div class="tier">낮은 우선순위</div>
+          <h4>임차 고려 (신규 임대)</h4>
+          <p>임대료 부담이 커 손익분기 리스크 ↑ — 전환율이 현저히 낮음</p>
+        </div>
+      </div>
+      <p class="note">· 손익 구조: 락커 점유율 <b>50%+ 손익분기</b>, <b>70%+면 순수익</b> → 임대료 부담 없는 '공실 상가 임대인'이 비즈니스와 가장 핏.</p>
+
+      <h3>② 페인포인트 → 가설 → 피벗</h3>
+      <div class="grid g3">
+        <div class="card"><div style="font-size:22px;">❓</div><div style="font-weight:800;margin:8px 0 5px;">페인포인트</div><div class="cd">국내에 생소한 짐 보관 서비스 — 모든 리드의 공통 불안: <b>"정말 되나? 수익률은?"</b></div></div>
+        <div class="card"><div style="font-size:22px;">💡</div><div style="font-weight:800;margin:8px 0 5px;">가설</div><div class="cd">통화보다 <b>본사 1층 직영점의 실물·실이용 고객</b>을 직접 보면 신뢰가 오른다 → 대면이 전환을 만든다</div></div>
+        <div class="card soft"><div style="font-size:22px;">🔄</div><div style="font-weight:800;margin:8px 0 5px;">피벗</div><div class="cd">월 1회 설명회(모객 5명 미만·일정 한계) → <b>상시 1:1 맞춤 현장 방문</b>으로 전환</div></div>
+      </div>
+
+      <h3>③ 결과 — 전환 구조를 바꾸니 전환율이 뛰었다</h3>
+      <div class="ba">
+        <div class="bacard before"><div class="bt">기존 (비대면 중심)</div><div class="bv">계약 500 : 1<br><span style="font-size:12px;font-weight:600;color:#999;">1차 콜 응답 리드 기준</span></div></div>
+        <div class="arrow">→</div>
+        <div class="bacard after"><div class="bt">재설계 후 (상시 1:1 현장)</div><div class="bv">계약 100 : 1<br><span style="font-size:12px;font-weight:600;color:var(--primary-dark);">약 5배 개선 · 실제 계약 성사</span></div></div>
+      </div>
+      <div class="insight">
+        <div class="il">INSIGHT</div>
+        <p>세일즈가 막힐 때 답은 '리드를 더 모으기'가 아니라 <b>'전환되는 구조로 바꾸기'</b>였습니다. 고객의 진짜 불안(신뢰)을 짚고, 그걸 해소하는 접점(현장 체험)을 만드는 게 전환율을 바꿉니다.</p>
+      </div>
+    </div></div>
+  </section>
+
+  <footer>
+    <div>© 2026 윤지욱 (JIUK.YOON) · 상세 케이스</div>
+    <div style="margin-top:8px;"><a href="resume.html" style="color:var(--primary);font-weight:700;">이력서</a> · <a href="proposal.html" style="color:var(--primary);font-weight:700;">샘플 제안서</a> · <a href="index.html" style="color:var(--primary);font-weight:700;">홈</a></div>
+  </footer>
+
+</div>
+</body>
+</html>
