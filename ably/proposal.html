@@ -334,6 +334,17 @@
   .sdot{ width:13px; height:13px; border-radius:50%; display:inline-block; }
   .sdot.g{ background:#2e9e52; box-shadow:0 0 0 4px rgba(46,158,82,.16); }
   .sdot.r{ background:var(--primary); box-shadow:0 0 0 4px rgba(255,81,96,.16); }
+
+  /* ── 증액 가로 스텝퍼 (카드형) ── */
+  .estep{ display:flex; align-items:stretch; gap:6px; margin-top:18px; flex-wrap:wrap; }
+  .estepc{ flex:1; min-width:132px; background:#f6fbf7; border:1px solid #dcede1; border-radius:16px; padding:20px 14px 18px; text-align:center; }
+  .estepc .en{ font-size:10.5px; font-weight:800; color:#8aab96; letter-spacing:1.2px; }
+  .estepc .enum{ width:30px; height:30px; margin:8px auto 0; border-radius:50%; background:#39a862; color:#fff; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .estepc .ett{ font-size:15px; font-weight:800; color:#20262e; margin:11px 0 12px; letter-spacing:-.3px; }
+  .estepc .ech{ font-size:11.5px; font-weight:800; color:#2e7d4f; background:#fff; border:1px solid #cfe9d6; border-radius:999px; padding:6px 11px; display:inline-block; }
+  .earr{ align-self:center; color:#8fc9a4; font-weight:800; font-size:18px; }
+  .estep-note{ margin-top:14px; font-size:12px; color:#6a7a70; background:#f3faf5; border-radius:10px; padding:11px 14px; display:flex; align-items:center; gap:8px; } .estep-note b{ color:#2e7d4f; }
+  @media (max-width:720px){ .earr{ transform:rotate(90deg); margin:2px auto; } }
   /* ── 부진 진단 매트릭스 ── */
   .dmx{ width:100%; border-collapse:collapse; font-size:12.5px; margin-top:14px; border:1px solid #f0d8d0; border-radius:10px; overflow:hidden; }
   .dmx th,.dmx td{ padding:9px 10px; text-align:left; border-bottom:1px solid #f4e2dc; }
@@ -572,24 +583,16 @@
         <div class="card" style="border-top:3px solid #2e9e52;">
           <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 단계적 증액</span><span class="sdot g"></span></div>
           <p class="cd" style="margin-top:4px;">무작정 늘리지 않습니다. <b>리스크 낮은 순서</b>로 증액하고, 구좌의 '천장 신호'를 보고 다음 단계로 올립니다.</p>
-          <div class="vtl">
-            <div class="vtl-item"><div class="vtl-num">1</div>
-              <div class="vtl-t">기존 구좌 점진 증액 <span class="vtl-tag">1순위 · 리스크 최저</span></div>
-              <div class="vtl-d">효율이 유지되는 선까지 일예산을 <em>+20~30%</em>씩 점진 증액. 한 번에 급증하면 ML 학습이 리셋돼 효율이 무너지므로 단계적으로만 올립니다.</div>
-            </div>
-            <div class="vtl-item"><div class="vtl-num">2</div>
-              <div class="vtl-t">타겟팅 확장 · 소재 갱신</div>
-              <div class="vtl-d">증액 중 효율이 꺾이면(<b>CPA↑·CTR↓·CPC↑</b>) 곧바로 신규 구좌로 넘어가지 않고, <em>먼저 타겟팅을 확장하거나 소재를 갱신</em>해 도달 풀을 넓힙니다.</div>
-            </div>
-            <div class="vtl-item"><div class="vtl-num">3</div>
-              <div class="vtl-t">신규 구좌 · 지면 추가</div>
-              <div class="vtl-d">타겟팅·소재로도 풀리지 않고 <em>타겟 자체가 한정(소진)</em>된 경우에만, 새 지면을 추가해 도달 풀을 확장합니다.</div>
-            </div>
-            <div class="vtl-item"><div class="vtl-num">4</div>
-              <div class="vtl-t">포맷 업셀 · 시즌 집중</div>
-              <div class="vtl-d">이미지 → 전면 동영상 등 <b>상위 포맷</b>으로, 성수기·프로모션 타이밍엔 일시 대폭 증액합니다.</div>
-            </div>
+          <div class="estep">
+            <div class="estepc"><div class="en">STEP 1</div><div class="enum">1</div><div class="ett">기존 구좌 증액</div><div class="ech">일예산 +20~30% 점진</div></div>
+            <div class="earr">→</div>
+            <div class="estepc"><div class="en">STEP 2</div><div class="enum">2</div><div class="ett">타겟·소재 확장</div><div class="ech">CPA↑·CTR↓ 신호 시</div></div>
+            <div class="earr">→</div>
+            <div class="estepc"><div class="en">STEP 3</div><div class="enum">3</div><div class="ett">신규 구좌 추가</div><div class="ech">타겟 소진 시만</div></div>
+            <div class="earr">→</div>
+            <div class="estepc"><div class="en">STEP 4</div><div class="enum">4</div><div class="ett">포맷·시즌 집중</div><div class="ech">상위 포맷·성수기</div></div>
           </div>
+          <div class="estep-note">⚠️ <span>한 번에 급증 금지 — <b>ML 학습 리셋 방지</b>. 리스크 낮은 순서로만 단계 상승.</span></div>
         </div>
         <div class="card" style="border-top:3px solid var(--primary);">
           <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 원인별 처방</span><span class="sdot r"></span></div>
