@@ -23,11 +23,16 @@
   .eyebrow{ color:#ff5160; }
   .card .go{ color:#ff5160; }
   .card.wide{ grid-column:1 / -1; }
-  .fitgrid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-top:18px; }
-  .fitcard{ border:1px solid #E5E8EB; border-radius:14px; padding:20px; background:#fff; }
-  .fitcard h4{ font-size:15px; margin:0 0 8px; color:#191F28; }
-  .fitcard .req{ font-size:12.5px; color:var(--accent-dark); font-weight:700; margin-bottom:6px; }
-  .fitcard p{ font-size:13.5px; line-height:1.6; color:#4E5968; margin:0; }
+  .fitgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:20px; }
+  .fitcard{ border:1px solid #E5E8EB; border-radius:16px; padding:22px 24px; background:#fff; display:flex; flex-direction:column; transition:.15s; }
+  .fitcard:hover{ border-color:#f6c9db; transform:translateY(-2px); box-shadow:0 8px 28px rgba(255,81,96,.08); }
+  .fc-top{ display:flex; align-items:center; gap:11px; margin-bottom:13px; }
+  .fc-ic{ flex:0 0 42px; width:42px; height:42px; border-radius:12px; background:#fff2ea; display:flex; align-items:center; justify-content:center; font-size:21px; }
+  .fitcard .req{ font-size:12px; color:#ff5160; font-weight:800; background:#fff0f3; border-radius:999px; padding:5px 12px; }
+  .fitcard h4{ font-size:17px; margin:0 0 8px; color:#191F28; font-weight:800; letter-spacing:-.3px; }
+  .fitcard p{ font-size:13.5px; line-height:1.65; color:#4E5968; margin:0 0 14px; flex:1; }
+  .fc-badge{ align-self:flex-start; font-size:12.5px; font-weight:800; color:#fff; background:#ff5160; border-radius:999px; padding:6px 14px; }
+  @media (max-width:720px){ .fitgrid{ grid-template-columns:1fr; } }
 </style>
 </head>
 <body>
@@ -98,24 +103,28 @@
     <h2 style="margin-bottom:6px;">에이블리가 찾는 사람 = 제가 해 온 일</h2>
     <div class="fitgrid">
       <div class="fitcard">
-        <div class="req">신규 광고주 발굴~계약 주도</div>
+        <div class="fc-top"><span class="fc-ic">🎯</span><span class="req">요건 · 신규 광고주 발굴~계약 주도</span></div>
         <h4>B2B 세일즈 풀퍼널 단독 완주</h4>
-        <p>박스풀에서 신규 가맹 발굴 → 제안서 작성 → 설명회 발표 → 1:1 현장 클로징까지 혼자 완주해 실제 계약을 성사시켰습니다.</p>
+        <p>박스풀에서 신규 가맹 발굴 → 제안서 작성 → 설명회 발표 → 1:1 현장 클로징까지 혼자 완주했습니다.</p>
+        <span class="fc-badge">✓ 실제 계약 성사</span>
       </div>
       <div class="fitcard">
-        <div class="req">데이터 기반 논리적 제안·설득</div>
+        <div class="fc-top"><span class="fc-ic">📊</span><span class="req">요건 · 데이터 기반 논리적 제안·설득</span></div>
         <h4>'리드 단가' 아닌 '매출'로 설득</h4>
-        <p>지역별 CAC·내원율·ROAS로 진짜 효율을 규명하고, 이를 근거로 광고주에게 예산 증액을 설득해 취급고를 9.4배 키웠습니다.</p>
+        <p>지역별 CAC·내원율·ROAS로 진짜 효율을 규명하고, 이를 근거로 광고주에게 예산 증액을 설득했습니다.</p>
+        <span class="fc-badge">취급고 9.4배 ↑</span>
       </div>
       <div class="fitcard">
-        <div class="req">기존 고객 재집행·예산 확대</div>
+        <div class="fc-top"><span class="fc-ic">📈</span><span class="req">요건 · 기존 고객 재집행·예산 확대</span></div>
         <h4>예산 확장 사이클 설계</h4>
         <p>성과 → 신뢰 → 예산 증액으로 이어지는 선순환을 데이터로 만들어, 광고주가 스스로 예산을 늘리는 구조를 확보했습니다.</p>
+        <span class="fc-badge">성과→신뢰→증액 선순환</span>
       </div>
       <div class="fitcard">
-        <div class="req">광고주 비즈니스 이해 (패션·커머스)</div>
+        <div class="fc-top"><span class="fc-ic">🛍️</span><span class="req">요건 · 광고주 비즈니스 이해(패션·커머스)</span></div>
         <h4>셀러를 직접 해봤습니다</h4>
-        <p>패션디자인 전공 + 뷰티 커머스 스마트스토어를 셀러로 직접 운영(월매출 +167%). 광고주가 광고에 무엇을 기대하는지 압니다.</p>
+        <p>패션디자인 전공 + 뷰티 커머스 스마트스토어를 셀러로 직접 운영. 광고주가 광고에 무엇을 기대하는지 압니다.</p>
+        <span class="fc-badge">월매출 +167%</span>
       </div>
     </div>
   </div>
