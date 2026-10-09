@@ -350,15 +350,15 @@
   .mini{ background:#fafbfc; border:1px solid var(--line); border-radius:12px; padding:15px; } .mini .mt2{ font-size:13px; font-weight:800; color:var(--primary-dark); margin-bottom:6px; }
 
   /* ── 부진 진단 카드 ── */
-  .dxlist{ display:flex; flex-direction:column; gap:10px; margin-top:14px; }
-  .dxc{ display:grid; grid-template-columns:140px 14px 1fr; align-items:center; gap:8px 10px;
-        border:1px solid #f0d8d0; border-radius:12px; padding:12px 14px; background:#fffdfc; }
-  .dx-sym{ width:100%; font-size:12px; font-weight:800; color:#555; background:#fff1ec; border-radius:8px; padding:7px 9px; text-align:center; white-space:nowrap; }
+  .DXGRID{ display:grid; grid-template-columns:230px 26px 210px 26px 1fr; align-items:center; gap:0 14px; }
+  .dxlist{ margin-top:10px; display:flex; flex-direction:column; gap:10px; }
+  .dxhead{ padding:0 16px 2px; font-size:11px; font-weight:800; color:var(--primary-dark); }
+  .dxc{ border:1px solid #f0d8d0; border-radius:12px; padding:14px 16px; background:#fffdfc; }
+  .dx-sym{ font-size:13px; font-weight:800; color:#555; background:#fff1ec; border-radius:9px; padding:9px 10px; text-align:center; }
   .dx-sym .dn{ color:var(--warn); }
-  .dx-ar{ color:#d9a99c; font-weight:800; font-size:14px; text-align:center; }
-  .dx-right{ display:flex; flex-direction:column; gap:5px; min-width:0; }
-  .dx-dg{ font-size:11.5px; font-weight:700; color:#9a7b40; }
-  .dx-rx{ font-size:12.5px; font-weight:800; color:#fff; background:var(--primary); border-radius:8px; padding:6px 11px; display:inline-block; width:fit-content; }
+  .dx-ar{ color:#e0a99c; font-weight:800; font-size:16px; text-align:center; }
+  .dx-dg{ font-size:13px; font-weight:800; color:#8a6d33; }
+  .dx-rx{ font-size:13px; font-weight:800; color:#fff; background:var(--primary); border-radius:9px; padding:9px 14px; justify-self:start; }
 
   /* ── 데이터 수집 → 대시보드 ── */
   .dsrc{ display:grid; grid-template-columns:1.1fr auto 1fr; gap:16px; align-items:center; }
@@ -460,6 +460,8 @@
     .steps{ grid-template-columns:repeat(2,1fr); }
     .refgrid{ grid-template-columns:1fr; }
     .dsrc{ grid-template-columns:1fr; } .dsrc .darrow{ transform:rotate(90deg); }
+    .DXGRID{ grid-template-columns:1fr; gap:6px; } .dxc .dx-ar{ display:none; } .dxhead{ display:none; }
+    .dx-sym,.dx-rx{ justify-self:start; }
     .stats > div{ border-right:0; border-bottom:1px solid var(--line); }
     .nav-links a:not(.cta){ display:none; }
   }
@@ -535,7 +537,7 @@
 
       <!-- 증액: 두 갈래 -->
       <div class="amsub">증액 — 잘 될 땐 '순서 있게' 넓히고, 안 될 땐 '원인부터' 살린다</div>
-      <div class="grid g2">
+      <div class="grid">
         <div class="card" style="border-top:3px solid #2e9e52;">
           <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 단계적 증액</span><span style="font-size:22px;">🟢</span></div>
           <p class="cd" style="margin-top:4px;">무작정 늘리지 않습니다. <b>리스크 낮은 순서</b>로 증액하고, 구좌의 '천장 신호'를 보고 다음 단계로 올립니다.</p>
@@ -549,22 +551,23 @@
         <div class="card" style="border-top:3px solid var(--primary);">
           <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 원인별 처방</span><span style="font-size:22px;">🔴</span></div>
           <p class="cd" style="margin-top:4px;">"안 난다"로 끝내지 않고 <b>CPA 상승을 지표로 분해</b>해 원인을 특정하고, 원인에 맞게 처방합니다.</p>
+          <div class="dxhead DXGRID"><span>증상 (지표 변화)</span><span></span><span>진단</span><span></span><span>처방</span></div>
           <div class="dxlist">
-            <div class="dxc">
+            <div class="dxc DXGRID">
               <span class="dx-sym">CTR <span class="dn">↓</span> · CVR 유지</span><span class="dx-ar">→</span>
-              <div class="dx-right"><div class="dx-dg">진단 · 소재 피로도</div><div class="dx-rx">소재 교체 · 로테이션</div></div>
+              <span class="dx-dg">소재 피로도</span><span class="dx-ar">→</span><span class="dx-rx">소재 교체 · 로테이션</span>
             </div>
-            <div class="dxc">
+            <div class="dxc DXGRID">
               <span class="dx-sym">CTR 유지 · CVR <span class="dn">↓</span></span><span class="dx-ar">→</span>
-              <div class="dx-right"><div class="dx-dg">진단 · 타겟 소진 / LP 이슈</div><div class="dx-rx">오디언스 확장 · LP 개선</div></div>
+              <span class="dx-dg">타겟 소진 / LP 이슈</span><span class="dx-ar">→</span><span class="dx-rx">오디언스 확장 · LP 개선</span>
             </div>
-            <div class="dxc">
+            <div class="dxc DXGRID">
               <span class="dx-sym">CPM <span class="dn">↑</span> 단독</span><span class="dx-ar">→</span>
-              <div class="dx-right"><div class="dx-dg">진단 · 구좌 경쟁·과열</div><div class="dx-rx">입찰 조정 · 구좌 변경</div></div>
+              <span class="dx-dg">구좌 경쟁 · 과열</span><span class="dx-ar">→</span><span class="dx-rx">입찰 조정 · 구좌 변경</span>
             </div>
-            <div class="dxc">
+            <div class="dxc DXGRID">
               <span class="dx-sym">노출 <span class="dn">↓</span> · 소진율 <span class="dn">↓</span></span><span class="dx-ar">→</span>
-              <div class="dx-right"><div class="dx-dg">진단 · 구좌 천장 / 학습</div><div class="dx-rx">예산 재배분 → 타 구좌 라이브</div></div>
+              <span class="dx-dg">구좌 천장 / 학습</span><span class="dx-ar">→</span><span class="dx-rx">예산 재배분 → 타 구좌 라이브</span>
             </div>
           </div>
         </div>
