@@ -386,6 +386,19 @@
   .dx-dg{ font-size:12px; font-weight:800; color:#9a7b3a; background:#fff7ef; border:1px solid #f1e3d1; border-radius:9px; padding:9px 8px; text-align:center; white-space:nowrap; }
   .dx-rx{ font-size:12.5px; font-weight:800; color:#fff; background:var(--primary); border-radius:9px; padding:9px 15px; justify-self:start; white-space:nowrap; box-shadow:0 2px 8px rgba(255,81,96,.25); }
 
+  /* ── 성과 부진 대화형 시나리오 ── */
+  .sgrid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px; }
+  .scard{ border:1px solid #f0d8d0; border-radius:16px; padding:18px; background:#fff; }
+  .scard-q{ background:#f3f4f6; border-radius:14px 14px 14px 4px; padding:13px 15px; }
+  .scard-q .who{ display:block; font-size:10.5px; font-weight:800; color:#aeb3bb; margin-bottom:4px; letter-spacing:.3px; }
+  .scard-q .qt{ font-size:13.5px; color:#2b3038; font-weight:700; line-height:1.5; }
+  .scard-dx{ font-size:12.5px; color:#5a6472; line-height:1.6; margin-top:14px; } .scard-dx b{ color:#333; } .scard-dx em{ font-style:normal; color:var(--warn); font-weight:800; }
+  .scard-rx{ font-size:12.5px; color:#444; line-height:1.6; margin-top:11px; background:#fff2ea; border-radius:12px; padding:12px 14px; } .scard-rx b{ color:var(--primary-dark); }
+  .scard .l1,.scard .l2{ font-size:10px; font-weight:800; border-radius:6px; padding:3px 8px; margin-right:7px; white-space:nowrap; }
+  .scard .l1{ color:#9a7b3a; background:#fdf1dd; }
+  .scard .l2{ color:#fff; background:var(--primary); }
+  @media(max-width:720px){ .sgrid{ grid-template-columns:1fr; } }
+
   /* ── 데이터 수집 → 대시보드 ── */
   .dsrc{ display:grid; grid-template-columns:1.1fr auto 1fr; gap:16px; align-items:center; }
   .dsrc .din{ display:flex; flex-direction:column; gap:9px; }
@@ -596,24 +609,27 @@
         </div>
         <div class="card" style="border-top:3px solid var(--primary);">
           <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 원인별 처방</span><span class="sdot r"></span></div>
-          <p class="cd" style="margin-top:4px;">"안 난다"로 끝내지 않고 <b>CPA 상승을 지표로 분해</b>해 원인을 특정하고, 원인에 맞게 처방합니다.</p>
-          <div class="dxhead DXGRID"><span>증상 (지표 변화)</span><span></span><span>진단</span><span></span><span>처방</span></div>
-          <div class="dxlist">
-            <div class="dxc DXGRID">
-              <span class="dx-sym">CTR <span class="dn">↓</span> · CVR 유지</span><span class="dx-ar">→</span>
-              <span class="dx-dg">소재 피로도</span><span class="dx-ar">→</span><span class="dx-rx">소재 교체 · 로테이션</span>
+          <p class="cd" style="margin-top:4px;">광고주가 "성과가 안 난다"고 할 때, 저는 <b>지표를 분해해 원인을 특정</b>하고 상황별로 이렇게 대응합니다.</p>
+          <div class="sgrid">
+            <div class="scard">
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"처음엔 반응 좋았는데, 요즘 클릭이 뚝 떨어졌어요."</span></div>
+              <div class="scard-dx"><span class="l1">데이터 진단</span>노출은 그대로인데 <em>CTR만 하락</em>, CVR은 유지 → <b>소재 피로도</b>로 판단.</div>
+              <div class="scard-rx"><span class="l2">제 대응</span>효율 좋은 소재는 유지하고, <b>피로해진 소재만 신규 2종으로 교체·로테이션</b>하겠습니다.</div>
             </div>
-            <div class="dxc DXGRID">
-              <span class="dx-sym">CTR 유지 · CVR <span class="dn">↓</span></span><span class="dx-ar">→</span>
-              <span class="dx-dg">타겟 소진 / LP 이슈</span><span class="dx-ar">→</span><span class="dx-rx">오디언스 확장 · LP 개선</span>
+            <div class="scard">
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"클릭은 되는데 전환이 안 나와요. 광고가 별로인가요?"</span></div>
+              <div class="scard-dx"><span class="l1">데이터 진단</span>CTR은 정상인데 <em>CVR만 하락</em> → 광고가 아니라 <b>타겟 소진 또는 랜딩(LP) 문제</b>입니다.</div>
+              <div class="scard-rx"><span class="l2">제 대응</span>유사 성향 <b>오디언스로 타겟을 확장</b>하고, LP 전환 동선을 함께 점검하겠습니다.</div>
             </div>
-            <div class="dxc DXGRID">
-              <span class="dx-sym">CPM <span class="dn">↑</span> 단독</span><span class="dx-ar">→</span>
-              <span class="dx-dg">구좌 경쟁 · 과열</span><span class="dx-ar">→</span><span class="dx-rx">입찰 조정 · 구좌 변경</span>
+            <div class="scard">
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"같은 예산인데 노출 단가가 갑자기 비싸졌어요."</span></div>
+              <div class="scard-dx"><span class="l1">데이터 진단</span>CTR·CVR은 그대로인데 <em>CPM만 단독 상승</em> → <b>지면 경쟁 심화(과열)</b>입니다.</div>
+              <div class="scard-rx"><span class="l2">제 대응</span>입찰을 조정하거나 <b>경쟁 덜한 구좌로 예산 일부를 이동</b>해 단가를 안정화하겠습니다.</div>
             </div>
-            <div class="dxc DXGRID">
-              <span class="dx-sym">노출 <span class="dn">↓</span> · 소진율 <span class="dn">↓</span></span><span class="dx-ar">→</span>
-              <span class="dx-dg">구좌 천장 / 학습</span><span class="dx-ar">→</span><span class="dx-rx">예산 재배분 → 타 구좌 라이브</span>
+            <div class="scard">
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"예산을 늘렸는데 노출도 안 늘고 성과가 정체예요."</span></div>
+              <div class="scard-dx"><span class="l1">데이터 진단</span><em>노출·소진율이 동반 하락</em> → 그 구좌가 <b>천장에 닿았거나 학습이 꼬인 상태</b>입니다.</div>
+              <div class="scard-rx"><span class="l2">제 대응</span>일시적으로 <b>예산을 줄여 안정화</b>한 뒤, 다른 구좌를 라이브해 도달 풀을 재배분하겠습니다.</div>
             </div>
           </div>
         </div>
