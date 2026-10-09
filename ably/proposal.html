@@ -351,13 +351,14 @@
 
   /* ── 부진 진단 카드 ── */
   .dxlist{ display:flex; flex-direction:column; gap:10px; margin-top:14px; }
-  .dxc{ border:1px solid #f0d8d0; border-radius:12px; padding:12px 14px; background:#fffdfc; }
-  .dxc-top{ display:flex; align-items:center; justify-content:space-between; gap:8px; flex-wrap:wrap; margin-bottom:9px; }
-  .dx-sym{ font-size:12.5px; font-weight:800; color:#555; background:#fff2ee; border-radius:7px; padding:5px 11px; white-space:nowrap; }
-  .dx-sym .dn{ color:var(--warn); } .dx-sym .dnu{ color:var(--warn); }
-  .dx-dg{ font-size:11.5px; color:var(--sub); font-weight:700; } .dx-dg b{ color:#8a6d33; }
-  .dx-rx{ font-size:13.5px; font-weight:800; color:var(--primary-dark); display:flex; align-items:center; gap:7px; }
-  .dx-rx .rxar{ color:var(--primary); font-size:15px; }
+  .dxc{ display:grid; grid-template-columns:140px 14px 1fr; align-items:center; gap:8px 10px;
+        border:1px solid #f0d8d0; border-radius:12px; padding:12px 14px; background:#fffdfc; }
+  .dx-sym{ width:100%; font-size:12px; font-weight:800; color:#555; background:#fff1ec; border-radius:8px; padding:7px 9px; text-align:center; white-space:nowrap; }
+  .dx-sym .dn{ color:var(--warn); }
+  .dx-ar{ color:#d9a99c; font-weight:800; font-size:14px; text-align:center; }
+  .dx-right{ display:flex; flex-direction:column; gap:5px; min-width:0; }
+  .dx-dg{ font-size:11.5px; font-weight:700; color:#9a7b40; }
+  .dx-rx{ font-size:12.5px; font-weight:800; color:#fff; background:var(--primary); border-radius:8px; padding:6px 11px; display:inline-block; width:fit-content; }
 
   /* ── 데이터 수집 → 대시보드 ── */
   .dsrc{ display:grid; grid-template-columns:1.1fr auto 1fr; gap:16px; align-items:center; }
@@ -550,20 +551,20 @@
           <p class="cd" style="margin-top:4px;">"안 난다"로 끝내지 않고 <b>CPA 상승을 지표로 분해</b>해 원인을 특정하고, 원인에 맞게 처방합니다.</p>
           <div class="dxlist">
             <div class="dxc">
-              <div class="dxc-top"><span class="dx-sym">CTR <span class="dn">↓</span> · CVR 유지</span><span class="dx-dg">진단 · <b>소재 피로도</b></span></div>
-              <div class="dx-rx"><span class="rxar">→</span> 소재 교체 · 로테이션</div>
+              <span class="dx-sym">CTR <span class="dn">↓</span> · CVR 유지</span><span class="dx-ar">→</span>
+              <div class="dx-right"><div class="dx-dg">진단 · 소재 피로도</div><div class="dx-rx">소재 교체 · 로테이션</div></div>
             </div>
             <div class="dxc">
-              <div class="dxc-top"><span class="dx-sym">CTR 유지 · CVR <span class="dn">↓</span></span><span class="dx-dg">진단 · <b>타겟 소진 / LP 이슈</b></span></div>
-              <div class="dx-rx"><span class="rxar">→</span> 오디언스 확장 · LP 개선</div>
+              <span class="dx-sym">CTR 유지 · CVR <span class="dn">↓</span></span><span class="dx-ar">→</span>
+              <div class="dx-right"><div class="dx-dg">진단 · 타겟 소진 / LP 이슈</div><div class="dx-rx">오디언스 확장 · LP 개선</div></div>
             </div>
             <div class="dxc">
-              <div class="dxc-top"><span class="dx-sym">CPM <span class="dnu">↑</span> 단독</span><span class="dx-dg">진단 · <b>구좌 경쟁·과열</b></span></div>
-              <div class="dx-rx"><span class="rxar">→</span> 입찰 조정 · 구좌 변경</div>
+              <span class="dx-sym">CPM <span class="dn">↑</span> 단독</span><span class="dx-ar">→</span>
+              <div class="dx-right"><div class="dx-dg">진단 · 구좌 경쟁·과열</div><div class="dx-rx">입찰 조정 · 구좌 변경</div></div>
             </div>
             <div class="dxc">
-              <div class="dxc-top"><span class="dx-sym">노출 <span class="dn">↓</span> · 소진율 <span class="dn">↓</span></span><span class="dx-dg">진단 · <b>구좌 천장 / 학습</b></span></div>
-              <div class="dx-rx"><span class="rxar">→</span> 예산 재배분 → 타 구좌 라이브</div>
+              <span class="dx-sym">노출 <span class="dn">↓</span> · 소진율 <span class="dn">↓</span></span><span class="dx-ar">→</span>
+              <div class="dx-right"><div class="dx-dg">진단 · 구좌 천장 / 학습</div><div class="dx-rx">예산 재배분 → 타 구좌 라이브</div></div>
             </div>
           </div>
         </div>
