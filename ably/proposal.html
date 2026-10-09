@@ -319,6 +319,21 @@
   .rung .rn{ flex:0 0 22px; width:22px; height:22px; border-radius:50%; background:#2e9e52; color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; margin-top:1px; }
   .rung .rt{ font-size:13px; color:#333; } .rung .rt b{ color:#2e7d4f; }
   .rung .rc{ font-size:11.5px; color:#6a7a70; margin-top:3px; line-height:1.5; } .rung .rc b{ color:#2e7d4f; }
+
+  /* ── 세로 타임라인 (증액 단계) ── */
+  .vtl{ margin-top:20px; }
+  .vtl-item{ position:relative; padding:0 4px 22px 46px; }
+  .vtl-item::before{ content:''; position:absolute; left:16px; top:7px; bottom:-3px; width:2px; background:#e2efe6; }
+  .vtl-item:last-child{ padding-bottom:0; } .vtl-item:last-child::before{ display:none; }
+  .vtl-num{ position:absolute; left:0; top:0; width:34px; height:34px; border-radius:50%; background:#fff;
+            border:2px solid #39a862; color:#2e8a52; font-weight:800; font-size:13.5px; display:flex; align-items:center; justify-content:center; }
+  .vtl-t{ font-size:15px; font-weight:800; color:#20262e; margin-bottom:6px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; letter-spacing:-.2px; }
+  .vtl-tag{ font-size:10.5px; font-weight:800; color:#2e7d4f; background:#eafaef; border-radius:999px; padding:3px 10px; }
+  .vtl-d{ font-size:13px; color:#5a6472; line-height:1.65; } .vtl-d em{ font-style:normal; font-weight:800; color:#2e8a52; } .vtl-d b{ color:#333; font-weight:700; }
+  /* 깔끔한 상태 점 */
+  .sdot{ width:13px; height:13px; border-radius:50%; display:inline-block; }
+  .sdot.g{ background:#2e9e52; box-shadow:0 0 0 4px rgba(46,158,82,.16); }
+  .sdot.r{ background:var(--primary); box-shadow:0 0 0 4px rgba(255,81,96,.16); }
   /* ── 부진 진단 매트릭스 ── */
   .dmx{ width:100%; border-collapse:collapse; font-size:12.5px; margin-top:14px; border:1px solid #f0d8d0; border-radius:10px; overflow:hidden; }
   .dmx th,.dmx td{ padding:9px 10px; text-align:left; border-bottom:1px solid #f4e2dc; }
@@ -555,17 +570,29 @@
       <div class="amsub">증액 — 잘 될 땐 '순서 있게' 넓히고, 안 될 땐 '원인부터' 살린다</div>
       <div class="grid">
         <div class="card" style="border-top:3px solid #2e9e52;">
-          <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 단계적 증액</span><span style="font-size:22px;">🟢</span></div>
+          <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 단계적 증액</span><span class="sdot g"></span></div>
           <p class="cd" style="margin-top:4px;">무작정 늘리지 않습니다. <b>리스크 낮은 순서</b>로 증액하고, 구좌의 '천장 신호'를 보고 다음 단계로 올립니다.</p>
-          <div class="ladder">
-            <div class="rung"><span class="rn">1</span><div><div class="rt">💹 <b>기존 구좌 점진 증액</b> <span style="color:#2e9e52;font-size:11px;">· 1순위(리스크 최저)</span></div><div class="rc">효율 유지되는 선까지 일예산을 <b>+20~30%씩 점진</b> 증액 · 한 번에 급증 금지(ML 학습 리셋 방지)</div></div></div>
-            <div class="rung"><span class="rn">2</span><div><div class="rt">🎯 <b>타겟팅 확장 · 소재 갱신</b></div><div class="rc">증액 중 효율이 꺾이면(CPA↑·CTR↓·CPC↑ 등 천장 신호) 곧바로 신규 구좌 X — <b>먼저 타겟팅을 확장하거나 소재를 갱신</b>해 도달 풀을 넓힘</div></div></div>
-            <div class="rung"><span class="rn">3</span><div><div class="rt">➕ <b>신규 구좌·지면 추가</b></div><div class="rc">타겟팅·소재로도 안 풀리고 <b>타겟 자체가 한정(소진)</b>이면 → 새 지면을 추가해 도달 풀을 확장</div></div></div>
-            <div class="rung"><span class="rn">4</span><div><div class="rt">🎬 <b>포맷 업셀 · 시즌 집중</b></div><div class="rc">이미지→전면 동영상 상위 포맷 / 성수기·프로모션 타이밍에 일시 대폭 증액</div></div></div>
+          <div class="vtl">
+            <div class="vtl-item"><div class="vtl-num">1</div>
+              <div class="vtl-t">기존 구좌 점진 증액 <span class="vtl-tag">1순위 · 리스크 최저</span></div>
+              <div class="vtl-d">효율이 유지되는 선까지 일예산을 <em>+20~30%</em>씩 점진 증액. 한 번에 급증하면 ML 학습이 리셋돼 효율이 무너지므로 단계적으로만 올립니다.</div>
+            </div>
+            <div class="vtl-item"><div class="vtl-num">2</div>
+              <div class="vtl-t">타겟팅 확장 · 소재 갱신</div>
+              <div class="vtl-d">증액 중 효율이 꺾이면(<b>CPA↑·CTR↓·CPC↑</b>) 곧바로 신규 구좌로 넘어가지 않고, <em>먼저 타겟팅을 확장하거나 소재를 갱신</em>해 도달 풀을 넓힙니다.</div>
+            </div>
+            <div class="vtl-item"><div class="vtl-num">3</div>
+              <div class="vtl-t">신규 구좌 · 지면 추가</div>
+              <div class="vtl-d">타겟팅·소재로도 풀리지 않고 <em>타겟 자체가 한정(소진)</em>된 경우에만, 새 지면을 추가해 도달 풀을 확장합니다.</div>
+            </div>
+            <div class="vtl-item"><div class="vtl-num">4</div>
+              <div class="vtl-t">포맷 업셀 · 시즌 집중</div>
+              <div class="vtl-d">이미지 → 전면 동영상 등 <b>상위 포맷</b>으로, 성수기·프로모션 타이밍엔 일시 대폭 증액합니다.</div>
+            </div>
           </div>
         </div>
         <div class="card" style="border-top:3px solid var(--primary);">
-          <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 원인별 처방</span><span style="font-size:22px;">🔴</span></div>
+          <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 원인별 처방</span><span class="sdot r"></span></div>
           <p class="cd" style="margin-top:4px;">"안 난다"로 끝내지 않고 <b>CPA 상승을 지표로 분해</b>해 원인을 특정하고, 원인에 맞게 처방합니다.</p>
           <div class="dxhead DXGRID"><span>증상 (지표 변화)</span><span></span><span>진단</span><span></span><span>처방</span></div>
           <div class="dxlist">
