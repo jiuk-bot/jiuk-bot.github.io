@@ -397,7 +397,10 @@
   .scard .l1,.scard .l2{ font-size:10px; font-weight:800; border-radius:6px; padding:3px 8px; margin-right:7px; white-space:nowrap; }
   .scard .l1{ color:#9a7b3a; background:#fdf1dd; }
   .scard .l2{ color:#fff; background:var(--primary); }
-  @media(max-width:720px){ .sgrid{ grid-template-columns:1fr; } }
+  .scard.wide{ grid-column:1/-1; }
+  .scard.wide .scard-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
+  .scard.wide .scard-row>div{ margin-top:0; }
+  @media(max-width:720px){ .sgrid{ grid-template-columns:1fr; } .scard.wide .scard-row{ grid-template-columns:1fr; } }
 
   /* ── 데이터 수집 → 대시보드 ── */
   .dsrc{ display:grid; grid-template-columns:1.1fr auto 1fr; gap:16px; align-items:center; }
@@ -630,6 +633,13 @@
               <div class="scard-q"><span class="who">광고주</span><span class="qt">"예산을 늘렸는데 노출도 안 늘고 성과가 정체예요."</span></div>
               <div class="scard-dx"><span class="l1">데이터 진단</span><em>노출·소진율이 동반 하락</em> → 그 구좌가 <b>천장에 닿았거나 학습이 꼬인 상태</b>입니다.</div>
               <div class="scard-rx"><span class="l2">대응</span>"구좌가 천장에 닿은 거예요. 유사 사례에선 <b>예산을 잠시 줄여 안정화한 뒤 다른 구좌를 라이브해 전체 도달이 다시 늘어난</b> 적이 있어, <b>예산 재배분</b>을 제안드립니다."</div>
+            </div>
+            <div class="scard wide">
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"추천해주신 미디어믹스대로 돌렸는데, 기대만큼 성과가 안 나와요. 어떻게 하죠?"</span></div>
+              <div class="scard-row">
+                <div class="scard-dx"><span class="l1">데이터 진단</span>전체 CPA만 보지 않고 <em>구좌별로 분해</em>합니다. 초기 믹스는 <b>가설 배분</b>이라, 1~2주 실데이터로 구좌별 CPA·전환 기여를 확인하면 보통 <b>상위 2~3개 구좌가 전환의 대부분</b>을 만들고 하위 구좌가 평균을 끌어내립니다.</div>
+                <div class="scard-rx"><span class="l2">대응</span>"초기 믹스는 '가설'이고, 실데이터로 비중을 재조정하는 게 정상 과정이에요. 유사 업종에선 <b>효율 구좌로 예산을 몰고 하위 구좌를 덜어내는 리밸런싱만으로 전체 CPA가 15~25% 개선</b>된 사례가 있어, <b>데이터 기준 믹스 재설계</b>를 제안드립니다."</div>
+              </div>
             </div>
           </div>
           <p class="note" style="margin-top:12px;">※ 개선 수치는 유사 업종 레퍼런스·벤치마크 기반 예시이며, 실제 효과는 집행·A/B 검증으로 확인합니다.</p>
