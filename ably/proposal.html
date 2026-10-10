@@ -336,15 +336,24 @@
   .sdot.r{ background:var(--primary); box-shadow:0 0 0 4px rgba(255,81,96,.16); }
 
   /* ── 증액 가로 스텝퍼 (카드형) ── */
-  .estep{ display:flex; align-items:stretch; gap:6px; margin-top:18px; flex-wrap:wrap; }
-  .estepc{ flex:1; min-width:132px; background:#f6fbf7; border:1px solid #dcede1; border-radius:16px; padding:20px 14px 18px; text-align:center; }
-  .estepc .en{ font-size:10.5px; font-weight:800; color:#8aab96; letter-spacing:1.2px; }
-  .estepc .enum{ width:30px; height:30px; margin:8px auto 0; border-radius:50%; background:#39a862; color:#fff; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; }
-  .estepc .ett{ font-size:15px; font-weight:800; color:#20262e; margin:11px 0 12px; letter-spacing:-.3px; }
-  .estepc .ech{ font-size:10.5px; font-weight:800; color:#2e7d4f; background:#fff; border:1px solid #cfe9d6; border-radius:999px; padding:6px 10px; display:inline-block; white-space:nowrap; }
-  .earr{ align-self:center; color:#8fc9a4; font-weight:800; font-size:18px; }
+  /* 증액 원칙 (기본) */
+  .einc{ display:flex; gap:18px; align-items:center; margin-top:18px; background:#f6fbf7; border:1px solid #dcede1; border-radius:16px; padding:18px; }
+  .einc-l{ flex:0 0 auto; text-align:center; padding-right:18px; border-right:1px dashed #cfe4d6; }
+  .einc-tag{ display:block; font-size:10.5px; font-weight:800; color:#8aab96; letter-spacing:1px; }
+  .einc-pct{ display:block; font-size:27px; font-weight:900; color:#2e9e52; line-height:1.1; margin-top:4px; letter-spacing:-.5px; }
+  .einc-sub{ display:block; font-size:10.5px; font-weight:800; color:#2e7d4f; margin-top:3px; }
+  .einc-r{ flex:1; }
+  .einc-h{ font-size:15px; font-weight:800; color:#20262e; letter-spacing:-.3px; }
+  .einc-why{ font-size:12px; color:#5a6a60; line-height:1.6; margin-top:7px; } .einc-why b{ color:#2e7d4f; }
+  /* 상황별 선택 (순서 아님) */
+  .echoice-label{ font-size:12.5px; color:#6a7a70; margin:16px 0 10px; } .echoice-label b{ color:#20262e; }
+  .echoice{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+  .echoicec{ background:#fff; border:1px solid #dcede1; border-radius:14px; padding:15px 14px; }
+  .ecc-t{ font-size:13.5px; font-weight:800; color:#20262e; letter-spacing:-.3px; }
+  .ecc-when{ display:inline-block; font-size:10px; font-weight:800; color:#2e7d4f; background:#eefaf0; border:1px solid #cfe9d6; border-radius:999px; padding:4px 9px; margin-top:8px; }
+  .ecc-d{ font-size:11.5px; color:#5a6a60; line-height:1.55; margin-top:9px; }
   .estep-note{ margin-top:14px; font-size:12px; color:#6a7a70; background:#f3faf5; border-radius:10px; padding:11px 14px; display:flex; align-items:center; gap:8px; } .estep-note b{ color:#2e7d4f; }
-  @media (max-width:720px){ .earr{ transform:rotate(90deg); margin:2px auto; } }
+  @media (max-width:720px){ .einc{ flex-direction:column; align-items:flex-start; } .einc-l{ border-right:none; border-bottom:1px dashed #cfe4d6; padding-right:0; padding-bottom:10px; width:100%; text-align:left; } .echoice{ grid-template-columns:1fr; } }
   /* ── 부진 진단 매트릭스 ── */
   .dmx{ width:100%; border-collapse:collapse; font-size:12.5px; margin-top:14px; border:1px solid #f0d8d0; border-radius:10px; overflow:hidden; }
   .dmx th,.dmx td{ padding:9px 10px; text-align:left; border-bottom:1px solid #f4e2dc; }
@@ -594,21 +603,25 @@
       </div>
 
       <!-- 증액: 두 갈래 -->
-      <div class="amsub">증액 — 잘 될 땐 '순서 있게' 넓히고, 안 될 땐 '원인부터' 살린다</div>
+      <div class="amsub">증액 — 잘 될 땐 '데이터 근거로' 넓히고, 안 될 땐 '원인부터' 살린다</div>
       <div class="grid">
         <div class="card" style="border-top:3px solid #2e9e52;">
-          <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 단계적 증액</span><span class="sdot g"></span></div>
-          <p class="cd" style="margin-top:4px;">무작정 늘리지 않습니다. <b>리스크 낮은 순서</b>로 증액하고, 구좌의 '천장 신호'를 보고 다음 단계로 올립니다.</p>
-          <div class="estep">
-            <div class="estepc"><div class="en">STEP 1</div><div class="enum">1</div><div class="ett">기존 구좌 증액</div><div class="ech">+20~30% 점진</div></div>
-            <div class="earr">→</div>
-            <div class="estepc"><div class="en">STEP 2</div><div class="enum">2</div><div class="ett">타겟·소재 확장</div><div class="ech">CPA↑·CTR↓ 시</div></div>
-            <div class="earr">→</div>
-            <div class="estepc"><div class="en">STEP 3</div><div class="enum">3</div><div class="ett">신규 구좌 추가</div><div class="ech">타겟 소진 시만</div></div>
-            <div class="earr">→</div>
-            <div class="estepc"><div class="en">STEP 4</div><div class="enum">4</div><div class="ett">포맷·시즌 집중</div><div class="ech">상위 포맷·성수기</div></div>
+          <div class="role-top"><span class="phase" style="background:#eefaf0;color:#2e9e52;">성과 우수 → 데이터 기반 증액</span><span class="sdot g"></span></div>
+          <p class="cd" style="margin-top:4px;">무작정 늘리지 않습니다. <b>데이터로 판단</b>하고 <b>머신러닝 학습 영향을 최소화</b>하는 선에서, 상황에 맞는 근거 있는 증액을 제안드립니다.</p>
+          <div class="einc">
+            <div class="einc-l"><span class="einc-tag">증액 원칙</span><span class="einc-pct">주 +10~15%</span><span class="einc-sub">점진 증액</span></div>
+            <div class="einc-r">
+              <div class="einc-h">가장 우수한 구좌·캠페인부터 1주 단위로 증액 제안</div>
+              <div class="einc-why">증액은 더 공격적인 마케팅 · <b>도달 풀 확장</b>을 의미합니다. 다만 과거 운영에서 <b>급격한 증액이 ML 학습을 흔드는 걸 직접 겪었기에</b>, 학습이 깨지지 않는 10~15% 폭으로만 올립니다.</div>
+            </div>
           </div>
-          <div class="estep-note">⚠️ <span>한 번에 급증 금지 — <b>ML 학습 리셋 방지</b>. 리스크 낮은 순서로만 단계 상승.</span></div>
+          <div class="echoice-label">그 다음은 <b>순서가 아니라 상황에 따라 선택</b>합니다 — 데이터로 신호를 보고 결정</div>
+          <div class="echoice">
+            <div class="echoicec"><div class="ecc-t">소재 · 타겟팅 확장</div><div class="ecc-when">CTR↓ · CPA↑ 신호 시</div><div class="ecc-d">소재 교체·로테이션 또는 유사 오디언스로 타겟을 넓혀 반응 회복</div></div>
+            <div class="echoicec"><div class="ecc-t">신규 구좌 · 캠페인</div><div class="ecc-when">타겟 소진 신호 시</div><div class="ecc-d">기존 타겟이 한정적일 때 새 지면·캠페인으로 도달 풀 확장</div></div>
+            <div class="echoicec"><div class="ecc-t">포맷 · 시즌 집중</div><div class="ecc-when">성수기 · 상위 포맷</div><div class="ecc-d">전환 좋은 포맷과 성수기에 예산을 집중 투입</div></div>
+          </div>
+          <div class="estep-note">⚠️ <span>어떤 선택이든 <b>데이터 근거 + ML 학습 영향 최소화</b>가 기준 — 한 번에 급증 금지.</span></div>
         </div>
         <div class="card" style="border-top:3px solid var(--primary);">
           <div class="role-top"><span class="phase" style="background:#fff2ea;color:var(--primary-dark);">성과 부진(이탈 신호) → 원인별 처방</span><span class="sdot r"></span></div>
