@@ -165,6 +165,16 @@
   .rtbl tbody td:nth-child(1) .sub{ display:block; font-weight:600; font-size:11px; color:var(--sub); margin-top:3px; line-height:1.4; }
   .rtbl tbody td:nth-child(2){ color:#555; }
   .rtbl tbody tr:last-child td{ border-bottom:0; }
+  .lcwrap{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow-sm); margin-bottom:18px; }
+  .lctitle{ font-size:14px; font-weight:800; color:var(--ink); margin-bottom:16px; } .lctitle b{ color:var(--primary-dark); } .lctitle .lcnote{ font-weight:600; font-size:12px; color:var(--sub); }
+  .funnel{ display:flex; align-items:stretch; gap:8px; }
+  .funnel .fn{ flex:1; background:#faf0f5; border:1px solid #f3d6e4; border-radius:12px; padding:14px 12px; text-align:center; display:flex; flex-direction:column; gap:5px; }
+  .funnel .fn.grad{ background:linear-gradient(135deg,#f06292,#ff8fab); border-color:#f06292; }
+  .funnel .fnlbl{ font-size:10.5px; font-weight:800; color:var(--primary-dark); background:#fff; border-radius:999px; padding:2px 10px; align-self:center; }
+  .funnel .fn.grad .fnlbl{ color:var(--primary-dark); }
+  .funnel .fn b{ font-size:14px; font-weight:800; color:var(--ink); } .funnel .fn.grad b{ color:#fff; }
+  .funnel .fnsub{ font-size:11px; color:var(--sub); line-height:1.45; } .funnel .fn.grad .fnsub{ color:rgba(255,255,255,.92); }
+  .funnel .fnar{ align-self:center; color:var(--primary); font-weight:900; font-size:17px; }
   .road{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   .roadc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow-sm); }
   .roadc .rn{ font-size:11px; font-weight:800; color:var(--primary); } .roadc .rt{ font-size:14px; font-weight:800; margin:5px 0 7px; } .roadc .rd{ font-size:12px; color:#555; line-height:1.5; }
@@ -195,6 +205,7 @@
     .g2,.g3,.g4,.how,.scn,.road{ grid-template-columns:1fr; }
     .vs{ grid-template-columns:1fr; } .vs .vsar{ transform:rotate(90deg); }
     .flip{ grid-template-columns:1fr; }
+    .funnel{ flex-direction:column; } .funnel .fnar{ transform:rotate(90deg); }
     .mockrow{ grid-template-columns:1fr; justify-items:center; }
     .hero h1{ font-size:27px; }
   }
@@ -357,6 +368,18 @@
   <div class="eyebrow"><span class="no">06</span> 리스크 &amp; 로드맵</div>
   <h2>리스크는 <span class="hl">가드레일로 선제 차단</span>, 확장은 단계적으로.</h2>
   <div class="headcopy"><span class="hl">6개 리스크 전부</span> 선제 가드레일로 매핑, 확장은 <span class="hl">3단계</span>로</div>
+  <div class="lcwrap">
+    <div class="lctitle">🛡 잠식 방어 설계 — <b>신규 광고주만</b> 받아 <b>oCPM으로 졸업</b>시킨다 <span class="lcnote">("성과형만 쓰고 광고비 안 쓴다" 차단)</span></div>
+    <div class="funnel">
+      <div class="fn"><span class="fnlbl">대상</span><b>신규 광고주</b><span class="fnsub">유상 광고 이력 0<br>증빙 없이 내부 플래그</span></div>
+      <span class="fnar">→</span>
+      <div class="fn"><span class="fnlbl">체험</span><b>성과형 상품광고</b><span class="fnsub">전환 시에만 과금<br>리스크 0</span></div>
+      <span class="fnar">→</span>
+      <div class="fn"><span class="fnlbl">검증</span><b>누적 전환 50건</b><span class="fnsub">성과 검증 완료<br>(ML 기준 보정)</span></div>
+      <span class="fnar">→</span>
+      <div class="fn grad"><span class="fnlbl">졸업</span><b>oCPM 유상 전환</b><span class="fnsub">+ 성과형 월 집행 상한<br>대형 유입 차단</span></div>
+    </div>
+  </div>
   <table class="rtbl">
     <thead><tr><th>리스크</th><th>가드레일 (선제 대응)</th></tr></thead>
     <tbody>
@@ -365,7 +388,7 @@
       <tr><td>저가 상품 쏠림<span class="sub">주문금액↓ → 수수료 기여↓</span></td><td>상품가 구간별 단가 조정, 평균 주문금액·수수료 기여 수익 가드 모니터링, 미달 카테고리 참여 제한</td></tr>
       <tr><td>가짜 전환·어뷰징</td><td>결제자·기기 중복 제거, 환불 제외, 이상 패턴 탐지, 정산 보류</td></tr>
       <tr><td>자연전환 과대평가</td><td>기여 윈도우·중복 제거·대조군 기반 증분성 분석</td></tr>
-      <tr><td>기존 CPD 매출 잠식</td><td>대형 CPD 유지, MVP는 중소·신규 셀러·한정 지면</td></tr>
+      <tr><td>기존 oCPM·CPD 매출 잠식<span class="sub">광고주가 성과형만 쓸 우려</span></td><td><b>신규 광고주(유상 광고 이력 0) 한정</b> + 전환 50건 졸업 시 oCPM 전환 + <b>성과형 월 집행 상한</b> · 대형 CPD 별도 유지 · 지면 매출 유지율 95%</td></tr>
     </tbody>
   </table>
   <div class="road" style="margin-top:16px;">
