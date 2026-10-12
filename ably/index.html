@@ -9,6 +9,8 @@
 <style>
   /* 에이블리 지원용 핑크 포인트 오버라이드 */
   :root{ --accent:#f06292; --accent-dark:#c2185b; }
+  /* 한국어 어절 단위 줄바꿈 — 단어 중간 끊김 방지 */
+  body, p, h1, h2, h3, h4, li, span, div, td, th, a, button{ word-break:keep-all; overflow-wrap:break-word; }
   .nav-logo .dot{ color:var(--accent) !important; }
   .nav-links a.active{ color:var(--accent-dark) !important; }
   .nav-links a.cta{ background:var(--accent) !important; }
