@@ -82,6 +82,14 @@
   .explist li:last-child{ margin-bottom:0; }
   .explist .es-step{ font-size:11px; font-weight:800; color:var(--primary); display:inline-block; margin-bottom:3px; }
   .explist li b{ color:var(--primary-dark); }
+  /* 단계별(카드+서사 통합) */
+  .exsteps{ margin-top:14px; }
+  .exstep{ display:grid; grid-template-columns:160px 1fr; gap:14px; align-items:stretch; margin-bottom:10px; }
+  .exstep:last-child{ margin-bottom:0; }
+  .exstep-body{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--primary); border-radius:12px; padding:14px 16px; display:flex; flex-direction:column; justify-content:center; }
+  .exstep-body .es-t{ font-size:12px; font-weight:800; color:var(--primary); margin-bottom:4px; }
+  .exstep-body p{ font-size:13px; color:#444; line-height:1.6; } .exstep-body p b{ color:var(--primary-dark); }
+  @media(max-width:680px){ .exstep{ grid-template-columns:1fr; } }
 
   /* 매체 확장 플로우 */
   .mflow{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; align-items:stretch; }
@@ -202,18 +210,24 @@
         <div class="tlnode">
           <div class="tldot">2</div>
           <div class="tlhead">실행 — 단계적 매체 확장 <b style="color:var(--primary)">(구글애즈 단독 → 메타 → 틱톡, 1개 → 4개 매체)</b><small><b>광고주 목표 성과(CPA 6만 이내) 달성을 위해</b>, 한 번에 늘리지 않고 매체를 하나씩 더하며 <b>단계적으로</b> 볼륨을 끌어올렸습니다. 각 단계는 앞 단계 데이터를 보고 결정했습니다.</small></div>
-          <div class="mflow">
-            <div class="mstep"><div class="mnum">START</div><div class="mmed">구글애즈 단독</div><div class="mlead">70<span>개/일</span></div><div class="mcpa">CPA 6만 한계</div></div>
-            <div class="mstep"><div class="mnum">+ META</div><div class="mmed">메타 확장</div><div class="mlead">150<span>개/일</span></div><div class="mcpa">CPA 4.5만</div><div class="mnote">단, 내원율 메타 2% &lt; 구글 4%</div></div>
-            <div class="mstep"><div class="mnum">+ 구글 2계정</div><div class="mmed">계정 분리</div><div class="mlead">200<span>개/일</span></div><div class="mcpa">자가잠식 최소화</div><div class="mnote">연령 타겟 / 관심사 타겟 분리</div></div>
-            <div class="mstep"><div class="mnum">+ TikTok</div><div class="mmed">틱톡 확장</div><div class="mlead">250<span>개/일</span></div><div class="mcpa">CPA 4만대</div><div class="mnote">KB서 검증한 시니어(45+) 볼륨</div></div>
+          <div class="exsteps">
+            <div class="exstep">
+              <div class="mstep"><div class="mnum">START</div><div class="mmed">구글애즈 단독</div><div class="mlead">70<span>개/일</span></div><div class="mcpa">CPA 6만 이내</div></div>
+              <div class="exstep-body"><div class="es-t">1단계 · 구글애즈 단독</div><p>내부 목표(<b>CPA 6만원 이내</b>)를 달성하면서 광고주 니즈인 <b>일 리드 300개</b> 달성에 어려움 존재. 당시 <b>일 리드 평균 70개</b>.</p></div>
+            </div>
+            <div class="exstep">
+              <div class="mstep"><div class="mnum">+ META</div><div class="mmed">메타 확장</div><div class="mlead">150<span>개/일</span></div><div class="mcpa">CPA 4.5만</div></div>
+              <div class="exstep-body"><div class="es-t">2단계 · 메타 확장</div><p>추가 수량 확보를 위해, <b>구글애즈 단독 운영에서 메타까지 매체를 확장</b>. 일 리드가 <b>70 → 150개</b>로 증가. 다만 내원율이 <b>메타 2% &lt; 구글 4%</b>로, 볼륨은 늘되 질 관리가 필요함을 데이터로 확인.</p></div>
+            </div>
+            <div class="exstep">
+              <div class="mstep"><div class="mnum">+ 구글 2계정</div><div class="mmed">계정 분리</div><div class="mlead">200<span>개/일</span></div><div class="mcpa">자가잠식 최소화</div></div>
+              <div class="exstep-body"><div class="es-t">3단계 · 구글 2계정 분리</div><p>볼륨을 더 늘리기 위해 <b>구글 계정을 '연령 타겟 / 관심사 타겟'으로 분리 신설</b>. 계정 간 자가잠식을 최소화하며 일 리드 <b>150 → 200개</b>. 광고주가 원한 <b>구글 80 : 메타 20</b> 비율도 유지.</p></div>
+            </div>
+            <div class="exstep">
+              <div class="mstep"><div class="mnum">+ TikTok</div><div class="mmed">틱톡 확장</div><div class="mlead">250<span>개/일</span></div><div class="mcpa">CPA 4만대</div></div>
+              <div class="exstep-body"><div class="es-t">4단계 · 틱톡 확장</div><p>마지막으로 <b>KB국민은행에서 검증한 시니어(45+) 오디언스</b>를 겨냥해 틱톡까지 확장. 일 리드 <b>200 → 250개</b>로 늘리며 CPA는 <b>4만대로 안정화</b>.</p></div>
+            </div>
           </div>
-          <ol class="explist">
-            <li><span class="es-step">1단계 · 구글애즈 단독</span><br>목표 성과(CPA 6만 이내)를 지키며 낼 수 있는 볼륨이 <b>일 70개</b>에서 멈췄습니다. 같은 매체에 예산을 더 넣어도 CPA만 올라, <b>새 매체가 필요한 시점</b>이었습니다.</li>
-            <li><span class="es-step">2단계 · + 메타</span><br>가장 먼저 메타를 더해 <b>일 150개</b>까지 확장. 다만 <b>내원율이 메타 2% &lt; 구글 4%</b>로, 볼륨은 늘되 질 관리가 필요하다는 걸 데이터로 확인했습니다.</li>
-            <li><span class="es-step">3단계 · + 구글 2계정</span><br>구글 계정을 <b>연령 타겟 / 관심사 타겟으로 분리</b>해 계정 간 자가잠식을 최소화하며 <b>일 200개</b>로. 광고주가 원한 <b>구글 80 : 메타 20</b> 비율을 유지했습니다.</li>
-            <li><span class="es-step">4단계 · + 틱톡</span><br>마지막으로 <b>KB국민은행에서 검증한 시니어(45+) 오디언스</b>를 틱톡으로 확장해 <b>일 250개</b>까지, CPA는 4만대로 안정화했습니다.</li>
-          </ol>
         </div>
 
         <div class="tlnode">
