@@ -357,8 +357,10 @@
   .echoice{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
   .echoicec{ background:#fff; border:1px solid #dcede1; border-radius:14px; padding:15px 14px; }
   .ecc-t{ font-size:13.5px; font-weight:800; color:#20262e; letter-spacing:-.3px; }
-  .ecc-when{ display:inline-block; font-size:10px; font-weight:800; color:#2e7d4f; background:#eefaf0; border:1px solid #cfe9d6; border-radius:999px; padding:4px 9px; margin-top:8px; }
-  .ecc-d{ font-size:11.5px; color:#5a6a60; line-height:1.55; margin-top:9px; } .ecc-d b{ color:#2e7d4f; }
+  .ecc-sig{ display:flex; gap:5px; flex-wrap:wrap; margin:9px 0 10px; }
+  .ecc-sig .sg{ font-size:10.5px; font-weight:800; padding:3px 8px; border-radius:6px; color:#9a7b1e; background:#fdf3d9; border:1px solid #f0dca8; white-space:nowrap; }
+  .ecc-act{ font-size:12px; color:#2b3038; font-weight:700; line-height:1.5; }
+  .ecc-out{ display:inline-block; margin-top:9px; font-size:12px; font-weight:800; color:#2e7d4f; background:#eefaf0; border:1px solid #cfe9d6; border-radius:7px; padding:5px 11px; }
   .estep-note{ margin-top:14px; font-size:12px; color:#6a7a70; background:#f3faf5; border-radius:10px; padding:11px 14px; display:flex; align-items:center; gap:8px; } .estep-note b{ color:#2e7d4f; }
   @media (max-width:720px){ .einc{ flex-direction:column; align-items:flex-start; } .einc-l{ border-right:none; border-bottom:1px dashed #cfe4d6; padding-right:0; padding-bottom:10px; width:100%; text-align:left; } .echoice{ grid-template-columns:1fr; } }
   /* ── 부진 진단 매트릭스 ── */
@@ -665,9 +667,9 @@
           </div>
           <div class="echoice-label">그 다음은 <b>순서 아닌 '상황별 선택'</b> — 데이터 신호로 결정</div>
           <div class="echoice">
-            <div class="echoicec"><div class="ecc-t">소재 · 타겟팅 확장</div><div class="ecc-when">CTR↓ · CPA↑</div><div class="ecc-d">소재 교체·로테이션 or 유사 오디언스 확장 → 반응 회복</div></div>
-            <div class="echoicec"><div class="ecc-t">신규 구좌 · 캠페인</div><div class="ecc-when">타겟 소진 (CPM↑·CPC↑·CVR↓)</div><div class="ecc-d">타겟 풀 고갈로 단가↑·반응↓ → 새 지면으로 도달 풀 확장</div></div>
-            <div class="echoicec"><div class="ecc-t">포맷 · 시즌 집중</div><div class="ecc-when">성수기 · 상위 포맷</div><div class="ecc-d">전환 우수 포맷·성수기에 예산 집중</div></div>
+            <div class="echoicec"><div class="ecc-t">소재 · 타겟팅 확장</div><div class="ecc-sig"><span class="sg">CTR ↓</span><span class="sg">CPA ↑</span></div><div class="ecc-act">소재 교체·로테이션 or 유사 오디언스 확장</div><div class="ecc-out">→ 반응 회복</div></div>
+            <div class="echoicec"><div class="ecc-t">신규 구좌 · 캠페인</div><div class="ecc-sig"><span class="sg">CPM ↑</span><span class="sg">CPC ↑</span><span class="sg">CVR ↓</span></div><div class="ecc-act">타겟 풀 고갈 → 새 지면으로 도달 풀 확장</div><div class="ecc-out">→ 타겟 소진 돌파</div></div>
+            <div class="echoicec"><div class="ecc-t">포맷 · 시즌 집중</div><div class="ecc-sig"><span class="sg">성수기</span><span class="sg">상위 포맷</span></div><div class="ecc-act">전환 우수 포맷·성수기에 예산 집중</div><div class="ecc-out">→ 피크 효율 극대화</div></div>
           </div>
           <div class="estep-note">⚠️ <span>어떤 선택이든 <b>데이터 근거 + ML 학습 영향 최소화</b>가 기준 — 한 번에 급증 금지.</span></div>
         </div>
@@ -788,10 +790,10 @@
       <!-- AI 대시보드 장점 -->
       <div class="dbzlabel">AI 대시보드의 장점</div>
       <div class="dbz">
-        <div class="dbzc"><div class="bi">🗂️</div><div class="bt">통합 모니터링</div><div class="bd">여러 광고주·구좌를 <b>한 화면에서</b>. <b>운영권이 없어도</b> 성과를 직접 수집해 관리합니다.</div></div>
-        <div class="dbzc"><div class="bi">🚨</div><div class="bt">하락 선제 감지</div><div class="bd">KPI가 <b>7일 하락세</b>인 광고주를 자동 플래그 — <b>문제가 커지기 전에 먼저</b> 연락합니다.</div></div>
-        <div class="dbzc"><div class="bi">🔎</div><div class="bt">드릴다운 분석</div><div class="bd"><b>캠페인 → 광고세트 → 소재</b>까지 파고들어 <b>CPA 변동의 진짜 원인</b>을 특정합니다.</div></div>
-        <div class="dbzc"><div class="bi">📥</div><div class="bt">히스토리·인수인계</div><div class="bd">메모 타임라인을 <b>엑셀 리포트로 내보내</b> <b>담당자가 바뀌어도 맥락</b>이 그대로 이어집니다.</div></div>
+        <div class="dbzc"><div class="bi">🗂️</div><div class="bt">통합 모니터링</div><div class="bd">여러 광고주·구좌 <b>한 화면</b><br>→ <b>운영권 없어도</b> 성과 직접 수집</div></div>
+        <div class="dbzc"><div class="bi">🚨</div><div class="bt">하락 선제 감지</div><div class="bd"><b>KPI 7일 하락</b> 자동 플래그<br>→ 커지기 전에 <b>먼저 연락</b></div></div>
+        <div class="dbzc"><div class="bi">🔎</div><div class="bt">드릴다운 분석</div><div class="bd"><b>캠페인 → 광고세트 → 소재</b><br>→ <b>CPA 변동 원인</b> 특정</div></div>
+        <div class="dbzc"><div class="bi">📥</div><div class="bt">히스토리·인수인계</div><div class="bd">메모 → <b>엑셀 리포트</b><br>→ 담당자 바뀌어도 <b>맥락 유지</b></div></div>
       </div>
       <p class="note" style="margin-top:12px;">🔒 광고주 데이터는 <b>담당자 로컬 환경(localhost)에서만 구동</b>하고 외부 서버·클라우드에 미저장 · API 토큰은 <code>.env</code> 분리 · 읽기 전용 조회로 유출 가능성을 원천 차단합니다.</p>
 
