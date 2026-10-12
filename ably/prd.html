@@ -76,6 +76,19 @@
   .flipc .bf{ font-size:12.5px; font-weight:700; color:#aeb3bb; text-decoration:line-through; }
   .flipc .ar{ color:var(--primary); font-weight:900; font-size:15px; }
   .flipc .af{ font-size:15.5px; font-weight:900; color:var(--primary-dark); letter-spacing:-.3px; }
+  .cmp{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow-sm); }
+  .cmp th,.cmp td{ padding:13px 18px; border-bottom:1px solid #eef0f3; text-align:left; font-size:14px; }
+  .cmp thead th{ font-weight:800; font-size:13px; }
+  .cmp thead th:nth-child(1){ background:#eef0f3; color:var(--sub); width:150px; }
+  .cmp thead th:nth-child(2){ background:#f5f6f8; color:#7a8089; }
+  .cmp thead th:nth-child(3){ background:var(--soft); color:var(--primary-dark); }
+  .cmp tbody td:nth-child(1){ font-weight:800; color:var(--ink); background:#fafbfc; font-size:13px; }
+  .cmp tbody td:nth-child(2){ color:#868c95; }
+  .cmp tbody td:nth-child(3){ color:var(--primary-dark); font-weight:700; background:#fff7fa; }
+  .cmp tbody td:nth-child(3) b{ color:var(--primary-dark); font-weight:900; }
+  .cmp tbody tr:last-child td{ border-bottom:0; }
+  .cbadge{ display:inline-block; font-size:10.5px; font-weight:800; border-radius:6px; padding:2px 7px; margin-right:6px; vertical-align:middle; }
+  .cbadge.asis{ color:#fff; background:#9aa1ab; } .cbadge.tobe{ color:#fff; background:var(--primary); }
 
   /* 폰 목업 */
   .mockrow{ display:grid; grid-template-columns:270px 1fr; gap:26px; align-items:start; }
@@ -195,33 +208,22 @@
   <div class="eyebrow"><span class="no">01</span> 문제 &amp; 해법</div>
   <h2>지금은 <span class="hl">성과와 무관하게 과금</span>된다. 그래서 중소·신규 셀러가 못 들어온다.</h2>
   <p class="lead"><b>CPD·oCPM</b>은 성과 없어도 돈이 나가고, 문턱이 높다 → 중소·신규 셀러가 못 들어온다.</p>
-  <div class="vs">
-    <div class="vsc bad">
-      <div class="t"><span class="ic">🚫</span>현행 — CPD / oCPM</div>
-      <ul class="vlist">
-        <li class="vrow"><span class="vi">📊</span><span class="vtx">노출·기간 과금</span></li>
-        <li class="vrow"><span class="vi">💸</span><span class="vtx">전환 0 → 광고비 소진</span></li>
-        <li class="vrow"><span class="vi">🚪</span><span class="vtx">최소 수백만 원 문턱</span></li>
-        <li class="vrow"><span class="vi">😰</span><span class="vtx">"돈만 쓸까" → 재집행 X</span></li>
-      </ul>
-    </div>
-    <div class="vsar">→</div>
-    <div class="vsc good">
-      <div class="t"><span class="ic">✨</span>제안 — 순수 성과형</div>
-      <ul class="vlist">
-        <li class="vrow"><span class="vi">🎯</span><span class="vtx">전환 때만 과금</span></li>
-        <li class="vrow"><span class="vi">🆓</span><span class="vtx">성과 0 → <b>0원</b></span></li>
-        <li class="vrow"><span class="vi">🌱</span><span class="vtx">소액으로 시작</span></li>
-        <li class="vrow"><span class="vi">🧩</span><span class="vtx">기존 지면 그대로 <span class="s">신규 지면 X</span></span></li>
-      </ul>
-      <div class="zero">성과 없으면 0원</div>
-    </div>
-  </div>
-  <div class="flip">
-    <div class="flipc"><div class="fl">과금 기준</div><div class="fv"><span class="bf">노출·기간</span><span class="ar">→</span><span class="af">전환</span></div></div>
-    <div class="flipc"><div class="fl">광고주 금전 리스크</div><div class="fv"><span class="bf">광고비 소진</span><span class="ar">→</span><span class="af">0원</span></div></div>
-    <div class="flipc"><div class="fl">진입 문턱</div><div class="fv"><span class="bf">수백만 원</span><span class="ar">→</span><span class="af">소액 시작</span></div></div>
-  </div>
+  <table class="cmp">
+    <thead><tr>
+      <th>구분</th>
+      <th><span class="cbadge asis">AS-IS</span> 현행 · CPD / oCPM</th>
+      <th><span class="cbadge tobe">TO-BE</span> 제안 · 순수 성과형</th>
+    </tr></thead>
+    <tbody>
+      <tr><td>과금 형태</td><td>노출·기간 기준 과금</td><td>전환(구매·쿠폰) 시에만 과금</td></tr>
+      <tr><td>성과 없을 때</td><td>광고비 소진</td><td><b>0원</b></td></tr>
+      <tr><td>광고주 금전 리스크</td><td>손실 가능</td><td>리스크 0</td></tr>
+      <tr><td>최소 집행비</td><td>수백만~천만 원</td><td>소액 시작</td></tr>
+      <tr><td>진입 가능 셀러</td><td>대형 위주</td><td>중소·신규 셀러 유입</td></tr>
+      <tr><td>지면</td><td>기존 인피드</td><td>기존 그대로 · 과금 레이어만 추가</td></tr>
+    </tbody>
+  </table>
+  <p class="note">· 핵심은 <b>과금 기준을 '노출·기간' → '전환'</b>으로 바꾸는 것 — 광고주는 리스크 0, 지면·유저 경험 변화 없음</p>
 </div></section>
 
 <!-- 02 지면 & 상품 목업 -->
