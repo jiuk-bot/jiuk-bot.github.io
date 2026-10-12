@@ -385,6 +385,10 @@
   .split .sp-a{ background:#eef6ff; border:1px solid #cfe0f5; border-radius:10px; padding:12px 18px; font-size:12px; text-align:center; color:#2f6fd6; line-height:1.4; }
   .split .sp-b{ background:#eefaf0; border:1px solid #cfe9d6; border-radius:10px; padding:12px 18px; font-size:12px; text-align:center; color:#2e7d4f; line-height:1.4; }
   .quote{ margin-top:14px; font-size:13.5px; color:#444; background:#fffaf8; border-left:3px solid var(--primary); border-radius:0 10px 10px 0; padding:12px 15px; line-height:1.65; } .quote b{ color:var(--primary-dark); }
+  .simkey{ display:flex; gap:7px; flex-wrap:wrap; align-items:center; margin-top:14px; background:#fffaf8; border-left:3px solid var(--primary); border-radius:0 10px 10px 0; padding:13px 15px; }
+  .simkey .sk{ font-size:12px; font-weight:800; color:var(--primary-dark); background:#fff; border:1px solid #f0d0c8; border-radius:8px; padding:7px 11px; }
+  .simkey .skar{ color:var(--primary); font-weight:800; font-size:14px; }
+  .simkey .skres{ font-size:12.5px; font-weight:900; color:#fff; background:var(--primary); border-radius:8px; padding:7px 13px; box-shadow:0 3px 10px rgba(255,81,96,.3); }
   .bars5{ display:flex; align-items:flex-end; gap:12px; height:130px; padding-top:8px; }
   .b5{ flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end; }
   .b5 .b5v{ font-size:11.5px; font-weight:800; margin-bottom:5px; color:#555; }
@@ -814,7 +818,12 @@
           <span class="sp-ar">→ 상황별 기간*</span>
           <div class="sp-win">우위군에<br><b>예산 이관</b></div>
         </div>
-        <div class="quote">"지금 <b>관심사 타겟</b>만 쓰고 계신데, 에이블리 <b>결제 데이터 타겟</b>을 같은 캠페인 예산의 <b>절반(일 15만)</b>으로 붙여볼까요? <b>결제 전환이 충분히 쌓일 때까지</b> — 캠페인 상황에 맞는 기간을 설정해 — CPA·결제전환율 이기는 쪽으로 예산을 몰아주면 손실 없이 더 좋은 타겟을 찾습니다."</div>
+        <div class="simkey">
+          <span class="sk">결제 타겟을 예산 절반(일 15만) 투입</span><span class="skar">→</span>
+          <span class="sk">유의미한 전환 표본까지 관찰*</span><span class="skar">→</span>
+          <span class="sk">CPA·결제전환율 이기는 쪽에 예산 집중</span><span class="skar">→</span>
+          <span class="skres">손실 없이 더 좋은 타겟 발굴</span>
+        </div>
         <p class="note" style="margin-top:8px;">* 평가 시점은 고정값이 아니라 <b>통계적으로 유의미한 전환 표본이 쌓이는 시점</b> — 전환량이 많으면 더 빨리, 적으면 더 길게, 캠페인 상황에 맞춰 설정합니다.</p>
       </div>
 
@@ -829,10 +838,14 @@
           <div class="b5 lo"><div class="b5v">3천</div><div class="b5c" style="height:8px;"></div><div class="b5l">소재5 ⚠</div></div>
         </div>
         <div class="grid g2" style="margin-top:14px;">
-          <div class="mini"><div class="mt2">방법 A · 운영 초기</div><div class="cd">소재를 <b>1개씩</b> 여러 캠페인/광고세트로 분리 세팅 → 각 소재가 충분한 예산·표본을 확보한 상태로 비교</div></div>
-          <div class="mini"><div class="mt2">방법 B · 현행 유지하며</div><div class="cd">광고세트를 <b>복수로 나눠</b> 소재를 분산 → 소재당 최소 예산을 확보한 뒤 공정하게 A/B</div></div>
+          <div class="mini"><div class="mt2">방법 A · 운영 초기</div><div class="cd"><b>소재 1개씩</b> 캠페인/광고세트 분리 → 각 소재 <b>충분한 예산·표본</b> 확보 후 비교</div></div>
+          <div class="mini"><div class="mt2">방법 B · 현행 유지하며</div><div class="cd"><b>광고세트를 복수로 분할</b> → 소재당 <b>최소 예산</b> 확보한 뒤 공정하게 A/B</div></div>
         </div>
-        <div class="quote">"소재마다 <b>공정한 예산·표본</b>이 가야 <b>효율 소재를 데이터로 확인</b>할 수 있습니다. 한 세트에 5개를 몰면 하위 소재는 검증 자체가 안 돼요. <b>광고세트를 나눠서라도</b> 소재별 최소 예산을 맞춘 뒤 테스트하는 걸 권합니다."</div>
+        <div class="simkey">
+          <span class="sk">한 세트 5개 → 하위 소재 검증 불가</span><span class="skar">→</span>
+          <span class="sk">광고세트 나눠 소재별 최소 예산 확보</span><span class="skar">→</span>
+          <span class="skres">효율 소재를 데이터로 확인</span>
+        </div>
       </div>
 
       <div class="card soft" style="margin-top:18px;display:flex;gap:14px;align-items:flex-start;">
