@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>에이블리 순수 성과형 상품광고 — PRD · 윤지욱</title>
+<meta name="description" content="에이블리 입점 중소·신규 셀러를 위한 순수 성과형 상품광고 PRD. 전환 시에만 과금하는 성과형 광고로 진입장벽을 낮추고, 광고비+증분 GMV 수수료로 에이블리 총 기여를 확대. 문제→해법→지면·목업→과금/경매/측정→수익 시뮬→리스크·로드맵·상세 명세." />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  :root{ --primary:#f06292; --primary-dark:#c2185b; --soft:#fde8f0; --ink:#1f1f1f; --sub:#6a7280;
+         --line:#e5e7eb; --ok:#2e9e52; --okbg:#eefaf0; --warn:#e8414f; --shadow:0 4px 40px rgba(0,0,0,.07); --shadow-sm:0 2px 14px rgba(0,0,0,.05); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{ font-family:'Pretendard','Apple SD Gothic Neo',sans-serif; color:var(--ink); background:#f6f7f9;
+        line-height:1.6; word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased; }
+  a{color:inherit;text-decoration:none;}
+  .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.88); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:1080px; margin:0 auto; padding:13px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .nav-logo{ font-weight:800; font-size:17px; } .nav-logo .dot{ color:var(--primary); }
+  .nav-links{ display:flex; gap:4px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+  .nav-links a{ color:var(--sub); font-weight:600; font-size:14px; padding:8px 11px; border-radius:10px; }
+  .nav-links a:hover{ background:#f4f5f7; color:var(--ink); } .nav-links a.active{ color:var(--primary-dark); }
+  .nav-links a.cta{ background:var(--primary); color:#fff; padding:8px 14px; border-radius:999px; } .nav-links a.cta:hover{ background:var(--primary-dark); }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 24px; }
+  section{ padding:46px 0; border-bottom:1px solid #eef0f3; }
+  .eyebrow{ display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:800; color:var(--primary-dark); margin-bottom:14px; }
+  .eyebrow .no{ background:var(--primary); color:#fff; width:26px; height:26px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; }
+  h2{ font-size:26px; font-weight:800; line-height:1.3; letter-spacing:-.5px; margin-bottom:10px; } h2 .hl{ color:var(--primary-dark); }
+  .lead{ font-size:15.5px; color:#555; margin-bottom:22px; max-width:760px; }
+  .cd{ font-size:14px; color:#555; line-height:1.65; } .cd b{ color:var(--ink); }
+  .note{ font-size:12px; color:var(--sub); margin-top:12px; }
+  .src{ font-size:10px; font-weight:800; border-radius:999px; padding:2px 8px; margin-left:4px; }
+  .src.as{ color:var(--primary-dark); background:var(--soft); } .src.pub{ color:#2f6fd6; background:#eef4fd; }
+
+  /* 히어로 */
+  .hero{ background:linear-gradient(135deg,#f06292,#ff8fab); color:#fff; padding:52px 0 46px; border:0; }
+  .hero .tag{ display:inline-block; font-size:12.5px; font-weight:800; background:rgba(255,255,255,.2); border-radius:999px; padding:6px 14px; margin-bottom:16px; }
+  .hero h1{ font-size:34px; font-weight:800; line-height:1.28; letter-spacing:-1px; }
+  .hero p{ font-size:16px; opacity:.96; margin-top:14px; max-width:780px; }
+  .hpills{ display:flex; gap:8px; flex-wrap:wrap; margin-top:20px; }
+  .hpills span{ font-size:12px; font-weight:700; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.3); border-radius:999px; padding:6px 13px; }
+
+  .grid{ display:grid; gap:14px; } .g2{ grid-template-columns:1fr 1fr; } .g3{ grid-template-columns:repeat(3,1fr); } .g4{ grid-template-columns:repeat(4,1fr); }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:20px; box-shadow:var(--shadow-sm); }
+  .card h3{ font-size:16px; font-weight:800; margin-bottom:8px; letter-spacing:-.3px; }
+
+  /* 문제 vs 해법 */
+  .vs{ display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:stretch; }
+  .vs .vsc{ border-radius:16px; padding:20px; }
+  .vs .bad{ background:#f7f8fa; border:1px solid var(--line); }
+  .vs .good{ background:linear-gradient(135deg,#fde8f0,#fff2f7); border:1px solid #f6c9db; }
+  .vs .vsc .t{ font-size:12px; font-weight:800; letter-spacing:.3px; margin-bottom:10px; }
+  .vs .bad .t{ color:var(--sub); } .vs .good .t{ color:var(--primary-dark); }
+  .vs ul{ list-style:none; } .vs li{ font-size:13.5px; color:#444; padding-left:20px; position:relative; margin:7px 0; line-height:1.55; }
+  .vs .bad li::before{ content:'✕'; position:absolute; left:0; color:#b0b4bb; font-weight:800; }
+  .vs .good li::before{ content:'✓'; position:absolute; left:0; color:var(--primary); font-weight:800; }
+  .vs .good li b{ color:var(--primary-dark); }
+  .vs .vsar{ align-self:center; font-size:24px; color:var(--primary); font-weight:800; }
+  .zero{ display:inline-block; margin-top:12px; font-size:18px; font-weight:900; color:#fff; background:var(--primary); border-radius:10px; padding:8px 16px; }
+
+  /* 폰 목업 */
+  .mockrow{ display:grid; grid-template-columns:270px 1fr; gap:26px; align-items:start; }
+  .phone{ width:270px; background:#fff; border:9px solid #1f2937; border-radius:34px; overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,.18); }
+  .ph-top{ background:#fff; padding:12px 14px 8px; border-bottom:1px solid #f0f0f0; }
+  .ph-search{ background:#f1f3f6; border-radius:999px; padding:8px 13px; font-size:11.5px; color:#9aa1ab; }
+  .ph-feed{ padding:11px; display:grid; grid-template-columns:1fr 1fr; gap:9px; background:#fafbfc; }
+  .pcard{ background:#fff; border:1px solid #eef0f3; border-radius:11px; overflow:hidden; }
+  .pcard .pimg{ height:84px; background:linear-gradient(135deg,#ffd9e6,#ffe8d9); position:relative; }
+  .pcard.adx .pimg{ background:linear-gradient(135deg,#f06292,#ff9eb8); }
+  .pcard .adbadge{ position:absolute; top:6px; left:6px; font-size:8.5px; font-weight:900; color:#fff; background:rgba(0,0,0,.45); border-radius:5px; padding:2px 6px; }
+  .pcard.adx .adbadge{ background:#fff; color:var(--primary-dark); }
+  .pcard .pb{ padding:7px 8px 9px; } .pcard .pt{ font-size:10px; color:#333; font-weight:700; line-height:1.35; } .pcard .pp{ font-size:11px; font-weight:900; color:#111; margin-top:3px; }
+  .mock-note{ font-size:11px; color:var(--sub); text-align:center; padding:9px; }
+  .pl-list{ list-style:none; } .pl-list li{ font-size:13.5px; color:#444; padding:9px 0 9px 24px; position:relative; border-bottom:1px dashed #eef0f3; }
+  .pl-list li::before{ content:'▸'; position:absolute; left:4px; color:var(--primary); font-weight:800; }
+  .pl-list li b{ color:var(--ink); }
+
+  /* 작동 방식 플로우 */
+  .how{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .howc{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:var(--shadow-sm); }
+  .howc .hn{ font-size:11px; font-weight:800; color:var(--primary); } .howc .ht{ font-size:15px; font-weight:800; margin:5px 0 9px; }
+  .chip{ display:inline-block; font-size:11px; font-weight:800; border-radius:7px; padding:4px 9px; margin:3px 3px 0 0; }
+  .chip.g{ color:var(--primary-dark); background:var(--soft); } .chip.n{ color:#555; background:#f1f3f6; }
+  .howc .hd{ font-size:12.5px; color:#555; line-height:1.55; margin-top:9px; } .howc .hd b{ color:var(--primary-dark); }
+
+  /* 왜 에이블리 */
+  .whyc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:17px; box-shadow:var(--shadow-sm); }
+  .whyc .wi{ font-size:21px; } .whyc .wt{ font-size:14px; font-weight:800; margin:7px 0 4px; } .whyc .wd{ font-size:12px; color:var(--sub); line-height:1.5; font-weight:600; } .whyc .wd b{ color:var(--primary-dark); }
+  .bench{ width:100%; border-collapse:collapse; margin-top:16px; font-size:13px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .bench th,.bench td{ padding:10px 13px; border-bottom:1px solid #eef0f3; text-align:left; } .bench th{ background:#faf0f5; font-weight:800; font-size:12px; color:var(--primary-dark); }
+  .bench tr.me td{ background:#fff5f9; font-weight:700; } .bench td b{ color:var(--primary-dark); }
+
+  /* 수익 시뮬 */
+  .scn{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .scnc{ border-radius:16px; padding:20px 18px; text-align:center; border:1px solid var(--line); background:#fff; box-shadow:var(--shadow-sm); }
+  .scnc.base{ background:linear-gradient(135deg,#fde8f0,#fff2f7); border-color:#f6c9db; }
+  .scnc .sl{ font-size:12px; font-weight:800; color:var(--sub); } .scnc.base .sl{ color:var(--primary-dark); }
+  .scnc .sbig{ font-size:27px; font-weight:900; color:var(--primary-dark); line-height:1.1; margin:7px 0 3px; letter-spacing:-.5px; }
+  .scnc .schg{ font-size:14px; font-weight:800; color:var(--ok); }
+  .scnc .ssub{ font-size:11px; color:var(--sub); margin-top:9px; line-height:1.5; }
+  .beBox{ margin-top:16px; background:#fff; border:1px solid var(--line); border-left:4px solid var(--primary); border-radius:12px; padding:15px 18px; font-size:13.5px; color:#444; line-height:1.6; } .beBox b{ color:var(--primary-dark); }
+
+  /* KPI */
+  .kpi{ width:100%; border-collapse:collapse; font-size:13px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .kpi th,.kpi td{ padding:9px 13px; border-bottom:1px solid #eef0f3; text-align:center; } .kpi td:first-child,.kpi th:first-child{ text-align:left; }
+  .kpi th{ background:#faf0f5; font-weight:800; font-size:12px; color:var(--primary-dark); }
+  .kpi td.g{ color:var(--primary-dark); font-weight:800; }
+  .kpi .grp{ font-weight:800; color:var(--sub); font-size:11px; }
+
+  /* 리스크·로드맵 */
+  .risk{ list-style:none; } .risk li{ font-size:13px; color:#444; padding:11px 14px; background:#fff; border:1px solid var(--line); border-radius:11px; margin-bottom:9px; line-height:1.55; }
+  .risk li b{ color:var(--primary-dark); } .risk li .rx{ color:var(--ok); font-weight:700; }
+  .road{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .roadc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow-sm); }
+  .roadc .rn{ font-size:11px; font-weight:800; color:var(--primary); } .roadc .rt{ font-size:14px; font-weight:800; margin:5px 0 7px; } .roadc .rd{ font-size:12px; color:#555; line-height:1.5; }
+
+  /* 상세 명세 */
+  .spec{ width:100%; border-collapse:collapse; font-size:12.5px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  .spec th,.spec td{ padding:11px 13px; border-bottom:1px solid #eef0f3; text-align:left; vertical-align:top; } .spec th{ background:#faf0f5; font-weight:800; color:var(--primary-dark); font-size:12px; }
+  .spec td b{ color:var(--ink); } .spec .ft{ font-weight:800; color:var(--primary-dark); white-space:nowrap; }
+  .spec ul{ list-style:none; margin-top:4px; } .spec li{ padding-left:13px; position:relative; margin:3px 0; color:#555; line-height:1.5; } .spec li::before{ content:'•'; position:absolute; left:0; color:var(--primary); }
+  details.pol{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:0; margin-bottom:10px; overflow:hidden; }
+  details.pol summary{ cursor:pointer; padding:14px 16px; font-size:14px; font-weight:800; color:var(--ink); list-style:none; display:flex; justify-content:space-between; align-items:center; }
+  details.pol summary::after{ content:'＋'; color:var(--primary); font-weight:800; } details.pol[open] summary::after{ content:'－'; }
+  details.pol .pbody{ padding:0 16px 16px; font-size:13px; color:#555; line-height:1.65; } details.pol .pbody b{ color:var(--primary-dark); }
+
+  .disc{ font-size:12px; background:#fffdf7; border:1px dashed #e8c98f; border-radius:12px; padding:14px 16px; margin:24px 0; line-height:1.6; color:#8a6d33; }
+  footer{ text-align:center; padding:30px 0 50px; font-size:12.5px; color:var(--sub); }
+  footer a{ color:var(--primary-dark); font-weight:700; }
+
+  @media (max-width:860px){
+    .g2,.g3,.g4,.how,.scn,.road{ grid-template-columns:1fr; }
+    .vs{ grid-template-columns:1fr; } .vs .vsar{ transform:rotate(90deg); }
+    .mockrow{ grid-template-columns:1fr; justify-items:center; }
+    .hero h1{ font-size:27px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav"><div class="nav-inner">
+  <a class="nav-logo" href="index.html">JIUK<span class="dot">.</span>YOON</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="resume.html">이력서</a>
+    <a href="cases.html">상세 케이스</a>
+    <a href="proposal.html">제안서</a>
+    <a class="cta" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">AI 대시보드 데모 →</a><a class="cta" href="am-dashboard.html" target="_blank" rel="noopener">에이블리 전용 대시보드 →</a>
+  </div>
+</div></nav>
+
+<!-- 히어로 -->
+<header class="hero">
+  <div class="wrap">
+    <span class="tag">📄 PRODUCT PRD · 광고상품 기획</span>
+    <h1>에이블리 입점 중소·신규 셀러를 위한<br><span style="opacity:.95">순수 성과형 상품광고</span></h1>
+    <p>"성과 없으면 0원." 전환(구매·쿠폰 사용·앱 설치)이 발생할 때만 과금하는 성과형 광고로 <b>진입장벽을 낮춰 롱테일 셀러를 활성화</b>하고, 광고비 + 증분 GMV 거래 수수료로 <b>에이블리 총 기여</b>를 확대하는 제품 기획.</p>
+    <div class="hpills"><span>지원 직무와 직결 — 광고 상품·수익 관점</span><span>모든 수치는 파일럿 가정</span><span>Manus(Manny) 기반 작성 · 윤지욱 기획</span></div>
+  </div>
+</header>
+
+<!-- 01 문제 & 해법 -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no">01</span> 문제 &amp; 해법</div>
+  <h2>지금은 <span class="hl">성과와 무관하게 과금</span>된다. 그래서 중소·신규 셀러가 못 들어온다.</h2>
+  <p class="lead">현행 에이블리 광고는 CPD(구좌제·고정가)와 oCPM(노출당 과금)이 중심 — <b>성과가 없어도 광고비가 소진</b>되고, 최소 집행비가 커 중소·신규 셀러의 진입장벽이 높습니다.</p>
+  <div class="vs">
+    <div class="vsc bad">
+      <div class="t">현행 — CPD / oCPM</div>
+      <ul>
+        <li>기간 점유 · 노출 기준 과금</li>
+        <li>전환이 없어도 <b style="color:#8a4b3a">광고비 소진</b></li>
+        <li>최소 집행비 수백만~천만 원 → 진입장벽</li>
+        <li>"돈만 쓰고 성과 없을까" 두려움 → 시작·재집행 X</li>
+      </ul>
+    </div>
+    <div class="vsar">→</div>
+    <div class="vsc good">
+      <div class="t">제안 — 순수 성과형(Pay-for-Performance)</div>
+      <ul>
+        <li><b>전환(구매·쿠폰·설치) 발생 시에만</b> 과금</li>
+        <li>성과 없으면 <b>0원</b> → 광고주 금전 리스크 0</li>
+        <li>소액으로 <b>부담 없이 시작</b> → 롱테일 셀러 유입</li>
+        <li>기존 인피드 지면에 <b>과금 레이어만</b> 추가 (신규 지면 X)</li>
+      </ul>
+      <div class="zero">성과 없으면 0원</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 02 지면 & 상품 목업 -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no">02</span> 광고 지면 &amp; 상품 예시</div>
+  <h2>이미 전환이 활발한 <span class="hl">인피드 상품광고 지면</span>에 얹는다.</h2>
+  <p class="lead">새 지면을 만드는 게 아니라, 전환이 잘 터지는 <b>기존 상품광고 지면</b>에 성과형 과금을 적용합니다.</p>
+  <div class="mockrow">
+    <div>
+      <div class="phone">
+        <div class="ph-top"><div class="ph-search">🔍 원피스 검색…</div></div>
+        <div class="ph-feed">
+          <div class="pcard"><div class="pimg"></div><div class="pb"><div class="pt">코튼 미디 원피스</div><div class="pp">39,000원</div></div></div>
+          <div class="pcard adx"><div class="pimg"><span class="adbadge">AD · 성과형</span></div><div class="pb"><div class="pt">셀러 상품 (광고)</div><div class="pp">42,000원</div></div></div>
+          <div class="pcard"><div class="pimg"></div><div class="pb"><div class="pt">플리츠 롱 원피스</div><div class="pp">35,000원</div></div></div>
+          <div class="pcard adx"><div class="pimg"><span class="adbadge">AD · 성과형</span></div><div class="pb"><div class="pt">신규 셀러 상품 (광고)</div><div class="pp">28,000원</div></div></div>
+        </div>
+        <div class="mock-note">투데이 추천 · 검색결과 '비슷한 상품' 사이에 자연스럽게 노출</div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <h3>MVP 적용 지면 (기존)</h3>
+        <ul class="pl-list">
+          <li><b>투데이 추천상품</b> — 홈 피드 추천 영역</li>
+          <li><b>투데이 · 검색결과 '비슷한 상품을 찾아봤어요'</b> — 상품 사이 인피드</li>
+          <li><b>상품상세 '연관 추천 상품'</b></li>
+          <li><b>검색 기반 신규 지면</b></li>
+        </ul>
+        <p class="note">· 과금만 성과형으로 바뀔 뿐, 노출 형태는 기존 상품광고와 동일 <span class="src pub">공개</span> · 유저 경험 변화 없음</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 03 작동 방식 -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no">03</span> 어떻게 작동하나</div>
+  <h2><span class="hl">과금 · 경매 · 측정</span> — 광고주는 리스크 0, 플랫폼은 수익 방어.</h2>
+  <div class="how">
+    <div class="howc">
+      <div class="hn">① 과금 (전환 단가)</div>
+      <div class="ht">전환 시에만 과금</div>
+      <div>
+        <span class="chip g">구매 4,000원</span><span class="chip g">쿠폰 1,500원</span><span class="chip g">앱설치 2,500원</span>
+      </div>
+      <div class="hd">카테고리 기준단가 <b>자동 조정</b>(80~120%). 노출·클릭만 발생 → <b>0원</b>. 캠페인 생성 전 예상 전환 수·비용 고지.</div>
+    </div>
+    <div class="howc">
+      <div class="hn">② 경매 (수익 방어)</div>
+      <div class="ht">oCPM과 같은 저울</div>
+      <div><span class="chip n">eCPM = 예상전환율 × 단가 × 1,000</span></div>
+      <div class="hd">성과형·oCPM을 <b>동일 eCPM 경매</b>로 경쟁. 예상 eCPM이 바닥가 <b>95%↓ 우선순위↓ · 80%↓ oCPM 대체</b>, 공짜 소진율 20%↑ 신규 유입 중단.</div>
+    </div>
+    <div class="howc">
+      <div class="hn">③ 측정 (어트리뷰션)</div>
+      <div class="ht">진짜 광고 전환만</div>
+      <div><span class="chip n">클릭 후 7일</span><span class="chip n">중복 제거</span><span class="chip n">환불 조정</span></div>
+      <div class="hd">내부 결제·쿠폰 로그 + 외부 포스트백/API. <b>자연전환 vs 광고 기여 구분</b>(증분성)으로 '어차피 살 사람' 과금 방지. 내부 D+7 / 외부 D+14 정산.</div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 04 왜 에이블리 -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no">04</span> 왜 에이블리만 가능한가</div>
+  <h2>성과형은 <span class="hl">전환을 예측·측정할 수 있어야</span> 가능하다.</h2>
+  <p class="lead">토스 ROAS 보장형의 <b>커머스 버전</b>. 에이블리는 성과형을 '해도 손해 안 보는' 조건을 다 갖췄습니다.</p>
+  <div class="grid g4">
+    <div class="whyc"><div class="wi">🛒</div><div class="wt">구매·결제 데이터</div><div class="wd"><b>전환 예측</b> 정확도 확보</div></div>
+    <div class="whyc"><div class="wi">🔗</div><div class="wt">전환 트래킹</div><div class="wd">결제·쿠폰까지 <b>측정 가능</b></div></div>
+    <div class="whyc"><div class="wi">🤖</div><div class="wt">AI 추천 지면</div><div class="wd">전환 활발한 <b>인피드</b> 보유</div></div>
+    <div class="whyc"><div class="wi">💰</div><div class="wt">거래 수수료</div><div class="wd">판매 1건당 <b>약 7%</b> 추가 수익</div></div>
+  </div>
+  <table class="bench">
+    <tr><th>구분</th><th>토스</th><th>네이버 / 당근</th><th>에이블리 (제안)</th></tr>
+    <tr><td>성과(전환) 보장형</td><td>ROAS 보장형 ○</td><td>CPC·성과형 (전환 보장 △)</td><td><b>순수 성과형 ○</b></td></tr>
+    <tr class="me"><td>커머스 전환 + 거래 수수료</td><td>결제 활성화</td><td>제한적</td><td><b>구매·쿠폰 + 7% 수수료</b></td></tr>
+    <tr><td>핵심 논리</td><td>광고+페이</td><td>광고 매출</td><td><b>광고 + 증분 GMV 수수료 = 총 기여</b></td></tr>
+  </table>
+  <p class="note">· "광고 기여 GMV"는 oCPM으로는 유입되지 않던 <b>신규 셀러의 증분 GMV</b>로 정의 → 그 수수료는 기존 oCPM 베이스라인에 없던 <b>순증분</b>. 외부 미입점 광고주는 수수료가 없어 Phase 2.</p>
+</div></section>
+
+<!-- 05 수익 임팩트 & KPI -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no">05</span> 수익 임팩트 &amp; 성공지표</div>
+  <h2>광고 매출이 아니라 <span class="hl">'에이블리 총 기여'</span>로 평가한다.</h2>
+  <p class="lead">총 기여 = 광고비 + (광고 기여 증분 GMV × 7% 수수료). <b>월 1,000만 노출 · 전환단가 4,000원 · 주문 40,000원 · 수수료 7%</b> 가정 (인벤토리 단위 비교).</p>
+  <div class="scn">
+    <div class="scnc"><div class="sl">보수 (전환율 0.11%)</div><div class="sbig">6,688만</div><div class="schg">+34%</div><div class="ssub">광고비 3,608만 + 수수료 3,080만<br>vs oCPM 5,000만</div></div>
+    <div class="scnc base"><div class="sl">기본 (전환율 0.16%)</div><div class="sbig">1억 240만</div><div class="schg">+105%</div><div class="ssub">광고비 5,760만 + 수수료 4,480만<br>vs oCPM 5,000만</div></div>
+    <div class="scnc"><div class="sl">낙관 (전환율 0.21%)</div><div class="sbig">1억 3,776만</div><div class="schg">+176%</div><div class="ssub">광고비 7,896만 + 수수료 5,880만<br>vs oCPM 5,000만</div></div>
+  </div>
+  <div class="beBox">📐 <b>손익분기 유효 전환율 — 총 기여 기준 0.078%</b>(공짜 소진 10%). 광고비만 기준으로도 0.139% → <b>파일럿 목표 0.15%가 둘 다 상회</b>해 지면 매출 유지율 95% 목표와 정합. 신규 300명 × 월 40전환 × 4,000원 = 월 광고비 4,800만 + 수수료 3,360만 = <b>총 기여 8,160만/월</b>.</div>
+
+  <h3 style="margin:26px 0 12px; font-size:16px; font-weight:800;">KPI &amp; 파일럿 게이트</h3>
+  <table class="kpi">
+    <tr><th>구분</th><th>지표</th><th>파일럿 목표</th><th>확대 게이트</th><th>축소·중단</th></tr>
+    <tr><td class="grp">성장</td><td>신규 성과형 광고주</td><td class="g">300명</td><td>500명+</td><td>200명 미만</td></tr>
+    <tr><td class="grp">성장</td><td>첫 캠페인 활성화율</td><td class="g">35%+</td><td>40%+</td><td>25% 미만</td></tr>
+    <tr><td class="grp">성장</td><td>30일 재집행률</td><td class="g">30%+</td><td>35%+</td><td>20% 미만</td></tr>
+    <tr><td class="grp">수익성</td><td>지면 매출 유지율 (vs oCPM)</td><td class="g">95%+</td><td>100%+</td><td>90% 미만</td></tr>
+    <tr><td class="grp">건전성</td><td>공짜 소진율</td><td class="g">15%↓</td><td>10%↓</td><td>20% 초과</td></tr>
+    <tr><td class="grp">건전성</td><td>유효 전환율</td><td class="g">0.15%+</td><td>0.18%+</td><td>0.12% 미만</td></tr>
+  </table>
+</div></section>
+
+<!-- 06 리스크 & 로드맵 -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no">06</span> 리스크 &amp; 로드맵</div>
+  <h2>리스크는 <span class="hl">가드레일로 선제 차단</span>, 확장은 단계적으로.</h2>
+  <ul class="risk">
+    <li><b>공짜 노출 소진</b> (전환 안 될 상품이 지면 점유) → <span class="rx">eCPM 경매 + 바닥가 95/80% 가드레일, 전환 활발 카테고리부터</span></li>
+    <li><b>역선택</b> (전환 낮은 광고주 몰림) → <span class="rx">판매량·평점·재고·배송 품질로 참여 자격·노출 한도 제한</span></li>
+    <li><b>가짜 전환·어뷰징</b> → <span class="rx">결제자·기기 중복 제거, 환불 제외, 이상 패턴 탐지, 정산 보류</span></li>
+    <li><b>자연전환 과대평가</b> → <span class="rx">기여 윈도우·중복 제거·대조군 기반 증분성 분석</span></li>
+    <li><b>기존 CPD 매출 잠식</b> → <span class="rx">대형 CPD 유지, MVP는 중소·신규 셀러·한정 지면</span></li>
+  </ul>
+  <div class="road" style="margin-top:16px;">
+    <div class="roadc"><div class="rn">PHASE 1 · 파일럿</div><div class="rt">패션·뷰티 한정</div><div class="rd">전환 활발 카테고리·기존 지면 + 레퍼런스 셀러 100개. "성과 없으면 0원" 메시지로 모집, 7일 리포트.</div></div>
+    <div class="roadc"><div class="rn">PHASE 2 · 확대</div><div class="rt">게이트 통과 시</div><div class="rd">공짜 소진율·마진·예측 정확도·재집행률이 기준 통과 → 카테고리·셀러 확대.</div></div>
+    <div class="roadc"><div class="rn">PHASE 3 · 검토</div><div class="rt">외부 · 보장형</div><div class="rd">외부 미입점 광고주(수수료 없음), 추가 지면, CPA 상한·전환 건수 보장 검토.</div></div>
+  </div>
+</div></section>
+
+<!-- 07 상세 명세 (실무자용) -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no">07</span> 상세 기능 명세 &amp; 정책 <span class="src as">실무자용 depth</span></div>
+  <h2>주요 기능 6종</h2>
+  <table class="spec" style="margin-top:8px;">
+    <tr><th style="width:170px;">기능</th><th>핵심 요구사항</th></tr>
+    <tr><td class="ft">1 · 성과형 캠페인 생성·과금</td><td>상품·기간·예산·목표 전환 설정. <b>유효 전환 확정 시에만</b> 전환 단가로 과금, 노출·클릭만이면 0원. 취소·환불·중복·정책 위반 제외. 예산·노출·카테고리 한도 초과 시 집행 자동 제한.</td></tr>
+    <tr><td class="ft">2 · 전환 측정·어트리뷰션</td><td>내부 결제·쿠폰 로그 + 외부 포스트백/API. 클릭 후 기여 윈도우(기본 7일), 동일 주문·쿠폰·설치 중복 과금 방지, 환불·부정 시 재계산, <b>자연전환 vs 광고 기여 구분</b> + 증분성 원천 데이터 저장.</td></tr>
+    <tr><td class="ft">3 · 타겟팅·예측·품질 방어</td><td>카테고리·가격·행동·과거 전환으로 타겟 구성·전환 예측. 판매량·평점·재고·배송 품질로 참여 적합성 평가, 이상 패턴 탐지·캠페인 정지·전환 무효화, 지면·셀러별 공짜 소진율·예측 오차 모니터링.</td></tr>
+    <tr><td class="ft">4 · 광고주 성과 대시보드</td><td>노출·클릭·전환·전환율·전환당 비용·과금액·잔여 예산. 전환 유형별 실적, 자연 vs 광고 기여·확정 vs 검증 대기 구분, 필터·다운로드, <b>전환 0 기간 과금 0원</b> 확인·과금 근거 조회.</td></tr>
+    <tr><td class="ft">5 · 운영·정산·정책</td><td>카테고리·지면·셀러 등급·품질·한도 설정, 전환 검증·승인·무효·환불 조정, 공짜 소진율·마진·기회비용 파일럿 기준 비교, 게이트 충족 시 확대·미달 시 자동 축소, 성과형 vs CPD 분리 집계(잠식 확인).</td></tr>
+    <tr><td class="ft">6 · 단계적 출시 로드맵</td><td>파일럿 대상·기간·사전 KPI 승인 → 종료 후 성장·건전성 지표로 확대/유지/축소 결정. 공짜 소진율·마진 하회 시 한도 축소, 외부 광고주·CPA/건수 보장은 Phase 2, 대형 CPD는 범위 제외·유지.</td></tr>
+  </table>
+
+  <h3 style="margin:26px 0 12px; font-size:16px; font-weight:800;">프로덕트 정책 4종</h3>
+  <details class="pol"><summary>전환 단가 책정 정책</summary><div class="pbody">3안 비교(고정 단가 / 목표 CPA 입찰 / <b>기준단가 자동 조정</b>) → MVP는 <b>카테고리 기준단가 자동 조정</b> 채택. 파일럿 가정: 구매 4,000 · 쿠폰 1,500 · 앱설치 2,500원, 지면·상품·셀러 예측·품질로 <b>80~120% 조정</b>. 실제 eCPM이 기준比 10%↓ 7일 지속 시 상향, 20%↑ & 재집행률 35%↑면 인하 검토. 캠페인 생성 전 단가·예상 전환·비용 고지.</div></details>
+  <details class="pol"><summary>상품광고 경매 &amp; 노출 배분 정책</summary><div class="pbody">성과형 eCPM = <b>예상전환율 × 전환단가 × 1,000</b>, oCPM(입찰 eCPM)과 <b>동일 랭킹 경매</b>(eCPM + 품질점수). 예상 eCPM이 지면 바닥가 <b>95% 미만 우선순위↓ · 80% 미만 oCPM 대체</b>. 실제 eCPM이 예상의 80% 미만 3일 연속 → 일 노출 50% 축소. 공짜 소진율 20% 초과 → 신규 유입 중단. 셀러당 일 노출 지면의 5% 이하.</div></details>
+  <details class="pol"><summary>전환 확정 &amp; 정산 정책</summary><div class="pbody">내부 구매·쿠폰 <b>D+7</b>, 외부 전환 <b>D+14</b> 확정. 확정 비용 매일 누적, 청구서 월 1~말일 확정분 <b>익월 5일 발행</b>, 발행 후 7일 이의. 유효 전환 = 기여 윈도우(기본 클릭 후 7일) 내 결제 완료·유효 쿠폰 사용. 취소·환불·부정·셀프 구매 제외, 이상 패턴은 정산 보류, 확정 후 환불은 익월 차감(크레딧 우선).</div></details>
+  <details class="pol"><summary>GTM &amp; 온보딩 정책</summary><div class="pbody">파일럿 = 패션·뷰티 + 전환 활발 지면. 초대 대상: 최근 90일 주문 30건+, 평점 4.2+, 품절률 5% 미만. <b>카테고리별 20~30개, 총 100개 레퍼런스 셀러</b> 1차 모집. 세일즈 메시지 = <b>"성과 없으면 0원, 전환 발생분만 과금"</b>. BD가 첫 성과 사례를 같은 카테고리 셀러에 제시, 시작 후 7일 리포트·조정 제안, 성과 충족 시 30일 내 재집행 제안.</div></details>
+</div></section>
+
+<div class="wrap">
+  <div class="disc">⚠️ 본 문서는 <b>윤지욱이 에이블리 광고 BD 지원을 위해 작성한 제품 기획(PRD)</b>이며, 모든 금액·전환율·수치는 <b>파일럿 가정값</b>입니다. 실제 수치·효과는 집행 데이터·A/B·증분성 검증으로 확정합니다. (작성 도구: Manus/Manny · 기획·검토: 윤지욱)</div>
+</div>
+
+<footer>
+  © 2026 윤지욱 (JIUK.YOON) · 에이블리 성과형 상품광고 PRD<br>
+  <div style="margin-top:8px;"><a href="proposal.html">샘플 제안서</a> · <a href="cases.html">상세 케이스</a> · <a href="index.html">홈</a></div>
+</footer>
+
+</body>
+</html>
