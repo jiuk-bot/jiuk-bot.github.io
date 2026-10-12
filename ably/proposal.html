@@ -415,6 +415,26 @@
   .scard .l1,.scard .l2{ font-size:10px; font-weight:800; border-radius:6px; padding:3px 8px; margin-right:7px; white-space:nowrap; }
   .scard .l1{ color:#9a7b3a; background:#fdf1dd; }
   .scard .l2{ color:#fff; background:var(--primary); }
+  /* 시나리오 — 지표 배지 + 결과 수치 (시각형) */
+  .scard>.srx{ margin-top:auto; }
+  .sdiag{ margin-top:13px; }
+  .sdiag .mrow{ display:flex; gap:5px; flex-wrap:wrap; align-items:center; }
+  .sdiag .mb{ font-size:11px; font-weight:800; padding:4px 9px; border-radius:7px; white-space:nowrap; }
+  .sdiag .mb.bad{ color:#e8414f; background:#fff1f1; border:1px solid #f6d5d5; }
+  .sdiag .mb.ok{ color:#8a919c; background:#f3f4f6; }
+  .sdiag-c{ display:inline-flex; align-items:center; gap:7px; margin-top:9px; font-size:13px; font-weight:800; color:var(--primary-dark); background:var(--soft); border-radius:8px; padding:6px 12px; }
+  .sdiag-c b{ font-size:9.5px; font-weight:800; color:#fff; background:var(--primary-dark); border-radius:5px; padding:2px 6px; }
+  .srx{ margin-top:12px; background:#fff2ea; border-radius:12px; padding:13px 14px; }
+  .srx-head{ display:inline-block; font-size:9.5px; font-weight:800; color:#fff; background:var(--primary); border-radius:5px; padding:2px 7px; }
+  .srx-act{ font-size:12.5px; color:#333; line-height:1.55; margin-top:7px; } .srx-act b{ color:var(--primary-dark); }
+  .srx-res{ display:flex; align-items:center; gap:8px; margin-top:10px; flex-wrap:wrap; }
+  .srx-num{ font-size:13.5px; font-weight:900; color:#fff; background:var(--primary); border-radius:8px; padding:6px 12px; box-shadow:0 3px 10px rgba(255,81,96,.3); }
+  .srx-src{ font-size:10.5px; font-weight:700; color:var(--sub); }
+  .rxflow{ display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-top:9px; }
+  .rxf{ font-size:11.5px; font-weight:800; border-radius:8px; padding:6px 10px; white-space:nowrap; }
+  .rxf.cut{ color:#e8414f; background:#fff1f1; border:1px solid #f6d5d5; }
+  .rxf.to{ color:var(--primary-dark); background:#fff; border:1px solid #f0d0c8; }
+  .rxf-ar{ color:var(--primary); font-weight:800; }
   .scard.wide{ grid-column:1/-1; }
   .scard.wide .scard-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px; }
   .scard.wide .scard-row>div{ margin-top:0; }
@@ -656,30 +676,68 @@
           <p class="cd" style="margin-top:4px;">광고주가 "성과가 안 난다" 할 때 — <b>지표를 분해해 원인 특정</b> + <b class="mk">유사 업종 레퍼런스·A/B 데이터로 설득</b></p>
           <div class="sgrid">
             <div class="scard">
-              <div class="scard-q"><span class="who">광고주</span><span class="qt">"처음엔 반응 좋았는데, 요즘 클릭이 뚝 떨어졌어요."</span></div>
-              <div class="scard-dx"><span class="l1">데이터 진단</span>노출은 그대로인데 <em>CTR만 하락</em>, CVR은 유지 → <b>소재 피로도</b>로 판단.</div>
-              <div class="scard-rx"><span class="l2">대응</span>"유사 업종 레퍼런스를 보면 <b>소재 교체·로테이션만으로 CTR이 20~30% 회복</b>된 사례가 있어요. 효율 소재는 두고 <b>피로한 소재만 신규 2종으로</b> 바꿔보시길 제안드립니다."</div>
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"처음엔 반응 좋았는데, 요즘 클릭이 뚝 떨어졌어요"</span></div>
+              <div class="sdiag">
+                <div class="mrow"><span class="mb ok">노출 →</span><span class="mb bad">CTR ↓</span><span class="mb ok">CVR →</span></div>
+                <div class="sdiag-c"><b>진단</b> 소재 피로도</div>
+              </div>
+              <div class="srx">
+                <span class="srx-head">대응</span>
+                <div class="srx-act">효율 소재는 두고 <b>피로 소재만 신규 2종 교체·로테이션</b></div>
+                <div class="srx-res"><span class="srx-num">CTR +20~30% 회복</span><span class="srx-src">유사 업종 레퍼런스</span></div>
+              </div>
             </div>
             <div class="scard">
               <div class="scard-q"><span class="who">광고주</span><span class="qt">"클릭은 되는데 전환이 안 나와요. 광고가 별로인가요?"</span></div>
-              <div class="scard-dx"><span class="l1">데이터 진단</span>CTR은 정상인데 <em>CVR만 하락</em> → 광고가 아니라 <b>타겟 소진 또는 랜딩(LP) 문제</b>입니다.</div>
-              <div class="scard-rx"><span class="l2">대응</span>"광고가 아니라 타겟이 소진됐을 가능성이 커요. 유사 업종에선 <b>오디언스 확장 + LP 개선으로 CVR이 15% 이상 개선</b>된 레퍼런스가 있어, <b>유사 성향 타겟 확장과 LP 동선 점검</b>을 함께 제안드립니다."</div>
+              <div class="sdiag">
+                <div class="mrow"><span class="mb ok">CTR →</span><span class="mb bad">CVR ↓</span></div>
+                <div class="sdiag-c"><b>진단</b> 타겟 소진 · LP 문제</div>
+              </div>
+              <div class="srx">
+                <span class="srx-head">대응</span>
+                <div class="srx-act"><b>유사 성향 오디언스 확장 + LP 동선 점검</b> (광고 문제 아님)</div>
+                <div class="srx-res"><span class="srx-num">CVR +15% 개선</span><span class="srx-src">유사 업종 레퍼런스</span></div>
+              </div>
             </div>
             <div class="scard">
-              <div class="scard-q"><span class="who">광고주</span><span class="qt">"같은 예산인데 노출 단가가 갑자기 비싸졌어요."</span></div>
-              <div class="scard-dx"><span class="l1">데이터 진단</span>CTR·CVR은 그대로인데 <em>CPM만 단독 상승</em> → <b>지면 경쟁 심화(과열)</b>입니다.</div>
-              <div class="scard-rx"><span class="l2">대응</span>"지면 경쟁이 과열된 신호예요. 유사 사례에선 <b>경쟁 덜한 구좌로 예산을 분산해 CPM을 10~20% 낮춘</b> 적이 있어, <b>입찰 조정과 구좌 분산</b>을 제안드립니다."</div>
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"같은 예산인데 노출 단가가 갑자기 비싸졌어요"</span></div>
+              <div class="sdiag">
+                <div class="mrow"><span class="mb ok">CTR →</span><span class="mb ok">CVR →</span><span class="mb bad">CPM ↑</span></div>
+                <div class="sdiag-c"><b>진단</b> 지면 경쟁 과열</div>
+              </div>
+              <div class="srx">
+                <span class="srx-head">대응</span>
+                <div class="srx-act"><b>입찰 조정 + 경쟁 덜한 구좌로 예산 분산</b></div>
+                <div class="srx-res"><span class="srx-num">CPM −10~20%</span><span class="srx-src">유사 사례</span></div>
+              </div>
             </div>
             <div class="scard">
-              <div class="scard-q"><span class="who">광고주</span><span class="qt">"예산을 늘렸는데 노출도 안 늘고 성과가 정체예요."</span></div>
-              <div class="scard-dx"><span class="l1">데이터 진단</span>노출·소진율은 정체인데 <em>CPM 상승 + CTR·CPC 악화</em> 동반 → 구좌가 아니라 <b>도달 풀(타겟) 고갈</b>로 해석됩니다.</div>
-              <div class="scard-rx"><span class="l2">대응</span>"최근 1달 추이를 보면 <b>CPM이 라이브 첫 주 대비 약 25% 상승, CTR·CPC도 악화</b>됐어요. 풀 고갈 신호라 예산을 더 넣기 전에 <b>타겟팅을 확장해 추가 풀부터 확보</b>(여의치 않으면 신규 구좌 추가)하시길 제안드립니다. 유사 업종에선 뷰티·시술 관심사·유사 오디언스로 넓혀 <b>CPA를 15% 낮춘</b> 사례가 있어요."</div>
+              <div class="scard-q"><span class="who">광고주</span><span class="qt">"예산을 늘렸는데 노출도 안 늘고 성과가 정체예요"</span></div>
+              <div class="sdiag">
+                <div class="mrow"><span class="mb ok">노출 정체</span><span class="mb bad">CPM ↑</span><span class="mb bad">CTR ↓</span><span class="mb bad">CPC ↑</span></div>
+                <div class="sdiag-c"><b>진단</b> 도달 풀(타겟) 고갈</div>
+              </div>
+              <div class="srx">
+                <span class="srx-head">대응</span>
+                <div class="srx-act">예산 증액 전 <b>타겟팅 확장으로 추가 풀 확보</b> (여의치 않으면 신규 구좌)</div>
+                <div class="srx-res"><span class="srx-num">CPA −15%</span><span class="srx-src">CPM 첫주比 +25% 추이 확인 후</span></div>
+              </div>
             </div>
             <div class="scard wide">
               <div class="scard-q"><span class="who">광고주</span><span class="qt">"추천해주신 미디어믹스대로 돌렸는데, 기대만큼 성과가 안 나와요. 어떻게 하죠?"</span></div>
               <div class="scard-row">
-                <div class="scard-dx"><span class="l1">데이터 진단</span>전체 CPA만 보지 않고 <em>캠페인·구좌별로 분해</em>합니다. 최근 1개월 추이를 보면 <b>5개 캠페인 중 1·3번이 전환의 대부분</b>을 만들고, 나머지는 예산 대비 기여가 낮아 <b>전체 CPA를 끌어올리고 있습니다.</b></div>
-                <div class="scard-rx"><span class="l2">대응</span>"최근 1개월 추이로 보면 <b>성과가 가장 우수한 1·3번 캠페인은 유지</b>하고, 나머지 비효율 캠페인은 <b>예산을 30% 감축</b>합니다. 감축분은 <b>에이블리 신규 구좌 1개(예: 종료 팝업 배너)를 라이브해 50%를 투입</b>하고, 나머지 <b>50%는 1·3번 캠페인에 차등 재분배</b>하시길 제안드립니다. 추천 구좌는 유사 업종에서 <b>현재 우수 캠페인 대비 CPA가 18% 낮은</b> 성과를 기록한 데이터가 있어요."</div>
+                <div class="sdiag">
+                  <div class="mrow"><span class="mb ok">1·3번 전환 大</span><span class="mb bad">2·4·5번 기여 小</span><span class="mb bad">전체 CPA ↑</span></div>
+                  <div class="sdiag-c"><b>진단</b> 캠페인별 분해 → 하위가 CPA 끌어올림</div>
+                </div>
+                <div class="srx">
+                  <span class="srx-head">대응</span>
+                  <div class="rxflow">
+                    <span class="rxf to">1·3번 유지</span><span class="rxf cut">하위 예산 −30%</span><span class="rxf-ar">→</span>
+                    <span class="rxf to">신규 구좌(종료 팝업) +50%</span><span class="rxf to">1·3번 +50%</span>
+                  </div>
+                  <div class="srx-res"><span class="srx-num">전체 CPA −20%</span><span class="srx-src">신규 구좌 = 유사 업종서 우수캠 대비 CPA −18%</span></div>
+                </div>
               </div>
             </div>
           </div>
