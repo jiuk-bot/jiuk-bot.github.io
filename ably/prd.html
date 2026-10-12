@@ -103,7 +103,7 @@
   .mvpfoot{ margin-top:16px; background:var(--soft); border-radius:12px; padding:14px 16px; font-size:12.5px; color:var(--primary-dark); font-weight:700; line-height:1.55; }
   .mvpfoot b{ font-weight:900; }
   .phone{ position:relative; width:270px; background:#fff; border:9px solid #1f2937; border-radius:34px; overflow:hidden; box-shadow:0 14px 44px rgba(0,0,0,.18); }
-  .adhl{ position:absolute; left:1.8%; top:68.2%; width:31%; height:17.8%; border:3px solid #f06292; border-radius:10px; box-shadow:0 0 0 3px rgba(240,98,146,.2); pointer-events:none; }
+  .adhl{ position:absolute; left:1.5%; top:47.5%; width:97%; height:29%; border:3px solid #f06292; border-radius:10px; box-shadow:0 0 0 3px rgba(240,98,146,.2); pointer-events:none; }
   .adtag{ position:absolute; top:-13px; left:50%; transform:translateX(-50%); font-size:7.5px; font-weight:800; color:#fff; background:#f06292; border-radius:4px; padding:1px 6px; white-space:nowrap; pointer-events:none; }
   .ph-top{ background:#fff; padding:12px 14px 8px; border-bottom:1px solid #f0f0f0; }
   .ph-search{ background:#f1f3f6; border-radius:999px; padding:8px 13px; font-size:11.5px; color:#9aa1ab; }
@@ -126,6 +126,16 @@
   .chip{ display:inline-block; font-size:11px; font-weight:800; border-radius:7px; padding:4px 9px; margin:3px 3px 0 0; }
   .chip.g{ color:var(--primary-dark); background:var(--soft); } .chip.n{ color:#555; background:#f1f3f6; }
   .howc .hd{ font-size:12.5px; color:#555; line-height:1.55; margin-top:9px; } .howc .hd b{ color:var(--primary-dark); }
+  .payviz{ display:flex; align-items:center; gap:8px; margin:11px 0 4px; }
+  .payviz .pv0,.payviz .pv1{ flex:1; border-radius:10px; padding:10px 8px; text-align:center; }
+  .payviz .pv0{ background:#f1f3f6; } .payviz .pv1{ background:var(--soft); border:1px solid #f6d3e2; }
+  .payviz .pvl{ display:block; font-size:10px; font-weight:700; color:var(--sub); margin-bottom:3px; }
+  .payviz .pv0 b{ font-size:15px; color:#9aa1ab; } .payviz .pv1 b{ font-size:14.5px; color:var(--primary-dark); }
+  .payviz .pvar{ color:var(--primary); font-weight:900; font-size:15px; }
+  .m3{ display:flex; gap:8px; margin-top:8px; font-size:12px; align-items:flex-start; }
+  .m3 .k{ flex:0 0 auto; font-weight:800; color:#fff; background:var(--primary); border-radius:5px; padding:2px 8px; font-size:10.5px; }
+  .m3 .k.g{ background:#9aa1ab; }
+  .m3 .v{ color:#555; line-height:1.5; } .m3 .v b{ color:var(--primary-dark); }
 
   /* 왜 에이블리 */
   .whyc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:17px; box-shadow:var(--shadow-sm); }
@@ -267,7 +277,7 @@
   <div class="mockrow">
     <div>
       <div class="phone">
-        <img src="assets/ad-placement.png" alt="에이블리 홈 개인화 추천 피드 — ○○님을 위한 추천 상품 sponsored 슬롯" style="width:100%;display:block;" />
+        <img src="assets/ad-rec-feed.png" alt="에이블리 홈 개인화 추천 피드 — ○○님을 위한 추천 상품 sponsored 슬롯" style="width:100%;display:block;" />
         <div class="adhl"><span class="adtag">광고</span></div>
       </div>
       <div class="mock-note" style="width:270px;">에이블리 홈 <b style="color:var(--primary-dark)">'○○님을 위한 추천 상품'</b> — 이미 <b style="color:var(--primary-dark)">sponsored</b> 슬롯 존재. 이 슬롯 과금을 성과형으로 전환</div>
@@ -292,27 +302,32 @@
 <section><div class="wrap">
   <div class="eyebrow"><span class="no">03</span> 어떻게 작동하나</div>
   <h2><span class="hl">과금 · 경매 · 측정</span> — 광고주는 리스크 0, 플랫폼은 수익 방어.</h2>
-  <div class="headcopy">과금 <span class="hl">전환당(구매 4,000원)</span> · 경매 <span class="hl">추천 AI 예측</span> · 측정 <span class="hl">holdout 증분성</span></div>
+  <div class="headcopy">과금 <span class="hl">전환 매출의 10%</span> · 경매 <span class="hl">추천 AI 예측</span> · 측정 <span class="hl">holdout 증분성</span></div>
   <div class="how">
     <div class="howc">
-      <div class="hn">① 과금 (전환 단가)</div>
+      <div class="hn">① 과금 (전환 매출의 10%)</div>
       <div class="ht">전환 시에만 과금</div>
-      <div>
-        <span class="chip g">구매 4,000원</span><span class="chip g">쿠폰 1,500원</span><span class="chip g">앱설치 2,500원</span>
+      <div class="payviz">
+        <div class="pv0"><span class="pvl">노출 · 클릭</span><b>0원</b></div>
+        <div class="pvar">→</div>
+        <div class="pv1"><span class="pvl">구매 전환</span><b>매출의 10%</b></div>
       </div>
-      <div class="hd">기준단가 <b>80~120% 자동조정</b> · 노출·클릭만 = <b>0원</b><br>저가 상품은 <b>수익 가드</b>로 단가↓·참여 제한</div>
+      <div class="m3"><span class="k">단가</span><span class="v">주문 40,000원 기준 <b>≈ 4,000원</b> · 기준단가 80~120% 조정</span></div>
+      <div class="m3"><span class="k g">가드</span><span class="v">저가 상품은 <b>수익 가드</b>로 단가↓·참여 제한</span></div>
     </div>
     <div class="howc">
       <div class="hn">② 경매 (추천 AI 예측)</div>
       <div class="ht">추천 AI로 노출 경쟁</div>
       <div><span class="chip n">eCPM = 추천 AI 예상전환율 × 단가</span></div>
-      <div class="hd">기존 oCPM과 <b>같은 슬롯 경쟁</b> · 바닥가 95/80%<br>적합도·eCPM <b>최소 기준 미달 → 미노출</b></div>
+      <div class="m3"><span class="k">경쟁</span><span class="v">기존 oCPM과 <b>같은 eCPM 저울</b> · 바닥가 95/80%</span></div>
+      <div class="m3"><span class="k g">방어</span><span class="v">적합도·eCPM <b>최소 기준 미달 → 미노출</b></span></div>
     </div>
     <div class="howc">
       <div class="hn">③ 측정 (어트리뷰션)</div>
       <div class="ht">진짜 광고 전환만</div>
       <div><span class="chip n">마지막 클릭(last-click)</span><span class="chip n">클릭 후 7일</span><span class="chip n">holdout 증분성</span></div>
-      <div class="hd"><b>마지막 유효 클릭 1건</b> 귀속 · view-through 제외<br><b>holdout 대조군</b>으로 순증분만 인정 · 정산 D+7/D+14</div>
+      <div class="m3"><span class="k">귀속</span><span class="v"><b>마지막 유효 클릭 1건</b> · view-through 제외</span></div>
+      <div class="m3"><span class="k g">증분</span><span class="v"><b>holdout 대조군</b> 순증분만 · 정산 D+7/D+14</span></div>
     </div>
   </div>
 </div></section>
