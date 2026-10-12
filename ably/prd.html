@@ -60,6 +60,14 @@
   .vs .good li b{ color:var(--primary-dark); }
   .vs .vsar{ align-self:center; font-size:24px; color:var(--primary); font-weight:800; }
   .zero{ display:inline-block; margin-top:12px; font-size:18px; font-weight:900; color:#fff; background:var(--primary); border-radius:10px; padding:8px 16px; }
+  .vs .vsc .t .ic{ margin-right:6px; }
+  .flip{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+  .flipc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px 14px; box-shadow:var(--shadow-sm); text-align:center; }
+  .flipc .fl{ font-size:11.5px; font-weight:800; color:var(--sub); margin-bottom:10px; }
+  .flipc .fv{ display:flex; align-items:center; justify-content:center; gap:8px; }
+  .flipc .bf{ font-size:12.5px; font-weight:700; color:#aeb3bb; text-decoration:line-through; }
+  .flipc .ar{ color:var(--primary); font-weight:900; font-size:15px; }
+  .flipc .af{ font-size:15.5px; font-weight:900; color:var(--primary-dark); letter-spacing:-.3px; }
 
   /* 폰 목업 */
   .mockrow{ display:grid; grid-template-columns:270px 1fr; gap:26px; align-items:start; }
@@ -144,6 +152,7 @@
   @media (max-width:860px){
     .g2,.g3,.g4,.how,.scn,.road{ grid-template-columns:1fr; }
     .vs{ grid-template-columns:1fr; } .vs .vsar{ transform:rotate(90deg); }
+    .flip{ grid-template-columns:1fr; }
     .mockrow{ grid-template-columns:1fr; justify-items:center; }
     .hero h1{ font-size:27px; }
   }
@@ -180,7 +189,7 @@
   <p class="lead">현행 에이블리 광고는 CPD(구좌제·고정가)와 oCPM(노출당 과금)이 중심 — <b>성과가 없어도 광고비가 소진</b>되고, 최소 집행비가 커 중소·신규 셀러의 진입장벽이 높습니다.</p>
   <div class="vs">
     <div class="vsc bad">
-      <div class="t">현행 — CPD / oCPM</div>
+      <div class="t"><span class="ic">🚫</span>현행 — CPD / oCPM</div>
       <ul>
         <li>기간 점유 · 노출 기준 과금</li>
         <li>전환이 없어도 <b style="color:#8a4b3a">광고비 소진</b></li>
@@ -190,7 +199,7 @@
     </div>
     <div class="vsar">→</div>
     <div class="vsc good">
-      <div class="t">제안 — 순수 성과형(Pay-for-Performance)</div>
+      <div class="t"><span class="ic">✨</span>제안 — 순수 성과형(Pay-for-Performance)</div>
       <ul>
         <li><b>전환(구매·쿠폰·설치) 발생 시에만</b> 과금</li>
         <li>성과 없으면 <b>0원</b> → 광고주 금전 리스크 0</li>
@@ -199,6 +208,11 @@
       </ul>
       <div class="zero">성과 없으면 0원</div>
     </div>
+  </div>
+  <div class="flip">
+    <div class="flipc"><div class="fl">과금 기준</div><div class="fv"><span class="bf">노출·기간</span><span class="ar">→</span><span class="af">전환</span></div></div>
+    <div class="flipc"><div class="fl">광고주 금전 리스크</div><div class="fv"><span class="bf">광고비 소진</span><span class="ar">→</span><span class="af">0원</span></div></div>
+    <div class="flipc"><div class="fl">진입 문턱</div><div class="fv"><span class="bf">수백만 원</span><span class="ar">→</span><span class="af">소액 시작</span></div></div>
   </div>
 </div></section>
 
