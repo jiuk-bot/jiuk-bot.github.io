@@ -144,6 +144,15 @@
   /* 리스크·로드맵 */
   .risk{ list-style:none; } .risk li{ font-size:13px; color:#444; padding:11px 14px; background:#fff; border:1px solid var(--line); border-radius:11px; margin-bottom:9px; line-height:1.55; }
   .risk li b{ color:var(--primary-dark); } .risk li .rx{ color:var(--ok); font-weight:700; }
+  .rtbl{ width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow-sm); }
+  .rtbl th,.rtbl td{ padding:12px 16px; border-bottom:1px solid #eef0f3; text-align:left; font-size:13px; vertical-align:top; }
+  .rtbl thead th{ font-weight:800; font-size:12px; }
+  .rtbl thead th:nth-child(1){ background:#fff1f1; color:var(--warn); width:36%; }
+  .rtbl thead th:nth-child(2){ background:var(--okbg); color:var(--ok); }
+  .rtbl tbody td:nth-child(1){ font-weight:800; color:var(--ink); }
+  .rtbl tbody td:nth-child(1) .sub{ display:block; font-weight:600; font-size:11px; color:var(--sub); margin-top:3px; line-height:1.4; }
+  .rtbl tbody td:nth-child(2){ color:#555; }
+  .rtbl tbody tr:last-child td{ border-bottom:0; }
   .road{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   .roadc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow-sm); }
   .roadc .rn{ font-size:11px; font-weight:800; color:var(--primary); } .roadc .rt{ font-size:14px; font-weight:800; margin:5px 0 7px; } .roadc .rd{ font-size:12px; color:#555; line-height:1.5; }
@@ -265,19 +274,19 @@
       <div>
         <span class="chip g">구매 4,000원</span><span class="chip g">쿠폰 1,500원</span><span class="chip g">앱설치 2,500원</span>
       </div>
-      <div class="hd">카테고리 기준단가 <b>자동 조정</b>(80~120%). 노출·클릭만 발생 → <b>0원</b>. <b>저가 상품 수익 가드</b> — 카테고리 평균 주문금액·수수료 기여가 수익 가정 미달 시 단가 하향·참여 제한.</div>
+      <div class="hd">기준단가 <b>80~120% 자동조정</b> · 노출·클릭만 = <b>0원</b><br>저가 상품은 <b>수익 가드</b>로 단가↓·참여 제한</div>
     </div>
     <div class="howc">
       <div class="hn">② 경매 (수익 방어)</div>
       <div class="ht">oCPM과 같은 저울</div>
       <div><span class="chip n">eCPM = 예상전환율 × 단가 × 1,000</span></div>
-      <div class="hd">성과형·oCPM을 <b>동일 eCPM 경매</b>로 경쟁. 예상 eCPM이 바닥가 <b>95%↓ 우선순위↓ · 80%↓ oCPM 대체</b>, 공짜 소진율 20%↑ 신규 유입 중단.</div>
+      <div class="hd">바닥가 <b>95%↓ 우선순위↓ · 80%↓ oCPM 대체</b><br>공짜 소진율 <b>20%↑ 신규 유입 중단</b></div>
     </div>
     <div class="howc">
       <div class="hn">③ 측정 (어트리뷰션)</div>
       <div class="ht">진짜 광고 전환만</div>
       <div><span class="chip n">마지막 클릭(last-click)</span><span class="chip n">클릭 후 7일</span><span class="chip n">view-through 제외</span></div>
-      <div class="hd">기여 윈도우 내 <b>마지막 유효 클릭 1건</b>에만 귀속, 노출만 발생한 view-through는 MVP 과금 제외. <b>자연전환 vs 광고 기여 구분</b>(증분성)으로 '어차피 살 사람' 과금 방지. 내부 D+7 / 외부 D+14 정산.</div>
+      <div class="hd"><b>마지막 유효 클릭 1건</b> 귀속 · view-through 제외<br>증분성 구분 · 정산 <b>내부 D+7 / 외부 D+14</b></div>
     </div>
   </div>
 </div></section>
@@ -330,14 +339,17 @@
 <section><div class="wrap">
   <div class="eyebrow"><span class="no">06</span> 리스크 &amp; 로드맵</div>
   <h2>리스크는 <span class="hl">가드레일로 선제 차단</span>, 확장은 단계적으로.</h2>
-  <ul class="risk">
-    <li><b>공짜 노출 소진</b> (전환 안 될 상품이 지면 점유) → <span class="rx">eCPM 경매 + 바닥가 95/80% 가드레일, 전환 활발 카테고리부터</span></li>
-    <li><b>역선택</b> (전환 낮은 광고주 몰림) → <span class="rx">판매량·평점·재고·배송 품질로 참여 자격·노출 한도 제한</span></li>
-    <li><b>저가 상품 쏠림</b> (주문금액↓ → 수수료 기여↓, 수익 가정 붕괴) → <span class="rx">상품가 구간별 단가 조정, 평균 주문금액·수수료 기여 수익 가드 모니터링, 미달 카테고리 참여 제한</span></li>
-    <li><b>가짜 전환·어뷰징</b> → <span class="rx">결제자·기기 중복 제거, 환불 제외, 이상 패턴 탐지, 정산 보류</span></li>
-    <li><b>자연전환 과대평가</b> → <span class="rx">기여 윈도우·중복 제거·대조군 기반 증분성 분석</span></li>
-    <li><b>기존 CPD 매출 잠식</b> → <span class="rx">대형 CPD 유지, MVP는 중소·신규 셀러·한정 지면</span></li>
-  </ul>
+  <table class="rtbl">
+    <thead><tr><th>리스크</th><th>가드레일 (선제 대응)</th></tr></thead>
+    <tbody>
+      <tr><td>공짜 노출 소진<span class="sub">전환 안 될 상품이 지면 점유</span></td><td>eCPM 경매 + 바닥가 95/80% 가드레일, 전환 활발 카테고리부터</td></tr>
+      <tr><td>역선택<span class="sub">전환 낮은 광고주 몰림</span></td><td>판매량·평점·재고·배송 품질로 참여 자격·노출 한도 제한</td></tr>
+      <tr><td>저가 상품 쏠림<span class="sub">주문금액↓ → 수수료 기여↓</span></td><td>상품가 구간별 단가 조정, 평균 주문금액·수수료 기여 수익 가드 모니터링, 미달 카테고리 참여 제한</td></tr>
+      <tr><td>가짜 전환·어뷰징</td><td>결제자·기기 중복 제거, 환불 제외, 이상 패턴 탐지, 정산 보류</td></tr>
+      <tr><td>자연전환 과대평가</td><td>기여 윈도우·중복 제거·대조군 기반 증분성 분석</td></tr>
+      <tr><td>기존 CPD 매출 잠식</td><td>대형 CPD 유지, MVP는 중소·신규 셀러·한정 지면</td></tr>
+    </tbody>
+  </table>
   <div class="road" style="margin-top:16px;">
     <div class="roadc"><div class="rn">PHASE 1 · 파일럿</div><div class="rt">패션·뷰티 한정</div><div class="rd">전환 활발 카테고리·기존 지면 + 레퍼런스 셀러 100개. "성과 없으면 0원" 메시지로 모집, 7일 리포트.</div></div>
     <div class="roadc"><div class="rn">PHASE 2 · 확대</div><div class="rt">게이트 통과 시</div><div class="rd">공짜 소진율·마진·예측 정확도·재집행률이 기준 통과 → 카테고리·셀러 확대.</div></div>
