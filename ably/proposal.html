@@ -294,12 +294,16 @@
   .reco-banner .rb-txt{ font-size:14.5px; color:#444; line-height:1.6; }
   .reco-banner .rb-txt b{ color:var(--primary-dark); }
 
-  /* ── 플라이휠 ── */
-  .flywheel{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; background:#fff; border:1px solid var(--line);
-             border-radius:14px; padding:16px 18px; box-shadow:var(--shadow-sm); }
-  .flywheel .fw{ background:var(--soft); color:var(--primary-dark); font-weight:800; font-size:13.5px; padding:8px 14px; border-radius:999px; }
-  .flywheel .fwar{ color:var(--primary); font-weight:800; font-size:15px; }
-  .flywheel .fwloop{ margin-left:auto; font-size:12px; font-weight:700; color:var(--sub); background:#f4f5f7; border-radius:999px; padding:6px 12px; }
+  /* ── 플라이휠 (시각형) ── */
+  .fwheel{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr auto 1fr; gap:8px; align-items:stretch; }
+  .fw-stage{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 10px 14px; text-align:center; box-shadow:var(--shadow-sm); }
+  .fw-stage .fw-ic{ font-size:25px; line-height:1; }
+  .fw-stage .fw-t{ font-size:13.5px; font-weight:800; color:var(--ink); margin:8px 0 3px; letter-spacing:-.3px; }
+  .fw-stage .fw-d{ font-size:11px; color:var(--sub); font-weight:600; line-height:1.4; }
+  .fw-ar{ align-self:center; color:var(--primary); font-weight:800; font-size:19px; }
+  .fw-loop{ margin-top:12px; background:linear-gradient(135deg,var(--primary),#ff7a5c); color:#fff; border-radius:12px; padding:13px 18px; font-size:14px; font-weight:800; text-align:center; letter-spacing:-.2px; box-shadow:0 4px 18px rgba(255,81,96,.25); }
+  .fw-loop b{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+  @media(max-width:720px){ .fwheel{ grid-template-columns:1fr 1fr; } .fw-ar{ display:none; } }
   .amsub{ font-size:17px; font-weight:800; margin:28px 0 12px; padding-left:12px; position:relative; }
   .amsub::before{ content:''; position:absolute; left:0; top:3px; width:5px; height:16px; background:var(--primary); border-radius:2px; }
 
@@ -614,13 +618,16 @@
       <h2>제안부터 광고주 성장 전략까지, <span class="hl">데이터 기반 동반 성장</span>을 목표로 합니다.</h2>
       <p class="lead"><b>광고주의 매출이 커져야 광고비도 커진다</b> — 성과를 증명해 신뢰를 쌓고, 그 신뢰가 증액·장기 유지로 돌아오는 '플라이휠'로 광고주를 매니징합니다.</p>
 
-      <div class="flywheel">
-        <span class="fw">제안 · 집행</span><span class="fwar">→</span>
-        <span class="fw">성과 증명</span><span class="fwar">→</span>
-        <span class="fw">신뢰 → 증액</span><span class="fwar">→</span>
-        <span class="fw">데이터 · 최적화</span>
-        <span class="fwloop">↻ 반복 — 광고주 매출·LTV ↑</span>
+      <div class="fwheel">
+        <div class="fw-stage"><div class="fw-ic">📋</div><div class="fw-t">제안 · 집행</div><div class="fw-d">데이터로 설계</div></div>
+        <div class="fw-ar">→</div>
+        <div class="fw-stage"><div class="fw-ic">📈</div><div class="fw-t">성과 증명</div><div class="fw-d">숫자로 입증</div></div>
+        <div class="fw-ar">→</div>
+        <div class="fw-stage"><div class="fw-ic">🤝</div><div class="fw-t">신뢰 → 증액</div><div class="fw-d">예산 확대</div></div>
+        <div class="fw-ar">→</div>
+        <div class="fw-stage"><div class="fw-ic">⚙️</div><div class="fw-t">데이터 · 최적화</div><div class="fw-d">지속 개선</div></div>
       </div>
+      <div class="fw-loop">↻ 반복될수록 — <b>광고주 매출·LTV ↑</b> → 광고비·장기 유지 ↑</div>
 
       <!-- 증액: 두 갈래 -->
       <div class="amsub">증액 — 잘 될 땐 '데이터 근거로' 넓히고, 안 될 땐 '원인부터' 살린다</div>
