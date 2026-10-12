@@ -266,22 +266,22 @@
                display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
   .whyc .take b{ color:var(--ink); font-weight:700; }
   .viz{ background:#fafbfc; border:1px solid var(--line); border-radius:12px; padding:16px;
-        min-height:150px; display:flex; flex-direction:column; justify-content:center; }
-  .viz-eq{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+        min-height:168px; display:flex; flex-direction:column; }
+  .viz-main{ flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:9px; }
+  .viz-eq{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; text-align:center; }
   .viz-big{ font-size:24px; font-weight:800; color:var(--primary); line-height:1.1; }
   .viz-cap{ font-size:11.5px; color:var(--sub); font-weight:600; margin-top:3px; }
   .viz-op{ font-size:22px; font-weight:300; color:var(--sub); }
-  .chip3{ display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .chip3{ display:flex; align-items:center; justify-content:center; gap:7px; flex-wrap:wrap; }
   .chip3 .c{ background:#fff; border:1px solid var(--line2); border-radius:8px; padding:7px 11px; font-size:12.5px; font-weight:700; color:#444; }
   .chip3 .x{ color:var(--primary); font-weight:800; }
-  .viz-arrow{ font-size:12px; font-weight:700; color:var(--sub); margin:9px 0 7px; }
-  .viz-result{ background:var(--soft); color:var(--primary-dark); font-weight:700; font-size:13px; padding:9px 13px; border-radius:9px; display:inline-block; }
-  .flow{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .viz-arrow{ font-size:12px; font-weight:700; color:var(--sub); }
+  .viz-result{ background:var(--soft); color:var(--primary-dark); font-weight:700; font-size:12.5px; padding:9px 13px; border-radius:9px; display:block; text-align:center; margin-top:12px; }
+  .flow{ display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap; }
   .flow .box{ background:#fff; border:1px solid var(--line2); border-radius:8px; padding:8px 11px; font-size:12px; font-weight:700; color:#444; }
   .flow .box.hl{ background:var(--primary); color:#fff; border-color:var(--primary); }
   .flow .ar{ color:var(--primary); font-weight:800; }
-  .viz-badge{ margin-top:11px; font-size:11.5px; font-weight:700; color:var(--primary); background:#fff; border:1px dashed var(--primary); border-radius:999px; padding:5px 12px; display:inline-block; }
-  .chbar{ display:flex; gap:7px; flex-wrap:wrap; margin-bottom:11px; }
+  .chbar{ display:flex; gap:7px; flex-wrap:wrap; justify-content:center; }
   .chbar .ch{ font-size:12px; font-weight:700; padding:6px 12px; border-radius:999px; }
   .chbar .on{ background:#eef1f5; color:#888; }
   .chbar .off{ background:var(--soft); color:var(--primary); border:1px dashed var(--primary); }
@@ -873,11 +873,14 @@
           <div class="whyc-top"><span class="whyc-ic">🎯</span><span class="whyc-no">01</span></div>
           <h3>오디언스가 사실상 겹친다</h3>
           <div class="viz">
-            <div class="viz-eq">
-              <div><div class="viz-big">1,000만</div><div class="viz-cap">에이블리 월 여성</div></div>
-              <div class="viz-op">≈</div>
-              <div><div class="viz-big">2030 여성</div><div class="viz-cap">강남언니 핵심 타겟</div></div>
+            <div class="viz-main">
+              <div class="viz-eq">
+                <div><div class="viz-big">1,000만</div><div class="viz-cap">에이블리 월 여성</div></div>
+                <div class="viz-op">≈</div>
+                <div><div class="viz-big">2030 여성</div><div class="viz-cap">강남언니 핵심 타겟</div></div>
+              </div>
             </div>
+            <div class="viz-result">강남언니 핵심 타겟층이 그대로 밀집</div>
           </div>
           <div class="take"><span>강남언니가 <b>아직 못 만난 신규 여성 풀</b></span><span class="src pub">공개</span></div>
         </div>
@@ -887,12 +890,14 @@
           <div class="whyc-top"><span class="whyc-ic">💳</span><span class="whyc-no">02</span></div>
           <h3>구매 데이터로 "시술 관심층" 저격</h3>
           <div class="viz">
-            <div class="chip3">
-              <span class="c">인구통계</span><span class="x">×</span>
-              <span class="c">뷰티 카테고리</span><span class="x">×</span>
-              <span class="c">결제 정보</span>
+            <div class="viz-main">
+              <div class="chip3">
+                <span class="c">인구통계</span><span class="x">×</span>
+                <span class="c">뷰티 카테고리</span><span class="x">×</span>
+                <span class="c">결제 정보</span>
+              </div>
+              <div class="viz-arrow">↓ AND 조합</div>
             </div>
-            <div class="viz-arrow">↓ AND 조합</div>
             <div class="viz-result">미용의료 관심 높은 유저 정밀 타겟</div>
           </div>
           <div class="take"><span>뷰티·패션 소비 2030 여성 = <b>시술 관심층</b></span><span class="src pub">공개</span></div>
@@ -903,14 +908,16 @@
           <div class="whyc-top"><span class="whyc-ic">🔗</span><span class="whyc-no">03</span></div>
           <h3>이커머스 유일 '아웃링크' = 쿠폰 받기·결제 직결</h3>
           <div class="viz">
-            <div class="flow">
-              <span class="box">스플래시·전면</span>
-              <span class="ar">→</span>
-              <span class="box hl">강남언니 앱스토어</span>
-              <span class="ar">→</span>
-              <span class="box">쿠폰 받기·결제</span>
+            <div class="viz-main">
+              <div class="flow">
+                <span class="box">스플래시·전면</span>
+                <span class="ar">→</span>
+                <span class="box hl">강남언니 앱스토어</span>
+                <span class="ar">→</span>
+                <span class="box">쿠폰 받기·결제</span>
+              </div>
             </div>
-            <div class="viz-badge">이커머스 앱 중 유일 아웃링크 지원</div>
+            <div class="viz-result">이커머스 앱 중 유일 아웃링크 지원</div>
           </div>
           <div class="take"><span>클릭 한 번에 <b>쿠폰 받기·결제 직결</b></span><span class="src pub">공개</span></div>
         </div>
@@ -920,11 +927,13 @@
           <div class="whyc-top"><span class="whyc-ic">📈</span><span class="whyc-no">04</span></div>
           <h3>아직 안 쓰는 '증분 채널'</h3>
           <div class="viz">
-            <div class="chbar">
-              <span class="ch on">인스타 ✓</span>
-              <span class="ch on">페북 ✓</span>
-              <span class="ch on">OOH ✓</span>
-              <span class="ch off">에이블리 — 신규</span>
+            <div class="viz-main">
+              <div class="chbar">
+                <span class="ch on">인스타 ✓</span>
+                <span class="ch on">페북 ✓</span>
+                <span class="ch on">OOH ✓</span>
+                <span class="ch off">에이블리 — 신규</span>
+              </div>
             </div>
             <div class="viz-result">기존 채널과 안 겹치는 순수 증분 도달</div>
           </div>
