@@ -61,6 +61,14 @@
   .vs .vsar{ align-self:center; font-size:24px; color:var(--primary); font-weight:800; }
   .zero{ display:inline-block; margin-top:12px; font-size:18px; font-weight:900; color:#fff; background:var(--primary); border-radius:10px; padding:8px 16px; }
   .vs .vsc .t .ic{ margin-right:6px; }
+  .vlist{ list-style:none; }
+  .vrow{ display:flex; align-items:center; gap:11px; padding:10px 0; border-bottom:1px dashed rgba(0,0,0,.07); }
+  .vrow:last-child{ border-bottom:0; }
+  .vrow .vi{ font-size:18px; flex:0 0 30px; text-align:center; }
+  .vrow .vtx{ font-size:14.5px; font-weight:800; letter-spacing:-.3px; }
+  .bad .vrow .vtx{ color:#7a8089; } .good .vrow .vtx{ color:var(--primary-dark); }
+  .vrow .vtx .s{ font-weight:600; font-size:12.5px; color:#aeb3bb; }
+  .good .vrow .vtx .s{ color:#d98bae; }
   .flip{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
   .flipc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px 14px; box-shadow:var(--shadow-sm); text-align:center; }
   .flipc .fl{ font-size:11.5px; font-weight:800; color:var(--sub); margin-bottom:10px; }
@@ -186,25 +194,25 @@
 <section><div class="wrap">
   <div class="eyebrow"><span class="no">01</span> 문제 &amp; 해법</div>
   <h2>지금은 <span class="hl">성과와 무관하게 과금</span>된다. 그래서 중소·신규 셀러가 못 들어온다.</h2>
-  <p class="lead">현행 에이블리 광고는 CPD(구좌제·고정가)와 oCPM(노출당 과금)이 중심 — <b>성과가 없어도 광고비가 소진</b>되고, 최소 집행비가 커 중소·신규 셀러의 진입장벽이 높습니다.</p>
+  <p class="lead"><b>CPD·oCPM</b>은 성과 없어도 돈이 나가고, 문턱이 높다 → 중소·신규 셀러가 못 들어온다.</p>
   <div class="vs">
     <div class="vsc bad">
       <div class="t"><span class="ic">🚫</span>현행 — CPD / oCPM</div>
-      <ul>
-        <li>기간 점유 · 노출 기준 과금</li>
-        <li>전환이 없어도 <b style="color:#8a4b3a">광고비 소진</b></li>
-        <li>최소 집행비 수백만~천만 원 → 진입장벽</li>
-        <li>"돈만 쓰고 성과 없을까" 두려움 → 시작·재집행 X</li>
+      <ul class="vlist">
+        <li class="vrow"><span class="vi">📊</span><span class="vtx">노출·기간 과금</span></li>
+        <li class="vrow"><span class="vi">💸</span><span class="vtx">전환 0 → 광고비 소진</span></li>
+        <li class="vrow"><span class="vi">🚪</span><span class="vtx">최소 수백만 원 문턱</span></li>
+        <li class="vrow"><span class="vi">😰</span><span class="vtx">"돈만 쓸까" → 재집행 X</span></li>
       </ul>
     </div>
     <div class="vsar">→</div>
     <div class="vsc good">
-      <div class="t"><span class="ic">✨</span>제안 — 순수 성과형(Pay-for-Performance)</div>
-      <ul>
-        <li><b>전환(구매·쿠폰·설치) 발생 시에만</b> 과금</li>
-        <li>성과 없으면 <b>0원</b> → 광고주 금전 리스크 0</li>
-        <li>소액으로 <b>부담 없이 시작</b> → 롱테일 셀러 유입</li>
-        <li>기존 인피드 지면에 <b>과금 레이어만</b> 추가 (신규 지면 X)</li>
+      <div class="t"><span class="ic">✨</span>제안 — 순수 성과형</div>
+      <ul class="vlist">
+        <li class="vrow"><span class="vi">🎯</span><span class="vtx">전환 때만 과금</span></li>
+        <li class="vrow"><span class="vi">🆓</span><span class="vtx">성과 0 → <b>0원</b></span></li>
+        <li class="vrow"><span class="vi">🌱</span><span class="vtx">소액으로 시작</span></li>
+        <li class="vrow"><span class="vi">🧩</span><span class="vtx">기존 지면 그대로 <span class="s">신규 지면 X</span></span></li>
       </ul>
       <div class="zero">성과 없으면 0원</div>
     </div>
