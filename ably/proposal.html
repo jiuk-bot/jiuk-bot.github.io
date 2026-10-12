@@ -45,6 +45,8 @@
   .nav-links a.active{ color:var(--primary); }
   .nav-links a.cta{ background:var(--primary); color:#fff; }
   .nav-links a.cta:hover{ background:var(--primary-dark); }
+  /* 상단 탭 핑크 통일 */
+  .nav-logo .dot{ color:#f06292; } .nav-links a.active{ color:#c2185b; } .nav-links a.cta{ background:#f06292; border-radius:999px; padding:8px 14px; } .nav-links a.cta:hover{ background:#c2185b; }
 
   .doc{ max-width:960px; margin:0 auto; }
   section{ background:var(--canvas); }
@@ -549,7 +551,6 @@
     .DXGRID{ grid-template-columns:1fr; gap:6px; } .dxc .dx-ar{ display:none; } .dxhead{ display:none; }
     .dx-sym,.dx-rx{ justify-self:start; }
     .stats > div{ border-right:0; border-bottom:1px solid var(--line); }
-    .nav-links a:not(.cta){ display:none; }
   }
 
   /* ── 인쇄 / PDF ── */
@@ -574,7 +575,7 @@
       <a href="resume.html">이력서</a>
       <a href="cases.html">상세 케이스</a>
       <a href="proposal.html" class="active">제안서</a>
-      <a class="cta" href="#plan">미디어 플랜 ↓</a>
+      <a class="cta" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">▶ Live Demo</a>
     </div>
   </div>
 </nav>
