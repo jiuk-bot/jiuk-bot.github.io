@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>아웃바운드 발굴 자동 리포트 · 기업 조회 — 윤지욱</title>
+<title>아웃리치 기업 리포트 · 기업 조회 — 윤지욱</title>
 <meta name="description" content="비즈니스 시그널을 스코어링해 '오늘 연락할 회사'를 추천하고, 기업명으로 회사 개요·마케팅 현황·접근 전략·다채널 컨택까지 한 화면에서 파악하는 실제 동작 툴. 토스 Ads BDR 지원 · 윤지욱." />
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
@@ -119,11 +119,11 @@
 <div class="wrap">
   <a class="back" href="bdr.html">← BDR 플레이북으로</a>
   <div class="eyebrow">TOSS ADS · BDR · OUTBOUND DISCOVERY TOOL</div>
-  <h1>아웃바운드 발굴 자동 리포트 · 기업 조회</h1>
+  <h1>아웃리치 기업 리포트 · 기업 조회</h1>
   <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b> 등)을 <b>① 스코어링 엔진</b>으로 점수화해 <b>오늘 연락할 회사</b>를 추천하고, <b>기업명을 입력하면 시그널 데이터 확인 링크·회사 팩트 소스·접근 전략·다채널 컨택</b>까지 한 화면에서 — <b>검색 → 확인 → 컨택</b>. <b>추정값 없이, 실제 데이터 소스로 직접 확인</b>합니다.</p>
 
   <div class="tabs">
-    <button class="tab active" data-tab="report">📋 오늘의 발굴 리포트</button>
+    <button class="tab active" data-tab="report">📋 오늘 연락할 기업</button>
     <button class="tab" data-tab="lookup">🔎 기업 조회 · 컨택</button>
   </div>
 
@@ -139,7 +139,7 @@
       <div class="stat" id="stat"></div>
     </div>
     <div class="report">
-      <div class="rhd"><div class="rt">📋 오늘의 발굴 리포트 <span class="tag">기준 부합 후보 · 시그널 가설</span></div><div class="rd" id="genTime">—</div></div>
+      <div class="rhd"><div class="rt">📋 오늘 연락할 기업 <span class="tag">기준 부합 후보 · 시그널 가설</span></div><div class="rd" id="genTime">—</div></div>
       <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
       <div id="rows"></div>
     </div>
@@ -179,17 +179,17 @@
   // 실제 기업 + 실제 홈페이지 (컨택·문의 링크가 진짜로 연결되도록)
   // 토스 Ads 타깃 핏(소비자·2030·광고 집행) 성장기 발굴 후보 — 실제 기업·실제 홈페이지
   var COMPANY = {
-    '에이블리':        {i:'패션 커머스',   hp:'https://a-bly.com'},
-    '지그재그':        {i:'패션 커머스',   hp:'https://zigzag.kr'},
+    '에이블리':        {i:'패션 커머스',   hp:'https://ably.team'},
+    '지그재그':        {i:'패션 커머스',   hp:'https://kakaostyle.com'},
     '꾸까':            {i:'플라워 구독',   hp:'https://kukka.kr'},
     '마이리얼트립':    {i:'여행',          hp:'https://www.myrealtrip.com'},
     '트래블월렛':      {i:'여행·핀테크',   hp:'https://www.travel-wallet.com'},
-    '밀리의서재':      {i:'독서 구독',     hp:'https://www.millie.co.kr'},
-    '리디':            {i:'웹툰·콘텐츠',   hp:'https://ridibooks.com'},
-    '번개장터':        {i:'중고 커머스',   hp:'https://www.bunjang.co.kr'},
-    '스파르타코딩클럽':{i:'성인 교육',     hp:'https://spartacodingclub.kr'},
+    '밀리의서재':      {i:'독서 구독',     hp:'https://corp.millie.co.kr'},
+    '리디':            {i:'웹툰·콘텐츠',   hp:'https://ridicorp.com'},
+    '번개장터':        {i:'중고 커머스',   hp:'https://bgzt.co.kr'},
+    '스파르타코딩클럽':{i:'성인 교육',     hp:'https://spartaclub.kr'},
     '프레시코드':      {i:'샐러드 구독',   hp:'https://www.freshcode.me'},
-    '클래스101':       {i:'교육',          hp:'https://class101.net'},
+    '클래스101':       {i:'교육',          hp:'https://101.inc'},
     '야나두':          {i:'교육',          hp:'https://www.yanadoo.co.kr'}
   };
   var BASE = Object.keys(COMPANY).map(function(n){ return {n:n, i:COMPANY[n].i}; });
@@ -290,7 +290,7 @@
           '<span class="cbtns">'+
             '<a class="cbtn key" href="'+LINK.remember(n)+'" target="_blank" rel="noopener">💳 리멤버 담당자</a>'+
             '<a class="cbtn" href="'+LINK.linkedin(n)+'" target="_blank" rel="noopener">🔗 LinkedIn</a>'+
-            '<a class="cbtn" href="'+LINK.home(n)+'" target="_blank" rel="noopener">🏠 홈페이지</a>'+
+            '<a class="cbtn" href="'+LINK.home(n)+'" target="_blank" rel="noopener">🏢 기업 홈페이지</a>'+
             '<a class="cbtn" href="'+LINK.inquiry(n)+'" target="_blank" rel="noopener">✉ 문의</a>'+
             '<a class="cbtn more" href="?company='+enc(n)+'#lookup">📇 전체 채널 →</a>'+
           '</span>'+
@@ -320,7 +320,7 @@
     });
     var blob = new Blob(['﻿'+lines.join('\r\n')], {type:'text/csv;charset=utf-8;'});
     var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-    a.download = '발굴리포트_' + dateStr(offset) + '.csv';
+    a.download = '아웃리치기업_' + dateStr(offset) + '.csv';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
   }
@@ -407,7 +407,7 @@
         '<div class="bh">'+
           '<div class="bhl"><div class="bname">'+name+'<small>'+ind+'</small></div>'+
             '<div class="bsum">'+ind+' · 토스 핏 <span id="bFit">검토</span> (시그널 체크로 산정)</div>'+
-            '<div style="margin-top:8px;"><a href="'+LINK.home(name)+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:var(--blue);text-decoration:none;">🏠 '+(LINK.hasHome(name)?COMPANY[name].hp.replace(/^https?:\/\//,''):'공식 홈페이지 검색')+' →</a></div></div>'+
+            '<div style="margin-top:8px;"><a href="'+LINK.home(name)+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:var(--blue);text-decoration:none;">🏢 '+(LINK.hasHome(name)?COMPANY[name].hp.replace(/^https?:\/\//,''):'공식 홈페이지 검색')+' →</a></div></div>'+
           '<div class="bscore"><span class="n" id="bScore" style="color:'+g0.col+'">0</span><span class="gr '+g0.c+'" id="bGrade">'+g0.g+'</span></div>'+
         '</div>'+
         '<div class="bbody">'+
@@ -418,7 +418,7 @@
           '<div class="brec" id="bRec"></div>'+
           '<div class="bsec">③ 회사 팩트 확인 — 데이터 소스 바로가기</div>'+
           '<div class="chgroup"><div class="chbtns">'+
-            ch(LINK.home(name),'🏠 홈페이지',true)+ch('https://www.google.com/search?q='+enc(name+' 더브이씨 투자 규모'),'💰 투자·규모(더브이씨)')+ch(LINK.jobplanet(name),'🏢 기업정보(잡플래닛)')+
+            ch(LINK.home(name),'🏢 기업 홈페이지',true)+ch('https://www.google.com/search?q='+enc(name+' 더브이씨 투자 규모'),'💰 투자·규모(더브이씨)')+ch(LINK.jobplanet(name),'🏢 기업정보(잡플래닛)')+
             ch(VERIFY.running(name),'📣 집행 광고(메타 라이브러리)')+ch('https://www.google.com/search?tbm=nws&q='+enc(name),'📰 최신 뉴스')+
           '</div></div>'+
           '<div class="bsec">④ 콜 전 체크리스트 (팩트로 확인)</div>'+
@@ -431,7 +431,7 @@
           '</ul>'+
           '<div class="bsec">👤 담당자 컨택 포인트</div>'+
           '<div class="chgroup"><div class="chbtns">'+
-            ch(LINK.remember(name),'💳 리멤버 커넥트 담당자',true)+ch(LINK.linkedin(name),'🔗 LinkedIn 담당자')+ch(LINK.home(name),(LINK.hasHome(name)?'🏠 홈페이지':'🏠 홈페이지 검색'))+
+            ch(LINK.remember(name),'💳 리멤버 커넥트 담당자',true)+ch(LINK.linkedin(name),'🔗 LinkedIn 담당자')+ch(LINK.home(name),(LINK.hasHome(name)?'🏢 기업 홈페이지':'🏢 홈페이지 검색'))+
             ch(LINK.inquiry(name),'✉ 문의하기')+ch(LINK.liCompany(name),'🏢 LinkedIn 회사')+ch(LINK.mail(name,'토스 Ads 제안'),'📧 콜드메일 초안')+
           '</div></div>'+
           '<div class="bsec">🎯 담당자 좁혀 찾기 — 직무 키워드로 리멤버 검색</div>'+
