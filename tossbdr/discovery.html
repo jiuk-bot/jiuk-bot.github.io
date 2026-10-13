@@ -130,6 +130,7 @@
       <button class="btn ghost" id="prevBtn">◀ 이전 날</button>
       <div class="dlabel" id="dateLabel">—</div>
       <button class="btn ghost" id="nextBtn">다음 날 ▶</button>
+      <button class="btn ghost" id="refreshBtn" title="오늘 리포트 새로고침">🔄 새로고침</button>
       <button class="btn ghost" id="sortBtn">정렬: 점수순 ▾</button>
       <button class="btn" id="dlBtn">⬇ 엑셀 다운로드</button>
       <div class="stat" id="stat"></div>
@@ -427,6 +428,11 @@
   document.getElementById('sortBtn').addEventListener('click', function(){
     sortMode = (sortMode==='score') ? 'name' : 'score';
     this.textContent = '정렬: ' + (sortMode==='score' ? '점수순' : '회사명순') + ' ▾'; render();
+  });
+  document.getElementById('refreshBtn').addEventListener('click', function(){
+    offset = 0; sortMode = 'score';
+    document.getElementById('sortBtn').textContent = '정렬: 점수순 ▾';
+    show();
   });
   document.getElementById('dlBtn').addEventListener('click', download);
 
