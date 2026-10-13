@@ -66,6 +66,10 @@ p,h1,h2,h3,h4,li,span,div,td,th{
   color:var(--sub);
   font-weight:600;
 }
+.topnav{ display:flex; align-items:center; gap:17px; font-size:13.5px; font-weight:600; }
+.topnav a{ color:var(--sub); text-decoration:none; }
+.topnav a.active{ color:var(--primary-dark); font-weight:800; }
+.topnav a.livebtn{ background:var(--primary); color:#fff; font-weight:800; padding:8px 16px; border-radius:999px; }
 
 /* ===== hero ===== */
 .hero{
@@ -373,7 +377,14 @@ p,h1,h2,h3,h4,li,span,div,td,th{
 
 <div class="topbar">
   <div class="brand">JIUK<span class="dot">.</span>YOON</div>
-  <div class="role">Ad Sales / Account Manager</div>
+  <nav class="topnav">
+    <a href="https://jiuk-bot.github.io/ably/index.html">Home</a>
+    <a href="https://jiuk-bot.github.io/ably/portfolio.html" class="active">포트폴리오</a>
+    <a href="https://jiuk-bot.github.io/ably/resume.html">이력서</a>
+    <a href="https://jiuk-bot.github.io/ably/cases.html">상세 케이스</a>
+    <a href="https://jiuk-bot.github.io/ably/proposal.html">제안서</a>
+    <a class="livebtn" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">▶ Live Demo</a>
+  </nav>
 </div>
 
 <div class="wrap">
