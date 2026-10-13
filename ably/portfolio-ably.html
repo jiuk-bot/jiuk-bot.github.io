@@ -363,6 +363,8 @@ p,h1,h2,h3,h4,li,span,div,td,th{
     page-break-inside:avoid;
   }
   .sec-label{ break-after:avoid; page-break-after:avoid; }
+  /* ⑥ 무엇을 배웠나(결론)가 혼자 다음 페이지로 떨어지지 않게 앞 섹션과 붙임 */
+  .sec:has(.insight){ break-before:avoid; page-break-before:avoid; }
   .case-head{
     -webkit-print-color-adjust:exact;
     print-color-adjust:exact;
