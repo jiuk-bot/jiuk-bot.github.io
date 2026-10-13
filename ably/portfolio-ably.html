@@ -355,16 +355,18 @@ p,h1,h2,h3,h4,li,span,div,td,th{
   .case{
     border:1px solid var(--line);
     box-shadow:none;
+  }
+  .case + .case{page-break-before:always;}
+  /* 케이스는 2페이지라 통째 avoid 불가 → 자식 블록 단위로 안 잘리게 */
+  .case-head, .sec, .stats, .stat, .stat-desc, .insight, .note, .steps, .sec ol, .sec ul, .sec li, .closing, .hero{
     break-inside:avoid;
     page-break-inside:avoid;
   }
-  .case + .case{page-break-before:always;}
+  .sec-label{ break-after:avoid; page-break-after:avoid; }
   .case-head{
     -webkit-print-color-adjust:exact;
     print-color-adjust:exact;
   }
-  .closing{break-inside:avoid;page-break-inside:avoid;}
-  .hero{break-inside:avoid;}
 }
 
 @media (max-width:640px){
