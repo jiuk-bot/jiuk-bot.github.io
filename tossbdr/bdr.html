@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>윤지욱 · 토스 Ads BDR 플레이북 — 타깃 발굴 · 멀티채널 아웃리치 · 리드 스코어링</title>
-<meta name="description" content="토스 Ads BDR 직무에 맞춘 실전 자료 — 비즈니스 시그널로 타깃 광고주를 발굴·우선순위화하고 콜·이메일·LinkedIn으로 접근하는 멀티채널 아웃리치 플레이북, 리드 우선순위 스코어링(A/B/C 등급), 업종 레퍼런스 즉시 조회 대시보드(예산→예상성과 계산)." />
+<title>윤지욱 · 토스 Ads BDR 플레이북 — 타깃 발굴 · 멀티채널 아웃리치 · 자동 발굴 리포트</title>
+<meta name="description" content="토스 Ads BDR 직무에 맞춘 실전 자료 — 비즈니스 시그널(투자·계절성·채용·광고 노출량)로 타깃 광고주를 발굴·우선순위화하는 스코어링, 콜·이메일·LinkedIn 멀티채널 아웃리치 플레이북, 매일 '오늘 연락할 회사'를 추천하는 아웃바운드 발굴 자동 리포트, 업종 레퍼런스 즉시 조회 대시보드." />
 <link rel="stylesheet" href="assets/style.css" />
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
@@ -286,6 +286,29 @@
   .cchip.bfill{background:var(--blue);border-color:var(--blue);color:#fff;} .cchip.bfill b{color:#fff;}
   .carr{text-align:center;color:var(--muted);font-size:11.5px;line-height:1;font-weight:800;}
   .carr.b{color:var(--blue);}
+  /* 아웃바운드 발굴 자동 리포트 */
+  .report{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.04);}
+  .report .rhd{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:14px 18px;background:var(--bg-soft);border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .report .rhd .rt{font-size:14.5px;font-weight:800;color:var(--ink);}
+  .report .rhd .rd{font-size:12px;color:var(--muted);font-weight:600;}
+  .rhead,.rrow{display:grid;grid-template-columns:34px 1.25fr 2fr 56px 124px;gap:12px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line);}
+  .rhead{padding:10px 18px;background:#fff;font-size:11px;font-weight:800;color:var(--muted);}
+  .rrow:last-child{border-bottom:0;}
+  .rrow .rk{width:28px;height:28px;border-radius:8px;background:var(--blue-weak);color:var(--blue);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .rrow .rco{font-size:13.5px;font-weight:800;color:var(--ink);line-height:1.3;}
+  .rrow .rco small{display:block;font-weight:600;color:var(--muted);font-size:11.5px;margin-top:2px;}
+  .rrow .rsig{display:flex;flex-wrap:wrap;gap:5px;}
+  .rrow .rsig span{font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:7px;padding:3px 8px;}
+  .rrow .rsc{font-size:19px;font-weight:800;text-align:center;letter-spacing:-.02em;}
+  .rrow .rend{text-align:center;}
+  .rrow .rgr{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:4px 9px;}
+  .rgr.a{color:#15C47E;background:#eafaf2;} .rgr.b{color:var(--blue);background:var(--blue-weak);} .rgr.c{color:var(--muted);background:var(--bg-soft);}
+  .rrow .rch{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:4px;}
+  @media(max-width:720px){
+    .rhead{display:none;}
+    .rrow{grid-template-columns:30px 1fr;gap:6px 10px;}
+    .rrow .rsig,.rrow .rsc,.rrow .rend{grid-column:2;} .rrow .rsc{text-align:left;}
+  }
 </style>
 </head>
 <body>
@@ -315,7 +338,7 @@
       <div class="fcard"><div class="fnum">②</div><div class="ft">업종 레퍼런스 대시보드</div><div class="fd">아웃리치 개인화 · 콜 중 즉시 조회</div></div>
       <div class="fcard"><div class="fnum">③</div><div class="ft">멀티채널 아웃리치 시퀀스</div><div class="fd">콜·이메일·LinkedIn 케이던스·스크립트</div></div>
     </div>
-    <p class="lead" style="margin-top:14px;font-size:14px;color:var(--muted);">+ 퀄리파이(비즈니스 상황·목표·매체 믹스·예산) → 리드 스코어링 → <b>Salesforce 기록</b> → AM 핸드오프까지 풀 사이클.</p>
+    <p class="lead" style="margin-top:14px;font-size:14px;color:var(--muted);">+ 퀄리파이(비즈니스 상황·목표·매체 믹스·예산) → <b>Salesforce 기록</b> → AM 핸드오프까지 풀 사이클. 발굴은 <b>매일 자동 리포트</b>로 큐가 갱신됩니다.</p>
   </div>
 </header>
 
@@ -370,10 +393,11 @@
   <div class="wrap">
     <div class="jd-tag">JD · 잠재력 높은 광고주 발굴 및 우선순위 결정 · 비즈니스 시그널 추적</div>
     <h2 class="sec">① 타깃 광고주 발굴 · 비즈니스 시그널 스코어링</h2>
-    <p class="sec-sub">BDR의 출발은 '누구에게 먼저 연락하느냐'입니다. 아무나 많이 거는 게 아니라, <b>지금 광고가 필요한 시그널이 켜진 광고주</b>부터 공략해야 응답률·미팅 전환이 오릅니다. 공개 시그널을 모아 <b>접근 우선순위 점수·타이밍·추천 채널</b>을 자동으로 계산합니다. 아래에서 직접 시그널을 켜보세요.</p>
+    <p class="sec-sub"><b>BDR은 '누구에게 먼저 연락하느냐'가 절반입니다.</b> 아무나 많이 거는 게 아니라, <b>지금 광고가 필요한 시그널이 켜진 광고주</b>부터. 공개 시그널을 모아 <b>우선순위 점수·타이밍·추천 채널</b>을 자동 계산합니다 — 아래에서 직접 켜보세요 👇</p>
 
     <div class="indg" style="margin-bottom:18px;">
       <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></span>투자 유치 <span class="ibadge">예산 여력</span></div><div class="iwhy">최근 라운드 유치 = 마케팅 예산 확대 구간. 성장 압박으로 신규 매체 테스트 수요↑.</div><div class="isig"><span>DART 공시</span><span>벤처투자 뉴스</span><span>더브이씨</span></div></div>
+      <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>계절성 · 성수기 진입 <span class="ibadge">예산 확대</span></div><div class="iwhy">업종마다 성수기엔 광고비를 몰아 집행합니다(신학기·여름·연말 등). '지금이 그 시즌'이면 <b>예산+타이밍</b>이 동시에 켜지는 강한 신호.</div><div class="isig"><span>업종 시즌 캘린더</span><span>전년 집행 패턴</span><span>검색 트렌드</span></div></div>
       <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.3 6.2 6.2 2.3-6.2 2.3L12 19.5l-2.3-6.2L3.5 11l6.2-2.3z"/></svg></span>신제품·서비스 출시 <span class="ibadge">타이밍</span></div><div class="iwhy">런칭 전후는 광고 니즈가 가장 큰 구간. '접근 타이밍'이 명확한 시그널.</div><div class="isig"><span>보도자료</span><span>공식 SNS</span><span>앱스토어 신규</span></div></div>
       <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>마케팅 직군 채용 급증 <span class="ibadge">투자 확대</span></div><div class="iwhy">퍼포먼스·그로스 채용 = 마케팅 조직·예산 확대 의지. 의사결정자 접점도 확인 가능.</div><div class="isig"><span>원티드·잡코리아</span><span>LinkedIn Jobs</span></div></div>
       <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="10"/></svg></span>현재 타 매체 광고 집행 중 <span class="ibadge">기회</span></div><div class="iwhy">메타·구글은 돌리는데 토스 미집행 = 증분 도달로 설득할 여지가 가장 큰 타깃.</div><div class="isig"><span>Meta 광고 라이브러리</span><span>구글 투명성</span></div></div>
@@ -384,12 +408,13 @@
     <div class="demo-panel">
       <div class="scorer">
         <div class="inputs">
-          <div class="fld"><label><input type="checkbox" id="sig_invest" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 최근 6개월 내 투자 유치 <span class="w">· +25</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_launch" style="width:auto;margin-right:8px;transform:translateY(2px);"> 신제품·신규 서비스 출시 임박 <span class="w">· +20</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_running" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 현재 타 매체(메타·구글) 광고 집행 중 · 토스 미집행 <span class="w">· +20</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_hiring" style="width:auto;margin-right:8px;transform:translateY(2px);"> 마케팅·그로스 직군 채용 급증 <span class="w">· +15</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_fit" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 토스 유저층과 타깃 핏 (2030·대중 타깃) <span class="w">· +10</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_comp" style="width:auto;margin-right:8px;transform:translateY(2px);"> 동종 경쟁사가 토스 Ads 집행 중 <span class="w">· +10</span></label></div>
+          <div class="fld"><label><input type="checkbox" id="sig_invest" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 최근 6개월 내 투자 유치 <span class="w">· +22</span></label></div>
+          <div class="fld"><label><input type="checkbox" id="sig_season" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 계절성 — 업종 성수기 진입·임박 <span class="w">· +22</span></label></div>
+          <div class="fld"><label><input type="checkbox" id="sig_running" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 현재 타 매체(메타·구글) 광고 집행 중 · 토스 미집행 <span class="w">· +16</span></label></div>
+          <div class="fld"><label><input type="checkbox" id="sig_launch" style="width:auto;margin-right:8px;transform:translateY(2px);"> 신제품·신규 서비스 출시 임박 <span class="w">· +14</span></label></div>
+          <div class="fld"><label><input type="checkbox" id="sig_hiring" style="width:auto;margin-right:8px;transform:translateY(2px);"> 마케팅·그로스 직군 채용 급증 <span class="w">· +10</span></label></div>
+          <div class="fld"><label><input type="checkbox" id="sig_fit" style="width:auto;margin-right:8px;transform:translateY(2px);"> 토스 유저층과 타깃 핏 (2030·대중 타깃) <span class="w">· +8</span></label></div>
+          <div class="fld"><label><input type="checkbox" id="sig_comp" style="width:auto;margin-right:8px;transform:translateY(2px);"> 동종 경쟁사가 토스 Ads 집행 중 <span class="w">· +8</span></label></div>
           <div class="fld" style="margin-top:4px;border-top:1px dashed var(--line);padding-top:14px;">
             <label>정밀 조정 · 동점 해소 <span class="w">· 같은 점수일 때 누구 먼저</span></label>
             <select id="sig_recency" style="margin-bottom:10px;">
@@ -416,17 +441,18 @@
     </div>
 
     <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">왜 점수가 다른가 — 가중치 기준</h3>
-    <p class="note-sm" style="margin-bottom:10px;">모든 시그널을 똑같이 보지 않습니다. <b>'지금 필요 · 예산 확인 · 접근 명분' 3축을 몇 개나, 얼마나 확실하게 대리하느냐</b>로 점수가 갈립니다. 예산이 <b>확정</b>된 신호(투자·이미 집행 중)가 가장 높고, 의지만 보여주는 신호(채용)는 중간, 설득을 돕는 보조 신호(핏·경쟁사)는 낮습니다.</p>
+    <p class="note-sm" style="margin-bottom:10px;">모든 시그널을 똑같이 보지 않습니다. <b>'지금 필요 · 예산 확인 · 접근 명분' 3축을 몇 개나, 얼마나 확실하게 대리하느냐</b>로 점수가 갈립니다. <b>예산+타이밍이 동시에 켜지는 신호(투자·계절성 성수기·이미 집행 중)</b>가 가장 높고, 의지만 보여주는 신호(채용)는 중간, 설득을 돕는 보조 신호(핏·경쟁사)는 낮습니다.</p>
     <table class="t">
-      <tr><th style="width:230px">시그널</th><th style="width:60px">점수</th><th>대리하는 축</th><th style="width:150px">강도</th></tr>
-      <tr><td class="b">최근 투자 유치</td><td class="b">25</td><td>예산 ✓ + 지금 필요 ✓ (성장 압박)</td><td>예산 <b>확정</b> + 긴급</td></tr>
-      <tr><td class="b">타 매체 집행 중·토스 미집행</td><td class="b">20</td><td>예산 ✓ (이미 집행) + 명분 ✓ (증분 도달)</td><td>예산 <b>확정</b> + 각도 명확</td></tr>
-      <tr><td class="b">신제품·출시 임박</td><td class="b">20</td><td>지금 필요 ✓✓ + 명분 ✓ (타이밍)</td><td>타이밍 <b>최상</b></td></tr>
-      <tr><td>마케팅 직군 채용 급증</td><td class="b">15</td><td>예산 △ (확대 의지, 확정 아님)</td><td>의지 신호(간접)</td></tr>
-      <tr><td>토스 유저층 타깃 핏</td><td class="b">10</td><td>적합도 (매체 핏)</td><td>자격 요건(보조)</td></tr>
-      <tr><td>경쟁사 토스 집행 중</td><td class="b">10</td><td>명분 (레퍼런스 설득)</td><td>전환 보조</td></tr>
+      <tr><th style="width:210px">시그널</th><th style="width:56px">점수</th><th>대리하는 축</th><th style="width:140px">강도</th></tr>
+      <tr><td class="b">최근 투자 유치</td><td class="b">22</td><td>예산 ✓ + 지금 필요 ✓ (성장 압박)</td><td>예산 <b>확정</b> + 긴급</td></tr>
+      <tr><td class="b">계절성 · 성수기 진입</td><td class="b">22</td><td>지금 필요 ✓ + 예산 ✓ (시즌 집행 확대)</td><td>타이밍 <b>+</b> 예산 확대</td></tr>
+      <tr><td class="b">타 매체 집행 중·토스 미집행</td><td class="b">16</td><td>예산 ✓ (이미 집행) + 명분 ✓ (증분 도달)</td><td>예산 <b>확정</b> + 각도 명확</td></tr>
+      <tr><td class="b">신제품·출시 임박</td><td class="b">14</td><td>지금 필요 ✓✓ + 명분 ✓ (타이밍)</td><td>타이밍 <b>최상</b></td></tr>
+      <tr><td>마케팅 직군 채용 급증</td><td class="b">10</td><td>예산 △ (확대 의지, 확정 아님)</td><td>의지 신호(간접)</td></tr>
+      <tr><td>토스 유저층 타깃 핏</td><td class="b">8</td><td>적합도 (매체 핏)</td><td>자격 요건(보조)</td></tr>
+      <tr><td>경쟁사 토스 집행 중</td><td class="b">8</td><td>명분 (레퍼런스 설득)</td><td>전환 보조</td></tr>
     </table>
-    <p class="note-sm">※ 점수 = <b>'이 광고주가 지금 토스에 집행할 확률'</b>의 대리치. 예산이 눈으로 확인되는 신호에 가장 큰 가중치를 둡니다.</p>
+    <p class="note-sm">※ 점수 = <b>'이 광고주가 지금 토스에 집행할 확률'</b>의 대리치. <b>계절성</b>은 시즌에 광고비를 몰아 쓰는 업종(여행·교육·커머스 등)에선 투자 유치만큼 강한 집행 신호라, 동일 비중(22점)으로 둡니다.</p>
 
     <h3 style="font-size:16px;font-weight:800;margin:24px 0 8px;">같은 점수일 때 — 동점 해소 우선순위</h3>
     <p class="note-sm" style="margin-bottom:10px;">핵심 점수가 같으면 AM 리소스를 누구에게 먼저 쓸지 <b>정밀 조정</b>으로 가릅니다. 위 데모의 하단 2개 항목이 이 역할입니다.</p>
@@ -438,22 +464,6 @@
       <div class="priocard p3"><span class="prion">3순위</span><div class="priot">추정 예산 규모</div><div class="priod">투자·회사 규모로 추정한 <b>예상 집행 규모</b>가 큰 쪽 먼저 → AM 제안 가치가 큼.</div></div>
     </div>
 
-    <h3 style="font-size:16px;font-weight:800;margin:28px 0 10px;">입사 시 실데이터를 이렇게 연동합니다</h3>
-    <div class="pipe">
-      <div class="psrcs">
-        <div class="psrc">원티드·잡코리아 <small>마케팅 직군 채용</small></div>
-        <div class="psrc">Meta·구글 광고 라이브러리 <small>현재 집행·토스 미집행 교차</small></div>
-        <div class="psrc">뉴스·DART 공시 <small>투자·신제품 시그널</small></div>
-      </div>
-      <div class="parrow">→</div>
-      <div class="pdest">발굴 큐<small>점수순 '오늘 연락할 리스트'</small></div>
-    </div>
-    <div class="dcards" style="margin-top:12px;">
-      <div class="dcard"><div class="dct">시그널 자동 트리거</div><div class="dcd">투자·채용·신규 집행 시그널이 켜지는 순간 발굴 큐 상단에 자동 등재 → 접근 타이밍을 놓치지 않습니다.</div></div>
-      <div class="dcard"><div class="dct">중복·기존 고객 제외</div><div class="dcd">Salesforce와 대조해 이미 접촉했거나 집행 중인 광고주는 큐에서 자동 제외.</div></div>
-      <div class="dcard"><div class="dct">우선순위 큐 = 하루 운영</div><div class="dcd">점수 내림차순으로 '오늘 누구부터'를 정렬. 즉시 접근 → 이번 주 순으로 처리.</div></div>
-      <div class="dcard"><div class="dct">Salesforce 기록·보정</div><div class="dcd">접근·응답·미팅 결과를 기록해, 어떤 시그널이 실제 미팅으로 이어지는지 가중치를 데이터로 개선.</div></div>
-    </div>
   </div>
 </section>
 
@@ -633,127 +643,40 @@
   </div>
 </section>
 
-<!-- ───────── 2. 리드 스코어링 (인터랙티브) ───────── -->
-<section class="blk section-soft">
+<!-- ───────── ④ 아웃바운드 발굴 자동 리포트 ───────── -->
+<section class="blk section-soft" id="report" style="scroll-margin-top:72px;">
   <div class="wrap">
-    <div class="jd-tag">JD · 검증된 리드의 우선순위·AM 인계 순서 결정</div>
-    <h2 class="sec">④ 리드 우선순위 스코어링 — 집행 시기 × 예산</h2>
-    <p class="sec-sub">핵심은 <b>① 집행 시기 + ② 월 예산(90점)</b>이고, 등급은 점수 컷이 아니라 <b>"3개월 내 집행 AND 월 300만+"</b>라는 조건으로 정합니다(그래야 "왜 핫인지"가 설명됨). 광고 계획 구체성·지속의지(③④, 10점)는 <b>동점을 가르는 정밀 조정</b>입니다. 아래에서 직접 바꿔보세요.</p>
+    <div class="jd-tag">JD · 아웃바운드 발굴 · 비즈니스 시그널 추적 · 데이터 기반 전략</div>
+    <h2 class="sec">④ 아웃바운드 발굴 자동 리포트 — "오늘 연락할 회사"</h2>
+    <p class="sec-sub">아웃바운드는 '누구에게'가 먼저입니다. <b>매일 뉴스·브랜드 아티클·LinkedIn·광고 노출량 변화</b>를 수집해 시그널을 감지하고, ① 스코어링으로 우선순위를 매겨 <b>오늘 연락할 회사를 자동 추천</b>합니다. 매일 아침 큐가 갱신됩니다.</p>
 
-    <div class="whybox">
-      <div class="whyh">왜 데이터로 스코어링하는가</div>
-      <div class="whytext">감으로 "이 리드 괜찮네"는 사람마다 기준이 달라 우선순위가 흔들립니다. <b>같은 기준으로 점수화</b>해야 우선순위가 <b>기준 있게, 설명 가능하게</b> 나옵니다 — "왜 이 리드를 먼저 넘겼나"에 <b>숫자로 답</b>할 수 있어야 합니다.</div>
-    </div>
-    <div class="prio">
-      <div class="priocard p1"><span class="prion">1순위</span><div class="priot">집행 시기</div><div class="priod">지금 집행할 리드가 아니면 예산이 아무리 커도 AM 리소스를 못 씀. '지금 넘길 리드인가'를 가르는 결정적 축.</div></div>
-      <div class="prioarrow">›</div>
-      <div class="priocard p2"><span class="prion">2순위</span><div class="priot">월 예산</div><div class="priod">시기가 맞아도 예산이 받쳐줘야 AM 제안이 성립. 우선순위·제안 규모를 가름.</div></div>
-      <div class="prioarrow">·</div>
-      <div class="priocard p3"><span class="prion">제외</span><div class="priot">목적 · 타겟 등</div><div class="priod">AM의 전략 영역. BDR 단계의 '지금 넘길 리드인가' 판정엔 덜 결정적 → 점수화 않고 전달용으로만 수집.</div></div>
-    </div>
-
-    <div class="demo-panel">
-      <div class="scorer">
-      <div class="inputs">
-        <div class="fld">
-          <label>① 광고 집행 시기 <span class="w">· 핵심 · 최대 54점</span></label>
-          <select id="timeline">
-            <option value="54" selected>2주 이내 (즉시)</option>
-            <option value="46">1개월 이내</option>
-            <option value="38">3개월 이내</option>
-            <option value="24">6개월 이내</option>
-            <option value="12">1년 이내</option>
-            <option value="4">1년 이후 · 미정</option>
-          </select>
-        </div>
-        <div class="fld">
-          <label>② 월 집행 예산 <span class="w">· 핵심 · 최대 36점</span></label>
-          <select id="budget">
-            <option value="36">3,000만원 이상</option>
-            <option value="29">1,000만 ~ 3,000만원</option>
-            <option value="22" selected>500만 ~ 1,000만원</option>
-            <option value="15">300만 ~ 500만원</option>
-            <option value="8">100만 ~ 300만원</option>
-            <option value="3">100만원 미만</option>
-          </select>
-        </div>
-        <div class="fld">
-          <label>③ 광고 계획 구체성 <span class="w">· 정밀 조정 · 최대 6점</span></label>
-          <select id="plan">
-            <option value="6" selected>이미 고려 중인 광고상품 있음</option>
-            <option value="3">안내받고 싶다</option>
-            <option value="0">불명확</option>
-          </select>
-        </div>
-        <div class="fld">
-          <label>④ 지속 집행 의지 <span class="w">· 정밀 조정 · 최대 4점</span></label>
-          <select id="intent">
-            <option value="4" selected>지속 · 확대 의향</option>
-            <option value="2">단건 테스트</option>
-            <option value="0">불명</option>
-          </select>
-        </div>
-        <p class="note-sm" style="margin-top:4px;">①② = <b>핵심 90점 + 등급 결정</b>, ③④ = <b>정밀 조정 10점(동점 해소)</b>. 광고 목적·일정은 등급과 무관해 AM 전달용으로 별도 수집.</p>
+    <div class="pipe" style="margin-bottom:18px;">
+      <div class="psrcs">
+        <div class="psrc">뉴스·보도자료·아티클 <small>투자·신제품·캠페인</small></div>
+        <div class="psrc">LinkedIn <small>채용·인사이동·조직 확대</small></div>
+        <div class="psrc">광고 라이브러리 <small>광고 노출량 급증·신규 집행</small></div>
       </div>
-
-      <div class="result" id="resultCard">
-        <div class="score" id="scoreNum">0</div>
-        <div class="grade" id="gradeTxt">—</div>
-        <div class="glabel" id="gradeLabel">점수를 선택하세요</div>
-        <div class="bar"><i id="scoreBar" style="width:0%"></i></div>
-        <div class="action" id="actionTxt"></div>
-      </div>
-    </div>
+      <div class="parrow">→</div>
+      <div class="pdest">시그널 감지 → 스코어 → 큐<small>매일 자동 리포트</small></div>
     </div>
 
-    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">스코어링 기준표 (핵심 90 + 정밀 10)</h3>
-    <div class="rubric" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
-      <table class="t">
-        <tr><th>① 집행 시기</th><th style="width:64px">점수</th></tr>
-        <tr><td>2주 이내 (즉시)</td><td class="b">54</td></tr>
-        <tr><td>1개월 이내</td><td class="b">46</td></tr>
-        <tr><td>3개월 이내</td><td class="b">38</td></tr>
-        <tr><td>6개월 이내</td><td class="b">24</td></tr>
-        <tr><td>1년 이내</td><td class="b">12</td></tr>
-        <tr><td>1년 이후 · 미정</td><td class="b">4</td></tr>
-      </table>
-      <table class="t">
-        <tr><th>② 월 예산</th><th style="width:64px">점수</th></tr>
-        <tr><td>3,000만원 이상</td><td class="b">36</td></tr>
-        <tr><td>1,000만 ~ 3,000만</td><td class="b">29</td></tr>
-        <tr><td>500만 ~ 1,000만</td><td class="b">22</td></tr>
-        <tr><td>300만 ~ 500만</td><td class="b">15</td></tr>
-        <tr><td>100만 ~ 300만</td><td class="b">8</td></tr>
-        <tr><td>100만원 미만</td><td class="b">3</td></tr>
-      </table>
+    <div class="report">
+      <div class="rhd"><div class="rt">📋 오늘의 발굴 리포트 <span style="font-weight:600;color:var(--muted);font-size:12px;">(예시 데이터)</span></div><div class="rd">매일 08:00 자동 생성 · 점수순</div></div>
+      <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
+      <div class="rrow"><div class="rk">1</div><div class="rco">A사<small>뷰티 D2C</small></div><div class="rsig"><span>시리즈B 투자</span><span>광고 노출 ↑</span><span>타깃 핏</span></div><div class="rsc" style="color:#15C47E;">88</div><div class="rend"><span class="rgr a">즉시 · A</span><span class="rch">LinkedIn + 콜</span></div></div>
+      <div class="rrow"><div class="rk">2</div><div class="rco">B사<small>교육 플랫폼</small></div><div class="rsig"><span>신학기 성수기</span><span>마케팅 채용 ↑</span></div><div class="rsc" style="color:#15C47E;">78</div><div class="rend"><span class="rgr a">즉시 · A</span><span class="rch">이메일 + 콜</span></div></div>
+      <div class="rrow"><div class="rk">3</div><div class="rco">C사<small>여행·레저</small></div><div class="rsig"><span>여름 성수기</span><span>타 매체 집행 중</span></div><div class="rsc" style="color:var(--blue);">64</div><div class="rend"><span class="rgr b">이번 주 · B</span><span class="rch">이메일</span></div></div>
+      <div class="rrow"><div class="rk">4</div><div class="rco">D사<small>핀테크</small></div><div class="rsig"><span>신상품 출시</span><span>타깃 핏</span></div><div class="rsc" style="color:var(--blue);">52</div><div class="rend"><span class="rgr b">이번 주 · B</span><span class="rch">LinkedIn</span></div></div>
+      <div class="rrow"><div class="rk">5</div><div class="rco">E사<small>식품</small></div><div class="rsig"><span>경쟁사 토스 집행</span></div><div class="rsc" style="color:var(--muted);">32</div><div class="rend"><span class="rgr c">너처링 · C</span><span class="rch">분기 리터치</span></div></div>
     </div>
-    <table class="t" style="margin-top:12px;">
-      <tr><th style="width:150px">정밀 조정 (동점 해소)</th><th>구간 · 점수</th></tr>
-      <tr><td>③ 광고 계획 구체성</td><td>이미 고려 중인 광고상품 있음 <span class="b">6</span> · 안내받고 싶다 <span class="b">3</span> · 불명확 <span class="b">0</span></td></tr>
-      <tr><td>④ 지속 집행 의지</td><td>지속·확대 <span class="b">4</span> · 단건 <span class="b">2</span> · 불명 <span class="b">0</span></td></tr>
-    </table>
-    <p class="note-sm" style="margin-top:8px;"><b>등급은 점수 컷이 아니라 조건으로 정함</b> — 핫 = <b>3개월 내 집행 AND 월 300만+</b>(둘 다) · 웜 = 하나만 · 콜드 = 둘 다 아님. 100점 점수는 <b>같은 등급 안에서 처리 순서</b>를 정하는 용도이고, 정밀 조정 10점이 동점을 가릅니다.</p>
+    <p class="note-sm" style="color:var(--red);font-weight:600;margin-top:10px;">※ 회사명·점수는 <b>예시(가설) 데이터</b>입니다. 로직(시그널 → 스코어 → 우선순위)을 보여주는 목업이며 실제 데이터가 아닙니다.</p>
 
-    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">등급 매트릭스 (집행 시기 × 예산, 핵심 점수)</h3>
-    <div style="overflow-x:auto;">
-    <table class="t matrix" style="font-size:12px;">
-      <tr><th>시기 ＼ 예산</th><th>3천+</th><th>1~3천</th><th>5백~1천</th><th>3백~5백</th><th>1백~3백</th><th>1백미만</th></tr>
-      <tr><td><b>2주 이내</b></td><td class="g">핫 90</td><td class="g">핫 83</td><td class="g">핫 76</td><td class="g">핫 69</td><td class="b">웜 62</td><td class="b">웜 57</td></tr>
-      <tr><td><b>1개월</b></td><td class="g">핫 82</td><td class="g">핫 75</td><td class="g">핫 68</td><td class="g">핫 61</td><td class="b">웜 54</td><td class="b">웜 49</td></tr>
-      <tr><td><b>3개월</b></td><td class="g">핫 74</td><td class="g">핫 67</td><td class="g">핫 60</td><td class="g">핫 53</td><td class="b">웜 46</td><td class="b">웜 41</td></tr>
-      <tr><td><b>6개월</b></td><td class="b">웜 60</td><td class="b">웜 53</td><td class="b">웜 46</td><td class="b">웜 39</td><td class="r">콜드 32</td><td class="r">콜드 27</td></tr>
-      <tr><td><b>1년</b></td><td class="b">웜 48</td><td class="b">웜 41</td><td class="b">웜 34</td><td class="b">웜 27</td><td class="r">콜드 20</td><td class="r">콜드 15</td></tr>
-      <tr><td><b>1년 이후</b></td><td class="b">웜 40</td><td class="b">웜 33</td><td class="b">웜 26</td><td class="b">웜 19</td><td class="r">콜드 12</td><td class="r">콜드 7</td></tr>
-    </table>
-    </div>
-    <p class="note-sm"><span style="color:var(--green);font-weight:700">초록=핫</span> · <span style="color:var(--blue);font-weight:700">파랑=웜</span> · <span style="color:var(--red);font-weight:700">빨강=콜드</span>. 핫은 <b>좌상단(3개월 내 × 월 300만+)</b> 블록뿐 — 시기가 6개월 이상 멀면 예산이 아무리 커도 핫이 아니라 '우선순위 높은 웜'입니다(시기 우선). 표 숫자는 핵심 점수(①+②), 실제 점수는 정밀 조정 ③④까지 반영.</p>
-
-    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">같은 등급 안에서의 우선순위 (상세 스코어링)</h3>
+    <h3 style="font-size:16px;font-weight:800;margin:24px 0 8px;">이 리포트가 하는 일</h3>
     <div class="dcards">
-      <div class="dcard"><div class="dct">점수 = 처리 순서 큐</div><div class="dcd">같은 핫이라도 90점을 61점보다 먼저 인계. '오늘 누구부터'를 정함.</div></div>
-      <div class="dcard"><div class="dct">동점은 정밀 조정으로 해소</div><div class="dcd">핵심 점수가 겹쳐도 광고 계획 구체성·지속 의지<span style="display:inline-block">(③④, 10점)</span>로 대부분 갈림.</div></div>
-      <div class="dcard"><div class="dct">그래도 동점이면</div><div class="dcd">① 집행 시기 더 임박 → ② 예산 더 큰 리드 순 <span style="display:inline-block">(시기 우선).</span></div></div>
-      <div class="dcard"><div class="dct">일일 운영</div><div class="dcd">핫 → 웜 순, 등급 내 점수 내림차순. 핫은 당일, 웜은 48h 내 첫 콜.</div></div>
+      <div class="dcard"><div class="dct">매일 자동 수집·감지</div><div class="dcd">뉴스·아티클·LinkedIn·광고 라이브러리를 매일 크롤링해 투자·신제품·채용·광고 노출량·계절성 시그널을 감지합니다.</div></div>
+      <div class="dcard"><div class="dct">점수순 우선순위 분배</div><div class="dcd">① 시그널 스코어링으로 점수화 → 즉시 / 이번 주 / 너처링으로 분배해 '오늘 누구부터'를 정렬합니다.</div></div>
+      <div class="dcard"><div class="dct">회사별 추천 채널·훅</div><div class="dcd">감지된 핵심 시그널을 아웃리치 훅으로, 점수에 맞는 추천 채널(LinkedIn·이메일·콜)까지 함께 제시합니다.</div></div>
+      <div class="dcard"><div class="dct">Salesforce 연동</div><div class="dcd">이미 접촉·집행 중인 회사는 큐에서 제외하고, 접근·응답 결과를 기록해 시그널 가중치를 보정합니다.</div></div>
     </div>
   </div>
 </section>
@@ -764,7 +687,7 @@
     <div class="closing">
       <div class="ctitle">리드를 많이 넘기는 게 아니라,<br /><span class="hl">AM이 바로 제안할 수 있는 리드만 깨끗하게.</span></div>
       <p class="cdesc">비즈니스 시그널로 <b>발굴·우선순위</b>를 정하고 → 콜·이메일·LinkedIn으로 <b>접근·검증</b>하고 → 업종 <b>레퍼런스로 첫 컨택에서 가치를 제공</b>해 AM 미팅까지 매끄럽게 잇습니다. BDR의 산출물은 '리드 수'가 아니라 <b>'검증의 질'</b>입니다.</p>
-      <div class="crecap"><span>① 타깃 발굴 · 시그널 스코어링</span><span>② 업종 레퍼런스 대시보드</span><span>③ 멀티채널 아웃리치 시퀀스</span><span>④ 리드 우선순위 스코어링</span></div>
+      <div class="crecap"><span>① 타깃 발굴 · 시그널 스코어링</span><span>② 업종 레퍼런스 대시보드</span><span>③ 멀티채널 아웃리치 시퀀스</span><span>④ 아웃바운드 발굴 자동 리포트</span></div>
       <a class="btn btn-primary" href="mailto:jiuk2038@gmail.com" style="margin-top:20px;">윤지욱 · jiuk2038@gmail.com</a>
     </div>
   </div>
@@ -779,38 +702,6 @@
 </footer>
 
 <script>
-  var F = ['timeline','budget','plan','intent'];
-  function calc(){
-    var v = {};
-    F.forEach(function(id){ v[id] = parseInt(document.getElementById(id).value,10); });
-    var s = v.timeline + v.budget + v.plan + v.intent;
-    var near = v.timeline >= 38;   // 3개월 이내
-    var decent = v.budget >= 15;   // 월 300만 이상
-    var grade, glabel, color, action;
-    if (near && decent){
-      grade='A등급 · 핫리드'; glabel='3개월 내 집행 + 월 300만+ (둘 다 충족)'; color='#15C47E';
-      action='<b>리드 품질 평가 → AM에 상담자료(핸드오프 노트) 전달</b> → 미팅 연결. AM 일정 불가 시 24h 내 유선 재확인 + 자료 선발송으로 온도 유지.';
-    } else if (near || decent){
-      grade='B등급 · 웜리드'; glabel='두 조건 중 하나만 충족'; color='#3182F6';
-      action='<b>제안자료 발송 + 리마인드.</b> 시기가 멀면 임박 시점에 재콜, 예산이 작으면 증액 여지를 확인해 A로 승급.';
-    } else {
-      grade='C등급 · 콜드리드'; glabel='두 조건 모두 미충족'; color='#F04452';
-      action='<b>너처링 + 분기 리터치.</b> 집행이 멀고 예산도 작아 지금 AM 리소스를 쓰기엔 이르다 — 시그널이 커지면 재스코어링.';
-    }
-    document.getElementById('scoreNum').textContent = s;
-    document.getElementById('scoreNum').style.color = color;
-    document.getElementById('gradeTxt').textContent = grade;
-    document.getElementById('gradeTxt').style.color = color;
-    document.getElementById('gradeLabel').textContent = glabel;
-    document.getElementById('actionTxt').innerHTML = action;
-    var bar = document.getElementById('scoreBar');
-    bar.style.width = s + '%'; bar.style.background = color;
-    document.getElementById('resultCard').style.background = color + '12';
-    document.getElementById('resultCard').style.borderColor = color + '55';
-  }
-  F.forEach(function(id){ document.getElementById(id).addEventListener('change', calc); });
-  calc();
-
   // ── ④ 업종 레퍼런스 대시보드 (예시 데이터) ──
   var REF = {
     '치과·병의원': {alias:['치과','치아','임플란트','교정','스케일링','덴탈','병원','의원','병의원','의료','제약','클리닉','한의원','성형','피부과','안과','정형외과','타이거치과'],
@@ -926,12 +817,13 @@
 <script>
   // ── ① 타깃 발굴 · 비즈니스 시그널 스코어링 ──
   var PSIG = [
-    {id:'sig_invest', w:25, hook:'최근 투자 유치 축하 + 성장 단계 마케팅 확장 각도로 오픈'},
-    {id:'sig_launch', w:20, hook:'신제품 출시 타이밍에 맞춘 토스 노출 제안으로 오픈'},
-    {id:'sig_running',w:20, hook:'이미 집행 중인 캠페인을 토스로 증분 도달 확대하는 각도로 오픈'},
-    {id:'sig_hiring', w:15, hook:'마케팅 조직 확대 시점 — 신규 매체 테스트 제안으로 오픈'},
-    {id:'sig_fit',    w:10, hook:'토스 2030·대중 유저 도달 강점을 업종 핏으로 어필'},
-    {id:'sig_comp',   w:10, hook:'동종 경쟁사 토스 집행 레퍼런스로 성과 비교 제안'}
+    {id:'sig_invest', w:22, hook:'최근 투자 유치 축하 + 성장 단계 마케팅 확장 각도로 오픈'},
+    {id:'sig_season', w:22, hook:'업종 성수기 진입 타이밍에 맞춰 집행 확대 제안으로 오픈'},
+    {id:'sig_running',w:16, hook:'이미 집행 중인 캠페인을 토스로 증분 도달 확대하는 각도로 오픈'},
+    {id:'sig_launch', w:14, hook:'신제품 출시 타이밍에 맞춘 토스 노출 제안으로 오픈'},
+    {id:'sig_hiring', w:10, hook:'마케팅 조직 확대 시점 — 신규 매체 테스트 제안으로 오픈'},
+    {id:'sig_fit',    w:8,  hook:'토스 2030·대중 유저 도달 강점을 업종 핏으로 어필'},
+    {id:'sig_comp',   w:8,  hook:'동종 경쟁사 토스 집행 레퍼런스로 성과 비교 제안'}
   ];
   function pcalc(){
     var s=0, top=null, topw=-1;
