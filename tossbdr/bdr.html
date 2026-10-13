@@ -138,7 +138,7 @@
   .gcard.g{border-top-color:var(--green);} .gcard.b{border-top-color:var(--blue);} .gcard.r{border-top-color:var(--red);}
   .gcard .gh{font-size:16px;font-weight:800;margin-bottom:9px;}
   .gcard.g .gh{color:var(--green);} .gcard.b .gh{color:var(--blue);} .gcard.r .gh{color:var(--red);}
-  .gcard .gcond{font-size:12.5px;color:var(--ink);line-height:1.5;background:var(--bg-soft);border-radius:8px;padding:9px 11px;margin-bottom:9px;min-height:54px;display:flex;flex-direction:column;justify-content:center;}
+  .gcard .gcond{font-size:12.5px;color:var(--ink);line-height:1.5;background:var(--bg-soft);border-radius:8px;padding:9px 11px;margin-bottom:9px;min-height:94px;display:flex;flex-direction:column;justify-content:center;}
   .gcard .gcond span{color:var(--muted);font-size:11.5px;}
   .gcard .gact{font-size:12.5px;color:var(--body);line-height:1.55;}
   .fallback{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin-top:4px;}
@@ -178,13 +178,13 @@
   .ustep small{font-weight:500;color:var(--muted);font-size:11.5px;}
   .ustep .un{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:var(--blue);color:#fff;font-size:12px;font-weight:800;margin-right:7px;}
   .uarrow{color:var(--muted);font-weight:800;font-size:18px;text-align:center;}
-  .pipe{display:grid;grid-template-columns:1.6fr auto 1fr;gap:12px;align-items:center;}
+  .pipe{display:grid;grid-template-columns:1.6fr auto 1fr;gap:12px;align-items:stretch;}
   @media(max-width:720px){.pipe{grid-template-columns:1fr;}.pipe .parrow{transform:rotate(90deg);justify-self:center;}}
   .psrcs{display:flex;flex-direction:column;gap:8px;}
   .psrc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:13px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
   .psrc small{font-weight:500;color:var(--muted);font-size:11.5px;}
-  .parrow{color:var(--muted);font-weight:800;font-size:20px;text-align:center;}
-  .pdest{background:var(--blue-weak);border:1px solid var(--blue);border-radius:12px;padding:16px;font-size:14px;font-weight:800;color:var(--blue);text-align:center;line-height:1.5;}
+  .parrow{color:var(--muted);font-weight:800;font-size:20px;text-align:center;display:flex;align-items:center;justify-content:center;}
+  .pdest{background:var(--blue-weak);border:1px solid var(--blue);border-radius:12px;padding:16px;font-size:14px;font-weight:800;color:var(--blue);text-align:center;line-height:1.5;display:flex;flex-direction:column;align-items:center;justify-content:center;}
   .pdest small{display:block;font-weight:600;color:#1b64da;font-size:11.5px;margin-top:3px;}
   .budgetin{display:flex;align-items:center;gap:8px;max-width:380px;}
   .budgetin input{flex:1;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);}
@@ -660,16 +660,14 @@
       <div class="pdest">시그널 감지 → 스코어 → 큐<small>매일 자동 리포트</small></div>
     </div>
 
-    <div class="report">
-      <div class="rhd"><div class="rt">📋 오늘의 발굴 리포트 <span style="font-weight:600;color:var(--muted);font-size:12px;">(예시 데이터)</span></div><div class="rd">매일 08:00 자동 생성 · 점수순</div></div>
-      <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
-      <div class="rrow"><div class="rk">1</div><div class="rco">A사<small>뷰티 D2C</small></div><div class="rsig"><span>시리즈B 투자</span><span>광고 노출 ↑</span><span>타깃 핏</span></div><div class="rsc" style="color:#15C47E;">88</div><div class="rend"><span class="rgr a">즉시 · A</span><span class="rch">LinkedIn + 콜</span></div></div>
-      <div class="rrow"><div class="rk">2</div><div class="rco">B사<small>교육 플랫폼</small></div><div class="rsig"><span>신학기 성수기</span><span>마케팅 채용 ↑</span></div><div class="rsc" style="color:#15C47E;">78</div><div class="rend"><span class="rgr a">즉시 · A</span><span class="rch">이메일 + 콜</span></div></div>
-      <div class="rrow"><div class="rk">3</div><div class="rco">C사<small>여행·레저</small></div><div class="rsig"><span>여름 성수기</span><span>타 매체 집행 중</span></div><div class="rsc" style="color:var(--blue);">64</div><div class="rend"><span class="rgr b">이번 주 · B</span><span class="rch">이메일</span></div></div>
-      <div class="rrow"><div class="rk">4</div><div class="rco">D사<small>핀테크</small></div><div class="rsig"><span>신상품 출시</span><span>타깃 핏</span></div><div class="rsc" style="color:var(--blue);">52</div><div class="rend"><span class="rgr b">이번 주 · B</span><span class="rch">LinkedIn</span></div></div>
-      <div class="rrow"><div class="rk">5</div><div class="rco">E사<small>식품</small></div><div class="rsig"><span>경쟁사 토스 집행</span></div><div class="rsc" style="color:var(--muted);">32</div><div class="rend"><span class="rgr c">너처링 · C</span><span class="rch">분기 리터치</span></div></div>
+    <a href="discovery.html" title="실제 툴 열기" style="display:block;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 6px 22px rgba(0,0,0,.08);">
+      <img src="assets/discovery-report.png" alt="아웃바운드 발굴 자동 리포트 — 실제 구동 화면" loading="lazy" style="display:block;width:100%;height:auto;" />
+    </a>
+    <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:14px;">
+      <a class="demobtn" href="discovery.html" style="margin-top:0;">▶ 실제 툴 열어서 사용하기</a>
+      <span class="note-sm" style="margin:0;">위는 <b>직접 만든 실제 툴의 구동 화면</b>입니다 — 버튼을 누르면 <b>시그널로 점수가 계산·정렬</b>되고 '오늘 리포트 생성'으로 순위가 재계산됩니다.</span>
     </div>
-    <p class="note-sm" style="color:var(--red);font-weight:600;margin-top:10px;">※ 회사명·점수는 <b>예시(가설) 데이터</b>입니다. 로직(시그널 → 스코어 → 우선순위)을 보여주는 목업이며 실제 데이터가 아닙니다.</p>
+    <p class="note-sm" style="color:var(--red);font-weight:600;margin-top:10px;">※ 회사명·점수는 로직 시연용 <b>예시(가상)</b>이며, 실데이터 연동(뉴스·LinkedIn·Meta/Google 광고 라이브러리 수집)은 백엔드가 필요합니다. 스코어링·우선순위 엔진은 실제로 동작합니다.</p>
 
     <h3 style="font-size:16px;font-weight:800;margin:24px 0 8px;">이 리포트가 하는 일</h3>
     <div class="dcards">
