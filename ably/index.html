@@ -41,6 +41,10 @@
   .hi-list li::before{ content:''; position:absolute; left:0; top:18px; width:6px; height:6px; border-radius:50%; background:#ff5160; }
   .hi-list b{ color:#ff5160; font-weight:800; }
   .hi-list .hil-k{ display:inline-block; font-size:12px; font-weight:800; color:var(--accent-dark); background:#fdf0f5; border:1px solid #f6c9db; border-radius:6px; padding:2px 9px; margin-right:9px; }
+  /* 버튼 4개를 아래 카드 가로폭에 맞춰 full-width 그리드로 확장 */
+  .hero .btns{ display:grid !important; grid-template-columns:2fr 1.4fr 1fr 1fr; gap:10px; }
+  .hero .btns .btn{ width:100%; justify-content:center; }
+  @media (max-width:720px){ .hero .btns{ grid-template-columns:1fr !important; } }
 </style>
 </head>
 <body>
