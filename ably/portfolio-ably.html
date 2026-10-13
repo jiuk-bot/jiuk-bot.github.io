@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>윤지욱 (JIUK YOON) · 광고 BD 포트폴리오 — Ably</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+
+:root{
+  --primary:#f06292;
+  --primary-dark:#c2185b;
+  --soft:#fde8f0;
+  --ink:#191F28;
+  --body:#4E5968;
+  --sub:#8B95A1;
+  --line:#E5E8EB;
+  --bg:#F9FAFB;
+  --card:#ffffff;
+  --green:#15C47E;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html,body{
+  font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;
+  color:var(--body);
+  background:var(--bg);
+  line-height:1.65;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+  -webkit-font-smoothing:antialiased;
+}
+
+p,h1,h2,h3,h4,li,span,div,td,th{
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+
+.wrap{
+  max-width:820px;
+  margin:0 auto;
+  padding:0 24px 64px;
+}
+
+/* ===== minimal header ===== */
+.topbar{
+  max-width:820px;
+  margin:0 auto;
+  padding:22px 24px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  font-weight:800;
+  letter-spacing:-0.02em;
+  font-size:15px;
+  color:var(--ink);
+}
+.brand .dot{color:var(--primary);}
+.topbar .role{
+  font-size:12px;
+  color:var(--sub);
+  font-weight:600;
+}
+
+/* ===== hero ===== */
+.hero{
+  padding:40px 0 36px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:8px;
+}
+.eyebrow{
+  display:inline-block;
+  background:var(--soft);
+  color:var(--primary-dark);
+  font-size:13px;
+  font-weight:700;
+  padding:7px 14px;
+  border-radius:999px;
+  letter-spacing:-0.01em;
+  margin-bottom:22px;
+}
+.hero h1{
+  font-size:38px;
+  line-height:1.28;
+  font-weight:800;
+  color:var(--ink);
+  letter-spacing:-0.03em;
+  margin-bottom:22px;
+}
+.hero h1 .pink{color:var(--primary);}
+.hero .tagline{
+  font-size:16.5px;
+  color:var(--body);
+  max-width:640px;
+  margin-bottom:24px;
+}
+.hero .meta-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  font-size:13.5px;
+  color:var(--sub);
+  font-weight:600;
+}
+.hero .meta-line .order{
+  color:var(--primary-dark);
+}
+.hero .contact{
+  margin-top:14px;
+  font-size:14px;
+  font-weight:700;
+  color:var(--ink);
+}
+
+/* ===== case ===== */
+.case{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:0;
+  margin-top:34px;
+  overflow:hidden;
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+.case + .case{
+  page-break-before:always;
+}
+
+.case-head{
+  background:linear-gradient(135deg,#fff 0%, var(--soft) 100%);
+  border-bottom:3px solid var(--primary);
+  padding:26px 30px 22px;
+}
+.case-no{
+  display:inline-block;
+  font-size:12px;
+  font-weight:800;
+  color:#fff;
+  background:var(--primary);
+  padding:4px 11px;
+  border-radius:999px;
+  letter-spacing:0.04em;
+  margin-bottom:12px;
+}
+.case-head h2{
+  font-size:22px;
+  font-weight:800;
+  color:var(--ink);
+  letter-spacing:-0.02em;
+  line-height:1.35;
+  margin-bottom:16px;
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.chip{
+  font-size:12px;
+  font-weight:700;
+  color:var(--primary-dark);
+  background:rgba(255,255,255,0.85);
+  border:1px solid rgba(240,98,146,0.35);
+  padding:4px 10px;
+  border-radius:8px;
+}
+
+.case-body{
+  padding:24px 30px 30px;
+}
+
+.sec{
+  margin-top:20px;
+}
+.sec:first-child{margin-top:0;}
+
+.sec-label{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:13px;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:9px;
+}
+.sec-num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:22px;height:22px;
+  background:var(--soft);
+  color:var(--primary-dark);
+  border-radius:7px;
+  font-size:12px;
+  font-weight:800;
+  flex:none;
+}
+.sec p{
+  font-size:14.5px;
+  color:var(--body);
+}
+
+/* numbered action list */
+.steps{
+  list-style:none;
+  counter-reset:step;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.steps li{
+  position:relative;
+  padding-left:34px;
+  font-size:14px;
+  color:var(--body);
+  counter-increment:step;
+}
+.steps li::before{
+  content:counter(step);
+  position:absolute;
+  left:0;top:1px;
+  width:23px;height:23px;
+  background:#fff;
+  border:1.5px solid var(--primary);
+  color:var(--primary-dark);
+  border-radius:50%;
+  font-size:12px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.note{
+  margin-top:11px;
+  font-size:13px;
+  font-weight:700;
+  color:var(--primary-dark);
+  background:var(--soft);
+  border-left:3px solid var(--primary);
+  padding:9px 13px;
+  border-radius:0 8px 8px 0;
+}
+
+/* stat cards */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:4px;
+}
+.stats.c2{grid-template-columns:repeat(2,1fr);}
+.stats.c3{grid-template-columns:repeat(3,1fr);}
+.stat{
+  background:var(--soft);
+  border:1px solid rgba(240,98,146,0.25);
+  border-radius:14px;
+  padding:16px 14px;
+  text-align:left;
+}
+.stat .label{
+  font-size:12px;
+  font-weight:700;
+  color:var(--sub);
+  margin-bottom:6px;
+  line-height:1.4;
+}
+.stat .big{
+  font-size:28px;
+  font-weight:800;
+  color:var(--primary);
+  letter-spacing:-0.03em;
+  line-height:1.1;
+}
+.stat .sub{
+  font-size:12px;
+  font-weight:700;
+  color:var(--body);
+  margin-top:5px;
+}
+.stat .sub.up{color:var(--green);}
+
+.stat-desc{
+  margin-top:12px;
+  font-size:13.5px;
+  color:var(--body);
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px 14px;
+}
+
+.insight{
+  margin-top:4px;
+  font-size:14.5px;
+  color:var(--ink);
+  font-weight:600;
+  background:#fff;
+  border:1px dashed var(--primary);
+  border-radius:12px;
+  padding:14px 16px;
+}
+
+/* ===== closing ===== */
+.closing{
+  margin-top:40px;
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+  color:#fff;
+  border-radius:20px;
+  padding:40px 34px;
+  text-align:center;
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+.closing h3{
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-0.02em;
+  line-height:1.4;
+  margin-bottom:18px;
+}
+.closing .mail{
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-0.01em;
+  margin-bottom:18px;
+}
+.closing .sig{
+  font-size:13.5px;
+  font-weight:600;
+  opacity:0.9;
+  border-top:1px solid rgba(255,255,255,0.3);
+  padding-top:16px;
+  display:inline-block;
+}
+
+/* ===== print ===== */
+@page{
+  size:A4;
+  margin:14mm;
+}
+@media print{
+  html,body{background:#fff;}
+  .wrap{padding:0;max-width:100%;}
+  .topbar{padding:0 0 10px;max-width:100%;}
+  .case{
+    border:1px solid var(--line);
+    box-shadow:none;
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  .case + .case{page-break-before:always;}
+  .case-head{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+  .closing{break-inside:avoid;page-break-inside:avoid;}
+  .hero{break-inside:avoid;}
+}
+
+@media (max-width:640px){
+  .hero h1{font-size:28px;}
+  .stats,.stats.c2,.stats.c3{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">JIUK<span class="dot">.</span>YOON</div>
+  <div class="role">Ad Sales / Account Manager</div>
+</div>
+
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <span class="eyebrow">데이터로 광고주의 매출을 키우는 광고 사업 개발 (BD)</span>
+    <h1>어떤 서비스를, 어떻게 마케팅해서,<br><span class="pink">어떤 성과를 냈는가.</span></h1>
+    <p class="tagline">패션 커머스 셀러 경험부터 임플란트·금융·B2B 세일즈까지 — 데이터로 원인을 찾아 광고주의 매출을 키운 실제 이야기들.</p>
+    <div class="meta-line">
+      <span><span class="order">읽는 순서</span> : 서비스 → 과제 → 접근 → 실행 → 성과 → 인사이트</span>
+    </div>
+    <div class="contact">jiuk2038@gmail.com · 010-5540-2038</div>
+  </header>
+
+  <!-- ===== CASE 1 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 1</span>
+      <h2>치과 임플란트 다매체 마케팅 &amp; 지역 예산 컨설팅</h2>
+      <div class="chips">
+        <span class="chip">글로벌랩스</span>
+        <span class="chip">2026.01~현재</span>
+        <span class="chip">구글·메타·틱톡·GA4</span>
+        <span class="chip">3인 (기여 90%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>치과 임플란트 병원의 신규 환자 유치. 온라인 광고로 상담 리드를 모으고, 그 리드가 실제 병원 내원 → 시술로 이어져야 비로소 매출이 되는 고관여 오프라인 서비스.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>대행 제로베이스(ROAS 103%)에서 시작. 리드는 쌓이는데 'CPA 단가'만 보면 진짜 효율이 안 보였다. 리드가 많아도 내원·매출로 안 이어지면 광고주에겐 의미가 없었다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p>"임플란트는 오프라인 내원이 필수인 고관여 상품이다. 그러니 '리드 CPA'가 아니라 '지역별 내원율·CAC·ROAS'로 성과를 봐야 진짜 효율이 보인다"는 관점을 세움.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>리드 → 상담 → 내원 → 시술로 이어지는 전환 퍼널을 역산해, 광고를 '내원'까지 책임지는 구조로 재정의</li>
+          <li>오프라인 방문이 가능한 고객을 지역 단위로 캠페인을 분리·분류해 지역별 성과를 독립적으로 측정할 수 있게 설계</li>
+          <li>지역별 내원율·CAC·ROAS를 데이터로 집계 — 리드 CPA가 아닌 '지역별 CAC'까지 추적</li>
+          <li>내원율이 높아 ROAS가 우수한 핵심 지역을 식별하고, 저효율 지역은 감액·정리로 예산 누수 차단</li>
+          <li>구글·메타·틱톡 3개 매체 × 매체별 소재·오디언스를 A/B 테스트하며 리드 볼륨과 품질을 동시 관리</li>
+          <li>신규 매체(틱톡)의 주 타겟(시니어) 규모를 데이터로 검증 후 확장 제안</li>
+          <li>핵심 지역에 광고비 볼륨 증액을 데이터로 광고주에게 설득 → 고효율 지역 중심으로 취급고 확대</li>
+        </ol>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑤</span>어떤 성과가 났나</div>
+        <div class="stats">
+          <div class="stat">
+            <div class="label">월 취급고 · 6개월</div>
+            <div class="big">9.4배</div>
+            <div class="sub up">0.6억 → 5.5억</div>
+          </div>
+          <div class="stat">
+            <div class="label">ROAS</div>
+            <div class="big">336%</div>
+            <div class="sub up">103% → 336% (3.3배)</div>
+          </div>
+          <div class="stat">
+            <div class="label">내원율</div>
+            <div class="big">7.1%</div>
+            <div class="sub up">0.2% → 7.1% (약 36배)</div>
+          </div>
+          <div class="stat">
+            <div class="label">지역 CAC · 누적 리드</div>
+            <div class="big">-25%</div>
+            <div class="sub">누적 리드 8,900건+</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">리드 '수'가 아니라 '내원당 단가'가 진짜 지표다. 성과가 신뢰를 만들고, 신뢰가 예산 증액으로 이어지는 선순환을 데이터로 만들 수 있다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 2 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 2</span>
+      <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
+      <div class="chips">
+        <span class="chip">글로벌랩스</span>
+        <span class="chip">2026.01~현재</span>
+        <span class="chip">구글·메타·틱톡 API</span>
+        <span class="chip">AI 바이브코딩</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 대상인가</div>
+        <p>3개 매체·월평균 5억+ 취급고를 소수 인원으로 운영해야 하는 내부 운영 환경.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>매일 반복되는 수작업 데이터 가공에 시간을 뺏겨 의사결정이 느려지고, 다매체·대규모 운영이 병목에 걸림.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p>"수작업 데이터 가공을 없애야 소수 인원 운영이 가능하다. 단순 조회 툴을 넘어, 운영 판단까지 돕는 도구를 직접 만들자."</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>구글·메타·틱톡 광고 성과 데이터를 API로 연동해 자동 가공하는 대시보드를 바이브코딩으로 직접 개발</li>
+          <li>실시간 성과 통합 조회 · A/B 테스트 플래닝 · 코호트 분석 · KPI 관리를 한 화면에 통합</li>
+          <li>운영 히스토리 챗봇 구축 — "언제·무엇을·왜 했는지"를 자연어로 즉시 질의응답</li>
+          <li>실시간 KPI 달성율 체크로 일·주·월 계획을 유동적으로 조정</li>
+        </ol>
+        <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑤</span>어떤 성과가 났나</div>
+        <div class="stats c2">
+          <div class="stat">
+            <div class="label">소수 인원 운영 취급고</div>
+            <div class="big">5억+/월</div>
+            <div class="sub">3개 매체 통합 운영</div>
+          </div>
+          <div class="stat">
+            <div class="label">운영 효율</div>
+            <div class="big">자동화</div>
+            <div class="sub">데이터 가공 시간 최소화</div>
+          </div>
+        </div>
+        <div class="stat-desc">데이터 가공 시간 최소화로 월 5억+ 취급고·다매체를 소수 인원이 운영 가능, 의사결정 속도 향상 및 계획 유동 조정 체계 확립.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">성과 조회를 넘어 '운영의 맥락(히스토리)'까지 관리해야 판단이 축적된다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 3 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 3</span>
+      <h2>KB국민은행 '스타틴즈' 서비스 캠페인 (5채널)</h2>
+      <div class="chips">
+        <span class="chip">블루오렌지</span>
+        <span class="chip">2025.09~2025.12</span>
+        <span class="chip">유튜브·인스타·토스·틱톡·콴다·KB DMP</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>KB국민은행의 10대(청소년) 대상 금융 브랜드 '스타틴즈'. 앱 실행·회원가입을 유도하는 대형 브랜드 캠페인 (집행 5억).</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>10대라는 특수 타겟에 효율적으로 도달하면서 앱실행 단가를 낮춰야 했다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p>"채널은 통념이 아니라 실측 데이터로 정한다. 10대 타겟의 모수가 고효율인 매체를 추가하고, 데이터로 타겟을 계속 좁혀간다."</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>유튜브·인스타·토스·틱톡 4채널로 라이브</li>
+          <li>학생 타겟에 맞는 신규 매체 10대 교육앱 '콴다'를 직접 발굴·제안해 5채널로 확장</li>
+          <li>타겟을 연령(13-19)·관심사(학부모/자녀/가족)·KB DMP(학원비 납부·상품 가입)·콘텐츠 타겟으로 설계, 예산 균등 분배로 라이브</li>
+          <li>앱실행 단가·CPV·전환 볼륨을 매일 추적하며 저효율 타겟 감액, 고효율로 이관 (타겟·소재·매체 3단계 능동 재배분)</li>
+          <li>'틱톡=10대' 통념과 달리 노출·조회 69%가 45세+임을 실측 검증 → 연령 축소·학부모 관심사 재집중</li>
+          <li>모수 적어 CPV 높던 리타겟 예산을 관심사 타겟으로 이관 (관심사 CPV -38%)</li>
+        </ol>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑤</span>어떤 성과가 났나</div>
+        <div class="stats c3">
+          <div class="stat">
+            <div class="label">앱실행 단가</div>
+            <div class="big">-41%</div>
+            <div class="sub up">캠페인 기간 중 개선</div>
+          </div>
+          <div class="stat">
+            <div class="label">콴다 VTR</div>
+            <div class="big">99%</div>
+            <div class="sub up">5채널 1위 · CPV -67%</div>
+          </div>
+          <div class="stat">
+            <div class="label">총 앱실행</div>
+            <div class="big">1.7만건</div>
+            <div class="sub">집행 5억 · 5채널</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">통념이 아닌 실측 데이터가 타겟을 정한다. 신규 매체 발굴은 강력한 효율 레버다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 4 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 4</span>
+      <h2>KB국민은행 '패밀리뱅킹' 브랜드 캠페인</h2>
+      <div class="chips">
+        <span class="chip">블루오렌지</span>
+        <span class="chip">2025.09~2025.12</span>
+        <span class="chip">유튜브·토스·인스타·KB DMP</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>KB국민은행의 가족 단위 금융 서비스(자녀 적금·펀드, 모임통장 등) 앱 실행 유도 (집행 약 3억).</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>신규 고객 획득 위주 운영의 낮은 효율을 개선해야 했다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p>"새 고객을 찾기보다, 이미 조건에 맞는 고객(자녀 보유 고객)을 활성화하는 게 더 효율적일 것이다"를 DMP 데이터로 검증.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>KB 1st-party DMP를 마이데이터 연동·모임통장 가입·자녀 적금/펀드·공과금 결제이력·노후/연금 가입자 등으로 초세분화</li>
+          <li>세그먼트별 앱실행 단가·전환 효율을 비교</li>
+          <li>효율 높은 세그먼트(자녀 보유 고객)로 예산·소재 비중 집중</li>
+          <li>채널별 실행당 비용 격차를 근거로 비효율 채널 예산을 고효율 채널(토스)로 이관</li>
+          <li>'자녀 보유 고객 활성화'가 효율적이라는 점을 DMP 데이터로 규명해 광고주에게 주도적으로 제안·설득</li>
+        </ol>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑤</span>어떤 성과가 났나</div>
+        <div class="stats c2">
+          <div class="stat">
+            <div class="label">앱실행 단가</div>
+            <div class="big">-29%</div>
+            <div class="sub up">DMP 세그먼트 집중 효과</div>
+          </div>
+          <div class="stat">
+            <div class="label">채널 재배분</div>
+            <div class="big">효율 안정화</div>
+            <div class="sub">일자별 성과 추이 기반</div>
+          </div>
+        </div>
+        <div class="stat-desc">일자별 성과 추이 기반 채널 재배분으로 효율 안정화.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">'신규 획득'만이 답이 아니다. 데이터로 광고주를 설득하면 더 효율적인 길이 열린다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 5 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 5</span>
+      <h2>셀프스토리지 B2B 가맹 세일즈 (콜→현장 풀퍼널)</h2>
+      <div class="chips">
+        <span class="chip">박스풀</span>
+        <span class="chip">2024.07~2025.06</span>
+        <span class="chip">네이버블로그·메타·GA4·Kling AI·Capcut</span>
+        <span class="chip">2인 (70%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>셀프스토리지 가맹창업이라는 고관여 B2B 상품 판매. 창업설명회로 예비 창업자 리드를 모아 실제 가맹 계약까지 성사시키는 일.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>단체 설명회 중심 구조에서 참석은 해도 계약 전환이 낮았다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p>"'참석자 수를 늘린다'가 아니라 '전환되는 단계로 구조를 바꿔야 한다'. 현장에서 직접 체험한 신뢰가 계약을 만든다."</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>네이버 블로그·META 광고로 창업설명회 리드 모집</li>
+          <li>가맹 제안서를 직접 작성해 창업설명회에서 발표(세일즈 피칭)</li>
+          <li>단체 설명회 → 1:1 실물 체험형 현장 상담으로 세일즈 프로세스 재설계</li>
+          <li>리드 모집부터 계약 클로징까지 단독 완주</li>
+          <li>공감형 AI 영상 소재를 직접 제작해 리드 캠페인 효율 개선 (CTR 6.7%→9.56%, 소재 CPA -24%)</li>
+          <li>개설 가맹점주 2개 지점의 로컬 디지털 광고를 직접 대행·운영</li>
+        </ol>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑤</span>어떤 성과가 났나</div>
+        <div class="stats c3">
+          <div class="stat">
+            <div class="label">가맹 계약</div>
+            <div class="big">1건 성사</div>
+            <div class="sub">리드~클로징 단독 완주</div>
+          </div>
+          <div class="stat">
+            <div class="label">상담신청 전환 · 동일비용</div>
+            <div class="big">+67.7%</div>
+            <div class="sub up">CPA -38.6%</div>
+          </div>
+          <div class="stat">
+            <div class="label">타겟 적중률</div>
+            <div class="big">70%</div>
+            <div class="sub up">40% → 70%</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">세일즈는 '숫자(참석자)'가 아니라 '구조(전환 단계)'를 바꿔야 움직인다. 실물 체험이 깊이있는 신뢰와 전환을 만든다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 6 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 6</span>
+      <h2>어스텀(Ustom) 창업 · 대표</h2>
+      <div class="chips">
+        <span class="chip">2022.05~2023.04</span>
+        <span class="chip">서비스 기획·UI/UX·사업화</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>의류 커스터마이징 수요를 이어주는 중개 플랫폼.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②~④</span>과제 · 접근 · 실행</div>
+        <p>커스터마이징 수요를 중개 플랫폼 모델로 구조화 → 서비스·UI/UX 구조 설계 주도 → 대표로서 기획부터 사업화까지 추진.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑤</span>성과 · 정부지원사업 선정</div>
+        <div class="stats c2">
+          <div class="stat">
+            <div class="label">정부지원사업 선정</div>
+            <div class="big">1,000만 원</div>
+            <div class="sub">기획~사업화 리더십 경험</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">문제를 '구조'로 바라보는 사업가적 관점.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING ===== -->
+  <section class="closing">
+    <h3>광고주와 동반성장할 파트너를 찾고 있다면,<br>편하게 연락 주세요.</h3>
+    <div class="mail">jiuk2038@gmail.com · 010-5540-2038</div>
+    <div class="sig">윤지욱 · Ad Sales / Account Manager · 경기도 용인시 · 2026</div>
+  </section>
+
+</div>
+</body>
+</html>
