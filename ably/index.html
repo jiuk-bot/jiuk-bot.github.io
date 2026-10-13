@@ -35,6 +35,12 @@
   .fitcard p{ font-size:13.5px; line-height:1.65; color:#4E5968; margin:0 0 14px; flex:1; }
   .fc-badge{ align-self:flex-start; font-size:12.5px; font-weight:800; color:#fff; background:#ff5160; border-radius:999px; padding:6px 14px; }
   @media (max-width:720px){ .fitgrid{ grid-template-columns:1fr; } }
+  .hi-list{ list-style:none; margin:6px 0 16px; padding:0; }
+  .hi-list li{ position:relative; padding:10px 0 10px 16px; font-size:15px; line-height:1.6; color:#4E5968; border-bottom:1px solid #f0f2f4; }
+  .hi-list li:last-child{ border-bottom:0; }
+  .hi-list li::before{ content:''; position:absolute; left:0; top:18px; width:6px; height:6px; border-radius:50%; background:#ff5160; }
+  .hi-list b{ color:#ff5160; font-weight:800; }
+  .hi-list .hil-k{ display:inline-block; font-size:12px; font-weight:800; color:var(--accent-dark); background:#fdf0f5; border:1px solid #f6c9db; border-radius:6px; padding:2px 9px; margin-right:9px; }
 </style>
 </head>
 <body>
@@ -59,14 +65,14 @@
     <div class="applytag">ABLY · 광고 사업 개발 매니저 (브랜드) 지원</div>
     <div class="hello">안녕하세요 👋</div>
     <h1>광고주의 매출을,<br /><span class="hl">데이터로 키우는 광고 사업 개발자입니다.</span></h1>
-    <p class="sub">
-      <b>패션 커머스를 셀러 관점에서 직접 운영</b>(뷰티 커머스 스마트스토어 월매출 +167%)해보고,
-      디지털 광고를 집행·대행하며 <b>광고주(브랜드·셀러)의 성장 고민</b>을 현장 언어로 이해해 온 사람입니다.<br /><br />
-      글로벌랩스 마케팅 팀장으로 메디컬 광고주 성과를 총괄하며 <b>데이터로 예산 증액을 설득</b>, 6개월 만에 <b>취급고 9.4배</b>·<b>ROAS 3.3배</b>를 만들었고,
-      <img src="assets/logo-kb.jpeg" alt="KB국민은행" style="height:2.6em;vertical-align:-0.95em;" />(블루오렌지)에서 <b>약 8억</b> 규모 캠페인을 대행하며 신규 매체를 직접 발굴·제안했습니다.<br /><br />
-      셀프스토리지 B2B 세일즈에서는 <b>신규 발굴 → 제안서 작성 → 발표 → 현장 계약 클로징까지 단독 완주</b>했습니다.
-      에이블리에서 셀러·브랜드 광고주를 발굴하고, 예산을 함께 키우는 BD로 기여하고 싶습니다.
-    </p>
+    <p class="sub" style="margin-bottom:4px;"><b>셀러도, 광고 집행·대행도 해 본</b> — 광고주와 매체 양쪽을 아는 광고 BD입니다.</p>
+    <ul class="hi-list">
+      <li><span class="hil-k">커머스 운영</span> 뷰티 스마트스토어 직접 운영 → 월매출 <b>+167%</b></li>
+      <li><span class="hil-k">퍼포먼스</span> 글로벌랩스 마케팅 팀장 · 데이터로 예산 증액 설득 → 6개월 <b>취급고 9.4배 · ROAS 3.3배</b></li>
+      <li><span class="hil-k">대형 캠페인</span> <img src="assets/logo-kb.jpeg" alt="KB국민은행" style="height:1.9em;vertical-align:-0.6em;" /> 약 <b>8억</b> 캠페인 대행 → <b>신규 매체 발굴·제안</b></li>
+      <li><span class="hil-k">B2B 세일즈</span> 셀프스토리지 발굴 → 제안 → 발표 → <b>현장 계약 클로징 단독 완주</b></li>
+    </ul>
+    <p class="sub">에이블리에서 셀러·브랜드 광고주를 발굴하고, <b>예산을 함께 키우는 BD</b>로 기여하고 싶습니다.</p>
     <div class="btns">
       <a class="btn btn-primary" href="proposal.html">📄 샘플 광고 제안서 (강남언니×에이블리)</a>
       <a class="btn btn-primary" href="prd.html">📑 에이블리 광고상품 PRD</a>
