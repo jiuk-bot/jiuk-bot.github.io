@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>아웃바운드 발굴 자동 리포트 · 기업 조회 — 윤지욱</title>
-<meta name="description" content="비즈니스 시그널(투자·계절성·채용·광고 노출량)을 스코어링해 '오늘 연락할 회사'를 추천하고, 기업명으로 실시간 조회·컨택까지 하는 실제 동작 툴. 토스 Ads BDR 지원 · 윤지욱." />
+<meta name="description" content="비즈니스 시그널을 스코어링해 '오늘 연락할 회사'를 추천하고, 기업명으로 회사 개요·마케팅 현황·접근 전략·다채널 컨택까지 한 화면에서 파악하는 실제 동작 툴. 토스 Ads BDR 지원 · 윤지욱." />
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
   :root{--blue:#3182F6;--blue-weak:#E8F1FE;--ink:#191F28;--body:#4E5968;--muted:#8B95A1;--line:#E5E8EB;--bg-soft:#F9FAFB;--green:#15C47E;--red:#F04452;}
@@ -15,9 +15,8 @@
   .back:hover{color:var(--blue);}
   .eyebrow{font-size:13px;font-weight:800;color:var(--blue);letter-spacing:.02em;margin-bottom:8px;}
   h1{font-size:27px;font-weight:800;letter-spacing:-.03em;line-height:1.25;margin-bottom:10px;}
-  .lead{font-size:15px;color:var(--body);max-width:780px;margin-bottom:20px;}
+  .lead{font-size:15px;color:var(--body);max-width:800px;margin-bottom:20px;}
   .lead b{color:var(--ink);}
-  /* 탭 */
   .tabs{display:flex;gap:4px;border-bottom:2px solid var(--line);margin-bottom:20px;}
   .tab{font-family:inherit;font-size:14.5px;font-weight:800;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-2px;padding:11px 16px;cursor:pointer;}
   .tab.active{color:var(--blue);border-bottom-color:var(--blue);}
@@ -35,7 +34,7 @@
   .rhd{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:15px 20px;background:var(--bg-soft);border-bottom:1px solid var(--line);flex-wrap:wrap;}
   .rhd .rt{font-size:15px;font-weight:800;color:var(--ink);}
   .rhd .rd{font-size:12px;color:var(--muted);font-weight:600;}
-  .rhead,.rrow{display:grid;grid-template-columns:40px 1.2fr 2fr 70px 130px;gap:14px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);}
+  .rhead,.rrow{display:grid;grid-template-columns:40px 1.1fr 1.9fr 64px 120px;gap:14px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);}
   .rhead{padding:11px 20px;background:#fff;font-size:11px;font-weight:800;color:var(--muted);}
   .rrow:last-child{border-bottom:0;}
   .rrow:hover{background:#fbfdff;}
@@ -56,6 +55,7 @@
   .cbtns{display:inline-flex;gap:6px;flex-wrap:wrap;margin-left:auto;}
   .cbtn{font-size:11px;font-weight:700;color:var(--blue);background:#fff;border:1px solid #cfe0fd;border-radius:7px;padding:4px 9px;text-decoration:none;white-space:nowrap;}
   .cbtn:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+  .cbtn.more{color:var(--ink);border-color:var(--line);}
   /* 기업 조회 */
   .search{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
   .search input{flex:1;min-width:240px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);}
@@ -65,27 +65,41 @@
   .chips button:hover{border-color:var(--blue);color:var(--blue);}
   .brief{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.05);}
   .bh{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 22px;border-bottom:1px solid var(--line);flex-wrap:wrap;background:var(--bg-soft);}
-  .bname{font-size:22px;font-weight:800;color:var(--ink);} .bname small{font-size:13px;font-weight:600;color:var(--muted);margin-left:8px;}
+  .bhl .bname{font-size:22px;font-weight:800;color:var(--ink);} .bhl .bname small{font-size:13px;font-weight:600;color:var(--muted);margin-left:8px;}
+  .bhl .bsum{font-size:13px;color:var(--body);font-weight:600;margin-top:5px;}
   .bscore{text-align:right;display:flex;align-items:baseline;gap:10px;}
   .bscore .n{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1;}
   .bscore .gr{font-size:12px;font-weight:800;border-radius:999px;padding:5px 11px;}
   .gr.a{color:var(--green);background:#eafaf2;} .gr.b{color:var(--blue);background:var(--blue-weak);} .gr.c{color:var(--muted);background:#eef1f5;}
   .bbody{padding:20px 22px;}
-  .bsec{font-size:12px;font-weight:800;color:var(--muted);margin:4px 0 9px;}
-  .btable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px;}
+  .bsec{font-size:12px;font-weight:800;color:var(--muted);margin:20px 0 10px;padding-top:16px;border-top:1px solid var(--line);}
+  .bsec:first-child{margin-top:0;padding-top:0;border-top:0;}
+  .binfo{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+  @media(max-width:620px){.binfo{grid-template-columns:1fr;}}
+  .binfo .it{background:var(--bg-soft);border:1px solid var(--line);border-radius:10px;padding:11px 13px;}
+  .binfo .it .k{font-size:11px;font-weight:800;color:var(--muted);margin-bottom:3px;}
+  .binfo .it .v{font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.45;}
+  .pill{display:inline-block;font-size:11px;font-weight:700;background:var(--blue-weak);color:var(--blue);border:1px solid #cfe0fd;border-radius:7px;padding:2px 8px;margin:2px 3px 0 0;}
+  .btable{width:100%;border-collapse:collapse;font-size:13px;}
   .btable th,.btable td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:middle;}
   .btable th{background:var(--bg-soft);font-weight:700;color:var(--muted);font-size:11.5px;}
   .btable td.w{width:64px;text-align:center;font-weight:800;color:var(--ink);}
   .btable td.d{width:70px;text-align:center;font-weight:800;}
   .btable tr.on td.d{color:var(--blue);} .btable tr.off td.d{color:var(--muted);}
   .btable tr.on td{background:#f5f9ff;}
-  .brec{background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:12px;padding:15px 17px;font-size:13.5px;color:var(--ink);line-height:1.65;margin-bottom:16px;}
-  .brec b{color:var(--blue);}
-  .bcontact{display:flex;gap:8px;flex-wrap:wrap;}
-  .bcontact a{font-size:13px;font-weight:800;text-decoration:none;border-radius:11px;padding:11px 17px;border:1px solid var(--line);color:var(--ink);background:#fff;}
-  .bcontact a.li{background:var(--blue);color:#fff;border-color:var(--blue);} .bcontact a.li:hover{background:#1b64da;}
-  .bcontact a:hover{border-color:var(--blue);color:var(--blue);}
-  .bcontact a.li:hover{color:#fff;}
+  .brec{background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:12px;padding:15px 17px;font-size:13.5px;color:var(--ink);line-height:1.7;}
+  .brec b{color:var(--blue);} .brec .r{display:block;}
+  .chgroup{margin-bottom:12px;}
+  .chgroup .ct{font-size:12px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+  .chbtns{display:flex;flex-wrap:wrap;gap:7px;}
+  .chbtns a{font-size:12.5px;font-weight:700;text-decoration:none;border-radius:9px;padding:8px 13px;border:1px solid var(--line);color:var(--ink);background:#fff;white-space:nowrap;}
+  .chbtns a:hover{border-color:var(--blue);color:var(--blue);}
+  .chbtns a.key{background:var(--blue);color:#fff;border-color:var(--blue);} .chbtns a.key:hover{background:#1b64da;color:#fff;}
+  .ckl{list-style:none;margin:0;padding:0;}
+  .ckl li{display:flex;gap:9px;align-items:flex-start;font-size:13px;color:var(--body);padding:9px 0;border-bottom:1px solid var(--line);line-height:1.55;}
+  .ckl li:last-child{border-bottom:0;}
+  .ckl li .ic{color:var(--blue);font-weight:800;flex:0 0 auto;}
+  .ckl li b{color:var(--ink);}
   .empty{border:1px dashed var(--line);border-radius:14px;padding:34px;text-align:center;color:var(--muted);font-size:14px;}
   .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:16px;}
   .note b{color:var(--ink);}
@@ -94,6 +108,7 @@
     .rhead{display:none;}
     .rrow{grid-template-columns:34px 1fr;gap:7px 12px;}
     .rsig,.rsc,.rend{grid-column:2;} .rsc{text-align:left;}
+    .bh{flex-direction:column;align-items:flex-start;} .bscore{text-align:left;}
   }
 </style>
 </head>
@@ -102,14 +117,14 @@
   <a class="back" href="bdr.html">← BDR 플레이북으로</a>
   <div class="eyebrow">TOSS ADS · BDR · OUTBOUND DISCOVERY TOOL</div>
   <h1>아웃바운드 발굴 자동 리포트 · 기업 조회</h1>
-  <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b> 등)을 <b>① 스코어링 엔진</b>으로 점수화해 <b>오늘 연락할 회사</b>를 추천하고, <b>기업명을 입력하면 스코어링 기준별 요약을 실시간 조회</b>해 바로 컨택까지 — <b>검색 → 파악 → 컨택</b>을 한 화면에서. (스코어링·조회 엔진은 실제 동작, 데이터는 예시)</p>
+  <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b> 등)을 <b>① 스코어링 엔진</b>으로 점수화해 <b>오늘 연락할 회사</b>를 추천하고, <b>기업명을 입력하면 회사 개요·마케팅 현황·토스 핏·접근 전략·다채널 컨택</b>까지 한 화면에서 — <b>검색 → 파악 → 컨택</b>. (스코어링·조회 엔진은 실제 동작, 데이터는 예시)</p>
 
   <div class="tabs">
     <button class="tab active" data-tab="report">📋 오늘의 발굴 리포트</button>
     <button class="tab" data-tab="lookup">🔎 기업 조회 · 컨택</button>
   </div>
 
-  <!-- 탭 1: 오늘의 발굴 리포트 -->
+  <!-- 탭 1 -->
   <div class="panel" id="panel-report">
     <div class="bar">
       <button class="btn ghost" id="prevBtn">◀ 이전 날</button>
@@ -120,30 +135,27 @@
       <div class="stat" id="stat"></div>
     </div>
     <div class="report">
-      <div class="rhd">
-        <div class="rt">📋 오늘의 발굴 리포트 <span class="tag">예시 데이터</span></div>
-        <div class="rd" id="genTime">—</div>
-      </div>
+      <div class="rhd"><div class="rt">📋 오늘의 발굴 리포트 <span class="tag">예시 데이터</span></div><div class="rd" id="genTime">—</div></div>
       <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
       <div id="rows"></div>
     </div>
     <p class="note">
-      <b>리포트는 날짜 기준으로 고정</b>됩니다 — 같은 날엔 몇 번을 봐도 같은 리스트이고, '이전 날 / 다음 날'로 날짜별 시그널 변화를 봅니다(클릭마다 랜덤 X). 각 행의 <b>🔗 LinkedIn 담당자 · 🔍 회사 검색</b> 버튼으로 바로 컨택 포인트를 찾고, <b>⬇ 엑셀 다운로드</b>로 컨택 링크까지 포함한 당일 리스트를 내려받습니다.<br>
-      <b>실데이터 연동</b> — 뉴스·보도자료·LinkedIn·Meta/Google 광고 라이브러리를 매일 수집해 시그널을 채우면 그대로 실무 리포트가 됩니다(수집은 백엔드 필요). 회사명·점수는 로직 시연용 <b>예시(가상)</b>이며, 컨택 버튼은 회사명 기반 실시간 검색으로 연결됩니다.
+      <b>리포트는 날짜 기준으로 고정</b>됩니다 — 같은 날엔 같은 리스트, '이전/다음 날'로 날짜별 시그널 변화를 봅니다(클릭마다 랜덤 X). 각 행에서 바로 컨택 채널을 열거나 <b>📇 전체 채널</b>로 상세 조회로 넘어가고, <b>⬇ 엑셀 다운로드</b>로 컨택 링크 포함 리스트를 내려받습니다.<br>
+      <b>실데이터 연동</b> — 뉴스·LinkedIn·광고 라이브러리를 매일 수집해 시그널을 채우면 실무 리포트가 됩니다(수집은 백엔드 필요). 회사명·점수는 로직 시연용 <b>예시(가상)</b>이며, 컨택·채용 버튼은 회사명 기반 실시간 검색으로 연결됩니다.
     </p>
   </div>
 
-  <!-- 탭 2: 기업 조회 · 컨택 -->
+  <!-- 탭 2 -->
   <div class="panel" id="panel-lookup" style="display:none;">
     <div class="search">
-      <input id="lookupInput" placeholder="연락할 기업명을 입력하세요 (예: 글로우뷰, 또는 아무 회사명)" autocomplete="off" />
+      <input id="lookupInput" placeholder="연락할 기업명을 입력하세요 (예: 글로우뷰, 또는 실제 회사명)" autocomplete="off" />
       <button class="btn" id="lookupBtn">조회</button>
     </div>
     <div class="chips" id="lookupChips"></div>
     <div id="briefResult"></div>
     <p class="note">
-      <b>어떻게 쓰나</b> — 연락하려는 기업명을 입력하면 <b>스코어링 8개 기준별로 감지 여부·가중치·출처를 요약</b>해 점수·등급·추천 채널·아웃리치 훅을 한눈에 보여줍니다. 내용을 익힌 뒤 바로 <b>LinkedIn 담당자 검색 · 회사 검색 · 콜드메일 초안</b>으로 컨택하세요.<br>
-      등록된 예시 기업은 리포트와 동일한 프로필을, 그 외 기업명은 <b>이름 기반 결정론 프로필</b>(실데이터 연동 시 실제 시그널로 대체)을 보여줍니다.
+      <b>무엇을 보여주나</b> — BDR이 콜 전에 필요한 <b>회사 개요·마케팅 현황(현재 매체·추정 예산·타깃)·비즈니스 시그널·토스 Ads 핏·접근 전략·콜 전 체크리스트</b>를 한 화면에 정리하고, <b>담당자 컨택(LinkedIn·리멤버·홈페이지·구글·네이버)</b>과 <b>마케팅 채용·조직 확인(원티드·사람인·잡코리아·잡플래닛·LinkedIn Jobs·채용 페이지)</b> 채널을 전부 실제 검색 링크로 연결합니다.<br>
+      등록 예시 기업은 리포트와 동일 프로필을, 그 외 기업명은 <b>이름 기반 결정론 프로필</b>을 보여줍니다(실데이터 연동 시 실제 값으로 대체). 개요·예산·매체는 <b>추정 예시</b>이며, 컨택·채용·홈페이지 버튼은 실제 검색으로 동작합니다.
     </p>
   </div>
 </div>
@@ -189,19 +201,34 @@
                      return {g:'너처링 · C', c:'c', col:'var(--muted)', ch:'분기 리터치'}; }
   function topSig(sigs){ return sigs.slice().sort(function(x,y){ return SIG[y].w-SIG[x].w; })[0]; }
 
-  // 날짜/이름 기준 결정론적 시드 — 같은 입력은 항상 같은 결과
   function seedFromStr(s){ var h=2166136261; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619);} return h>>>0; }
   function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
   function pickRng(rng, n){ var pool=KEYS.slice(), out=[]; for(var i=0;i<n && pool.length;i++){ out.push(pool.splice(Math.floor(rng()*pool.length),1)[0]); } return out; }
+  function one(rng, arr){ return arr[Math.floor(rng()*arr.length)]; }
+  function some(rng, arr, n){ var a=arr.slice(), out=[]; for(var i=0;i<n && a.length;i++){ out.push(a.splice(Math.floor(rng()*a.length),1)[0]); } return out; }
   function dateStr(off){ var d=new Date(); d.setDate(d.getDate()+off); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
   function dateLabel(off){ return dateStr(off) + (off===0?' · 오늘':off===-1?' · 어제':''); }
 
-  function liUrl(n){ return 'https://www.linkedin.com/search/results/people/?keywords=' + encodeURIComponent(n + ' 마케팅'); }
-  function webUrl(n,i){ return 'https://www.google.com/search?q=' + encodeURIComponent(n + ' ' + (i||'') + ' 마케팅 담당자'); }
-  function mailUrl(n, hook){
-    var body = '안녕하세요, ' + n + ' 마케팅 담당자님.\n\n토스 Ads BDR 윤지욱입니다. ' + hook + '.\n같은 업종 광고주들이 토스에서 성과를 내고 있어, 15분 통화로 예상 성과를 공유드리고 싶습니다.\n편하신 시간 알려주시면 맞춰 연락드리겠습니다. 감사합니다.';
-    return 'mailto:?subject=' + encodeURIComponent('[토스 Ads] ' + n + ' 마케팅 제안 — 15분 통화 요청') + '&body=' + encodeURIComponent(body);
-  }
+  // ───── 실제 검색 딥링크 (다채널) ─────
+  function enc(s){ return encodeURIComponent(s); }
+  function G(q){ return 'https://www.google.com/search?q=' + enc(q); }
+  var LINK = {
+    linkedin : function(n){ return 'https://www.linkedin.com/search/results/people/?keywords=' + enc(n + ' 마케팅'); },
+    remember : function(n){ return G(n + ' 마케팅 담당자 리멤버'); },
+    home     : function(n){ return G(n + ' 공식 홈페이지'); },
+    google   : function(n,i){ return G(n + ' ' + (i||'') + ' 마케팅 담당자'); },
+    naver    : function(n){ return 'https://search.naver.com/search.naver?query=' + enc(n + ' 마케팅'); },
+    wanted   : function(n){ return 'https://www.wanted.co.kr/search?query=' + enc(n); },
+    saramin  : function(n){ return 'https://www.saramin.co.kr/zf_user/search?searchword=' + enc(n); },
+    jobkorea : function(n){ return 'https://www.jobkorea.co.kr/Search/?stext=' + enc(n); },
+    jobplanet: function(n){ return 'https://www.jobplanet.co.kr/search?query=' + enc(n); },
+    liJobs   : function(n){ return 'https://www.linkedin.com/jobs/search/?keywords=' + enc(n + ' 마케팅'); },
+    recruit  : function(n){ return G(n + ' 마케팅 채용'); },
+    mail     : function(n, hook){
+      var body = '안녕하세요, ' + n + ' 마케팅 담당자님.\n\n토스 Ads BDR 윤지욱입니다. ' + hook + '.\n같은 업종 광고주들이 토스에서 성과를 내고 있어, 15분 통화로 예상 성과를 공유드리고 싶습니다.\n편하신 시간 알려주시면 맞춰 연락드리겠습니다. 감사합니다.';
+      return 'mailto:?subject=' + enc('[토스 Ads] ' + n + ' 마케팅 제안 — 15분 통화 요청') + '&body=' + enc(body);
+    }
+  };
 
   // ───── 탭 1: 발굴 리포트 ─────
   function buildReport(off){
@@ -209,11 +236,7 @@
       return INITIAL.map(function(it,i){ return {co:{n:it.n,i:it.i}, sigs:it.s, score:score(it.s), tie:(INITIAL.length-i)/100}; });
     }
     var rng = mulberry32(seedFromStr('toss-bdr-'+dateStr(off)));
-    return BASE.map(function(co){
-      var n = 2 + Math.floor(rng()*4);
-      var sigs = pickRng(rng, n);
-      return {co:co, sigs:sigs, score:score(sigs), tie:rng()};
-    });
+    return BASE.map(function(co){ var n=2+Math.floor(rng()*4); var sigs=pickRng(rng,n); return {co:co, sigs:sigs, score:score(sigs), tie:rng()}; });
   }
   function render(){
     var rows = curData.slice();
@@ -226,16 +249,19 @@
       var top = topSig(r.sigs);
       var chips = r.sigs.map(function(k){ return '<span>'+SIG[k].l+'</span>'; }).join('');
       var srcs = r.sigs.map(function(k){ return SIG[k].src; }).filter(function(v,i,arr){ return arr.indexOf(v)===i; }).join(' · ');
+      var n = r.co.n;
       return '<div class="rrow">'+
         '<div class="rk'+(idx<2?' top':'')+'">'+(idx+1)+'</div>'+
-        '<div class="rco">'+r.co.n+'<small>'+r.co.i+'</small></div>'+
+        '<div class="rco">'+n+'<small>'+r.co.i+'</small></div>'+
         '<div class="rsig">'+chips+'<span class="src">'+srcs+'</span></div>'+
         '<div class="rsc" style="color:'+g.col+'">'+r.score+'</div>'+
         '<div class="rend"><span class="rgr '+g.c+'">'+g.g+'</span><span class="rch">'+g.ch+'</span></div>'+
         '<div class="hookrow"><span>💬 추천 훅: <b>'+SIG[top].hook+'</b></span>'+
           '<span class="cbtns">'+
-            '<a class="cbtn" href="'+liUrl(r.co.n)+'" target="_blank" rel="noopener">🔗 LinkedIn 담당자</a>'+
-            '<a class="cbtn" href="'+webUrl(r.co.n,r.co.i)+'" target="_blank" rel="noopener">🔍 회사 검색</a>'+
+            '<a class="cbtn" href="'+LINK.linkedin(n)+'" target="_blank" rel="noopener">🔗 LinkedIn</a>'+
+            '<a class="cbtn" href="'+LINK.home(n)+'" target="_blank" rel="noopener">🏠 홈페이지</a>'+
+            '<a class="cbtn" href="'+LINK.remember(n)+'" target="_blank" rel="noopener">💳 리멤버</a>'+
+            '<a class="cbtn more" href="?company='+enc(n)+'#lookup">📇 전체 채널 →</a>'+
           '</span>'+
         '</div>'+
       '</div>';
@@ -253,77 +279,140 @@
   }
   function csvCell(v){ v = String(v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
   function download(){
-    var head = ['순위','회사','업종','감지 시그널','점수','등급','추천 채널','추천 훅','출처','LinkedIn 검색','웹 검색'];
+    var head = ['순위','회사','업종','감지 시그널','점수','등급','추천 채널','추천 훅','LinkedIn','홈페이지','리멤버','사람인','잡코리아','원티드'];
     var lines = [head.map(csvCell).join(',')];
     lastRows.forEach(function(r, idx){
-      var g = grade(r.score), top = topSig(r.sigs);
+      var g = grade(r.score), top = topSig(r.sigs), n = r.co.n;
       var sigNames = r.sigs.map(function(k){ return SIG[k].l; }).join(' / ');
-      var srcs = r.sigs.map(function(k){ return SIG[k].src; }).filter(function(v,i,arr){ return arr.indexOf(v)===i; }).join(' · ');
-      lines.push([idx+1, r.co.n, r.co.i, sigNames, r.score, g.g.replace(' · ',' '), g.ch, SIG[top].hook, srcs, liUrl(r.co.n), webUrl(r.co.n,r.co.i)].map(csvCell).join(','));
+      lines.push([idx+1, n, r.co.i, sigNames, r.score, g.g.replace(' · ',' '), g.ch, SIG[top].hook,
+        LINK.linkedin(n), LINK.home(n), LINK.remember(n), LINK.saramin(n), LINK.jobkorea(n), LINK.wanted(n)].map(csvCell).join(','));
     });
     var blob = new Blob(['﻿'+lines.join('\r\n')], {type:'text/csv;charset=utf-8;'});
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob);
     a.download = '발굴리포트_' + dateStr(offset) + '.csv';
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
   }
 
-  // ───── 탭 2: 기업 조회 ─────
+  // ───── 탭 2: 기업 상세 조회 ─────
+  var TARGET = [['뷰티','2030 여성'],['화장','2030 여성'],['교육','학부모·2030 학습자'],['콘텐츠','1030'],
+    ['여행','2040 액티브'],['레저','2040 액티브'],['숙박','2040 액티브'],['핀','2040 경제활동'],['결제','2040 경제활동'],
+    ['금융','3050 자산형성'],['식품','전연령 생활소비'],['배달','2030 생활'],['리빙','3040 주거'],['커머스','2040 쇼핑'],
+    ['모빌리티','2040'],['헬스','2030 건강'],['피트니스','2030 건강']];
+  function targetFor(ind){ for(var i=0;i<TARGET.length;i++){ if(ind.indexOf(TARGET[i][0])>=0) return TARGET[i][1]; } return '2040 대중'; }
+  var SIZES = ['시드~시리즈A · 20~50명 규모','시리즈B · 50~150명','시리즈C+ · 150~400명','중견 · 400명+'];
+  var BUDGETS = ['월 300~1,000만원대','월 1,000~3,000만원대','월 3,000만~1억원대','월 1억원+'];
+  var MEDIA = ['메타(IG·FB)','구글 검색·GDN','유튜브','네이버 GFA','카카오모먼트','틱톡'];
+  var KPIS = ['신규 회원 가입','구매·결제 전환','앱 설치·실행','잠재고객 리드 수집','브랜드 인지 확대'];
+  var ROLES = ['마케팅 팀장 / 그로스 리드','마케팅 팀장 / 퍼포먼스 매니저','마케팅 실장 / CMO','CMO / 마케팅 본부장'];
+
   function profileFor(name){
     name = (name||'').trim();
     var known = INITIAL.filter(function(x){ return x.n===name; })[0];
-    if(known) return {name:name, ind:known.i, sigs:known.s};
     var b = BASE.filter(function(x){ return x.n===name; })[0];
-    var rng = mulberry32(seedFromStr('lookup-'+name));
-    var n = 2 + Math.floor(rng()*4);
-    return {name:name, ind:(b?b.i:'미등록 업종'), sigs:pickRng(rng, n)};
+    var ind, sigs;
+    if(known){ ind=known.i; sigs=known.s; }
+    else {
+      ind = b ? b.i : '미등록 업종';
+      var rs = mulberry32(seedFromStr('sig-'+name));
+      sigs = pickRng(rs, 2+Math.floor(rs()*4));
+    }
+    var rng = mulberry32(seedFromStr('profile-'+name));
+    var sizeIdx = Math.floor(rng()*4);
+    var size = SIZES[sizeIdx];
+    var budget = sigs.indexOf('invest')>=0 ? BUDGETS[Math.min(3,sizeIdx+1)] : BUDGETS[sizeIdx];
+    var media = some(rng, MEDIA, 2+Math.floor(rng()*2));
+    var kpi = one(rng, KPIS);
+    var stage = sigs.indexOf('invest')>=0 ? '투자 유치 후 성장기' : one(rng, ['초기 성장기','확장기','스케일업','안정 성장기']);
+    var target = targetFor(ind);
+    var role = ROLES[sizeIdx];
+    return {name:name, ind:ind, sigs:sigs, size:size, budget:budget, media:media, kpi:kpi, stage:stage, target:target, role:role};
   }
+
+  function fitReason(p){
+    var r = [];
+    if(p.sigs.indexOf('fit')>=0 || true) r.push('타깃('+p.target+')이 토스 2030·대중 유저층과 정합');
+    if(p.sigs.indexOf('running')>=0 || p.sigs.indexOf('adsurge')>=0) r.push('이미 '+p.media[0]+' 등 집행 중 → 토스로 <b>증분 도달</b> 확대 여지');
+    if(p.sigs.indexOf('season')>=0) r.push('성수기 진입 → 시즌 집중 집행에 토스 리워드·노출 적합');
+    if(p.sigs.indexOf('comp')>=0) r.push('동종 경쟁사 토스 집행 레퍼런스로 설득 용이');
+    return r;
+  }
+
   function renderBrief(name){
     name = (name||'').trim();
     var box = document.getElementById('briefResult');
-    if(!name){ box.innerHTML = '<div class="empty">연락할 기업명을 입력하면 스코어링 기준별 요약과 컨택 버튼이 나옵니다.</div>'; return; }
+    if(!name){ box.innerHTML = '<div class="empty">연락할 기업명을 입력하면 회사 개요·마케팅 현황·접근 전략·다채널 컨택이 나옵니다.</div>'; return; }
     var p = profileFor(name), s = score(p.sigs), g = grade(s), top = topSig(p.sigs);
-    var rowsHtml = KEYS.map(function(k){
+    var sigRows = KEYS.map(function(k){
       var on = p.sigs.indexOf(k) >= 0;
       return '<tr class="'+(on?'on':'off')+'"><td>'+SIG[k].l+'</td><td class="w">'+SIG[k].w+'</td><td class="d">'+(on?'✓ 감지':'—')+'</td><td>'+SIG[k].src+'</td></tr>';
     }).join('');
+    var fit = fitReason(p).map(function(x){ return '<span class="r">• '+x+'</span>'; }).join('');
+    var mediaPills = p.media.map(function(m){ return '<span class="pill">'+m+'</span>'; }).join('');
+    var ch = function(href,label,key){ return '<a class="'+(key?'key':'')+'" href="'+href+'" target="_blank" rel="noopener">'+label+'</a>'; };
+
     box.innerHTML =
       '<div class="brief">'+
-        '<div class="bh"><div class="bname">'+name+'<small>'+p.ind+'</small></div>'+
-          '<div class="bscore"><span class="n" style="color:'+g.col+'">'+s+'</span><span class="gr '+g.c+'">'+g.g+'</span></div></div>'+
+        '<div class="bh">'+
+          '<div class="bhl"><div class="bname">'+name+'<small>'+p.ind+'</small></div>'+
+            '<div class="bsum">'+p.ind+' · '+p.target+' 타깃 · '+p.stage+' · 토스 핏 '+(s>=60?'<b style="color:var(--green)">높음</b>':s>=40?'<b style="color:var(--blue)">보통</b>':'검토')+'</div></div>'+
+          '<div class="bscore"><span class="n" style="color:'+g.col+'">'+s+'</span><span class="gr '+g.c+'">'+g.g+'</span></div>'+
+        '</div>'+
         '<div class="bbody">'+
-          '<div class="bsec">스코어링 기준별 요약 (감지 시그널 × 가중치)</div>'+
-          '<table class="btable"><tr><th>기준 (시그널)</th><th class="w">가중치</th><th class="d">감지</th><th>출처</th></tr>'+rowsHtml+'</table>'+
-          '<div class="brec">📌 추천 접근 — 채널 <b>'+g.ch+'</b> · 아웃리치 훅 <b>'+SIG[top].hook+'</b></div>'+
-          '<div class="bsec">바로 컨택</div>'+
-          '<div class="bcontact">'+
-            '<a class="li" href="'+liUrl(name)+'" target="_blank" rel="noopener">🔗 LinkedIn 담당자 검색</a>'+
-            '<a class="web" href="'+webUrl(name,p.ind)+'" target="_blank" rel="noopener">🔍 회사 검색</a>'+
-            '<a class="mail" href="'+mailUrl(name, SIG[top].hook)+'">✉ 콜드메일 초안</a>'+
+          '<div class="bsec">회사 개요 (추정)</div>'+
+          '<div class="binfo">'+
+            '<div class="it"><div class="k">업종</div><div class="v">'+p.ind+'</div></div>'+
+            '<div class="it"><div class="k">추정 규모 · 단계</div><div class="v">'+p.size+' · '+p.stage+'</div></div>'+
+            '<div class="it"><div class="k">주 타깃</div><div class="v">'+p.target+'</div></div>'+
+            '<div class="it"><div class="k">의사결정자 (추정)</div><div class="v">'+p.role+'</div></div>'+
           '</div>'+
+          '<div class="bsec">마케팅 현황 (추정)</div>'+
+          '<div class="binfo">'+
+            '<div class="it"><div class="k">현재 집행 매체</div><div class="v">'+mediaPills+'</div></div>'+
+            '<div class="it"><div class="k">추정 월 광고 예산</div><div class="v">'+p.budget+'</div></div>'+
+            '<div class="it"><div class="k">주력 KPI</div><div class="v">'+p.kpi+'</div></div>'+
+            '<div class="it"><div class="k">토스 미집행 여부</div><div class="v">'+(p.sigs.indexOf('comp')>=0?'경쟁사 집행 중 · 자사 미집행(기회)':'미집행 추정(기회)')+'</div></div>'+
+          '</div>'+
+          '<div class="bsec">비즈니스 시그널 (스코어링 기준별)</div>'+
+          '<table class="btable"><tr><th>기준 (시그널)</th><th class="w">가중치</th><th class="d">감지</th><th>출처</th></tr>'+sigRows+'</table>'+
+          '<div class="bsec">토스 Ads 핏 & 접근 전략</div>'+
+          '<div class="brec">'+fit+'<span class="r" style="margin-top:7px;">📌 추천 접근 — 채널 <b>'+g.ch+'</b> · 의사결정자 <b>'+p.role+'</b></span><span class="r">💬 아웃리치 훅 — <b>'+SIG[top].hook+'</b></span></div>'+
+          '<div class="bsec">콜 전 체크리스트 (이 직무가 확인할 것)</div>'+
+          '<ul class="ckl">'+
+            '<li><span class="ic">1</span><span>의사결정자 확인 — <b>'+p.role+'</b> 타깃. 아래 LinkedIn·리멤버로 실명·직책 확보</span></li>'+
+            '<li><span class="ic">2</span><span>현재 매체 믹스 — <b>'+p.media.join(' · ')+'</b> (광고 라이브러리로 교차 검증)</span></li>'+
+            '<li><span class="ic">3</span><span>예산 규모 — <b>'+p.budget+'</b> 추정 (투자·규모로 역산, 콜에서 확인)</span></li>'+
+            '<li><span class="ic">4</span><span>집행 시기 — 시그널 기준 <b>'+(s>=70?'즉시(지금)':s>=40?'이번 주~이번 달':'분기 내')+'</b></span></li>'+
+            '<li><span class="ic">5</span><span>레퍼런스 — '+(p.sigs.indexOf('comp')>=0?'<b>동종 경쟁사 토스 집행 사례</b> 준비':'유사 업종 성공사례 준비')+'</span></li>'+
+          '</ul>'+
+          '<div class="bsec">👤 담당자 컨택 포인트</div>'+
+          '<div class="chgroup"><div class="chbtns">'+
+            ch(LINK.linkedin(name),'🔗 LinkedIn 담당자',true)+ch(LINK.remember(name),'💳 리멤버')+ch(LINK.home(name),'🏠 홈페이지')+
+            ch(LINK.google(name,p.ind),'🔎 구글')+ch(LINK.naver(name),'🟢 네이버')+ch(LINK.mail(name,SIG[top].hook),'✉ 콜드메일 초안')+
+          '</div></div>'+
+          '<div class="bsec">📈 마케팅 채용 · 조직 확인 (채용 시그널 검증)</div>'+
+          '<div class="chgroup"><div class="chbtns">'+
+            ch(LINK.wanted(name),'원티드')+ch(LINK.saramin(name),'사람인')+ch(LINK.jobkorea(name),'잡코리아')+
+            ch(LINK.jobplanet(name),'잡플래닛')+ch(LINK.liJobs(name),'💼 LinkedIn Jobs')+ch(LINK.recruit(name),'📄 홈페이지 채용')+
+          '</div></div>'+
         '</div>'+
       '</div>';
   }
 
-  // ───── 공통: 탭 전환 ─────
+  // ───── 공통 ─────
   var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function(t){
-    t.addEventListener('click', function(){
-      tabs.forEach(function(x){ x.classList.remove('active'); });
-      t.classList.add('active');
-      var tab = t.getAttribute('data-tab');
-      document.getElementById('panel-report').style.display = (tab==='report')?'block':'none';
-      document.getElementById('panel-lookup').style.display = (tab==='lookup')?'block':'none';
-    });
-  });
+  function activate(tab){
+    tabs.forEach(function(x){ x.classList.toggle('active', x.getAttribute('data-tab')===tab); });
+    document.getElementById('panel-report').style.display = (tab==='report')?'block':'none';
+    document.getElementById('panel-lookup').style.display = (tab==='lookup')?'block':'none';
+  }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ activate(t.getAttribute('data-tab')); }); });
 
   document.getElementById('prevBtn').addEventListener('click', function(){ offset--; show(); });
   document.getElementById('nextBtn').addEventListener('click', function(){ if(offset<0){ offset++; show(); } });
   document.getElementById('sortBtn').addEventListener('click', function(){
     sortMode = (sortMode==='score') ? 'name' : 'score';
-    this.textContent = '정렬: ' + (sortMode==='score' ? '점수순' : '회사명순') + ' ▾';
-    render();
+    this.textContent = '정렬: ' + (sortMode==='score' ? '점수순' : '회사명순') + ' ▾'; render();
   });
   document.getElementById('dlBtn').addEventListener('click', download);
 
@@ -341,8 +430,9 @@
   })();
 
   show();
-  renderBrief('글로우뷰');
-  if(location.hash === '#lookup'){ document.querySelector('.tab[data-tab="lookup"]').click(); }
+  var qc = new URLSearchParams(location.search).get('company');
+  if(qc){ inp.value = qc; renderBrief(qc); activate('lookup'); }
+  else { renderBrief('글로우뷰'); if(location.hash==='#lookup') activate('lookup'); }
 </script>
 </body>
 </html>
