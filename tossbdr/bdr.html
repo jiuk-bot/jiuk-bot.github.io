@@ -303,6 +303,34 @@
   .adjust .alabel{font-size:12.5px;font-weight:800;color:var(--ink);margin-bottom:9px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
   .adjust .alabel small{font-weight:600;color:var(--muted);}
   .adjust select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-family:inherit;color:var(--ink);background:#fff;cursor:pointer;}
+  /* 토스애즈 강점 */
+  .tadv{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 18px;}
+  @media(max-width:760px){.tadv{grid-template-columns:repeat(2,1fr);}}
+  .tcard{border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:14px;padding:18px 15px;background:#fff;text-align:center;}
+  .tcard .tic{font-size:24px;line-height:1;}
+  .tcard .tn{font-size:16px;font-weight:800;color:var(--blue);margin-top:9px;letter-spacing:-.02em;}
+  .tcard .td{font-size:12px;color:var(--body);margin-top:7px;line-height:1.5;}
+  .tcard .td b{color:var(--ink);}
+  .pitchrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:12px;padding:13px 15px;margin-bottom:18px;}
+  .pitchrow .plab{font-size:12px;font-weight:800;color:var(--blue);margin-right:2px;}
+  .pitchrow .ps{font-size:13px;font-weight:700;color:var(--ink);background:#fff;border:1px solid #cfe0fd;border-radius:8px;padding:8px 12px;}
+  .pitchrow .ps.key{background:var(--blue);color:#fff;border-color:var(--blue);}
+  .pitchrow .pa{color:var(--blue);font-weight:800;font-size:14px;}
+  .cases{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;}
+  @media(max-width:760px){.cases{grid-template-columns:repeat(2,1fr);}}
+  .casechip{border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:var(--bg-soft);text-align:center;}
+  .casechip .cco{font-size:13.5px;font-weight:800;color:var(--ink);}
+  .casechip .cfmt{font-size:11px;color:var(--blue);font-weight:700;margin-top:3px;}
+  .casechip .cind{font-size:11px;color:var(--muted);font-weight:600;margin-top:2px;}
+  /* 나의 유치 전략 로드맵 */
+  .roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:10px 0 4px;}
+  @media(max-width:760px){.roadmap{grid-template-columns:1fr;}}
+  .rmcard{border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:14px;padding:16px;background:#fff;display:flex;flex-direction:column;}
+  .rmcard .rmn{font-size:11px;font-weight:800;color:#fff;background:var(--blue);border-radius:999px;padding:3px 11px;align-self:flex-start;}
+  .rmcard .rmt{font-size:15px;font-weight:800;color:var(--ink);margin:10px 0 6px;letter-spacing:-.02em;}
+  .rmcard .rmd{font-size:12.5px;color:var(--body);line-height:1.5;flex:1;}
+  .rmcard .rmd b{color:var(--ink);}
+  .rmcard .rmtool{font-size:11px;color:var(--blue);font-weight:800;margin-top:11px;background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:8px;padding:5px 9px;align-self:flex-start;}
   @media print{
     html{scroll-behavior:auto;}
     .pfbar{position:static;}
@@ -424,6 +452,51 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 왜 토스애즈인가 (강점·소구·사례) ───────── -->
+<section class="blk">
+  <div class="wrap">
+    <div class="jd-tag">세일즈 포인트 · 내가 파는 무기</div>
+    <h2 class="sec">왜 토스 Ads인가 — 타 매체 대비 강점 & 소구 전략</h2>
+    <div class="tadv">
+      <div class="tcard"><div class="tic">📱</div><div class="tn">전국민 도달</div><div class="td">금융 슈퍼앱 <b>대중 트래픽</b> · 2030~5060 폭넓게</div></div>
+      <div class="tcard"><div class="tic">🛡️</div><div class="tn">고신뢰 지면</div><div class="td">금융 앱 신뢰 환경 → <b>브랜드 안전·전환 품질↑</b></div></div>
+      <div class="tcard"><div class="tic">🎁</div><div class="tn">참여형 리워드</div><div class="td">타 매체는 광고 회피↑, 토스는 <b>자발적 참여</b></div></div>
+      <div class="tcard"><div class="tic">🎯</div><div class="tn">데이터 타겟팅</div><div class="td">소비·연령·관심사 기반 <b>정교한 타겟</b></div></div>
+    </div>
+    <div class="pitchrow">
+      <span class="plab">나의 소구 전략</span>
+      <span class="ps">타 매체 집행 중 광고주</span><span class="pa">→</span>
+      <span class="ps key">"토스로 증분 도달"</span><span class="pa">→</span>
+      <span class="ps">업종 성공사례로 설득</span><span class="pa">→</span>
+      <span class="ps">첫 집행 리워드 제안</span>
+    </div>
+    <h3 style="font-size:15px;font-weight:800;margin:4px 0 10px;">토스애즈 성공사례 — 업종 레퍼런스로 설득</h3>
+    <div class="cases">
+      <div class="casechip"><div class="cco">올리브영</div><div class="cfmt">미션형 리워드</div><div class="cind">뷰티</div></div>
+      <div class="casechip"><div class="cco">환타</div><div class="cfmt">참여형 이벤트</div><div class="cind">식품·음료</div></div>
+      <div class="casechip"><div class="cco">한국야쿠르트</div><div class="cfmt">영상 광고</div><div class="cind">식품</div></div>
+      <div class="casechip"><div class="cco">CJ대한통운</div><div class="cfmt">체험형 캠페인</div><div class="cind">유통</div></div>
+      <div class="casechip"><div class="cco">버진애틀랜틱</div><div class="cfmt">단독 지면 브랜딩</div><div class="cind">여행</div></div>
+    </div>
+    <p class="note-sm" style="margin-top:8px;">※ 토스애즈 인사이트 공개 사례 · 업종별 포맷 예시. 콜·이메일에서 <b>광고주 업종에 맞는 사례</b>로 설득합니다.</p>
+  </div>
+</section>
+
+<!-- ───────── 나의 광고주 유치 전략 (4-STEP 로드맵) ───────── -->
+<section class="blk section-soft">
+  <div class="wrap">
+    <div class="jd-tag">MY STRATEGY · 나는 이 흐름으로 광고주를 유치한다</div>
+    <h2 class="sec">나의 광고주 유치 전략 — 4단계</h2>
+    <p class="sec-sub">단순 툴 나열이 아니라, <b>제가 광고주를 유치하는 단계별 흐름</b>입니다. 각 단계를 <b>직접 만든 툴</b>로 실행합니다 — 아래 ①~④가 그 실행입니다.</p>
+    <div class="roadmap">
+      <div class="rmcard"><span class="rmn">STEP 1 · 발굴</span><div class="rmt">지금 필요한 기업 선별</div><div class="rmd">비즈니스 시그널(투자·계절성·채용·광고↑)로 <b>우선 공략 대상</b>을 스코어링</div><span class="rmtool">① 시그널 스코어링 · ④ 리포트</span></div>
+      <div class="rmcard"><span class="rmn">STEP 2 · 리서치</span><div class="rmt">업종 맞춤 무기 준비</div><div class="rmd">업종별 <b>성과·추천 지면·성공사례</b>를 즉시 조회해 제안 근거 확보</div><span class="rmtool">② 업종 레퍼런스 대시보드</span></div>
+      <div class="rmcard"><span class="rmn">STEP 3 · 아웃리치</span><div class="rmt">멀티채널로 개인화 접근</div><div class="rmd">콜·이메일·LinkedIn·리멤버로 <b>의사결정자에 접근</b>·컨택</div><span class="rmtool">③ 멀티채널 아웃리치</span></div>
+      <div class="rmcard"><span class="rmn">STEP 4 · 핸드오프</span><div class="rmt">검증 → AM 연결</div><div class="rmd">비즈니스 상황·목표·예산 <b>퀄리파이 후 AM에 깨끗하게 인계</b></div><span class="rmtool">③ 퀄리파이 · 핸드오프</span></div>
     </div>
   </div>
 </section>
