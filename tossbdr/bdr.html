@@ -271,6 +271,21 @@
     h2.sec,h3{break-after:avoid;page-break-after:avoid;}
     section.blk{padding-top:22px;padding-bottom:22px;}
   }
+  /* 시그널 카드 프리미엄 아이콘 배지 */
+  .icard .ih .ic{flex:0 0 32px;width:32px;height:32px;border-radius:10px;
+    background:linear-gradient(135deg,#eaf2ff,#dbe9ff);border:1px solid #cfe0fd;
+    display:inline-flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(49,130,246,.12);}
+  .icard .ih .ic svg{width:17px;height:17px;stroke:var(--blue);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+  /* 병목 As-Is/To-Be 원인→결과 체인 */
+  .cchain{display:flex;flex-direction:column;gap:6px;margin-top:14px;}
+  .cchip{font-size:12.5px;line-height:1.45;font-weight:600;border-radius:10px;padding:10px 12px;
+    border:1px solid var(--line);background:#fff;color:var(--body);}
+  .cchip b{color:var(--ink);font-weight:800;}
+  .cchip.r{background:#fdecec;border-color:#f7c6c6;color:#b4232a;} .cchip.r b{color:#b4232a;}
+  .cchip.b{background:var(--blue-weak);border-color:#cfe0fd;color:#1b64da;} .cchip.b b{color:#1b64da;}
+  .cchip.bfill{background:var(--blue);border-color:var(--blue);color:#fff;} .cchip.bfill b{color:#fff;}
+  .carr{text-align:center;color:var(--muted);font-size:11.5px;line-height:1;font-weight:800;}
+  .carr.b{color:var(--blue);}
 </style>
 </head>
 <body>
@@ -317,7 +332,13 @@
             <div class="fbar f2">콜드 아웃리치 (일괄 발송)</div>
             <div class="fbar f3 leak">AM 미팅 ↓ 누수</div>
           </div>
-          <p>발굴 우선순위·접근 타이밍 없이 <b>동일한 메시지를 일괄 발송</b> → 응답률 저조. 컨택이 되어도 콜에서 <b>레퍼런스·광고상품 추천이 안 나옴</b> → 광고주는 <b>"그냥 영업 전화"</b>라고 느낌 → <b>AM 미팅 연결에 병목</b>.</p>
+          <div class="cchain">
+            <div class="cchip">우선순위·타이밍 없이 <b>동일 메시지 일괄 발송</b></div>
+            <div class="carr">↓ 응답률 저조</div>
+            <div class="cchip">컨택돼도 콜에서 <b>레퍼런스·광고상품 추천을 못 줌</b></div>
+            <div class="carr">↓ "그냥 영업 전화" 인상</div>
+            <div class="cchip r"><b>AM 미팅 연결에 병목</b></div>
+          </div>
         </div>
       </div>
       <div class="atarrow">→</div>
@@ -331,7 +352,13 @@
             <div class="hdown">↓</div>
             <span class="blue">AM 미팅 매끄럽게 연결</span>
           </div>
-          <p><b>비즈니스 시그널로 접근 타이밍을 포착</b>해 우선순위 높은 타깃부터 공략하고, 아웃리치 전·콜 중 <b>업종 성과 데이터와 레퍼런스·광고상품 추천</b>을 바로 제공 → 첫 컨택에서 가치를 제공 → <b>AM 미팅을 매끄럽게 연결</b>.</p>
+          <div class="cchain">
+            <div class="cchip b"><b>비즈니스 시그널</b>로 접근 타이밍 포착 → 우선순위 공략</div>
+            <div class="carr b">↓</div>
+            <div class="cchip b">아웃리치 전·콜 중 <b>업종 성과·레퍼런스·광고상품</b> 즉시 제공</div>
+            <div class="carr b">↓ 첫 컨택에서 가치 제공</div>
+            <div class="cchip bfill"><b>AM 미팅 매끄럽게 연결</b></div>
+          </div>
         </div>
       </div>
     </div>
@@ -346,12 +373,12 @@
     <p class="sec-sub">BDR의 출발은 '누구에게 먼저 연락하느냐'입니다. 아무나 많이 거는 게 아니라, <b>지금 광고가 필요한 시그널이 켜진 광고주</b>부터 공략해야 응답률·미팅 전환이 오릅니다. 공개 시그널을 모아 <b>접근 우선순위 점수·타이밍·추천 채널</b>을 자동으로 계산합니다. 아래에서 직접 시그널을 켜보세요.</p>
 
     <div class="indg" style="margin-bottom:18px;">
-      <div class="icard"><div class="ih">💰 투자 유치 <span class="ibadge">예산 여력</span></div><div class="iwhy">최근 라운드 유치 = 마케팅 예산 확대 구간. 성장 압박으로 신규 매체 테스트 수요↑.</div><div class="isig"><span>DART 공시</span><span>벤처투자 뉴스</span><span>더브이씨</span></div></div>
-      <div class="icard"><div class="ih">🚀 신제품·서비스 출시 <span class="ibadge">타이밍</span></div><div class="iwhy">런칭 전후는 광고 니즈가 가장 큰 구간. '접근 타이밍'이 명확한 시그널.</div><div class="isig"><span>보도자료</span><span>공식 SNS</span><span>앱스토어 신규</span></div></div>
-      <div class="icard"><div class="ih">📈 마케팅 직군 채용 급증 <span class="ibadge">투자 확대</span></div><div class="iwhy">퍼포먼스·그로스 채용 = 마케팅 조직·예산 확대 의지. 의사결정자 접점도 확인 가능.</div><div class="isig"><span>원티드·잡코리아</span><span>LinkedIn Jobs</span></div></div>
-      <div class="icard"><div class="ih">📊 현재 타 매체 광고 집행 중 <span class="ibadge">기회</span></div><div class="iwhy">메타·구글은 돌리는데 토스 미집행 = 증분 도달로 설득할 여지가 가장 큰 타깃.</div><div class="isig"><span>Meta 광고 라이브러리</span><span>구글 투명성</span></div></div>
-      <div class="icard"><div class="ih">🎯 토스 유저층과 타깃 핏 <span class="ibadge">적합도</span></div><div class="iwhy">2030·전국민 대중 타깃이면 토스 지면 적합. 핏이 맞아야 첫 집행 성과가 난다.</div><div class="isig"><span>업종</span><span>타깃 연령</span><span>객단가</span></div></div>
-      <div class="icard"><div class="ih">🏷️ 경쟁사가 토스 Ads 집행 중 <span class="ibadge">레퍼런스</span></div><div class="iwhy">동종 경쟁사 집행 사례는 가장 강한 설득 카드. "경쟁사도 하고 있다"로 미팅 전환↑.</div><div class="isig"><span>토스애즈 인사이트</span><span>지면 모니터링</span></div></div>
+      <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></span>투자 유치 <span class="ibadge">예산 여력</span></div><div class="iwhy">최근 라운드 유치 = 마케팅 예산 확대 구간. 성장 압박으로 신규 매체 테스트 수요↑.</div><div class="isig"><span>DART 공시</span><span>벤처투자 뉴스</span><span>더브이씨</span></div></div>
+      <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5l2.3 6.2 6.2 2.3-6.2 2.3L12 19.5l-2.3-6.2L3.5 11l6.2-2.3z"/></svg></span>신제품·서비스 출시 <span class="ibadge">타이밍</span></div><div class="iwhy">런칭 전후는 광고 니즈가 가장 큰 구간. '접근 타이밍'이 명확한 시그널.</div><div class="isig"><span>보도자료</span><span>공식 SNS</span><span>앱스토어 신규</span></div></div>
+      <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>마케팅 직군 채용 급증 <span class="ibadge">투자 확대</span></div><div class="iwhy">퍼포먼스·그로스 채용 = 마케팅 조직·예산 확대 의지. 의사결정자 접점도 확인 가능.</div><div class="isig"><span>원티드·잡코리아</span><span>LinkedIn Jobs</span></div></div>
+      <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><line x1="6" y1="20" x2="6" y2="14"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="18" y1="20" x2="18" y2="10"/></svg></span>현재 타 매체 광고 집행 중 <span class="ibadge">기회</span></div><div class="iwhy">메타·구글은 돌리는데 토스 미집행 = 증분 도달로 설득할 여지가 가장 큰 타깃.</div><div class="isig"><span>Meta 광고 라이브러리</span><span>구글 투명성</span></div></div>
+      <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3"/></svg></span>토스 유저층과 타깃 핏 <span class="ibadge">적합도</span></div><div class="iwhy">2030·전국민 대중 타깃이면 토스 지면 적합. 핏이 맞아야 첫 집행 성과가 난다.</div><div class="isig"><span>업종</span><span>타깃 연령</span><span>객단가</span></div></div>
+      <div class="icard"><div class="ih"><span class="ic"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.2"/></svg></span>경쟁사가 토스 Ads 집행 중 <span class="ibadge">레퍼런스</span></div><div class="iwhy">동종 경쟁사 집행 사례는 가장 강한 설득 카드. "경쟁사도 하고 있다"로 미팅 전환↑.</div><div class="isig"><span>토스애즈 인사이트</span><span>지면 모니터링</span></div></div>
     </div>
 
     <div class="demo-panel">
