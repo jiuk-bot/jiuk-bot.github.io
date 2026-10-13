@@ -141,21 +141,21 @@
     </div>
     <p class="note">
       <b>리포트는 날짜 기준으로 고정</b>됩니다 — 같은 날엔 같은 리스트, '이전/다음 날'로 날짜별 시그널 변화를 봅니다(클릭마다 랜덤 X). 각 행에서 바로 컨택 채널을 열거나 <b>📇 전체 채널</b>로 상세 조회로 넘어가고, <b>⬇ 엑셀 다운로드</b>로 컨택 링크 포함 리스트를 내려받습니다.<br>
-      <b>실데이터 연동</b> — 뉴스·LinkedIn·광고 라이브러리를 매일 수집해 시그널을 채우면 실무 리포트가 됩니다(수집은 백엔드 필요). 회사명·점수는 로직 시연용 <b>예시(가상)</b>이며, 컨택·채용 버튼은 회사명 기반 실시간 검색으로 연결됩니다.
+      <b>실데이터 연동</b> — 뉴스·LinkedIn·광고 라이브러리를 매일 수집해 시그널을 채우면 실무 리포트가 됩니다(수집은 백엔드 필요). 회사는 <b>실제 기업</b>이라 홈페이지·문의·컨택 버튼이 진짜로 연결되지만, <b>시그널·점수는 툴 로직 시연용 가상 시나리오</b>이며 해당 기업의 실제 상황이 아닙니다.
     </p>
   </div>
 
   <!-- 탭 2 -->
   <div class="panel" id="panel-lookup" style="display:none;">
     <div class="search">
-      <input id="lookupInput" placeholder="연락할 기업명을 입력하세요 (예: 글로우뷰, 또는 실제 회사명)" autocomplete="off" />
+      <input id="lookupInput" placeholder="연락할 기업명을 입력하세요 (예: 무신사, 또는 아무 실제 회사명)" autocomplete="off" />
       <button class="btn" id="lookupBtn">조회</button>
     </div>
     <div class="chips" id="lookupChips"></div>
     <div id="briefResult"></div>
     <p class="note">
       <b>무엇을 보여주나</b> — BDR이 콜 전에 필요한 <b>회사 개요·마케팅 현황(현재 매체·추정 예산·타깃)·비즈니스 시그널·토스 Ads 핏·접근 전략·콜 전 체크리스트</b>를 한 화면에 정리하고, <b>담당자 컨택(LinkedIn·리멤버·홈페이지·구글·네이버)</b>과 <b>마케팅 채용·조직 확인(원티드·사람인·잡코리아·잡플래닛·LinkedIn Jobs·채용 페이지)</b> 채널을 전부 실제 검색 링크로 연결합니다.<br>
-      등록 예시 기업은 리포트와 동일 프로필을, 그 외 기업명은 <b>이름 기반 결정론 프로필</b>을 보여줍니다(실데이터 연동 시 실제 값으로 대체). 개요·예산·매체는 <b>추정 예시</b>이며, 컨택·채용·홈페이지 버튼은 실제 검색으로 동작합니다.
+      예시 12개 기업은 <b>실제 기업</b>이라 <b>홈페이지는 실제 도메인으로 바로 이동</b>하고 문의·LinkedIn·채용 버튼도 실제로 연결됩니다. 그 외 기업명도 입력하면 조회됩니다(홈페이지는 공식 사이트 검색으로 연결). <b>시그널·점수·개요·예산·매체는 툴 로직 시연용 가상 추정</b>이며 해당 기업의 실제 상황이 아닙니다.
     </p>
   </div>
 </div>
@@ -172,26 +172,36 @@
     comp   : {w:8,  l:'경쟁사 토스집행', src:'토스애즈 인사이트',   hook:'동종 경쟁사 토스 집행 레퍼런스로 성과 비교 제안'}
   };
   var KEYS = Object.keys(SIG);
-  var BASE = [
-    {n:'글로우뷰', i:'뷰티 D2C'},   {n:'클래스핏', i:'교육 플랫폼'}, {n:'트립메이트', i:'여행·레저'},
-    {n:'페이링크', i:'핀테크'},     {n:'델리박스', i:'식품·배달'},   {n:'핏라이프', i:'헬스·피트니스'},
-    {n:'홈스타일', i:'리빙·커머스'}, {n:'오토핀', i:'모빌리티'},     {n:'스테이원', i:'여행·숙박'},
-    {n:'북하우스', i:'교육·콘텐츠'}, {n:'뷰티랩', i:'뷰티·커머스'},   {n:'스냅페이', i:'핀테크·결제'}
-  ];
+  // 실제 기업 + 실제 홈페이지 (컨택·문의 링크가 진짜로 연결되도록)
+  var COMPANY = {
+    '무신사':    {i:'패션 커머스',  hp:'https://www.musinsa.com'},
+    '오늘의집':  {i:'리빙·커머스',  hp:'https://ohou.se'},
+    '컬리':      {i:'식품·커머스',  hp:'https://www.kurly.com'},
+    '야놀자':    {i:'여행·숙박',    hp:'https://www.yanolja.com'},
+    '여기어때':  {i:'여행·숙박',    hp:'https://www.yeogi.com'},
+    '뱅크샐러드':{i:'핀테크',       hp:'https://www.banksalad.com'},
+    '쏘카':      {i:'모빌리티',     hp:'https://www.socar.kr'},
+    '클래스101': {i:'교육',         hp:'https://class101.net'},
+    '야나두':    {i:'교육',         hp:'https://www.yanadoo.co.kr'},
+    '지그재그':  {i:'패션 커머스',  hp:'https://zigzag.kr'},
+    '올리브영':  {i:'뷰티·커머스',  hp:'https://www.oliveyoung.co.kr'},
+    '배달의민족':{i:'푸드·배달',    hp:'https://www.baemin.com'}
+  };
+  var BASE = Object.keys(COMPANY).map(function(n){ return {n:n, i:COMPANY[n].i}; });
   var INITIAL = [
-    {n:'글로우뷰', i:'뷰티 D2C',      s:['invest','season','adsurge','launch']},
-    {n:'스테이원', i:'여행·숙박',     s:['season','invest','adsurge','hiring']},
-    {n:'홈스타일', i:'리빙·커머스',   s:['running','adsurge','launch']},
-    {n:'트립메이트', i:'여행·레저',   s:['season','running','fit']},
-    {n:'클래스핏', i:'교육 플랫폼',   s:['season','hiring','fit']},
-    {n:'페이링크', i:'핀테크',        s:['launch','running','hiring']},
-    {n:'북하우스', i:'교육·콘텐츠',   s:['launch','hiring','fit']},
-    {n:'뷰티랩',  i:'뷰티·커머스',    s:['running','comp']},
-    {n:'오토핀',  i:'모빌리티',       s:['launch','fit']},
-    {n:'스냅페이', i:'핀테크·결제',   s:['hiring','fit']},
-    {n:'델리박스', i:'식품·배달',     s:['comp','fit']},
-    {n:'핏라이프', i:'헬스·피트니스', s:['fit']}
-  ];
+    {n:'오늘의집',   s:['invest','season','adsurge','launch']},
+    {n:'야놀자',     s:['season','invest','adsurge','hiring']},
+    {n:'컬리',       s:['running','adsurge','launch']},
+    {n:'여기어때',   s:['season','running','fit']},
+    {n:'클래스101',  s:['season','hiring','fit']},
+    {n:'뱅크샐러드', s:['launch','running','hiring']},
+    {n:'야나두',     s:['launch','hiring','fit']},
+    {n:'지그재그',   s:['running','comp']},
+    {n:'쏘카',       s:['launch','fit']},
+    {n:'올리브영',   s:['hiring','fit']},
+    {n:'배달의민족', s:['comp','fit']},
+    {n:'무신사',     s:['fit']}
+  ].map(function(x){ return {n:x.n, i:COMPANY[x.n].i, s:x.s}; });
 
   var offset = 0, sortMode = 'score', curData = [], lastRows = [];
 
@@ -214,8 +224,11 @@
   function G(q){ return 'https://www.google.com/search?q=' + enc(q); }
   var LINK = {
     linkedin : function(n){ return 'https://www.linkedin.com/search/results/people/?keywords=' + enc(n + ' 마케팅'); },
+    liCompany: function(n){ return 'https://www.linkedin.com/search/results/companies/?keywords=' + enc(n); },
     remember : function(n){ return G(n + ' 마케팅 담당자 리멤버'); },
-    home     : function(n){ return G(n + ' 공식 홈페이지'); },
+    home     : function(n){ return (COMPANY[n] && COMPANY[n].hp) ? COMPANY[n].hp : G(n + ' 공식 홈페이지'); },
+    inquiry  : function(n){ return (COMPANY[n] && COMPANY[n].hp) ? G(n + ' 고객센터 문의하기') : G(n + ' 문의하기 고객센터'); },
+    hasHome  : function(n){ return !!(COMPANY[n] && COMPANY[n].hp); },
     google   : function(n,i){ return G(n + ' ' + (i||'') + ' 마케팅 담당자'); },
     naver    : function(n){ return 'https://search.naver.com/search.naver?query=' + enc(n + ' 마케팅'); },
     wanted   : function(n){ return 'https://www.wanted.co.kr/search?query=' + enc(n); },
@@ -258,9 +271,9 @@
         '<div class="rend"><span class="rgr '+g.c+'">'+g.g+'</span><span class="rch">'+g.ch+'</span></div>'+
         '<div class="hookrow"><span>💬 추천 훅: <b>'+SIG[top].hook+'</b></span>'+
           '<span class="cbtns">'+
-            '<a class="cbtn" href="'+LINK.linkedin(n)+'" target="_blank" rel="noopener">🔗 LinkedIn</a>'+
+            '<a class="cbtn" href="'+LINK.linkedin(n)+'" target="_blank" rel="noopener">🔗 LinkedIn 담당자</a>'+
             '<a class="cbtn" href="'+LINK.home(n)+'" target="_blank" rel="noopener">🏠 홈페이지</a>'+
-            '<a class="cbtn" href="'+LINK.remember(n)+'" target="_blank" rel="noopener">💳 리멤버</a>'+
+            '<a class="cbtn" href="'+LINK.inquiry(n)+'" target="_blank" rel="noopener">✉ 문의하기</a>'+
             '<a class="cbtn more" href="?company='+enc(n)+'#lookup">📇 전체 채널 →</a>'+
           '</span>'+
         '</div>'+
@@ -355,7 +368,8 @@
       '<div class="brief">'+
         '<div class="bh">'+
           '<div class="bhl"><div class="bname">'+name+'<small>'+p.ind+'</small></div>'+
-            '<div class="bsum">'+p.ind+' · '+p.target+' 타깃 · '+p.stage+' · 토스 핏 '+(s>=60?'<b style="color:var(--green)">높음</b>':s>=40?'<b style="color:var(--blue)">보통</b>':'검토')+'</div></div>'+
+            '<div class="bsum">'+p.ind+' · '+p.target+' 타깃 · '+p.stage+' · 토스 핏 '+(s>=60?'<b style="color:var(--green)">높음</b>':s>=40?'<b style="color:var(--blue)">보통</b>':'검토')+'</div>'+
+            '<div style="margin-top:8px;"><a href="'+LINK.home(name)+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:var(--blue);text-decoration:none;">🏠 '+(LINK.hasHome(name)?COMPANY[name].hp.replace(/^https?:\/\//,''):'공식 홈페이지 검색')+' →</a></div></div>'+
           '<div class="bscore"><span class="n" style="color:'+g.col+'">'+s+'</span><span class="gr '+g.c+'">'+g.g+'</span></div>'+
         '</div>'+
         '<div class="bbody">'+
@@ -387,8 +401,8 @@
           '</ul>'+
           '<div class="bsec">👤 담당자 컨택 포인트</div>'+
           '<div class="chgroup"><div class="chbtns">'+
-            ch(LINK.linkedin(name),'🔗 LinkedIn 담당자',true)+ch(LINK.remember(name),'💳 리멤버')+ch(LINK.home(name),'🏠 홈페이지')+
-            ch(LINK.google(name,p.ind),'🔎 구글')+ch(LINK.naver(name),'🟢 네이버')+ch(LINK.mail(name,SIG[top].hook),'✉ 콜드메일 초안')+
+            ch(LINK.linkedin(name),'🔗 LinkedIn 담당자',true)+ch(LINK.home(name),(LINK.hasHome(name)?'🏠 홈페이지':'🏠 홈페이지 검색'))+ch(LINK.inquiry(name),'✉ 문의하기')+
+            ch(LINK.remember(name),'💳 리멤버')+ch(LINK.liCompany(name),'🏢 LinkedIn 회사')+ch(LINK.mail(name,SIG[top].hook),'📧 콜드메일 초안')+
           '</div></div>'+
           '<div class="bsec">📈 마케팅 채용 · 조직 확인 (채용 시그널 검증)</div>'+
           '<div class="chgroup"><div class="chbtns">'+
@@ -422,7 +436,7 @@
   (function(){
     var box = document.getElementById('lookupChips');
     box.innerHTML = '<span style="font-size:12px;color:var(--muted);font-weight:700;align-self:center;margin-right:2px;">예시:</span>';
-    ['글로우뷰','스테이원','클래스핏','트립메이트','페이링크'].forEach(function(n){
+    ['무신사','오늘의집','야놀자','컬리','쏘카'].forEach(function(n){
       var b=document.createElement('button'); b.textContent=n;
       b.addEventListener('click', function(){ inp.value=n; renderBrief(n); });
       box.appendChild(b);
@@ -432,7 +446,7 @@
   show();
   var qc = new URLSearchParams(location.search).get('company');
   if(qc){ inp.value = qc; renderBrief(qc); activate('lookup'); }
-  else { renderBrief('글로우뷰'); if(location.hash==='#lookup') activate('lookup'); }
+  else { renderBrief('무신사'); if(location.hash==='#lookup') activate('lookup'); }
 </script>
 </body>
 </html>
