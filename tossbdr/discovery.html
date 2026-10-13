@@ -37,6 +37,9 @@
   .rhead,.rrow{display:grid;grid-template-columns:40px 1.1fr 1.9fr 64px 120px;gap:14px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);}
   .rhead{padding:11px 20px;background:#fff;font-size:11px;font-weight:800;color:var(--muted);}
   .rrow:last-child{border-bottom:0;}
+  #rows .rrow:nth-child(n+6){display:none;}
+  #rows.all .rrow:nth-child(n+6){display:grid;}
+  .morebar{display:flex;justify-content:center;margin-top:12px;}
   .rrow:hover{background:#fbfdff;}
   .rk{width:30px;height:30px;border-radius:9px;background:var(--blue-weak);color:var(--blue);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
   .rk.top{background:var(--blue);color:#fff;}
@@ -143,6 +146,7 @@
       <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
       <div id="rows"></div>
     </div>
+    <div class="morebar"><button class="btn ghost" id="moreBtn">전체 보기 ▾</button></div>
     <p class="note">
       <b>리포트는 날짜 기준으로 고정</b>됩니다 — 같은 날엔 같은 리스트, '이전/다음 날'로 날짜별 시그널 변화를 봅니다(클릭마다 랜덤 X). 각 행에서 바로 컨택 채널을 열거나 <b>📇 전체 채널</b>로 상세 조회로 넘어가고, <b>⬇ 엑셀 다운로드</b>로 컨택 링크 포함 리스트를 내려받습니다.<br>
       여기 12곳은 <b>토스 Ads 타깃 핏(소비자·2030·광고 집행 중) 성장기 실제 기업</b> — 대형 인컴번트가 아니라 실제로 아웃리치할 만한 발굴 후보입니다. 홈페이지·문의·컨택 버튼은 전부 실제 연결됩니다. 단 각 사 <b>시그널·점수는 가설</b>이라, <b>📇 전체 채널 →</b>에서 메타 광고 라이브러리·투자 뉴스 등으로 <b>직접 확인·체크</b>해야 실제 점수가 됩니다. 자동 수집·일일 리포트화는 백엔드 연동이 다음 단계입니다.
@@ -469,6 +473,10 @@
     show();
   });
   document.getElementById('dlBtn').addEventListener('click', download);
+  document.getElementById('moreBtn').addEventListener('click', function(){
+    var on = document.getElementById('rows').classList.toggle('all');
+    this.textContent = on ? '상위 5개만 보기 ▴' : '전체 보기 ▾';
+  });
 
   var inp = document.getElementById('lookupInput');
   document.getElementById('lookupBtn').addEventListener('click', function(){ renderBrief(inp.value); });
