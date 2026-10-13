@@ -285,6 +285,24 @@
   .wstep.use .wl{color:var(--green);background:#eafaf2;border-color:#bfe9d4;}
   .wstep p{font-size:13px;color:var(--body);line-height:1.6;} .wstep p b{color:var(--ink);}
   .warr{display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;font-size:18px;}
+  /* 프리미엄 시그널 선택 행 */
+  .siglist{display:flex;flex-direction:column;gap:8px;}
+  .sigrow{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:#fff;transition:.15s;user-select:none;}
+  .sigrow:hover{border-color:#cfe0fd;background:#fbfdff;}
+  .sigrow input{position:absolute;opacity:0;pointer-events:none;}
+  .sigrow .sbox{flex:0 0 auto;width:20px;height:20px;border:2px solid #d4dae1;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:.15s;}
+  .sigrow .sbox::after{content:'';width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) scale(0);transition:transform .15s;margin-top:-1px;}
+  .sigrow .stxt{flex:1;font-size:13.5px;font-weight:700;color:var(--ink);line-height:1.35;}
+  .sigrow .swt{flex:0 0 auto;font-size:12px;font-weight:800;color:var(--muted);background:var(--bg-soft);border-radius:999px;padding:4px 11px;}
+  .sigrow:has(input:checked){border-color:var(--blue);background:var(--blue-weak);box-shadow:0 2px 10px rgba(49,130,246,.10);}
+  .sigrow:has(input:checked) .sbox{background:var(--blue);border-color:var(--blue);}
+  .sigrow:has(input:checked) .sbox::after{transform:rotate(45deg) scale(1);}
+  .sigrow:has(input:checked) .stxt{color:#1b64da;}
+  .sigrow:has(input:checked) .swt{color:#fff;background:var(--blue);}
+  .adjust{margin-top:14px;border:1px solid var(--line);border-radius:12px;background:var(--bg-soft);padding:14px;}
+  .adjust .alabel{font-size:12.5px;font-weight:800;color:var(--ink);margin-bottom:9px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  .adjust .alabel small{font-weight:600;color:var(--muted);}
+  .adjust select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:13.5px;font-family:inherit;color:var(--ink);background:#fff;cursor:pointer;}
   @media print{
     html{scroll-behavior:auto;}
     .pfbar{position:static;}
@@ -430,15 +448,17 @@
     <div class="demo-panel">
       <div class="scorer">
         <div class="inputs">
-          <div class="fld"><label><input type="checkbox" id="sig_invest" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 최근 6개월 내 투자 유치 <span class="w">· +22</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_season" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 계절성 — 업종 성수기 진입·임박 <span class="w">· +22</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_running" checked style="width:auto;margin-right:8px;transform:translateY(2px);"> 현재 타 매체(메타·구글) 광고 집행 중 · 토스 미집행 <span class="w">· +16</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_launch" style="width:auto;margin-right:8px;transform:translateY(2px);"> 신제품·신규 서비스 출시 임박 <span class="w">· +14</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_hiring" style="width:auto;margin-right:8px;transform:translateY(2px);"> 마케팅·그로스 직군 채용 급증 <span class="w">· +10</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_fit" style="width:auto;margin-right:8px;transform:translateY(2px);"> 토스 유저층과 타깃 핏 (2030·대중 타깃) <span class="w">· +8</span></label></div>
-          <div class="fld"><label><input type="checkbox" id="sig_comp" style="width:auto;margin-right:8px;transform:translateY(2px);"> 동종 경쟁사가 토스 Ads 집행 중 <span class="w">· +8</span></label></div>
-          <div class="fld" style="margin-top:4px;border-top:1px dashed var(--line);padding-top:14px;">
-            <label>정밀 조정 · 동점 해소 <span class="w">· 같은 점수일 때 누구 먼저</span></label>
+          <div class="siglist">
+            <label class="sigrow"><input type="checkbox" id="sig_invest" checked><span class="sbox"></span><span class="stxt">최근 6개월 내 투자 유치</span><span class="swt">+22</span></label>
+            <label class="sigrow"><input type="checkbox" id="sig_season" checked><span class="sbox"></span><span class="stxt">계절성 — 업종 성수기 진입·임박</span><span class="swt">+22</span></label>
+            <label class="sigrow"><input type="checkbox" id="sig_running" checked><span class="sbox"></span><span class="stxt">현재 타 매체(메타·구글) 광고 집행 중 · 토스 미집행</span><span class="swt">+16</span></label>
+            <label class="sigrow"><input type="checkbox" id="sig_launch"><span class="sbox"></span><span class="stxt">신제품·신규 서비스 출시 임박</span><span class="swt">+14</span></label>
+            <label class="sigrow"><input type="checkbox" id="sig_hiring"><span class="sbox"></span><span class="stxt">마케팅·그로스 직군 채용 급증</span><span class="swt">+10</span></label>
+            <label class="sigrow"><input type="checkbox" id="sig_fit"><span class="sbox"></span><span class="stxt">토스 유저층과 타깃 핏 (2030·대중 타깃)</span><span class="swt">+8</span></label>
+            <label class="sigrow"><input type="checkbox" id="sig_comp"><span class="sbox"></span><span class="stxt">동종 경쟁사가 토스 Ads 집행 중</span><span class="swt">+8</span></label>
+          </div>
+          <div class="adjust">
+            <div class="alabel">⚖ 정밀 조정 · 동점 해소 <small>같은 점수일 때 누구 먼저</small></div>
             <select id="sig_recency" style="margin-bottom:10px;">
               <option value="3" selected>시그널 최신성 — 2주 이내 (방금 발생)</option>
               <option value="2">시그널 최신성 — 이번 달</option>
@@ -450,7 +470,7 @@
               <option value="1">의사결정자 접점 — 미확보</option>
             </select>
           </div>
-          <p class="note-sm" style="margin-top:4px;"><b>핵심 시그널(100점)</b> = '지금 광고가 필요한가 + 예산이 있는가 + 접근할 명분이 있는가' 3축을 대리하는 공개 데이터 → <b>등급 결정</b>. <b>정밀 조정</b> = 핵심 점수가 같을 때 <b>처리 순서</b>를 가름. 가중치는 가설이며 입사 후 실제 미팅 전환 데이터로 보정합니다.</p>
+          <p class="note-sm" style="margin-top:12px;"><b>핵심 시그널(100점)</b> = '지금 광고가 필요한가 + 예산이 있는가 + 접근할 명분이 있는가' 3축 대리 → <b>등급 결정</b>. <b>정밀 조정</b> = 점수가 같을 때 <b>처리 순서</b>를 가름. 가중치는 가설(입사 후 실데이터로 보정).</p>
         </div>
         <div class="result" id="pResultCard">
           <div class="score" id="pScoreNum">0</div>
