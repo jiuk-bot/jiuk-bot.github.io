@@ -93,6 +93,20 @@
   .cmp tbody tr:last-child td{ border-bottom:0; }
   .cbadge{ display:inline-block; font-size:10.5px; font-weight:800; border-radius:6px; padding:2px 7px; margin-right:6px; vertical-align:middle; }
   .cbadge.asis{ color:#fff; background:#9aa1ab; } .cbadge.tobe{ color:#fff; background:var(--primary); }
+  .evstat{ display:flex; flex-wrap:wrap; gap:10px; margin:2px 0 18px; }
+  .evstat .evs{ flex:1; min-width:150px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px 16px; box-shadow:var(--shadow-sm); text-align:center; }
+  .evstat .evs .n{ font-size:25px; font-weight:900; color:var(--primary-dark); letter-spacing:-.5px; line-height:1.1; }
+  .evstat .evs .l{ font-size:12px; font-weight:700; color:var(--sub); margin-top:5px; line-height:1.4; }
+  .evgrid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .evc{ background:#fff; border:1px solid var(--line); border-left:4px solid var(--warn); border-radius:16px; padding:17px 19px; box-shadow:var(--shadow-sm); }
+  .evc-rank{ display:inline-block; font-size:10.5px; font-weight:800; color:#fff; background:var(--warn); border-radius:6px; padding:2px 9px; margin-bottom:9px; }
+  .evc-theme{ font-size:15px; font-weight:800; color:var(--ink); margin-bottom:10px; letter-spacing:-.3px; }
+  .evq{ font-size:13px; color:#555; line-height:1.55; font-style:italic; border-left:2px solid #eceef1; padding-left:11px; margin:0 0 7px; }
+  .evc-src{ font-size:10.5px; font-weight:700; color:var(--sub); margin-bottom:11px; }
+  .evc-sol{ font-size:12.5px; color:var(--primary-dark); background:var(--soft); border-radius:10px; padding:9px 12px; font-weight:600; line-height:1.5; }
+  .evc-sol .evarr{ font-weight:800; font-size:10px; color:#fff; background:var(--primary); border-radius:5px; padding:2px 7px; margin-right:7px; white-space:nowrap; }
+  .evbalance{ margin-top:14px; background:#eefaf0; border:1px solid #cdebd4; border-radius:12px; padding:14px 16px; font-size:13px; color:#2a6b3f; line-height:1.65; } .evbalance b{ color:#1e7a43; }
+  @media(max-width:860px){ .evgrid{ grid-template-columns:1fr; } }
 
   /* 폰 목업 */
   .mockrow{ display:grid; grid-template-columns:270px 1fr; gap:26px; align-items:stretch; }
@@ -267,6 +281,50 @@
     </tbody>
   </table>
   <p class="note">· 핵심은 <b>과금 기준을 '노출·기간' → '전환'</b>으로 바꾸는 것 — 광고주는 리스크 0, 지면·유저 경험 변화 없음</p>
+</div></section>
+
+<!-- 근거: 실제 셀러 후기 분석 -->
+<section><div class="wrap">
+  <div class="eyebrow"><span class="no" style="background:#2e9e52;">✓</span> 근거 · 실제 셀러 후기 분석</div>
+  <h2>이 문제의식은 <span class="hl">실제 에이블리 셀러들의 불만</span>에서 나왔다.</h2>
+  <p class="lead">언론·에이블리 공식 대행사 블로그·셀러 커뮤니티 등 <b>공개 출처의 실제 셀러 발언</b>을 수집·분류했습니다. 반복적으로 나타난 <b>불만 TOP 4가 이 PRD가 푸는 지점과 정확히 일치</b>합니다.</p>
+  <div class="evstat">
+    <div class="evs"><div class="n">TOP 4</div><div class="l">반복 불만 전부<br>'과금·측정' 영역</div></div>
+    <div class="evs"><div class="n">5곳+</div><div class="l">공개 출처<br>교차 확인</div></div>
+    <div class="evs"><div class="n">100%</div><div class="l">불만 → PRD 해법<br>직접 매칭</div></div>
+  </div>
+  <div class="evgrid">
+    <div class="evc">
+      <div class="evc-rank">불만 ①</div>
+      <div class="evc-theme">노출만 돼도 과금 (CPM)</div>
+      <blockquote class="evq">"클릭을 하지 않아도 비용이 발생되기 때문에…"</blockquote>
+      <div class="evc-src">출처 · 올라(에이블리 공식 대행사)</div>
+      <div class="evc-sol"><span class="evarr">PRD 해법</span>전환(구매) 시에만 과금 · 노출·클릭은 <b>0원</b></div>
+    </div>
+    <div class="evc">
+      <div class="evc-rank">불만 ②</div>
+      <div class="evc-theme">성과를 알 수 없음 (측정 불가)</div>
+      <blockquote class="evq">"어느 지면에 어떻게 노출됐는지, 어디서 매출이 발생하는지 데이터를 알 수 없다"</blockquote>
+      <div class="evc-src">출처 · 비즈한국 (셀러 인터뷰)</div>
+      <div class="evc-sol"><span class="evarr">PRD 해법</span>전환 측정·holdout 증분성 + <b>AI 성과 대시보드</b></div>
+    </div>
+    <div class="evc">
+      <div class="evc-rank">불만 ③</div>
+      <div class="evc-theme">광고비 부담·빠른 소진</div>
+      <blockquote class="evq">"광고비가 타 플랫폼보다 빠르게 소진된다" · "광고비에 더 투자해야 하는 것처럼 느껴진다"</blockquote>
+      <div class="evc-src">출처 · 비즈한국 (셀러 인터뷰)</div>
+      <div class="evc-sol"><span class="evarr">PRD 해법</span>성과 없으면 <b>0원</b> · 신규 셀러 금전 리스크 0</div>
+    </div>
+    <div class="evc">
+      <div class="evc-rank">불만 ④</div>
+      <div class="evc-theme">유입은 되는데 전환이 안 됨</div>
+      <blockquote class="evq">"유입까지는 되지만 구매 전환율이 낮은 경우가 많다"</blockquote>
+      <div class="evc-src">출처 · ampm 인사이트</div>
+      <div class="evc-sol"><span class="evarr">PRD 해법</span>노출이 아니라 <b>전환</b> 중심 발견 성과형</div>
+    </div>
+  </div>
+  <div class="evbalance">✅ <b>균형 — 만족 후기도 존재</b>: 3일 ROAS 870%(광고비 10만원→전환 94만원), 500%+ 유지, 전사 ROAS 1,133%(2023) 등 <b>'잘 세팅된 셀러'의 성공 사례</b>가 분명히 있습니다. 다만 신규·중소 셀러는 그 전에 <b>'성과 불확실·과금 부담'에서 이탈</b> — 이 PRD의 타깃(신규 광고주)과 정확히 일치합니다.</div>
+  <p class="note">※ 공개 후기·기사 기반 <b>정성 분석</b>(전수 통계 크롤링 아님) · 대표 발언 원문 인용 + 출처 명시 · 집행 시 실제 셀러 서베이로 정량 보강 예정.</p>
 </div></section>
 
 <!-- 02 지면 & 상품 목업 -->
