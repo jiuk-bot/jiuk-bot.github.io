@@ -138,20 +138,20 @@
       <div class="stat" id="stat"></div>
     </div>
     <div class="report">
-      <div class="rhd"><div class="rt">📋 오늘의 발굴 리포트 <span class="tag">예시 데이터</span></div><div class="rd" id="genTime">—</div></div>
+      <div class="rhd"><div class="rt">📋 오늘의 발굴 리포트 <span class="tag">기준 부합 후보 · 시그널 가설</span></div><div class="rd" id="genTime">—</div></div>
       <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
       <div id="rows"></div>
     </div>
     <p class="note">
       <b>리포트는 날짜 기준으로 고정</b>됩니다 — 같은 날엔 같은 리스트, '이전/다음 날'로 날짜별 시그널 변화를 봅니다(클릭마다 랜덤 X). 각 행에서 바로 컨택 채널을 열거나 <b>📇 전체 채널</b>로 상세 조회로 넘어가고, <b>⬇ 엑셀 다운로드</b>로 컨택 링크 포함 리스트를 내려받습니다.<br>
-      <b>실데이터 연동</b> — 뉴스·LinkedIn·광고 라이브러리를 매일 수집해 시그널을 채우면 실무 리포트가 됩니다(수집은 백엔드 필요). 회사는 <b>실제 기업</b>이라 홈페이지·문의·컨택 버튼이 진짜로 연결되지만, <b>시그널·점수는 툴 로직 시연용 가상 시나리오</b>이며 해당 기업의 실제 상황이 아닙니다.
+      여기 12곳은 <b>토스 Ads 타깃 핏(소비자·2030·광고 집행 중) 성장기 실제 기업</b> — 대형 인컴번트가 아니라 실제로 아웃리치할 만한 발굴 후보입니다. 홈페이지·문의·컨택 버튼은 전부 실제 연결됩니다. 단 각 사 <b>시그널·점수는 가설</b>이라, <b>📇 전체 채널 →</b>에서 메타 광고 라이브러리·투자 뉴스 등으로 <b>직접 확인·체크</b>해야 실제 점수가 됩니다. 자동 수집·일일 리포트화는 백엔드 연동이 다음 단계입니다.
     </p>
   </div>
 
   <!-- 탭 2 -->
   <div class="panel" id="panel-lookup" style="display:none;">
     <div class="search">
-      <input id="lookupInput" placeholder="연락할 기업명을 입력하세요 (예: 무신사, 또는 아무 실제 회사명)" autocomplete="off" />
+      <input id="lookupInput" placeholder="연락할 기업명을 입력하세요 (예: 에이블리, 또는 아무 실제 회사명)" autocomplete="off" />
       <button class="btn" id="lookupBtn">조회</button>
     </div>
     <div class="chips" id="lookupChips"></div>
@@ -176,34 +176,35 @@
   };
   var KEYS = Object.keys(SIG);
   // 실제 기업 + 실제 홈페이지 (컨택·문의 링크가 진짜로 연결되도록)
+  // 토스 Ads 타깃 핏(소비자·2030·광고 집행) 성장기 발굴 후보 — 실제 기업·실제 홈페이지
   var COMPANY = {
-    '무신사':    {i:'패션 커머스',  hp:'https://www.musinsa.com'},
-    '오늘의집':  {i:'리빙·커머스',  hp:'https://ohou.se'},
-    '컬리':      {i:'식품·커머스',  hp:'https://www.kurly.com'},
-    '야놀자':    {i:'여행·숙박',    hp:'https://www.yanolja.com'},
-    '여기어때':  {i:'여행·숙박',    hp:'https://www.yeogi.com'},
-    '뱅크샐러드':{i:'핀테크',       hp:'https://www.banksalad.com'},
-    '쏘카':      {i:'모빌리티',     hp:'https://www.socar.kr'},
-    '클래스101': {i:'교육',         hp:'https://class101.net'},
-    '야나두':    {i:'교육',         hp:'https://www.yanadoo.co.kr'},
-    '지그재그':  {i:'패션 커머스',  hp:'https://zigzag.kr'},
-    '올리브영':  {i:'뷰티·커머스',  hp:'https://www.oliveyoung.co.kr'},
-    '배달의민족':{i:'푸드·배달',    hp:'https://www.baemin.com'}
+    '에이블리':        {i:'패션 커머스',   hp:'https://a-bly.com'},
+    '지그재그':        {i:'패션 커머스',   hp:'https://zigzag.kr'},
+    '꾸까':            {i:'플라워 구독',   hp:'https://kukka.kr'},
+    '마이리얼트립':    {i:'여행',          hp:'https://www.myrealtrip.com'},
+    '트래블월렛':      {i:'여행·핀테크',   hp:'https://www.travel-wallet.com'},
+    '밀리의서재':      {i:'독서 구독',     hp:'https://www.millie.co.kr'},
+    '리디':            {i:'웹툰·콘텐츠',   hp:'https://ridibooks.com'},
+    '번개장터':        {i:'중고 커머스',   hp:'https://www.bunjang.co.kr'},
+    '스파르타코딩클럽':{i:'성인 교육',     hp:'https://spartacodingclub.kr'},
+    '프레시코드':      {i:'샐러드 구독',   hp:'https://www.freshcode.me'},
+    '클래스101':       {i:'교육',          hp:'https://class101.net'},
+    '야나두':          {i:'교육',          hp:'https://www.yanadoo.co.kr'}
   };
   var BASE = Object.keys(COMPANY).map(function(n){ return {n:n, i:COMPANY[n].i}; });
   var INITIAL = [
-    {n:'오늘의집',   s:['invest','season','adsurge','launch']},
-    {n:'야놀자',     s:['season','invest','adsurge','hiring']},
-    {n:'컬리',       s:['running','adsurge','launch']},
-    {n:'여기어때',   s:['season','running','fit']},
-    {n:'클래스101',  s:['season','hiring','fit']},
-    {n:'뱅크샐러드', s:['launch','running','hiring']},
-    {n:'야나두',     s:['launch','hiring','fit']},
-    {n:'지그재그',   s:['running','comp']},
-    {n:'쏘카',       s:['launch','fit']},
-    {n:'올리브영',   s:['hiring','fit']},
-    {n:'배달의민족', s:['comp','fit']},
-    {n:'무신사',     s:['fit']}
+    {n:'에이블리',        s:['invest','season','adsurge','launch']},
+    {n:'마이리얼트립',    s:['season','invest','adsurge','hiring']},
+    {n:'꾸까',            s:['running','adsurge','launch']},
+    {n:'트래블월렛',      s:['season','running','fit']},
+    {n:'프레시코드',      s:['season','hiring','fit']},
+    {n:'번개장터',        s:['launch','running','hiring']},
+    {n:'밀리의서재',      s:['launch','hiring','fit']},
+    {n:'리디',            s:['running','comp']},
+    {n:'스파르타코딩클럽',s:['launch','fit']},
+    {n:'클래스101',       s:['hiring','fit']},
+    {n:'야나두',          s:['comp','fit']},
+    {n:'지그재그',        s:['fit']}
   ].map(function(x){ return {n:x.n, i:COMPANY[x.n].i, s:x.s}; });
 
   var offset = 0, sortMode = 'score', curData = [], lastRows = [];
@@ -323,7 +324,7 @@
   }
 
   // ───── 탭 2: 기업 상세 조회 ─────
-  var TARGET = [['뷰티','2030 여성'],['화장','2030 여성'],['교육','학부모·2030 학습자'],['콘텐츠','1030'],
+  var TARGET = [['뷰티','2030 여성'],['화장','2030 여성'],['패션','2030 여성'],['플라워','2030 여성'],['웹툰','1030'],['구독','2030 생활'],['중고','2030 가성비'],['샐러드','2030 건강'],['교육','2030 직장인·학습자'],['콘텐츠','1030'],
     ['여행','2040 액티브'],['레저','2040 액티브'],['숙박','2040 액티브'],['핀','2040 경제활동'],['결제','2040 경제활동'],
     ['금융','3050 자산형성'],['식품','전연령 생활소비'],['배달','2030 생활'],['리빙','3040 주거'],['커머스','2040 쇼핑'],
     ['모빌리티','2040'],['헬스','2030 건강'],['피트니스','2030 건강']];
@@ -470,7 +471,7 @@
   (function(){
     var box = document.getElementById('lookupChips');
     box.innerHTML = '<span style="font-size:12px;color:var(--muted);font-weight:700;align-self:center;margin-right:2px;">예시:</span>';
-    ['무신사','오늘의집','야놀자','컬리','쏘카'].forEach(function(n){
+    ['에이블리','마이리얼트립','꾸까','번개장터','밀리의서재'].forEach(function(n){
       var b=document.createElement('button'); b.textContent=n;
       b.addEventListener('click', function(){ inp.value=n; renderBrief(n); });
       box.appendChild(b);
@@ -480,7 +481,7 @@
   show();
   var qc = new URLSearchParams(location.search).get('company');
   if(qc){ inp.value = qc; renderBrief(qc); activate('lookup'); }
-  else { renderBrief('무신사'); if(location.hash==='#lookup') activate('lookup'); }
+  else { renderBrief('에이블리'); if(location.hash==='#lookup') activate('lookup'); }
 </script>
 </body>
 </html>
