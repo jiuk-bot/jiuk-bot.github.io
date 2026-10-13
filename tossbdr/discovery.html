@@ -229,7 +229,7 @@
   var LINK = {
     linkedin : function(n){ return 'https://www.linkedin.com/search/results/people/?keywords=' + enc(n + ' 마케팅'); },
     liCompany: function(n){ return 'https://www.linkedin.com/search/results/companies/?keywords=' + enc(n); },
-    remember : function(n){ return G(n + ' 마케팅 담당자 리멤버'); },
+    remember : function(n){ return 'https://connect.rememberapp.co.kr/search?keyword=' + enc(n); },
     home     : function(n){ return (COMPANY[n] && COMPANY[n].hp) ? COMPANY[n].hp : G(n + ' 공식 홈페이지'); },
     inquiry  : function(n){ return (COMPANY[n] && COMPANY[n].hp) ? G(n + ' 고객센터 문의하기') : G(n + ' 문의하기 고객센터'); },
     hasHome  : function(n){ return !!(COMPANY[n] && COMPANY[n].hp); },
