@@ -120,7 +120,7 @@
   <a class="back" href="bdr.html">← BDR 플레이북으로</a>
   <div class="eyebrow">TOSS ADS · BDR · OUTBOUND DISCOVERY TOOL</div>
   <h1>아웃바운드 발굴 자동 리포트 · 기업 조회</h1>
-  <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b> 등)을 <b>① 스코어링 엔진</b>으로 점수화해 <b>오늘 연락할 회사</b>를 추천하고, <b>기업명을 입력하면 회사 개요·마케팅 현황·토스 핏·접근 전략·다채널 컨택</b>까지 한 화면에서 — <b>검색 → 파악 → 컨택</b>. (스코어링·조회 엔진은 실제 동작, 데이터는 예시)</p>
+  <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b> 등)을 <b>① 스코어링 엔진</b>으로 점수화해 <b>오늘 연락할 회사</b>를 추천하고, <b>기업명을 입력하면 시그널 데이터 확인 링크·회사 팩트 소스·접근 전략·다채널 컨택</b>까지 한 화면에서 — <b>검색 → 확인 → 컨택</b>. <b>추정값 없이, 실제 데이터 소스로 직접 확인</b>합니다.</p>
 
   <div class="tabs">
     <button class="tab active" data-tab="report">📋 오늘의 발굴 리포트</button>
@@ -159,7 +159,7 @@
     <div id="briefResult"></div>
     <p class="note">
       <b>무엇을 보여주나</b> — BDR이 콜 전에 필요한 <b>회사 개요·마케팅 현황(현재 매체·추정 예산·타깃)·비즈니스 시그널·토스 Ads 핏·접근 전략·콜 전 체크리스트</b>를 한 화면에 정리하고, <b>담당자 컨택(LinkedIn·리멤버·홈페이지·구글·네이버)</b>과 <b>마케팅 채용·조직 확인(원티드·사람인·잡코리아·잡플래닛·LinkedIn Jobs·채용 페이지)</b> 채널을 전부 실제 검색 링크로 연결합니다.<br>
-      <b>실무에 바로 쓰는 방식</b> — 아무 실제 회사명을 넣고, 각 시그널의 <b>🔗 확인</b>으로 메타 광고 라이브러리·투자 뉴스·채용·구글 트렌드를 직접 보고 사실이면 체크하면 <b>점수가 실제 확인분만으로 계산</b>됩니다(허위 0). 회사·홈페이지·문의·LinkedIn·채용·확인 링크는 전부 <b>실제 연결</b>. 개요·예산·매체는 <b>자동 추정(참고)</b>이라 콜 전 검증하세요. 자동 시그널 수집·일일 리포트화는 백엔드 연동이 다음 단계입니다.
+      <b>실무에 바로 쓰는 방식</b> — 아무 실제 회사명을 넣고, 각 시그널의 <b>🔗 확인</b>으로 메타 광고 라이브러리·투자 뉴스·채용·구글 트렌드를 직접 보고 <b>사실인 것만 체크</b> → 점수는 확인분만으로 계산됩니다(<b>추정·허위 0</b>). 회사 규모·투자·집행 매체도 <b>팩트 소스 링크(더브이씨·기업정보·광고 라이브러리·뉴스)</b>로 직접 확인하고, 담당자는 <b>리멤버·직무별 좁혀찾기</b>로 확보합니다. 모든 버튼은 <b>실제 연결</b>. 자동 수집·일일 리포트화는 백엔드 연동이 다음 단계입니다.
     </p>
   </div>
 </div>
@@ -360,10 +360,10 @@
     return {name:name, ind:ind, sigs:sigs, size:size, budget:budget, media:media, kpi:kpi, stage:stage, target:target, role:role};
   }
 
-  function fitReason(sigs, p){
-    var r = ['타깃('+p.target+')이 토스 2030·대중 유저층과 정합'];
-    if(sigs.indexOf('running')>=0 || sigs.indexOf('adsurge')>=0) r.push('이미 '+p.media[0]+' 등 집행 중 → 토스로 <b>증분 도달</b> 확대 여지');
-    if(sigs.indexOf('season')>=0) r.push('성수기 진입 → 시즌 집중 집행에 토스 리워드·노출 적합');
+  function fitReason(sigs){
+    var r = ['소비자·2030 대중 타깃 업종이면 토스 유저층과 정합 (홈페이지·업종으로 확인)'];
+    if(sigs.indexOf('running')>=0 || sigs.indexOf('adsurge')>=0) r.push('타 매체 집행 중 → 토스로 <b>증분 도달</b> 확대 여지 (메타 광고 라이브러리로 확인)');
+    if(sigs.indexOf('season')>=0) r.push('성수기 진입 → 시즌 집중 집행에 적합');
     if(sigs.indexOf('comp')>=0) r.push('동종 경쟁사 토스 집행 레퍼런스로 설득 용이');
     return r;
   }
@@ -374,58 +374,58 @@
     if(el=document.getElementById('bScore')){ el.textContent = s; el.style.color = g.col; }
     if(el=document.getElementById('bGrade')){ el.textContent = g.g; el.className = 'gr ' + g.c; }
     if(el=document.getElementById('bFit')){ el.innerHTML = s>=60?'<b style="color:var(--green)">높음</b>':s>=40?'<b style="color:var(--blue)">보통</b>':'검토'; }
-    if((el=document.getElementById('bRec')) && curProfile){
+    if(el=document.getElementById('bRec')){
       var hook = top ? SIG[top].hook : '확인된 시그널이 없습니다 — 위 확인 링크로 검증 후 체크하세요';
-      el.innerHTML = fitReason(sigs,curProfile).map(function(x){ return '<span class="r">• '+x+'</span>'; }).join('') +
-        '<span class="r" style="margin-top:7px;">📌 추천 접근 — 채널 <b>'+g.ch+'</b> · 의사결정자 <b>'+curProfile.role+'</b></span>'+
+      el.innerHTML = fitReason(sigs).map(function(x){ return '<span class="r">• '+x+'</span>'; }).join('') +
+        '<span class="r" style="margin-top:7px;">📌 추천 접근 — 채널 <b>'+g.ch+'</b> · 담당자는 아래 <b>직무별 좁혀 찾기</b>로 확보</span>'+
         '<span class="r">💬 아웃리치 훅 — <b>'+hook+'</b></span>';
     }
     if(el=document.getElementById('ckTiming')){ el.innerHTML = '<b>'+(s>=70?'즉시(지금)':s>=40?'이번 주~이번 달':'분기 내')+'</b>'; }
     if(el=document.getElementById('ckRef')){ el.innerHTML = (sigs.indexOf('comp')>=0?'<b>동종 경쟁사 토스 집행 사례</b> 준비':'유사 업종 성공사례 준비'); }
   }
+  function profileFor(name){ name=(name||'').trim(); var c=COMPANY[name]; return { name:name, ind: c ? c.i : '' }; }
 
   function renderBrief(name){
     name = (name||'').trim();
     var box = document.getElementById('briefResult');
-    if(!name){ box.innerHTML = '<div class="empty">연락할 기업명을 입력하면, 시그널 확인 링크·회사 개요·접근 전략·다채널 컨택이 나옵니다.</div>'; return; }
+    if(!name){ box.innerHTML = '<div class="empty">연락할 기업명을 입력하면, 시그널 확인 링크·회사 팩트 소스·접근 전략·다채널 컨택이 나옵니다.</div>'; return; }
     var p = profileFor(name); curProfile = p;
-    var initChecked = (INITIAL.filter(function(x){return x.n===name;})[0]||{}).s || [];
-    var s0 = score(initChecked), g0 = grade(s0);
-    var demo = initChecked.length > 0;
+    var g0 = grade(0);
     var sigRows = KEYS.map(function(k){
-      var on = initChecked.indexOf(k) >= 0;
-      return '<tr><td><label style="display:flex;gap:8px;align-items:center;cursor:pointer;margin:0;font-weight:700;color:var(--ink);"><input type="checkbox" class="sigchk" data-k="'+k+'"'+(on?' checked':'')+' style="width:16px;height:16px;flex:0 0 auto;"> '+SIG[k].l+'</label></td>'+
+      return '<tr><td><label style="display:flex;gap:8px;align-items:center;cursor:pointer;margin:0;font-weight:700;color:var(--ink);"><input type="checkbox" class="sigchk" data-k="'+k+'" style="width:16px;height:16px;flex:0 0 auto;"> '+SIG[k].l+'</label></td>'+
         '<td class="w">'+SIG[k].w+'</td>'+
         '<td><a class="vfy" href="'+VERIFY[k](name)+'" target="_blank" rel="noopener">🔗 '+VLABEL[k]+'</a></td></tr>';
     }).join('');
     var ch = function(href,label,key){ return '<a class="'+(key?'key':'')+'" href="'+href+'" target="_blank" rel="noopener">'+label+'</a>'; };
+    var roleBtns = [['마케팅 팀장','마케팅 팀장'],['그로스 리드','그로스'],['퍼포먼스 마케팅','퍼포먼스 마케팅'],['브랜드 마케팅','브랜드 마케팅'],['CMO·마케팅 리더','CMO']].map(function(r){
+      return '<a href="https://connect.rememberapp.co.kr/search?keyword='+enc(name+' '+r[1])+'" target="_blank" rel="noopener">💳 '+r[0]+'</a>';
+    }).join('');
+    var ind = p.ind || '입력 회사 (업종 미등록)';
 
     box.innerHTML =
       '<div class="brief">'+
         '<div class="bh">'+
-          '<div class="bhl"><div class="bname">'+name+'<small>'+p.ind+'</small></div>'+
-            '<div class="bsum">'+p.ind+' · '+p.target+' 타깃 · 토스 핏 <span id="bFit">'+(s0>=60?'<b style="color:var(--green)">높음</b>':s0>=40?'<b style="color:var(--blue)">보통</b>':'검토')+'</span></div>'+
+          '<div class="bhl"><div class="bname">'+name+'<small>'+ind+'</small></div>'+
+            '<div class="bsum">'+ind+' · 토스 핏 <span id="bFit">검토</span> (시그널 체크로 산정)</div>'+
             '<div style="margin-top:8px;"><a href="'+LINK.home(name)+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:var(--blue);text-decoration:none;">🏠 '+(LINK.hasHome(name)?COMPANY[name].hp.replace(/^https?:\/\//,''):'공식 홈페이지 검색')+' →</a></div></div>'+
-          '<div class="bscore"><span class="n" id="bScore" style="color:'+g0.col+'">'+s0+'</span><span class="gr '+g0.c+'" id="bGrade">'+g0.g+'</span></div>'+
+          '<div class="bscore"><span class="n" id="bScore" style="color:'+g0.col+'">0</span><span class="gr '+g0.c+'" id="bGrade">'+g0.g+'</span></div>'+
         '</div>'+
         '<div class="bbody">'+
           '<div class="bsec">① 비즈니스 시그널 — 데이터 확인 후 직접 체크 (점수 실시간 계산)</div>'+
-          '<p style="font-size:12.5px;color:var(--muted);margin:-4px 0 10px;line-height:1.55;">각 시그널의 <b>🔗 확인</b>으로 실제 데이터(<b>메타 광고 라이브러리</b>·투자 뉴스·채용·구글 트렌드)를 보고, 사실이면 체크하세요. <b>체크한 것만 점수에 반영</b>됩니다(허위 없이 실제 확인분만). '+(demo?'<b style="color:var(--blue)">예시로 미리 체크</b>돼 있으니 확인 링크로 검증 후 조정하세요.':'확인·체크하면 점수가 올라갑니다.')+'</p>'+
+          '<p style="font-size:12.5px;color:var(--muted);margin:-4px 0 10px;line-height:1.55;">각 시그널의 <b>🔗 확인</b>으로 실제 데이터(<b>메타 광고 라이브러리</b>·투자 뉴스·채용·구글 트렌드)를 보고 <b>사실인 것만 체크</b>하세요. 체크한 것만 점수에 반영됩니다 — <b>추정 없이 확인된 팩트만</b>.</p>'+
           '<table class="btable"><tr><th>기준 (체크)</th><th class="w">가중치</th><th>데이터 확인</th></tr>'+sigRows+'</table>'+
           '<div class="bsec">② 토스 Ads 핏 & 접근 전략 (체크에 따라 갱신)</div>'+
           '<div class="brec" id="bRec"></div>'+
-          '<div class="bsec">③ 회사 개요 · 마케팅 현황 (자동 추정 · 참고, 콜에서 검증)</div>'+
-          '<div class="binfo">'+
-            '<div class="it"><div class="k">업종 · 주 타깃</div><div class="v">'+p.ind+' · '+p.target+'</div></div>'+
-            '<div class="it"><div class="k">추정 규모 · 단계</div><div class="v">'+p.size+' · '+p.stage+'</div></div>'+
-            '<div class="it"><div class="k">의사결정자 (추정)</div><div class="v">'+p.role+'</div></div>'+
-            '<div class="it"><div class="k">추정 월 광고 예산</div><div class="v">'+p.budget+'</div></div>'+
-          '</div>'+
-          '<div class="bsec">④ 콜 전 체크리스트</div>'+
+          '<div class="bsec">③ 회사 팩트 확인 — 데이터 소스 바로가기</div>'+
+          '<div class="chgroup"><div class="chbtns">'+
+            ch(LINK.home(name),'🏠 홈페이지',true)+ch('https://www.google.com/search?q='+enc(name+' 더브이씨 투자 규모'),'💰 투자·규모(더브이씨)')+ch(LINK.jobplanet(name),'🏢 기업정보(잡플래닛)')+
+            ch(VERIFY.running(name),'📣 집행 광고(메타 라이브러리)')+ch('https://www.google.com/search?tbm=nws&q='+enc(name),'📰 최신 뉴스')+
+          '</div></div>'+
+          '<div class="bsec">④ 콜 전 체크리스트 (팩트로 확인)</div>'+
           '<ul class="ckl">'+
-            '<li><span class="ic">1</span><span>의사결정자 확인 — <b>'+p.role+'</b> 타깃. 아래 LinkedIn·리멤버로 실명·직책 확보</span></li>'+
+            '<li><span class="ic">1</span><span>의사결정자 — 아래 <b>직무별 좁혀 찾기</b>로 실명·직책 확보 (리멤버/LinkedIn)</span></li>'+
             '<li><span class="ic">2</span><span>현재 매체 믹스 — <b>메타 광고 라이브러리</b>로 실제 집행 광고 확인</span></li>'+
-            '<li><span class="ic">3</span><span>예산 규모 — 추정 <b>'+p.budget+'</b>, 콜에서 확인</span></li>'+
+            '<li><span class="ic">3</span><span>규모·투자 — <b>더브이씨·기업정보</b>로 확인</span></li>'+
             '<li><span class="ic">4</span><span>집행 시기 — 체크한 시그널 기준 <span id="ckTiming"><b>분기 내</b></span></span></li>'+
             '<li><span class="ic">5</span><span>레퍼런스 — <span id="ckRef">유사 업종 성공사례 준비</span></span></li>'+
           '</ul>'+
@@ -434,6 +434,9 @@
             ch(LINK.remember(name),'💳 리멤버 커넥트 담당자',true)+ch(LINK.linkedin(name),'🔗 LinkedIn 담당자')+ch(LINK.home(name),(LINK.hasHome(name)?'🏠 홈페이지':'🏠 홈페이지 검색'))+
             ch(LINK.inquiry(name),'✉ 문의하기')+ch(LINK.liCompany(name),'🏢 LinkedIn 회사')+ch(LINK.mail(name,'토스 Ads 제안'),'📧 콜드메일 초안')+
           '</div></div>'+
+          '<div class="bsec">🎯 담당자 좁혀 찾기 — 직무 키워드로 리멤버 검색</div>'+
+          '<p style="font-size:12px;color:var(--muted);margin:-4px 0 9px;">특정 인물을 자동 지목하진 못하지만(이름·이메일은 유료 데이터/백엔드 필요), <b>회사명 + 직무</b>로 좁히면 해당 역할 담당자가 바로 뜹니다.</p>'+
+          '<div class="chgroup"><div class="chbtns">'+roleBtns+'</div></div>'+
           '<div class="bsec">📈 마케팅 채용 · 조직 확인</div>'+
           '<div class="chgroup"><div class="chbtns">'+
             ch(LINK.wanted(name),'원티드')+ch(LINK.saramin(name),'사람인')+ch(LINK.jobkorea(name),'잡코리아')+
