@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>아웃바운드 발굴 자동 리포트 — 오늘 연락할 회사 · 윤지욱</title>
-<meta name="description" content="비즈니스 시그널(투자·계절성·채용·광고 노출량)을 스코어링해 '오늘 연락할 회사'를 우선순위로 추천하는 실제 동작 툴. 토스 Ads BDR 지원 · 윤지욱." />
+<title>아웃바운드 발굴 자동 리포트 · 기업 조회 — 윤지욱</title>
+<meta name="description" content="비즈니스 시그널(투자·계절성·채용·광고 노출량)을 스코어링해 '오늘 연락할 회사'를 추천하고, 기업명으로 실시간 조회·컨택까지 하는 실제 동작 툴. 토스 Ads BDR 지원 · 윤지욱." />
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
   :root{--blue:#3182F6;--blue-weak:#E8F1FE;--ink:#191F28;--body:#4E5968;--muted:#8B95A1;--line:#E5E8EB;--bg-soft:#F9FAFB;--green:#15C47E;--red:#F04452;}
@@ -14,14 +14,20 @@
   .back{display:inline-block;font-size:13px;font-weight:700;color:var(--muted);text-decoration:none;margin-bottom:16px;}
   .back:hover{color:var(--blue);}
   .eyebrow{font-size:13px;font-weight:800;color:var(--blue);letter-spacing:.02em;margin-bottom:8px;}
-  h1{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.25;margin-bottom:10px;}
-  .lead{font-size:15px;color:var(--body);max-width:760px;margin-bottom:20px;}
+  h1{font-size:27px;font-weight:800;letter-spacing:-.03em;line-height:1.25;margin-bottom:10px;}
+  .lead{font-size:15px;color:var(--body);max-width:780px;margin-bottom:20px;}
   .lead b{color:var(--ink);}
-  .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  /* 탭 */
+  .tabs{display:flex;gap:4px;border-bottom:2px solid var(--line);margin-bottom:20px;}
+  .tab{font-family:inherit;font-size:14.5px;font-weight:800;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-2px;padding:11px 16px;cursor:pointer;}
+  .tab.active{color:var(--blue);border-bottom-color:var(--blue);}
   .btn{font-family:inherit;font-size:14px;font-weight:800;border-radius:10px;padding:11px 18px;cursor:pointer;border:1px solid var(--blue);background:var(--blue);color:#fff;transition:.15s;}
   .btn:hover{background:#1b64da;border-color:#1b64da;}
   .btn.ghost{background:#fff;color:var(--ink);border-color:var(--line);}
   .btn.ghost:hover{border-color:var(--blue);color:var(--blue);}
+  .btn:disabled{opacity:.4;cursor:not-allowed;}
+  .bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px;}
+  .dlabel{font-weight:800;font-size:14px;color:var(--ink);min-width:168px;text-align:center;}
   .stat{display:flex;gap:8px;flex-wrap:wrap;margin-left:auto;}
   .stat span{font-size:12.5px;font-weight:800;border-radius:999px;padding:7px 13px;}
   .stat .s-a{color:var(--green);background:#eafaf2;} .stat .s-b{color:var(--blue);background:var(--blue-weak);} .stat .s-c{color:var(--muted);background:var(--bg-soft);} .stat .s-t{color:var(--ink);background:#eef1f5;}
@@ -30,7 +36,7 @@
   .rhd .rt{font-size:15px;font-weight:800;color:var(--ink);}
   .rhd .rd{font-size:12px;color:var(--muted);font-weight:600;}
   .rhead,.rrow{display:grid;grid-template-columns:40px 1.2fr 2fr 70px 130px;gap:14px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--line);}
-  .rhead{padding:11px 20px;background:#fff;font-size:11px;font-weight:800;color:var(--muted);text-transform:none;}
+  .rhead{padding:11px 20px;background:#fff;font-size:11px;font-weight:800;color:var(--muted);}
   .rrow:last-child{border-bottom:0;}
   .rrow:hover{background:#fbfdff;}
   .rk{width:30px;height:30px;border-radius:9px;background:var(--blue-weak);color:var(--blue);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
@@ -45,11 +51,45 @@
   .rgr{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:4px 10px;}
   .rgr.a{color:var(--green);background:#eafaf2;} .rgr.b{color:var(--blue);background:var(--blue-weak);} .rgr.c{color:var(--muted);background:var(--bg-soft);}
   .rch{display:block;font-size:11px;color:var(--muted);font-weight:600;margin-top:5px;}
-  .hookrow{grid-column:1 / -1;font-size:12px;color:var(--body);background:var(--bg-soft);border-radius:8px;padding:8px 11px;margin-top:2px;}
+  .hookrow{grid-column:1 / -1;display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px;font-size:12px;color:var(--body);background:var(--bg-soft);border-radius:8px;padding:8px 11px;margin-top:2px;}
   .hookrow b{color:var(--blue);}
+  .cbtns{display:inline-flex;gap:6px;flex-wrap:wrap;margin-left:auto;}
+  .cbtn{font-size:11px;font-weight:700;color:var(--blue);background:#fff;border:1px solid #cfe0fd;border-radius:7px;padding:4px 9px;text-decoration:none;white-space:nowrap;}
+  .cbtn:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+  /* 기업 조회 */
+  .search{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+  .search input{flex:1;min-width:240px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);}
+  .search input:focus{outline:none;border-color:var(--blue);}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px;}
+  .chips button{font-family:inherit;border:1px solid var(--line);background:#fff;color:var(--body);font-size:12.5px;font-weight:700;padding:6px 12px;border-radius:999px;cursor:pointer;}
+  .chips button:hover{border-color:var(--blue);color:var(--blue);}
+  .brief{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 4px 18px rgba(0,0,0,.05);}
+  .bh{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:20px 22px;border-bottom:1px solid var(--line);flex-wrap:wrap;background:var(--bg-soft);}
+  .bname{font-size:22px;font-weight:800;color:var(--ink);} .bname small{font-size:13px;font-weight:600;color:var(--muted);margin-left:8px;}
+  .bscore{text-align:right;display:flex;align-items:baseline;gap:10px;}
+  .bscore .n{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1;}
+  .bscore .gr{font-size:12px;font-weight:800;border-radius:999px;padding:5px 11px;}
+  .gr.a{color:var(--green);background:#eafaf2;} .gr.b{color:var(--blue);background:var(--blue-weak);} .gr.c{color:var(--muted);background:#eef1f5;}
+  .bbody{padding:20px 22px;}
+  .bsec{font-size:12px;font-weight:800;color:var(--muted);margin:4px 0 9px;}
+  .btable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:18px;}
+  .btable th,.btable td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:middle;}
+  .btable th{background:var(--bg-soft);font-weight:700;color:var(--muted);font-size:11.5px;}
+  .btable td.w{width:64px;text-align:center;font-weight:800;color:var(--ink);}
+  .btable td.d{width:70px;text-align:center;font-weight:800;}
+  .btable tr.on td.d{color:var(--blue);} .btable tr.off td.d{color:var(--muted);}
+  .btable tr.on td{background:#f5f9ff;}
+  .brec{background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:12px;padding:15px 17px;font-size:13.5px;color:var(--ink);line-height:1.65;margin-bottom:16px;}
+  .brec b{color:var(--blue);}
+  .bcontact{display:flex;gap:8px;flex-wrap:wrap;}
+  .bcontact a{font-size:13px;font-weight:800;text-decoration:none;border-radius:11px;padding:11px 17px;border:1px solid var(--line);color:var(--ink);background:#fff;}
+  .bcontact a.li{background:var(--blue);color:#fff;border-color:var(--blue);} .bcontact a.li:hover{background:#1b64da;}
+  .bcontact a:hover{border-color:var(--blue);color:var(--blue);}
+  .bcontact a.li:hover{color:#fff;}
+  .empty{border:1px dashed var(--line);border-radius:14px;padding:34px;text-align:center;color:var(--muted);font-size:14px;}
   .note{font-size:12px;color:var(--muted);line-height:1.6;margin-top:16px;}
   .note b{color:var(--ink);}
-  .tag{display:inline-block;font-size:11px;font-weight:700;color:var(--red);background:#fdeceD;border:1px solid #f7c6c6;border-radius:999px;padding:3px 10px;margin-left:8px;vertical-align:middle;}
+  .tag{display:inline-block;font-size:11px;font-weight:700;color:var(--red);background:#fdeced;border:1px solid #f7c6c6;border-radius:999px;padding:3px 10px;margin-left:8px;vertical-align:middle;}
   @media(max-width:760px){
     .rhead{display:none;}
     .rrow{grid-template-columns:34px 1fr;gap:7px 12px;}
@@ -61,28 +101,51 @@
 <div class="wrap">
   <a class="back" href="bdr.html">← BDR 플레이북으로</a>
   <div class="eyebrow">TOSS ADS · BDR · OUTBOUND DISCOVERY TOOL</div>
-  <h1>아웃바운드 발굴 자동 리포트 — "오늘 연락할 회사"</h1>
-  <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b>·신제품 등)을 모아 <b>① 스코어링 엔진</b>으로 점수를 매기고, 우선순위순으로 <b>오늘 연락할 회사</b>를 추천합니다. <b>실제로 점수가 계산·정렬되는 동작 툴</b>입니다 — 아래 버튼으로 하루치 리포트를 새로 생성해 보세요.</p>
+  <h1>아웃바운드 발굴 자동 리포트 · 기업 조회</h1>
+  <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b> 등)을 <b>① 스코어링 엔진</b>으로 점수화해 <b>오늘 연락할 회사</b>를 추천하고, <b>기업명을 입력하면 스코어링 기준별 요약을 실시간 조회</b>해 바로 컨택까지 — <b>검색 → 파악 → 컨택</b>을 한 화면에서. (스코어링·조회 엔진은 실제 동작, 데이터는 예시)</p>
 
-  <div class="bar">
-    <button class="btn" id="genBtn">🔄 오늘 리포트 생성</button>
-    <button class="btn ghost" id="sortBtn">정렬: 점수순 ▾</button>
-    <div class="stat" id="stat"></div>
+  <div class="tabs">
+    <button class="tab active" data-tab="report">📋 오늘의 발굴 리포트</button>
+    <button class="tab" data-tab="lookup">🔎 기업 조회 · 컨택</button>
   </div>
 
-  <div class="report">
-    <div class="rhd">
-      <div class="rt">📋 오늘의 발굴 리포트 <span class="tag">예시 데이터</span></div>
-      <div class="rd" id="genTime">—</div>
+  <!-- 탭 1: 오늘의 발굴 리포트 -->
+  <div class="panel" id="panel-report">
+    <div class="bar">
+      <button class="btn ghost" id="prevBtn">◀ 이전 날</button>
+      <div class="dlabel" id="dateLabel">—</div>
+      <button class="btn ghost" id="nextBtn">다음 날 ▶</button>
+      <button class="btn ghost" id="sortBtn">정렬: 점수순 ▾</button>
+      <button class="btn" id="dlBtn">⬇ 엑셀 다운로드</button>
+      <div class="stat" id="stat"></div>
     </div>
-    <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
-    <div id="rows"></div>
+    <div class="report">
+      <div class="rhd">
+        <div class="rt">📋 오늘의 발굴 리포트 <span class="tag">예시 데이터</span></div>
+        <div class="rd" id="genTime">—</div>
+      </div>
+      <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
+      <div id="rows"></div>
+    </div>
+    <p class="note">
+      <b>리포트는 날짜 기준으로 고정</b>됩니다 — 같은 날엔 몇 번을 봐도 같은 리스트이고, '이전 날 / 다음 날'로 날짜별 시그널 변화를 봅니다(클릭마다 랜덤 X). 각 행의 <b>🔗 LinkedIn 담당자 · 🔍 회사 검색</b> 버튼으로 바로 컨택 포인트를 찾고, <b>⬇ 엑셀 다운로드</b>로 컨택 링크까지 포함한 당일 리스트를 내려받습니다.<br>
+      <b>실데이터 연동</b> — 뉴스·보도자료·LinkedIn·Meta/Google 광고 라이브러리를 매일 수집해 시그널을 채우면 그대로 실무 리포트가 됩니다(수집은 백엔드 필요). 회사명·점수는 로직 시연용 <b>예시(가상)</b>이며, 컨택 버튼은 회사명 기반 실시간 검색으로 연결됩니다.
+    </p>
   </div>
 
-  <p class="note">
-    <b>어떻게 동작하나</b> — 각 회사에 감지된 시그널의 가중치를 합산(최대 100)해 점수를 내고, <b>즉시(70+) · 이번 주(40–69) · 너처링(&lt;40)</b>으로 분배합니다. 등급에 따라 추천 채널(LinkedIn·이메일·콜)과 시그널 기반 아웃리치 훅을 제시합니다. '오늘 리포트 생성'을 누르면 시그널이 갱신되어 순위가 실제로 재계산됩니다.<br>
-    <b>실데이터 연동</b> — 뉴스·보도자료·LinkedIn·Meta/Google 광고 라이브러리를 매일 수집해 시그널을 채우면 그대로 실무 리포트가 됩니다(수집·크롤링은 백엔드 필요). 여기 회사명·점수는 <b>로직 시연용 예시(가상)</b>이며 실제 기업 데이터가 아닙니다.
-  </p>
+  <!-- 탭 2: 기업 조회 · 컨택 -->
+  <div class="panel" id="panel-lookup" style="display:none;">
+    <div class="search">
+      <input id="lookupInput" placeholder="연락할 기업명을 입력하세요 (예: 글로우뷰, 또는 아무 회사명)" autocomplete="off" />
+      <button class="btn" id="lookupBtn">조회</button>
+    </div>
+    <div class="chips" id="lookupChips"></div>
+    <div id="briefResult"></div>
+    <p class="note">
+      <b>어떻게 쓰나</b> — 연락하려는 기업명을 입력하면 <b>스코어링 8개 기준별로 감지 여부·가중치·출처를 요약</b>해 점수·등급·추천 채널·아웃리치 훅을 한눈에 보여줍니다. 내용을 익힌 뒤 바로 <b>LinkedIn 담당자 검색 · 회사 검색 · 콜드메일 초안</b>으로 컨택하세요.<br>
+      등록된 예시 기업은 리포트와 동일한 프로필을, 그 외 기업명은 <b>이름 기반 결정론 프로필</b>(실데이터 연동 시 실제 시그널로 대체)을 보여줍니다.
+    </p>
+  </div>
 </div>
 
 <script>
@@ -103,7 +166,6 @@
     {n:'홈스타일', i:'리빙·커머스'}, {n:'오토핀', i:'모빌리티'},     {n:'스테이원', i:'여행·숙박'},
     {n:'북하우스', i:'교육·콘텐츠'}, {n:'뷰티랩', i:'뷰티·커머스'},   {n:'스냅페이', i:'핀테크·결제'}
   ];
-  // 초기 로드용 고정 데이터 (현실적 분포 — 즉시 2 / 이번 주 4 / 너처링 6)
   var INITIAL = [
     {n:'글로우뷰', i:'뷰티 D2C',      s:['invest','season','adsurge','launch']},
     {n:'스테이원', i:'여행·숙박',     s:['season','invest','adsurge','hiring']},
@@ -118,46 +180,50 @@
     {n:'델리박스', i:'식품·배달',     s:['comp','fit']},
     {n:'핏라이프', i:'헬스·피트니스', s:['fit']}
   ];
-  var curData = [], sortMode = 'score';
+
+  var offset = 0, sortMode = 'score', curData = [], lastRows = [];
 
   function score(sigs){ return Math.min(100, sigs.reduce(function(a,k){ return a + SIG[k].w; }, 0)); }
-  function loadInitial(){
-    curData = INITIAL.map(function(it, i){
-      return {co:{n:it.n,i:it.i}, sigs:it.s, score:score(it.s), tie:(INITIAL.length-i)/100};
-    });
-    render();
-    document.getElementById('genTime').textContent = '예시 리포트 · 점수순 (버튼으로 새 리포트 생성)';
-  }
-
-  function pick(arr, k){ var a=arr.slice(), out=[]; for(var i=0;i<k && a.length;i++){ out.push(a.splice(Math.floor(Math.random()*a.length),1)[0]); } return out; }
   function grade(s){ if(s>=70) return {g:'즉시 · A', c:'a', col:'var(--green)', ch:'LinkedIn + 콜'};
                      if(s>=40) return {g:'이번 주 · B', c:'b', col:'var(--blue)', ch:'이메일 → 콜'};
                      return {g:'너처링 · C', c:'c', col:'var(--muted)', ch:'분기 리터치'}; }
+  function topSig(sigs){ return sigs.slice().sort(function(x,y){ return SIG[y].w-SIG[x].w; })[0]; }
 
-  function generate(){
-    curData = BASE.map(function(co){
-      var n = 2 + Math.floor(Math.random()*4);         // 2~5개 시그널 (현실적 분포)
-      var sigs = pick(KEYS, n);
-      var score = Math.min(100, sigs.reduce(function(a,k){ return a + SIG[k].w; }, 0));
-      // 동점 해소용 보정 (최신성/도달가능성)
-      var tie = Math.random();
-      return {co:co, sigs:sigs, score:score, tie:tie};
-    });
-    render();
-    var d = new Date();
-    var hh = ('0'+d.getHours()).slice(-2), mm = ('0'+d.getMinutes()).slice(-2);
-    document.getElementById('genTime').textContent = '생성 ' + (d.getMonth()+1) + '/' + d.getDate() + ' ' + hh + ':' + mm + ' · 점수순';
+  // 날짜/이름 기준 결정론적 시드 — 같은 입력은 항상 같은 결과
+  function seedFromStr(s){ var h=2166136261; for(var i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619);} return h>>>0; }
+  function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+  function pickRng(rng, n){ var pool=KEYS.slice(), out=[]; for(var i=0;i<n && pool.length;i++){ out.push(pool.splice(Math.floor(rng()*pool.length),1)[0]); } return out; }
+  function dateStr(off){ var d=new Date(); d.setDate(d.getDate()+off); return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2); }
+  function dateLabel(off){ return dateStr(off) + (off===0?' · 오늘':off===-1?' · 어제':''); }
+
+  function liUrl(n){ return 'https://www.linkedin.com/search/results/people/?keywords=' + encodeURIComponent(n + ' 마케팅'); }
+  function webUrl(n,i){ return 'https://www.google.com/search?q=' + encodeURIComponent(n + ' ' + (i||'') + ' 마케팅 담당자'); }
+  function mailUrl(n, hook){
+    var body = '안녕하세요, ' + n + ' 마케팅 담당자님.\n\n토스 Ads BDR 윤지욱입니다. ' + hook + '.\n같은 업종 광고주들이 토스에서 성과를 내고 있어, 15분 통화로 예상 성과를 공유드리고 싶습니다.\n편하신 시간 알려주시면 맞춰 연락드리겠습니다. 감사합니다.';
+    return 'mailto:?subject=' + encodeURIComponent('[토스 Ads] ' + n + ' 마케팅 제안 — 15분 통화 요청') + '&body=' + encodeURIComponent(body);
   }
 
+  // ───── 탭 1: 발굴 리포트 ─────
+  function buildReport(off){
+    if(off===0){
+      return INITIAL.map(function(it,i){ return {co:{n:it.n,i:it.i}, sigs:it.s, score:score(it.s), tie:(INITIAL.length-i)/100}; });
+    }
+    var rng = mulberry32(seedFromStr('toss-bdr-'+dateStr(off)));
+    return BASE.map(function(co){
+      var n = 2 + Math.floor(rng()*4);
+      var sigs = pickRng(rng, n);
+      return {co:co, sigs:sigs, score:score(sigs), tie:rng()};
+    });
+  }
   function render(){
     var rows = curData.slice();
     if(sortMode==='score') rows.sort(function(a,b){ return (b.score-a.score) || (b.tie-a.tie); });
     else rows.sort(function(a,b){ return a.co.n.localeCompare(b.co.n,'ko'); });
-
+    lastRows = rows;
     var a=0,b=0,c=0;
     var html = rows.map(function(r, idx){
       var g = grade(r.score); if(g.c==='a')a++; else if(g.c==='b')b++; else c++;
-      var top = r.sigs.slice().sort(function(x,y){ return SIG[y].w-SIG[x].w; })[0];
+      var top = topSig(r.sigs);
       var chips = r.sigs.map(function(k){ return '<span>'+SIG[k].l+'</span>'; }).join('');
       var srcs = r.sigs.map(function(k){ return SIG[k].src; }).filter(function(v,i,arr){ return arr.indexOf(v)===i; }).join(' · ');
       return '<div class="rrow">'+
@@ -166,21 +232,117 @@
         '<div class="rsig">'+chips+'<span class="src">'+srcs+'</span></div>'+
         '<div class="rsc" style="color:'+g.col+'">'+r.score+'</div>'+
         '<div class="rend"><span class="rgr '+g.c+'">'+g.g+'</span><span class="rch">'+g.ch+'</span></div>'+
-        '<div class="hookrow">💬 추천 훅: <b>'+SIG[top].hook+'</b></div>'+
+        '<div class="hookrow"><span>💬 추천 훅: <b>'+SIG[top].hook+'</b></span>'+
+          '<span class="cbtns">'+
+            '<a class="cbtn" href="'+liUrl(r.co.n)+'" target="_blank" rel="noopener">🔗 LinkedIn 담당자</a>'+
+            '<a class="cbtn" href="'+webUrl(r.co.n,r.co.i)+'" target="_blank" rel="noopener">🔍 회사 검색</a>'+
+          '</span>'+
+        '</div>'+
       '</div>';
     }).join('');
     document.getElementById('rows').innerHTML = html;
     document.getElementById('stat').innerHTML =
       '<span class="s-t">총 '+rows.length+'</span><span class="s-a">즉시 '+a+'</span><span class="s-b">이번 주 '+b+'</span><span class="s-c">너처링 '+c+'</span>';
+    document.getElementById('genTime').textContent = dateStr(offset) + ' 리포트 · 점수순 (하루 동안 고정)';
+  }
+  function show(){
+    curData = buildReport(offset);
+    document.getElementById('dateLabel').textContent = dateLabel(offset);
+    document.getElementById('nextBtn').disabled = (offset >= 0);
+    render();
+  }
+  function csvCell(v){ v = String(v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
+  function download(){
+    var head = ['순위','회사','업종','감지 시그널','점수','등급','추천 채널','추천 훅','출처','LinkedIn 검색','웹 검색'];
+    var lines = [head.map(csvCell).join(',')];
+    lastRows.forEach(function(r, idx){
+      var g = grade(r.score), top = topSig(r.sigs);
+      var sigNames = r.sigs.map(function(k){ return SIG[k].l; }).join(' / ');
+      var srcs = r.sigs.map(function(k){ return SIG[k].src; }).filter(function(v,i,arr){ return arr.indexOf(v)===i; }).join(' · ');
+      lines.push([idx+1, r.co.n, r.co.i, sigNames, r.score, g.g.replace(' · ',' '), g.ch, SIG[top].hook, srcs, liUrl(r.co.n), webUrl(r.co.n,r.co.i)].map(csvCell).join(','));
+    });
+    var blob = new Blob(['﻿'+lines.join('\r\n')], {type:'text/csv;charset=utf-8;'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '발굴리포트_' + dateStr(offset) + '.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
   }
 
-  document.getElementById('genBtn').addEventListener('click', generate);
+  // ───── 탭 2: 기업 조회 ─────
+  function profileFor(name){
+    name = (name||'').trim();
+    var known = INITIAL.filter(function(x){ return x.n===name; })[0];
+    if(known) return {name:name, ind:known.i, sigs:known.s};
+    var b = BASE.filter(function(x){ return x.n===name; })[0];
+    var rng = mulberry32(seedFromStr('lookup-'+name));
+    var n = 2 + Math.floor(rng()*4);
+    return {name:name, ind:(b?b.i:'미등록 업종'), sigs:pickRng(rng, n)};
+  }
+  function renderBrief(name){
+    name = (name||'').trim();
+    var box = document.getElementById('briefResult');
+    if(!name){ box.innerHTML = '<div class="empty">연락할 기업명을 입력하면 스코어링 기준별 요약과 컨택 버튼이 나옵니다.</div>'; return; }
+    var p = profileFor(name), s = score(p.sigs), g = grade(s), top = topSig(p.sigs);
+    var rowsHtml = KEYS.map(function(k){
+      var on = p.sigs.indexOf(k) >= 0;
+      return '<tr class="'+(on?'on':'off')+'"><td>'+SIG[k].l+'</td><td class="w">'+SIG[k].w+'</td><td class="d">'+(on?'✓ 감지':'—')+'</td><td>'+SIG[k].src+'</td></tr>';
+    }).join('');
+    box.innerHTML =
+      '<div class="brief">'+
+        '<div class="bh"><div class="bname">'+name+'<small>'+p.ind+'</small></div>'+
+          '<div class="bscore"><span class="n" style="color:'+g.col+'">'+s+'</span><span class="gr '+g.c+'">'+g.g+'</span></div></div>'+
+        '<div class="bbody">'+
+          '<div class="bsec">스코어링 기준별 요약 (감지 시그널 × 가중치)</div>'+
+          '<table class="btable"><tr><th>기준 (시그널)</th><th class="w">가중치</th><th class="d">감지</th><th>출처</th></tr>'+rowsHtml+'</table>'+
+          '<div class="brec">📌 추천 접근 — 채널 <b>'+g.ch+'</b> · 아웃리치 훅 <b>'+SIG[top].hook+'</b></div>'+
+          '<div class="bsec">바로 컨택</div>'+
+          '<div class="bcontact">'+
+            '<a class="li" href="'+liUrl(name)+'" target="_blank" rel="noopener">🔗 LinkedIn 담당자 검색</a>'+
+            '<a class="web" href="'+webUrl(name,p.ind)+'" target="_blank" rel="noopener">🔍 회사 검색</a>'+
+            '<a class="mail" href="'+mailUrl(name, SIG[top].hook)+'">✉ 콜드메일 초안</a>'+
+          '</div>'+
+        '</div>'+
+      '</div>';
+  }
+
+  // ───── 공통: 탭 전환 ─────
+  var tabs = document.querySelectorAll('.tab');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active');
+      var tab = t.getAttribute('data-tab');
+      document.getElementById('panel-report').style.display = (tab==='report')?'block':'none';
+      document.getElementById('panel-lookup').style.display = (tab==='lookup')?'block':'none';
+    });
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', function(){ offset--; show(); });
+  document.getElementById('nextBtn').addEventListener('click', function(){ if(offset<0){ offset++; show(); } });
   document.getElementById('sortBtn').addEventListener('click', function(){
     sortMode = (sortMode==='score') ? 'name' : 'score';
     this.textContent = '정렬: ' + (sortMode==='score' ? '점수순' : '회사명순') + ' ▾';
     render();
   });
-  loadInitial();
+  document.getElementById('dlBtn').addEventListener('click', download);
+
+  var inp = document.getElementById('lookupInput');
+  document.getElementById('lookupBtn').addEventListener('click', function(){ renderBrief(inp.value); });
+  inp.addEventListener('keydown', function(e){ if(e.key==='Enter') renderBrief(inp.value); });
+  (function(){
+    var box = document.getElementById('lookupChips');
+    box.innerHTML = '<span style="font-size:12px;color:var(--muted);font-weight:700;align-self:center;margin-right:2px;">예시:</span>';
+    ['글로우뷰','스테이원','클래스핏','트립메이트','페이링크'].forEach(function(n){
+      var b=document.createElement('button'); b.textContent=n;
+      b.addEventListener('click', function(){ inp.value=n; renderBrief(n); });
+      box.appendChild(b);
+    });
+  })();
+
+  show();
+  renderBrief('글로우뷰');
+  if(location.hash === '#lookup'){ document.querySelector('.tab[data-tab="lookup"]').click(); }
 </script>
 </body>
 </html>
