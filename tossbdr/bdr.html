@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · 토스 Ads BDR 플레이북 — 타깃 발굴 · 멀티채널 아웃리치 · 리드 스코어링</title>
+<meta name="description" content="토스 Ads BDR 직무에 맞춘 실전 자료 — 비즈니스 시그널로 타깃 광고주를 발굴·우선순위화하고 콜·이메일·LinkedIn으로 접근하는 멀티채널 아웃리치 플레이북, 리드 우선순위 스코어링(A/B/C 등급), 업종 레퍼런스 즉시 조회 대시보드(예산→예상성과 계산)." />
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;word-break:keep-all;overflow-wrap:break-word;}
+  .page-hero{padding:48px 0 8px;}
+  .page-hero h1{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.18;margin:10px 0 16px;}
+  .page-hero h1 .hl{color:var(--blue);}
+  .page-hero .lead{font-size:17px;color:var(--body);line-height:1.6;max-width:760px;}
+  section.blk{padding:40px 0;border-top:1px solid var(--line);}
+  section.blk:first-of-type{border-top:0;}
+  h2.sec{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 6px;}
+  .sec-sub{color:var(--body);font-size:15px;margin-bottom:22px;line-height:1.6;max-width:780px;}
+  .jd-tag{display:inline-block;background:var(--blue-weak);color:var(--blue);font-weight:700;
+          font-size:12.5px;padding:4px 10px;border-radius:999px;margin-bottom:12px;}
+
+  /* 콜 플로우 단계 */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:8px 0 26px;}
+  .flow .step{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:14px 12px;}
+  .flow .step .n{font-size:12px;font-weight:800;color:var(--blue);}
+  .flow .step .t{font-size:14px;font-weight:700;margin-top:4px;color:var(--ink);}
+  .flow .step .d{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45;}
+  @media(max-width:760px){.flow{grid-template-columns:repeat(2,1fr);}}
+
+  /* 스크립트 말풍선 */
+  .script{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:16px;}
+  .script .line{margin:10px 0;display:flex;gap:10px;align-items:flex-start;}
+  .script .who{flex:0 0 46px;font-size:12px;font-weight:800;padding-top:2px;}
+  .script .who.me{color:var(--blue);}
+  .script .who.lead{color:var(--muted);}
+  .script .msg{font-size:14.5px;line-height:1.6;color:var(--ink);}
+  .script .msg em{font-style:normal;color:var(--blue);font-weight:700;}
+  .script .note{font-size:12.5px;color:var(--muted);margin:2px 0 2px 56px;}
+
+  /* 표 공통 */
+  table.t{width:100%;border-collapse:collapse;margin:6px 0 10px;font-size:13.5px;}
+  table.t th,table.t td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;line-height:1.5;}
+  table.t th{background:var(--bg-soft);font-weight:700;color:var(--ink);white-space:nowrap;}
+  table.t td{color:var(--body);}
+  table.t .g{color:var(--green);font-weight:700;}
+  table.t .r{color:var(--red);font-weight:700;}
+  table.t .b{color:var(--blue);font-weight:700;}
+
+  /* 핸드오프 노트 */
+  .handoff{background:#0f1116;color:#e4e7ec;border-radius:16px;padding:20px 22px;font-size:13.5px;line-height:1.7;}
+  .handoff .h{color:#8b95a1;font-weight:700;font-size:12px;letter-spacing:.04em;margin-bottom:8px;}
+  .handoff b{color:#fff;}
+  .handoff .blue{color:#6ea8fe;font-weight:700;}
+
+  /* 스코어러 */
+  .scorer{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch;}
+  @media(max-width:760px){.scorer{grid-template-columns:1fr;}}
+  .scorer .inputs{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;}
+  .fld{margin-bottom:16px;}
+  .fld:last-child{margin-bottom:0;}
+  .fld label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .fld label .w{color:var(--muted);font-weight:600;font-size:12px;}
+  .fld select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
+              font-size:14px;font-family:inherit;color:var(--ink);background:#fff;}
+  .result{position:sticky;top:76px;border-radius:18px;padding:26px 22px;text-align:center;
+          border:1px solid var(--line);transition:.25s;display:flex;flex-direction:column;justify-content:center;}
+  .result .score{font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1;}
+  .result .grade{font-size:22px;font-weight:800;margin-top:8px;}
+  .result .glabel{font-size:13px;color:var(--muted);margin-top:2px;}
+  .result .bar{height:8px;border-radius:999px;background:var(--line);margin:16px 0 14px;overflow:hidden;}
+  .result .bar i{display:block;height:100%;border-radius:999px;transition:.3s;}
+  .result .action{font-size:13.5px;line-height:1.6;color:var(--ink);text-align:left;
+                  background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:6px;}
+  .result .action b{font-weight:800;}
+
+  ul.clean{list-style:none;padding:0;margin:0;}
+  ul.clean li{position:relative;padding-left:18px;margin:7px 0;font-size:14px;color:var(--body);line-height:1.55;}
+  ul.clean li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:2px;background:var(--blue);}
+  ul.clean li b{color:var(--ink);font-weight:700;}
+  .note-sm{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
+  table.matrix th,table.matrix td{text-align:center;white-space:nowrap;}
+  @media(max-width:620px){.rubric{grid-template-columns:1fr !important;}}
+  .hypo{background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--blue);
+        border-radius:12px;padding:18px 20px;font-size:14.5px;line-height:1.85;color:var(--ink);}
+  .hypo b.k{color:var(--blue);}
+  .ref-search input{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);}
+  .ref-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .ref-chips button{border:1px solid var(--line);background:#fff;color:var(--body);font-family:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;cursor:pointer;}
+  .ref-chips button:hover{border-color:var(--blue);color:var(--blue);}
+  .ref-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:16px;}
+  .ref-card .rh{font-size:19px;font-weight:800;color:var(--ink);}
+  .ref-card .rtag{display:inline-block;background:var(--blue-weak);color:var(--blue);font-weight:700;font-size:12px;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+  .ref-card .rsum{color:var(--body);font-size:14px;margin:8px 0 16px;line-height:1.55;}
+  .ref-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:6px;}
+  @media(max-width:640px){.ref-metrics{grid-template-columns:repeat(2,1fr);}}
+  .ref-metrics .m{background:var(--bg-soft);border-radius:12px;padding:12px;text-align:center;}
+  .ref-metrics .m .v{font-size:21px;font-weight:800;color:var(--blue);letter-spacing:-.02em;}
+  .ref-metrics .m .l{font-size:12px;color:var(--muted);margin-top:3px;}
+  .ref-sec{font-size:13px;font-weight:800;color:var(--ink);margin:16px 0 6px;}
+  .ref-prod{display:flex;flex-wrap:wrap;gap:8px;}
+  .ref-prod span{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--ink);font-weight:600;}
+  .ref-case{background:var(--bg-soft);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--body);line-height:1.55;}
+  .ref-empty{color:var(--muted);font-size:14px;padding:18px 2px;}
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:6px;}
+  @media(max-width:720px){.feat{grid-template-columns:repeat(2,1fr);}}
+  .fcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 15px;}
+  .fcard .fnum{width:26px;height:26px;border-radius:8px;background:var(--blue-weak);color:var(--blue);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;}
+  .fcard .ft{font-size:14.5px;font-weight:800;color:var(--ink);margin:9px 0 3px;line-height:1.3;}
+  .fcard .fd{font-size:12.5px;color:var(--muted);line-height:1.45;}
+  .hypo-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;}
+  @media(max-width:720px){.hypo-flow{grid-template-columns:1fr;}.hypo-flow .harrow{transform:rotate(90deg);justify-self:center;}}
+  .hstep{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:16px;}
+  .hstep .hlabel{display:inline-block;font-size:12px;font-weight:800;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 11px;margin-bottom:9px;}
+  .hstep .hlabel.red{color:var(--red);border-color:var(--red);}
+  .hstep .hlabel.blue{color:var(--blue);border-color:var(--blue);background:var(--blue-weak);}
+  .hstep .htext{font-size:13px;color:var(--body);line-height:1.6;}
+  .hstep .htext b{color:var(--ink);}
+  .harrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;font-size:20px;}
+  .hviz{margin-bottom:10px;}
+  .hrow{display:flex;align-items:center;gap:6px;margin:6px 0;flex-wrap:wrap;}
+  .htag{background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 9px;font-size:12px;font-weight:700;color:var(--ink);}
+  .harr2{color:var(--muted);font-weight:800;font-size:12px;}
+  .hval{font-size:12.5px;font-weight:700;color:var(--muted);}
+  .hval.blue{color:var(--blue);}
+  .funnel{display:flex;flex-direction:column;gap:5px;align-items:center;}
+  .fbar{border-radius:8px;padding:7px 8px;font-size:11.5px;font-weight:700;text-align:center;color:var(--ink);background:#fff;border:1px solid var(--line);}
+  .fbar.f1{width:100%;} .fbar.f2{width:74%;} .fbar.f3{width:52%;}
+  .fbar.leak{background:#fdecec;border-color:var(--red);color:var(--red);}
+  .hchips{display:flex;flex-direction:column;gap:5px;}
+  .hchips span{background:#fff;border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:12px;font-weight:700;color:var(--ink);text-align:center;}
+  .hchips span.blue{background:var(--blue-weak);border-color:var(--blue);color:var(--blue);}
+  .hdown{color:var(--muted);font-size:11px;text-align:center;line-height:1;}
+  .hcap{font-size:11.5px;color:var(--muted);line-height:1.5;}
+  .gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:720px){.gcards{grid-template-columns:1fr;}}
+  .gcard{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;border-top:4px solid var(--line);}
+  .gcard.g{border-top-color:var(--green);} .gcard.b{border-top-color:var(--blue);} .gcard.r{border-top-color:var(--red);}
+  .gcard .gh{font-size:16px;font-weight:800;margin-bottom:9px;}
+  .gcard.g .gh{color:var(--green);} .gcard.b .gh{color:var(--blue);} .gcard.r .gh{color:var(--red);}
+  .gcard .gcond{font-size:12.5px;color:var(--ink);line-height:1.5;background:var(--bg-soft);border-radius:8px;padding:9px 11px;margin-bottom:9px;min-height:54px;display:flex;flex-direction:column;justify-content:center;}
+  .gcard .gcond span{color:var(--muted);font-size:11.5px;}
+  .gcard .gact{font-size:12.5px;color:var(--body);line-height:1.55;}
+  .fallback{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin-top:4px;}
+  .fbh{font-size:13.5px;font-weight:800;color:var(--ink);margin-bottom:12px;}
+  .fsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  @media(max-width:720px){.fsteps{grid-template-columns:1fr 1fr;}}
+  .fs{background:var(--bg-soft);border-radius:10px;padding:11px 12px;font-size:12.5px;color:var(--body);line-height:1.5;display:flex;align-items:flex-start;gap:7px;}
+  .fs .fsn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:var(--blue);color:#fff;font-size:12px;font-weight:800;flex:0 0 20px;}
+  .indg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media(max-width:640px){.indg{grid-template-columns:1fr;}}
+  .icard{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;}
+  .icard .ih{font-size:14.5px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .icard .ibadge{font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-weak);border-radius:999px;padding:2px 9px;}
+  .icard .iwhy{font-size:12.5px;color:var(--body);margin:7px 0 10px;line-height:1.5;}
+  .icard .isig{display:flex;flex-wrap:wrap;gap:6px;}
+  .icard .isig span{font-size:11.5px;color:var(--ink);background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:5px 9px;}
+  .dcards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media(max-width:640px){.dcards{grid-template-columns:1fr;}}
+  .dcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .dcard .dct{font-size:13.5px;font-weight:800;color:var(--ink);margin-bottom:5px;}
+  .dcard .dcd{font-size:12.5px;color:var(--body);line-height:1.55;}
+  .asis-tobe{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;}
+  @media(max-width:720px){.asis-tobe{grid-template-columns:1fr;}.asis-tobe .atarrow{transform:rotate(90deg);justify-self:center;}}
+  .atcard{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff;}
+  .atcard.asis{border-top:4px solid var(--red);}
+  .atcard.tobe{border-top:4px solid var(--blue);background:var(--bg-soft);}
+  .athead{margin-bottom:6px;}
+  .atlabel{display:inline-block;font-size:12.5px;font-weight:800;border-radius:999px;padding:4px 12px;border:1px solid var(--line);background:#fff;}
+  .atlabel.red{color:var(--red);border-color:var(--red);}
+  .atlabel.blue{color:var(--blue);border-color:var(--blue);background:var(--blue-weak);}
+  .atbody p{font-size:13px;color:var(--body);line-height:1.65;margin-top:12px;}
+  .atbody p b{color:var(--ink);}
+  .atarrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;font-size:22px;}
+  .usehow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin:4px 0 18px;}
+  @media(max-width:720px){.usehow{grid-template-columns:1fr;}.usehow .uarrow{transform:rotate(90deg);justify-self:center;}}
+  .ustep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;font-size:13px;font-weight:700;color:var(--ink);line-height:1.5;display:flex;flex-direction:column;justify-content:center;}
+  .ustep small{font-weight:500;color:var(--muted);font-size:11.5px;}
+  .ustep .un{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:var(--blue);color:#fff;font-size:12px;font-weight:800;margin-right:7px;}
+  .uarrow{color:var(--muted);font-weight:800;font-size:18px;text-align:center;}
+  .pipe{display:grid;grid-template-columns:1.6fr auto 1fr;gap:12px;align-items:center;}
+  @media(max-width:720px){.pipe{grid-template-columns:1fr;}.pipe .parrow{transform:rotate(90deg);justify-self:center;}}
+  .psrcs{display:flex;flex-direction:column;gap:8px;}
+  .psrc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:13px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+  .psrc small{font-weight:500;color:var(--muted);font-size:11.5px;}
+  .parrow{color:var(--muted);font-weight:800;font-size:20px;text-align:center;}
+  .pdest{background:var(--blue-weak);border:1px solid var(--blue);border-radius:12px;padding:16px;font-size:14px;font-weight:800;color:var(--blue);text-align:center;line-height:1.5;}
+  .pdest small{display:block;font-weight:600;color:#1b64da;font-size:11.5px;margin-top:3px;}
+  .budgetin{display:flex;align-items:center;gap:8px;max-width:380px;}
+  .budgetin input{flex:1;padding:11px 13px;border:1px solid var(--line);border-radius:10px;font-size:14px;font-family:inherit;color:var(--ink);}
+  .budgetin span{font-size:13px;color:var(--muted);font-weight:600;white-space:nowrap;}
+  .perf{margin-top:12px;}
+  .perfhint{font-size:12.5px;color:var(--muted);padding:10px 2px;}
+  .perfnote{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
+  .minspend{font-style:normal;color:var(--blue);font-weight:700;font-size:11px;margin-left:5px;background:var(--blue-weak);border-radius:6px;padding:1px 6px;white-space:nowrap;}
+  .closing{text-align:center;padding:14px 0;}
+  .ctitle{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.38;color:var(--ink);}
+  .ctitle .hl{color:var(--blue);}
+  .cdesc{font-size:15px;color:var(--body);line-height:1.75;max-width:720px;margin:16px auto 0;}
+  .cdesc b{color:var(--ink);}
+  .crecap{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
+  .crecap span{font-size:13px;font-weight:700;color:var(--blue);background:var(--blue-weak);border-radius:999px;padding:7px 14px;}
+  .demo-panel{border:2px solid var(--blue);border-radius:18px;padding:24px 20px 20px;background:#fff;box-shadow:0 12px 34px rgba(49,130,246,.14);position:relative;margin:18px 0 6px;}
+  .demo-panel::before{content:'인터랙티브 · 직접 조작해보세요';position:absolute;top:-11px;left:18px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:999px;}
+  @media(max-width:720px){.demo-panel{padding:22px 14px 16px;}}
+  .idea{background:var(--blue-weak);border:1px solid #cfe0fd;border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin-top:14px;}
+  .idea .ideah{font-size:13.5px;font-weight:800;color:var(--blue);margin-bottom:7px;}
+  .idea .ideabody{font-size:13.5px;color:var(--ink);line-height:1.7;}
+  .idea .ideabody b{color:var(--blue);}
+  .plc{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  @media(max-width:640px){.plc{grid-template-columns:1fr;}}
+  .plcard{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;}
+  .plcard .plh{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:10px;}
+  .plcard .plchips{display:flex;flex-wrap:wrap;gap:6px;}
+  .plcard .plchips span{font-size:11.5px;color:var(--ink);background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:5px 9px;}
+  .plcard .plnote{font-size:11.5px;color:var(--muted);margin-top:9px;}
+  .whybox{background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin-bottom:14px;}
+  .whybox .whyh{font-size:14px;font-weight:800;color:var(--ink);margin-bottom:6px;}
+  .whybox .whytext{font-size:13px;color:var(--body);line-height:1.7;}
+  .whybox .whytext b{color:var(--ink);}
+  .prio{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch;margin-bottom:18px;}
+  @media(max-width:720px){.prio{grid-template-columns:1fr;}.prio .prioarrow{display:none;}}
+  .priocard{border:1px solid var(--line);border-radius:14px;padding:15px;background:#fff;border-top:4px solid var(--line);}
+  .priocard.p1{border-top-color:var(--blue);} .priocard.p2{border-top-color:#8bb4f0;} .priocard.p3{border-top-color:var(--muted);}
+  .priocard .prion{font-size:11px;font-weight:800;color:#fff;background:var(--blue);border-radius:999px;padding:2px 9px;display:inline-block;}
+  .priocard.p2 .prion{background:#8bb4f0;} .priocard.p3 .prion{background:var(--muted);}
+  .priocard .priot{font-size:15px;font-weight:800;color:var(--ink);margin:8px 0 5px;}
+  .priocard .priod{font-size:12px;color:var(--body);line-height:1.55;}
+  .prioarrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;font-size:18px;}
+  .hchips span.star{background:#fff7e6;border:1.5px solid #f0a500;color:#b45309;font-weight:800;box-shadow:0 3px 12px rgba(240,165,0,.22);}
+  .propose{display:grid;grid-template-columns:1fr auto 1.25fr auto 1fr;gap:10px;align-items:stretch;}
+  @media(max-width:760px){.propose{grid-template-columns:1fr;}.propose .parrow2{transform:rotate(90deg);justify-self:center;}}
+  .pcard{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;}
+  .pcard.main{border:2px solid var(--blue);background:var(--blue-weak);box-shadow:0 6px 20px rgba(49,130,246,.13);}
+  .pcard .plabel{display:inline-block;font-size:11.5px;font-weight:800;color:var(--ink);background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin-bottom:9px;}
+  .pcard .plabel.blue{color:#fff;background:var(--blue);border-color:var(--blue);}
+  .pcard .ptext{font-size:13px;color:var(--body);line-height:1.62;}
+  .pcard .ptext b{color:var(--ink);}
+  .pcard.main .ptext b{color:var(--blue);}
+  .parrow2{display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;font-size:18px;}
+  .insight{background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:14px;padding:18px 20px;margin-top:6px;}
+  .insight .insighth{font-size:15px;font-weight:800;color:var(--blue);margin-bottom:14px;}
+  .insightflow{display:grid;grid-template-columns:1fr auto 1fr auto 1.1fr auto 1fr;gap:8px;align-items:stretch;}
+  @media(max-width:860px){.insightflow{grid-template-columns:1fr;}.insightflow .iarrow{transform:rotate(90deg);justify-self:center;}}
+  .icell{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px;font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.5;text-align:center;}
+  .icell small{display:block;font-weight:500;color:var(--muted);font-size:11px;margin-top:4px;}
+  .icell.main{border:2px solid var(--blue);box-shadow:0 4px 14px rgba(49,130,246,.16);}
+  .icell b{color:var(--ink);} .icell.main b{color:var(--blue);}
+  .iarrow{display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:800;font-size:16px;}
+  .insightwhy{font-size:12.5px;color:var(--body);line-height:1.65;margin-top:14px;}
+  .insightwhy b{color:var(--ink);}
+  .pcard .pbig{font-size:16px;font-weight:800;color:var(--ink);line-height:1.35;margin-bottom:8px;}
+  .pcard .psmall{font-size:12px;color:var(--muted);line-height:1.5;}
+  .coupon{border:2px dashed var(--blue);border-radius:12px;padding:12px;text-align:center;background:#fff;margin-bottom:9px;}
+  .coupon .cv{font-size:26px;font-weight:800;color:var(--blue);letter-spacing:-.02em;}
+  .coupon .cl{font-size:12px;color:var(--body);font-weight:700;margin-top:2px;}
+  .pstat{display:flex;flex-direction:column;gap:8px;}
+  .pstat span{font-size:13.5px;font-weight:800;border-radius:10px;padding:11px 12px;text-align:center;}
+  .pstat .up{color:var(--green);background:#eafaf2;}
+  .pstat .down{color:var(--red);background:#fdecec;}
+  .pfbar{display:block;text-align:center;background:var(--blue);color:#fff;font-weight:800;font-size:15px;padding:14px 16px;text-decoration:none;letter-spacing:-.01em;}
+  .pfbar:hover{background:#1b64da;color:#fff;}
+  .pfbar .pfurl{font-weight:600;opacity:.92;font-size:13px;}
+  html{scroll-behavior:smooth;}
+  .demobtn{display:inline-block;margin-top:18px;background:var(--green);color:#fff;font-weight:800;font-size:15px;padding:13px 22px;border-radius:12px;text-decoration:none;box-shadow:0 4px 14px rgba(21,196,126,.3);}
+  .demobtn:hover{background:#0fb673;color:#fff;}
+  @media print{
+    html{scroll-behavior:auto;}
+    .pfbar{position:static;}
+    .fcard,.atcard,.icell,.gcard,.pcard,.dcard,.priocard,.plcard,.ref-card,.handoff,.fallback,.insight,.usehow,.propose,.prio,.gcards,.dcards,.indg,.feat,.whybox,.coupon,.pstat,.budgetin,.ref-metrics,.scorer .inputs,.scorer .result,.flow .step,.script,table.t{break-inside:avoid;page-break-inside:avoid;}
+    h2.sec,h3{break-after:avoid;page-break-after:avoid;}
+    section.blk{padding-top:22px;padding-bottom:22px;}
+  }
+</style>
+</head>
+<body>
+
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">JIUK<span class="dot">.</span>YOON</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="resume.html">이력서</a>
+      <a href="cases.html">상세 케이스</a>
+      <a href="bdr.html" class="active">BDR</a>
+      <a class="cta" href="#demo">▶ 대시보드 데모</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">TOSS ADS · BUSINESS DEVELOPMENT</div>
+    <h1>잠재 광고주를 먼저 발굴해 멀티채널로 접근하고,<br /><span class="hl">데이터로 검증·등급화해 AM에게 넘깁니다.</span></h1>
+    <p class="lead" style="margin-bottom:20px;">토스 Ads BDR 업무를 그대로 실행해본 자료입니다. 콜·이메일·LinkedIn으로 <b>잠재 광고주의 마케팅 의사결정자에게 먼저 접근</b>하고, 비즈니스 상황·마케팅 목표·매체 믹스·예산을 빠르게 파악해 <b>"AM이 바로 제안 들어갈 수 있는 리드만 깨끗하게"</b> 넘기는 것이 목표입니다.</p>
+    <div class="feat">
+      <div class="fcard"><div class="fnum">①</div><div class="ft">업종 레퍼런스 대시보드</div><div class="fd">아웃리치 전 리서치 · 콜 중 즉시 조회</div></div>
+      <div class="fcard"><div class="fnum">②</div><div class="ft">멀티채널 아웃리치 플레이북</div><div class="fd">콜·이메일·LinkedIn 컨택 → 퀄리파이</div></div>
+      <div class="fcard"><div class="fnum">③</div><div class="ft">타깃 발굴 · 우선순위 스코어링</div><div class="fd">비즈니스 시그널로 리드를 A·B·C로 분류</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="blk" style="padding-top:30px;padding-bottom:30px;">
+  <div class="wrap">
+    <div class="jd-tag">가설 · 이 포트폴리오가 풀려는 문제</div>
+    <h2 class="sec" style="font-size:23px;">콜드 아웃리치가 '무작위 발송'에 그치면, AM 미팅 전환에서 병목이 생긴다</h2>
+    <div class="asis-tobe">
+      <div class="atcard asis">
+        <div class="athead"><span class="atlabel red">As-Is · 현재</span></div>
+        <div class="atbody">
+          <div class="funnel">
+            <div class="fbar f1">타깃 리스트</div>
+            <div class="fbar f2">콜드 아웃리치 (일괄 발송)</div>
+            <div class="fbar f3 leak">AM 미팅 ↓ 누수</div>
+          </div>
+          <p>발굴 우선순위·접근 타이밍 없이 <b>동일한 메시지를 일괄 발송</b> → 응답률 저조. 컨택이 되어도 콜에서 <b>레퍼런스·광고상품 추천이 안 나옴</b> → 광고주는 <b>"그냥 영업 전화"</b>라고 느낌 → <b>AM 미팅 연결에 병목</b>.</p>
+        </div>
+      </div>
+      <div class="atarrow">→</div>
+      <div class="atcard tobe">
+        <div class="athead"><span class="atlabel blue">To-Be · 개선 (↓ ①·③ 활용)</span></div>
+        <div class="atbody">
+          <div class="hchips">
+            <span>비즈니스 시그널로 발굴·우선순위</span>
+            <div class="hdown">↓</div>
+            <span class="star">⭐ 업종 리서치 + 콜 중 레퍼런스·광고상품 실시간 조회</span>
+            <div class="hdown">↓</div>
+            <span class="blue">AM 미팅 매끄럽게 연결</span>
+          </div>
+          <p><b>비즈니스 시그널로 접근 타이밍을 포착</b>해 우선순위 높은 타깃부터 공략하고, 아웃리치 전·콜 중 <b>업종 성과 데이터와 레퍼런스·광고상품 추천</b>을 바로 제공 → 첫 컨택에서 가치를 제공 → <b>AM 미팅을 매끄럽게 연결</b>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 4. 업종 레퍼런스 대시보드 ───────── -->
+<section class="blk section-soft" id="demo" style="scroll-margin-top:72px;">
+  <div class="wrap">
+    <div class="jd-tag">가설의 해결책 · 직접 개발 (예시 데이터)</div>
+    <h2 class="sec">① 업종 레퍼런스 즉시 조회 대시보드</h2>
+    <p class="sec-sub">콜드 아웃리치 전에 <b>타깃 업종을 리서치</b>하고, 콜 중에는 광고주가 토스 상품을 몰라도 업종만 입력하면 <b>유사 업종이 어떤 지면에서 성과가 좋았는지 먼저 보여줘</b> — 첫 컨택에서 "왜 토스가 당신 업종에 맞는지"를 데이터로 바로 제시하고 AM 미팅까지 매끄럽게 잇습니다.</p>
+    <div class="usehow">
+      <div class="ustep"><span class="un">1</span>아웃리치 전·콜 중 업종 입력<br /><small>유사어·동의어도 매칭 (임플란트 → 치과)</small></div>
+      <div class="uarrow">→</div>
+      <div class="ustep"><span class="un">2</span>레퍼런스·광고상품·성공사례 즉시 표시</div>
+      <div class="uarrow">→</div>
+      <div class="ustep"><span class="un">3</span>광고주가 기준 잡고 AM 미팅 수락</div>
+    </div>
+    <div class="demo-panel">
+      <div class="ref-search">
+      <input id="refInput" placeholder="업종 검색 (예: 치과, 이커머스, 보험, 앱, 교육)" autocomplete="off" />
+      <div class="ref-chips" id="refChips"></div>
+    </div>
+    <p class="note-sm" style="margin-top:12px;color:var(--red);font-weight:600;">※ 아래 지표·타겟팅·성공사례는 <b>예시(가설) 데이터</b>이며 실제 토스 수치가 아닙니다. (광고상품명은 실제 토스 상품)</p>
+      <div id="refResult"></div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:800;margin:28px 0 10px;">입사 시 실데이터를 이렇게 넣습니다</h3>
+    <div class="pipe">
+      <div class="psrcs">
+        <div class="psrc">토스 레퍼런스 시트 <small>업종별 CTR·CPC</small></div>
+        <div class="psrc">광고상품 소개서 <small>상품·지면·과금</small></div>
+        <div class="psrc">토스애즈 인사이트 <small>업종별 성공사례</small></div>
+      </div>
+      <div class="parrow">→</div>
+      <div class="pdest">이 대시보드<small>업종별 카드로 즉시 조회</small></div>
+    </div>
+    <div class="dcards" style="margin-top:12px;">
+      <div class="dcard"><div class="dct">구조는 그대로, 수치만 교체</div><div class="dcd">이미 '업종 → 지표·상품·사례' 구조라, 토스 시트·소개서의 실수치를 매핑만 하면 바로 실무용입니다.</div></div>
+      <div class="dcard"><div class="dct">자동 갱신</div><div class="dcd">내부 레퍼런스 시트를 구글시트 API·CSV로 연동해 주기적으로 자동 업데이트합니다.</div></div>
+      <div class="dcard"><div class="dct">검색 고도화</div><div class="dcd">현재 동의어 사전 매칭 → 추후 임베딩 기반 시맨틱 검색으로 어떤 표현이든 업종 매칭.</div></div>
+      <div class="dcard"><div class="dct">AM 핸드오프 연동</div><div class="dcd">조회 결과를 핸드오프 노트에 자동 첨부 → AM이 레퍼런스까지 받아 바로 제안.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 추가 제안 (프로모션 가설) ───────── -->
+<section class="blk">
+  <div class="wrap">
+    <div class="jd-tag">추가 제안 · 가설</div>
+    <h2 class="sec">광고 집행 전환 허들을 낮추는 프로모션 제안</h2>
+    <p class="sec-sub">리드를 검증·어필해도 '첫 집행·2차 미팅'까지는 허들이 남습니다. 이를 낮출 프로모션을 가설로 제안합니다.</p>
+    <div class="propose">
+      <div class="pcard">
+        <div class="plabel">가설</div>
+        <div class="pbig">혜택이 명확하면<br />전환율 ↑</div>
+        <div class="psmall">1차 콜에서 '혜택'이 뚜렷하면 첫 집행·2차 미팅 전환이 오른다</div>
+      </div>
+      <div class="parrow2">→</div>
+      <div class="pcard main">
+        <div class="plabel blue">제안</div>
+        <div class="coupon"><div class="cv">15%</div><div class="cl">첫 달 광고비 페이백 이벤트 쿠폰</div></div>
+        <div class="psmall"><b>왜 페이백?</b> 정액 지원과 달리 <b>실제 집행액에 비례</b>해 돌려줘, 광고주의 <b>첫 광고 집행 부담</b>을 낮춥니다 → <b>집행 전환 허들↓</b>. <span style="display:inline-block">(첫 달 집행비의 15% 환급, 전략은 2차 AM)</span></div>
+      </div>
+      <div class="parrow2">→</div>
+      <div class="pcard">
+        <div class="plabel">기대 효과</div>
+        <div class="pstat"><span class="up">2차 미팅 수락률 ↑</span><span class="down">첫 집행 허들 ↓</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 1. 콜 퀄리파이 플레이북 ───────── -->
+<section class="blk">
+  <div class="wrap">
+    <div class="jd-tag">JD · 콜·이메일·LinkedIn 아웃리치 → 비즈니스 상황·목표·매체믹스·예산 파악</div>
+    <h2 class="sec">② 멀티채널 아웃리치 · 퀄리파이 플레이북</h2>
+    <p class="sec-sub">발굴한 타깃 광고주의 <b>마케팅 의사결정자</b>에게 콜·이메일·LinkedIn으로 접근해, 5단계로 <b>비즈니스 상황·마케팅 목표·현재 매체 믹스·예산</b>을 빠르게 파악하고 다음 단계를 정리합니다. 목표는 '설득'이 아니라 '검증' — 이 리드가 지금 AM에게 넘길 리드인지 가려내는 것.</p>
+
+    <div class="flow">
+      <div class="step"><div class="n">STEP 1</div><div class="t">오프닝 (15초)</div><div class="d">콜·이메일·LinkedIn 공통 — 신원·접근 이유·양해. 짧게.</div></div>
+      <div class="step"><div class="n">STEP 2</div><div class="t">비즈니스 상황</div><div class="d">지금 어떤 광고를? 현재 매체 믹스는?</div></div>
+      <div class="step"><div class="n">STEP 3</div><div class="t">핵심 진단</div><div class="d">마케팅 목표·예산·집행 시기 중심.</div></div>
+      <div class="step"><div class="n">STEP 4</div><div class="t">핏 체크</div><div class="d">타겟·업종이 토스 유저층과 맞는지.</div></div>
+      <div class="step"><div class="n">STEP 5</div><div class="t">넥스트스텝</div><div class="d">리드 품질 평가 → Salesforce 기록 → AM 인계.</div></div>
+    </div>
+
+    <div class="insight">
+      <div class="insighth">핵심 — 광고상품 이해도를 체크해 AM에게 넘긴다</div>
+      <div class="insightflow">
+        <div class="icell">BDR가 <b>광고주의 토스 광고상품 이해도</b> 체크<small>"계획 중인 지면 있으세요?"</small></div>
+        <div class="iarrow">→</div>
+        <div class="icell">이해도(상·중·하)를 <b>AM에게 전달</b></div>
+        <div class="iarrow">→</div>
+        <div class="icell main">AM이 <b>추천 지면 시각자료</b>를 미팅 자료로 준비</div>
+        <div class="iarrow">→</div>
+        <div class="icell">눈높이 맞춘 <b>이해도 높은 미팅</b> · 전환율↑</div>
+      </div>
+      <div class="insightwhy">지금은 1차에서 <b>이해도 체크가 없어</b> AM이 모든 미팅을 '백지'에서 시작합니다. 이해도만 미리 넘겨도 AM이 <b>준비 수준을 맞춰</b> 훨씬 매끄럽고 효율 높은 미팅을 만듭니다. (이해도 낮음 → 지면 소개 시각자료 동봉)</div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">콜에서 확인하는 것</h3>
+    <p class="note-sm" style="margin-bottom:10px;">리드 등급은 <b>① 집행 시기 · ② 예산 규모</b> 두 축으로 점수화하고(→ ③ 스코어링), 나머지는 AM이 바로 제안에 들어가도록 <b>함께 받아 둡니다</b>.</p>
+    <table class="t">
+      <tr><th style="width:160px">구분</th><th>핵심 질문</th><th style="width:240px">왜 받는가</th></tr>
+      <tr><td class="b">① 집행 시기 <small>(스코어)</small></td><td>"언제쯤 집행을 시작하고 싶으세요?"</td><td><b>가장 중요</b> — 지금 넘길 리드인지 판단</td></tr>
+      <tr><td class="b">② 예산 규모 <small>(스코어)</small></td><td>"월 광고 예산은 대략 어느 정도세요?"</td><td>우선순위 + AM 제안 규모</td></tr>
+      <tr><td>광고 목적</td><td>"이번 광고 목적은요? (앱설치·구매·인지 등)"</td><td>AM 미디어믹스·성공사례 추천 근거</td></tr>
+      <tr><td>현재 매체 믹스</td><td>"지금 어떤 매체에 집행 중이세요? (검색·메타·유튜브 등)"</td><td>토스 편입 여지·크로스셀 각도 파악</td></tr>
+      <tr><td>캠페인 일정·내용</td><td>"어떤 캠페인을 어느 기간에 계획하세요?"</td><td>AM 제안 타이밍·구성</td></tr>
+      <tr><td>성과 목표(KPI)</td><td>"목표 성과가 있으세요? (CPA·ROAS·전환수)"</td><td>AM이 달성 가능한 레퍼런스로 제안</td></tr>
+      <tr><td>토스 지면 이해도</td><td>"광고 집행 계획 중인 광고 지면이 있으실까요?"</td><td>AM 미팅 시각자료 준비 수준 결정</td></tr>
+    </table>
+
+    <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">등급별 다음 단계</h3>
+    <div class="gcards">
+      <div class="gcard g"><div class="gh">핫 (A)</div><div class="gcond">3개월 내 집행 <b>AND</b> 월 300만+<br><span>두 조건 모두 충족</span></div><div class="gact">리드 품질 평가 → AM에 <b>상담자료 전달</b> → 미팅 연결</div></div>
+      <div class="gcard b"><div class="gh">웜 (B)</div><div class="gcond">두 조건 중 <b>하나만</b> 충족</div><div class="gact">제안자료 발송 → 시기 임박 시 <b>재콜해 A 승급</b></div></div>
+      <div class="gcard r"><div class="gh">콜드 (C)</div><div class="gcond">두 조건 <b>모두 미충족</b></div><div class="gact">너처링 → <b>분기 리터치</b> (시그널 변화 시 재스코어링)</div></div>
+    </div>
+    <div class="fallback">
+      <div class="fbh">핫 리드인데 AM 미팅이 당장 어려우면 — 리드를 식히지 않는 4단계</div>
+      <div class="fsteps">
+        <div class="fs"><span class="fsn">1</span>24h 내 BDR가 먼저 유선으로 니즈·목표 재확인 (방치 차단)</div>
+        <div class="fs"><span class="fsn">2</span>업종 성공사례 + 제안 요약 즉시 발송</div>
+        <div class="fs"><span class="fsn">3</span>AM 가능한 빠른 슬롯 2~3개 제시 → 미팅 날짜 선확정</div>
+        <div class="fs"><span class="fsn">4</span>AM에게 '우선 핫리드' 플래그 → 대기열 최상단</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">AM 핸드오프 노트 (검증 리드 인계 템플릿)</h3>
+    <div class="handoff">
+      <div class="h">LEAD HANDOFF — AM 전달용</div>
+      <b>광고주</b> ○○○ (커머스/패션)<br />
+      <b>집행 시기</b> 다음 달 (3개월 이내) · <b>월 예산</b> 400~500만 → 증액 의향<br />
+      <b>광고 목적</b> 신규 고객 구매 전환 (성과형)<br />
+      <b>캠페인 일정·내용</b> 다음 달 신제품 런칭 2주 집중 + 상시 전환 캠페인<br />
+      <b>성과 목표(KPI)</b> 목표 CPA 2만원 이하 · ROAS 300%+ <span class="blue">[레퍼런스 매칭 가능]</span><br />
+      <b>토스 지면 이해도</b> 보통 — AM 미팅 시 지면 소개 시각자료 준비 권장<br />
+      <b>현재 매체 믹스</b> 검색·메타 중심 (유튜브 테스트 중) → 토스 신규 편입 여지<br />
+      <b>스코어</b> <span class="blue">90점 / A등급(핫)</span> — 시기 60 + 예산 30<br />
+      <b>추천</b> CPA 개선 커머스 성공사례 중심 제안 · 이번 주 미팅 (리드 선호: 화/목 오후)<br />
+      <b>Salesforce</b> 리드·활동·스코어 기록 완료 → AM 대기열 등록
+    </div>
+    <p class="note-sm">※ <b>비즈니스 상황·목적·일정·예산·성과목표·매체 믹스</b>를 미리 받아 넘겨야 AM이 그 자리에서 <b>맞는 성공사례와 미디어믹스</b>를 제안할 수 있습니다. 모든 접점은 <b>Salesforce에 기록</b>해 데이터로 분석·개선합니다. BDR의 산출물은 '리드 수'가 아니라 '이 노트의 질'입니다.</p>
+
+    <h3 style="font-size:16px;font-weight:800;margin:24px 0 8px;">제가 미리 숙지할 것 (BDR 사전 준비)</h3>
+    <div class="dcards">
+      <div class="dcard"><div class="dct">토스 광고 상품 전반</div><div class="dcd">지면·과금·타게팅 옵션 이해 → 콜에서 광고주 질문에 바로 답하고 핏 판단.</div></div>
+      <div class="dcard"><div class="dct">업종별 성공사례</div><div class="dcd">업종 레퍼런스 숙지 → "이 업종은 이런 성과" 언급으로 신뢰·미팅 전환↑.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 2. 리드 스코어링 (인터랙티브) ───────── -->
+<section class="blk section-soft">
+  <div class="wrap">
+    <div class="jd-tag">JD · 잠재력 높은 광고주 발굴 및 우선순위 결정</div>
+    <h2 class="sec">③ 리드 우선순위 스코어링 — 집행 시기 × 예산</h2>
+    <p class="sec-sub">핵심은 <b>① 집행 시기 + ② 월 예산(90점)</b>이고, 등급은 점수 컷이 아니라 <b>"3개월 내 집행 AND 월 300만+"</b>라는 조건으로 정합니다(그래야 "왜 핫인지"가 설명됨). 광고 계획 구체성·지속의지(③④, 10점)는 <b>동점을 가르는 정밀 조정</b>입니다. 아래에서 직접 바꿔보세요.</p>
+
+    <div class="whybox">
+      <div class="whyh">왜 데이터로 스코어링하는가</div>
+      <div class="whytext">감으로 "이 리드 괜찮네"는 사람마다 기준이 달라 우선순위가 흔들립니다. <b>같은 기준으로 점수화</b>해야 우선순위가 <b>기준 있게, 설명 가능하게</b> 나옵니다 — "왜 이 리드를 먼저 넘겼나"에 <b>숫자로 답</b>할 수 있어야 합니다.</div>
+    </div>
+    <div class="prio">
+      <div class="priocard p1"><span class="prion">1순위</span><div class="priot">집행 시기</div><div class="priod">지금 집행할 리드가 아니면 예산이 아무리 커도 AM 리소스를 못 씀. '지금 넘길 리드인가'를 가르는 결정적 축.</div></div>
+      <div class="prioarrow">›</div>
+      <div class="priocard p2"><span class="prion">2순위</span><div class="priot">월 예산</div><div class="priod">시기가 맞아도 예산이 받쳐줘야 AM 제안이 성립. 우선순위·제안 규모를 가름.</div></div>
+      <div class="prioarrow">·</div>
+      <div class="priocard p3"><span class="prion">제외</span><div class="priot">목적 · 타겟 등</div><div class="priod">AM의 전략 영역. BDR 단계의 '지금 넘길 리드인가' 판정엔 덜 결정적 → 점수화 않고 전달용으로만 수집.</div></div>
+    </div>
+
+    <div class="demo-panel">
+      <div class="scorer">
+      <div class="inputs">
+        <div class="fld">
+          <label>① 광고 집행 시기 <span class="w">· 핵심 · 최대 54점</span></label>
+          <select id="timeline">
+            <option value="54" selected>2주 이내 (즉시)</option>
+            <option value="46">1개월 이내</option>
+            <option value="38">3개월 이내</option>
+            <option value="24">6개월 이내</option>
+            <option value="12">1년 이내</option>
+            <option value="4">1년 이후 · 미정</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>② 월 집행 예산 <span class="w">· 핵심 · 최대 36점</span></label>
+          <select id="budget">
+            <option value="36">3,000만원 이상</option>
+            <option value="29">1,000만 ~ 3,000만원</option>
+            <option value="22" selected>500만 ~ 1,000만원</option>
+            <option value="15">300만 ~ 500만원</option>
+            <option value="8">100만 ~ 300만원</option>
+            <option value="3">100만원 미만</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>③ 광고 계획 구체성 <span class="w">· 정밀 조정 · 최대 6점</span></label>
+          <select id="plan">
+            <option value="6" selected>이미 고려 중인 광고상품 있음</option>
+            <option value="3">안내받고 싶다</option>
+            <option value="0">불명확</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>④ 지속 집행 의지 <span class="w">· 정밀 조정 · 최대 4점</span></label>
+          <select id="intent">
+            <option value="4" selected>지속 · 확대 의향</option>
+            <option value="2">단건 테스트</option>
+            <option value="0">불명</option>
+          </select>
+        </div>
+        <p class="note-sm" style="margin-top:4px;">①② = <b>핵심 90점 + 등급 결정</b>, ③④ = <b>정밀 조정 10점(동점 해소)</b>. 광고 목적·일정은 등급과 무관해 AM 전달용으로 별도 수집.</p>
+      </div>
+
+      <div class="result" id="resultCard">
+        <div class="score" id="scoreNum">0</div>
+        <div class="grade" id="gradeTxt">—</div>
+        <div class="glabel" id="gradeLabel">점수를 선택하세요</div>
+        <div class="bar"><i id="scoreBar" style="width:0%"></i></div>
+        <div class="action" id="actionTxt"></div>
+      </div>
+    </div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">스코어링 기준표 (핵심 90 + 정밀 10)</h3>
+    <div class="rubric" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
+      <table class="t">
+        <tr><th>① 집행 시기</th><th style="width:64px">점수</th></tr>
+        <tr><td>2주 이내 (즉시)</td><td class="b">54</td></tr>
+        <tr><td>1개월 이내</td><td class="b">46</td></tr>
+        <tr><td>3개월 이내</td><td class="b">38</td></tr>
+        <tr><td>6개월 이내</td><td class="b">24</td></tr>
+        <tr><td>1년 이내</td><td class="b">12</td></tr>
+        <tr><td>1년 이후 · 미정</td><td class="b">4</td></tr>
+      </table>
+      <table class="t">
+        <tr><th>② 월 예산</th><th style="width:64px">점수</th></tr>
+        <tr><td>3,000만원 이상</td><td class="b">36</td></tr>
+        <tr><td>1,000만 ~ 3,000만</td><td class="b">29</td></tr>
+        <tr><td>500만 ~ 1,000만</td><td class="b">22</td></tr>
+        <tr><td>300만 ~ 500만</td><td class="b">15</td></tr>
+        <tr><td>100만 ~ 300만</td><td class="b">8</td></tr>
+        <tr><td>100만원 미만</td><td class="b">3</td></tr>
+      </table>
+    </div>
+    <table class="t" style="margin-top:12px;">
+      <tr><th style="width:150px">정밀 조정 (동점 해소)</th><th>구간 · 점수</th></tr>
+      <tr><td>③ 광고 계획 구체성</td><td>이미 고려 중인 광고상품 있음 <span class="b">6</span> · 안내받고 싶다 <span class="b">3</span> · 불명확 <span class="b">0</span></td></tr>
+      <tr><td>④ 지속 집행 의지</td><td>지속·확대 <span class="b">4</span> · 단건 <span class="b">2</span> · 불명 <span class="b">0</span></td></tr>
+    </table>
+    <p class="note-sm" style="margin-top:8px;"><b>등급은 점수 컷이 아니라 조건으로 정함</b> — 핫 = <b>3개월 내 집행 AND 월 300만+</b>(둘 다) · 웜 = 하나만 · 콜드 = 둘 다 아님. 100점 점수는 <b>같은 등급 안에서 처리 순서</b>를 정하는 용도이고, 정밀 조정 10점이 동점을 가릅니다.</p>
+
+    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">등급 매트릭스 (집행 시기 × 예산, 핵심 점수)</h3>
+    <div style="overflow-x:auto;">
+    <table class="t matrix" style="font-size:12px;">
+      <tr><th>시기 ＼ 예산</th><th>3천+</th><th>1~3천</th><th>5백~1천</th><th>3백~5백</th><th>1백~3백</th><th>1백미만</th></tr>
+      <tr><td><b>2주 이내</b></td><td class="g">핫 90</td><td class="g">핫 83</td><td class="g">핫 76</td><td class="g">핫 69</td><td class="b">웜 62</td><td class="b">웜 57</td></tr>
+      <tr><td><b>1개월</b></td><td class="g">핫 82</td><td class="g">핫 75</td><td class="g">핫 68</td><td class="g">핫 61</td><td class="b">웜 54</td><td class="b">웜 49</td></tr>
+      <tr><td><b>3개월</b></td><td class="g">핫 74</td><td class="g">핫 67</td><td class="g">핫 60</td><td class="g">핫 53</td><td class="b">웜 46</td><td class="b">웜 41</td></tr>
+      <tr><td><b>6개월</b></td><td class="b">웜 60</td><td class="b">웜 53</td><td class="b">웜 46</td><td class="b">웜 39</td><td class="r">콜드 32</td><td class="r">콜드 27</td></tr>
+      <tr><td><b>1년</b></td><td class="b">웜 48</td><td class="b">웜 41</td><td class="b">웜 34</td><td class="b">웜 27</td><td class="r">콜드 20</td><td class="r">콜드 15</td></tr>
+      <tr><td><b>1년 이후</b></td><td class="b">웜 40</td><td class="b">웜 33</td><td class="b">웜 26</td><td class="b">웜 19</td><td class="r">콜드 12</td><td class="r">콜드 7</td></tr>
+    </table>
+    </div>
+    <p class="note-sm"><span style="color:var(--green);font-weight:700">초록=핫</span> · <span style="color:var(--blue);font-weight:700">파랑=웜</span> · <span style="color:var(--red);font-weight:700">빨강=콜드</span>. 핫은 <b>좌상단(3개월 내 × 월 300만+)</b> 블록뿐 — 시기가 6개월 이상 멀면 예산이 아무리 커도 핫이 아니라 '우선순위 높은 웜'입니다(시기 우선). 표 숫자는 핵심 점수(①+②), 실제 점수는 정밀 조정 ③④까지 반영.</p>
+
+    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">같은 등급 안에서의 우선순위 (상세 스코어링)</h3>
+    <div class="dcards">
+      <div class="dcard"><div class="dct">점수 = 처리 순서 큐</div><div class="dcd">같은 핫이라도 90점을 61점보다 먼저 인계. '오늘 누구부터'를 정함.</div></div>
+      <div class="dcard"><div class="dct">동점은 정밀 조정으로 해소</div><div class="dcd">핵심 점수가 겹쳐도 광고 계획 구체성·지속 의지<span style="display:inline-block">(③④, 10점)</span>로 대부분 갈림.</div></div>
+      <div class="dcard"><div class="dct">그래도 동점이면</div><div class="dcd">① 집행 시기 더 임박 → ② 예산 더 큰 리드 순 <span style="display:inline-block">(시기 우선).</span></div></div>
+      <div class="dcard"><div class="dct">일일 운영</div><div class="dcd">핫 → 웜 순, 등급 내 점수 내림차순. 핫은 당일, 웜은 48h 내 첫 콜.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── 맺음말 ───────── -->
+<section class="blk">
+  <div class="wrap">
+    <div class="closing">
+      <div class="ctitle">리드를 많이 넘기는 게 아니라,<br /><span class="hl">AM이 바로 제안할 수 있는 리드만 깨끗하게.</span></div>
+      <p class="cdesc">비즈니스 시그널로 <b>발굴·우선순위</b>를 정하고 → 콜·이메일·LinkedIn으로 <b>접근·검증</b>하고 → 업종 <b>레퍼런스로 첫 컨택에서 가치를 제공</b>해 AM 미팅까지 매끄럽게 잇습니다. BDR의 산출물은 '리드 수'가 아니라 <b>'검증의 질'</b>입니다.</p>
+      <div class="crecap"><span>① 업종 레퍼런스 대시보드</span><span>② 멀티채널 아웃리치 플레이북</span><span>③ 리드 우선순위 스코어링</span></div>
+      <a class="btn btn-primary" href="mailto:jiuk2038@gmail.com" style="margin-top:20px;">윤지욱 · jiuk2038@gmail.com</a>
+    </div>
+  </div>
+</section>
+
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 윤지욱 (JIUK.YOON) · 세일즈 · 리드 (BDR)</div>
+    <div><a href="https://github.com/jiuk-bot" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+  var F = ['timeline','budget','plan','intent'];
+  function calc(){
+    var v = {};
+    F.forEach(function(id){ v[id] = parseInt(document.getElementById(id).value,10); });
+    var s = v.timeline + v.budget + v.plan + v.intent;
+    var near = v.timeline >= 38;   // 3개월 이내
+    var decent = v.budget >= 15;   // 월 300만 이상
+    var grade, glabel, color, action;
+    if (near && decent){
+      grade='A등급 · 핫리드'; glabel='3개월 내 집행 + 월 300만+ (둘 다 충족)'; color='#15C47E';
+      action='<b>리드 품질 평가 → AM에 상담자료(핸드오프 노트) 전달</b> → 미팅 연결. AM 일정 불가 시 24h 내 유선 재확인 + 자료 선발송으로 온도 유지.';
+    } else if (near || decent){
+      grade='B등급 · 웜리드'; glabel='두 조건 중 하나만 충족'; color='#3182F6';
+      action='<b>제안자료 발송 + 리마인드.</b> 시기가 멀면 임박 시점에 재콜, 예산이 작으면 증액 여지를 확인해 A로 승급.';
+    } else {
+      grade='C등급 · 콜드리드'; glabel='두 조건 모두 미충족'; color='#F04452';
+      action='<b>너처링 + 분기 리터치.</b> 집행이 멀고 예산도 작아 지금 AM 리소스를 쓰기엔 이르다 — 시그널이 커지면 재스코어링.';
+    }
+    document.getElementById('scoreNum').textContent = s;
+    document.getElementById('scoreNum').style.color = color;
+    document.getElementById('gradeTxt').textContent = grade;
+    document.getElementById('gradeTxt').style.color = color;
+    document.getElementById('gradeLabel').textContent = glabel;
+    document.getElementById('actionTxt').innerHTML = action;
+    var bar = document.getElementById('scoreBar');
+    bar.style.width = s + '%'; bar.style.background = color;
+    document.getElementById('resultCard').style.background = color + '12';
+    document.getElementById('resultCard').style.borderColor = color + '55';
+  }
+  F.forEach(function(id){ document.getElementById(id).addEventListener('change', calc); });
+  calc();
+
+  // ── ④ 업종 레퍼런스 대시보드 (예시 데이터) ──
+  var REF = {
+    '치과·병의원': {alias:['치과','치아','임플란트','교정','스케일링','덴탈','병원','의원','병의원','의료','제약','클리닉','한의원','성형','피부과','안과','정형외과','타이거치과'],
+      tag:'제약·의료 · 리드 수집', kpi:'잠재고객 모으기 (상담·DB)', conv:'상담', calc:{cpc:350,ctr:0.026,cvr:0.030},
+      sum:'지역 기반 신규 환자 상담·DB 수집 중심. 고관여·객단가가 높아 리드 1건 가치가 큽니다.',
+      metrics:[['~2.6%','이미지형 CTR'],['~3.0%','상담 전환율'],['300~400원','예상 CPC'],['40~60대','주 타겟']],
+      prod:['디스플레이 — 잠재고객 모으기 (토스 양식)','머니 알림','행운 퀴즈'], target:'연령 · 지역 · 관심사',
+      cs:'제약·의료 업종 — 토스 인사이트 공개 사례 미게시 (실제 레퍼런스 연동 시 추가)'},
+    '교육': {alias:['교육','학원','인강','에듀','강의','자격증','과외','입시','유학','어학','코딩','평생교육'],
+      tag:'교육 · 리드/트래픽', kpi:'잠재고객 모으기 / 방문 유도', conv:'상담', calc:{cpc:350,ctr:0.029,cvr:0.026},
+      sum:'학부모·성인 학습자 대상 상담/수강 등록 유도. 시즌성이 강합니다.',
+      metrics:[['~2.9%','이미지형 CTR'],['~2.6%','상담 전환율'],['300~400원','예상 CPC'],['30~50대','주 타겟']],
+      prod:['디스플레이 — 잠재고객 모으기','행운 퀴즈','머니 알림'], target:'자녀보유 · 연령 · 관심사',
+      cs:'교육 업종 — 토스 인사이트 공개 사례 미게시 (실제 레퍼런스 연동 시 추가)'},
+    '금융·보험': {alias:['금융','보험','대출','투자','카드','증권','핀테크','저축','연금','자산','재테크','신용','캐피탈','페이'],
+      tag:'금융 · 리드/가입', kpi:'잠재고객 모으기 / 구매 유도', conv:'가입', calc:{cpc:280,ctr:0.024,cvr:0.034},
+      sum:'토스 유저 맥락과 잘 맞는 고관여 상품. 리드 단가 수용도가 높고 지속 집행 성향.',
+      metrics:[['~2.4%','이미지형 CTR'],['~3.4%','가입/상담률'],['250~350원','예상 CPC'],['토스 코어','유저 맥락']],
+      prod:['디스플레이 — 잠재고객 모으기','머니 알림','행운 퀴즈'], target:'소비수준 · 연령 · 관심사',
+      cs:'금융 업종 — 토스 인사이트 공개 사례 미게시 (실제 레퍼런스 연동 시 추가)'},
+    '이커머스·유통': {alias:['이커머스','커머스','쇼핑','쇼핑몰','유통','리테일','스토어','스마트스토어','구매','브랜드몰','d2c','디투씨','도서','택배','물류'],
+      tag:'유통·도서 · 구매 전환', kpi:'구매 유도 / 인지', conv:'구매', calc:{cpc:260,ctr:0.019,cvr:0.025},
+      sum:'구매·재구매 전환 중심. 카탈로그·토스쇼핑으로 쇼핑 동선 안에서 ROAS 최적화.',
+      metrics:[['~1.9%','이미지형 CTR'],['~2.5%','구매 전환율'],['~300%','예상 ROAS'],['전환추적','최적화']],
+      prod:['디스플레이 — 구매 유도 (카탈로그/토스쇼핑)','행운 퀴즈 · 두근두근 1등찍기','머니 알림'], target:'전환추적 · 관심사 · 소비수준',
+      cs:'<b>CJ대한통운</b> — 신규 서비스 체험형 캠페인 (유통) · 지면: 참여·체험형'},
+    '패션·뷰티': {alias:['패션','뷰티','화장품','의류','코스메틱','스포츠용품','액세서리','미용','스포츠'],
+      tag:'패션·뷰티·스포츠 · 구매', kpi:'구매 유도', conv:'구매', calc:{cpc:330,ctr:0.023,cvr:0.021},
+      sum:'뷰티/패션 결제 적극 유저가 많아 반응률이 높음. 리워드·라이브로 참여 유도.',
+      metrics:[['~2.3%','이미지형 CTR'],['~2.1%','구매 전환율'],['300~400원','예상 CPC'],['2030 여성','주 타겟']],
+      prod:['디스플레이 — 구매 유도','행운 퀴즈','라이브 마켓 · 숏폼'], target:'관심사 · 소비수준 · 연령',
+      cs:'<b>올리브영</b> — 미션형 협력광고로 관여 유저 참여 유도 · 지면: 미션형 리워드'},
+    '식품·외식': {alias:['식품','외식','음료','푸드','배달','먹거리','건강식품','주류','카페','음식','유제품'],
+      tag:'식품 · 인지/참여', kpi:'인지 / 구매 유도', conv:'전환', calc:{cpc:250,ctr:0.019,cvr:0.015},
+      sum:'넓은 도달과 참여형 리워드가 강점. 브랜드 각인·트래픽 집중에 적합.',
+      metrics:[['~1.9%','이미지형 CTR'],['참여형','강세'],['200~300원','예상 CPC'],['전 연령','도달']],
+      prod:['행운 퀴즈 · 두근두근 1등찍기','디스플레이 — 구매 유도','브랜드 커스텀'], target:'관심사 · 연령 · 소비수준',
+      cs:'<b>환타</b> — 참여형 24만 참여·브랜드콘 전량 소진 (참여형 리워드) &nbsp;/&nbsp; <b>한국야쿠르트</b> — 영상 광고 VTR +105.7% (영상)'},
+    '앱·게임': {alias:['앱','어플','게임','설치','애플리케이션','스타트업','구독','서비스','플랫폼','멤버십','미니앱','saas'],
+      tag:'앱서비스·게임 · 설치', kpi:'앱 설치 유도', conv:'설치', calc:{cpc:260,ctr:0.016,cvr:0.020},
+      sum:'앱 설치·실행·리텐션 연결에 강점. 미니앱·게임탭 등 탐색 동선에 반복 노출.',
+      metrics:[['~1.6%','이미지형 CTR'],['설치형','강점'],['200~300원','예상 CPC'],['20~40대','주 타겟']],
+      prod:['디스플레이 — 앱 설치 유도 (브릿지 페이지)','리워드 연계 (실행·리텐션)','행운 퀴즈'], target:'관심사 · 디바이스 · 연령',
+      cs:'앱·게임 업종 — 토스 인사이트 공개 사례 미게시 (실제 레퍼런스 연동 시 추가)'},
+    '여행': {alias:['여행','항공','호텔','숙박','투어','레저','액티비티','여행사','패키지'],
+      tag:'여행 · 리드/브랜딩', kpi:'잠재고객 모으기 / 인지', conv:'리드', calc:{cpc:290,ctr:0.024,cvr:0.022},
+      sum:'관심 카테고리 기반 혜택 비교 순간에 노출. 브랜딩·리드 모두 가능.',
+      metrics:[['~2.4%','이미지형 CTR'],['~2.2%','리드 전환율'],['250~350원','예상 CPC'],['관심 카테고리','타겟']],
+      prod:['디스플레이 — 잠재고객 모으기','라이브 마켓','행운 퀴즈'], target:'관심사 · 소비수준 · 연령',
+      cs:'<b>버진애틀랜틱</b> — 단독 지면·영상으로 프리미엄 브랜딩 · 지면: 단독 지면·비디오'}
+  };
+  var curKey=null, curBudget=0;
+  var MINSPEND=[['머니 알림','최소 90만원 (집행)'],['행운 퀴즈','최소 100만원 (12시간)'],['두근두근','최소 3,000만원 (1일)'],['라이브 마켓','최소 30만원 (방송 1회)'],['숏폼','최소 80만원 (1시간)'],['버튼 누르기','최소 180만원 (트래픽 구매)'],['브랜드 커스텀','최소 1억원'],['디스플레이','캠페인 10만원(전 기간)·세트 5만원/일']];
+  function won(n){ return (n||0).toLocaleString('ko-KR'); }
+  function refRender(key){
+    var r = REF[key], box = document.getElementById('refResult');
+    if(!r){ box.innerHTML='<div class="ref-empty">검색 결과가 없습니다. 유사어로도 검색돼요 (예: 임플란트→치과, 쇼핑몰→이커머스, 학원→교육). 또는 아래 버튼에서 선택하세요.</div>'; curKey=null; return; }
+    curKey=key;
+    var m = r.metrics.map(function(x){ return '<div class="m"><div class="v">'+x[0]+'</div><div class="l">'+x[1]+'</div></div>'; }).join('');
+    var p = r.prod.map(function(x){ var ms=''; for(var j=0;j<MINSPEND.length;j++){ if(x.indexOf(MINSPEND[j][0])>=0){ ms=' <em class="minspend">'+MINSPEND[j][1]+'</em>'; break; } } return '<span>'+x+ms+'</span>'; }).join('');
+    box.innerHTML =
+      '<div class="ref-card"><div class="rh">'+key+'<span class="rtag">'+r.tag+'</span></div>'+
+      '<div class="rsum">'+r.sum+'</div>'+
+      '<div class="ref-sec">주요 KPI (추천 캠페인 목표)</div><div class="ref-prod"><span>'+r.kpi+'</span></div>'+
+      '<div class="ref-sec">레퍼런스 지표 (예시·가설)</div><div class="ref-metrics">'+m+'</div>'+
+      '<div class="ref-sec">예산 입력 → 예상 성과 (예시 계산)</div>'+
+      '<div class="budgetin"><input id="refBudget" type="text" inputmode="numeric" placeholder="월 예산 입력 (예: 10,000,000)" value="'+(curBudget?curBudget.toLocaleString('ko-KR'):'')+'" oninput="perfUpdate()"><span>원 / 월</span></div>'+
+      '<div id="refPerf" class="perf"></div>'+
+      '<div class="ref-sec">추천 광고상품</div><div class="ref-prod">'+p+'</div>'+
+      '<div class="ref-sec">추천 타겟팅 (예시)</div><div class="ref-prod"><span>'+r.target+'</span></div>'+
+      '<div class="ref-sec">성공사례 (토스 애즈 인사이트)</div><div class="ref-case">'+r.cs+'</div></div>';
+    perfUpdate();
+  }
+  function perfUpdate(){
+    var el=document.getElementById('refBudget'), perf=document.getElementById('refPerf');
+    if(!el||!perf||!curKey||!REF[curKey]) return;
+    var b=parseInt((el.value||'').replace(/[^0-9]/g,''),10)||0; curBudget=b;
+    var fmt=b?b.toLocaleString('ko-KR'):''; if(el.value!==fmt){ el.value=fmt; }
+    var c=REF[curKey].calc, cv=REF[curKey].conv;
+    if(b<10000){ perf.innerHTML='<div class="perfhint">월 예산을 입력하면 예상 노출·클릭·'+cv+'·CPA가 즉시 계산됩니다.</div>'; return; }
+    var clicks=Math.round(b/c.cpc), imp=Math.round(clicks/c.ctr), conv=Math.round(clicks*c.cvr), cpa=conv>0?Math.round(b/conv):0;
+    perf.innerHTML='<div class="ref-metrics">'+
+      '<div class="m"><div class="v">'+won(imp)+'</div><div class="l">예상 노출</div></div>'+
+      '<div class="m"><div class="v">'+won(clicks)+'</div><div class="l">예상 클릭</div></div>'+
+      '<div class="m"><div class="v">'+won(conv)+'</div><div class="l">예상 '+cv+'</div></div>'+
+      '<div class="m"><div class="v">'+won(cpa)+'원</div><div class="l">예상 CPA</div></div>'+
+      '</div><div class="perfnote">※ 예시 단가<span style="display:inline-block">(CPC '+won(c.cpc)+'원)</span>·CTR·전환율 기반 추정. 실제 토스 레퍼런스 연동 시 정확 예상치로 교체.</div>';
+  }
+  function norm(s){ return (s||'').toLowerCase().replace(/\s+/g,''); }
+  function refSearch(q){
+    q = norm(q);
+    if(!q){ document.getElementById('refResult').innerHTML=''; curKey=null; return; }
+    var keys = Object.keys(REF);
+    for(var i=0;i<keys.length;i++){
+      var k=keys[i], r=REF[k];
+      if(norm(k).indexOf(q)>=0 || r.alias.some(function(a){ a=norm(a); return a.indexOf(q)>=0 || q.indexOf(a)>=0; })){ refRender(k); return; }
+    }
+    refRender(null);
+  }
+  (function(){
+    var chips = document.getElementById('refChips');
+    if(chips){ Object.keys(REF).forEach(function(k){
+      var b=document.createElement('button'); b.textContent=k;
+      b.addEventListener('click',function(){ document.getElementById('refInput').value=k; refRender(k); });
+      chips.appendChild(b);
+    }); }
+    var inp=document.getElementById('refInput');
+    if(inp){ inp.addEventListener('input',function(){ refSearch(this.value); }); inp.value='치과·병의원'; }
+    refRender('치과·병의원');
+  })();
+</script>
+
+</body>
+</html>
