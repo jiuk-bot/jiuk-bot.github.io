@@ -56,6 +56,7 @@
   .cbtn{font-size:11px;font-weight:700;color:var(--blue);background:#fff;border:1px solid #cfe0fd;border-radius:7px;padding:4px 9px;text-decoration:none;white-space:nowrap;}
   .cbtn:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
   .cbtn.more{color:var(--ink);border-color:var(--line);}
+  .cbtn.key{background:var(--blue);color:#fff;border-color:var(--blue);} .cbtn.key:hover{background:#1b64da;color:#fff;}
   /* 기업 조회 */
   .search{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
   .search input{flex:1;min-width:240px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);}
@@ -287,9 +288,10 @@
         '<div class="rend"><span class="rgr '+g.c+'">'+g.g+'</span><span class="rch">'+g.ch+'</span></div>'+
         '<div class="hookrow"><span>💬 추천 훅: <b>'+SIG[top].hook+'</b></span>'+
           '<span class="cbtns">'+
-            '<a class="cbtn" href="'+LINK.linkedin(n)+'" target="_blank" rel="noopener">🔗 LinkedIn 담당자</a>'+
+            '<a class="cbtn key" href="'+LINK.remember(n)+'" target="_blank" rel="noopener">💳 리멤버 담당자</a>'+
+            '<a class="cbtn" href="'+LINK.linkedin(n)+'" target="_blank" rel="noopener">🔗 LinkedIn</a>'+
             '<a class="cbtn" href="'+LINK.home(n)+'" target="_blank" rel="noopener">🏠 홈페이지</a>'+
-            '<a class="cbtn" href="'+LINK.inquiry(n)+'" target="_blank" rel="noopener">✉ 문의하기</a>'+
+            '<a class="cbtn" href="'+LINK.inquiry(n)+'" target="_blank" rel="noopener">✉ 문의</a>'+
             '<a class="cbtn more" href="?company='+enc(n)+'#lookup">📇 전체 채널 →</a>'+
           '</span>'+
         '</div>'+
@@ -429,8 +431,8 @@
           '</ul>'+
           '<div class="bsec">👤 담당자 컨택 포인트</div>'+
           '<div class="chgroup"><div class="chbtns">'+
-            ch(LINK.linkedin(name),'🔗 LinkedIn 담당자',true)+ch(LINK.home(name),(LINK.hasHome(name)?'🏠 홈페이지':'🏠 홈페이지 검색'))+ch(LINK.inquiry(name),'✉ 문의하기')+
-            ch(LINK.remember(name),'💳 리멤버')+ch(LINK.liCompany(name),'🏢 LinkedIn 회사')+ch(LINK.mail(name,'토스 Ads 제안'),'📧 콜드메일 초안')+
+            ch(LINK.remember(name),'💳 리멤버 커넥트 담당자',true)+ch(LINK.linkedin(name),'🔗 LinkedIn 담당자')+ch(LINK.home(name),(LINK.hasHome(name)?'🏠 홈페이지':'🏠 홈페이지 검색'))+
+            ch(LINK.inquiry(name),'✉ 문의하기')+ch(LINK.liCompany(name),'🏢 LinkedIn 회사')+ch(LINK.mail(name,'토스 Ads 제안'),'📧 콜드메일 초안')+
           '</div></div>'+
           '<div class="bsec">📈 마케팅 채용 · 조직 확인</div>'+
           '<div class="chgroup"><div class="chbtns">'+
