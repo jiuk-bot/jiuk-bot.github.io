@@ -1,0 +1,39 @@
+name: tossbdr discovery crawl
+
+# 매일 07:00 KST(22:00 UTC) 발굴 리포트 자동 수집 → data/*.json 커밋
+on:
+  schedule:
+    - cron: "0 22 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: tossbdr-discovery
+  cancel-in-progress: false
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: 발굴 리포트 수집 (뉴스·계절성·채용)
+        run: python tossbdr/scripts/collect_report.py
+
+      - name: 변경분 커밋 · 푸시
+        run: |
+          git config user.name  "tossbdr-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tossbdr/data
+          if git diff --staged --quiet; then
+            echo "변경 없음 — 커밋 생략"
+          else
+            git commit -m "data(tossbdr): 발굴 리포트 자동 갱신 $(TZ=Asia/Seoul date +%Y-%m-%d)"
+            git push
+          fi

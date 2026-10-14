@@ -1,0 +1,493 @@
+{
+  "generated": "2026-10-14 15:10 KST",
+  "date": "2026-10-14",
+  "mode": "live",
+  "sources_used": [
+    "Google News RSS",
+    "시즌 캘린더",
+    "원티드",
+    "사람인",
+    "잡코리아"
+  ],
+  "catalog": {
+    "invest": {
+      "w": 22,
+      "l": "투자 유치",
+      "src": "벤처투자 뉴스",
+      "hook": "최근 투자 유치 축하 + 성장 단계 마케팅 확장 각도"
+    },
+    "season": {
+      "w": 22,
+      "l": "성수기 진입",
+      "src": "시즌 캘린더",
+      "hook": "업종 성수기 타이밍에 맞춘 집행 확대 제안"
+    },
+    "admarket": {
+      "w": 16,
+      "l": "광고·캠페인 집행",
+      "src": "보도자료",
+      "hook": "광고·캠페인 확대 시점 — 신규 매체(토스) 테스트 제안"
+    },
+    "launch": {
+      "w": 14,
+      "l": "신제품 출시",
+      "src": "보도자료",
+      "hook": "신제품 출시 타이밍에 맞춘 토스 노출 제안"
+    },
+    "hiring": {
+      "w": 12,
+      "l": "마케팅 채용중",
+      "src": "원티드·사람인·잡코리아",
+      "hook": "마케팅 조직 확대 시점 — 신규 매체 테스트 제안"
+    },
+    "fit": {
+      "w": 8,
+      "l": "타깃 핏",
+      "src": "업종 분석",
+      "hook": "토스 2030·대중 유저 도달 강점을 업종 핏으로 어필"
+    }
+  },
+  "companies": [
+    {
+      "n": "에이블리",
+      "i": "패션 커머스",
+      "sigs": [
+        "launch",
+        "admarket",
+        "season",
+        "hiring",
+        "fit"
+      ],
+      "score": 72,
+      "sources": {
+        "launch": [
+          {
+            "t": "에이블리, 오프라인 예약 서비스 ‘에이블리 플레이스’ 론칭 - 패션포스트",
+            "u": "https://news.google.com/rss/articles/CBMiekFVX3lxTFBaTHg2bEVIazJVQ0E5d25aWGtrdHNHRFo1YURDalVYcy1abEtyd1Q0YlVsRkk3cDBMUHE1bUlLTHpmSzFIUDl5OXlBcmNXSjNHOFprTlV1N0JWVXFITGs5SldrTFRjc0VVQlRDMEswZ1pSZXJvRzN4Vmtn?oc=5"
+          },
+          {
+            "t": "에이블리 플레이스, ‘T1 IN THE SKY’ 티켓 패키지 단독 얼리버드 오픈 - 메트로신문",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1SNkdxX0JPUVlzeEJnZEFfX0lzTlJQTmZNN1ZVRDFlem9MMzlIbWVTRVRtWGRsUDZOSXh5OG1mVU5FOXhIUlZNb2Q4ZmQxbTNSUEhwZjZUcWNHOTNUNFpsTA?oc=5"
+          },
+          {
+            "t": "에이블리 PB '바이블리', 잘파세대 추구미 겨냥 색조 라인 출시 - 패션비즈",
+            "u": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE9pNFBfSjhQYlNKYW5rSEM4NVZhcy1vSzBhNUdJbkdXTUpvWHRWU1hfQi1lazd0cU9RaUJCMWpwVjdhSVRJZEMyTnJqX1JGTlF0?oc=5"
+          },
+          {
+            "t": "[2026 전남광주뷰티산업전] 에이블리컴퍼니, '아미노-이펙트' 기반 저자극 K-뷰티 제품 선보인다 - 전자신문",
+            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE10WjFIRGVHMF9SMVR6NmpGZ2V1ejJBUEhEd1pBZ0RjekRaWUNPX2dzeDM3aW5YUzR1S0VrbmpTSlAzRDBIdl8xMTFWYnNxQQ?oc=5"
+          }
+        ],
+        "admarket": [
+          {
+            "t": "에이블리, ‘2027 다이어리 얼리버드 프로모션’ 개최…400여 개 상품 선봬 - 메트로신문",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9TWTd5VnlvQWhWOVFZaVhsR0ZFb1BDQkhqcGpSbUdXZXo5bDNXR2NWRDBRTEN1Tk5lbkJXNWdWUTJwbDRwREg0TzJNZFRuRC1zWHEyTWM3aDJGdmIyaGtDaw?oc=5"
+          },
+          {
+            "t": "에이블리, '2027 다이어리 얼리버드 프로모션' 실시 - 전자신문",
+            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1uQjN0Z0hCTVJ3U1d5NkN0QTRpeVFwYXBHQ29naDVyQXhydzhXVDM0eG9CUXVtX1FMWXJ2UGVSSVRSc2M3MlE5clRJbkxPdw?oc=5"
+          },
+          {
+            "t": "에이블리, 다이어리 얼리버드 프로모션 개최…400여 개 상품 선봬 - 뉴스1",
+            "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE92bkxBY05HMy1La3VsRXhxU0JDTE9XS2lYZ1N6M243NWdmaHJxdXZTeUZqX0FqdVZmYnhfdDNXSnpTc0VjS28yMkRGZjNPVE03VVpSMGhnNE94MHZ4N0hn?oc=5"
+          },
+          {
+            "t": "[패션브리핑] 에이블리, '2027 다이어리 얼리버드 프로모션' 진행 외 - 서울파이낸스",
+            "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5tRlNENWVMcHV4NVNiN2JzSWd4MlBaUnFrdzdFanhJdEplc3ZSTW04N2tkZlVqUm9WZy1DOWlTa21hMjF2ekd4Ynd6N296OFZrQ0xmREtDdU1pN0pRd2JxRnZvVW54UjY0Z2c?oc=5"
+          }
+        ],
+        "season": [
+          {
+            "t": "패션 커머스 성수기 구간 (월 10)",
+            "u": ""
+          }
+        ],
+        "hiring": [
+          {
+            "t": "광고 사업 개발 매니저 (브랜드) · 에이블리코퍼레이션",
+            "u": "https://www.wanted.co.kr/wd/391031"
+          },
+          {
+            "t": "시니어 백엔드 엔지니어 (광고) · 에이블리코퍼레이션",
+            "u": "https://www.wanted.co.kr/wd/388711"
+          },
+          {
+            "t": "프로모션 마케터 (남성패션 앱) · 에이블리코퍼레이션",
+            "u": "https://www.wanted.co.kr/wd/388184"
+          }
+        ],
+        "fit": [
+          {
+            "t": "패션 커머스 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "마이리얼트립",
+      "i": "여행",
+      "sigs": [
+        "invest",
+        "launch",
+        "admarket",
+        "hiring",
+        "fit"
+      ],
+      "score": 72,
+      "sources": {
+        "invest": [
+          {
+            "t": "마이리얼트립, 크리에이트립 인수…방한 여행 시장 진출 - 한국경제",
+            "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE11TDJYU05GcTVLc0N4SjFYZzlGZWJiRkJxcXdCYkJIOGx2cjNya1p5azItOWJwWi0tUXV5TS1aeVZBZlJmaUNEWl9WTlozVmxabnNtZXdocF81dw?oc=5"
+          },
+          {
+            "t": "마이리얼트립, 크리에이트립 인수…연내 자회사 편입 - 머니투데이 - 머니투데이",
+            "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTFBGSjRQMzJ1VU5zS1BCSHgteHhvdmRtRUhKcGt6Q0dnajZ6Si1jcjVfVXBXck9ZQkxpdEV3VUlSWGJ1ZTh6YUctT0xwSkkxbFRBOUxIeU1jc1QzMVhMdUNiQ1BsS3NIUlR2R0HSAW9BVV95cUxPQUthRUx3QUN6Wm5wV25wWWk3dVJNVG5PRkJCaWZGamprRDh3TmIyeTlkMlJackpDWk1pOGdQc1M1YU5zSDhtd2taZ0E3UElFZ2VsV1V5MzhkMmVMQ0VGOXpEVm84NlBFOXVuZGViZFE?oc=5"
+          },
+          {
+            "t": "나가는 여행에 이어 들어오는 여행까지… 마이리얼트립, 크리에이트립 인수 - 플래텀(Platum)",
+            "u": "https://news.google.com/rss/articles/CBMiSEFVX3lxTFBUNnpVckx6Rzk0QTN3Z3dqa0Ffc0VWbDgxenF5VVFCS3FvdVZVaVh0R09tVG00RlNvNmlTeHpSRGFRaGRwZEtUNA?oc=5"
+          },
+          {
+            "t": "마이리얼트립, 크리에이트립 인수…인바운드 사업 본격화 - 서울경제",
+            "u": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE9hbjBVbkN2Y0hpNG5lem5xSm1PVm9GOEdDQzNYRHZtNlBXTDZoZnZrODlWQjYtdU5qVDZONlBmak1WMzd1NW5HdmY3Umd3MVBfTUHSAVNBVV95cUxQU2llZkQ4alBRV01qNTZUbEloelJfYzhWNzZMVGszVDZnckVBZVpaZ3VhdUoyY1FGOUtWNjBRSFllMUwyb25qeHg2aHEtb1U4MnVDUQ?oc=5"
+          }
+        ],
+        "launch": [
+          {
+            "t": "마이리얼트립, 자체 eSIM ‘마이심’ 출시…여행 예약과 연계 - 이투데이",
+            "u": "https://news.google.com/rss/articles/CBMickFVX3lxTE5DVG9wQUxFSERzYXhUN09sNE1XVTRqT0JBUF9iYWFwVkRfUS1sVVZkYnB2RlA2bHlXbkJSY0NyQ09sSlF0NW1ZYkpKSzU3V19HdEllZGsyUHJRcG1DUGVBZUFpX2E3ZEdrc2dWa3VNMEdBZw?oc=5"
+          },
+          {
+            "t": "\"여행 일정 맞춰 eSIM 추천”…마이리얼트립, ‘마이심’ 출시 - 지디넷코리아",
+            "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1WeTU4Sy1KMWZnR01xYnVpdXkwbGRoSVpqYmtLcEg2VHBkc3hfQXBrN1JCczNyYWtRSWs2TUVfaEVtOWlPdlZwdGRHUXJDZmNpbjRFSlF3?oc=5"
+          },
+          {
+            "t": "마이리얼트립, 자체 eSIM ‘마이심’ 공개…10월 한 달간 50% 할인 - 헤럴드경제",
+            "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9aeUU2STNxVHdYemNzaFdrRlhuNE51bVVPM245Qm4xUUVFZlozbm9SNGdIQXF6RDlac1ZlYlNlWW5wTmVZemkyYTR1VXVQZDNJdDZoYmJn?oc=5"
+          },
+          {
+            "t": "마이리얼트립, e심 브랜드 '마이심' 출시 - 머니투데이 - 머니투데이",
+            "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5IbnRxNXdsQy1vN1BiTG9kUVJHU1R5M01xbXpEeWtKTDhOdm1icEMwUEJfZWoweDRfVHRNSTYyRVNpUTVkbk9TSXI5Z19kVzFmeWtzR3BBRUF2NGFlemZCeWxrbjk3MmJsbmfSAW9BVV95cUxOZDhuM2lJLWMwRTdDWnVRaWNraTI0ZDc5RnRaQTZqVFZHZUt2LXN1eXNNajJJU2wtemk4SmJPdjN2TkFYS25LaDE2UUNfX0lscFRtM1NQZDhJek9Kc3BSNktleTY0S1RhWHc5ZG9ocXc?oc=5"
+          }
+        ],
+        "admarket": [
+          {
+            "t": "마이리얼트립, 日 규슈 사가현 숙소·렌터카 할인 프로모션 연다 - 디지털데일리",
+            "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBVVmY5blN5bC1jMHdORlJmcXJYdU5mNWxUT1dBaTJUdzFqcm9HbGJUOWprbG1OYktGai12MjNnSHZlVlN6cVJsVmNHS2NJdHF1TS1DaGZqRDJwTzdxZnFhaUhB?oc=5"
+          }
+        ],
+        "hiring": [
+          {
+            "t": "Growth실 Ad Sales & Account Manager · 마이리얼트립",
+            "u": "https://www.wanted.co.kr/wd/385041"
+          },
+          {
+            "t": "T&A실 글로벌 파트너 마케팅 매니저 · 마이리얼트립",
+            "u": "https://www.wanted.co.kr/wd/381548"
+          }
+        ],
+        "fit": [
+          {
+            "t": "여행 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "지그재그",
+      "i": "패션 커머스",
+      "sigs": [
+        "launch",
+        "admarket",
+        "season",
+        "fit"
+      ],
+      "score": 60,
+      "sources": {
+        "launch": [
+          {
+            "t": "신한카드·지그재그, 2030 여성 겨냥 첫 PLCC 출시 - TIN뉴스",
+            "u": "https://news.google.com/rss/articles/CBMiRkFVX3lxTFB2M0Z1b2hFTkpiVlVWRmp5cDFBU2FRTHo1QUxKYWVIdWhBMGNzZFJJUWtRZWliZEJfVWFQakRBMFc5SDFJR3c?oc=5"
+          },
+          {
+            "t": "신한카드, 지그재그와 첫 PLCC 카드 출시…월 최대 2만원 적립 - SBS Biz",
+            "u": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE05NkczNVVlSmsyM1hoRjVPcHhnWXd6YTcwNmRhVWZFWU5MMkp4d0E3dVNENWVsQk9aUjc0aEF1ZkF1RmU1ZG40VldjM3JiR3luV3VZ0gFYQVVfeXFMTThjVmJ4ZGJiUkgzeHMwcjVZNjJlRHFWZnY4aU1OeFlKd0pfVGJteVhTOC1SU3pUX0pUM3NuWDNWRU5kOGZtZkxkTFJHMzJ0cnhLRERFX3lXMg?oc=5"
+          },
+          {
+            "t": "신한카드-지그재그, 첫 PLCC 출시⋯이용액 15% 적립 - 이투데이",
+            "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1kT2ZKMGVLa1kybV96Z1ZnS0NvSnVOck9xUHZ5MGY4V3pJUXFhaGlYN1FlNlgzWWdjbHhIbnVRcngwNkhTbEREQ3NSYVZJb2ZPQkcyLQ?oc=5"
+          },
+          {
+            "t": "[게시판] 신한카드, 패션 플랫폼 지그재그와 신용카드 출시 - 연합뉴스",
+            "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBKNENESTlXUjBQaVJXS1R2ZFlNYlFGZ2o2cTVqMmw5MUdSRm5peHlwSmhwR0UzNDNKRktDQnRwRDY3cTBtSU1VTWlwY01tMTBtT2NwYUo1aHZZWWPSAWBBVV95cUxPSzk3OHRFUEhCUm5odTdEd0ZGVThvbjNOVkE3bnJzMS1BUVMzZk9sbVJQSkxKSWFzMDNIcXF4bnBjQU1ScG5RWGFqektoakF4dEluYl9LeEVFTkNyM1hyWFM?oc=5"
+          }
+        ],
+        "admarket": [
+          {
+            "t": "지그재그, 가을 시즌 최대 프로모션 '직잭팟' 실시 - 전자신문",
+            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5vblBUNVI1RlVFam8zSXJLVWlNR1RmejRVU3B1T2lWTVA4a1E5cHFZblEwMUV6LVlLdmJyVmR6Rm1XZENwejJvY1gzekVkZw?oc=5"
+          },
+          {
+            "t": "지그재그, 올 최대 규모 프로모션 '가을 직잭팟' - 뉴스핌",
+            "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE91TWFpcnpCNzFsdGR5WTFHNzRiTnFqWXJzcDJaUU90b3pTQnFtdGVRM3lvbU1wTUZTTnJ3VHdjeHNndDBUb1RJcVN1ZVlZZWlocHJEZkZLemxsaTlY?oc=5"
+          }
+        ],
+        "season": [
+          {
+            "t": "패션 커머스 성수기 구간 (월 10)",
+            "u": ""
+          }
+        ],
+        "fit": [
+          {
+            "t": "패션 커머스 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "밀리의서재",
+      "i": "독서 구독",
+      "sigs": [
+        "launch",
+        "admarket",
+        "fit"
+      ],
+      "score": 38,
+      "sources": {
+        "launch": [
+          {
+            "t": "연세유업·밀리의서재, ‘밀리의 생크림빵’ 출시 - 푸드투데이",
+            "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1rblVxU0ctNEh1amlHQ2xNN1laM1FzZ2ZJTEFYUWFxTS1XSEpPZjhxS0FfUE5FUld6RFA1MW4yVmxpcWRWajI2Tlh3bzZCcnVtVEFFTGYtNXBTX254ci1YZ1pCQUtYdw?oc=5"
+          },
+          {
+            "t": "밀리의서재, ‘2026 서울국제도서전’ 참가…10주년 기념 ‘밀리하우스’ 공개 - 쿠키뉴스",
+            "u": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5JTzllZld4VWxnRUlQd21uX1AxM01aQXZTa0ZzS0xLTHZsTTRJaTcyVU85dnJKM05XSVBlR1p0WjItSmR0bEcyLWNNamdUZFlKQlkwdjlrXzBsOHlNUHpndXJfVQ?oc=5"
+          },
+          {
+            "t": "\"연휴에 독서 어때요?\"…밀리의서재, 추석 맞춤 콘텐츠 공개 - 이데일리",
+            "u": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNTkZPN3lYRk5yT2hneTZLaXFUeVVWWTNmalRJeWNvY1lhLTZVRlNGVFhMQkpyY2Fnb2YyYWYzWURtY0tTT0lQMk02ZkQwLWtXY1AtZ1VPTEtCa05wVjRTNDJram5DRGliOWhoN3FkWDVmZjVsdjRYNXlhYjNFV3gxMw?oc=5"
+          }
+        ],
+        "admarket": [
+          {
+            "t": "밀리의서재, 창립 10주년 프로모션…둘째 달 구독료 100% 할인 - 전자신문",
+            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE50SktsRXlCbEcycUVRRzlEUDZOS2xkajhSX3puZ2xBWEttYWIxSkpVNU9TWUlyWGdGMzhrbzJJbjhEMUM1aDdaZU5hZHNaUQ?oc=5"
+          },
+          {
+            "t": "“두 달째는 무료” 밀리의서재, 10주년 맞아 구독 프로모션 - 뉴스탭",
+            "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5jbzV3eG5oZU9fMk1IeGRBTUxibWFqbUJPSDdmRlg0R3NnSHBLWk8yUmtCTnZlUDhpbDZoSlF5NHYxTm9ld0FzcHJXWVU0SHUwU3FfUy1PQVNISkdtOTNTalBYV29RVHFELW9xVw?oc=5"
+          },
+          {
+            "t": "밀리의서재, 창립 10주년 맞아 '둘째 달 무료' 구독 프로모션 - 아시아경제",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5EblFmSUlVYXlGeWdzZEtJMmVkcTVvU2tVMlprZE1hVXBNVFVVX0pkUVV5UHhqVkFiSmQ2ZF90MVdackRKWHpXc2ZsdG1GbWFCMjNiUVVaekVId2tLNGdxZw?oc=5"
+          },
+          {
+            "t": "kt 밀리의서재, SKT T멤버십과 첫 'T day' 프로모션 진행 - 파이낸셜신문",
+            "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1DaWNRN0NTS0RLOG5xTC1fTFVuYUpmN3ZOQkw2NmZKbWdtMklOT0E3aGY3bV82MHVQRUtLQXRNd2RTdVRBNThYdF9oLWhGcEg4M2p5Q2Vyc004RllaNTFPc2xzYVMweGxlUkpV?oc=5"
+          }
+        ],
+        "fit": [
+          {
+            "t": "독서 구독 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "번개장터",
+      "i": "중고 커머스",
+      "sigs": [
+        "launch",
+        "hiring",
+        "fit"
+      ],
+      "score": 34,
+      "sources": {
+        "launch": [
+          {
+            "t": "한국인 70%가 설치한 당근, 번개장터, 중고나라 앱 사용 및 결제 특성 알아보기 - 오픈애즈",
+            "u": "https://news.google.com/rss/articles/CBMibkFVX3lxTE9QcDh3TVBMX1Q0YUg5WUp5ZVR1TDlmU3IwZUc5TXRxdlZDNHcxUUtJbUdVMk5GSTQ2eHQ3ODFNRDRxWHVJVDUtNGV0bHR4RFpacEI3TnU5Ty15QUZTUkNsN1IxNk5MdGtteHNub0pn?oc=5"
+          }
+        ],
+        "hiring": [
+          {
+            "t": "Growth Marketer(User Quality) · 번개장터",
+            "u": "https://www.wanted.co.kr/wd/365167"
+          }
+        ],
+        "fit": [
+          {
+            "t": "중고 커머스 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "트래블월렛",
+      "i": "여행·핀테크",
+      "sigs": [
+        "admarket",
+        "fit"
+      ],
+      "score": 24,
+      "sources": {
+        "admarket": [
+          {
+            "t": "트래블월렛, 괌 여행 결제 시 최대 150달러 포인트 지급 프로모션 시행 - 퍼블릭뉴스통신",
+            "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE0xTm1YWC16ZkllTzlPTEVySWRJYzAwbWJISFRIbnJZR21keFVSM193aVpYZHhsS0JVaDl2S0xQSzh1dV91T1RaN2Jib1hfSjN6Y05ReWlNcmk1RHpHSXN0dXNRcnYwY3gteWc?oc=5"
+          }
+        ],
+        "fit": [
+          {
+            "t": "여행·핀테크 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "리디",
+      "i": "웹툰·콘텐츠",
+      "sigs": [
+        "admarket",
+        "fit"
+      ],
+      "score": 24,
+      "sources": {
+        "admarket": [
+          {
+            "t": "리디, 추석 맞아 만화·웹툰·웹소설 할인 프로모션 - 싱글리스트",
+            "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBmMVNIUzBrZlJRRmZQQk4xZFN1OWc1b01mSUJKWnJlRGlOYzVXbkZESnlZSzhhQlZ0cWt5cXFtRVk5TUg3bmZNLXUyenptNTRMT21IZV9xTjltc1cxNWxWWHBwRVBxUQ?oc=5"
+          },
+          {
+            "t": "'누적 발행 부수 1000만' 작품 정주행 각… 리디, 추석맞이 인기 만화·웹툰 할인 프로모션 - 위키트리",
+            "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE8xVFVSNTBsX3M2ekdwTTB5c3puZ052aGFETHFuaXRZa04wX1ZORmtIbFl2VWtFb0M4enoxVF9EWllZM1FnVHo4b2ZLSzNHZ3BTdmlsdmp3?oc=5"
+          },
+          {
+            "t": "리디 `프로모션 40%` 논란…창작자들 \"수수료 부담\" [2026 국감] - 디지털데일리",
+            "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE55YncyRV9NVXY0RzVBMnFvb2ozOFVMZ2RwemZVLU8tdkxEMmtqYkFtdUtiYzBqYV8xYnRVRlhZYXZ3ZmpqZ1pKUGtBSGV0M0J5VWtLczV4d285ZGxJTVVaV1p3?oc=5"
+          },
+          {
+            "t": "[IT라운지] 마리트 '일본소도시 기획'·플레이디 '업무혁신'·리디 'TCRP 선정'·'잡플래닛 플러스'·카카오 '리센느 캠페인'·케이웨더-IO트러스트 'MOU' - 뉴스웍스",
+            "u": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1rdkd1RG1mZFlDY1FuTzhKaG5CRjV3TXh1WFFFSXBtYXBPR1luLTVkcmZMTGM0RzNOemdpeXRleXNMRmZ1bG1KZHk4MzdqR3Q5a0dBUFJtX21GVlJKazFNeXB0QkdFTGZmdzVVYW84a9IBc0FVX3lxTFBmcGxGOXl0Uk93eWE5RlR1dEtsQ3BGQW9pbWJVekZrbDlyb1V1T3Rwa0FydkhUUUZKTVVTY19iUC1iSGVMdm1zcHpMX2N1VnJKc2VZLXdvQVBJcWdhZlB0SzlzSmNXWFRvcHhtYWpQNDFnMDQ?oc=5"
+          }
+        ],
+        "fit": [
+          {
+            "t": "웹툰·콘텐츠 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "클래스101",
+      "i": "교육",
+      "sigs": [
+        "hiring",
+        "fit"
+      ],
+      "score": 20,
+      "sources": {
+        "hiring": [
+          {
+            "t": "[인턴] 사업개발(Creator Growth) · 클래스101(Class101)",
+            "u": "https://www.wanted.co.kr/wd/384973"
+          },
+          {
+            "t": "크리에이터 브랜딩 콘텐츠 편집자 · 클래스101(Class101)",
+            "u": "https://www.wanted.co.kr/wd/383277"
+          },
+          {
+            "t": "[인턴] 브랜드 마케터(전환형) · 클래스101(Class101)",
+            "u": "https://www.wanted.co.kr/wd/381263"
+          }
+        ],
+        "fit": [
+          {
+            "t": "교육 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "야나두",
+      "i": "교육",
+      "sigs": [
+        "hiring",
+        "fit"
+      ],
+      "score": 20,
+      "sources": {
+        "hiring": [
+          {
+            "t": "[야핏무브] 퍼포먼스 마케터 · 야나두",
+            "u": "https://www.wanted.co.kr/wd/370585"
+          }
+        ],
+        "fit": [
+          {
+            "t": "교육 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "꾸까",
+      "i": "플라워 구독",
+      "sigs": [
+        "fit"
+      ],
+      "score": 8,
+      "sources": {
+        "fit": [
+          {
+            "t": "플라워 구독 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "스파르타코딩클럽",
+      "i": "성인 교육",
+      "sigs": [
+        "fit"
+      ],
+      "score": 8,
+      "sources": {
+        "fit": [
+          {
+            "t": "성인 교육 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    },
+    {
+      "n": "프레시코드",
+      "i": "샐러드 구독",
+      "sigs": [
+        "fit"
+      ],
+      "score": 8,
+      "sources": {
+        "fit": [
+          {
+            "t": "샐러드 구독 · 토스 2030·대중 유저 타깃 핏",
+            "u": ""
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -68,6 +68,19 @@
   .cbtn:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
   .cbtn.more{color:var(--ink);border-color:var(--line);}
   .cbtn.key{background:var(--blue);color:#fff;border-color:var(--blue);} .cbtn.key:hover{background:#1b64da;color:#fff;}
+  .evidrow{grid-column:1 / -1;margin-top:-2px;}
+  .evidrow details{background:#fff;border:1px solid var(--line);border-radius:8px;padding:0 11px;}
+  .evidrow summary{font-size:11.5px;font-weight:700;color:var(--muted);cursor:pointer;padding:8px 0;list-style:none;}
+  .evidrow summary::-webkit-details-marker{display:none;}
+  .evidrow summary b{color:var(--blue);}
+  .evidrow .elist{padding:2px 0 10px;display:flex;flex-direction:column;gap:5px;}
+  .evidrow .eitem{font-size:11.5px;color:var(--body);display:flex;gap:7px;align-items:baseline;}
+  .evidrow .etag{flex:0 0 auto;font-size:10px;font-weight:800;color:var(--blue);background:var(--blue-weak);border-radius:5px;padding:1px 6px;white-space:nowrap;}
+  .evidrow a.elink{color:var(--body);text-decoration:none;}
+  .evidrow a.elink:hover{color:var(--blue);text-decoration:underline;}
+  .modechip{font-size:11px;font-weight:800;border-radius:999px;padding:3px 9px;}
+  .modechip.live{color:#0b8a53;background:#e6f8ef;}
+  .modechip.demo{color:var(--muted);background:var(--bg-soft);}
   /* 기업 조회 */
   .search{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
   .search input{flex:1;min-width:240px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);}
@@ -170,7 +183,7 @@
       <div class="stat" id="stat"></div>
     </div>
     <div class="report">
-      <div class="rhd"><div class="rt">📋 오늘 연락할 기업 <span class="tag">기준 부합 후보 · 시그널 가설</span></div><div class="rd" id="genTime">—</div></div>
+      <div class="rhd"><div class="rt">📋 오늘 연락할 기업 <span class="tag" id="rtTag">기준 부합 후보</span></div><div class="rd" id="genTime">—</div></div>
       <div class="rhead"><div>#</div><div>회사 · 업종</div><div>감지 시그널 · 출처</div><div>점수</div><div>등급 · 채널</div></div>
       <div id="rows"></div>
     </div>
@@ -241,6 +254,8 @@
   ].map(function(x){ return {n:x.n, i:COMPANY[x.n].i, s:x.s}; });
 
   var offset = 0, sortMode = 'score', curData = [], lastRows = [];
+  var liveMode = false, liveGen = '';
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
   function score(sigs){ return Math.min(100, sigs.reduce(function(a,k){ return a + SIG[k].w; }, 0)); }
   function grade(s){ if(s>=70) return {g:'즉시 · A', c:'a', col:'var(--green)', ch:'LinkedIn + 콜'};
@@ -312,6 +327,16 @@
       var chips = r.sigs.map(function(k){ return '<span>'+SIG[k].l+'</span>'; }).join('');
       var srcs = r.sigs.map(function(k){ return SIG[k].src; }).filter(function(v,i,arr){ return arr.indexOf(v)===i; }).join(' · ');
       var n = r.co.n;
+      var evid = '';
+      if(r.sources){
+        var items = [];
+        r.sigs.forEach(function(k){ (r.sources[k]||[]).forEach(function(s){ if(s.u) items.push({tag:(SIG[k]?SIG[k].l:k), t:s.t, u:s.u}); }); });
+        if(items.length){
+          evid = '<div class="evidrow"><details><summary>📰 근거 자료 <b>'+items.length+'건</b> — 실제 기사·채용 공고 (클릭해서 열기)</summary><div class="elist">'+
+            items.map(function(it){ return '<div class="eitem"><span class="etag">'+esc(it.tag)+'</span><a class="elink" href="'+esc(it.u)+'" target="_blank" rel="noopener">'+esc(it.t)+' ↗</a></div>'; }).join('')+
+            '</div></details></div>';
+        }
+      }
       return '<div class="rrow">'+
         '<div class="rk'+(idx<2?' top':'')+'">'+(idx+1)+'</div>'+
         '<div class="rco">'+n+'<small>'+r.co.i+'</small></div>'+
@@ -326,19 +351,38 @@
             '<a class="cbtn" href="'+LINK.inquiry(n)+'" target="_blank" rel="noopener">✉ 문의</a>'+
             '<a class="cbtn more" href="?company='+enc(n)+'#lookup">📇 전체 채널 →</a>'+
           '</span>'+
-        '</div>'+
+        '</div>'+ evid +
       '</div>';
     }).join('');
     document.getElementById('rows').innerHTML = html;
     document.getElementById('stat').innerHTML =
       '<span class="s-t">총 '+rows.length+'</span><span class="s-a">즉시 '+a+'</span><span class="s-b">이번 주 '+b+'</span><span class="s-c">너처링 '+c+'</span>';
-    document.getElementById('genTime').textContent = dateStr(offset) + ' 리포트 · 점수순 (하루 동안 고정)';
+    var gt = document.getElementById('genTime'), rtTag = document.getElementById('rtTag');
+    if(liveMode){
+      gt.innerHTML = '<span class="modechip live">● 실데이터</span> 뉴스·채용·캘린더 자동수집 · 갱신 ' + esc(liveGen);
+      if(rtTag) rtTag.textContent = '기준 부합 후보 · 실시그널';
+    } else {
+      gt.innerHTML = '<span class="modechip demo">● 시연</span> ' + dateStr(offset) + ' 리포트 (하루 동안 고정)';
+      if(rtTag) rtTag.textContent = '기준 부합 후보 · 시그널 가설';
+    }
   }
   function show(){
-    curData = buildReport(offset);
     document.getElementById('dateLabel').textContent = dateLabel(offset);
     document.getElementById('nextBtn').disabled = (offset >= 0);
-    render();
+    // 실데이터(JSON) 우선, 없으면 시뮬레이션 폴백
+    fetch('data/report-' + dateStr(offset) + '.json', {cache:'no-store'})
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(j){ applyLive(j); })
+      .catch(function(){ curData = buildReport(offset); liveMode = false; render(); });
+  }
+  function applyLive(j){
+    if(j.catalog){ Object.keys(j.catalog).forEach(function(k){ SIG[k] = j.catalog[k]; }); }
+    curData = (j.companies||[]).map(function(c){
+      var keys = (c.sigs||[]).filter(function(k){ return SIG[k]; });
+      var cnt = 0; if(c.sources){ keys.forEach(function(k){ cnt += (c.sources[k]||[]).length; }); }
+      return { co:{n:c.n, i:c.i}, sigs:keys, score:(typeof c.score==='number'?c.score:score(keys)), tie:cnt/1000, sources:c.sources||null };
+    });
+    liveMode = true; liveGen = j.generated || ''; render();
   }
   function csvCell(v){ v = String(v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
   function download(){
