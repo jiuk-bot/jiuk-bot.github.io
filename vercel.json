@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/collect.py": {
+      "includeFiles": "tossbdr/scripts/collector_lib.py"
+    }
+  }
+}
