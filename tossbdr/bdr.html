@@ -307,7 +307,8 @@
   .tadv{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:8px 0 18px;}
   @media(max-width:760px){.tadv{grid-template-columns:repeat(2,1fr);}}
   .tcard{border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:14px;padding:18px 15px;background:#fff;text-align:center;}
-  .tcard .tic{font-size:24px;line-height:1;}
+  .tcard .tic{display:inline-flex;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,#eaf2ff,#dbe9ff);border:1px solid #cfe0fd;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(49,130,246,.12);}
+  .tcard .tic svg{width:23px;height:23px;stroke:var(--blue);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
   .tcard .tn{font-size:16px;font-weight:800;color:var(--blue);margin-top:9px;letter-spacing:-.02em;}
   .tcard .td{font-size:12px;color:var(--body);margin-top:7px;line-height:1.5;}
   .tcard .td b{color:var(--ink);}
@@ -331,6 +332,20 @@
   .rmcard .rmd{font-size:12.5px;color:var(--body);line-height:1.5;flex:1;}
   .rmcard .rmd b{color:var(--ink);}
   .rmcard .rmtool{font-size:11px;color:var(--blue);font-weight:800;margin-top:11px;background:var(--blue-weak);border:1px solid #cfe0fd;border-radius:8px;padding:5px 9px;align-self:flex-start;}
+  /* 단계별 시나리오 (두괄식 + 가설·근거·결과) */
+  .scen{display:flex;flex-direction:column;gap:14px;}
+  .scenstep{display:grid;grid-template-columns:230px 1fr;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.04);}
+  @media(max-width:760px){.scenstep{grid-template-columns:1fr;}}
+  .scenstep .sleft{background:linear-gradient(160deg,#3182F6,#1b64da);color:#fff;padding:20px;display:flex;flex-direction:column;}
+  .scenstep .sn{font-size:11.5px;font-weight:800;letter-spacing:.03em;opacity:.95;}
+  .scenstep .sh{font-size:17px;font-weight:800;margin-top:9px;line-height:1.32;letter-spacing:-.02em;flex:1;}
+  .scenstep .sdash{font-size:11px;font-weight:800;margin-top:14px;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);border-radius:8px;padding:6px 10px;align-self:flex-start;}
+  .scenstep .sright{padding:18px 20px;}
+  .scenstep .srow{display:flex;gap:11px;font-size:13px;padding:8px 0;border-bottom:1px solid var(--line);line-height:1.55;}
+  .scenstep .srow:last-child{border-bottom:0;}
+  .scenstep .sk{flex:0 0 46px;font-size:11px;font-weight:800;border-radius:6px;padding:3px 0;text-align:center;height:fit-content;}
+  .scenstep .sk.hyp{color:var(--red);background:#fdeced;} .scenstep .sk.evi{color:var(--blue);background:var(--blue-weak);} .scenstep .sk.res{color:var(--green);background:#eafaf2;}
+  .scenstep .sv{color:var(--body);} .scenstep .sv b{color:var(--ink);}
   @media print{
     html{scroll-behavior:auto;}
     .pfbar{position:static;}
@@ -462,10 +477,10 @@
     <div class="jd-tag">세일즈 포인트 · 내가 파는 무기</div>
     <h2 class="sec">왜 토스 Ads인가 — 타 매체 대비 강점 & 소구 전략</h2>
     <div class="tadv">
-      <div class="tcard"><div class="tic">📱</div><div class="tn">전국민 도달</div><div class="td">금융 슈퍼앱 <b>대중 트래픽</b> · 2030~5060 폭넓게</div></div>
-      <div class="tcard"><div class="tic">🛡️</div><div class="tn">고신뢰 지면</div><div class="td">금융 앱 신뢰 환경 → <b>브랜드 안전·전환 품질↑</b></div></div>
-      <div class="tcard"><div class="tic">🎁</div><div class="tn">참여형 리워드</div><div class="td">타 매체는 광고 회피↑, 토스는 <b>자발적 참여</b></div></div>
-      <div class="tcard"><div class="tic">🎯</div><div class="tn">데이터 타겟팅</div><div class="td">소비·연령·관심사 기반 <b>정교한 타겟</b></div></div>
+      <div class="tcard"><div class="tic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div class="tn">전국민 도달</div><div class="td">금융 슈퍼앱 <b>대중 트래픽</b> · 2030~5060 폭넓게</div></div>
+      <div class="tcard"><div class="tic"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div class="tn">고신뢰 지면</div><div class="td">금융 앱 신뢰 환경 → <b>브랜드 안전·전환 품질↑</b></div></div>
+      <div class="tcard"><div class="tic"><svg viewBox="0 0 24 24"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div><div class="tn">참여형 리워드</div><div class="td">타 매체는 광고 회피↑, 토스는 <b>자발적 참여</b></div></div>
+      <div class="tcard"><div class="tic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div><div class="tn">데이터 타겟팅</div><div class="td">소비·연령·관심사 기반 <b>정교한 타겟</b></div></div>
     </div>
     <div class="pitchrow">
       <span class="plab">나의 소구 전략</span>
@@ -490,13 +505,41 @@
 <section class="blk section-soft">
   <div class="wrap">
     <div class="jd-tag">MY STRATEGY · 나는 이 흐름으로 광고주를 유치한다</div>
-    <h2 class="sec">나의 광고주 유치 전략 — 4단계</h2>
-    <p class="sec-sub">단순 툴 나열이 아니라, <b>제가 광고주를 유치하는 단계별 흐름</b>입니다. 각 단계를 <b>직접 만든 툴</b>로 실행합니다 — 아래 ①~④가 그 실행입니다.</p>
-    <div class="roadmap">
-      <div class="rmcard"><span class="rmn">STEP 1 · 발굴</span><div class="rmt">지금 필요한 기업 선별</div><div class="rmd">비즈니스 시그널(투자·계절성·채용·광고↑)로 <b>우선 공략 대상</b>을 스코어링</div><span class="rmtool">① 시그널 스코어링 · ④ 리포트</span></div>
-      <div class="rmcard"><span class="rmn">STEP 2 · 리서치</span><div class="rmt">업종 맞춤 무기 준비</div><div class="rmd">업종별 <b>성과·추천 지면·성공사례</b>를 즉시 조회해 제안 근거 확보</div><span class="rmtool">② 업종 레퍼런스 대시보드</span></div>
-      <div class="rmcard"><span class="rmn">STEP 3 · 아웃리치</span><div class="rmt">멀티채널로 개인화 접근</div><div class="rmd">콜·이메일·LinkedIn·리멤버로 <b>의사결정자에 접근</b>·컨택</div><span class="rmtool">③ 멀티채널 아웃리치</span></div>
-      <div class="rmcard"><span class="rmn">STEP 4 · 핸드오프</span><div class="rmt">검증 → AM 연결</div><div class="rmd">비즈니스 상황·목표·예산 <b>퀄리파이 후 AM에 깨끗하게 인계</b></div><span class="rmtool">③ 퀄리파이 · 핸드오프</span></div>
+    <h2 class="sec">나의 광고주 유치 전략 — 4단계 시나리오</h2>
+    <p class="sec-sub"><b>잠재고객 발굴 → 고객 획득 → AM 미팅 연결 → AM 자료 전달</b>까지. 단계마다 <b>직접 만든 대시보드</b>로, <b>가설 → 근거 → 결과</b>로 일합니다. (각 단계 상세는 아래 ①~④)</p>
+    <div class="scen">
+      <div class="scenstep">
+        <div class="sleft"><div class="sn">STEP 1 · 잠재고객 발굴</div><div class="sh">지금 광고가 필요한 기업부터 자동 선별</div><div class="sdash">📊 아웃리치 기업분석 대시보드</div></div>
+        <div class="sright">
+          <div class="srow"><div class="sk hyp">가설</div><div class="sv">무작위 아웃리치는 응답·전환↓ — <b>타깃 선정이 성과를 좌우</b></div></div>
+          <div class="srow"><div class="sk evi">근거</div><div class="sv">투자·계절성·채용·<b>광고 노출량</b> 시그널을 스코어링해 우선순위화</div></div>
+          <div class="srow"><div class="sk res">결과</div><div class="sv">매일 <b>'오늘 연락할 기업' 리스트</b> + 회사별 컨택·확인 링크 확보</div></div>
+        </div>
+      </div>
+      <div class="scenstep">
+        <div class="sleft"><div class="sn">STEP 2 · 고객 획득 (아웃리치)</div><div class="sh">멀티채널 시퀀스로 의사결정자에 접근</div><div class="sdash">📨 멀티채널 아웃리치 시퀀스</div></div>
+        <div class="sright">
+          <div class="srow"><div class="sk hyp">가설</div><div class="sv">한 채널 1회는 무응답 — <b>멀티채널 반복이 컨택률을 올린다</b></div></div>
+          <div class="srow"><div class="sk evi">근거</div><div class="sv">콜·이메일·LinkedIn·<b>리멤버</b> 7영업일 케이던스 + 시그널 훅 개인화</div></div>
+          <div class="srow"><div class="sk res">결과</div><div class="sv">의사결정자 <b>컨택 성사 → 퀄리파이 콜로 전환</b></div></div>
+        </div>
+      </div>
+      <div class="scenstep">
+        <div class="sleft"><div class="sn">STEP 3 · 콜 & 퀄리파이 (컨택 성공 시)</div><div class="sh">레퍼런스로 설득 + 니즈·예산 파악 → 리드 스코어링</div><div class="sdash">📈 업종 레퍼런스 조회 대시보드</div></div>
+        <div class="sright">
+          <div class="srow"><div class="sk hyp">가설</div><div class="sv">정보·전문성 없는 콜은 <b>미팅 전환↓</b></div></div>
+          <div class="srow"><div class="sk evi">근거</div><div class="sv">콜 중 <b>업종 레퍼런스 즉시 제시</b> + 집행 시기·예산·목적·매체믹스 질문 → <b>리드 등급(A/B/C)</b></div></div>
+          <div class="srow"><div class="sk res">결과</div><div class="sv"><b>지금 AM에게 넘길 리드인지</b> 판정</div></div>
+        </div>
+      </div>
+      <div class="scenstep">
+        <div class="sleft"><div class="sn">STEP 4 · AM 미팅 연결 & 자료 전달</div><div class="sh">검증 리드를 핸드오프 노트와 함께 깨끗하게 인계</div><div class="sdash">📋 AM 핸드오프 노트 · Salesforce</div></div>
+        <div class="sright">
+          <div class="srow"><div class="sk hyp">가설</div><div class="sv">AM이 '백지'에서 시작하면 미팅 효율↓</div></div>
+          <div class="srow"><div class="sk evi">근거</div><div class="sv"><b>상황·목표·예산·KPI·스코어·추천</b>을 핸드오프 노트로 정리 + Salesforce 기록</div></div>
+          <div class="srow"><div class="sk res">결과</div><div class="sv">AM이 <b>바로 제안 들어갈 수 있는 상태</b>로 미팅 시작</div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
