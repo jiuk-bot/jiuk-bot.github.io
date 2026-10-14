@@ -234,7 +234,7 @@
     <div class="morebar"><button class="btn ghost" id="moreBtn">전체 보기 ▾</button></div>
     <p class="note">
       <b>리포트는 날짜 기준으로 고정</b>됩니다 — 같은 날엔 같은 리스트, '이전/다음 날'로 날짜별 시그널 변화를 봅니다(클릭마다 랜덤 X). 각 행에서 바로 컨택 채널을 열거나 <b>📇 전체 채널</b>로 상세 조회로 넘어가고, <b>⬇ 엑셀 다운로드</b>로 컨택 링크 포함 리스트를 내려받습니다.<br>
-      여기 발굴 큐 <b>20곳</b>은 <b>토스 Ads 타깃 핏(소비자·2030·광고 집행) 실제 기업</b>으로, <b>뉴스·마케팅 채용·계절성을 매일 자동수집</b>해 스코어링합니다(각 행 <b>📇 전체 채널 →</b>에서 근거 기사·공고 링크 확인). 목록 밖 기업은 <b>기업 조회 탭에서 검색하면 실시간 수집</b>됩니다. 홈페이지·문의·컨택 버튼은 전부 실제 연결입니다.
+      <b>데모 버전</b> — 여기 발굴 큐 <b>20곳</b>은 <b>토스 Ads 타깃 핏(소비자·2030·광고 집행) 실제 기업</b>으로, <b>뉴스·마케팅 채용·계절성을 매일 자동수집</b>해 스코어링합니다(각 행 <b>📇 전체 채널 →</b>에서 근거 기사·공고 링크 확인). 홈페이지·문의·컨택 버튼은 전부 <b>실제 회사 공식 홈페이지</b>로 연결됩니다. (임의 기업 즉석 검색은 서버 배포 시 활성화)
     </p>
   </div>
 
@@ -279,7 +279,15 @@
     '스파르타코딩클럽':{i:'성인 교육',     hp:'https://spartaclub.kr'},
     '프레시코드':      {i:'샐러드 구독',   hp:'https://www.freshcode.me'},
     '클래스101':       {i:'교육',          hp:'https://101.inc'},
-    '야나두':          {i:'교육',          hp:'https://www.yanadoo.co.kr'}
+    '야나두':          {i:'교육',          hp:'https://www.yanadoo.co.kr'},
+    '무신사':          {i:'패션 커머스',   hp:'https://corp.musinsa.com'},
+    '올리브영':        {i:'뷰티 커머스',   hp:'https://corp.oliveyoung.com'},
+    '컬리':            {i:'식품 커머스',   hp:'https://www.kurly.com'},
+    '오늘의집':        {i:'리빙 커머스',   hp:'https://www.bucketplace.com'},
+    '당근마켓':        {i:'중고·로컬 커머스', hp:'https://about.daangn.com'},
+    '왓챠':            {i:'OTT 콘텐츠',    hp:'https://watcha.team'},
+    '29CM':            {i:'패션·라이프 커머스', hp:'https://www.29cm.co.kr'},
+    '야놀자':          {i:'여행·숙박',     hp:'https://yanolja.co'}
   };
   var BASE = Object.keys(COMPANY).map(function(n){ return {n:n, i:COMPANY[n].i}; });
   var INITIAL = [
@@ -330,7 +338,7 @@
     liCompany: function(n){ return 'https://www.linkedin.com/search/results/companies/?keywords=' + enc(n); },
     remember : function(n){ return 'https://connect.rememberapp.co.kr/search?keyword=' + enc(n); },
     home     : function(n){ return (COMPANY[n] && COMPANY[n].hp) ? COMPANY[n].hp : G(n + ' 공식 홈페이지'); },
-    inquiry  : function(n){ return (COMPANY[n] && COMPANY[n].hp) ? G(n + ' 고객센터 문의하기') : G(n + ' 문의하기 고객센터'); },
+    inquiry  : function(n){ return (COMPANY[n] && COMPANY[n].hp) ? COMPANY[n].hp : G(n + ' 공식 홈페이지 문의'); },
     hasHome  : function(n){ return !!(COMPANY[n] && COMPANY[n].hp); },
     google   : function(n,i){ return G(n + ' ' + (i||'') + ' 마케팅 담당자'); },
     naver    : function(n){ return 'https://search.naver.com/search.naver?query=' + enc(n + ' 마케팅'); },
@@ -611,6 +619,9 @@
         '</div></div>'+
       '</div></div>';
   }
+  function demoNote(name){
+    return '<div class="note" style="margin-bottom:12px;">ℹ 이 발굴 대시보드는 <b>데모 버전</b>입니다 — 발굴 큐 <b>20곳</b>(에이블리·무신사·올리브영·당근 등)은 <b>매일 자동수집·스코어링</b>됩니다. <b>'+esc(name)+'</b>은(는) 데모 범위 밖이라, 아래에서 시그널을 직접 확인·체크하면 점수가 계산됩니다 — <b>수동 검증 모드</b>.</div>';
+  }
   function renderBrief(name){
     name=(name||'').trim();
     var box=document.getElementById('briefResult');
@@ -618,17 +629,16 @@
     ensureLive(function(){
       var live = LIVEDATA && (LIVEDATA.companies||[]).filter(function(c){ return c.n===name; })[0];
       if(live){ box.innerHTML = briefAutoHTML(live); return; }
-      // 목록 밖 기업 → 온디맨드 백엔드로 실시간 수집 시도 (로딩 표시)
-      box.innerHTML = '<div class="loadbox"><div class="spin"></div><div class="lt">‘'+esc(name)+'’ 실시간 수집 중…</div><div class="ls">뉴스·마케팅 채용을 지금 크롤링해 스코어링합니다 (약 3~8초)</div></div>';
-      getJSON(collectURL()+'?company='+enc(name))
-        .then(function(r){
-          if(r && r.company){ mergeCatalog(r); box.innerHTML = briefAutoHTML(r.company); }
-          else { throw (r && r.error) || 'no-data'; }
-        })
-        .catch(function(){
-          renderManual(name);
-          box.insertAdjacentHTML('afterbegin','<div class="note" style="margin-bottom:12px;">ℹ <b>'+esc(name)+'</b> 실시간 자동수집 백엔드가 아직 연결되지 않았습니다(발굴 큐 20곳은 매일 자동수집). 아래에서 시그널을 직접 확인·체크하면 점수가 계산됩니다 — <b>수동 검증 모드</b>.</div>');
-        });
+      // 목록 밖 기업: 백엔드(API_BASE)가 연결돼 있으면 실시간 수집, 아니면 데모 안내 + 수동 검증
+      if(API_BASE){
+        box.innerHTML = '<div class="loadbox"><div class="spin"></div><div class="lt">‘'+esc(name)+'’ 실시간 수집 중…</div><div class="ls">뉴스·마케팅 채용을 지금 크롤링해 스코어링합니다 (약 3~8초)</div></div>';
+        getJSON(collectURL()+'?company='+enc(name))
+          .then(function(r){ if(r && r.company){ mergeCatalog(r); box.innerHTML = briefAutoHTML(r.company); } else { throw 'no-data'; } })
+          .catch(function(){ renderManual(name); box.insertAdjacentHTML('afterbegin', demoNote(name)); });
+      } else {
+        renderManual(name);
+        box.insertAdjacentHTML('afterbegin', demoNote(name));
+      }
     });
   }
   function renderManual(name){
