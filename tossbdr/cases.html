@@ -12,7 +12,7 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{ font-family:'Pretendard','Apple SD Gothic Neo',sans-serif; color:var(--ink); background:#f4f5f7;
-        line-height:1.6; word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased; }
+        line-height:1.72; word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased; }
   a{color:inherit;text-decoration:none;}
   .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--line); }
   .nav-inner{ max-width:1280px; margin:0 auto; padding:14px 24px; display:flex; align-items:center; justify-content:space-between; }
@@ -24,7 +24,7 @@
   .nav-logo .dot{ color:#3182F6; } .nav-links a.active{ color:#1b64da; }
   .nav-links a.cta{ background:#3182F6; color:#fff; padding:8px 14px; border-radius:999px; } .nav-links a.cta:hover{ background:#1b64da; color:#fff; }
   .doc{ max-width:960px; margin:0 auto; } section{ background:#fff; }
-  .pad{ padding:60px 56px; } .wrap{ max-width:780px; margin:0 auto; }
+  .pad{ padding:78px 56px; } .wrap{ max-width:780px; margin:0 auto; }
   .hero{ background:linear-gradient(135deg,#3182F6,#69a4f9); color:#fff; }
   .hero h1{ font-size:38px; font-weight:800; line-height:1.25; letter-spacing:-1px; margin-bottom:14px; }
   .hero p{ font-size:17px; opacity:.95; }
@@ -34,16 +34,16 @@
   .alttag{ font-size:11px; font-weight:800; color:#64748b; background:#eef1f5; border-radius:999px; padding:3px 10px; margin-left:4px; }
   h2{ font-size:28px; font-weight:800; line-height:1.3; letter-spacing:-.5px; margin-bottom:12px; }
   h2 .hl{ color:var(--primary); }
-  .lead{ font-size:16px; color:#555; margin-bottom:26px; }
-  h3{ font-size:17px; font-weight:800; margin:26px 0 12px; padding-left:12px; position:relative; }
+  .lead{ font-size:16px; color:#555; margin-bottom:34px; line-height:1.7; }
+  h3{ font-size:17px; font-weight:800; margin:42px 0 15px; padding-left:12px; position:relative; }
   h3::before{ content:''; position:absolute; left:0; top:3px; width:5px; height:16px; background:var(--primary); border-radius:2px; }
-  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:22px; box-shadow:var(--shadow-sm); }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:26px; box-shadow:var(--shadow-sm); }
   .card.soft{ background:var(--soft); border-color:transparent; }
   .grid{ display:grid; gap:14px; } .g2{ grid-template-columns:1fr 1fr; } .g3{ grid-template-columns:1fr 1fr 1fr; }
   .cd{ font-size:14px; color:#555; line-height:1.6; } .cd b{ color:var(--ink); }
 
   /* 문제 카드 */
-  .prob{ background:#f0f6ff; border:1px solid #cfe0fd; border-radius:14px; padding:18px 20px; font-size:14.5px; color:#1b64da; line-height:1.65; }
+  .prob{ background:#f0f6ff; border:1px solid #cfe0fd; border-radius:14px; padding:22px 24px; margin:6px 0 4px; font-size:14.5px; color:#1b64da; line-height:1.65; }
   .prob b{ color:var(--primary-dark); }
   /* 과제 시각화 — 볼륨 vs 효율 충돌 */
   .clash{ display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:stretch; margin:14px 0 12px; }
@@ -143,7 +143,7 @@
   footer{ background:#fafafa; padding:30px 56px; text-align:center; font-size:12px; color:var(--sub); border-top:1px solid var(--line); }
 
   @media (max-width:720px){
-    .pad{ padding:40px 22px; } .hero h1{ font-size:28px; } h2{ font-size:22px; }
+    .pad{ padding:50px 22px; } .hero h1{ font-size:28px; } h2{ font-size:22px; }
     .mflow,.g2,.g3,.leads{ grid-template-columns:1fr; } .ba{ grid-template-columns:1fr; } .ba .arrow{ transform:rotate(90deg); }
   }
   @media print{ @page{ size:A4; margin:0; } .nav{ display:none; } section{ page-break-inside:avoid; } *{ -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
