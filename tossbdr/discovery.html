@@ -17,6 +17,14 @@
   h1{font-size:27px;font-weight:800;letter-spacing:-.03em;line-height:1.25;margin-bottom:10px;}
   .lead{font-size:15px;color:var(--body);max-width:800px;margin-bottom:20px;}
   .lead b{color:var(--ink);}
+  .howflow{display:flex;align-items:stretch;gap:10px;margin:0 0 24px;flex-wrap:wrap;}
+  .howcard{flex:1;min-width:200px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:0 2px 10px rgba(0,0,0,.03);}
+  .howcard .hnum{width:26px;height:26px;border-radius:8px;background:var(--blue-weak);color:var(--blue);font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;}
+  .howcard .htt{font-size:15px;font-weight:800;color:var(--ink);margin-bottom:5px;}
+  .howcard .hdd{font-size:13px;color:var(--body);line-height:1.55;}
+  .howcard .hdd b{color:var(--blue);font-weight:700;}
+  .harr{display:flex;align-items:center;color:var(--muted);font-weight:800;font-size:18px;}
+  @media(max-width:720px){.harr{display:none;}.howcard{min-width:100%;}}
   .tabs{display:flex;gap:4px;border-bottom:2px solid var(--line);margin-bottom:20px;}
   .tab{font-family:inherit;font-size:14.5px;font-weight:800;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;margin-bottom:-2px;padding:11px 16px;cursor:pointer;}
   .tab.active{color:var(--blue);border-bottom-color:var(--blue);}
@@ -123,7 +131,27 @@
   <a class="back" href="bdr.html">← BDR 플레이북으로</a>
   <div class="eyebrow">TOSS ADS · BDR · OUTBOUND DISCOVERY TOOL</div>
   <h1>아웃리치 기업 리포트 · 기업 조회</h1>
-  <p class="lead">비즈니스 시그널(투자·계절성·채용·<b>광고 노출량</b> 등)을 <b>① 스코어링 엔진</b>으로 점수화해 <b>오늘 연락할 회사</b>를 추천하고, <b>기업명을 입력하면 시그널 데이터 확인 링크·회사 팩트 소스·접근 전략·다채널 컨택</b>까지 한 화면에서 — <b>검색 → 확인 → 컨택</b>. <b>추정값 없이, 실제 데이터 소스로 직접 확인</b>합니다.</p>
+  <p class="lead">공개 비즈니스 시그널을 <b>내 기준으로 점수화</b>해 '오늘 연락할 기업'을 매일 자동 추천합니다. 기업명을 입력하면 <b>확인 링크·팩트 소스·접근 전략·다채널 컨택</b>까지 한 화면에서 — <b>검색 → 확인 → 컨택</b>.</p>
+
+  <div class="howflow">
+    <div class="howcard">
+      <div class="hnum">1</div>
+      <div class="htt">매일 시그널 수집</div>
+      <div class="hdd">뉴스·보도자료·LinkedIn·광고 라이브러리에서 <b>투자·계절성·채용·광고 노출량</b> 시그널을 매일 자동 수집.</div>
+    </div>
+    <div class="harr">→</div>
+    <div class="howcard">
+      <div class="hnum">2</div>
+      <div class="htt">내 기준으로 스코어 분석</div>
+      <div class="hdd">직접 정한 <b>가중치 기준</b>으로 시그널을 점수화 → <b>즉시 / 이번 주 / 너처링</b> 우선순위 자동 산출.</div>
+    </div>
+    <div class="harr">→</div>
+    <div class="howcard">
+      <div class="hnum">3</div>
+      <div class="htt">매일 큐 갱신</div>
+      <div class="hdd">매일 아침 <b>'오늘 연락할 기업'</b> 리스트를 업데이트. 이미 접촉·집행 중인 곳은 큐에서 제외.</div>
+    </div>
+  </div>
 
   <div class="tabs">
     <button class="tab active" data-tab="report">📋 오늘 연락할 기업</button>
