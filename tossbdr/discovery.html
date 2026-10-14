@@ -81,6 +81,25 @@
   .modechip{font-size:11px;font-weight:800;border-radius:999px;padding:3px 9px;}
   .modechip.live{color:#0b8a53;background:#e6f8ef;}
   .modechip.demo{color:var(--muted);background:var(--bg-soft);}
+  .newslist{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:6px;}
+  .newslist a{display:flex;gap:10px;align-items:baseline;padding:9px 12px;border-bottom:1px solid var(--line);text-decoration:none;}
+  .newslist a:last-child{border-bottom:0;}
+  .newslist a:hover{background:var(--bg-soft);}
+  .newslist .nd{flex:0 0 auto;font-size:11px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums;min-width:66px;}
+  .newslist .nt{flex:1;color:var(--ink);font-weight:600;font-size:13px;line-height:1.5;}
+  .newslist .ns{flex:0 0 auto;font-size:11px;color:var(--blue);font-weight:700;}
+  .autotag{display:inline-block;font-size:10.5px;font-weight:800;color:#0b8a53;background:#e6f8ef;border-radius:999px;padding:2px 8px;margin-left:6px;}
+  .sigauto{width:100%;border-collapse:collapse;margin-bottom:4px;}
+  .sigauto th,.sigauto td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:12.5px;vertical-align:top;}
+  .sigauto th{color:var(--muted);font-weight:700;font-size:11.5px;}
+  .sigauto td.sl{font-weight:800;color:var(--ink);white-space:nowrap;}
+  .sigauto td.sw{color:var(--blue);font-weight:800;text-align:center;width:52px;}
+  .sigauto a.ev{color:var(--body);text-decoration:none;}
+  .sigauto a.ev:hover{color:var(--blue);text-decoration:underline;}
+  .sigauto .evmore{font-size:11px;color:var(--muted);font-weight:700;}
+  .jobsauto{display:flex;flex-direction:column;gap:5px;margin-bottom:4px;}
+  .jobsauto a{font-size:12.5px;color:var(--ink);text-decoration:none;font-weight:600;padding:7px 11px;border:1px solid var(--line);border-radius:8px;}
+  .jobsauto a:hover{border-color:var(--blue);color:var(--blue);}
   /* 기업 조회 */
   .search{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
   .search input{flex:1;min-width:240px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);}
@@ -254,7 +273,10 @@
   ].map(function(x){ return {n:x.n, i:COMPANY[x.n].i, s:x.s}; });
 
   var offset = 0, sortMode = 'score', curData = [], lastRows = [];
-  var liveMode = false, liveGen = '';
+  var liveMode = false, liveGen = '', LIVEDATA = null;
+  function mergeCatalog(j){ if(j && j.catalog){ Object.keys(j.catalog).forEach(function(k){ SIG[k] = j.catalog[k]; }); } }
+  function getJSON(u){ return fetch(u, {cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }); }
+  function ensureLive(cb){ if(LIVEDATA){ return cb(); } getJSON('data/latest.json').then(function(j){ LIVEDATA = j; mergeCatalog(j); cb(); }).catch(cb); }
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 
   function score(sigs){ return Math.min(100, sigs.reduce(function(a,k){ return a + SIG[k].w; }, 0)); }
@@ -359,7 +381,8 @@
       '<span class="s-t">총 '+rows.length+'</span><span class="s-a">즉시 '+a+'</span><span class="s-b">이번 주 '+b+'</span><span class="s-c">너처링 '+c+'</span>';
     var gt = document.getElementById('genTime'), rtTag = document.getElementById('rtTag');
     if(liveMode){
-      gt.innerHTML = '<span class="modechip live">● 실데이터</span> 뉴스·채용·캘린더 자동수집 · 갱신 ' + esc(liveGen);
+      if(staleDate) gt.innerHTML = '<span class="modechip live">● 실데이터</span> ' + esc(dateStr(offset)) + ' 수집분 없음 — 최신 ' + esc(staleDate) + ' 표시';
+      else gt.innerHTML = '<span class="modechip live">● 실데이터</span> 뉴스·채용·캘린더 자동수집 · 갱신 ' + esc(liveGen);
       if(rtTag) rtTag.textContent = '기준 부합 후보 · 실시그널';
     } else {
       gt.innerHTML = '<span class="modechip demo">● 시연</span> ' + dateStr(offset) + ' 리포트 (하루 동안 고정)';
@@ -369,21 +392,24 @@
   function show(){
     document.getElementById('dateLabel').textContent = dateLabel(offset);
     document.getElementById('nextBtn').disabled = (offset >= 0);
-    // 실데이터(JSON) 우선 → 해당 날짜 없으면 오늘은 latest.json → 그래도 없으면 시뮬레이션 폴백
-    var getJSON = function(u){ return fetch(u, {cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }); };
-    getJSON('data/report-' + dateStr(offset) + '.json')
-      .catch(function(){ if(offset===0) return getJSON('data/latest.json'); throw 0; })
-      .then(function(j){ applyLive(j); })
+    // 실데이터(JSON)만 사용 — 해당 날짜 없으면 최신(latest) 실데이터로 대체 (랜덤 시뮬레이션 제거)
+    var reqDate = dateStr(offset);
+    getJSON('data/report-' + reqDate + '.json')
+      .catch(function(){ return getJSON('data/latest.json'); })
+      .then(function(j){ if(offset===0){ LIVEDATA = j; } applyLive(j, reqDate); })
       .catch(function(){ curData = buildReport(offset); liveMode = false; render(); });
   }
-  function applyLive(j){
-    if(j.catalog){ Object.keys(j.catalog).forEach(function(k){ SIG[k] = j.catalog[k]; }); }
+  var staleDate = '';
+  function applyLive(j, reqDate){
+    mergeCatalog(j);
     curData = (j.companies||[]).map(function(c){
       var keys = (c.sigs||[]).filter(function(k){ return SIG[k]; });
       var cnt = 0; if(c.sources){ keys.forEach(function(k){ cnt += (c.sources[k]||[]).length; }); }
       return { co:{n:c.n, i:c.i}, sigs:keys, score:(typeof c.score==='number'?c.score:score(keys)), tie:cnt/1000, sources:c.sources||null };
     });
-    liveMode = true; liveGen = j.generated || ''; render();
+    liveMode = true; liveGen = j.generated || '';
+    staleDate = (reqDate && j.date && reqDate !== j.date) ? j.date : '';
+    render();
   }
   function csvCell(v){ v = String(v); return /[",\n]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; }
   function download(){
@@ -462,7 +488,72 @@
   }
   function profileFor(name){ name=(name||'').trim(); var c=COMPANY[name]; return { name:name, ind: c ? c.i : '' }; }
 
+  function roleButtonsHTML(name){
+    return [['마케팅 팀장','마케팅 팀장'],['그로스 리드','그로스'],['퍼포먼스 마케팅','퍼포먼스 마케팅'],['브랜드 마케팅','브랜드 마케팅'],['CMO·마케팅 리더','CMO']].map(function(r){
+      return '<a href="https://connect.rememberapp.co.kr/search?keyword='+enc(name+' '+r[1])+'" target="_blank" rel="noopener">💳 '+r[0]+'</a>';
+    }).join('');
+  }
+  // ── 자동 브리프: 수집된 실데이터로 스코어링·뉴스·채용·컨택을 자동 구성 ──
+  function briefAutoHTML(c){
+    var name=c.n, ind=c.i, g=grade(c.score||0), hp=c.hp||LINK.home(name);
+    var fit = c.score>=60?'<b style="color:var(--green)">높음</b>':c.score>=40?'<b style="color:var(--blue)">보통</b>':'검토';
+    var ch=function(href,label,key){ return '<a class="'+(key?'key':'')+'" href="'+href+'" target="_blank" rel="noopener">'+label+'</a>'; };
+    var sigRows=(c.sigs||[]).map(function(k){
+      var S=SIG[k]||{l:k,w:0,src:''}, srcs=(c.sources&&c.sources[k])||[], withU=srcs.filter(function(s){return s.u;});
+      var ev = withU.length
+        ? '<a class="ev" href="'+esc(withU[0].u)+'" target="_blank" rel="noopener">'+esc(withU[0].t)+' ↗</a>'+(withU.length>1?' <span class="evmore">+'+(withU.length-1)+'건</span>':'')
+        : '<span class="evmore">'+esc((srcs[0]&&srcs[0].t)||S.src||'')+'</span>';
+      return '<tr><td class="sl">'+esc(S.l)+'</td><td class="sw">+'+S.w+'</td><td>'+ev+'</td></tr>';
+    }).join('');
+    var news=(c.news||[]);
+    var newsHTML = news.length ? '<div class="newslist">'+news.map(function(n){
+      return '<a href="'+esc(n.u)+'" target="_blank" rel="noopener"><span class="nd">'+esc(n.d||'')+'</span><span class="nt">'+esc(n.t)+'</span><span class="ns">'+esc(n.s||'')+' ↗</span></a>';
+    }).join('')+'</div>' : '<div class="empty" style="padding:14px;">최근 45일 수집된 기사 없음</div>';
+    var jobs=(c.jobs||[]);
+    var jobsHTML = jobs.length ? '<div class="jobsauto">'+jobs.map(function(j){ return '<a href="'+esc(j.u)+'" target="_blank" rel="noopener">💼 '+esc(j.t)+' ↗</a>'; }).join('')+'</div>'
+      : '<div class="empty" style="padding:12px;">자동 감지된 마케팅 공고 없음 — 아래 채용 채널에서 직접 확인</div>';
+    var reasons=['소비자·'+esc(c.target||'2040 대중')+' 타깃 → 토스 유저층과 정합'];
+    if((c.sigs||[]).indexOf('admarket')>=0) reasons.push('광고·캠페인 집행 중 → 토스로 <b>증분 도달</b> 확대 여지');
+    if((c.sigs||[]).indexOf('invest')>=0)  reasons.push('최근 투자 유치 → <b>마케팅 예산 확대</b> 구간');
+    if((c.sigs||[]).indexOf('season')>=0)  reasons.push('성수기 진입 → <b>시즌 집중 집행</b> 적기');
+    if((c.sigs||[]).indexOf('hiring')>=0)  reasons.push('마케팅 조직 확대 중 → 신규 매체 테스트 수요↑');
+    var top=(c.sigs||[]).slice().sort(function(a,b){ return (SIG[b]?SIG[b].w:0)-(SIG[a]?SIG[a].w:0); })[0];
+    var hook=(top&&SIG[top])?SIG[top].hook:'';
+    var recHTML = reasons.map(function(x){ return '<span class="r">• '+x+'</span>'; }).join('')+
+      '<span class="r" style="margin-top:7px;">📌 추천 접근 — 채널 <b>'+g.ch+'</b> · 타이밍 <b>'+(c.score>=70?'즉시(지금)':c.score>=40?'이번 주~이번 달':'분기 내')+'</b></span>'+
+      '<span class="r">💬 아웃리치 훅 — <b>'+esc(hook)+'</b></span>';
+    return '<div class="brief">'+
+      '<div class="bh"><div class="bhl"><div class="bname">'+esc(name)+'<small>'+esc(ind)+'</small><span class="autotag">● 자동 스코어링</span></div>'+
+        '<div class="bsum">'+esc(ind)+' · 타깃 '+esc(c.target||'')+' · 토스 핏 '+fit+'</div>'+
+        '<div style="margin-top:8px;"><a href="'+esc(hp)+'" target="_blank" rel="noopener" style="font-size:13px;font-weight:800;color:var(--blue);text-decoration:none;">🏢 '+esc(hp.replace(/^https?:\/\//,''))+' →</a></div></div>'+
+        '<div class="bscore"><span class="n" style="color:'+g.col+'">'+c.score+'</span><span class="gr '+g.c+'">'+g.g+'</span></div></div>'+
+      '<div class="bbody">'+
+        '<div class="bsec">🟢 자동 감지 시그널 — '+esc((LIVEDATA&&LIVEDATA.generated)||'')+' 수집 · 근거 링크 포함</div>'+
+        '<table class="sigauto"><tr><th>시그널</th><th class="sw">가중치</th><th>근거 (실제 기사·공고)</th></tr>'+sigRows+'</table>'+
+        '<div class="bsec">📰 최신 뉴스 — 헤드라인 · 발행일 · 출처</div>'+newsHTML+
+        '<div class="bsec">🎯 토스 Ads 핏 & 접근 전략</div><div class="brec">'+recHTML+'</div>'+
+        '<div class="bsec">📈 마케팅 채용 (자동 감지)</div>'+jobsHTML+
+        '<div class="bsec">👤 담당자 컨택 포인트</div><div class="chgroup"><div class="chbtns">'+
+          ch(LINK.remember(name),'💳 리멤버 커넥트 담당자',true)+ch(LINK.linkedin(name),'🔗 LinkedIn 담당자')+ch(hp,'🏢 기업 홈페이지')+ch(LINK.inquiry(name),'✉ 문의하기')+ch(LINK.mail(name,hook||'토스 Ads 제안'),'📧 콜드메일 초안')+
+        '</div></div>'+
+        '<div class="bsec">🎯 담당자 좁혀 찾기 — 직무 키워드로 리멤버 검색</div><div class="chgroup"><div class="chbtns">'+roleButtonsHTML(name)+'</div></div>'+
+        '<div class="bsec">🔎 직접 검증 — 자동수집 외(광고 집행 등)</div><div class="chgroup"><div class="chbtns">'+
+          ch(VERIFY.running(name),'📣 메타 광고 라이브러리')+ch('https://adstransparency.google.com/?region=KR',' 📣 구글 광고 투명성')+ch('https://www.google.com/search?q='+enc(name+' 더브이씨 투자 규모'),'💰 투자·규모(더브이씨)')+ch(LINK.jobplanet(name),'🏢 기업정보(잡플래닛)')+
+        '</div></div>'+
+      '</div></div>';
+  }
   function renderBrief(name){
+    name=(name||'').trim();
+    var box=document.getElementById('briefResult');
+    if(!name){ box.innerHTML='<div class="empty">연락할 기업명을 입력하면 자동 스코어링·회사 개요·최신 뉴스·다채널 컨택이 나옵니다.</div>'; return; }
+    ensureLive(function(){
+      var live = LIVEDATA && (LIVEDATA.companies||[]).filter(function(c){ return c.n===name; })[0];
+      if(live){ box.innerHTML = briefAutoHTML(live); return; }
+      renderManual(name);
+      box.insertAdjacentHTML('afterbegin','<div class="note" style="margin-bottom:12px;">ℹ <b>'+esc(name)+'</b>는 자동수집 대상(발굴 큐 12곳) 외입니다 — 아래에서 시그널을 직접 확인·체크하면 점수가 계산됩니다(수동 검증 모드).</div>');
+    });
+  }
+  function renderManual(name){
     name = (name||'').trim();
     var box = document.getElementById('briefResult');
     if(!name){ box.innerHTML = '<div class="empty">연락할 기업명을 입력하면, 시그널 확인 링크·회사 팩트 소스·접근 전략·다채널 컨택이 나옵니다.</div>'; return; }

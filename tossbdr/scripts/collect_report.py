@@ -15,6 +15,7 @@ GitHub Actions 일일 크론으로 실행 → data/latest.json + data/report-YYY
 """
 import os, re, sys, json, html, urllib.parse, urllib.request
 from datetime import datetime, timezone, timedelta
+from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as ET
 
 try:
@@ -31,18 +32,18 @@ DATA_DIR = os.path.normpath(os.path.join(HERE, "..", "data"))
 
 # ───────── 발굴 후보 (실제 기업) ─────────
 COMPANY = {
-    "에이블리":        {"i": "패션 커머스"},
-    "지그재그":        {"i": "패션 커머스"},
-    "꾸까":            {"i": "플라워 구독"},
-    "마이리얼트립":    {"i": "여행"},
-    "트래블월렛":      {"i": "여행·핀테크"},
-    "밀리의서재":      {"i": "독서 구독"},
-    "리디":            {"i": "웹툰·콘텐츠"},
-    "번개장터":        {"i": "중고 커머스"},
-    "스파르타코딩클럽": {"i": "성인 교육"},
-    "프레시코드":      {"i": "샐러드 구독"},
-    "클래스101":       {"i": "교육"},
-    "야나두":          {"i": "교육"},
+    "에이블리":        {"i": "패션 커머스", "hp": "https://ably.team",              "t": "2030 여성"},
+    "지그재그":        {"i": "패션 커머스", "hp": "https://kakaostyle.com",          "t": "2030 여성"},
+    "꾸까":            {"i": "플라워 구독", "hp": "https://kukka.kr",                "t": "2030 여성"},
+    "마이리얼트립":    {"i": "여행",        "hp": "https://www.myrealtrip.com",      "t": "2040 액티브"},
+    "트래블월렛":      {"i": "여행·핀테크", "hp": "https://www.travel-wallet.com",   "t": "2040 경제활동"},
+    "밀리의서재":      {"i": "독서 구독",   "hp": "https://corp.millie.co.kr",       "t": "2030 생활"},
+    "리디":            {"i": "웹툰·콘텐츠", "hp": "https://ridicorp.com",            "t": "1030"},
+    "번개장터":        {"i": "중고 커머스", "hp": "https://bgzt.co.kr",              "t": "2030 가성비"},
+    "스파르타코딩클럽": {"i": "성인 교육",   "hp": "https://spartaclub.kr",           "t": "2030 직장인"},
+    "프레시코드":      {"i": "샐러드 구독", "hp": "https://www.freshcode.me",        "t": "2030 건강"},
+    "클래스101":       {"i": "교육",        "hp": "https://101.inc",                 "t": "2030 직장인·학습자"},
+    "야나두":          {"i": "교육",        "hp": "https://www.yanadoo.co.kr",       "t": "2030 직장인·학습자"},
 }
 
 # ───────── 시그널 카탈로그 (프론트가 이 정의를 그대로 사용) ─────────
@@ -104,8 +105,16 @@ def clean(t):
     return html.unescape(re.sub(r"\s+", " ", t or "")).strip()
 
 
+def fmt_date(pub):
+    try:
+        return parsedate_to_datetime(pub).astimezone(KST).strftime("%Y-%m-%d")
+    except Exception:
+        return ""
+
+
 # ───────── 뉴스 (Google News RSS) ─────────
 def fetch_news(name):
+    """최근 기사 목록 — 제목/링크/발행일/매체. 제목 끝의 ' - 매체명'은 분리."""
     url = f"https://news.google.com/rss/search?q=%22{enc(name)}%22%20when:45d&hl=ko&gl=KR&ceid=KR:ko"
     xml = http_get(url)
     out = []
@@ -118,9 +127,13 @@ def fetch_news(name):
     for item in root.iter("item"):
         title = clean(item.findtext("title"))
         link = clean(item.findtext("link"))
+        date = fmt_date(item.findtext("pubDate"))
+        src = clean(item.findtext("source")) or (title.rsplit(" - ", 1)[-1] if " - " in title else "")
+        while src and title.endswith(" - " + src):   # 끝의 ' - 매체명'(중복 포함) 제거
+            title = title[: -(len(src) + 3)].rstrip()
         if not title or name not in title:
             continue
-        out.append({"t": title, "u": link})
+        out.append({"t": title, "u": link, "d": date, "s": src})
         if len(out) >= 30:
             break
     return out
@@ -242,22 +255,26 @@ def build():
         print(f"    뉴스 {len(news)}건 → {[k for k in signals]}")
 
         if season_on(ind, month):
-            signals["season"] = [{"t": f"{ind} 성수기 구간 (월 {month})", "u": ""}]
+            signals["season"] = [{"t": f"{ind} 성수기 구간 (월 {month})", "u": "", "d": "", "s": "시즌 캘린더"}]
 
         jobs = fetch_hiring(name)
         if jobs:
             signals["hiring"] = jobs
             print(f"    마케팅 채용 {len(jobs)}건")
 
-        signals["fit"] = [{"t": f"{ind} · 토스 2030·대중 유저 타깃 핏", "u": ""}]
+        signals["fit"] = [{"t": f"{ind} · 토스 {meta.get('t','2040 대중')} 타깃 핏", "u": "", "d": "", "s": "업종 분석"}]
 
         keys = list(signals.keys())
         score = min(100, sum(CATALOG[k]["w"] for k in keys if k in CATALOG))
         companies.append({
             "n": name, "i": ind,
+            "hp": meta.get("hp", ""),
+            "target": meta.get("t", "2040 대중"),
             "sigs": keys,
             "score": score,
             "sources": signals,
+            "news": news[:8],   # 기업조회 탭 '최신 뉴스'용 (발행일·링크 포함)
+            "jobs": jobs,
         })
 
     companies.sort(key=lambda c: (c["score"], len(c["sources"])), reverse=True)
