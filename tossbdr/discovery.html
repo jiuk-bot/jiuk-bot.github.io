@@ -369,9 +369,10 @@
   function show(){
     document.getElementById('dateLabel').textContent = dateLabel(offset);
     document.getElementById('nextBtn').disabled = (offset >= 0);
-    // 실데이터(JSON) 우선, 없으면 시뮬레이션 폴백
-    fetch('data/report-' + dateStr(offset) + '.json', {cache:'no-store'})
-      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+    // 실데이터(JSON) 우선 → 해당 날짜 없으면 오늘은 latest.json → 그래도 없으면 시뮬레이션 폴백
+    var getJSON = function(u){ return fetch(u, {cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }); };
+    getJSON('data/report-' + dateStr(offset) + '.json')
+      .catch(function(){ if(offset===0) return getJSON('data/latest.json'); throw 0; })
       .then(function(j){ applyLive(j); })
       .catch(function(){ curData = buildReport(offset); liveMode = false; render(); });
   }
