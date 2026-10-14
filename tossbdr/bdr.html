@@ -159,6 +159,11 @@
   .icard .iwhy{font-size:12.5px;color:var(--body);margin:7px 0 10px;line-height:1.5;}
   .icard .isig{display:flex;flex-wrap:wrap;gap:6px;}
   .icard .isig span{font-size:11.5px;color:var(--ink);background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:5px 9px;}
+  .whycard{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#eaf2ff,#f6faff);border:1px solid #cfe0fd;border-radius:16px;padding:20px 24px;margin:0 0 18px;}
+  .whycard .wtag{flex:0 0 auto;font-size:12px;font-weight:800;color:#fff;background:var(--blue);border-radius:999px;padding:7px 14px;white-space:nowrap;}
+  .whycard .wtxt{font-size:17px;font-weight:700;color:var(--ink);line-height:1.6;}
+  .whycard .wtxt b{color:var(--blue);}
+  @media(max-width:600px){.whycard{flex-direction:column;align-items:flex-start;gap:11px;}.whycard .wtxt{font-size:15.5px;}}
   .dcards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
   @media(max-width:640px){.dcards{grid-template-columns:1fr;}}
   .dcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
@@ -572,9 +577,14 @@
     </div>
 
 
+    <div class="whycard">
+      <span class="wtag">💡 왜 만들었나</span>
+      <div class="wtxt">무작위로 연락하면 응답률·미팅 전환이 바닥. <b>지금 광고가 필요한 기업부터</b> 매일 자동 리서치해 <b>'오늘 연락할 1순위'</b>를 만든다.</div>
+    </div>
+
     <h3 style="font-size:16px;font-weight:800;margin:6px 0 10px;">아웃리치 기업분석 대시보드 — 핵심 기능</h3>
     <div class="feat" style="margin-bottom:16px;">
-      <div class="fcard"><div class="fnum">1</div><div class="ft">매일 자동 발굴 큐</div><div class="fd">시그널 감지 → '오늘 연락할 기업' 리스트 자동 생성</div></div>
+      <div class="fcard"><div class="fnum">1</div><div class="ft">매일 아웃리치할 기업 자동 리서치</div><div class="fd">시그널 감지 → '오늘 연락할 기업' 리스트 자동 생성</div></div>
       <div class="fcard"><div class="fnum">2</div><div class="ft">우선순위 점수·등급</div><div class="fd">투자·계절성·채용·광고↑ → 즉시 / 이번 주 / 너처링</div></div>
       <div class="fcard"><div class="fnum">3</div><div class="ft">회사별 컨택·확인 링크</div><div class="fd">리멤버·LinkedIn·홈페이지 + 팩트 소스 즉시 연결</div></div>
     </div>
@@ -771,12 +781,9 @@
   <div class="wrap">
     <div class="jd-tag">아웃리치 개인화 도구 · 직접 개발 (예시 데이터)</div>
     <h2 class="sec">STEP 3 · 콜 레퍼런스 — 업종 즉시 조회 대시보드</h2>
-    <div class="wflow">
-      <div class="wstep hyp"><span class="wl">가설</span><p>초기 광고주는 상품·지면 이해가 낮아, <b>1차 컨택에서 정보 제공·전문성 부재로 AM 미팅 전환↓</b></p></div>
-      <div class="warr">→</div>
-      <div class="wstep sol"><span class="wl">그래서 만들었다</span><p>업종 입력 시 <b>유사 업종 성과·추천 지면·성공사례를 즉시 제시</b>하는 레퍼런스 대시보드 구축</p></div>
-      <div class="warr">→</div>
-      <div class="wstep use"><span class="wl">이렇게 쓴다</span><p>첫 컨택부터 <b>데이터 기반 업종 맞춤 제안</b>으로 전문성 확보 → <b>AM 미팅 수락률 제고</b></p></div>
+    <div class="whycard">
+      <span class="wtag">💡 왜 만들었나</span>
+      <div class="wtxt">초기 광고주는 상품·지면을 잘 모른다. 콜에서 <b>같은 업종 성과를 즉석에서</b> 보여줘 <b>'우리 업종도 되네'</b>를 만들고 AM 미팅 수락률을 올린다.</div>
     </div>
     <div class="usehow">
       <div class="ustep"><span class="un">1</span>아웃리치 전·콜 중 업종 입력<br /><small>유사어·동의어도 매칭 (임플란트 → 치과)</small></div>
