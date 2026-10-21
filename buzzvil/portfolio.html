@@ -440,6 +440,12 @@ p,h1,h2,h3,h4,li,span,div,td,th{
   .case-lead{ font-size:15.5px; font-weight:700; color:var(--ink); line-height:1.55; background:var(--soft); border-left:4px solid var(--primary); border-radius:0 12px 12px 0; padding:14px 18px; margin-bottom:22px; }
   .case-lead::before{ content:'핵심 한 줄'; display:block; font-size:11px; font-weight:800; color:var(--primary); letter-spacing:.04em; margin-bottom:6px; }
   .case-lead b{ color:var(--primary-dark); font-weight:800; }
+.hero .demo-cta{ display:inline-flex; align-items:center; gap:9px; margin-top:22px; padding:15px 26px; border-radius:14px; font-size:16px; font-weight:800; color:#fff; background:linear-gradient(135deg,#3E86FF,#2F6BE0); box-shadow:0 8px 22px rgba(49,130,246,.34), inset 0 1px 0 rgba(255,255,255,.22); text-decoration:none; position:relative; overflow:hidden; transition:transform .15s, box-shadow .15s, filter .15s; }
+.hero .demo-cta:hover{ transform:translateY(-3px) scale(1.02); box-shadow:0 16px 34px rgba(49,130,246,.46); filter:brightness(1.05); }
+.hero .demo-cta .arr{ transition:transform .2s; }
+.hero .demo-cta:hover .arr{ transform:translateX(4px); }
+.hero .demo-cta::after{ content:""; position:absolute; top:0; left:-120%; width:70%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent); transform:skewX(-20deg); transition:left .55s; }
+.hero .demo-cta:hover::after{ left:130%; }
 </style>
 </head>
 <body>
@@ -461,7 +467,7 @@ p,h1,h2,h3,h4,li,span,div,td,th{
     <div class="meta-line">
       <span><span class="order">읽는 순서</span> : 서비스 → 과제 → 접근 → 실행 → 성과 → 인사이트</span>
     </div>
-    <div class="contact">jiuk2038@gmail.com · 010-5540-2038</div>
+    <a href="dashboard.html" class="demo-cta">🖥️ 광고주 성과관리 대시보드 데모하기 <span class="arr">→</span></a>
   </header>
 
   <!-- ===== CASE 1 ===== -->
