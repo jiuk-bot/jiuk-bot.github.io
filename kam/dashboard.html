@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>파트너 성과관리 대시보드 (데모) · 윤지욱</title>
-<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 거래액(GMV)·주문수·객단가·ROAS·광고비·전환율을 기간 비교하고, 활동 유형(광고/신메뉴/프로모션)별로 수익성·운영 성과를 분해하며, 브랜드→상품→소재/메뉴 드릴다운, 파트너별 KPI·메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
+<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 거래액(GMV)·주문수·객단가·ROAS·광고비·전환율을 기간 비교하고, 활동 유형(광고/신메뉴/프로모션)별로 수익성·운영 성과를 분해하며, 브랜드→상품→소재/메뉴 드릴다운, 운영 이슈·협업 메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
@@ -138,7 +138,7 @@
 <div class="wrap">
   <div class="head">
     <div><h1>파트너 성과관리 대시보드</h1>
-      <div class="sub">파트너(브랜드)별 커머스 성과(거래액·주문수·객단가) + 수익성·운영(ROAS·광고비·전환율) 기간 비교 · 활동 유형(광고/신메뉴/프로모션)별 분해 · 브랜드→상품→소재/메뉴 드릴다운 · 파트너별 KPI·메모 히스토리.</div></div>
+      <div class="sub">파트너(브랜드)별 커머스 성과(거래액·주문수·객단가) + 수익성·운영(ROAS·광고비·전환율) 기간 비교 · 활동 유형(광고/신메뉴/프로모션)별 분해 · 브랜드→상품→소재/메뉴 드릴다운 · 운영 이슈·유관부서 협업 메모 히스토리.</div></div>
     <span class="badge-demo">● 데모 · 가상 데이터</span>
   </div>
 
@@ -162,7 +162,7 @@
     <div class="periodinfo" id="periodInfo"></div>
     <div class="sum" id="sum"></div>
     <div class="advhead GRID">
-      <div>파트너(브랜드) / KPI</div><div>선택 KPI</div><div>주문 수</div><div>ROAS</div><div>상태</div><div>메모</div><div></div>
+      <div>파트너(브랜드)</div><div>거래액(GMV)</div><div>주문 수</div><div>ROAS</div><div>상태</div><div>메모</div><div></div>
     </div>
     <div id="advList"></div>
   </div>
@@ -196,7 +196,7 @@
     <div class="dtscroll"><table class="dt" id="histView"></table></div>
   </div>
 
-  <div class="disc">⚠️ 본 대시보드는 <b>윤지욱이 다(多)파트너 성과관리 전략을 보여주기 위해 제작한 데모</b>로, 모든 파트너(브랜드)·수치는 <b>가상 데이터</b>입니다. (엑셀 업로드 / Instant Commerce 운영 데이터 연동으로 실데이터 수집 가능) · 메모·KPI 설정은 <b>이 브라우저에만 저장</b>됩니다.</div>
+  <div class="disc">⚠️ 본 대시보드는 <b>윤지욱이 다(多)파트너 성과관리 전략을 보여주기 위해 제작한 데모</b>로, 모든 파트너(브랜드)·수치는 <b>가상 데이터</b>입니다. (엑셀 업로드 / Instant Commerce 운영 데이터 연동으로 실데이터 수집 가능) · 메모(운영 이슈·협업 로그)는 <b>이 브라우저에만 저장</b>됩니다.</div>
   <div class="disc" style="background:#f3f7ff;border-color:#bcd4f5;color:#2f5a9e;">
     🔒 <b>파트너 데이터 보안 관리 (실제 운영 시)</b> — 데이터 유출 가능성을 원천 차단하기 위해, 대시보드는 <b>담당자 로컬 환경(개인 노트북)에서만 구동</b>(localhost)하며 외부 서버·클라우드에 파트너 데이터를 저장·배포하지 않습니다. API 토큰·인증키는 <code style="background:#e6eefb;padding:1px 5px;border-radius:4px;">.env</code>로 분리해 환경변수로 관리하고, 데이터는 <b>읽기 전용(read-only)</b>·접근 권한 최소화 원칙으로 다룹니다.
   </div>
@@ -352,32 +352,30 @@ function seedMemo(){
   const t=(i,hm)=>{const [y,mo,d]=DATES[i].iso.split('-');return `${y}.${mo}.${d} ${hm}`;};
   return {
    '교촌치킨':[
-     {ts:t(DAYS-2,'09:40'),text:'최상단 노출 CVR ▼18% (전주比) — 대표 메뉴 소재 피로 의심. 신규 메뉴 소재 2종 교체 제안 예정.'},
-     {ts:t(DAYS-6,'14:10'),text:'오늘의 딜 프로모션 CPA 안정권 유지. 다음 주 일예산 +15% 증액 논의.'},
-     {ts:t(DAYS-11,'11:05'),text:'월간 리뷰 — 상시 배달 쿠폰은 꾸준한 전환, 최상단 노출은 신메뉴 버스트 중심으로 운영 합의.'},
+     {ts:t(DAYS-2,'09:40'),text:'주문 수·거래액이 파트너 정산 데이터와 약 2% 불일치 확인 — 정산팀에 데이터 정합성 검증 요청, 원인(환불 반영 시점) 확인 후 리포트 반영.'},
+     {ts:t(DAYS-6,'14:10'),text:'신메뉴 허니콤보 일부 지점 메뉴 노출 누락 발견 — 운영팀 협업으로 온보딩 재처리, 정상 노출 확인.'},
+     {ts:t(DAYS-11,'11:05'),text:'오늘의 딜 프로모션 쿠폰 중복 적용 오류 1건 — 즉시 수정 및 재발 방지 체크리스트 유관팀 공유.'},
    ],
    '메가커피':[
-     {ts:t(DAYS-4,'16:22'),text:'적립 미션 프로모션 CTR 하락 추세 — 재주문 고객 타겟 A/B 제안.'},
-     {ts:t(DAYS-13,'10:48'),text:'행사 버스트 종료. 상시 전환 상품(오늘의 딜 프로모션)으로 예산 이관 완료.'},
+     {ts:t(DAYS-4,'16:22'),text:'주문 수 급감 구간 원인 파악 — 일부 매장 운영 중단 영향으로 확인(프로모션 이슈 아님), 영업팀에 공유·대응.'},
+     {ts:t(DAYS-9,'10:48'),text:'여름 신메뉴 등록 지연 — 브랜드 담당자·운영팀과 메뉴 온보딩 일정 재조율, 다음 주 노출 예정.'},
+     {ts:t(DAYS-13,'15:30'),text:'적립 미션 프로모션 설정값 오류로 거래액 집계 누락 의심 — 데이터 정합성 점검 중, 정산팀 확인 요청.'},
    ],
    '노브랜드버거':[
-     {ts:t(DAYS-8,'10:30'),text:'최상단 노출 전환 우수 — 예산 비중 확대 제안.'},
+     {ts:t(DAYS-8,'10:30'),text:'메뉴 가격 정보 불일치(앱 노출가 vs 계약서) 2건 — 계약팀과 대조 후 정정 완료.'},
+     {ts:t(DAYS-15,'13:20'),text:'신규 입점 매장 온보딩 현황 점검 — 메뉴 등록 90% 완료, 잔여 건 운영팀에 핸드오프.'},
    ],
    '투썸플레이스':[
-     {ts:t(DAYS-3,'17:05'),text:'첫 주문 케이크 소재 CPA 급등 — 최상단 노출 과열. 재주문 미션으로 일부 예산 분산 제안.'},
+     {ts:t(DAYS-3,'17:05'),text:'정산 리포트와 거래액 데이터 차이 분석 — 환불 반영 시점 차이로 확인, 리포트에 각주 추가해 혼선 방지.'},
+     {ts:t(DAYS-10,'11:40'),text:'시즌 신메뉴 런칭 프로모션 노출·기간 설정 검수 — 구좌·기간 오류 없이 정상 집행 확인.'},
    ],
   };
 }
 
-/* 저장 (최초 1회 시드) */
-const KPI=JSON.parse(localStorage.getItem('cpngdemo_kpi')||'null')||{'교촌치킨':'gmv','투썸플레이스':'roas'};
-const MEMO=JSON.parse(localStorage.getItem('cpngdemo_memo')||'null')||seedMemo();
-const saveKPI=()=>localStorage.setItem('cpngdemo_kpi',JSON.stringify(KPI));
-const saveMemoLS=()=>localStorage.setItem('cpngdemo_memo',JSON.stringify(MEMO));
-if(!localStorage.getItem('cpngdemo_kpi'))saveKPI();
-if(!localStorage.getItem('cpngdemo_memo'))saveMemoLS();
-function getKPI(n){return KPI[n]||'gmv';}
-window.setKPI=(n,v)=>{KPI[n]=v;saveKPI();renderOverview();};
+/* 저장 (최초 1회 시드) — 메모 히스토리 = 운영 이슈·유관부서 협업 로그 */
+const MEMO=JSON.parse(localStorage.getItem('cpngdemo_memo2')||'null')||seedMemo();
+const saveMemoLS=()=>localStorage.setItem('cpngdemo_memo2',JSON.stringify(MEMO));
+if(!localStorage.getItem('cpngdemo_memo2'))saveMemoLS();
 
 /* 기간 */
 const idx=iso=>DATES.findIndex(d=>d.iso===iso);
@@ -401,14 +399,12 @@ function renderOverview(){
   document.getElementById('periodInfo').innerHTML=`📊 현재 <span class="pp">${curR}</span> <span class="vs">vs</span> 비교 <span class="pp">${cmpR}</span>`;
   let flags=0;
   const rows=DATA.map(a=>{
-    const kpi=getKPI(a.name);
     const stat=m=>{const cur=mval(a,m,cs,ce);const prev=ps===null?null:mval(a,m,ps,pe);return {cur,prev,ch:change(cur,prev)};};
-    const k=stat(kpi), orders=stat('orders'), roas=stat('roas');
-    const flagged=isFlag(kpi,k.ch); if(flagged)flags++;
-    const status=flagged?`<span class="st-warn">⚠ ${MET[kpi].l} 악화</span>`:(ps!==null?`<span class="st-ok">정상</span>`:`<span style="font-size:11px;color:#bbb">–</span>`);
-    const cellK=`<div class="cell big"><div class="kpitag">${MET[kpi].l}</div><div class="v">${mfmt(kpi,k.cur)}</div>${k.prev!==null?`<div class="p">전기 ${mfmt(kpi,k.prev)}</div>`:''}${deltaHtml(k.ch,MET[kpi].g)}</div>`;
+    const k=stat('gmv'), orders=stat('orders'), roas=stat('roas');
+    const flagged=isFlag('gmv',k.ch); if(flagged)flags++;
+    const status=flagged?`<span class="st-warn">⚠ 거래액 하락</span>`:(ps!==null?`<span class="st-ok">정상</span>`:`<span style="font-size:11px;color:#bbb">–</span>`);
+    const cellK=`<div class="cell big"><div class="v">${mfmt('gmv',k.cur)}</div>${k.prev!==null?`<div class="p">전기 ${mfmt('gmv',k.prev)}</div>`:''}${deltaHtml(k.ch,MET['gmv'].g)}</div>`;
     const cellS=(o,m)=>`<div class="cell"><div class="v">${mfmt(m,o.cur)}</div>${deltaHtml(o.ch,MET[m].g)}</div>`;
-    const opts=MKEYS.map(m=>`<option value="${m}" ${m===kpi?'selected':''}>${MET[m].l}</option>`).join('');
     const mc=(MEMO[a.name]||[]).length;
     const chips=a.camps.map(c=>`<span>${typeTag(c.type)} ${c.name}</span>`).join('');
     // 프로모션/광고 상품 지표 테이블 — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비·전환율) · 비교 시 전주(위)/이번주(아래) 2행
@@ -442,7 +438,6 @@ function renderOverview(){
     return `<div class="adv ${flagged?'flag':''}">
       <div class="adv-top GRID" onclick="this.parentNode.classList.toggle('open')">
         <div class="advc0"><div class="adv-name">${a.name}</div><div class="adv-cat">${a.cat} · 운영 상품 ${a.camps.length}개</div>
-          <div class="kpiwrap"><span class="kpilbl">KPI</span><select class="kpisel" onclick="event.stopPropagation()" onchange="setKPI('${a.name}',this.value)">${opts}</select></div>
           <div class="gchips">${chips}</div></div>
         ${cellK}${cellS(orders,'orders')}${cellS(roas,'roas')}
         <div class="status">${status}</div>
