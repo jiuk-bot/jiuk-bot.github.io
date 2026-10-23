@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>윤지욱 · 쿠팡 Instant Commerce KAM 지원 포트폴리오 — 파트너 운영·성과관리 케이스</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+
+:root{
+  --primary:#3182F6;
+  --primary-dark:#1b64da;
+  --soft:#EAF2FE;
+  --ink:#191F28;
+  --body:#4E5968;
+  --sub:#8B95A1;
+  --line:#E5E8EB;
+  --bg:#F9FAFB;
+  --card:#ffffff;
+  --green:#15C47E;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html,body{
+  font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;
+  color:var(--body);
+  background:var(--bg);
+  line-height:1.65;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-print-color-adjust:exact;
+  print-color-adjust:exact;
+  -webkit-font-smoothing:antialiased;
+}
+
+p,h1,h2,h3,h4,li,span,div,td,th{
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+
+.wrap{
+  max-width:820px;
+  margin:0 auto;
+  padding:0 24px 64px;
+}
+
+/* ===== minimal header ===== */
+.topbar{
+  max-width:820px;
+  margin:0 auto;
+  padding:22px 24px 0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.brand{
+  font-weight:800;
+  letter-spacing:-0.02em;
+  font-size:15px;
+  color:var(--ink);
+}
+.brand .dot{color:var(--primary);}
+.topbar .role{
+  font-size:12px;
+  color:var(--sub);
+  font-weight:600;
+}
+.topnav{ display:flex; align-items:center; gap:17px; font-size:13.5px; font-weight:600; }
+.topnav a{ color:var(--sub); text-decoration:none; }
+.topnav a.active{ color:var(--primary-dark); font-weight:800; }
+.topnav a.livebtn{ background:var(--primary); color:#fff; font-weight:800; padding:8px 16px; border-radius:999px; }
+
+/* ===== hero ===== */
+.hero{
+  padding:40px 0 36px;
+  border-bottom:1px solid var(--line);
+  margin-bottom:8px;
+}
+.eyebrow{
+  display:inline-block;
+  background:var(--soft);
+  color:var(--primary-dark);
+  font-size:13px;
+  font-weight:700;
+  padding:7px 14px;
+  border-radius:999px;
+  letter-spacing:-0.01em;
+  margin-bottom:22px;
+}
+.hero h1{
+  font-size:38px;
+  line-height:1.28;
+  font-weight:800;
+  color:var(--ink);
+  letter-spacing:-0.03em;
+  margin-bottom:22px;
+}
+.hero h1 .pink{color:var(--primary);}
+.hero .tagline{
+  font-size:16.5px;
+  color:var(--body);
+  max-width:640px;
+  margin-bottom:24px;
+}
+.hero .meta-line{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 18px;
+  font-size:13.5px;
+  color:var(--sub);
+  font-weight:600;
+}
+.hero .meta-line .order{
+  color:var(--primary-dark);
+}
+.hero .contact{
+  margin-top:14px;
+  font-size:14px;
+  font-weight:700;
+  color:var(--ink);
+}
+
+/* ===== case ===== */
+.case{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:0;
+  margin-top:58px;
+  overflow:hidden;
+  box-shadow:0 3px 22px rgba(16,30,54,.06);
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+.case + .case{
+  page-break-before:always;
+}
+
+.case-head{
+  background:linear-gradient(135deg,#fff 0%, var(--soft) 100%);
+  border-bottom:3px solid var(--primary);
+  padding:26px 30px 22px;
+}
+.case-no{
+  display:inline-block;
+  font-size:12px;
+  font-weight:800;
+  color:#fff;
+  background:var(--primary);
+  padding:4px 11px;
+  border-radius:999px;
+  letter-spacing:0.04em;
+  margin-bottom:12px;
+}
+.case-head h2{
+  font-size:22px;
+  font-weight:800;
+  color:var(--ink);
+  letter-spacing:-0.02em;
+  line-height:1.35;
+  margin-bottom:16px;
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+}
+.chip{
+  font-size:12px;
+  font-weight:700;
+  color:var(--primary-dark);
+  background:rgba(255,255,255,0.85);
+  border:1px solid rgba(49,130,246,0.35);
+  padding:4px 10px;
+  border-radius:8px;
+}
+
+.case-body{
+  padding:28px 32px 36px;
+}
+
+.sec{
+  margin-top:30px;
+}
+.sec:first-child{margin-top:0;}
+
+.sec-label{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  font-size:17px;
+  font-weight:800;
+  color:var(--ink);
+  margin-bottom:13px;
+}
+.sec-num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;height:28px;
+  background:var(--soft);
+  color:var(--primary-dark);
+  border-radius:8px;
+  font-size:14px;
+  font-weight:800;
+  flex:none;
+}
+.sec p{
+  font-size:14.5px;
+  color:var(--body);
+}
+
+/* numbered action list */
+.steps{
+  list-style:none;
+  counter-reset:step;
+  display:flex;
+  flex-direction:column;
+  gap:9px;
+}
+.steps li{
+  position:relative;
+  padding-left:34px;
+  font-size:14px;
+  color:var(--body);
+  counter-increment:step;
+}
+.steps li::before{
+  content:counter(step);
+  position:absolute;
+  left:0;top:1px;
+  width:23px;height:23px;
+  background:#fff;
+  border:1.5px solid var(--primary);
+  color:var(--primary-dark);
+  border-radius:50%;
+  font-size:12px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.note{
+  margin-top:11px;
+  font-size:13px;
+  font-weight:700;
+  color:var(--primary-dark);
+  background:var(--soft);
+  border-left:3px solid var(--primary);
+  padding:9px 13px;
+  border-radius:0 8px 8px 0;
+}
+
+/* stat cards */
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:4px;
+}
+.stats.c2{grid-template-columns:repeat(2,1fr);}
+.stats.c3{grid-template-columns:repeat(3,1fr);}
+.stat{
+  background:var(--soft);
+  border:1px solid rgba(49,130,246,0.25);
+  border-radius:14px;
+  padding:16px 14px;
+  text-align:left;
+}
+.stat .label{
+  font-size:12px;
+  font-weight:700;
+  color:var(--sub);
+  margin-bottom:6px;
+  line-height:1.4;
+}
+.stat .big{
+  font-size:28px;
+  font-weight:800;
+  color:var(--primary);
+  letter-spacing:-0.03em;
+  line-height:1.1;
+}
+.stat .sub{
+  font-size:12px;
+  font-weight:700;
+  color:var(--body);
+  margin-top:5px;
+}
+.stat .sub.up{color:var(--green);}
+
+.stat-desc{
+  margin-top:12px;
+  font-size:13.5px;
+  color:var(--body);
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:12px 14px;
+}
+
+.insight{
+  margin-top:4px;
+  font-size:14.5px;
+  color:var(--ink);
+  font-weight:600;
+  background:#fff;
+  border:1px dashed var(--primary);
+  border-radius:12px;
+  padding:14px 16px;
+}
+
+/* ===== closing ===== */
+.closing{
+  margin-top:40px;
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);
+  color:#fff;
+  border-radius:20px;
+  padding:40px 34px;
+  text-align:center;
+  break-inside:avoid;
+  page-break-inside:avoid;
+}
+.closing h3{
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:-0.02em;
+  line-height:1.4;
+  margin-bottom:18px;
+}
+.closing .mail{
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-0.01em;
+  margin-bottom:18px;
+}
+.closing .sig{
+  font-size:13.5px;
+  font-weight:600;
+  opacity:0.9;
+  border-top:1px solid rgba(255,255,255,0.3);
+  padding-top:16px;
+  display:inline-block;
+}
+
+/* ===== print ===== */
+@page{
+  size:A4;
+  margin:14mm;
+}
+@media print{
+  html,body{background:#fff;}
+  .wrap{padding:0;max-width:100%;}
+  .topbar{padding:0 0 10px;max-width:100%;}
+  .case{
+    border:1px solid var(--line);
+    box-shadow:none;
+  }
+  .case + .case{page-break-before:always;}
+  /* 케이스는 2페이지라 통째 avoid 불가 → 자식 블록 단위로 안 잘리게 */
+  .case-head, .sec, .stats, .stat, .stat-desc, .insight, .note, .steps, .sec ol, .sec ul, .sec li, .closing, .hero{
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  .sec-label{ break-after:avoid; page-break-after:avoid; }
+  /* ⑥ 무엇을 배웠나(결론)가 혼자 다음 페이지로 떨어지지 않게 앞 섹션과 붙임 */
+  .sec:has(.insight){ break-before:avoid; page-break-before:avoid; }
+  .case-head{
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+  }
+}
+
+@media (max-width:640px){
+  .hero h1{font-size:28px;}
+  .stats,.stats.c2,.stats.c3{grid-template-columns:repeat(2,1fr);}
+}
+  /* ===== 상세케이스 deep-dive 비주얼 ===== */
+  .dc-cap{font-size:12.5px;color:var(--sub);font-weight:800;margin:16px 0 8px}
+  .dc-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .dc-step{border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center;background:#fff}
+  .dc-step .n{font-size:11px;font-weight:800;color:var(--primary)}
+  .dc-step .m{font-size:12.5px;font-weight:800;margin:5px 0 8px;color:var(--ink)}
+  .dc-step .v{font-size:20px;font-weight:800;color:var(--primary);line-height:1}
+  .dc-step .v span{font-size:11px;color:var(--sub);font-weight:600}
+  .dc-step .c{font-size:10.5px;color:var(--body);margin-top:7px;background:var(--bg);border-radius:999px;padding:2px 8px;display:inline-block}
+  .dc-vbar{display:flex;align-items:flex-end;gap:30px;justify-content:center;padding:10px 0 4px;min-height:150px}
+  .dc-vb{display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+  .dc-vb .vv{font-size:20px;font-weight:800;margin-bottom:7px}
+  .dc-vb .vcol{width:60px;border-radius:9px 9px 0 0}
+  .dc-vb.hi .vv{color:var(--primary)} .dc-vb.hi .vcol{background:linear-gradient(180deg,#3E7BF6,#1B5FD6)}
+  .dc-vb.lo .vv{color:#aaa} .dc-vb.lo .vcol{background:linear-gradient(180deg,#d9d9d9,#eee)}
+  .dc-vb .vlb{font-size:12.5px;color:var(--body);margin-top:8px;font-weight:700}
+  .dc-ba{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;margin:8px 0}
+  .dc-bac{border:1px solid var(--line);border-radius:12px;padding:14px;text-align:center}
+  .dc-bac.before{background:#fafafa} .dc-bac.after{background:var(--soft);border-color:transparent}
+  .dc-bac .t{font-size:11.5px;font-weight:800;color:var(--sub);margin-bottom:6px}
+  .dc-bac.after .t{color:var(--primary-dark)}
+  .dc-bac .v{font-size:15px;font-weight:800;color:var(--ink);line-height:1.4}
+  .dc-ba .ar{font-size:20px;color:var(--primary);font-weight:800}
+  @media(max-width:640px){.dc-flow{grid-template-columns:1fr 1fr}}
+  .approach{ background:var(--soft); border-left:3px solid var(--primary); border-radius:0 10px 10px 0; padding:14px 17px; font-weight:600; color:var(--ink); font-size:15.5px; line-height:1.65; }
+  .approach b{ color:var(--primary-dark); font-weight:800; }
+  .sec p{ font-size:15.5px; line-height:1.72; }
+  .steps li{ font-size:14.8px; line-height:1.65; }
+  .sec p b, .steps li b, .approach b, .stat-desc b, .insight b{ color:var(--primary-dark); font-weight:800; background:linear-gradient(transparent 56%, rgba(49,130,246,.22) 0); padding:0 1.5px; border-radius:2px; }
+  .insight{ font-size:15px; } .insight b{ color:var(--primary-dark); font-weight:800; }
+  .case-head h2{ font-size:23px; }
+  .stat .big .bq{ font-size:14px; font-weight:800; color:var(--primary-dark); margin-left:3px; letter-spacing:0; white-space:nowrap; }
+  .exsteps{ margin-top:12px; display:flex; flex-direction:column; gap:12px; }
+  .exstep{ display:grid; grid-template-columns:168px 1fr; gap:14px; align-items:stretch; }
+  .mstep{ border:1px solid var(--line); border-radius:14px; padding:16px 12px; text-align:center; background:#fff; }
+  .mstep .mnum{ font-size:11.5px; font-weight:800; color:var(--primary); }
+  .mstep .mmed{ font-size:14.5px; font-weight:800; margin:6px 0 10px; color:var(--ink); }
+  .mstep .mlead{ font-size:24px; font-weight:800; color:var(--primary); line-height:1; }
+  .mstep .mlead span{ font-size:12px; color:var(--sub); font-weight:600; }
+  .mstep .mcpa{ font-size:11.5px; color:#555; margin-top:8px; background:#F2F4F6; border-radius:999px; padding:3px 9px; display:inline-block; }
+  .exstep-body{ background:#fff; border:1px solid var(--line); border-left:3px solid var(--primary); border-radius:12px; padding:14px 17px; display:flex; flex-direction:column; justify-content:center; }
+  .exstep-body .es-t{ font-size:12.5px; font-weight:800; color:var(--primary); margin-bottom:5px; }
+  .exstep-body p{ font-size:13.5px !important; color:#444; line-height:1.6; }
+  .exstep-body p b{ color:var(--primary-dark); font-weight:800; }
+  @media(max-width:680px){ .exstep{ grid-template-columns:1fr; } }
+  .gapbar{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px 17px; margin:12px 0 2px; }
+  .gb-head{ display:flex; justify-content:space-between; align-items:center; font-size:12px; font-weight:700; color:var(--sub); margin-bottom:9px; flex-wrap:wrap; gap:6px; }
+  .gb-gap{ color:var(--primary-dark); font-weight:800; background:var(--soft); border-radius:999px; padding:3px 10px; }
+  .gb-track{ position:relative; height:34px; background:#F2F4F6; border-radius:9px; overflow:hidden; display:flex; align-items:center; }
+  .gb-fill{ height:100%; background:linear-gradient(90deg,#1B5FD6,#3E7BF6); display:flex; align-items:center; justify-content:flex-end; padding-right:10px; color:#fff; font-size:12.5px; font-weight:800; border-radius:9px 0 0 9px; }
+  .gb-target{ position:absolute; right:10px; font-size:12px; font-weight:800; color:#9aa0a8; }
+  .gb-note{ font-size:12.8px; color:var(--body); margin-top:11px; line-height:1.55; } .gb-note b{ color:var(--primary-dark); font-weight:800; }
+  .pvt3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-top:2px; }
+  .pvt3 .pc{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:15px; }
+  .pvt3 .pc.soft{ background:var(--soft); border-color:transparent; }
+  .pvt3 .pc .ic{ font-size:20px; color:var(--primary); } .pvt3 .pc .tt{ font-weight:800; margin:8px 0 5px; color:var(--ink); font-size:14px; }
+  .pvt3 .pc .dd{ font-size:12.8px; color:var(--body); line-height:1.55; } .pvt3 .pc .dd b{ color:var(--primary-dark); font-weight:800; }
+  @media(max-width:680px){ .pvt3{ grid-template-columns:1fr; } }
+  .steps{ gap:11px !important; }
+  .steps li{ background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:13px 15px 13px 48px !important; font-size:14px !important; line-height:1.6 !important; }
+  .steps li::before{ left:12px !important; top:12px !important; width:26px !important; height:26px !important; border-radius:8px !important; background:var(--soft) !important; border:0 !important; color:var(--primary-dark) !important; font-size:12.5px !important; }
+  .case-lead{ font-size:15.5px; font-weight:700; color:var(--ink); line-height:1.55; background:var(--soft); border-left:4px solid var(--primary); border-radius:0 12px 12px 0; padding:14px 18px; margin-bottom:22px; }
+  .case-lead::before{ content:'핵심 한 줄'; display:block; font-size:11px; font-weight:800; color:var(--primary); letter-spacing:.04em; margin-bottom:6px; }
+  .case-lead b{ color:var(--primary-dark); font-weight:800; }
+</style>
+</head>
+<body>
+
+<nav style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(180%) blur(12px);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid #E5E8EB">
+  <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
+    <a href="index.html" style="font-weight:800;font-size:17px;color:#191F28;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#3182F6">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Home</a><a href="portfolio.html" style="color:#3182F6;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:#EAF2FE">Portfolio</a><a href="resume.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="dashboard.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">파트너 성과관리 대시보드</a></div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <header class="hero">
+    <span class="eyebrow">COUPANG · Instant Commerce 파트너 운영·성과관리(KAM) 지원</span>
+    <h1>브랜드 파트너의 매출을,<br><span class="pink">데이터로 함께 키운 실제 이야기.</span></h1>
+    <p class="tagline">커머스 셀러 경험부터 다매체 운영·정산 재설계, 광고·프로모션 운영, B2B 파트너 세일즈·온보딩까지 — 데이터로 원인을 찾아 파트너(브랜드)의 매출을 함께 키운 케이스들.</p>
+    <div class="meta-line">
+      <span><span class="order">읽는 순서</span> : 서비스 → 과제 → 접근 → 실행 → 성과 → 인사이트</span>
+    </div>
+    <div class="contact">jiuk2038@gmail.com · 010-5540-2038</div>
+  </header>
+
+  <!-- ===== CASE 1 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 1</span>
+      <h2>치과 임플란트 다매체 마케팅 &amp; 지역 예산 컨설팅</h2>
+      <div class="chips">
+        <span class="chip">글로벌랩스</span>
+        <span class="chip">2026.01~현재</span>
+        <span class="chip">구글·메타·틱톡·GA4</span>
+        <span class="chip">3인 (기여 90%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-lead">파트너(브랜드)는 <b>전환 볼륨(리드 수)</b>을 원했지만, <b>운영 데이터를 지역별 CAC로 분해·검증</b>해 '질 중심'으로 설득하고 <b>정산구조까지 함께 재설계</b> → <b>ROAS +226%(103→336%)</b> · <b>취급고 +817%(약 9.2배)</b> 성장시킨 파트너 동반성장 사례입니다.</div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num" style="background:var(--primary);color:#fff">★</span>어떤 성과가 났나</div>
+        <div class="stats">
+          <div class="stat">
+            <div class="label">월 취급고 · 6개월</div>
+            <div class="big">9.2배 <span class="bq">상승</span></div>
+            <div class="sub up">0.6억 → 5.5억</div>
+          </div>
+          <div class="stat">
+            <div class="label">ROAS</div>
+            <div class="big">336% <span class="bq">달성</span></div>
+            <div class="sub up">103% → 336% (3.3배)</div>
+          </div>
+          <div class="stat">
+            <div class="label">내원율</div>
+            <div class="big">7.1% <span class="bq">달성</span></div>
+            <div class="sub up">0.2% → 7.1% (약 36배)</div>
+          </div>
+          <div class="stat">
+            <div class="label">지역 CAC · 누적 리드</div>
+            <div class="big">-25% <span class="bq">개선</span></div>
+            <div class="sub">누적 리드 8,900건+</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>치과 임플란트 병원을 파트너로, 신규 환자 유치를 책임지는 운영. 온라인에서 상담 리드를 모으고, 그 리드가 실제 병원 내원 → 시술로 이어져야 비로소 파트너 매출이 되는 <b>고관여 오프라인 서비스</b>.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>파트너는 리드 볼륨(일 300개+)을, 내부적으로는 CPA 6만 이내를 둘 다 지켜야 했다 — 구글 단독으론 둘이 <b>충돌</b>.</p>
+        <div class="dc-cap">볼륨 vs 효율 — 구글 단독으로는 둘 다 벽</div>
+        <div class="dc-ba">
+          <div class="dc-bac before"><div class="t">파트너 요구</div><div class="v">일 리드 300개+<br><span style="font-size:11.5px;font-weight:600;color:#999">최대 500개까지 필요</span></div></div>
+          <div class="ar" style="color:#F04452">↯</div>
+          <div class="dc-bac before"><div class="t">내부 목표</div><div class="v">CPA ≤ 6만원<br><span style="font-size:11.5px;font-weight:600;color:#999">구글 단독 = 일 70개가 한계</span></div></div>
+        </div>
+        <div class="gapbar">
+          <div class="gb-head"><span>구글애즈 단독 — 효율 유지 가능 구간</span><span class="gb-gap">목표까지 –230개/일</span></div>
+          <div class="gb-track"><div class="gb-fill" style="width:23%">일 70개</div><div class="gb-target">목표 일 300개</div></div>
+          <div class="gb-note">일 <b>70개</b>를 넘기는 순간 CPA가 <b>6만원</b>을 초과 — <b>볼륨과 효율이 동시에 벽에 부딪힘.</b></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p class="approach">"임플란트는 <b>오프라인 내원이 필수인 고관여 상품</b>이다. 그러니 <b>'리드 CPA'가 아니라 '지역별 내원율·CAC·ROAS'</b>로 성과를 봐야 <b>진짜 효율</b>이 보인다"는 관점을 세움.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>리드 → 상담 → 내원 → 시술로 이어지는 전환 퍼널을 역산해, 광고를 <b>'내원'까지 책임지는 구조</b>로 재정의</li>
+          <li>오프라인 방문이 가능한 고객을 지역 단위로 캠페인을 분리·분류해 <b>지역별 성과를 독립적으로 측정</b>할 수 있게 설계</li>
+          <li>지역별 내원율·CAC·ROAS를 데이터로 집계 — 리드 CPA가 아닌 <b>'지역별 CAC'까지 추적</b></li>
+          <li>내원율이 높아 ROAS가 우수한 핵심 지역을 식별하고, <b>저효율 지역은 감액·정리</b>로 예산 누수 차단</li>
+          <li>구글·메타·틱톡 3개 매체 × 매체별 소재·오디언스를 A/B 테스트하며 <b>리드 볼륨과 품질을 동시 관리</b></li>
+          <li>신규 매체(틱톡)의 주 타겟(시니어) 규모를 <b>데이터로 검증 후 확장 제안</b></li>
+          <li>핵심 지역에 볼륨 증액을 데이터로 파트너에게 제안·설득 → 고효율 지역 중심으로 <b>취급고 확대</b></li>
+        </ol>
+        <div class="dc-cap">실행 — 단계적 매체 확장 (구글애즈 단독 → 메타 → 틱톡, 1개 → 4개 매체)</div>
+        <p style="font-size:13.5px;color:var(--sub);line-height:1.55;margin:-4px 0 10px">파트너 목표 성과(CPA 6만 이내) 달성을 위해, 한 번에 늘리지 않고 매체를 하나씩 더하며 <b style="color:var(--primary-dark)">단계적으로</b> 볼륨을 끌어올렸습니다. 각 단계는 앞 단계 데이터를 보고 결정했습니다.</p>
+        <div class="exsteps">
+          <div class="exstep">
+            <div class="mstep"><div class="mnum">START</div><div class="mmed">구글애즈 단독</div><div class="mlead">70<span>개/일</span></div><div class="mcpa">CPA 6만 이내</div></div>
+            <div class="exstep-body"><div class="es-t">1단계 · 구글애즈 단독</div><p>내부 목표(CPA 6만원 이내)를 달성하면서 파트너 니즈인 일 리드 300개 달성에 어려움 존재. 당시 <b>일 리드 평균 70개</b>.</p></div>
+          </div>
+          <div class="exstep">
+            <div class="mstep"><div class="mnum">+ META</div><div class="mmed">메타 확장</div><div class="mlead">150<span>개/일</span></div><div class="mcpa">CPA 4.5만</div></div>
+            <div class="exstep-body"><div class="es-t">2단계 · 메타 확장</div><p>추가 수량 확보를 위해, 구글애즈 단독 운영에서 메타까지 매체를 확장. 일 리드가 70 → 150개로 증가. 다만 내원율이 메타 2% &lt; 구글 4%로, 볼륨은 늘되 <b>매체별 리드 품질 차이를 데이터로 확인</b>.</p></div>
+          </div>
+          <div class="exstep">
+            <div class="mstep"><div class="mnum">+ 구글 2계정</div><div class="mmed">계정 분리</div><div class="mlead">200<span>개/일</span></div><div class="mcpa">자가잠식 최소화</div></div>
+            <div class="exstep-body"><div class="es-t">3단계 · 구글 2계정 분리</div><p>볼륨을 더 늘리기 위해 구글 계정을 '연령 타겟 / 관심사 타겟'으로 분리 신설. 계정 간 자가잠식을 최소화하며 일 리드 150 → 200개. 파트너가 원한 <b>구글 80 : 메타 20</b> 비율도 유지.</p></div>
+          </div>
+          <div class="exstep">
+            <div class="mstep"><div class="mnum">+ TikTok</div><div class="mmed">틱톡 확장</div><div class="mlead">250<span>개/일</span></div><div class="mcpa">CPA 4만대</div></div>
+            <div class="exstep-body"><div class="es-t">4단계 · 틱톡 확장</div><p>마지막으로 KB국민은행에서 검증한 시니어(45+) 오디언스를 겨냥해 틱톡까지 확장. 일 리드 200 → 250개로 늘리며 CPA는 <b>4만대로 안정화</b>.</p></div>
+          </div>
+        </div>
+        <div class="dc-cap">지역별 내원율 — 치과 인근일수록 압도적 (최대 15배 격차 → '양보다 질' 설득 근거)</div>
+        <div class="dc-vbar">
+          <div class="dc-vb hi"><div class="vv">15%</div><div class="vcol" style="height:120px"></div><div class="vlb">경기남부</div></div>
+          <div class="dc-vb lo"><div class="vv">1%</div><div class="vcol" style="height:10px"></div><div class="vlb">경북</div></div>
+        </div>
+        <p style="font-size:13.5px;color:var(--body);line-height:1.6;margin:4px 0 6px">치과와 가까운 지역일수록 내원율이 압도적으로 높아(지역별 최대 15배 격차), 수량만 늘리는 건 비효율 — <b>고효율 지역 집중 + 저효율 매체(메타 ROAS 120%) OFF</b>가 답이었습니다.</p>
+        <div class="dc-cap">설득 — 관점 전환 + 정산구조 재설계 (수량 → 질/ROAS에 정렬)</div>
+        <div class="dc-ba">
+          <div class="dc-bac before"><div class="t">기존 정산</div><div class="v">DB당 정산<br><span style="font-size:11.5px;font-weight:600;color:#999">→ '수량' 압박 구조</span></div></div>
+          <div class="ar">→</div>
+          <div class="dc-bac after"><div class="t">전환 후</div><div class="v">CPA 투명 공개 + 성과 커미션<br><span style="font-size:11.5px;font-weight:600;color:var(--primary-dark)">→ '질(ROAS)'에 정렬</span></div></div>
+        </div>
+        <p style="font-size:13.5px;color:var(--body);line-height:1.6;margin-top:10px">고효율 지역에 집중하면 CPA가 다소 올라도 ROAS는 더 좋아진다는 예측 데이터로 파트너를 설득했고, 수량 중심의 'DB당 정산' <b>계약 구조</b>를 <b>성과(ROAS)에 정렬되는 커미션 구조</b>로 함께 재설계했습니다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">리드 '수'가 아니라 <b>'내원당 단가'가 진짜 지표</b>다. 파트너 성과관리는 <b>데이터 정합성 → 성과 → 신뢰 → 예산 증액으로 이어지는 선순환</b>을 만드는 일이다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 2 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 2</span>
+      <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
+      <div class="chips">
+        <span class="chip">글로벌랩스</span>
+        <span class="chip">2026.01~현재</span>
+        <span class="chip">구글·메타·틱톡 API</span>
+        <span class="chip">AI 바이브코딩</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-lead">운영이 막히면 도구를 직접 만듭니다 — 운영 데이터 추출·가공·<b>정합성 검증</b>을 자동화해, 다매체·<b>월 5억+ 취급고</b>를 소수 인원으로 돌리는 <b>성과관리 대시보드를 직접 구축</b>했습니다.</div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num" style="background:var(--primary);color:#fff">★</span>어떤 성과가 났나</div>
+        <div class="stats c2">
+          <div class="stat">
+            <div class="label">소수 인원 운영 취급고</div>
+            <div class="big">5억+/월</div>
+            <div class="sub">3개 매체 통합 운영</div>
+          </div>
+          <div class="stat">
+            <div class="label">운영 효율</div>
+            <div class="big">자동화</div>
+            <div class="sub">데이터 가공 시간 최소화</div>
+          </div>
+        </div>
+        <div class="stat-desc">데이터 가공 시간 최소화로 월 5억+ 취급고·다매체를 소수 인원이 운영 가능, 의사결정 속도 향상 및 계획 유동 조정 체계 확립.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 대상인가</div>
+        <p><b>3개 매체·월평균 5억+ 취급고</b>를 소수 인원으로 운영해야 하는 내부 운영 환경.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>매일 반복되는 수작업 데이터 가공에 시간을 뺏겨 <b>의사결정이 느려지고</b>, 다매체·대규모 운영이 병목에 걸림.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p class="approach">"<b>수작업 데이터 가공을 없애야</b> 소수 인원 운영이 가능하다. 단순 조회 툴을 넘어, <b>운영 판단까지 돕는 도구를 직접 만들자</b>."</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>구글·메타·틱톡 성과 데이터를 API로 연동해 <b>자동 추출·가공·정합성 검증</b>하는 대시보드를 <b>바이브코딩으로 직접 개발</b></li>
+          <li>실시간 성과 통합 조회 · A/B 테스트 플래닝 · 코호트 분석 · KPI 관리를 <b>한 화면에 통합</b></li>
+          <li>운영 히스토리 챗봇 구축 — "언제·무엇을·왜 했는지"를 <b>자연어로 즉시 질의응답</b> (인수인계·유관부서 공유 기반)</li>
+          <li><b>실시간 KPI 달성율 체크</b>로 일·주·월 계획을 유동적으로 조정</li>
+        </ol>
+        <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">성과 조회를 넘어 <b>데이터 정합성과 '운영의 맥락(히스토리)'까지 관리</b>해야, 많은 파트너를 소수 인원으로도 정확하게 운영할 수 있다.</p>
+      </div>
+      <a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;width:100%;box-sizing:border-box;background:var(--primary);color:#fff;font-weight:800;font-size:16px;text-decoration:none;padding:16px 22px;border-radius:12px;box-shadow:0 6px 18px rgba(49,130,246,.3);">▶ 실제 대시보드 체험하기</a>
+    </div>
+  </section>
+
+  <!-- ===== CASE 3 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 3</span>
+      <h2>KB국민은행 '스타틴즈' 서비스 캠페인 (5채널)</h2>
+      <div class="chips">
+        <span class="chip">블루오렌지</span>
+        <span class="chip">2025.09~2025.12</span>
+        <span class="chip">유튜브·인스타·토스·틱톡·콴다·KB DMP</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-lead"><b>집행 5억</b> 규모 캠페인을 단독 운영하며, <b>'틱톡=10대'</b> 통념을 실측으로 뒤집고 10대가 진짜 모인 <b>신규 매체(콴다)를 발굴</b>해 앱실행 단가를 <b>41% 개선</b>한 광고·프로모션 운영 사례입니다.</div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num" style="background:var(--primary);color:#fff">★</span>어떤 성과가 났나</div>
+        <div class="stats c3">
+          <div class="stat">
+            <div class="label">앱실행 단가</div>
+            <div class="big">-41% <span class="bq">개선</span></div>
+            <div class="sub up">캠페인 기간 중 개선</div>
+          </div>
+          <div class="stat">
+            <div class="label">콴다 VTR</div>
+            <div class="big">99% <span class="bq">달성</span></div>
+            <div class="sub up">5채널 1위 · CPV -67%</div>
+          </div>
+          <div class="stat">
+            <div class="label">총 앱실행</div>
+            <div class="big">1.7만건 <span class="bq">달성</span></div>
+            <div class="sub">집행 5억 · 5채널</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>KB국민은행의 10대(청소년) 대상 금융 브랜드 '스타틴즈'. 앱 실행·회원가입을 유도하는 대형 브랜드 캠페인 (<b>집행 5억</b>).</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>10대라는 특수 타겟에 효율적으로 도달하면서 <b>앱실행 단가를 낮춰야</b> 했다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p class="approach">"<b>채널은 통념이 아니라 실측 데이터로 정한다</b>. 10대 타겟의 모수가 고효율인 매체를 추가하고, <b>데이터로 타겟을 계속 좁혀간다</b>."</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>유튜브·인스타·토스·틱톡 <b>4채널로 라이브</b></li>
+          <li>타겟을 연령(13-19)·관심사(학부모/자녀/가족)·<b>KB DMP(학원비 납부·상품 가입)</b>·콘텐츠 타겟으로 설계, 예산 균등 분배로 라이브</li>
+          <li>앱실행 단가·CPV·전환 볼륨을 매일 추적하며 저효율 타겟 감액, 고효율로 이관 (<b>타겟·소재·매체 3단계 능동 재배분</b>)</li>
+          <li>'틱톡=10대' 통념과 달리 노출·조회 69%가 45세+임을 실측 검증 → <b>연령 축소·학부모 관심사 재집중</b></li>
+          <li>모수 적어 CPV 높던 리타겟 예산을 관심사 타겟으로 이관 (<b>관심사 CPV -38%</b>)</li>
+          <li>학생 타겟에 맞는 신규 매체 10대 교육앱 '콴다'를 직접 발굴·제안해 <b>5채널로 확장</b></li>
+        </ol>
+        <div class="dc-cap">◆ 상세 케이스 — 신규 매체 '콴다' 발굴·제안 (오디언스 기반 미디어믹스)</div>
+        <p style="font-size:14px;color:var(--body);line-height:1.6;margin-bottom:10px">핵심 타겟이 10대인데 기존 금융 매체(검색·디스플레이)는 주 사용층이 달라 적합도가 낮았다. 포화가 아니라 <b>'10대가 실제 모여 있는 매체를 고르는 것'</b>이 진짜 과제였다.</p>
+        <div class="dc-ba">
+          <div class="dc-bac before"><div class="t">기존 믹스</div><div class="v">검색·디스플레이 중심<br><span style="font-size:11.5px;font-weight:600;color:#999">10대 적합도 낮음</span></div></div>
+          <div class="ar">→</div>
+          <div class="dc-bac after"><div class="t">+ 콴다 편성</div><div class="v">10대 교육앱 정조준<br><span style="font-size:11.5px;font-weight:600;color:var(--primary-dark)">신규 매체 = 효율 1위</span></div></div>
+        </div>
+        <p style="font-size:14px;color:var(--body);line-height:1.6;margin-top:10px">매체 조사 → 파트너(브랜드) 제안 → 세팅·소재·집행까지 주도. 단순히 매체를 늘린 게 아니라 <b>타겟이 실제로 있는 곳에 예산을 배치한 '오디언스 기반 미디어믹스'</b>였다.</p>
+        <p class="insight" style="margin-top:12px">미디어믹스는 '예산을 얼마나'가 아니라 <b>'타겟이 있는 매체를 고르는 것'</b>. 오디언스에 맞는 매체라면 — <span style="white-space:nowrap">새 매체여도</span> — <b>가장 좋은 성과</b>를 만든다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight"><b>통념이 아닌 실측 데이터가 타겟을 정한다</b>. 광고·프로모션 운영에서 <b>새 채널·새 프로모션 발굴은 가장 강력한 효율 레버</b>다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 4 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 4</span>
+      <h2>KB국민은행 '패밀리뱅킹' 브랜드 캠페인</h2>
+      <div class="chips">
+        <span class="chip">블루오렌지</span>
+        <span class="chip">2025.09~2025.12</span>
+        <span class="chip">유튜브·토스·인스타·KB DMP</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-lead">새 고객을 찾기보다, <b>이미 조건에 맞는 고객을 데이터(DMP)로 활성화</b>하는 운영 전략을 데이터로 검증·제안해 앱실행 단가를 <b>29% 개선</b>한 광고·프로모션 운영 사례입니다.</div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num" style="background:var(--primary);color:#fff">★</span>어떤 성과가 났나</div>
+        <div class="stats c2">
+          <div class="stat">
+            <div class="label">앱실행 단가</div>
+            <div class="big">-29% <span class="bq">개선</span></div>
+            <div class="sub up">DMP 세그먼트 집중 효과</div>
+          </div>
+          <div class="stat">
+            <div class="label">채널 재배분</div>
+            <div class="big">효율 안정화</div>
+            <div class="sub">일자별 성과 추이 기반</div>
+          </div>
+        </div>
+        <div class="stat-desc">일자별 성과 추이 기반 채널 재배분으로 효율 안정화.</div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>KB국민은행의 가족 단위 금융 서비스(자녀 적금·펀드, 모임통장 등) 앱 실행 유도 (<b>집행 약 3억</b>).</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p><b>신규 고객 획득 위주 운영</b>의 낮은 효율을 개선해야 했다.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p class="approach">"새 고객을 찾기보다, <b>이미 조건에 맞는 고객(자녀 보유 고객)을 활성화</b>하는 게 더 효율적일 것이다"를 <b>DMP 데이터로 검증</b>.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>KB 1st-party DMP를 마이데이터 연동·모임통장 가입·자녀 적금/펀드·공과금 결제이력·노후/연금 가입자 등으로 <b>초세분화</b></li>
+          <li>세그먼트별 <b>앱실행 단가·전환 효율을 비교</b></li>
+          <li>효율 높은 <b>세그먼트(자녀 보유 고객)로 예산·소재 비중 집중</b></li>
+          <li>채널별 실행당 비용 격차를 근거로 <b>비효율 채널 예산을 고효율 채널(토스)로 이관</b></li>
+          <li>'자녀 보유 고객 활성화'가 효율적이라는 점을 DMP 데이터로 규명해 <b>파트너(브랜드)에게 주도적으로 제안·설득</b></li>
+        </ol>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight"><b>'신규 획득'만이 답이 아니다</b>. <b>데이터로 파트너를 설득</b>하면 더 효율적인 운영의 길이 열린다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 5 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 5</span>
+      <h2>셀프스토리지 B2B 가맹 세일즈 (콜→현장 풀퍼널)</h2>
+      <div class="chips">
+        <span class="chip">박스풀</span>
+        <span class="chip">2024.07~2025.06</span>
+        <span class="chip">네이버블로그·메타·GA4·Kling AI·Capcut</span>
+        <span class="chip">2인 (70%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-lead">세일즈 구조를 바꿔 <b>계약율을 5배</b>로 끌어올리고, 신규 파트너(가맹점) 발굴 → 제안 → <b>계약 단독 클로징 → 온보딩·운영</b>까지 풀퍼널을 완주한 B2B 파트너 세일즈 사례입니다.</div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num" style="background:var(--primary);color:#fff">★</span>어떤 성과가 났나</div>
+        <div class="stats c3">
+          <div class="stat">
+            <div class="label">가맹 계약</div>
+            <div class="big">1건 성사</div>
+            <div class="sub">리드~클로징 단독 완주</div>
+          </div>
+          <div class="stat">
+            <div class="label">상담신청 전환 · 동일비용</div>
+            <div class="big">+67.7% <span class="bq">상승</span></div>
+            <div class="sub up">CPA -38.6%</div>
+          </div>
+          <div class="stat">
+            <div class="label">타겟 적중률</div>
+            <div class="big">70% <span class="bq">달성</span></div>
+            <div class="sub up">40% → 70%</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>셀프스토리지 가맹창업이라는 고관여 B2B 상품 판매. 창업설명회로 예비 창업자 리드를 모아 <b>실제 가맹 계약까지 성사</b>시키는 일.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②</span>무엇이 문제였나</div>
+        <p>단체 설명회 중심 구조에서 <b>참석은 해도 계약 전환이 낮았다</b>.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">③</span>어떻게 접근했나</div>
+        <p class="approach">"<b>'참석자 수를 늘린다'가 아니라 '전환되는 단계로 구조를 바꿔야 한다'</b>. <b>현장에서 직접 체험한 신뢰가 계약을 만든다</b>."</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">④</span>무엇을 했나 — 실행 과정</div>
+        <ol class="steps">
+          <li>네이버 블로그·META 광고로 <b>창업설명회 리드 모집</b></li>
+          <li>가맹 제안서를 직접 작성해 창업설명회에서 <b>발표(세일즈 피칭)</b></li>
+          <li>단체 설명회 → <b>1:1 실물 체험형 현장 상담으로 세일즈 프로세스 재설계</b></li>
+          <li><b>리드 모집부터 계약 클로징까지 단독 완주</b></li>
+          <li>공감형 AI 영상 소재를 직접 제작해 리드 캠페인 효율 개선 (<b>CTR 6.7%→9.56%, 소재 CPA -24%</b>)</li>
+          <li>개설 가맹점주 <b>2개 지점의 로컬 디지털 광고를 직접 대행·운영</b></li>
+        </ol>
+        <div class="dc-cap">리드 스코어링 — 계약되는 리드를 먼저 가려냄 (계약율 10배 차)</div>
+        <div class="dc-ba">
+          <div class="dc-bac after"><div class="t">★ 최우선 리드</div><div class="v">임대인 + 장기 공실 상가<br><span style="font-size:11.5px;font-weight:600;color:var(--primary-dark)">수익화 니즈 최고</span></div></div>
+          <div class="ar" style="color:#8B95A1;font-size:14px">vs</div>
+          <div class="dc-bac before"><div class="t">낮은 우선순위</div><div class="v">임차 고려 (신규 임대)<br><span style="font-size:11.5px;font-weight:600;color:#999">손익분기 리스크↑</span></div></div>
+        </div>
+        <p style="font-size:12.5px;color:var(--sub);margin:8px 0 2px">· 손익 구조: 락커 점유율 50%+ 손익분기, <b style="color:var(--primary-dark)">70%+면 순수익</b> → 임대료 부담 없는 '공실 상가 임대인'이 비즈니스와 가장 핏.</p>
+        <div class="dc-cap">페인포인트 → 가설 → 피벗</div>
+        <div class="pvt3">
+          <div class="pc"><div class="ic">◆</div><div class="tt">페인포인트</div><div class="dd">국내에 생소한 짐 보관 서비스 — 모든 리드의 공통 불안 <b>"정말 되나? 수익률은?"</b></div></div>
+          <div class="pc"><div class="ic">✦</div><div class="tt">가설</div><div class="dd">통화보다 <b>본사 1층 직영점의 실물·실이용 고객</b>을 직접 보면 신뢰가 오른다 → 대면이 전환을 만든다</div></div>
+          <div class="pc soft"><div class="ic">↻</div><div class="tt">피벗</div><div class="dd">월 1회 고정 설명회는 스케줄 제각각이라 비효율 → <b>1차 콜 고지 후 개별 맞춤 '실시간 대면 컨설팅'</b>으로 전환</div></div>
+        </div>
+        <div class="dc-cap">구조 재설계 — '참석자 수'가 아니라 '전환 구조'를 바꿈</div>
+        <div class="dc-ba">
+          <div class="dc-bac before"><div class="t">월 1회 단체 설명회</div><div class="v">참석률 5%<br><span style="font-size:11.5px;font-weight:600;color:#999">특정일만 운영 → 스케줄 불일치</span></div></div>
+          <div class="ar">→</div>
+          <div class="dc-bac after"><div class="t">1:1 실물 체험 상담</div><div class="v">참석률 20%<br><span style="font-size:11.5px;font-weight:600;color:var(--primary-dark)">약 4배↑ · 개별 조율</span></div></div>
+        </div>
+        <div class="dc-ba">
+          <div class="dc-bac before"><div class="t">기존 (비대면 중심)</div><div class="v">계약 500 : 1</div></div>
+          <div class="ar">→</div>
+          <div class="dc-bac after"><div class="t">재설계 후 (대면 전환)</div><div class="v">계약 100 : 1<br><span style="font-size:11.5px;font-weight:600;color:var(--primary-dark)">약 5배↑ · 실제 계약 성사</span></div></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">파트너 세일즈는 <b>'숫자(참석자)'가 아니라 '구조(전환 단계)'를 바꿔야</b> 움직인다. <b>실물 체험이 깊이있는 신뢰와 계약·온보딩</b>을 만든다.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CASE 6 ===== -->
+  <section class="case">
+    <div class="case-head">
+      <span class="case-no">CASE 6</span>
+      <h2>어스텀(Ustom) 창업 · 대표</h2>
+      <div class="chips">
+        <span class="chip">2022.05~2023.04</span>
+        <span class="chip">서비스 기획·UI/UX·사업화</span>
+        <span class="chip">1인 (100%)</span>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="case-lead">문제를 <b>'구조'로 바라보는 사업가적 관점</b> — 기획부터 사업화까지 <b>대표로 추진</b>했습니다.</div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num" style="background:var(--primary);color:#fff">★</span>성과 · 정부지원사업 선정</div>
+        <div class="stats c2">
+          <div class="stat">
+            <div class="label">정부지원사업 선정</div>
+            <div class="big">1,000만 원</div>
+            <div class="sub">기획~사업화 리더십 경험</div>
+          </div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">①</span>어떤 서비스인가</div>
+        <p>의류 <b>커스터마이징 수요를 이어주는 중개 플랫폼</b>.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">②~④</span>과제 · 접근 · 실행</div>
+        <p>커스터마이징 수요를 중개 플랫폼 모델로 구조화 → 서비스·UI/UX 구조 설계 주도 → 대표로서 <b>기획부터 사업화까지 추진</b>.</p>
+      </div>
+      <div class="sec">
+        <div class="sec-label"><span class="sec-num">⑥</span>무엇을 배웠나</div>
+        <p class="insight">문제를 <b>'구조'로 바라보는 사업가적 관점</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CLOSING ===== -->
+
+</div>
+</body>
+</html>
