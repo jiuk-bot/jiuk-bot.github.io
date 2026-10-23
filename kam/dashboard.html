@@ -116,6 +116,38 @@
   .benc .bd{ font-size:12px; color:var(--sub); line-height:1.55; font-weight:600; }
   @media (max-width:820px){ .bengrid{ grid-template-columns:1fr 1fr; } }
 
+  /* 계약·온보딩 / 이슈 트래커 (입력 가능 탭) */
+  .wtab-head{ font-size:17px; font-weight:800; margin-bottom:4px; letter-spacing:-.3px; }
+  .wtab-desc{ font-size:13px; color:var(--sub); margin-bottom:14px; line-height:1.55; }
+  .wtab-desc b{ color:var(--primary-dark); }
+  .wcount{ display:inline-block; font-size:11.5px; font-weight:800; color:var(--primary); background:var(--soft); padding:3px 10px; border-radius:999px; margin-left:8px; vertical-align:middle; }
+  .addbar{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px 18px; box-shadow:var(--shadow); margin-bottom:18px; }
+  .addbar .atitle{ font-size:12.5px; font-weight:800; color:#555; margin-bottom:11px; }
+  .afields{ display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end; }
+  .afield{ display:flex; flex-direction:column; gap:5px; }
+  .afield label{ font-size:11px; font-weight:800; color:var(--sub); }
+  .afield select, .afield input{ font-family:inherit; font-size:13px; font-weight:700; padding:8px 10px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); min-width:120px; }
+  .afield.grow{ flex:1 1 220px; } .afield.grow input{ width:100%; min-width:180px; }
+  .addbtn{ font-family:inherit; font-size:13.5px; font-weight:800; background:var(--primary); color:#fff; border:0; border-radius:10px; padding:9px 20px; cursor:pointer; white-space:nowrap; }
+  .addbtn:hover{ background:var(--primary-dark); }
+  .ctblscroll{ overflow-x:auto; background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); }
+  table.ctbl{ width:100%; border-collapse:collapse; font-size:13px; min-width:860px; }
+  table.ctbl th, table.ctbl td{ padding:11px 13px; text-align:left; border-bottom:1px solid #eef0f3; vertical-align:middle; }
+  table.ctbl th{ background:#fafafa; font-size:11.5px; font-weight:800; color:#777; white-space:nowrap; }
+  table.ctbl tr:last-child td{ border-bottom:0; }
+  table.ctbl td.nm{ font-weight:700; } table.ctbl td.txt{ line-height:1.5; }
+  table.ctbl .sub2{ font-size:11.5px; color:var(--sub); }
+  .stsel{ font-family:inherit; font-size:12px; font-weight:800; padding:5px 8px; border:1px solid var(--line); border-radius:8px; cursor:pointer; }
+  .delx{ font-family:inherit; font-size:12px; font-weight:800; color:var(--warn); background:var(--warnbg); border:1px solid #f6c9c9; border-radius:8px; padding:5px 10px; cursor:pointer; white-space:nowrap; }
+  .chip{ display:inline-block; font-size:10.5px; font-weight:800; padding:3px 9px; border-radius:6px; white-space:nowrap; }
+  .chip-done{ color:var(--ok); background:var(--okbg); border:1px solid #cfe9d6; }
+  .chip-prog{ color:var(--primary-dark); background:var(--soft); border:1px solid #c6ddfb; }
+  .chip-wait{ color:#6b7280; background:#f1f3f6; border:1px solid #e2e5ea; }
+  .chip-hold{ color:#b7791f; background:#fdf6e3; border:1px solid #f0dca6; }
+  .chip-type{ color:#fff; }
+  .chip-dept{ color:#4a5568; background:#eef1f6; border:1px solid #dde2ea; }
+  .wempty{ font-size:13px; color:#aaa; text-align:center; padding:26px; }
+
   .hide{ display:none; }
   .disc{ font-size:12px; background:#fffdf7; border:1px dashed #e8c98f; border-radius:12px; padding:14px 16px; margin-top:22px; line-height:1.6; color:#8a6d33; }
   code{ font-family:ui-monospace,Menlo,monospace; }
@@ -146,6 +178,8 @@
     <div class="tab active" data-tab="overview">파트너 대시보드</div>
     <div class="tab" data-tab="daily">일자별 성과</div>
     <div class="tab" data-tab="history">파트너 히스토리</div>
+    <div class="tab" data-tab="contracts">계약·온보딩 관리</div>
+    <div class="tab" data-tab="issues">이슈·협업 트래커</div>
   </div>
 
   <!-- Overview -->
@@ -194,6 +228,50 @@
     <div class="histnote">담당자 인수인계용 — 선택한 파트너(또는 전체)의 <b>커머스·수익성 성과(거래액·주문수·객단가·ROAS·광고비·전환율, 유형별 분해) + 메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 성과와 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
     <div class="histmeta" id="histMeta"></div>
     <div class="dtscroll"><table class="dt" id="histView"></table></div>
+  </div>
+
+  <!-- Contracts / Onboarding -->
+  <div id="contracts" class="hide">
+    <div class="wtab-head">계약·온보딩 관리<span class="wcount" id="ctCount"></span></div>
+    <div class="wtab-desc">광고·프로모션 <b>계약</b>, <b>신메뉴</b>·<b>매장 온보딩</b>, <b>메뉴·카탈로그</b> 진행 현황을 직접 등록하고 상태를 관리합니다. (브라우저에 저장)</div>
+    <div class="addbar">
+      <div class="atitle">+ 항목 추가</div>
+      <div class="afields">
+        <div class="afield"><label>브랜드(파트너)</label><select id="ctBrand"></select></div>
+        <div class="afield"><label>구분</label><select id="ctKind">
+          <option>계약</option><option>신메뉴</option><option>매장 온보딩</option><option>메뉴·카탈로그</option></select></div>
+        <div class="afield grow"><label>항목·내용</label><input id="ctItem" type="text" placeholder="예: 여름 신메뉴 2종 등록"></div>
+        <div class="afield"><label>담당/채널</label><input id="ctOwner" type="text" placeholder="예: 운영팀"></div>
+        <div class="afield"><label>기한</label><input id="ctDue" type="date"></div>
+        <div class="afield"><label>진행 상태</label><select id="ctStatus">
+          <option>대기</option><option>진행중</option><option>완료</option><option>보류</option></select></div>
+        <div class="afield"><button class="addbtn" onclick="addContract()">추가</button></div>
+      </div>
+    </div>
+    <div class="ctblscroll"><table class="ctbl" id="ctTable"></table></div>
+  </div>
+
+  <!-- Issues / Collaboration tracker -->
+  <div id="issues" class="hide">
+    <div class="wtab-head">이슈·협업 트래커<span class="wcount" id="isCount"></span></div>
+    <div class="wtab-desc">운영 중 발생한 <b>브랜드 이슈</b>를 등록해 원인을 파악하고, <b>유관 부서 협업</b>으로 해결·후속 조치를 추적합니다. (브라우저에 저장)</div>
+    <div class="addbar">
+      <div class="atitle">+ 이슈 등록</div>
+      <div class="afields">
+        <div class="afield"><label>발생일</label><input id="isDate" type="date"></div>
+        <div class="afield"><label>브랜드(파트너)</label><select id="isBrand"></select></div>
+        <div class="afield"><label>이슈 유형</label><select id="isType">
+          <option>데이터 정합성</option><option>메뉴·카탈로그</option><option>프로모션 설정</option><option>정산</option><option>운영</option><option>기타</option></select></div>
+        <div class="afield grow"><label>이슈 내용·원인</label><input id="isDesc" type="text" placeholder="예: 주문수/거래액 정산 데이터 2% 불일치"></div>
+        <div class="afield"><label>요청 부서</label><select id="isDept">
+          <option>정산팀</option><option>운영팀</option><option>계약팀</option><option>영업팀</option><option>개발팀</option><option>기타</option></select></div>
+        <div class="afield grow"><label>후속 조치</label><input id="isFollow" type="text" placeholder="예: 환불 반영 시점 확인, 리포트 반영"></div>
+        <div class="afield"><label>상태</label><select id="isStatus">
+          <option>접수</option><option>진행중</option><option>해결</option><option>보류</option></select></div>
+        <div class="afield"><button class="addbtn" onclick="addIssue()">등록</button></div>
+      </div>
+    </div>
+    <div class="ctblscroll"><table class="ctbl" id="isTable"></table></div>
   </div>
 
   <div class="disc">⚠️ 본 대시보드는 <b>윤지욱이 다(多)파트너 성과관리 전략을 보여주기 위해 제작한 데모</b>로, 모든 파트너(브랜드)·수치는 <b>가상 데이터</b>입니다. (엑셀 업로드 / Instant Commerce 운영 데이터 연동으로 실데이터 수집 가능) · 메모(운영 이슈·협업 로그)는 <b>이 브라우저에만 저장</b>됩니다.</div>
@@ -596,8 +674,8 @@ document.querySelectorAll('#unitSeg button').forEach(b=>b.onclick=()=>{
 el('clrCmp').onclick=()=>{el('ps').value='';el('pe').value='';renderOverview();};
 document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
   const id=t.dataset.tab;
-  ['overview','daily','history'].forEach(x=>el(x).classList.toggle('hide',x!==id));
-  if(id==='daily')renderDaily(); if(id==='history')renderHistory();});
+  ['overview','daily','history','contracts','issues'].forEach(x=>el(x).classList.toggle('hide',x!==id));
+  if(id==='daily')renderDaily(); if(id==='history')renderHistory(); if(id==='contracts')renderContracts(); if(id==='issues')renderIssues();});
 
 // daily selects
 el('selAdv').innerHTML=DATA.map((a,i)=>`<option value="${i}">${a.name}</option>`).join('');
@@ -617,6 +695,111 @@ el('selHist').onchange=renderHistory;
 el('dlXls').onclick=downloadXls;
 
 el('memoModal').onclick=e=>{if(e.target.id==='memoModal')closeMemo();};
+
+/* ===== 계약·온보딩 관리 / 이슈·협업 트래커 (입력 가능 탭) ===== */
+const PNAMES=DATA.map(a=>a.name);
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const escH=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+// 구분/유형 색상 (기존 TYPECOLOR 재사용 + 보강)
+const KINDCOLOR={'계약':'#3182F6','신메뉴':'#8b5cf6','매장 온보딩':'#e8900f','메뉴·카탈로그':'#0ea5a4',
+  '데이터 정합성':'#3182F6','프로모션 설정':'#e8900f','정산':'#8b5cf6','운영':'#0ea5a4','기타':'#999'};
+const kindChip=t=>`<span class="chip chip-type" style="background:${KINDCOLOR[t]||'#999'}">${escH(t)}</span>`;
+// 상태 → 칩 클래스 (완료/해결=green, 진행중=blue, 대기/접수=gray, 보류=amber)
+function statusChip(s){const m={'완료':'chip-done','해결':'chip-done','진행중':'chip-prog','대기':'chip-wait','접수':'chip-wait','보류':'chip-hold'};
+  return `<span class="chip ${m[s]||'chip-wait'}">${escH(s)}</span>`;}
+function statusSelect(kind,id,status,opts){
+  return `<select class="stsel" onchange="${kind==='ct'?'setContractStatus':'setIssueStatus'}('${id}',this.value)">`+
+    opts.map(o=>`<option ${o===status?'selected':''}>${o}</option>`).join('')+`</select>`;}
+const CT_STATUS=['대기','진행중','완료','보류'], IS_STATUS=['접수','진행중','해결','보류'];
+
+// --- 시드 ---
+function seedContracts(){const D=PNAMES;return [
+  {id:uid(),brand:'교촌치킨',kind:'신메뉴',item:"허니콤보 윙 신메뉴 등록",owner:'운영팀/브랜드 담당자',due:'2026-10-28',status:'진행중'},
+  {id:uid(),brand:'메가커피',kind:'메뉴·카탈로그',item:'여름 신메뉴 2종 메뉴·카탈로그 업데이트',owner:'운영팀',due:'2026-10-25',status:'대기'},
+  {id:uid(),brand:'노브랜드버거',kind:'매장 온보딩',item:'신규 매장 3곳 온보딩(메뉴 등록·노출 검수)',owner:'운영팀',due:'2026-10-30',status:'진행중'},
+  {id:uid(),brand:'투썸플레이스',kind:'계약',item:'최상단 노출 광고상품 계약 갱신',owner:'계약팀',due:'2026-10-20',status:'완료'},
+  {id:uid(),brand:'교촌치킨',kind:'계약',item:'오늘의 딜 프로모션 구좌 계약 체결',owner:'계약팀/영업팀',due:'2026-11-03',status:'대기'},
+  {id:uid(),brand:'메가커피',kind:'매장 온보딩',item:'가맹점 신규 입점 5곳 메뉴 온보딩',owner:'운영팀',due:'2026-10-18',status:'보류'},
+];}
+function seedIssues(){return [
+  {id:uid(),date:'2026-10-21',brand:'교촌치킨',type:'데이터 정합성',desc:'주문수/거래액 정산 데이터 2% 불일치',dept:'정산팀',status:'해결',follow:'환불 반영 시점 차이 확인, 리포트 반영'},
+  {id:uid(),date:'2026-10-19',brand:'메가커피',type:'메뉴·카탈로그',desc:'여름 신메뉴 등록 지연',dept:'운영팀',status:'진행중',follow:'온보딩 일정 재조율'},
+  {id:uid(),date:'2026-10-17',brand:'노브랜드버거',type:'메뉴·카탈로그',desc:'메뉴 가격 앱 노출가 vs 계약서 불일치 2건',dept:'계약팀',status:'해결',follow:'계약서 대조 후 정정 완료'},
+  {id:uid(),date:'2026-10-20',brand:'투썸플레이스',type:'정산',desc:'정산 리포트-거래액 차이',dept:'정산팀',status:'진행중',follow:'환불 반영 시점 차이 분석 중'},
+  {id:uid(),date:'2026-10-22',brand:'메가커피',type:'운영',desc:'주문 급감 — 일부 매장 운영중단 영향',dept:'영업팀',status:'접수',follow:'매장 운영 상태 확인 요청'},
+  {id:uid(),date:'2026-10-16',brand:'교촌치킨',type:'프로모션 설정',desc:'오늘의 딜 쿠폰 중복 적용 오류',dept:'개발팀',status:'해결',follow:'설정 수정 및 재발 방지 체크리스트 공유'},
+];}
+
+// --- localStorage (시드 fallback) ---
+function loadLS(key,seedFn){const raw=localStorage.getItem(key);if(raw){try{return JSON.parse(raw);}catch(e){}}
+  const seed=seedFn();localStorage.setItem(key,JSON.stringify(seed));return seed;}
+let CONTRACTS=loadLS('cpng_contracts',seedContracts);
+let ISSUES=loadLS('cpng_issues',seedIssues);
+const saveContracts=()=>localStorage.setItem('cpng_contracts',JSON.stringify(CONTRACTS));
+const saveIssues=()=>localStorage.setItem('cpng_issues',JSON.stringify(ISSUES));
+
+// --- 렌더: 계약·온보딩 ---
+function renderContracts(){
+  el('ctCount').textContent=`${CONTRACTS.length}건`;
+  const head=`<tr><th>브랜드</th><th>구분</th><th>항목·내용</th><th>담당/채널</th><th>기한</th><th>진행 상태</th><th></th></tr>`;
+  const body=CONTRACTS.length?CONTRACTS.map(r=>`<tr>
+      <td class="nm">${escH(r.brand)}</td>
+      <td>${kindChip(r.kind)}</td>
+      <td class="txt">${escH(r.item)}</td>
+      <td class="sub2">${escH(r.owner)||'–'}</td>
+      <td class="sub2">${escH(r.due)||'–'}</td>
+      <td>${statusChip(r.status)} ${statusSelect('ct',r.id,r.status,CT_STATUS)}</td>
+      <td><button class="delx" onclick="delContract('${r.id}')">삭제</button></td>
+    </tr>`).join(''):`<tr><td colspan="7" class="wempty">등록된 항목이 없습니다. 위 폼에서 추가하세요.</td></tr>`;
+  el('ctTable').innerHTML=head+body;
+}
+window.addContract=function(){
+  const brand=el('ctBrand').value, kind=el('ctKind').value, item=el('ctItem').value.trim();
+  const owner=el('ctOwner').value.trim(), due=el('ctDue').value, status=el('ctStatus').value;
+  if(!brand){alert('브랜드를 선택하세요.');return;}
+  if(!item){alert('항목·내용을 입력하세요.');el('ctItem').focus();return;}
+  CONTRACTS.unshift({id:uid(),brand,kind,item,owner,due,status});saveContracts();
+  el('ctItem').value='';el('ctOwner').value='';el('ctDue').value='';el('ctStatus').value='대기';
+  renderContracts();
+};
+window.delContract=function(id){CONTRACTS=CONTRACTS.filter(r=>r.id!==id);saveContracts();renderContracts();};
+window.setContractStatus=function(id,v){const r=CONTRACTS.find(x=>x.id===id);if(r){r.status=v;saveContracts();renderContracts();}};
+
+// --- 렌더: 이슈·협업 트래커 ---
+function renderIssues(){
+  el('isCount').textContent=`${ISSUES.length}건`;
+  const head=`<tr><th>발생일</th><th>브랜드</th><th>이슈 유형</th><th>이슈 내용·원인</th><th>요청 부서</th><th>상태</th><th>후속 조치</th><th></th></tr>`;
+  const body=ISSUES.length?ISSUES.map(r=>`<tr>
+      <td class="sub2">${escH(r.date)||'–'}</td>
+      <td class="nm">${escH(r.brand)}</td>
+      <td>${kindChip(r.type)}</td>
+      <td class="txt">${escH(r.desc)}</td>
+      <td><span class="chip chip-dept">${escH(r.dept)}</span></td>
+      <td>${statusChip(r.status)} ${statusSelect('is',r.id,r.status,IS_STATUS)}</td>
+      <td class="txt sub2">${escH(r.follow)||'–'}</td>
+      <td><button class="delx" onclick="delIssue('${r.id}')">삭제</button></td>
+    </tr>`).join(''):`<tr><td colspan="8" class="wempty">등록된 이슈가 없습니다. 위 폼에서 등록하세요.</td></tr>`;
+  el('isTable').innerHTML=head+body;
+}
+window.addIssue=function(){
+  const date=el('isDate').value||today(), brand=el('isBrand').value, type=el('isType').value;
+  const desc=el('isDesc').value.trim(), dept=el('isDept').value, status=el('isStatus').value, follow=el('isFollow').value.trim();
+  if(!brand){alert('브랜드를 선택하세요.');return;}
+  if(!desc){alert('이슈 내용·원인을 입력하세요.');el('isDesc').focus();return;}
+  ISSUES.unshift({id:uid(),date,brand,type,desc,dept,status,follow});saveIssues();
+  el('isDesc').value='';el('isFollow').value='';el('isStatus').value='접수';el('isDate').value=today();
+  renderIssues();
+};
+window.delIssue=function(id){ISSUES=ISSUES.filter(r=>r.id!==id);saveIssues();renderIssues();};
+window.setIssueStatus=function(id,v){const r=ISSUES.find(x=>x.id===id);if(r){r.status=v;saveIssues();renderIssues();}};
+
+// 폼 셀렉트 채우기 + 발생일 기본값
+el('ctBrand').innerHTML=PNAMES.map(n=>`<option>${n}</option>`).join('');
+el('isBrand').innerHTML=PNAMES.map(n=>`<option>${n}</option>`).join('');
+el('isDate').value=today();
+
 renderOverview();
 </script>
 </body>
