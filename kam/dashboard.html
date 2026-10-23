@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>파트너 성과관리 대시보드 (데모) · 윤지욱</title>
-<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 노출·CTR·CPC·CVR·CPM·CPA를 기간 비교하고, 브랜드(파트너)→프로모션/광고 상품→소재/메뉴 드릴다운, 파트너별 KPI·메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
+<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 거래액(GMV)·주문수·객단가·ROAS·광고비·전환율을 기간 비교하고, 활동 유형(광고/신메뉴/프로모션)별로 수익성·운영 성과를 분해하며, 브랜드→상품→소재/메뉴 드릴다운, 파트너별 KPI·메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
@@ -138,7 +138,7 @@
 <div class="wrap">
   <div class="head">
     <div><h1>파트너 성과관리 대시보드</h1>
-      <div class="sub">파트너(브랜드)별 성과(노출·CTR·CPC·CVR·CPM·CPA) 기간 비교 + 브랜드(파트너)→프로모션/광고 상품→소재/메뉴 드릴다운 + 파트너별 KPI·메모 히스토리.</div></div>
+      <div class="sub">파트너(브랜드)별 커머스 성과(거래액·주문수·객단가) + 수익성·운영(ROAS·광고비·전환율) 기간 비교 · 활동 유형(광고/신메뉴/프로모션)별 분해 · 브랜드→상품→소재/메뉴 드릴다운 · 파트너별 KPI·메모 히스토리.</div></div>
     <span class="badge-demo">● 데모 · 가상 데이터</span>
   </div>
 
@@ -162,7 +162,7 @@
     <div class="periodinfo" id="periodInfo"></div>
     <div class="sum" id="sum"></div>
     <div class="advhead GRID">
-      <div>파트너(브랜드) / KPI</div><div>선택 KPI</div><div>노출</div><div>전환</div><div>상태</div><div>메모</div><div></div>
+      <div>파트너(브랜드) / KPI</div><div>선택 KPI</div><div>주문 수</div><div>ROAS</div><div>상태</div><div>메모</div><div></div>
     </div>
     <div id="advList"></div>
   </div>
@@ -191,7 +191,7 @@
       <div><label style="font-size:12.5px;font-weight:700;color:var(--sub);margin-right:6px;">파트너(브랜드)</label><select id="selHist"></select></div>
       <button class="dlbtn" id="dlXls">📥 엑셀 리포트 다운로드</button>
     </div>
-    <div class="histnote">담당자 인수인계용 — 선택한 파트너(또는 전체)의 <b>메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
+    <div class="histnote">담당자 인수인계용 — 선택한 파트너(또는 전체)의 <b>커머스·수익성 성과(거래액·주문수·객단가·ROAS·광고비·전환율, 유형별 분해) + 메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 성과와 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
     <div class="histmeta" id="histMeta"></div>
     <div class="dtscroll"><table class="dt" id="histView"></table></div>
   </div>
@@ -221,63 +221,75 @@ const C=(b,dr,dp,s,n=0.07)=>gen(b,dr,dp,s,n,false), R=(b,dr,dp,s,n=0.06)=>gen(b,
 // 쿠팡 Instant Commerce 파트너(브랜드) · 브랜드(파트너) > 프로모션/광고 상품 > 소재/메뉴 계층
 const CFG=[
  {name:'교촌치킨',cat:'치킨 프랜차이즈',camps:[
-   {name:'최상단 노출 (동영상 광고)',sets:[
+   {name:'최상단 노출 (동영상 광고)',type:'광고',sets:[
      {name:'야식 시간대 타겟',crs:[
-       {name:'허니콤보 15s',imp:C(26000,.12,0,101),ctr:R(.011,.05,0,102),cvr:R(.07,.10,0,103),cpc:R(950,.03,0,104)},
-       {name:'레드콤보 혜택 15s',imp:C(20000,.10,0,105),ctr:R(.012,.04,0,106),cvr:R(.075,.08,0,107),cpc:R(980,.02,0,108)},
+       {name:'허니콤보 15s',imp:C(26000,.12,0,101),ctr:R(.011,.05,0,102),cvr:R(.07,.10,0,103),cpc:R(950,.03,0,104),aov:R(22500,.03,0,150)},
+       {name:'레드콤보 혜택 15s',imp:C(20000,.10,0,105),ctr:R(.012,.04,0,106),cvr:R(.075,.08,0,107),cpc:R(980,.02,0,108),aov:R(21800,.03,0,151)},
      ]},
      {name:'재주문 리타겟',crs:[
-       {name:'단골 재주문 유도 10s',imp:C(16000,.08,0,109),ctr:R(.013,.03,0,110),cvr:R(.085,.06,0,111),cpc:R(1020,0,0,112)},
+       {name:'단골 재주문 유도 10s',imp:C(16000,.08,0,109),ctr:R(.013,.03,0,110),cvr:R(.085,.06,0,111),cpc:R(1020,0,0,112),aov:R(23500,.04,0,152)},
      ]},
    ]},
-   {name:'오늘의 딜 프로모션',sets:[
+   {name:'오늘의 딜 프로모션',type:'프로모션',sets:[
      {name:'전체 노출',crs:[
-       {name:'오늘딜 배너 A (콤보)',imp:C(17000,.05,0,113),ctr:R(.013,0,0,114),cvr:R(.09,.06,0,115),cpc:R(1100,.02,0,116)},
-       {name:'오늘딜 배너 B (사이드)',imp:C(13000,.04,0,117),ctr:R(.012,0,0,118),cvr:R(.082,.05,0,119),cpc:R(1050,0,0,120)},
+       {name:'오늘딜 배너 A (콤보)',imp:C(17000,.05,0,113),ctr:R(.013,0,0,114),cvr:R(.09,.06,0,115),cpc:R(1100,.02,0,116),aov:R(24500,.02,0,153)},
+       {name:'오늘딜 배너 B (사이드)',imp:C(13000,.04,0,117),ctr:R(.012,0,0,118),cvr:R(.082,.05,0,119),cpc:R(1050,0,0,120),aov:R(23000,.02,0,154)},
      ]},
    ]},
-   {name:'상시 배달 쿠폰',sets:[
+   {name:'상시 배달 쿠폰',type:'프로모션',sets:[
      {name:'전체 노출',crs:[
-       {name:'상시 배달비 할인 배너',imp:C(45000,.03,0,121),ctr:R(.010,0,0,122),cvr:R(.06,0,0,123),cpc:R(820,0,0,124)},
+       {name:'상시 배달비 할인 배너',imp:C(45000,.03,0,121),ctr:R(.010,0,0,122),cvr:R(.06,0,0,123),cpc:R(820,0,0,124),aov:R(20500,.02,0,155)},
      ]},
    ]},
  ]},
  {name:'메가커피',cat:'카페 프랜차이즈',camps:[
-   {name:'오늘의 딜 프로모션',sets:[
+   {name:'오늘의 딜 프로모션',type:'프로모션',sets:[
      {name:'전체 노출',crs:[
-       {name:'아메리카노 1+1 티저',imp:C(32000,0,0,201),ctr:R(.009,0,0,202),cvr:R(.06,0,.42,203),cpc:R(700,0,.1,204)},
-       {name:'신메뉴 할인 소구',imp:C(23000,0,0,205),ctr:R(.010,0,0,206),cvr:R(.058,0,.40,207),cpc:R(720,0,.1,208)},
+       {name:'아메리카노 1+1 티저',imp:C(32000,0,0,201),ctr:R(.009,0,0,202),cvr:R(.06,0,.42,203),cpc:R(700,0,.1,204),aov:R(5400,.02,0,250)},
+       {name:'신메뉴 할인 소구',imp:C(23000,0,0,205),ctr:R(.010,0,0,206),cvr:R(.058,0,.40,207),cpc:R(720,0,.1,208),aov:R(5600,.02,0,251)},
      ]},
    ]},
-   {name:'적립 미션 프로모션',sets:[
+   {name:'적립 미션 프로모션',type:'프로모션',sets:[
      {name:'전체 노출',crs:[
-       {name:'스탬프 적립 미션',imp:C(35000,-.03,0,209),ctr:R(.010,0,0,210),cvr:R(.055,0,.34,211),cpc:R(760,.04,0,212)},
+       {name:'스탬프 적립 미션',imp:C(35000,-.03,0,209),ctr:R(.010,0,0,210),cvr:R(.055,0,.34,211),cpc:R(760,.04,0,212),aov:R(5200,.02,0,252)},
+     ]},
+   ]},
+   {name:'여름 신메뉴 출시',type:'신메뉴',sets:[
+     {name:'신메뉴 론칭 노출',crs:[
+       {name:'메가 리얼 자몽에이드 15s',imp:C(9000,.18,0,213),ctr:R(.012,.08,0,214),cvr:R(.065,.14,0,215),cpc:R(740,.03,0,216),aov:R(6200,.06,0,253)},
+       {name:'여름 신메뉴 세트 배너',imp:C(6500,.16,0,217),ctr:R(.011,.07,0,218),cvr:R(.062,.12,0,219),cpc:R(760,.02,0,220),aov:R(6500,.06,0,254)},
      ]},
    ]},
  ]},
  {name:'노브랜드버거',cat:'버거 프랜차이즈',camps:[
-   {name:'최상단 노출',sets:[
+   {name:'최상단 노출',type:'광고',sets:[
      {name:'전체 노출',crs:[
-       {name:'시그니처 버거 세트',imp:C(52000,.10,0,301),ctr:R(.013,.04,0,302),cvr:R(.05,.08,0,303),cpc:R(520,0,0,304)},
-       {name:'베스트 메뉴 추천',imp:C(38000,.09,0,305),ctr:R(.012,.03,0,306),cvr:R(.048,.07,0,307),cpc:R(540,0,0,308)},
+       {name:'시그니처 버거 세트',imp:C(52000,.10,0,301),ctr:R(.013,.04,0,302),cvr:R(.05,.08,0,303),cpc:R(520,0,0,304),aov:R(9600,.03,0,350)},
+       {name:'베스트 메뉴 추천',imp:C(38000,.09,0,305),ctr:R(.012,.03,0,306),cvr:R(.048,.07,0,307),cpc:R(540,0,0,308),aov:R(9300,.03,0,351)},
      ]},
    ]},
-   {name:'오늘의 딜 프로모션',sets:[
+   {name:'오늘의 딜 프로모션',type:'프로모션',sets:[
      {name:'전체 노출',crs:[
-       {name:'기획전 세트 할인 배너',imp:C(60000,.06,0,309),ctr:R(.012,0,0,310),cvr:R(.045,.04,0,311),cpc:R(480,0,0,312)},
+       {name:'기획전 세트 할인 배너',imp:C(60000,.06,0,309),ctr:R(.012,0,0,310),cvr:R(.045,.04,0,311),cpc:R(480,0,0,312),aov:R(10200,.02,0,352)},
      ]},
    ]},
  ]},
  {name:'투썸플레이스',cat:'디저트·카페 프랜차이즈',camps:[
-   {name:'최상단 노출 (동영상 광고)',sets:[
+   {name:'최상단 노출 (동영상 광고)',type:'광고',sets:[
      {name:'전체 노출',crs:[
-       {name:'첫 주문 케이크 15s',imp:C(70000,0,.48,401),ctr:R(.007,0,0,402),cvr:R(.10,0,0,403),cpc:R(1300,.05,0,404)},
-       {name:'시즌 디저트 강조 15s',imp:C(50000,0,.48,405),ctr:R(.0075,0,0,406),cvr:R(.105,0,0,407),cpc:R(1280,.04,0,408)},
+       {name:'첫 주문 케이크 15s',imp:C(70000,0,.48,401),ctr:R(.007,0,0,402),cvr:R(.10,0,0,403),cpc:R(1300,.05,0,404),aov:R(14500,.03,0,450)},
+       {name:'시즌 디저트 강조 15s',imp:C(50000,0,.48,405),ctr:R(.0075,0,0,406),cvr:R(.105,0,0,407),cpc:R(1280,.04,0,408),aov:R(13800,.03,0,451)},
      ]},
    ]},
-   {name:'재주문 미션 프로모션',sets:[
+   {name:'재주문 미션 프로모션',type:'프로모션',sets:[
      {name:'전체 노출',crs:[
-       {name:'재주문 적립 미션',imp:C(40000,0,.30,409),ctr:R(.009,0,0,410),cvr:R(.12,0,0,411),cpc:R(1500,0,0,412)},
+       {name:'재주문 적립 미션',imp:C(40000,0,.30,409),ctr:R(.009,0,0,410),cvr:R(.12,0,0,411),cpc:R(1500,0,0,412),aov:R(15200,.03,0,452)},
+     ]},
+   ]},
+   {name:'시즌 신메뉴 런칭',type:'신메뉴',sets:[
+     {name:'신메뉴 론칭 노출',crs:[
+       {name:'가을 밤 몽블랑 15s',imp:C(34000,.15,0,413),ctr:R(.0085,.06,0,414),cvr:R(.11,.10,0,415),cpc:R(1350,.03,0,416),aov:R(16500,.05,0,453)},
+       {name:'시즌 디저트 2종 세트',imp:C(26000,.14,0,417),ctr:R(.009,.05,0,418),cvr:R(.108,.09,0,419),cpc:R(1320,.02,0,420),aov:R(17200,.05,0,454)},
      ]},
    ]},
  ]},
@@ -288,37 +300,49 @@ const DATES=[];{const t=new Date();for(let i=DAYS-1;i>=0;i--){const d=new Date(t
 const aggKids=(kids,k)=>DATES.map((_,i)=>kids.reduce((s,c)=>s+c[k][i],0));
 function finLeaf(c){
   const clicks=c.imp.map((v,i)=>Math.max(1,Math.round(v*c.ctr[i])));
-  const conv=clicks.map((v,i)=>Math.max(0,Math.round(v*c.cvr[i])));
-  const spend=clicks.map((v,i)=>Math.round(v*c.cpc[i]));
-  return {name:c.name,imp:c.imp,clicks,conv,spend};
+  const conv=clicks.map((v,i)=>Math.max(0,Math.round(v*c.cvr[i])));   // 주문 수 = conv
+  const spend=clicks.map((v,i)=>Math.round(v*c.cpc[i]));              // 광고비
+  const orders=conv;                                                  // 주문 수
+  const gmv=orders.map((v,i)=>Math.round(v*c.aov[i]));                // 거래액 = 주문수 × 객단가
+  return {name:c.name,imp:c.imp,clicks,conv,spend,orders,gmv,aov:c.aov};
 }
 function build(){return CFG.map(a=>{
   const camps=a.camps.map(c=>{
     const sets=c.sets.map(s=>{
       const crs=s.crs.map(finLeaf);
-      return {name:s.name,crs,imp:aggKids(crs,'imp'),clicks:aggKids(crs,'clicks'),conv:aggKids(crs,'conv'),spend:aggKids(crs,'spend')};
+      return {name:s.name,crs,imp:aggKids(crs,'imp'),clicks:aggKids(crs,'clicks'),conv:aggKids(crs,'conv'),spend:aggKids(crs,'spend'),orders:aggKids(crs,'orders'),gmv:aggKids(crs,'gmv')};
     });
-    return {name:c.name,sets,imp:aggKids(sets,'imp'),clicks:aggKids(sets,'clicks'),conv:aggKids(sets,'conv'),spend:aggKids(sets,'spend')};
+    return {name:c.name,type:c.type,sets,imp:aggKids(sets,'imp'),clicks:aggKids(sets,'clicks'),conv:aggKids(sets,'conv'),spend:aggKids(sets,'spend'),orders:aggKids(sets,'orders'),gmv:aggKids(sets,'gmv')};
   });
-  return {name:a.name,cat:a.cat,camps,imp:aggKids(camps,'imp'),clicks:aggKids(camps,'clicks'),conv:aggKids(camps,'conv'),spend:aggKids(camps,'spend')};
+  return {name:a.name,cat:a.cat,camps,imp:aggKids(camps,'imp'),clicks:aggKids(camps,'clicks'),conv:aggKids(camps,'conv'),spend:aggKids(camps,'spend'),orders:aggKids(camps,'orders'),gmv:aggKids(camps,'gmv')};
 });}
 const DATA=build();
 
 /* 지표 정의 */
-const MET={imp:{l:'노출',t:'cnt',g:'up'},clicks:{l:'클릭',t:'cnt',g:'up'},ctr:{l:'CTR',t:'rate',g:'up'},
-  cvr:{l:'전환율',t:'rate',g:'up'},conv:{l:'전환',t:'cnt',g:'up'},cpc:{l:'CPC',t:'won',g:'down'},
-  cpm:{l:'CPM',t:'won',g:'down'},cpa:{l:'CPA',t:'won',g:'down'},spend:{l:'광고비',t:'won',g:'flat'}};
-const MKEYS=['imp','clicks','ctr','cvr','conv','cpc','cpm','cpa'];
+const MET={
+  gmv:{l:'거래액(GMV)',t:'won',g:'up'},orders:{l:'주문 수',t:'cnt',g:'up'},aov:{l:'객단가',t:'won',g:'up'},
+  roas:{l:'ROAS',t:'x',g:'up'},spend:{l:'광고비',t:'won',g:'flat'},cvr:{l:'전환율',t:'rate',g:'up'},cpa:{l:'CPA',t:'won',g:'down'},
+  imp:{l:'노출',t:'cnt',g:'up'},clicks:{l:'클릭',t:'cnt',g:'up'},ctr:{l:'CTR',t:'rate',g:'up'},
+  conv:{l:'전환',t:'cnt',g:'up'},cpc:{l:'CPC',t:'won',g:'down'},cpm:{l:'CPM',t:'won',g:'down'}};
+// 메인 대시보드 KPI 선택지 + 상품 테이블 컬럼 (커머스 우선 → 수익성/운영 → 광고)
+const MKEYS=['gmv','orders','aov','roas','spend','cvr','cpa'];
 const sumv=(a,s,e)=>{let t=0;for(let i=s;i<=e;i++)t+=a[i];return t;};
 function mval(o,m,s,e){const S=k=>sumv(o[k],s,e);switch(m){
-  case 'imp':case 'clicks':case 'conv':case 'spend':return S(m);
+  case 'imp':case 'clicks':case 'conv':case 'spend':case 'orders':case 'gmv':return S(m);
   case 'ctr':return S('imp')?S('clicks')/S('imp'):0;
   case 'cvr':return S('clicks')?S('conv')/S('clicks'):0;
   case 'cpc':return S('clicks')?S('spend')/S('clicks'):0;
   case 'cpm':return S('imp')?S('spend')/S('imp')*1000:0;
-  case 'cpa':return S('conv')?S('spend')/S('conv'):0;}}
-const fmt=n=>n>=10000?(n/10000).toFixed(1)+'만':Math.round(n).toLocaleString();
-function mfmt(m,v){const t=MET[m].t;return t==='rate'?(v*100).toFixed(2)+'%':t==='won'?Math.round(v).toLocaleString()+'원':fmt(v);}
+  case 'cpa':return S('conv')?S('spend')/S('conv'):0;
+  case 'aov':return S('orders')?S('gmv')/S('orders'):0;         // 객단가 = 거래액/주문수
+  case 'roas':return S('spend')?S('gmv')/S('spend'):0;}}         // ROAS = 거래액/광고비
+// 큰 숫자 포맷: 1억↑ → N.N억, 1만↑ → N.N만
+const fmt=n=>n>=1e8?(n/1e8).toFixed(1)+'억':n>=1e4?(n/1e4).toFixed(1)+'만':Math.round(n).toLocaleString();
+function fmtWon(v){return v>=1e8?(v/1e8).toFixed(1)+'억원':v>=1e4?(v/1e4).toFixed(1)+'만원':Math.round(v).toLocaleString()+'원';}
+function mfmt(m,v){const t=MET[m].t;return t==='rate'?(v*100).toFixed(2)+'%':t==='x'?v.toFixed(1)+'x':t==='won'?fmtWon(v):fmt(v);}
+// 활동 유형 라벨 (광고 / 신메뉴 / 프로모션)
+const TYPECOLOR={'광고':'#3182F6','신메뉴':'#8b5cf6','프로모션':'#e8900f'};
+function typeTag(t){const c=TYPECOLOR[t]||'#999';return t?`<span style="font-size:9.5px;font-weight:800;color:#fff;background:${c};border-radius:5px;padding:1px 6px;margin-right:4px;">${t}</span>`:'';}
 const change=(c,p)=>(p!==null&&p!==0)?((c-p)/p*100):null;
 function deltaHtml(ch,g){if(ch===null)return '<div class="delta flat">–</div>';const flat=Math.abs(ch)<3;const bad=g==='up'?ch<0:(g==='down'?ch>0:false);const cls=flat?'flat':(bad?'down':'up');const ar=flat?'–':(ch>0?'▲':'▼');return `<div class="delta ${cls}">${ar} ${Math.abs(ch).toFixed(0)}%</div>`;}
 function isFlag(m,ch){if(ch===null)return false;return MET[m].g==='up'?ch<=-12:(MET[m].g==='down'?ch>=15:false);}
@@ -346,13 +370,13 @@ function seedMemo(){
 }
 
 /* 저장 (최초 1회 시드) */
-const KPI=JSON.parse(localStorage.getItem('cpngdemo_kpi')||'null')||{'교촌치킨':'cpa','투썸플레이스':'cpa'};
+const KPI=JSON.parse(localStorage.getItem('cpngdemo_kpi')||'null')||{'교촌치킨':'gmv','투썸플레이스':'roas'};
 const MEMO=JSON.parse(localStorage.getItem('cpngdemo_memo')||'null')||seedMemo();
 const saveKPI=()=>localStorage.setItem('cpngdemo_kpi',JSON.stringify(KPI));
 const saveMemoLS=()=>localStorage.setItem('cpngdemo_memo',JSON.stringify(MEMO));
 if(!localStorage.getItem('cpngdemo_kpi'))saveKPI();
 if(!localStorage.getItem('cpngdemo_memo'))saveMemoLS();
-function getKPI(n){return KPI[n]||'cvr';}
+function getKPI(n){return KPI[n]||'gmv';}
 window.setKPI=(n,v)=>{KPI[n]=v;saveKPI();renderOverview();};
 
 /* 기간 */
@@ -379,46 +403,65 @@ function renderOverview(){
   const rows=DATA.map(a=>{
     const kpi=getKPI(a.name);
     const stat=m=>{const cur=mval(a,m,cs,ce);const prev=ps===null?null:mval(a,m,ps,pe);return {cur,prev,ch:change(cur,prev)};};
-    const k=stat(kpi), imp=stat('imp'), conv=stat('conv');
+    const k=stat(kpi), orders=stat('orders'), roas=stat('roas');
     const flagged=isFlag(kpi,k.ch); if(flagged)flags++;
     const status=flagged?`<span class="st-warn">⚠ ${MET[kpi].l} 악화</span>`:(ps!==null?`<span class="st-ok">정상</span>`:`<span style="font-size:11px;color:#bbb">–</span>`);
     const cellK=`<div class="cell big"><div class="kpitag">${MET[kpi].l}</div><div class="v">${mfmt(kpi,k.cur)}</div>${k.prev!==null?`<div class="p">전기 ${mfmt(kpi,k.prev)}</div>`:''}${deltaHtml(k.ch,MET[kpi].g)}</div>`;
     const cellS=(o,m)=>`<div class="cell"><div class="v">${mfmt(m,o.cur)}</div>${deltaHtml(o.ch,MET[m].g)}</div>`;
     const opts=MKEYS.map(m=>`<option value="${m}" ${m===kpi?'selected':''}>${MET[m].l}</option>`).join('');
     const mc=(MEMO[a.name]||[]).length;
-    const chips=a.camps.map(c=>`<span>${c.name}</span>`).join('');
-    // 프로모션/광고 상품 지표 테이블 — 비교 시 전주(위)/이번주(아래) 2행
-    const cols=['imp','clicks','ctr','cvr','conv','cpc','cpm','cpa'];
-    const thead=`<tr><th>프로모션/광고 상품</th><th>기간</th>${cols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>`;
+    const chips=a.camps.map(c=>`<span>${typeTag(c.type)} ${c.name}</span>`).join('');
+    // 프로모션/광고 상품 지표 테이블 — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비·전환율) · 비교 시 전주(위)/이번주(아래) 2행
+    const cols=['gmv','orders','aov','roas','spend','cvr','cpa'];
+    const thead=`<tr><th>프로모션/광고 상품 (유형)</th><th>기간</th>${cols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>`;
     const valTds=(c,s,e,base)=>cols.map(m=>{const cur=mval(c,m,s,e);
       if(!base)return `<td><div class="mv">${mfmt(m,cur)}</div></td>`;
       const prev=mval(c,m,base.s,base.e);const ch=change(cur,prev);
       return `<td><div class="mv">${mfmt(m,cur)}</div>${ch===null?'':`<div class="md ${(MET[m].g==='up'?ch<0:ch>0)&&Math.abs(ch)>=3?'delta down':(Math.abs(ch)<3?'delta flat':'delta up')}">${Math.abs(ch)<3?'–':(ch>0?'▲':'▼')}${Math.abs(ch).toFixed(0)}%</div>`}</td>`;}).join('');
     const body=a.camps.map(c=>{
-      if(ps===null) return `<tr><td>${c.name}<span class="plat">● 운영중</span></td><td class="per cur">현재 ${curR}</td>${valTds(c,cs,ce,null)}</tr>`;
-      return `<tr class="rowprev"><td rowspan="2">${c.name}<span class="plat">● 운영중</span></td><td class="per">전주 ${cmpR}</td>${valTds(c,ps,pe,null)}</tr>`+
+      const nm=`${typeTag(c.type)} ${c.name}`;
+      if(ps===null) return `<tr><td>${nm}<span class="plat">● 운영중</span></td><td class="per cur">현재 ${curR}</td>${valTds(c,cs,ce,null)}</tr>`;
+      return `<tr class="rowprev"><td rowspan="2">${nm}<span class="plat">● 운영중</span></td><td class="per">전주 ${cmpR}</td>${valTds(c,ps,pe,null)}</tr>`+
              `<tr class="rowcur"><td class="per cur">이번주 ${curR}</td>${valTds(c,cs,ce,{s:ps,e:pe})}</tr>`;
     }).join('');
     const foot=ps===null?'※ 비교 기간을 설정하면 전주(위)·이번주(아래) 2행으로 변화율까지 표시됩니다.':'※ 전주(위) → 이번주(아래) 순 · 이번주 셀 아래 숫자는 전주 대비 변화율';
+    // 활동 유형별 집계 (광고 / 신메뉴 / 프로모션) — gmv/orders/spend 합산 후 파생 지표 계산
+    const tcols=['gmv','orders','aov','roas','spend','cvr'];
+    const typeOrder=['광고','신메뉴','프로모션'];
+    const byType=typeOrder.filter(t=>a.camps.some(c=>c.type===t)).map(t=>{
+      const cs2=a.camps.filter(c=>c.type===t);
+      const agg=k=>DATES.map((_,i)=>cs2.reduce((s,c)=>s+c[k][i],0));
+      const node={gmv:agg('gmv'),orders:agg('orders'),spend:agg('spend'),imp:agg('imp'),clicks:agg('clicks'),conv:agg('conv')};
+      return {t,node,n:cs2.length};
+    });
+    const typeTable=`<div style="margin-top:14px;font-size:11.5px;font-weight:800;color:#555;">활동 유형별 성과 (현재 기간 ${curR})</div>
+      <div class="mscroll"><table class="mtable" style="min-width:640px;"><tr><th>활동 유형</th>${tcols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>
+      ${byType.map(bt=>`<tr><td>${typeTag(bt.t)} <b>${bt.t}</b> <span style="color:#aaa;font-weight:600;">· 상품 ${bt.n}개</span></td>${tcols.map(m=>`<td><div class="mv">${mfmt(m,mval(bt.node,m,cs,ce))}</div></td>`).join('')}</tr>`).join('')}
+      </table></div>
+      <div style="font-size:11px;color:#aaa;margin-top:6px;">※ 광고/신메뉴/프로모션별 수익성(ROAS)·운영(주문수·객단가·거래액) 비교 — 신메뉴 런칭 성과와 상시 프로모션·광고 성과를 분리해 판단</div>`;
     return `<div class="adv ${flagged?'flag':''}">
       <div class="adv-top GRID" onclick="this.parentNode.classList.toggle('open')">
         <div class="advc0"><div class="adv-name">${a.name}</div><div class="adv-cat">${a.cat} · 운영 상품 ${a.camps.length}개</div>
           <div class="kpiwrap"><span class="kpilbl">KPI</span><select class="kpisel" onclick="event.stopPropagation()" onchange="setKPI('${a.name}',this.value)">${opts}</select></div>
           <div class="gchips">${chips}</div></div>
-        ${cellK}${cellS(imp,'imp')}${cellS(conv,'conv')}
+        ${cellK}${cellS(orders,'orders')}${cellS(roas,'roas')}
         <div class="status">${status}</div>
         <button class="memobtn" onclick="event.stopPropagation();openMemo('${a.name}')">📝${mc?` <b>${mc}</b>`:''}</button>
         <div class="caret">▼</div>
       </div>
       <div class="camps"><div class="mscroll"><table class="mtable">${thead}${body}</table></div>
-        <div style="font-size:11px;color:#aaa;margin-top:8px;">${foot}</div></div>
+        <div style="font-size:11px;color:#aaa;margin-top:8px;">${foot}</div>
+        ${typeTable}</div>
     </div>`;
   }).join('');
   document.getElementById('advList').innerHTML=rows;
+  const totGmv=DATA.reduce((s,a)=>s+mval(a,'gmv',cs,ce),0);
+  const totOrders=DATA.reduce((s,a)=>s+mval(a,'orders',cs,ce),0);
   document.getElementById('sum').innerHTML=
     `<div class="sumc"><div class="n">${DATA.length}</div><div class="l">관리 파트너(브랜드)</div></div>
-     <div class="sumc"><div class="n ${flags?'warn':''}">${flags}</div><div class="l">⚠ 주의 필요 (KPI 악화)</div></div>
-     <div class="sumc"><div class="n">${DATA.reduce((s,a)=>s+a.camps.length,0)}</div><div class="l">총 운영 상품</div></div>`;
+     <div class="sumc"><div class="n">${fmtWon(totGmv)}</div><div class="l">총 거래액(GMV) · 현재 기간</div></div>
+     <div class="sumc"><div class="n">${fmt(totOrders)}</div><div class="l">총 주문 수 · 현재 기간</div></div>
+     <div class="sumc"><div class="n ${flags?'warn':''}">${flags}</div><div class="l">⚠ 주의 필요 (성과 하락)</div></div>`;
 }
 
 /* 메모 */
@@ -435,13 +478,14 @@ function renderMemo(){const list=MEMO[memoAdv]||[];
 /* 일자별 — 드릴다운 */
 let chart;
 const el=id=>document.getElementById(id);
-function dseries(o,m){return DATES.map((_,i)=>{switch(m){case 'imp':case 'clicks':case 'conv':case 'spend':return o[m][i];
+function dseries(o,m){return DATES.map((_,i)=>{switch(m){case 'imp':case 'clicks':case 'conv':case 'spend':case 'orders':case 'gmv':return o[m][i];
   case 'ctr':return o.imp[i]?o.clicks[i]/o.imp[i]*100:0; case 'cvr':return o.clicks[i]?o.conv[i]/o.clicks[i]*100:0;
-  case 'cpc':return o.clicks[i]?o.spend[i]/o.clicks[i]:0; case 'cpm':return o.imp[i]?o.spend[i]/o.imp[i]*1000:0; case 'cpa':return o.conv[i]?o.spend[i]/o.conv[i]:0;}});}
+  case 'cpc':return o.clicks[i]?o.spend[i]/o.clicks[i]:0; case 'cpm':return o.imp[i]?o.spend[i]/o.imp[i]*1000:0; case 'cpa':return o.conv[i]?o.spend[i]/o.conv[i]:0;
+  case 'aov':return o.orders[i]?o.gmv[i]/o.orders[i]:0; case 'roas':return o.spend[i]?o.gmv[i]/o.spend[i]:0;}});}
 function fillSel(elm,items,allLabel){elm.innerHTML=`<option value="">${allLabel}</option>`+items.map((it,i)=>`<option value="${i}">${it.name}</option>`).join('');}
 function syncDailySelectors(level){
   const a=DATA[+el('selAdv').value];
-  if(level<=1){fillSel(el('selCamp'),a.camps,'전체 상품'); el('selCamp').value='';}
+  if(level<=1){el('selCamp').innerHTML=`<option value="">전체 상품</option>`+a.camps.map((it,i)=>`<option value="${i}">[${it.type}] ${it.name}</option>`).join(''); el('selCamp').value='';}
   const c=el('selCamp').value!==''?a.camps[+el('selCamp').value]:null;
   if(level<=2){ if(c){fillSel(el('selSet'),c.sets,'전체 광고세트'); el('selSet').disabled=false;} else {el('selSet').innerHTML='<option value="">전체 광고세트</option>'; el('selSet').disabled=true;} el('selSet').value=''; }
   const s=(c&&el('selSet').value!=='')?c.sets[+el('selSet').value]:null;
@@ -450,9 +494,10 @@ function syncDailySelectors(level){
 function dailyNode(){
   const a=DATA[+el('selAdv').value]; const P='<span class="pathsep">›</span>';
   if(el('selCamp').value==='')return {node:a,label:a.name};
-  const c=a.camps[+el('selCamp').value]; if(el('selSet').value==='')return {node:c,label:a.name+P+c.name};
-  const s=c.sets[+el('selSet').value]; if(el('selCr').value==='')return {node:s,label:a.name+P+c.name+P+s.name};
-  const r=s.crs[+el('selCr').value]; return {node:r,label:a.name+P+c.name+P+s.name+P+r.name};
+  const c=a.camps[+el('selCamp').value]; const cn=typeTag(c.type)+c.name;
+  if(el('selSet').value==='')return {node:c,label:a.name+P+cn};
+  const s=c.sets[+el('selSet').value]; if(el('selCr').value==='')return {node:s,label:a.name+P+cn+P+s.name};
+  const r=s.crs[+el('selCr').value]; return {node:r,label:a.name+P+cn+P+s.name+P+r.name};
 }
 function renderDaily(){
   const {node:o,label:nodeLabel}=dailyNode();
@@ -477,13 +522,13 @@ function renderDaily(){
     data:{labels,datasets:[{label:L,data:series,borderColor:'#3182F6',backgroundColor:'rgba(49,130,246,.10)',fill:true,tension:.3,pointRadius:series.map((_,i)=>i>=n-rec?3:0),pointBackgroundColor:'#3182F6',borderWidth:2.5}]},
     options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${L}: ${mfmt(m,isRate?c.parsed.y/100:c.parsed.y)}`}}},
       scales:{y:{beginAtZero:MET[m].t==='cnt',grid:{color:'#f0f0f0'},ticks:{callback:v=>isRate?v+'%':fmt(v)}},x:{grid:{display:false}}}}});
-  // 표: 선택 기간 전체 (최근 7일 강조)
-  let rows='<tr><th>날짜</th><th>노출</th><th>클릭</th><th>CTR</th><th>CVR</th><th>전환</th><th>CPC</th><th>CPM</th><th>CPA</th></tr>';
+  // 표: 선택 기간 전체 (최근 7일 강조) — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비·전환율)
+  let rows='<tr><th>날짜</th><th>거래액(GMV)</th><th>주문 수</th><th>객단가</th><th>ROAS</th><th>광고비</th><th>전환율</th><th>CPA</th></tr>';
   for(let i=s;i<=e;i++){const isRec=i>e-7;
-    const ctr=o.imp[i]?o.clicks[i]/o.imp[i]*100:0,cvr=o.clicks[i]?o.conv[i]/o.clicks[i]*100:0,
-      cpc=o.clicks[i]?o.spend[i]/o.clicks[i]:0,cpm=o.imp[i]?o.spend[i]/o.imp[i]*1000:0,cpa=o.conv[i]?o.spend[i]/o.conv[i]:0;
+    const cvr=o.clicks[i]?o.conv[i]/o.clicks[i]*100:0,cpa=o.conv[i]?o.spend[i]/o.conv[i]:0,
+      aov=o.orders[i]?o.gmv[i]/o.orders[i]:0,roas=o.spend[i]?o.gmv[i]/o.spend[i]:0;
     rows+=`<tr class="${isRec?'recent':''}"><td>${DATES[i].label}${isRec?' <span class="wktag cur">최근</span>':''}</td>
-      <td>${o.imp[i].toLocaleString()}</td><td>${o.clicks[i].toLocaleString()}</td><td>${ctr.toFixed(2)}%</td><td>${cvr.toFixed(2)}%</td><td>${o.conv[i].toLocaleString()}</td><td>${Math.round(cpc).toLocaleString()}원</td><td>${Math.round(cpm).toLocaleString()}원</td><td>${Math.round(cpa).toLocaleString()}원</td></tr>`;}
+      <td>${fmtWon(o.gmv[i])}</td><td>${o.orders[i].toLocaleString()}</td><td>${fmtWon(aov)}</td><td>${roas.toFixed(1)}x</td><td>${fmtWon(o.spend[i])}</td><td>${cvr.toFixed(2)}%</td><td>${Math.round(cpa).toLocaleString()}원</td></tr>`;}
   el('dtable').innerHTML=rows;
 }
 
@@ -509,15 +554,38 @@ window.downloadXls=()=>{
   const sel=el('selHist').value, title=sel==='__all__'?'전체 파트너':sel;
   const items=histItems(sel).sort((a,b)=>a.ts<b.ts?-1:1); // 리포트는 오래된 순(타임라인)
   const d=new Date(); const td=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
-  const body=items.length?items.map((it,i)=>`<tr><td>${i+1}</td><td>${it.ts}</td><td>${esc(it.adv)}</td><td>${esc(it.text)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center">메모 없음</td></tr>';
+  // 성과 리포트 기간 = 오버뷰 현재 기간
+  const {cs,ce}=getRanges();
+  const perR=cs===ce?DATES[ce].label:`${DATES[cs].label}~${DATES[ce].label}`;
+  const perfPartners=sel==='__all__'?DATA:DATA.filter(a=>a.name===sel);
+  const perfCols=['gmv','orders','aov','roas','spend','cvr'];
+  const xv=(o,m)=>{const t=MET[m].t,v=mval(o,m,cs,ce);return t==='rate'?(v*100).toFixed(2)+'%':t==='x'?v.toFixed(1)+'x':t==='won'?Math.round(v):Math.round(v);};
+  // 파트너 x 활동 유형 성과 행
+  const perfRows=perfPartners.map(a=>{
+    const prow=`<tr><td>${esc(a.name)}</td><td>전체</td>${perfCols.map(m=>`<td>${xv(a,m)}</td>`).join('')}</tr>`;
+    const typeOrder=['광고','신메뉴','프로모션'];
+    const trows=typeOrder.filter(t=>a.camps.some(c=>c.type===t)).map(t=>{
+      const cs2=a.camps.filter(c=>c.type===t);
+      const agg=k=>DATES.map((_,i)=>cs2.reduce((s,c)=>s+c[k][i],0));
+      const node={gmv:agg('gmv'),orders:agg('orders'),spend:agg('spend'),imp:agg('imp'),clicks:agg('clicks'),conv:agg('conv')};
+      return `<tr><td style="padding-left:14px;color:#666">↳ ${esc(a.name)}</td><td>${t}</td>${perfCols.map(m=>`<td>${xv(node,m)}</td>`).join('')}</tr>`;
+    }).join('');
+    return prow+trows;
+  }).join('');
+  const perfHead=`<tr style="background:#f1f3f6;font-weight:bold"><td>파트너(브랜드)</td><td>활동 유형</td><td>거래액(GMV)</td><td>주문 수</td><td>객단가</td><td>ROAS</td><td>광고비</td><td>전환율</td></tr>`;
+  const memoBody=items.length?items.map((it,i)=>`<tr><td>${i+1}</td><td>${it.ts}</td><td>${esc(it.adv)}</td><td>${esc(it.text)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center">메모 없음</td></tr>';
   const html=`<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"></head><body>`+
     `<table border="1" cellspacing="0" cellpadding="4">`+
-    `<tr><td colspan="4" style="font-weight:bold;font-size:14px;background:#fff2ea">파트너(브랜드) 운영 히스토리 리포트 — ${esc(title)}</td></tr>`+
-    `<tr><td colspan="4">발행일 ${td} · 담당자 윤지욱 · 출처 파트너 성과관리 대시보드 (인수인계용)</td></tr>`+
-    `<tr style="background:#f1f3f6;font-weight:bold"><td>번호</td><td>작성일시</td><td>파트너(브랜드)</td><td>메모(히스토리)</td></tr>${body}</table></body></html>`;
+    `<tr><td colspan="8" style="font-weight:bold;font-size:14px;background:#fff2ea">파트너(브랜드) 성과 리포트 — ${esc(title)}</td></tr>`+
+    `<tr><td colspan="8">발행일 ${td} · 성과 기간 ${perR} · 담당자 윤지욱 · 출처 파트너 성과관리 대시보드 (인수인계용)</td></tr>`+
+    `<tr><td colspan="8" style="font-weight:bold;background:#eef4ff">① 커머스·수익성 성과 (유형별 분해)</td></tr>`+
+    perfHead+perfRows+
+    `<tr><td colspan="8"></td></tr>`+
+    `<tr><td colspan="8" style="font-weight:bold;background:#eef4ff">② 운영 메모 히스토리 (타임라인)</td></tr>`+
+    `<tr style="background:#f1f3f6;font-weight:bold"><td>번호</td><td>작성일시</td><td>파트너(브랜드)</td><td colspan="5">메모(히스토리)</td></tr>${memoBody}</table></body></html>`;
   const blob=new Blob(['﻿'+html],{type:'application/vnd.ms-excel;charset=utf-8'});
   const url=URL.createObjectURL(blob); const a=document.createElement('a');
-  a.href=url; a.download=`파트너히스토리_${title}_${td}.xls`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+  a.href=url; a.download=`파트너성과리포트_${title}_${td}.xls`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
 };
 
 /* init */
@@ -538,7 +606,7 @@ document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelect
 
 // daily selects
 el('selAdv').innerHTML=DATA.map((a,i)=>`<option value="${i}">${a.name}</option>`).join('');
-el('selMetric').innerHTML=MKEYS.map(m=>`<option value="${m}" ${m==='cpa'?'selected':''}>${MET[m].l}</option>`).join('');
+el('selMetric').innerHTML=MKEYS.map(m=>`<option value="${m}" ${m==='gmv'?'selected':''}>${MET[m].l}</option>`).join('');
 syncDailySelectors(1);
 el('selAdv').onchange=()=>{syncDailySelectors(1);renderDaily();};
 el('selCamp').onchange=()=>{syncDailySelectors(2);renderDaily();};
