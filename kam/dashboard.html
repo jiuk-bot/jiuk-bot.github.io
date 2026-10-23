@@ -237,7 +237,7 @@
     <div class="addbar">
       <div class="atitle">+ 항목 추가</div>
       <div class="afields">
-        <div class="afield"><label>브랜드(파트너)</label><select id="ctBrand"></select></div>
+        <div class="afield"><label>브랜드(파트너)</label><input id="ctBrand" list="brandList" autocomplete="off" placeholder="예: 교촌치킨"></div><datalist id="brandList"></datalist>
         <div class="afield"><label>구분</label><select id="ctKind">
           <option>계약</option><option>신메뉴</option><option>매장 온보딩</option><option>메뉴·카탈로그</option></select></div>
         <div class="afield grow"><label>항목·내용</label><input id="ctItem" type="text" placeholder="예: 여름 신메뉴 2종 등록"></div>
@@ -259,7 +259,7 @@
       <div class="atitle">+ 이슈 등록</div>
       <div class="afields">
         <div class="afield"><label>발생일</label><input id="isDate" type="date"></div>
-        <div class="afield"><label>브랜드(파트너)</label><select id="isBrand"></select></div>
+        <div class="afield"><label>브랜드(파트너)</label><input id="isBrand" list="brandList" autocomplete="off" placeholder="예: 메가커피"></div>
         <div class="afield"><label>이슈 유형</label><select id="isType">
           <option>데이터 정합성</option><option>메뉴·카탈로그</option><option>프로모션 설정</option><option>정산</option><option>운영</option><option>기타</option></select></div>
         <div class="afield grow"><label>이슈 내용·원인</label><input id="isDesc" type="text" placeholder="예: 주문수/거래액 정산 데이터 2% 불일치"></div>
@@ -756,9 +756,9 @@ function renderContracts(){
   el('ctTable').innerHTML=head+body;
 }
 window.addContract=function(){
-  const brand=el('ctBrand').value, kind=el('ctKind').value, item=el('ctItem').value.trim();
+  const brand=el('ctBrand').value.trim(), kind=el('ctKind').value, item=el('ctItem').value.trim();
   const owner=el('ctOwner').value.trim(), due=el('ctDue').value, status=el('ctStatus').value;
-  if(!brand){alert('브랜드를 선택하세요.');return;}
+  if(!brand){alert('브랜드명을 입력하세요.');el('ctBrand').focus();return;}
   if(!item){alert('항목·내용을 입력하세요.');el('ctItem').focus();return;}
   CONTRACTS.unshift({id:uid(),brand,kind,item,owner,due,status});saveContracts();
   el('ctItem').value='';el('ctOwner').value='';el('ctDue').value='';el('ctStatus').value='대기';
@@ -784,9 +784,9 @@ function renderIssues(){
   el('isTable').innerHTML=head+body;
 }
 window.addIssue=function(){
-  const date=el('isDate').value||today(), brand=el('isBrand').value, type=el('isType').value;
+  const date=el('isDate').value||today(), brand=el('isBrand').value.trim(), type=el('isType').value;
   const desc=el('isDesc').value.trim(), dept=el('isDept').value, status=el('isStatus').value, follow=el('isFollow').value.trim();
-  if(!brand){alert('브랜드를 선택하세요.');return;}
+  if(!brand){alert('브랜드명을 입력하세요.');el('isBrand').focus();return;}
   if(!desc){alert('이슈 내용·원인을 입력하세요.');el('isDesc').focus();return;}
   ISSUES.unshift({id:uid(),date,brand,type,desc,dept,status,follow});saveIssues();
   el('isDesc').value='';el('isFollow').value='';el('isStatus').value='접수';el('isDate').value=today();
@@ -796,8 +796,7 @@ window.delIssue=function(id){ISSUES=ISSUES.filter(r=>r.id!==id);saveIssues();ren
 window.setIssueStatus=function(id,v){const r=ISSUES.find(x=>x.id===id);if(r){r.status=v;saveIssues();renderIssues();}};
 
 // 폼 셀렉트 채우기 + 발생일 기본값
-el('ctBrand').innerHTML=PNAMES.map(n=>`<option>${n}</option>`).join('');
-el('isBrand').innerHTML=PNAMES.map(n=>`<option>${n}</option>`).join('');
+el('brandList').innerHTML=PNAMES.map(n=>`<option value="${n}">`).join('');
 el('isDate').value=today();
 
 renderOverview();
