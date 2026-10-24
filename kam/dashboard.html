@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>파트너 성과관리 대시보드 (데모) · 윤지욱</title>
-<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 거래액(GMV)·주문수·객단가·ROAS·광고비·전환율을 기간 비교하고, 활동 유형(광고/신메뉴/프로모션)별로 수익성·운영 성과를 분해하며, 브랜드→상품→소재/메뉴 드릴다운, 운영 이슈·협업 메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
+<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 거래액(GMV)·주문수·객단가·ROAS·광고비을 기간 비교하고, 활동 유형(광고/신메뉴/프로모션)별로 수익성·운영 성과를 분해하며, 브랜드→상품→소재/메뉴 드릴다운, 운영 이슈·협업 메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
@@ -170,7 +170,7 @@
 <div class="wrap">
   <div class="head">
     <div><h1>파트너 성과관리 대시보드</h1>
-      <div class="sub">파트너(브랜드)별 커머스 성과(거래액·주문수·객단가) + 수익성·운영(ROAS·광고비·전환율) 기간 비교 · 활동 유형(광고/신메뉴/프로모션)별 분해 · 브랜드→상품→소재/메뉴 드릴다운 · 운영 이슈·유관부서 협업 메모 히스토리.</div></div>
+      <div class="sub">파트너(브랜드)별 커머스 성과(거래액·주문수·객단가) + 수익성·운영(ROAS·광고비) 기간 비교 · 활동 유형(광고/신메뉴/프로모션)별 분해 · 브랜드→상품→소재/메뉴 드릴다운 · 운영 이슈·유관부서 협업 메모 히스토리.</div></div>
     <span class="badge-demo">● 데모 · 가상 데이터</span>
   </div>
 
@@ -225,7 +225,7 @@
       <div><label style="font-size:12.5px;font-weight:700;color:var(--sub);margin-right:6px;">파트너(브랜드)</label><select id="selHist"></select></div>
       <button class="dlbtn" id="dlXls">📥 엑셀 리포트 다운로드</button>
     </div>
-    <div class="histnote">담당자 인수인계용 — 선택한 파트너(또는 전체)의 <b>커머스·수익성 성과(거래액·주문수·객단가·ROAS·광고비·전환율, 유형별 분해) + 메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 성과와 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
+    <div class="histnote">담당자 인수인계용 — 선택한 파트너(또는 전체)의 <b>커머스·수익성 성과(거래액·주문수·객단가·ROAS·광고비, 유형별 분해) + 메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 성과와 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
     <div class="histmeta" id="histMeta"></div>
     <div class="dtscroll"><table class="dt" id="histView"></table></div>
   </div>
@@ -284,7 +284,7 @@
 <div id="memoModal" class="modal hide">
   <div class="modal-box">
     <div class="modal-head"><span><span id="memoAdv"></span> · 메모 히스토리</span><span class="x" onclick="closeMemo()">✕</span></div>
-    <textarea id="memoText" placeholder="예: 10/8 전환율 ▼22% — 대표 메뉴 소재 피로도 의심. A/B 소재 2종 제안 예정. / 다음 주 QBR에서 프로모션 확장 논의"></textarea>
+    <textarea id="memoText" placeholder="예: 10/8 거래액 ▼12% — 일부 매장 운영중단 영향 확인(운영팀 공유). / 신메뉴 메뉴·카탈로그 온보딩 지연 → 정산·운영팀 협의 예정"></textarea>
     <button class="savebtn" onclick="saveMemo()">메모 저장</button>
     <div id="memoList"></div>
   </div>
@@ -403,7 +403,7 @@ const MET={
   imp:{l:'노출',t:'cnt',g:'up'},clicks:{l:'클릭',t:'cnt',g:'up'},ctr:{l:'CTR',t:'rate',g:'up'},
   conv:{l:'전환',t:'cnt',g:'up'},cpc:{l:'CPC',t:'won',g:'down'},cpm:{l:'CPM',t:'won',g:'down'}};
 // 메인 대시보드 KPI 선택지 + 상품 테이블 컬럼 (커머스 우선 → 수익성/운영 → 광고)
-const MKEYS=['gmv','orders','aov','roas','spend','cvr','cpa'];
+const MKEYS=['gmv','orders','aov','roas','spend'];
 const sumv=(a,s,e)=>{let t=0;for(let i=s;i<=e;i++)t+=a[i];return t;};
 function mval(o,m,s,e){const S=k=>sumv(o[k],s,e);switch(m){
   case 'imp':case 'clicks':case 'conv':case 'spend':case 'orders':case 'gmv':return S(m);
@@ -485,8 +485,8 @@ function renderOverview(){
     const cellS=(o,m)=>`<div class="cell"><div class="v">${mfmt(m,o.cur)}</div>${deltaHtml(o.ch,MET[m].g)}</div>`;
     const mc=(MEMO[a.name]||[]).length;
     const chips=a.camps.map(c=>`<span>${typeTag(c.type)} ${c.name}</span>`).join('');
-    // 프로모션/광고 상품 지표 테이블 — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비·전환율) · 비교 시 전주(위)/이번주(아래) 2행
-    const cols=['gmv','orders','aov','roas','spend','cvr','cpa'];
+    // 프로모션/광고 상품 지표 테이블 — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비) · 비교 시 전주(위)/이번주(아래) 2행
+    const cols=['gmv','orders','aov','roas','spend'];
     const thead=`<tr><th>프로모션/광고 상품 (유형)</th><th>기간</th>${cols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>`;
     const valTds=(c,s,e,base)=>cols.map(m=>{const cur=mval(c,m,s,e);
       if(!base)return `<td><div class="mv">${mfmt(m,cur)}</div></td>`;
@@ -500,7 +500,7 @@ function renderOverview(){
     }).join('');
     const foot=ps===null?'※ 비교 기간을 설정하면 전주(위)·이번주(아래) 2행으로 변화율까지 표시됩니다.':'※ 전주(위) → 이번주(아래) 순 · 이번주 셀 아래 숫자는 전주 대비 변화율';
     // 활동 유형별 집계 (광고 / 신메뉴 / 프로모션) — gmv/orders/spend 합산 후 파생 지표 계산
-    const tcols=['gmv','orders','aov','roas','spend','cvr'];
+    const tcols=['gmv','orders','aov','roas','spend'];
     const typeOrder=['광고','신메뉴','프로모션'];
     const byType=typeOrder.filter(t=>a.camps.some(c=>c.type===t)).map(t=>{
       const cs2=a.camps.filter(c=>c.type===t);
@@ -595,13 +595,12 @@ function renderDaily(){
     data:{labels,datasets:[{label:L,data:series,borderColor:'#3182F6',backgroundColor:'rgba(49,130,246,.10)',fill:true,tension:.3,pointRadius:series.map((_,i)=>i>=n-rec?3:0),pointBackgroundColor:'#3182F6',borderWidth:2.5}]},
     options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${L}: ${mfmt(m,isRate?c.parsed.y/100:c.parsed.y)}`}}},
       scales:{y:{beginAtZero:MET[m].t==='cnt',grid:{color:'#f0f0f0'},ticks:{callback:v=>isRate?v+'%':fmt(v)}},x:{grid:{display:false}}}}});
-  // 표: 선택 기간 전체 (최근 7일 강조) — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비·전환율)
-  let rows='<tr><th>날짜</th><th>거래액(GMV)</th><th>주문 수</th><th>객단가</th><th>ROAS</th><th>광고비</th><th>전환율</th><th>CPA</th></tr>';
+  // 표: 선택 기간 전체 (최근 7일 강조) — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비)
+  let rows='<tr><th>날짜</th><th>거래액(GMV)</th><th>주문 수</th><th>객단가</th><th>ROAS</th><th>광고비</th></tr>';
   for(let i=s;i<=e;i++){const isRec=i>e-7;
-    const cvr=o.clicks[i]?o.conv[i]/o.clicks[i]*100:0,cpa=o.conv[i]?o.spend[i]/o.conv[i]:0,
-      aov=o.orders[i]?o.gmv[i]/o.orders[i]:0,roas=o.spend[i]?o.gmv[i]/o.spend[i]:0;
+    const aov=o.orders[i]?o.gmv[i]/o.orders[i]:0,roas=o.spend[i]?o.gmv[i]/o.spend[i]:0;
     rows+=`<tr class="${isRec?'recent':''}"><td>${DATES[i].label}${isRec?' <span class="wktag cur">최근</span>':''}</td>
-      <td>${fmtWon(o.gmv[i])}</td><td>${o.orders[i].toLocaleString()}</td><td>${fmtWon(aov)}</td><td>${roas.toFixed(1)}x</td><td>${fmtWon(o.spend[i])}</td><td>${cvr.toFixed(2)}%</td><td>${Math.round(cpa).toLocaleString()}원</td></tr>`;}
+      <td>${fmtWon(o.gmv[i])}</td><td>${o.orders[i].toLocaleString()}</td><td>${fmtWon(aov)}</td><td>${roas.toFixed(1)}x</td><td>${fmtWon(o.spend[i])}</td></tr>`;}
   el('dtable').innerHTML=rows;
 }
 
@@ -631,7 +630,7 @@ window.downloadXls=()=>{
   const {cs,ce}=getRanges();
   const perR=cs===ce?DATES[ce].label:`${DATES[cs].label}~${DATES[ce].label}`;
   const perfPartners=sel==='__all__'?DATA:DATA.filter(a=>a.name===sel);
-  const perfCols=['gmv','orders','aov','roas','spend','cvr'];
+  const perfCols=['gmv','orders','aov','roas','spend'];
   const xv=(o,m)=>{const t=MET[m].t,v=mval(o,m,cs,ce);return t==='rate'?(v*100).toFixed(2)+'%':t==='x'?v.toFixed(1)+'x':t==='won'?Math.round(v):Math.round(v);};
   // 파트너 x 활동 유형 성과 행
   const perfRows=perfPartners.map(a=>{
@@ -645,7 +644,7 @@ window.downloadXls=()=>{
     }).join('');
     return prow+trows;
   }).join('');
-  const perfHead=`<tr style="background:#f1f3f6;font-weight:bold"><td>파트너(브랜드)</td><td>활동 유형</td><td>거래액(GMV)</td><td>주문 수</td><td>객단가</td><td>ROAS</td><td>광고비</td><td>전환율</td></tr>`;
+  const perfHead=`<tr style="background:#f1f3f6;font-weight:bold"><td>파트너(브랜드)</td><td>활동 유형</td><td>거래액(GMV)</td><td>주문 수</td><td>객단가</td><td>ROAS</td><td>광고비</td></tr>`;
   const memoBody=items.length?items.map((it,i)=>`<tr><td>${i+1}</td><td>${it.ts}</td><td>${esc(it.adv)}</td><td>${esc(it.text)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center">메모 없음</td></tr>';
   const html=`<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"></head><body>`+
     `<table border="1" cellspacing="0" cellpadding="4">`+
