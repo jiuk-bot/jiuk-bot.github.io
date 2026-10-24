@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#b08968">
+<title>웨딩홀 견적 비교</title>
+<style>
+  :root{
+    --bg:#f6f3ef; --card:#fff; --ink:#2d2a26; --sub:#8c8378;
+    --line:#e9e3da; --gold:#b08968; --goldbg:#f3ebe2;
+    --ceco:#b08968; --gl:#5f7a52; --grand:#5b6b86;
+    --ok:#3f9d6e; --add:#d9a441; --no:#c76b6b;
+    --shadow:0 2px 12px rgba(80,60,40,.08);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;padding-bottom:90px}
+  h1,h2,h3{margin:0;font-weight:700}
+  .wrap{max-width:720px;margin:0 auto;padding:0 14px}
+
+  header{background:linear-gradient(135deg,#b08968,#9c7a5b);color:#fff;padding:18px 0 14px;text-align:center;
+    box-shadow:var(--shadow)}
+  header h1{font-size:19px;letter-spacing:-.3px}
+  header p{margin:4px 0 0;font-size:12px;opacity:.85}
+  .cstat{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;padding:3px 11px;border-radius:12px;
+    background:rgba(255,255,255,.2)}
+  .cstat.on{background:rgba(63,157,110,.9)}
+  .cstat.off{background:rgba(199,107,107,.9)}
+  .cstat.local{background:rgba(255,255,255,.22)}
+
+  .guestbar{background:var(--card);border-radius:14px;box-shadow:var(--shadow);margin:14px 0;padding:12px 14px;
+    display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .guestbar label{font-size:13px;color:var(--sub);font-weight:600}
+  .guestbar .g{display:flex;align-items:center;gap:8px}
+  .stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .stepper button{border:0;background:#faf7f3;width:38px;height:38px;font-size:20px;color:var(--gold);font-weight:700}
+  .stepper input{border:0;width:58px;text-align:center;font-size:16px;font-weight:700;color:var(--ink);background:#fff}
+  .stepper input:focus{outline:none}
+
+  .tabs{position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0 6px;overflow-x:auto;
+    display:flex;gap:7px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;padding:9px 14px;border-radius:20px;background:var(--card);border:1px solid var(--line);
+    font-size:13px;font-weight:600;color:var(--sub);white-space:nowrap}
+  .tab.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+
+  .panel{display:none}
+  .panel.active{display:block}
+
+  /* summary */
+  .sumgrid{display:grid;gap:12px;margin-top:4px}
+  .scard{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+  .scard .bar{position:absolute;left:0;top:0;bottom:0;width:5px}
+  .scard h3{font-size:16px}
+  .scard .ven-sub{font-size:12px;color:var(--sub);margin-top:2px}
+  .scard .ven-type{display:inline-block;margin-top:8px;font-size:11px;background:var(--goldbg);color:var(--gold);
+    padding:3px 9px;border-radius:12px;font-weight:600}
+  .scard .total{margin-top:12px;font-size:12px;color:var(--sub)}
+  .scard .total b{display:block;font-size:26px;color:var(--ink);font-weight:800;letter-spacing:-.5px;margin-top:2px}
+  .rank{position:absolute;right:14px;top:14px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px}
+  .rank.low{background:#e7f5ee;color:var(--ok)}
+  .rank.mid{background:#fdf4e1;color:#c08b1f}
+  .rank.high{background:#faeaea;color:var(--no)}
+
+  .bdtoggle{margin-top:12px;width:100%;background:#faf7f3;border:1px solid var(--line);border-radius:10px;
+    padding:9px;font-size:12.5px;font-weight:600;color:var(--sub)}
+  .bdlist{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px;display:none}
+  .bdlist.open{display:block}
+  .bdrow{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;font-size:12.5px;padding:6px 0;color:var(--ink)}
+  .bdrow .bl{flex:1;min-width:0}
+  .bdrow .bl .bn{display:block;font-weight:600}
+  .bdrow .bl .bnt{display:block;color:var(--sub);font-size:10.5px;line-height:1.35;margin-top:2px}
+  .bdrow>span:last-child{white-space:nowrap;font-weight:700}
+  .bdrow.sum{border-top:1px solid var(--line);margin-top:4px;padding-top:8px;font-weight:800;font-size:14px}
+
+  .hint{font-size:12px;color:var(--sub);text-align:center;margin:14px 2px;line-height:1.6}
+
+  /* compare 2 */
+  .cmpsel{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 14px}
+  .cmpsel select{width:100%;padding:11px 10px;border-radius:12px;border:1px solid var(--line);background:#fff;
+    font-size:14px;font-weight:700;color:var(--ink);box-shadow:var(--shadow);-webkit-appearance:none;text-align:center}
+  .cmpgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .ccol{background:var(--card);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .ccol .ch{padding:11px 10px;color:#fff;text-align:center}
+  .ccol .ch b{font-size:14px;display:block}
+  .ccol .ch small{font-size:10.5px;opacity:.9}
+  .ccol .cbody{padding:8px 10px}
+  .ccol .ci{display:flex;justify-content:space-between;gap:6px;font-size:11.5px;padding:5px 0;border-bottom:1px solid #f1ece4}
+  .ccol .ci:last-child{border-bottom:0}
+  .ccol .ci{align-items:flex-start}
+  .ccol .ci .cl{flex:1;min-width:0}
+  .ccol .ci .cl .cn{color:var(--ink);font-weight:600;line-height:1.3}
+  .ccol .ci .cl .cnt{color:var(--sub);font-size:10px;line-height:1.35;margin-top:2px}
+  .ccol .ci .cv{font-weight:700;white-space:nowrap}
+  .ccol .csum{padding:10px;background:#faf7f3;text-align:center}
+  .ccol .csum small{font-size:10.5px;color:var(--sub);display:block}
+  .ccol .csum b{font-size:17px}
+  .diffbox{margin-top:12px;background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:14px;text-align:center}
+  .diffbox .dt{font-size:12px;color:var(--sub)}
+  .diffbox .dv{font-size:22px;font-weight:800;margin-top:3px;letter-spacing:-.5px}
+
+  /* matrix */
+  .mtable{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;
+    box-shadow:var(--shadow);font-size:12.5px;margin-top:4px}
+  .mtable th,.mtable td{padding:10px 6px;text-align:center;border-bottom:1px solid var(--line)}
+  .mtable th{background:#faf7f3;font-size:11.5px;font-weight:700}
+  .mtable td.cat{text-align:left;font-weight:600;font-size:12.5px;padding-left:12px}
+  .mtable tr:last-child td{border-bottom:0}
+  .badge{display:inline-block;min-width:46px;padding:4px 6px;border-radius:9px;font-size:11px;font-weight:700}
+  .b-ok{background:#e7f5ee;color:var(--ok)}
+  .b-add{background:#fdf4e1;color:#b8821c}
+  .b-sep{background:#eef1f6;color:var(--grand)}
+  .b-no{background:#f6eeee;color:var(--no)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 2px;font-size:11.5px;color:var(--sub)}
+  .legend span{display:flex;align-items:center;gap:4px}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+  /* detail */
+  .vhead{display:flex;align-items:center;gap:10px;margin:4px 0 12px;padding:14px;border-radius:16px;color:#fff}
+  .vhead h2{font-size:18px}
+  .vhead p{margin:2px 0 0;font-size:12px;opacity:.9}
+  .vhead .vtot{margin-left:auto;text-align:right}
+  .vhead .vtot small{font-size:11px;opacity:.85;display:block}
+  .vhead .vtot b{font-size:19px}
+  .group{margin-bottom:16px}
+  .group .glabel{font-size:12px;font-weight:700;color:var(--sub);margin:0 4px 7px;letter-spacing:.3px}
+  .item{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:12px 13px;margin-bottom:8px;
+    display:flex;align-items:center;gap:11px}
+  .item.off{opacity:.5}
+  .chk{flex:0 0 auto;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);background:#fff;
+    display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;font-weight:900}
+  .chk.on{background:var(--gold);border-color:var(--gold)}
+  .item .info{flex:1 1 auto;min-width:0}
+  .item .lbl{font-size:14px;font-weight:600}
+  .item .nt{font-size:11px;color:var(--sub);margin-top:2px;line-height:1.4}
+  .item .amt{flex:0 0 auto;display:flex;align-items:center;gap:3px}
+  .item .amt input{width:72px;border:1px solid var(--line);border-radius:9px;padding:8px 6px;text-align:right;
+    font-size:15px;font-weight:700;color:var(--ink);background:#fbfaf8}
+  .item .amt input:focus{outline:none;border-color:var(--gold);background:#fff}
+  .item .amt .u{font-size:12px;color:var(--sub);font-weight:600;width:26px}
+  .item .sub{font-size:10.5px;color:var(--gold);text-align:right;margin-top:3px;font-weight:600}
+
+  .footbtns{display:flex;gap:8px;margin:18px 0}
+  .footbtns button{flex:1;padding:12px;border-radius:12px;border:0;font-size:13.5px;font-weight:700;box-shadow:var(--shadow)}
+  .btn-share{background:var(--gold);color:#fff}
+  .btn-reset{background:var(--card);color:var(--no)}
+
+  /* save bar */
+  .savebar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#2d2a26;color:#fff;
+    padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:12px;
+    box-shadow:0 -4px 20px rgba(0,0,0,.2)}
+  .savebar.show{display:flex}
+  .savebar span{font-size:13px;font-weight:600}
+  .savebar button{background:var(--gold);color:#fff;border:0;border-radius:10px;padding:11px 22px;font-size:14px;font-weight:800}
+
+  .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);
+    background:#2d2a26;color:#fff;padding:11px 20px;border-radius:24px;font-size:13px;font-weight:600;
+    opacity:0;pointer-events:none;transition:.25s;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>웨딩홀 견적 비교</h1>
+    <p>세코 더 그레이드 · GL 웨딩컨벤션 · 그랜드머큐어 창원</p>
+    <div id="cloudStatus" class="cstat">연결 확인 중…</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="guestbar">
+    <label>하객 인원 (지불보증)</label>
+    <div class="g">
+      <div class="stepper">
+        <button onclick="bumpGuest(-10)">−</button>
+        <input id="guest" type="text" inputmode="numeric" value="200" onchange="setGuest(this.value)">
+        <button onclick="bumpGuest(10)">+</button>
+      </div>
+      <span style="font-size:13px;color:var(--sub);font-weight:600">명</span>
+    </div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <!-- 종합비교 -->
+  <div class="panel active" id="p-sum">
+    <div class="sumgrid" id="sumgrid"></div>
+    <p class="hint">각 식장 탭에서 항목을 체크/수정하고 <b>저장</b>하면 이 총액에 반영됩니다. ‘세부항목 보기’로 금액 구성을 확인하세요.</p>
+  </div>
+
+  <!-- 2곳 비교 -->
+  <div class="panel" id="p-compare">
+    <div class="cmpsel">
+      <select id="cmpA" onchange="renderCompare()"></select>
+      <select id="cmpB" onchange="renderCompare()"></select>
+    </div>
+    <div class="cmpgrid" id="cmpgrid"></div>
+    <div class="diffbox" id="diffbox"></div>
+    <p class="hint">두 식장을 골라 체크된 세부항목과 총 견적을 나란히 비교합니다.</p>
+  </div>
+
+  <!-- 항목별 포함 -->
+  <div class="panel" id="p-matrix">
+    <div class="legend">
+      <span><i class="dot" style="background:var(--ok)"></i>패키지 포함</span>
+      <span><i class="dot" style="background:var(--add)"></i>추가선택(유료)</span>
+      <span><i class="dot" style="background:var(--grand)"></i>협력업체 별도</span>
+      <span><i class="dot" style="background:var(--no)"></i>미제공</span>
+    </div>
+    <div style="overflow-x:auto"><table class="mtable" id="matrix"></table></div>
+    <p class="hint">같은 항목이라도 식장마다 패키지 포함인지, 따로 결제인지가 다릅니다.</p>
+  </div>
+
+  <div class="panel" id="p-ceco"></div>
+  <div class="panel" id="p-gl"></div>
+  <div class="panel" id="p-grand"></div>
+
+  <div class="footbtns">
+    <button class="btn-share" onclick="share()">이 견적 공유 링크 복사</button>
+    <button class="btn-reset" onclick="resetAll()">초기화</button>
+  </div>
+  <p class="hint">공유 링크를 복사해 카톡으로 보내면, 받는 사람도 지금 저장된 금액 그대로 볼 수 있어요.</p>
+</div>
+
+<div class="savebar" id="savebar">
+  <span>저장 안 된 변경사항이 있어요</span>
+  <button onclick="saveChanges()">저장하고 반영</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- Firebase 실시간 동기화 SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<script>
+/* ===================================================================
+   [설정] 아래 FIREBASE_CONFIG 에 본인 Firebase 프로젝트 값을 붙여넣으면
+   둘이 같은 링크로 접속해 실시간으로 함께 수정됩니다.
+   비워두면(PASTE 상태) 이 기기에만 저장되는 기존 방식으로 동작합니다.
+   설정 방법은 같은 폴더의 FIREBASE_설정방법.md 참고.
+   =================================================================== */
+const FIREBASE_CONFIG={
+  apiKey:"PASTE_API_KEY",
+  authDomain:"PASTE_PROJECT.firebaseapp.com",
+  databaseURL:"PASTE_DATABASE_URL",
+  projectId:"PASTE_PROJECT_ID",
+  appId:"PASTE_APP_ID"
+};
+const ROOM="jiuk-wedding";   /* 둘만 쓰는 방 이름. 바꾸면 새 데이터칸이 생깁니다 */
+
+const COLORS={ceco:'#b08968',gl:'#5f7a52',grand:'#5b6b86'};
+const DATA={
+  ceco:{name:'세코 더 그레이드',sub:'창원컨벤션센터 · 055-212-1251',type:'대관료형 (스드메 협력업체 별도)',
+    groups:[
+      {label:'예식장 기본',items:[
+        {id:'c1',lbl:'대관비',amount:300,unit:'만',kind:'fix',on:true,nt:'웨딩홀·신부대기실·플라워·도우미·특수조명·음향·포토테이블·혼구용품'},
+        {id:'c2',lbl:'웰컴바 & 포토존',amount:50,unit:'만',kind:'fix',on:true,nt:'포도/오렌지쥬스 외 계절음료 차세팅'},
+        {id:'c3',lbl:'식대 (1인)',amount:50000,unit:'원',kind:'perPerson',on:true,nt:'소인 4~7세 25,000원 / 소모량 정산'},
+      ]},
+      {label:'스드메 (엘렌브라이드 등 협력업체)',items:[
+        {id:'c4',lbl:'드레스',amount:180,unit:'만',kind:'fix',on:true,nt:'엘렌브라이드 · level 선택'},
+        {id:'c5',lbl:'혼주 헤어&메이크업 (4인)',amount:50,unit:'만',kind:'fix',on:true,nt:'양가혼주'},
+        {id:'c6',lbl:'스튜디오',amount:120,unit:'만',kind:'fix',on:true,nt:'블랑드원느·로라하우스·세미앙·라앤디'},
+        {id:'c7',lbl:'원판 & 스냅',amount:75,unit:'만',kind:'fix',on:true,nt:'앨범 3권 · 창포토·유니크픽처스·콴그라피'},
+        {id:'c8',lbl:'한복',amount:55,unit:'만',kind:'fix',on:false,nt:'자민·메리앤부띠끄·테힐라·함초롱'},
+        {id:'c9',lbl:'테일러 (예복)',amount:75,unit:'만',kind:'fix',on:false,nt:'살로토·커민테일러 · level 선택'},
+      ]},
+    ]},
+  gl:{name:'GL 웨딩컨벤션',sub:'창원중앙역 · Garden홀 · 055-266-6668',type:'패키지형 (스드메 상당수 포함)',
+    groups:[
+      {label:'예식장 기본',items:[
+        {id:'g1',lbl:'뷔페 식대 (1인)',amount:53000,unit:'원',kind:'perPerson',on:true,nt:'음/주류·VAT 포함 · 소인 25,000 / 유아 15,000'},
+        {id:'g2',lbl:'혼구용품',amount:5,unit:'만',kind:'fix',on:true,nt:'성혼선언문·방명록·축지·혼인서약서·장갑·펜'},
+      ]},
+      {label:'웨딩 패키지 (드레스/스튜디오/연출 포함)',items:[
+        {id:'g3',lbl:'드레스 (GL 6벌)',amount:380,unit:'만',kind:'fix',on:true,nt:'dress & tuxedo · H&M·부케·원판앨범3권·특수연출·도우미 포함'},
+        {id:'g4',lbl:'드레스 업그레이드 (STELLA 4벌)',amount:100,unit:'만',kind:'fix',on:false,nt:'ENZO·ROSEROSA·YIJU'},
+      ]},
+      {label:'추가 선택',items:[
+        {id:'g5',lbl:'혼주 H&M',amount:30,unit:'만',kind:'fix',on:true,nt:'부 10만 + 모 20만'},
+        {id:'g6',lbl:'리허설 H&M',amount:30,unit:'만',kind:'fix',on:false,nt:''},
+        {id:'g7',lbl:'GL 모먼트 스냅',amount:80,unit:'만',kind:'fix',on:true,nt:'본식 스냅'},
+        {id:'g8',lbl:'DVD 촬영',amount:100,unit:'만',kind:'fix',on:false,nt:'기본 50만 / 100만=하이라이트+풀영상'},
+        {id:'g9',lbl:'전문 사회자',amount:30,unit:'만',kind:'fix',on:false,nt:'30~50만'},
+        {id:'g10',lbl:'선택 축가',amount:30,unit:'만',kind:'fix',on:false,nt:''},
+        {id:'g11',lbl:'주례',amount:20,unit:'만',kind:'fix',on:false,nt:''},
+      ]},
+    ]},
+  grand:{name:'그랜드머큐어 창원',sub:'앰배서더 호텔 · Garden House홀',type:'호텔 올인클루시브형',
+    groups:[
+      {label:'웨딩홀 패키지',items:[
+        {id:'r1',lbl:'웨딩홀 패키지 (Garden House)',amount:550,unit:'만',kind:'fix',on:true,nt:'드레스·턱시도·신랑신부 H&M·부케·원판앨범3권·플라워·웨딩연출·혼구용품 포함 (Grand 580만)'},
+        {id:'r2',lbl:'뷔페 식대 (1인)',amount:55000,unit:'원',kind:'perPerson',on:true,nt:'소인 5~11세 30,000원 · 음료5천/주류7천 별도'},
+      ]},
+      {label:'추가 선택',items:[
+        {id:'r3',lbl:'본식 스냅 (라임스튜디오)',amount:70,unit:'만',kind:'fix',on:true,nt:'PKG 계약시 70만 (단독 80만) · 20page'},
+        {id:'r4',lbl:'양가혼주 헤어&메이크업 (4인)',amount:50,unit:'만',kind:'fix',on:true,nt:''},
+        {id:'r5',lbl:'DVD 촬영 (앤위고)',amount:47,unit:'만',kind:'fix',on:false,nt:'데이터형 · 베이직70/디럭스99'},
+        {id:'r6',lbl:'리허설 헤어&메이크업',amount:25,unit:'만',kind:'fix',on:false,nt:'부산샵 기준'},
+        {id:'r7',lbl:'드레스 블랙라벨 추가',amount:70,unit:'만',kind:'fix',on:false,nt:''},
+        {id:'r8',lbl:'전문 사회자',amount:30,unit:'만',kind:'fix',on:false,nt:'30~35만'},
+        {id:'r9',lbl:'주례',amount:15,unit:'만',kind:'fix',on:false,nt:''},
+        {id:'r10',lbl:'현악 3중주',amount:55,unit:'만',kind:'fix',on:false,nt:'피아노·첼로·바이올린'},
+        {id:'r11',lbl:'생화 장식',amount:75,unit:'만',kind:'fix',on:false,nt:'대기실 75~250만 / 입구 180~600만'},
+        {id:'r12',lbl:'포토부스 (피루필름)',amount:38,unit:'만',kind:'fix',on:false,nt:''},
+        {id:'r13',lbl:'폐백 음식 + 수모비',amount:23,unit:'만',kind:'fix',on:false,nt:'음식 13만~ + 수모비 10만'},
+      ]},
+    ]},
+};
+const MATRIX_ROWS=[
+  ['웨딩홀·연출·음향','ok','ok','ok'],['신부 드레스','sep','ok','ok'],['신랑 턱시도','sep','ok','ok'],
+  ['신랑신부 H&M','sep','ok','ok'],['혼주 H&M','sep','add','add'],['부케·부토니아','sep','ok','ok'],
+  ['스튜디오 촬영','sep','ok','no'],['원판 앨범(3권)','sep','ok','ok'],['본식 스냅','sep','add','add'],
+  ['DVD 영상','no','add','add'],['한복','sep','no','no'],['사회자','no','add','add'],
+  ['주례','no','add','add'],['혼구용품','ok','ok','ok'],['폐백실','no','no','add'],
+];
+const BADGE={ok:['포함','b-ok'],add:['추가','b-add'],sep:['별도','b-sep'],no:['미제공','b-no']};
+
+/* 상태: STATE=저장(확정), DRAFT=작업중(수정 후 저장 전) */
+let STATE, DRAFT;
+const compareSel={a:'ceco',b:'gl'};
+const openCards={};
+
+function defaultState(){
+  const s={guest:200,items:{}};
+  for(const v in DATA)DATA[v].groups.forEach(g=>g.items.forEach(it=>{s.items[it.id]={amount:it.amount,on:it.on};}));
+  return s;
+}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function mergeState(d){
+  const base=defaultState();
+  if(d.guest)base.guest=d.guest;
+  if(d.items)for(const k in d.items)if(base.items[k])base.items[k]={...base.items[k],...d.items[k]};
+  return base;
+}
+function loadState(){
+  if(location.hash.length>1){try{STATE=mergeState(JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1)))))); DRAFT=clone(STATE);return;}catch(e){}}
+  const ls=localStorage.getItem('weddingCompare');
+  if(ls){try{STATE=mergeState(JSON.parse(ls));DRAFT=clone(STATE);return;}catch(e){}}
+  STATE=defaultState();DRAFT=clone(STATE);
+}
+function save(){localStorage.setItem('weddingCompare',JSON.stringify(STATE));}
+function isDirty(){return JSON.stringify(DRAFT.items)!==JSON.stringify(STATE.items);}
+
+/* 계산 */
+function itemWon(it,src){
+  const st=src.items[it.id];if(!st.on)return 0;
+  let a=Number(st.amount)||0;if(it.unit==='만')a*=10000;if(it.kind==='perPerson')a*=src.guest;return a;
+}
+function venueTotal(v,src){let t=0;DATA[v].groups.forEach(g=>g.items.forEach(it=>t+=itemWon(it,src)));return t;}
+function onItems(v,src){const r=[];DATA[v].groups.forEach(g=>g.items.forEach(it=>{if(src.items[it.id].on)r.push({it,won:itemWon(it,src)});}));return r;}
+function won(n){return n.toLocaleString('ko-KR');}
+function man(n){return Math.round(n/10000).toLocaleString('ko-KR')+'만';}
+function shade(hex){const n=parseInt(hex.slice(1),16);let r=Math.max(0,(n>>16)-25),g=Math.max(0,((n>>8)&255)-25),b=Math.max(0,(n&255)-25);return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);}
+
+/* 탭 */
+const TABS=[{id:'sum',label:'종합비교'},{id:'compare',label:'2곳 비교'},{id:'matrix',label:'항목별포함'},
+  {id:'ceco',label:'세코'},{id:'gl',label:'GL'},{id:'grand',label:'그랜드머큐어'}];
+function renderTabs(){document.getElementById('tabs').innerHTML=
+  TABS.map((t,i)=>`<div class="tab${i===0?' active':''}" data-tab="${t.id}" onclick="switchTab('${t.id}')">${t.label}</div>`).join('');}
+function switchTab(id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('p-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* 종합비교: 세부항목 포함 */
+function renderSummary(){
+  const totals=Object.keys(DATA).map(v=>({v,t:venueTotal(v,STATE)}));
+  const sorted=[...totals].sort((a,b)=>a.t-b.t);const rankOf={};sorted.forEach((x,i)=>rankOf[x.v]=i);
+  document.getElementById('sumgrid').innerHTML=totals.map(({v,t})=>{
+    const d=DATA[v];const r=rankOf[v];const rc=r===0?'low':(r===totals.length-1?'high':'mid');
+    const rt=r===0?'최저가':(r===totals.length-1?'최고가':'중간');
+    const rows=onItems(v,STATE).map(({it,won:w})=>{
+      const name=it.kind==='perPerson'?`${it.lbl.replace(' (1인)','')} (${won(STATE.guest)}명)`:it.lbl;
+      return `<div class="bdrow"><span class="bl"><span class="bn">${name}</span>${it.nt?`<span class="bnt">${it.nt}</span>`:''}</span><span>${won(w)}원</span></div>`;
+    }).join('');
+    const op=openCards[v]?'open':'';
+    return `<div class="scard">
+      <div class="bar" style="background:${COLORS[v]}"></div>
+      <span class="rank ${rc}">${rt}</span>
+      <h3 style="color:${COLORS[v]}">${d.name}</h3>
+      <div class="ven-sub">${d.sub}</div>
+      <div class="ven-type">${d.type}</div>
+      <div class="total">예상 총액<b>${won(t)}원</b></div>
+      <button class="bdtoggle" onclick="toggleCard('${v}')">세부항목 ${openCards[v]?'접기 ▲':'보기 ▼'}</button>
+      <div class="bdlist ${op}">${rows}
+        <div class="bdrow sum"><span>합계</span><span>${won(t)}원</span></div></div>
+    </div>`;
+  }).join('');
+}
+function toggleCard(v){openCards[v]=!openCards[v];renderSummary();}
+
+/* 2곳 비교 */
+function renderCompareSelectors(){
+  const opts=Object.keys(DATA).map(v=>`<option value="${v}">${DATA[v].name}</option>`).join('');
+  const a=document.getElementById('cmpA'),b=document.getElementById('cmpB');
+  a.innerHTML=opts;b.innerHTML=opts;a.value=compareSel.a;b.value=compareSel.b;
+}
+function renderCompare(){
+  compareSel.a=document.getElementById('cmpA').value;compareSel.b=document.getElementById('cmpB').value;
+  const col=v=>{
+    const d=DATA[v];const items=onItems(v,STATE);const tot=venueTotal(v,STATE);
+    const rows=items.map(({it,won:w})=>{
+      const name=it.kind==='perPerson'?`${it.lbl.replace(' (1인)','')} (${won(STATE.guest)}명)`:it.lbl;
+      return `<div class="ci"><div class="cl"><div class="cn">${name}</div>${it.nt?`<div class="cnt">${it.nt}</div>`:''}</div><span class="cv">${man(w)}</span></div>`;
+    }).join('');
+    return `<div class="ccol">
+      <div class="ch" style="background:linear-gradient(135deg,${COLORS[v]},${shade(COLORS[v])})">
+        <b>${d.name}</b><small>${d.type}</small></div>
+      <div class="cbody">${rows}</div>
+      <div class="csum"><small>총 견적</small><b>${won(tot)}원</b></div></div>`;
+  };
+  document.getElementById('cmpgrid').innerHTML=col(compareSel.a)+col(compareSel.b);
+  const ta=venueTotal(compareSel.a,STATE),tb=venueTotal(compareSel.b,STATE);const diff=Math.abs(ta-tb);
+  const cheaper=ta===tb?null:(ta<tb?compareSel.a:compareSel.b);
+  const dbox=document.getElementById('diffbox');
+  if(compareSel.a===compareSel.b){dbox.innerHTML=`<div class="dt">같은 식장을 선택했습니다</div>`;}
+  else{dbox.innerHTML=`<div class="dt"><b style="color:${COLORS[cheaper]}">${DATA[cheaper].name}</b> 가 더 저렴</div>
+    <div class="dv" style="color:${COLORS[cheaper]}">${won(diff)}원 차이</div>`;}
+}
+
+/* 매트릭스 */
+function renderMatrix(){
+  const head=`<tr><th style="text-align:left;padding-left:12px">항목</th>
+    <th style="color:${COLORS.ceco}">세코</th><th style="color:${COLORS.gl}">GL</th><th style="color:${COLORS.grand}">그랜드</th></tr>`;
+  const body=MATRIX_ROWS.map(r=>{
+    const cells=r.slice(1).map(c=>{const[txt,cls]=BADGE[c];return `<td><span class="badge ${cls}">${txt}</span></td>`}).join('');
+    return `<tr><td class="cat">${r[0]}</td>${cells}</tr>`;}).join('');
+  document.getElementById('matrix').innerHTML=head+body;
+}
+
+/* 식장 상세 (DRAFT 기준) */
+function renderVenue(v){
+  const d=DATA[v];const tot=venueTotal(v,DRAFT);
+  let html=`<div class="vhead" style="background:linear-gradient(135deg,${COLORS[v]},${shade(COLORS[v])})">
+    <div><h2>${d.name}</h2><p>${d.type}</p></div>
+    <div class="vtot"><small>체크된 항목 합계</small><b>${won(tot)}원</b></div></div>`;
+  d.groups.forEach(g=>{
+    html+=`<div class="group"><div class="glabel">${g.label}</div>`;
+    g.items.forEach(it=>{
+      const st=DRAFT.items[it.id];
+      const sub=it.kind==='perPerson'?`× ${won(DRAFT.guest)}명 = ${won((Number(st.amount)||0)*DRAFT.guest)}원`:'';
+      html+=`<div class="item${st.on?'':' off'}">
+        <div class="chk${st.on?' on':''}" onclick="toggle('${it.id}','${v}')">${st.on?'✓':''}</div>
+        <div class="info"><div class="lbl">${it.lbl}</div>${it.nt?`<div class="nt">${it.nt}</div>`:''}</div>
+        <div style="text-align:right"><div class="amt">
+          <input type="text" inputmode="numeric" value="${won(Number(st.amount))}" onfocus="this.select()" onchange="setAmt('${it.id}','${v}',this.value)">
+          <span class="u">${it.unit==='만'?'만원':'원'}</span></div>
+          ${sub?`<div class="sub">${sub}</div>`:''}</div></div>`;
+    });
+    html+=`</div>`;
+  });
+  document.getElementById('p-'+v).innerHTML=html;
+}
+
+function renderAll(){
+  renderSummary();renderMatrix();renderCompare();
+  Object.keys(DATA).forEach(renderVenue);
+  document.getElementById('guest').value=STATE.guest;
+  updateSaveBar();
+}
+function updateSaveBar(){document.getElementById('savebar').classList.toggle('show',isDirty());}
+
+/* 이벤트 (DRAFT 수정) */
+function toggle(id,v){DRAFT.items[id].on=!DRAFT.items[id].on;renderVenue(v);updateSaveBar();}
+function setAmt(id,v,val){DRAFT.items[id].amount=Number(String(val).replace(/[^0-9]/g,''))||0;renderVenue(v);updateSaveBar();}
+function saveChanges(){
+  STATE.items=clone(DRAFT.items);STATE.guest=DRAFT.guest;save();cloudPush();
+  renderSummary();renderCompare();updateSaveBar();
+  toast('저장 완료 · 종합비교에 반영됨');switchTab('sum');
+}
+function setGuest(val){
+  let n=Math.max(0,Number(String(val).replace(/[^0-9]/g,''))||0);
+  STATE.guest=n;DRAFT.guest=n;save();cloudPush();renderAll();
+}
+function bumpGuest(d){setGuest(STATE.guest+d);}
+
+function resetAll(){
+  if(!confirm('모든 금액·체크를 처음 견적 상태로 되돌릴까요? (둘이 함께 쓰는 중이면 상대 화면도 초기화됩니다)'))return;
+  STATE=defaultState();DRAFT=clone(STATE);save();cloudPush();history.replaceState(null,'',location.pathname);renderAll();toast('초기화 완료');
+}
+function share(){
+  let url,msg;
+  if(cloudReady){                     // 실시간 공유: 같은 방 링크를 전달
+    url=location.origin+location.pathname;
+    msg='접속 링크 복사됨 · 아내도 이 링크로 들어오면 실시간 공유';
+  }else{                              // 백엔드 없을 때: 현재 상태 스냅샷 링크
+    if(isDirty()&&!confirm('저장 안 된 변경사항은 공유 링크에 포함되지 않습니다. 계속할까요?'))return;
+    url=location.origin+location.pathname+'#'+btoa(unescape(encodeURIComponent(JSON.stringify(STATE))));
+    msg='공유 링크 복사됨';
+  }
+  if(navigator.share){navigator.share({title:'웨딩홀 견적 비교',url}).catch(()=>copy(url,msg));}else copy(url,msg);
+}
+function copy(text,msg){navigator.clipboard?.writeText(text).then(()=>toast(msg||'공유 링크 복사됨')).catch(()=>prompt('아래 링크를 복사하세요',text));}
+let toastT;
+function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),1800);}
+
+/* ===== Firebase 실시간 동기화 ===== */
+let dbRef=null,cloudReady=false,applyingRemote=false;
+function setStatus(mode){
+  const el=document.getElementById('cloudStatus');if(!el)return;
+  el.className='cstat '+mode;
+  el.textContent={on:'● 실시간 공유 연결됨 (둘이 함께 수정 가능)',off:'○ 오프라인 · 재연결 중…',
+    local:'이 기기에만 저장 중 (공유 설정 전)',error:'연결 오류 · 이 기기에만 저장'}[mode]||'';
+}
+function cloudPush(){
+  if(cloudReady&&!applyingRemote){try{dbRef.set(STATE);}catch(e){}}
+}
+function initCloud(){
+  if(!FIREBASE_CONFIG.apiKey||FIREBASE_CONFIG.apiKey.startsWith('PASTE')){setStatus('local');return;}
+  try{
+    firebase.initializeApp(FIREBASE_CONFIG);
+    dbRef=firebase.database().ref('weddingCompare/'+ROOM);
+    cloudReady=true;
+    dbRef.on('value',snap=>{
+      const data=snap.val();
+      if(!data){dbRef.set(STATE);return;}          // 방이 비어있으면 현재 상태로 초기화
+      applyingRemote=true;
+      STATE=mergeState(data);save();
+      if(!isDirty())DRAFT=clone(STATE);            // 내 미저장 수정은 보존
+      renderAll();
+      applyingRemote=false;
+    },()=>setStatus('error'));
+    firebase.database().ref('.info/connected').on('value',s=>setStatus(s.val()?'on':'off'));
+  }catch(e){setStatus('error');}
+}
+
+loadState();renderTabs();renderCompareSelectors();renderAll();initCloud();
+</script>
+</body>
+</html>
