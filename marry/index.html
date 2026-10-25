@@ -87,6 +87,16 @@
   .p-ok{background:#e7f5ee;color:var(--ok)} .p-mut{background:#f0ece6;color:#a79e92}
   .p-no{background:#f6eeee;color:var(--no)} .p-add{background:#fdf4e1;color:#b8821c}
   .ctable tr.totrow td{background:#2d2a26;color:#fff;font-weight:800;font-size:13px;border:0}
+  .totcards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin:4px 0 12px}
+  .tc{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:11px 8px;text-align:center;border-top:4px solid var(--gold);position:relative}
+  .tc .tcn{font-size:12px;font-weight:800;line-height:1.2}
+  .tc .tcv{font-size:14.5px;font-weight:800;margin-top:5px;letter-spacing:-.4px}
+  .tc .tcr{display:inline-block;margin-top:5px;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:9px}
+  .tc .tcr.low{background:#e7f5ee;color:var(--ok)} .tc .tcr.mid{background:#fdf4e1;color:#c08b1f} .tc .tcr.high{background:#faeaea;color:var(--no)}
+  .ctable .hcat{background:#8c8378;text-align:left;padding-left:10px}
+  .ctable tr.sumtot td{background:#f3ebe2;font-weight:800;font-size:13px;color:var(--ink)}
+  .ctable tr.sumtot td.tl{text-align:left;padding-left:10px}
+  .ctable tr.sumtot td.best{background:#d8efe1;color:var(--ok)}
   .diffbox{margin-top:12px;background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:14px;text-align:center}
   .diffbox .dt{font-size:12px;color:var(--sub)}
   .diffbox .dv{font-size:22px;font-weight:800;margin-top:3px;letter-spacing:-.5px}
@@ -167,12 +177,11 @@
 
   <div class="tabs" id="tabs"></div>
 
-  <!-- 종합비교 (스와이프) -->
+  <!-- 종합비교 (3곳 한눈에) -->
   <div class="panel active" id="p-sum">
-    <div class="swipe" id="swipe"></div>
-    <div class="dots" id="dots"></div>
-    <div class="swipehint">← 좌우로 넘겨서 식장별로 비교 →</div>
-    <p class="hint">각 식장 탭에서 항목을 체크/수정하고 <b>저장</b>하면 반영됩니다. ‘세부항목 보기’로 금액 구성과 무료 포함 항목을 확인하세요.</p>
+    <div class="totcards" id="totcards"></div>
+    <div style="overflow-x:auto"><table class="ctable" id="sumtable"></table></div>
+    <p class="hint">같은 줄에서 세 식장을 바로 비교하세요. 숫자=유료(만원) / 포함=패키지 / 서비스=무료 / 옵션=선택 / –=미제공.<br>금액 수정은 각 식장 탭에서 → 저장하면 여기 반영됩니다.</p>
   </div>
 
   <!-- 2곳 비교 -->
@@ -374,40 +383,7 @@ const TABS=[{id:'sum',label:'종합비교'},{id:'compare',label:'2곳 비교'},{
 function renderTabs(){document.getElementById('tabs').innerHTML=TABS.map((t,i)=>`<div class="tab${i===0?' active':''}" data-tab="${t.id}" onclick="switchTab('${t.id}')">${t.label}</div>`).join('');}
 function switchTab(id){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById('p-'+id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
 
-/* 종합비교 (스와이프 카드) */
-function renderSummary(){
-  const totals=Object.keys(VENUES).map(v=>({v,t:venueTotal(v,STATE)}));
-  const sorted=[...totals].sort((a,b)=>a.t-b.t);const rankOf={};sorted.forEach((x,i)=>rankOf[x.v]=i);
-  document.getElementById('swipe').innerHTML=totals.map(({v,t})=>{
-    const d=VENUES[v];const r=rankOf[v];const rc=r===0?'low':(r===totals.length-1?'high':'mid');const rt=r===0?'최저가':(r===totals.length-1?'최고가':'중간');
-    const rows=ITEMS[v].filter(it=>{const z=ST[it.status].zero;if(z)return it.status==='incl'||it.status==='service';return STATE.items[it.id].on&&itemWon(it,STATE)>0;}).map(it=>{
-      const z=ST[it.status].zero;const name=it.kind==='per'?`${it.label.replace(' (1인)','')} (${won(STATE.guest)}명)`:it.label;
-      const right=z?`<span class="free">${it.status==='incl'?'패키지 포함':'서비스'}</span>`:`<span>${won(itemWon(it,STATE))}원</span>`;
-      return `<div class="bdrow"><span class="bl"><span class="bn">${name}</span>${it.nt?`<span class="bnt">${it.nt}</span>`:''}</span>${right}</div>`;
-    }).join('');
-    return `<div class="scard">
-      <div class="bar" style="background:${COLORS[v]}"></div>
-      <span class="rank ${rc}">${rt}</span>
-      <h3 style="color:${COLORS[v]}">${d.name}</h3>
-      <div class="ven-sub">${d.sub}</div>
-      <div class="ven-type">${d.type}</div>
-      <div class="total">예상 총액<b>${won(t)}원</b></div>
-      <button class="bdtoggle" onclick="toggleCard('${v}')">세부항목 ${openCards[v]?'접기 ▲':'보기 ▼'}</button>
-      <div class="bdlist ${openCards[v]?'open':''}">${rows}
-        <div class="bdrow sum"><span>합계</span><span>${won(t)}원</span></div></div>
-    </div>`;
-  }).join('');
-  renderDots();
-}
-function renderDots(){
-  const n=Object.keys(VENUES).length;let cur=0;const sw=document.getElementById('swipe');
-  if(sw.children.length){const w=sw.children[0].offsetWidth+12;cur=Math.round(sw.scrollLeft/w);}
-  document.getElementById('dots').innerHTML=Array.from({length:n},(_,i)=>`<span class="d2 ${i===cur?'on':''}" style="${i===cur?'background:var(--gold)':''}"></span>`).join('');
-}
-function toggleCard(v){openCards[v]=!openCards[v];renderSummary();}
-
-/* 2곳 비교 (정렬 테이블) */
-function renderCompareSelectors(){const opts=Object.keys(VENUES).map(v=>`<option value="${v}">${VENUES[v].name}</option>`).join('');const a=document.getElementById('cmpA'),b=document.getElementById('cmpB');a.innerHTML=opts;b.innerHTML=opts;a.value=compareSel.a;b.value=compareSel.b;}
+const SHORT={ceco:'세코',gl:'GL',grand:'그랜드'};
 function findItem(v,rowKey){return ITEMS[v].find(it=>it.rowKey===rowKey);}
 function cmpCell(v,rowKey){
   const it=findItem(v,rowKey);if(!it)return '<span class="pill p-mut">–</span>';
@@ -416,23 +392,37 @@ function cmpCell(v,rowKey){
   if(!st.on){if(it.status==='option')return '<span class="pill p-add">옵션</span>';if(it.status==='ask')return '<span class="pill p-add">확인</span>';return '<span class="pill p-mut">제외</span>';}
   const w=itemWon(it,STATE);return `<span class="cv ${it.status==='sep'?'sep':'val'}">${man(w)}</span>`;
 }
+/* 공통: 정렬 비교표 (식장 여러 곳) */
+function compareTableHTML(vlist){
+  let groups={};CATS.forEach(c=>{(groups[c.group]=groups[c.group]||[]).push({rowKey:c.id,label:c.label});});
+  const extraKeys=[];vlist.forEach(v=>ITEMS[v].forEach(it=>{if(it.rowKey.startsWith('x:')&&!extraKeys.find(e=>e.rowKey===it.rowKey))extraKeys.push({rowKey:it.rowKey,label:it.label});}));
+  if(extraKeys.length)groups['식장 단독 옵션']=extraKeys;
+  const tots=vlist.map(v=>venueTotal(v,STATE));const min=Math.min(...tots);
+  let html=`<tr><th class="hcat">항목</th>`+vlist.map(v=>`<th style="background:${COLORS[v]}">${SHORT[v]}</th>`).join('')+`</tr>`;
+  html+=`<tr class="sumtot"><td class="tl">예상 총액</td>`+vlist.map((v,i)=>`<td class="${tots[i]===min&&vlist.length>1?'best':''}">${man(tots[i])}</td>`).join('')+`</tr>`;
+  for(const g in groups){
+    html+=`<tr class="gh"><td colspan="${vlist.length+1}">${g}</td></tr>`;
+    groups[g].forEach(row=>{html+=`<tr><td class="cat">${row.label}</td>`+vlist.map(v=>`<td>${cmpCell(v,row.rowKey)}</td>`).join('')+`</tr>`;});
+  }
+  return html;
+}
+/* 종합비교 (3곳 한눈에) */
+function renderSummary(){
+  const vs=Object.keys(VENUES);
+  const tots=vs.map(v=>venueTotal(v,STATE));const sorted=[...tots].sort((a,b)=>a-b);
+  document.getElementById('totcards').innerHTML=vs.map((v,i)=>{
+    const t=tots[i];const r=sorted.indexOf(t);const rc=t===sorted[0]?'low':(t===sorted[sorted.length-1]?'high':'mid');const rt=t===sorted[0]?'최저가':(t===sorted[sorted.length-1]?'최고가':'중간');
+    return `<div class="tc" style="border-color:${COLORS[v]}"><div class="tcn" style="color:${COLORS[v]}">${SHORT[v]}</div><div class="tcv">${won(t)}원</div><span class="tcr ${rc}">${rt}</span></div>`;
+  }).join('');
+  document.getElementById('sumtable').innerHTML=compareTableHTML(vs);
+}
+/* 2곳 비교 */
+function renderCompareSelectors(){const opts=Object.keys(VENUES).map(v=>`<option value="${v}">${VENUES[v].name}</option>`).join('');const a=document.getElementById('cmpA'),b=document.getElementById('cmpB');a.innerHTML=opts;b.innerHTML=opts;a.value=compareSel.a;b.value=compareSel.b;}
 function renderCompare(){
   compareSel.a=document.getElementById('cmpA').value;compareSel.b=document.getElementById('cmpB').value;
   const A=compareSel.a,B=compareSel.b;
-  let groups={};CATS.forEach(c=>{(groups[c.group]=groups[c.group]||[]).push({rowKey:c.id,label:c.label});});
-  // 단독 옵션 행 (A,B 각각)
-  const extraKeys=[];[A,B].forEach(v=>ITEMS[v].forEach(it=>{if(it.rowKey.startsWith('x:')&&!extraKeys.find(e=>e.rowKey===it.rowKey))extraKeys.push({rowKey:it.rowKey,label:it.label});}));
-  if(extraKeys.length)groups['식장 단독 옵션']=extraKeys;
-  let html=`<tr><th style="background:#8c8378;text-align:left;padding-left:10px">항목</th>
-    <th style="background:${COLORS[A]}">${VENUES[A].name}</th><th style="background:${COLORS[B]}">${VENUES[B].name}</th></tr>`;
-  for(const g in groups){
-    html+=`<tr class="gh"><td colspan="3">${g}</td></tr>`;
-    groups[g].forEach(row=>{html+=`<tr><td class="cat">${row.label}</td><td>${cmpCell(A,row.rowKey)}</td><td>${cmpCell(B,row.rowKey)}</td></tr>`;});
-  }
-  const ta=venueTotal(A,STATE),tb=venueTotal(B,STATE);
-  html+=`<tr class="totrow"><td style="text-align:left;padding-left:10px">예상 총액</td><td>${won(ta)}원</td><td>${won(tb)}원</td></tr>`;
-  document.getElementById('ctable').innerHTML=html;
-  const diff=Math.abs(ta-tb);const cheaper=ta===tb?null:(ta<tb?A:B);const dbox=document.getElementById('diffbox');
+  document.getElementById('ctable').innerHTML=compareTableHTML([A,B]);
+  const ta=venueTotal(A,STATE),tb=venueTotal(B,STATE);const diff=Math.abs(ta-tb);const cheaper=ta===tb?null:(ta<tb?A:B);const dbox=document.getElementById('diffbox');
   if(A===B)dbox.innerHTML=`<div class="dt">같은 식장을 선택했습니다</div>`;
   else dbox.innerHTML=`<div class="dt"><b style="color:${COLORS[cheaper]}">${VENUES[cheaper].name}</b> 가 더 저렴</div><div class="dv" style="color:${COLORS[cheaper]}">${won(diff)}원 차이</div>`;
 }
@@ -511,7 +501,6 @@ function initCloud(){
   }catch(e){setStatus('error');}
 }
 
-document.getElementById('swipe').addEventListener('scroll',()=>{clearTimeout(window._dt);window._dt=setTimeout(renderDots,60)});
 loadState();renderTabs();renderCompareSelectors();renderAll();initCloud();
 </script>
 </body>
