@@ -175,7 +175,7 @@
     <div class="g">
       <div class="stepper">
         <button onclick="bumpGuest(-10)">−</button>
-        <input id="guest" type="text" inputmode="numeric" value="200" onchange="setGuest(this.value)">
+        <input id="guest" type="text" inputmode="numeric" value="150" onchange="setGuest(this.value)">
         <button onclick="bumpGuest(10)">+</button>
       </div>
       <span style="font-size:13px;color:var(--sub);font-weight:600">명</span>
@@ -324,7 +324,7 @@ const compareSel={a:'ceco',b:'gl'};
 const openCards={};
 
 function defaultState(){
-  const s={guest:200,items:{}};
+  const s={guest:150,items:{}};
   for(const v in DATA)DATA[v].groups.forEach(g=>g.items.forEach(it=>{s.items[it.id]={amount:it.amount,on:it.on};}));
   return s;
 }
