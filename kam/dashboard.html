@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>파트너 성과관리 대시보드 (데모) · 윤지욱</title>
-<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 거래액(GMV)·주문수·객단가·ROAS·광고비을 기간 비교하고, 활동 유형(광고/신메뉴/프로모션)별로 수익성·운영 성과를 분해하며, 브랜드→상품→소재/메뉴 드릴다운, 운영 이슈·협업 메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
+<meta name="description" content="쿠팡 Instant Commerce 파트너(브랜드)별 거래액(GMV)·주문수·객단가·수수료·광고 매출·쿠팡 수익을 기간 비교하고, 활동 유형(광고/신메뉴/프로모션)별로 수익성·운영 성과를 분해하며, 브랜드→상품→소재/메뉴 드릴다운, 운영 이슈·협업 메모 히스토리와 엑셀 리포트까지 관리하는 다(多)파트너 성과관리 대시보드 데모." />
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
@@ -170,7 +170,7 @@
 <div class="wrap">
   <div class="head">
     <div><h1>파트너 성과관리 대시보드</h1>
-      <div class="sub">파트너(브랜드)별 커머스 성과(거래액·주문수·객단가) + 수익성·운영(ROAS·광고비) 기간 비교 · 활동 유형(광고/신메뉴/프로모션)별 분해 · 브랜드→상품→소재/메뉴 드릴다운 · 운영 이슈·유관부서 협업 메모 히스토리.</div></div>
+      <div class="sub">파트너(브랜드)별 커머스 성과(거래액·주문수·객단가) + 수익성·운영(수수료·광고 매출·쿠팡 수익) 기간 비교 · 활동 유형(광고/신메뉴/프로모션)별 분해 · 브랜드→상품→소재/메뉴 드릴다운 · 운영 이슈·유관부서 협업 메모 히스토리.</div></div>
     <span class="badge-demo">● 데모 · 가상 데이터</span>
   </div>
 
@@ -196,7 +196,7 @@
     <div class="periodinfo" id="periodInfo"></div>
     <div class="sum" id="sum"></div>
     <div class="advhead GRID">
-      <div>파트너(브랜드)</div><div>거래액(GMV)</div><div>주문 수</div><div>ROAS</div><div>상태</div><div>메모</div><div></div>
+      <div>파트너(브랜드)</div><div>거래액(GMV)</div><div>주문 수</div><div>쿠팡 수익</div><div>상태</div><div>메모</div><div></div>
     </div>
     <div id="advList"></div>
   </div>
@@ -225,7 +225,7 @@
       <div><label style="font-size:12.5px;font-weight:700;color:var(--sub);margin-right:6px;">파트너(브랜드)</label><select id="selHist"></select></div>
       <button class="dlbtn" id="dlXls">📥 엑셀 리포트 다운로드</button>
     </div>
-    <div class="histnote">담당자 인수인계용 — 선택한 파트너(또는 전체)의 <b>커머스·수익성 성과(거래액·주문수·객단가·ROAS·광고비, 유형별 분해) + 메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 성과와 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
+    <div class="histnote">담당자 인수인계용 — 선택한 파트너(또는 전체)의 <b>커머스·수익성 성과(거래액·주문수·객단가·수수료·광고 매출·쿠팡 수익, 유형별 분해) + 메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 성과와 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
     <div class="histmeta" id="histMeta"></div>
     <div class="dtscroll"><table class="dt" id="histView"></table></div>
   </div>
@@ -376,10 +376,11 @@ const DATES=[];{const t=new Date();for(let i=DAYS-1;i>=0;i--){const d=new Date(t
 
 /* 계층 집계: 소재/메뉴 → 광고세트 → 프로모션/광고 상품 → 파트너(브랜드) */
 const aggKids=(kids,k)=>DATES.map((_,i)=>kids.reduce((s,c)=>s+c[k][i],0));
+const AD_SCALE=0.15; // 광고 매출 = GMV 대비 현실적 비중(~12%)으로 보정
 function finLeaf(c){
   const clicks=c.imp.map((v,i)=>Math.max(1,Math.round(v*c.ctr[i])));
   const conv=clicks.map((v,i)=>Math.max(0,Math.round(v*c.cvr[i])));   // 주문 수 = conv
-  const spend=clicks.map((v,i)=>Math.round(v*c.cpc[i]));              // 광고비
+  const spend=clicks.map((v,i)=>Math.round(v*c.cpc[i]*AD_SCALE));     // 광고 매출(쿠팡)
   const orders=conv;                                                  // 주문 수
   const gmv=orders.map((v,i)=>Math.round(v*c.aov[i]));                // 거래액 = 주문수 × 객단가
   return {name:c.name,imp:c.imp,clicks,conv,spend,orders,gmv,aov:c.aov};
@@ -399,11 +400,13 @@ const DATA=build();
 /* 지표 정의 */
 const MET={
   gmv:{l:'거래액(GMV)',t:'won',g:'up'},orders:{l:'주문 수',t:'cnt',g:'up'},aov:{l:'객단가',t:'won',g:'up'},
-  roas:{l:'ROAS',t:'x',g:'up'},spend:{l:'광고비',t:'won',g:'flat'},cvr:{l:'전환율',t:'rate',g:'up'},cpa:{l:'CPA',t:'won',g:'down'},
+  fee:{l:'수수료 수익',t:'won',g:'up'},spend:{l:'광고 매출',t:'won',g:'up'},rev:{l:'쿠팡 수익',t:'won',g:'up'},take:{l:'Take rate',t:'rate',g:'up'},
+  roas:{l:'ROAS',t:'x',g:'up'},cvr:{l:'전환율',t:'rate',g:'up'},cpa:{l:'CPA',t:'won',g:'down'},
   imp:{l:'노출',t:'cnt',g:'up'},clicks:{l:'클릭',t:'cnt',g:'up'},ctr:{l:'CTR',t:'rate',g:'up'},
   conv:{l:'전환',t:'cnt',g:'up'},cpc:{l:'CPC',t:'won',g:'down'},cpm:{l:'CPM',t:'won',g:'down'}};
-// 메인 대시보드 KPI 선택지 + 상품 테이블 컬럼 (커머스 우선 → 수익성/운영 → 광고)
-const MKEYS=['gmv','orders','aov','roas','spend'];
+// 메인 대시보드 지표 (커머스 → 쿠팡 수익 구조: 수수료 + 광고 매출)
+const MKEYS=['gmv','orders','aov','fee','spend','rev'];
+const COMM=0.10; // 중개 수수료율 (데모 가정)
 const sumv=(a,s,e)=>{let t=0;for(let i=s;i<=e;i++)t+=a[i];return t;};
 function mval(o,m,s,e){const S=k=>sumv(o[k],s,e);switch(m){
   case 'imp':case 'clicks':case 'conv':case 'spend':case 'orders':case 'gmv':return S(m);
@@ -413,7 +416,10 @@ function mval(o,m,s,e){const S=k=>sumv(o[k],s,e);switch(m){
   case 'cpm':return S('imp')?S('spend')/S('imp')*1000:0;
   case 'cpa':return S('conv')?S('spend')/S('conv'):0;
   case 'aov':return S('orders')?S('gmv')/S('orders'):0;         // 객단가 = 거래액/주문수
-  case 'roas':return S('spend')?S('gmv')/S('spend'):0;}}         // ROAS = 거래액/광고비
+  case 'roas':return S('spend')?S('gmv')/S('spend'):0;
+  case 'fee':return S('gmv')*COMM;                              // 수수료 수익 = GMV×수수료율
+  case 'rev':return S('gmv')*COMM+S('spend');                   // 쿠팡 수익 = 수수료 + 광고 매출
+  case 'take':{const g=S('gmv');return g?(g*COMM+S('spend'))/g:0;}}} // Take rate = 쿠팡수익/GMV
 // 큰 숫자 포맷: 1억↑ → N.N억, 1만↑ → N.N만
 const fmt=n=>n>=1e8?(n/1e8).toFixed(1)+'억':n>=1e4?(n/1e4).toFixed(1)+'만':Math.round(n).toLocaleString();
 function fmtWon(v){return v>=1e8?(v/1e8).toFixed(1)+'억원':v>=1e4?(v/1e4).toFixed(1)+'만원':Math.round(v).toLocaleString()+'원';}
@@ -478,15 +484,15 @@ function renderOverview(){
   let flags=0;
   const rows=DATA.map(a=>{
     const stat=m=>{const cur=mval(a,m,cs,ce);const prev=ps===null?null:mval(a,m,ps,pe);return {cur,prev,ch:change(cur,prev)};};
-    const k=stat('gmv'), orders=stat('orders'), roas=stat('roas');
+    const k=stat('gmv'), orders=stat('orders'), rev=stat('rev');
     const flagged=isFlag('gmv',k.ch); if(flagged)flags++;
     const status=flagged?`<span class="st-warn">⚠ 거래액 하락</span>`:(ps!==null?`<span class="st-ok">정상</span>`:`<span style="font-size:11px;color:#bbb">–</span>`);
     const cellK=`<div class="cell big"><div class="v">${mfmt('gmv',k.cur)}</div>${k.prev!==null?`<div class="p">전기 ${mfmt('gmv',k.prev)}</div>`:''}${deltaHtml(k.ch,MET['gmv'].g)}</div>`;
     const cellS=(o,m)=>`<div class="cell"><div class="v">${mfmt(m,o.cur)}</div>${deltaHtml(o.ch,MET[m].g)}</div>`;
     const mc=(MEMO[a.name]||[]).length;
     const chips=a.camps.map(c=>`<span>${typeTag(c.type)} ${c.name}</span>`).join('');
-    // 프로모션/광고 상품 지표 테이블 — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비) · 비교 시 전주(위)/이번주(아래) 2행
-    const cols=['gmv','orders','aov','roas','spend'];
+    // 프로모션/광고 상품 지표 테이블 — 커머스(거래액·주문수·객단가) + 수익성/운영(수수료·광고 매출·쿠팡 수익) · 비교 시 전주(위)/이번주(아래) 2행
+    const cols=['gmv','orders','aov','fee','spend','rev'];
     const thead=`<tr><th>프로모션/광고 상품 (유형)</th><th>기간</th>${cols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>`;
     const valTds=(c,s,e,base)=>cols.map(m=>{const cur=mval(c,m,s,e);
       if(!base)return `<td><div class="mv">${mfmt(m,cur)}</div></td>`;
@@ -500,7 +506,7 @@ function renderOverview(){
     }).join('');
     const foot=ps===null?'※ 비교 기간을 설정하면 전주(위)·이번주(아래) 2행으로 변화율까지 표시됩니다.':'※ 전주(위) → 이번주(아래) 순 · 이번주 셀 아래 숫자는 전주 대비 변화율';
     // 활동 유형별 집계 (광고 / 신메뉴 / 프로모션) — gmv/orders/spend 합산 후 파생 지표 계산
-    const tcols=['gmv','orders','aov','roas','spend'];
+    const tcols=['gmv','orders','aov','fee','spend','rev'];
     const typeOrder=['광고','신메뉴','프로모션'];
     const byType=typeOrder.filter(t=>a.camps.some(c=>c.type===t)).map(t=>{
       const cs2=a.camps.filter(c=>c.type===t);
@@ -512,12 +518,12 @@ function renderOverview(){
       <div class="mscroll"><table class="mtable" style="min-width:640px;"><tr><th>활동 유형</th>${tcols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>
       ${byType.map(bt=>`<tr><td>${typeTag(bt.t)} <b>${bt.t}</b> <span style="color:#aaa;font-weight:600;">· 상품 ${bt.n}개</span></td>${tcols.map(m=>`<td><div class="mv">${mfmt(m,mval(bt.node,m,cs,ce))}</div></td>`).join('')}</tr>`).join('')}
       </table></div>
-      <div style="font-size:11px;color:#aaa;margin-top:6px;">※ 광고/신메뉴/프로모션별 수익성(ROAS)·운영(주문수·객단가·거래액) 비교 — 신메뉴 런칭 성과와 상시 프로모션·광고 성과를 분리해 판단</div>`;
+      <div style="font-size:11px;color:#aaa;margin-top:6px;">※ 광고/신메뉴/프로모션별 쿠팡 수익(수수료+광고 매출)·거래액·주문수·객단가 비교 — 신메뉴 런칭과 상시 프로모션·광고의 수익 기여를 분리해 판단 · 수수료 10% 가정</div>`;
     return `<div class="adv ${flagged?'flag':''}">
       <div class="adv-top GRID" onclick="this.parentNode.classList.toggle('open')">
         <div class="advc0"><div class="adv-name">${a.name}</div><div class="adv-cat">${a.cat} · 운영 상품 ${a.camps.length}개</div>
           <div class="gchips">${chips}</div></div>
-        ${cellK}${cellS(orders,'orders')}${cellS(roas,'roas')}
+        ${cellK}${cellS(orders,'orders')}${cellS(rev,'rev')}
         <div class="status">${status}</div>
         <button class="memobtn" onclick="event.stopPropagation();openMemo('${a.name}')">📝${mc?` <b>${mc}</b>`:''}</button>
         <div class="caret">▼</div>
@@ -529,11 +535,12 @@ function renderOverview(){
   }).join('');
   document.getElementById('advList').innerHTML=rows;
   const totGmv=DATA.reduce((s,a)=>s+mval(a,'gmv',cs,ce),0);
-  const totOrders=DATA.reduce((s,a)=>s+mval(a,'orders',cs,ce),0);
+  const totRev=DATA.reduce((s,a)=>s+mval(a,'rev',cs,ce),0);
+  const totTake=totGmv?totRev/totGmv*100:0;
   document.getElementById('sum').innerHTML=
     `<div class="sumc"><div class="n">${DATA.length}</div><div class="l">관리 파트너(브랜드)</div></div>
      <div class="sumc"><div class="n">${fmtWon(totGmv)}</div><div class="l">총 거래액(GMV) · 현재 기간</div></div>
-     <div class="sumc"><div class="n">${fmt(totOrders)}</div><div class="l">총 주문 수 · 현재 기간</div></div>
+     <div class="sumc"><div class="n" style="color:var(--primary)">${fmtWon(totRev)}</div><div class="l">총 쿠팡 수익 (수수료+광고) · Take ${totTake.toFixed(1)}%</div></div>
      <div class="sumc"><div class="n ${flags?'warn':''}">${flags}</div><div class="l">⚠ 주의 필요 (성과 하락)</div></div>`;
 }
 
@@ -554,7 +561,8 @@ const el=id=>document.getElementById(id);
 function dseries(o,m){return DATES.map((_,i)=>{switch(m){case 'imp':case 'clicks':case 'conv':case 'spend':case 'orders':case 'gmv':return o[m][i];
   case 'ctr':return o.imp[i]?o.clicks[i]/o.imp[i]*100:0; case 'cvr':return o.clicks[i]?o.conv[i]/o.clicks[i]*100:0;
   case 'cpc':return o.clicks[i]?o.spend[i]/o.clicks[i]:0; case 'cpm':return o.imp[i]?o.spend[i]/o.imp[i]*1000:0; case 'cpa':return o.conv[i]?o.spend[i]/o.conv[i]:0;
-  case 'aov':return o.orders[i]?o.gmv[i]/o.orders[i]:0; case 'roas':return o.spend[i]?o.gmv[i]/o.spend[i]:0;}});}
+  case 'aov':return o.orders[i]?o.gmv[i]/o.orders[i]:0; case 'roas':return o.spend[i]?o.gmv[i]/o.spend[i]:0;
+  case 'fee':return o.gmv[i]*COMM; case 'rev':return o.gmv[i]*COMM+o.spend[i]; case 'take':return o.gmv[i]?(o.gmv[i]*COMM+o.spend[i])/o.gmv[i]*100:0;}});}
 function fillSel(elm,items,allLabel){elm.innerHTML=`<option value="">${allLabel}</option>`+items.map((it,i)=>`<option value="${i}">${it.name}</option>`).join('');}
 function syncDailySelectors(level){
   const a=DATA[+el('selAdv').value];
@@ -595,12 +603,12 @@ function renderDaily(){
     data:{labels,datasets:[{label:L,data:series,borderColor:'#3182F6',backgroundColor:'rgba(49,130,246,.10)',fill:true,tension:.3,pointRadius:series.map((_,i)=>i>=n-rec?3:0),pointBackgroundColor:'#3182F6',borderWidth:2.5}]},
     options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${L}: ${mfmt(m,isRate?c.parsed.y/100:c.parsed.y)}`}}},
       scales:{y:{beginAtZero:MET[m].t==='cnt',grid:{color:'#f0f0f0'},ticks:{callback:v=>isRate?v+'%':fmt(v)}},x:{grid:{display:false}}}}});
-  // 표: 선택 기간 전체 (최근 7일 강조) — 커머스(거래액·주문수·객단가) + 수익성/운영(ROAS·광고비)
-  let rows='<tr><th>날짜</th><th>거래액(GMV)</th><th>주문 수</th><th>객단가</th><th>ROAS</th><th>광고비</th></tr>';
+  // 표: 선택 기간 전체 (최근 7일 강조) — 커머스(거래액·주문수·객단가) + 수익성/운영(수수료·광고 매출·쿠팡 수익)
+  let rows='<tr><th>날짜</th><th>거래액(GMV)</th><th>주문 수</th><th>객단가</th><th>수수료 수익</th><th>광고 매출</th><th>쿠팡 수익</th></tr>';
   for(let i=s;i<=e;i++){const isRec=i>e-7;
-    const aov=o.orders[i]?o.gmv[i]/o.orders[i]:0,roas=o.spend[i]?o.gmv[i]/o.spend[i]:0;
+    const aov=o.orders[i]?o.gmv[i]/o.orders[i]:0,fee=o.gmv[i]*COMM,rev=o.gmv[i]*COMM+o.spend[i];
     rows+=`<tr class="${isRec?'recent':''}"><td>${DATES[i].label}${isRec?' <span class="wktag cur">최근</span>':''}</td>
-      <td>${fmtWon(o.gmv[i])}</td><td>${o.orders[i].toLocaleString()}</td><td>${fmtWon(aov)}</td><td>${roas.toFixed(1)}x</td><td>${fmtWon(o.spend[i])}</td></tr>`;}
+      <td>${fmtWon(o.gmv[i])}</td><td>${o.orders[i].toLocaleString()}</td><td>${fmtWon(aov)}</td><td>${fmtWon(fee)}</td><td>${fmtWon(o.spend[i])}</td><td><b>${fmtWon(rev)}</b></td></tr>`;}
   el('dtable').innerHTML=rows;
 }
 
@@ -630,7 +638,7 @@ window.downloadXls=()=>{
   const {cs,ce}=getRanges();
   const perR=cs===ce?DATES[ce].label:`${DATES[cs].label}~${DATES[ce].label}`;
   const perfPartners=sel==='__all__'?DATA:DATA.filter(a=>a.name===sel);
-  const perfCols=['gmv','orders','aov','roas','spend'];
+  const perfCols=['gmv','orders','aov','fee','spend','rev'];
   const xv=(o,m)=>{const t=MET[m].t,v=mval(o,m,cs,ce);return t==='rate'?(v*100).toFixed(2)+'%':t==='x'?v.toFixed(1)+'x':t==='won'?Math.round(v):Math.round(v);};
   // 파트너 x 활동 유형 성과 행
   const perfRows=perfPartners.map(a=>{
@@ -644,7 +652,7 @@ window.downloadXls=()=>{
     }).join('');
     return prow+trows;
   }).join('');
-  const perfHead=`<tr style="background:#f1f3f6;font-weight:bold"><td>파트너(브랜드)</td><td>활동 유형</td><td>거래액(GMV)</td><td>주문 수</td><td>객단가</td><td>ROAS</td><td>광고비</td></tr>`;
+  const perfHead=`<tr style="background:#f1f3f6;font-weight:bold"><td>파트너(브랜드)</td><td>활동 유형</td><td>거래액(GMV)</td><td>주문 수</td><td>객단가</td><td>수수료 수익</td><td>광고 매출</td><td>쿠팡 수익</td></tr>`;
   const memoBody=items.length?items.map((it,i)=>`<tr><td>${i+1}</td><td>${it.ts}</td><td>${esc(it.adv)}</td><td>${esc(it.text)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center">메모 없음</td></tr>';
   const html=`<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"></head><body>`+
     `<table border="1" cellspacing="0" cellpadding="4">`+
