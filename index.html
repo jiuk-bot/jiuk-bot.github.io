@@ -35,10 +35,8 @@
   .hi-list li b{ color:var(--nk) !important; }
   .hil-k{ background:rgba(124,92,255,.15) !important; color:#C9A6FF !important; border:1px solid rgba(124,92,255,.28) !important; }
 
-  .btns .btn{ background:linear-gradient(135deg,#7C5CFF,#C06BFF) !important; color:#fff !important; border:1px solid rgba(124,92,255,.4) !important; box-shadow:0 8px 26px -8px rgba(124,92,255,.5) !important; position:relative; overflow:hidden; transition:transform .18s, box-shadow .18s, filter .18s; }
-  .btns .btn:hover{ transform:translateY(-4px); box-shadow:0 18px 42px -12px rgba(124,92,255,.65) !important; filter:brightness(1.08); }
-  .btns .btn::after{ content:""; position:absolute; top:0; left:-120%; width:65%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent); transform:skewX(-20deg); transition:left .6s; pointer-events:none; }
-  .btns .btn:hover::after{ left:135%; }
+  .btns .btn{ background:rgba(124,92,255,.05) !important; color:#EDEBFA !important; border:1px solid rgba(124,92,255,.45) !important; box-shadow:none !important; position:relative; overflow:hidden; transition:transform .2s, box-shadow .2s, background .2s, border-color .2s; }
+  .btns .btn:hover{ transform:translateY(-3px); background:rgba(124,92,255,.12) !important; border-color:rgba(170,120,255,.85) !important; box-shadow:0 0 26px -6px rgba(124,92,255,.5) !important; }
 
   .stats .stat{ background:rgba(18,18,30,.6) !important; border:1px solid rgba(124,92,255,.16) !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); box-shadow:0 24px 60px -34px rgba(0,0,0,.8); transition:transform .4s, box-shadow .4s, border-color .4s; }
   .stats .stat:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5) !important; box-shadow:0 40px 90px -40px rgba(124,92,255,.45) !important; }
@@ -79,7 +77,7 @@
     <ul class="hi-list">
       <li><span class="hil-k">커머스 운영</span> 뷰티 스마트스토어 직접 운영 → 월매출 <b>+167%</b></li>
       <li><span class="hil-k">퍼포먼스</span> 글로벌랩스 마케팅 팀장 · 데이터로 예산 증액 설득 → 6개월 <b>취급고 9.2배 · ROAS 3.3배</b></li>
-      <li><span class="hil-k">대형 캠페인</span> <img src="assets/logo-kb.jpeg" alt="KB국민은행" style="height:4.64em;vertical-align:middle;" /> 약 <b>8억</b> 캠페인 대행 → <b>신규 매체 발굴·제안</b></li>
+      <li><span class="hil-k">대형 캠페인</span> <img src="assets/logo-kb.jpeg" alt="KB국민은행" style="height:3.3em;vertical-align:middle;border-radius:8px;padding:3px 8px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);" /> 약 <b>8억</b> 캠페인 대행 → <b>신규 매체 발굴·제안</b></li>
       <li><span class="hil-k">B2B 세일즈</span> 셀프스토리지 발굴 → 제안 → 발표 → <b>현장 계약 클로징 단독 완주</b></li>
     </ul>
     <p class="sub"><b>광고주를 발굴</b>하고 <b>예산을 함께 키우는 AM</b>으로 기여하고 싶습니다.</p>
