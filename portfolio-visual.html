@@ -78,7 +78,7 @@ body::before{
 .shell{ position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:0 26px 96px; }
 
 /* ============ hero ============ */
-.hero{ padding:74px 0 54px; }
+.hero{ padding:74px 0 54px 270px; }  /* 본문 컬럼(레일 230 + 갭 40)에 맞춰 정렬 */
 .kicker{ font-size:13px; font-weight:700; color:var(--mute); margin-bottom:26px; display:flex; align-items:center; gap:10px; }
 .kicker .tick{ width:34px; height:1px; background:var(--line); }
 .hero h1{ font-size:clamp(30px,4.6vw,52px); line-height:1.18; font-weight:800; letter-spacing:-.035em; color:var(--ink); max-width:14ch; }
@@ -325,6 +325,7 @@ body::before{
   .layout{ grid-template-columns:1fr; }
   .railwrap{ display:none; }
   .readout{ grid-template-columns:repeat(2,1fr); }
+  .hero{ padding-left:0; }
 }
 @media (max-width:620px){
   .shell{ padding:0 16px 64px; }
