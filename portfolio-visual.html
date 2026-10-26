@@ -8,18 +8,18 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
 
 :root{
-  --void:#0E1420;
-  --panel:#171F2E;
-  --panel2:#1E2838;
-  --line:#2A3650;
-  --ink:#EAF0FA;
-  --mute:#7D8BA6;
-  --dim:#56647F;
-  --signal:#4ADE80;
-  --signal-d:#2BB562;
-  --amber:#F5A623;
-  --cyan:#38D9D9;
-  --red:#F2607A;
+  --void:#F5F7FB;
+  --panel:#FFFFFF;
+  --panel2:#EDF1F8;
+  --line:#E2E7F0;
+  --ink:#121A2A;
+  --mute:#5A6678;
+  --dim:#98A2B3;
+  --signal:#12A150;
+  --signal-d:#0C7D3C;
+  --amber:#C77D08;
+  --cyan:#0C97A8;
+  --red:#DE2F57;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -43,7 +43,7 @@ body::before{
     linear-gradient(var(--line) 1px,transparent 1px),
     linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:52px 52px;
-  opacity:.14;
+  opacity:.6;
   -webkit-mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
           mask-image:radial-gradient(circle at 50% 30%,#000 0%,transparent 78%);
 }
@@ -53,7 +53,7 @@ body::before{
 /* ============ top status bar ============ */
 .statusbar{
   position:sticky; top:0; z-index:60;
-  background:rgba(14,20,32,.82);
+  background:rgba(255,255,255,.85);
   -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line);
 }
@@ -253,7 +253,7 @@ body::before{
 .vbar .pv{ font-size:22px; font-weight:800; margin-bottom:9px; }
 .vbar .col{ width:66px; border-radius:7px 7px 0 0; }
 .vbar.hi .pv{ color:var(--signal); } .vbar.hi .col{ background:linear-gradient(180deg,var(--signal),var(--signal-d)); }
-.vbar.lo .pv{ color:var(--dim); } .vbar.lo .col{ background:linear-gradient(180deg,#3B4766,#2A3650); }
+.vbar.lo .pv{ color:var(--dim); } .vbar.lo .col{ background:linear-gradient(180deg,#CCD4E0,#AEB9CA); }
 .vbar .lb{ font-size:13px; font-weight:700; color:var(--mute); margin-top:9px; }
 
 /* system flow (dashboard) */
@@ -637,7 +637,7 @@ body::before{
               <div class="claim">노출·조회 <span class="num">69%</span>가 <span class="num">45세+</span></div>
               <div class="donut-wrap">
                 <svg width="76" height="76" viewBox="0 0 76 76">
-                  <circle cx="38" cy="38" r="30" fill="none" stroke="#2A3650" stroke-width="12"/>
+                  <circle cx="38" cy="38" r="30" fill="none" stroke="#E2E7F0" stroke-width="12"/>
                   <circle cx="38" cy="38" r="30" fill="none" stroke="#F5A623" stroke-width="12"
                     stroke-dasharray="130 189" stroke-dashoffset="0" transform="rotate(-90 38 38)" stroke-linecap="butt"/>
                   <text x="38" y="35" text-anchor="middle" fill="#EAF0FA" font-size="17" font-weight="800">69%</text>
