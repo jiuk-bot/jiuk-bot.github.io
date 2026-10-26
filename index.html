@@ -6,13 +6,66 @@
 <title>윤지욱 · 광고 세일즈 · 어카운트 매니저 포트폴리오</title>
 <meta name="description" content="광고주를 데이터로 설득해 예산·매출을 키우고, 리드부터 계약 클로징까지 세일즈 풀사이클을 수행하는 어카운트 매니저 윤지욱입니다." />
 <link rel="stylesheet" href="assets/style.css" />
+<style>
+  /* ===== HOME · 다크 네온 (내용 유지, 스타일만) ===== */
+  :root{ --nk:#EDEBFA; --nmute:#9E99BC; }
+  html,body{ background:#07070E !important; color:var(--nk); }
+  body::before{ content:""; position:fixed; inset:-12%; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.26), transparent 62%),
+      radial-gradient(34% 46% at 92% 20%, rgba(255,92,225,.18), transparent 62%),
+      radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.16), transparent 64%);
+    filter:blur(26px); animation:homeAurora 18s ease-in-out infinite alternate; }
+  body::after{ content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.028) 1px, transparent 1px); background-size:26px 26px; opacity:.5; }
+  @keyframes homeAurora{ to{ transform:translate(2.5%,-2%) scale(1.09); } }
+  nav, header, section, footer{ position:relative; z-index:1; }
+
+  .hero .applytag{ background:rgba(124,92,255,.12) !important; color:#C9A6FF !important; border:1px solid rgba(124,92,255,.3) !important; }
+  .hero .hello{ color:var(--nmute) !important; }
+  .hero h1{ color:var(--nk) !important; font-weight:800; letter-spacing:-.045em; }
+  .hero h1 .hl{
+    background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent !important;
+    filter:drop-shadow(0 0 26px rgba(170,110,255,.5)); background-size:220% auto; animation:nshimmer 7s linear infinite; }
+  @keyframes nshimmer{ to{ background-position:220% center; } }
+  .hero .sub{ color:var(--nmute) !important; }
+  .hero .sub b{ color:#C9A6FF !important; }
+  .hi-list li{ color:var(--nmute) !important; }
+  .hi-list li b{ color:var(--nk) !important; }
+  .hil-k{ background:rgba(124,92,255,.15) !important; color:#C9A6FF !important; border:1px solid rgba(124,92,255,.28) !important; }
+
+  .btns .btn{ background:linear-gradient(135deg,#7C5CFF,#C06BFF) !important; color:#fff !important; border:1px solid rgba(124,92,255,.4) !important; box-shadow:0 8px 26px -8px rgba(124,92,255,.5) !important; position:relative; overflow:hidden; transition:transform .18s, box-shadow .18s, filter .18s; }
+  .btns .btn:hover{ transform:translateY(-4px); box-shadow:0 18px 42px -12px rgba(124,92,255,.65) !important; filter:brightness(1.08); }
+  .btns .btn::after{ content:""; position:absolute; top:0; left:-120%; width:65%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent); transform:skewX(-20deg); transition:left .6s; pointer-events:none; }
+  .btns .btn:hover::after{ left:135%; }
+
+  .stats .stat{ background:rgba(18,18,30,.6) !important; border:1px solid rgba(124,92,255,.16) !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); box-shadow:0 24px 60px -34px rgba(0,0,0,.8); transition:transform .4s, box-shadow .4s, border-color .4s; }
+  .stats .stat:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5) !important; box-shadow:0 40px 90px -40px rgba(124,92,255,.45) !important; }
+  .stats .stat .cat{ color:var(--nmute) !important; }
+  .stats .stat .big{ background:linear-gradient(135deg,#B794F6,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent !important; }
+  .stats .stat .desc{ color:var(--nmute) !important; }
+
+  section .eyebrow{ color:#C9A6FF !important; }
+  section h2{ color:var(--nk) !important; }
+  .cards .card{ background:rgba(18,18,30,.55) !important; border:1px solid rgba(124,92,255,.16) !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:transform .4s, box-shadow .4s, border-color .4s; }
+  .cards .card:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55) !important; box-shadow:0 40px 90px -40px rgba(124,92,255,.5) !important; }
+  .cards .card h3{ color:var(--nk) !important; }
+  .cards .card p{ color:var(--nmute) !important; }
+  .cards .card .go{ color:#C9A6FF !important; }
+
+  footer{ background:transparent !important; border-top:1px solid rgba(124,92,255,.14) !important; color:var(--nmute) !important; }
+  footer a{ color:#C9A6FF !important; }
+  ::selection{ background:rgba(192,107,255,.4); color:#fff; }
+  @media (prefers-reduced-motion:reduce){ body::before{ animation:none; } .hero h1 .hl{ animation:none; } }
+</style>
 </head>
 <body>
 
-<nav style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(180%) blur(12px);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid #E5E8EB">
+<nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
   <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
-    <a href="index.html" style="font-weight:800;font-size:17px;color:#191F28;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#3182F6">.</span>YOON</a>
-    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#3182F6;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:#EAF2FE">Home</a><a href="portfolio.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="resume.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="dashboard.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">광고주 대시보드</a></div>
+    <a href="index.html" style="font-weight:800;font-size:17px;color:#EDEBFA;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">Home</a><a href="portfolio.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="dashboard.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">광고주 대시보드</a></div>
   </div>
 </nav>
 
