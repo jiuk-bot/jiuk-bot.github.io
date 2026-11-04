@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-03 12:14 KST",
-  "date": "2026-11-03",
+  "generated": "2026-11-04 10:48 KST",
+  "date": "2026-11-04",
   "mode": "live",
   "sources_used": [
     "Google News RSS",
@@ -68,18 +68,6 @@
             "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE8yUEdzM2xZZlh6YUlYU0lRWmRJVEZ4MFRiaWZnbUIzNXpjSmRQLS1nbzFPWXQ2d0ZIRXBhVXo1RDZ3dG95YnloSXJmZ3lsd0ZVVVZXS2JxdjNFNWxrNjFZX0lYQVY?oc=5",
             "d": "2026-10-02",
             "s": "매일일보"
-          },
-          {
-            "t": "[단독]\"몸값 3조라며\"…에이블리 vs SC증권, 中알리바바 투자 자문료 분쟁",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1FdHRjQUd1MHBxYWpfeW56b0plQXlkT1VycXpNaEdNNlNhM2c5VFFIb05heEZTdXNCVy1hak94TW1NOHVvQnRTMHBOZ3N3MGtkcXdCYUFBM0ZuSllqZkRzNw?oc=5",
-            "d": "2026-10-21",
-            "s": "아시아경제"
-          },
-          {
-            "t": "유안타증권, 에이블리·4910과 제휴..쇼핑, 주식 투자 혜택까지",
-            "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1VODdSaFFlTG90bnlBemhpMjhOVThOZkx3NHd1Wko0ODUzeFF6YjhnTGtGVEllU3FEaXJDU0J3SE5saGhDcFpVS3laUnVLYURCOWVVdU5ZSXBldw?oc=5",
-            "d": "2026-10-02",
-            "s": "파이낸셜뉴스"
           }
         ],
         "launch": [
@@ -90,24 +78,36 @@
             "s": "패션포스트"
           },
           {
+            "t": "에이블리, 바이블리 신규 라인 ‘Be 컬렉션’ 론칭",
+            "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTFBHYVp0TkxpRzMyb0Z0YXJ4ZnBTeDdXeEtOcEtyYzl2aWk2X1F6X0NVZkJVREU2OUJqb3I0S014NXNkZTdydVFpb1o5dUo5bUtuTk9MQVVLUEk3U0F1dnR3VkwwVkNMVmdoa3NV?oc=5",
+            "d": "2026-09-26",
+            "s": "주간신문씨엠엔"
+          },
+          {
             "t": "[단독] 에이블리, 뷰티판 키운다…스킨케어 라인 '피노티' 론칭",
             "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE8yN2JLMVBlTHc1RS1tbHpfUlhyRzIwd2JkWGJFaEl6VU55cnBScFNRSTNhcHVuY0FjTGxGeWl5M2Q5TzdkVmptOWJ4WXhkcTFFdnhwUFU4WkJLejNLdWJj?oc=5",
             "d": "2026-10-15",
             "s": "MTN 머니투데이방송"
+          },
+          {
+            "t": "에이블리, 스킨케어 '피노티' 론칭…자체 뷰티 브랜드 확장",
+            "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTFB1bldyM3RmX0VWSzNPdjM0MHZLUXVwcjZPSXZsanNGR2dWZFhxRUc3eEtPTU1hUDN5c2Nia05KSktyQkxsSzE1aURmdHdEZUltbDlGbmtTTDRiSFozYXBGLXZselpYLUdraXo0?oc=5",
+            "d": "2026-10-16",
+            "s": "뉴스저널리즘"
           }
         ],
         "admarket": [
-          {
-            "t": "에이블리, 다이어리 얼리버드 프로모션 개최…400여 개 상품 선봬",
-            "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE92bkxBY05HMy1La3VsRXhxU0JDTE9XS2lYZ1N6M243NWdmaHJxdXZTeUZqX0FqdVZmYnhfdDNXSnpTc0VjS28yMkRGZjNPVE03VVpSMGhnNE94MHZ4N0hn?oc=5",
-            "d": "2026-10-13",
-            "s": "뉴스1"
-          },
           {
             "t": "에이블리, '2027 다이어리 얼리버드 프로모션' 실시",
             "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1uQjN0Z0hCTVJ3U1d5NkN0QTRpeVFwYXBHQ29naDVyQXhydzhXVDM0eG9CUXVtX1FMWXJ2UGVSSVRSc2M3MlE5clRJbkxPdw?oc=5",
             "d": "2026-10-13",
             "s": "전자신문"
+          },
+          {
+            "t": "에이블리, 다이어리 얼리버드 프로모션 개최…400여 개 상품 선봬",
+            "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE92bkxBY05HMy1La3VsRXhxU0JDTE9XS2lYZ1N6M243NWdmaHJxdXZTeUZqX0FqdVZmYnhfdDNXSnpTc0VjS28yMkRGZjNPVE03VVpSMGhnNE94MHZ4N0hn?oc=5",
+            "d": "2026-10-13",
+            "s": "뉴스1"
           }
         ],
         "season": [
@@ -180,6 +180,116 @@
       "jobs": []
     },
     {
+      "n": "올리브영",
+      "i": "뷰티 커머스",
+      "hp": "https://corp.oliveyoung.com",
+      "target": "2030 여성",
+      "sigs": [
+        "invest",
+        "launch",
+        "season",
+        "fit"
+      ],
+      "score": 66,
+      "sources": {
+        "invest": [
+          {
+            "t": "CJ올리브영 지분 투자한 K뷰티 해외 판로 넓힌다, 이선정 유통 수익·지분가치 상승 '일석이조'",
+            "u": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9FUFdBU3ZfQkkwRUxDc0RiVGpVWXZRbkxFQ082SkRpZlhrOHYtOHFsTFFERm91SkdKb0k1ZXFydURqd1JYVVNHenJqUk55ZURpODk0YUNESWdKaDYzSXFZdVRIWVZHNm1RcW9NTjFqcVdudm8?oc=5",
+            "d": "2026-10-25",
+            "s": "비즈니스포스트"
+          }
+        ],
+        "launch": [
+          {
+            "t": "올리브영, K팝 연계 라이브 쇼핑 콘텐츠 '그린룸' 선보여",
+            "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA2aVQ2eGhwYVVnaXg1YnBqOWJMNVZSbWdFX3lPNVVkWWkwTkVnVnRaLVh2aTF5dTZjUURjcTBfYWF5YVZXUjBrMk9LckJIcTJOcGVBRi1XanJ1dTDSAWBBVV95cUxNOXotYkYzSWNrUUkycmxscUlVZU5ieTdTbmtnd3NrSlp6YmZabml0MkN3U0NLRTgxRmxYWGVCaUZXUUc0X3RhTmoyMnZBZVFvc2dwZU1EVm9reFFFZjZlUzU?oc=5",
+            "d": "2026-10-21",
+            "s": "연합뉴스"
+          },
+          {
+            "t": "올리브영, K팝 라이브 커머스 ‘그린룸’ 론칭…첫 게스트는 엔믹스",
+            "u": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0zUEZSdmVQX3hPX3NmNTh6ZWgtZm9WNDZBMGZENlVpU0x3alFoN1NhS2sxaWZGZXlCX0xvLVVwQy01QXBPMi1za2RNemM3c0lqRUdvYnJIWmM0QnpHdElUNmRRY2FsVEpQY0taZG9zcVh5LUJ4MHfSAWZBVV95cUxQRkJncG4ycmV5MDExWWtZdkFodDJlTFlPZUFxS2ZEMkRqZzRrNlVWeHhLOVFVbzdrQ3B5bmp5S3cySTBwQUdoU3paMjVFT1BWTWhQTWVieFJvWTNEejF1c1Z4ZXJWdkE?oc=5",
+            "d": "2026-10-21",
+            "s": "동아일보"
+          },
+          {
+            "t": "CJ올리브영, K팝 뮤직 토크쇼와 쇼핑 결합 ‘그린룸’ 론칭",
+            "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE00OXVQWlFnRlkyaHBTUzRPUTVXcklMTHBYUjBGQXBhY3doN21Yd1BzQndHaEo1eEhrcGFHWFMtbThuY1BINmNSbmE1SUpydjhuVDdzNl8wMGk0QdIBX0FVX3lxTFBIQkg3S2dJb3VaT045bTRHOGo4ZDJERHU3aEdjRU1wcXZ1Z2lKNktVaXo5cFFvMU5hUEFrYmVpeXRubmV3bjB3NmxEaTAyc3g5TEVSOUxMSjVOREVtTUtR?oc=5",
+            "d": "2026-10-21",
+            "s": "경향신문"
+          }
+        ],
+        "season": [
+          {
+            "t": "뷰티 커머스 성수기 구간 (월 11)",
+            "u": "",
+            "d": "",
+            "s": "시즌 캘린더"
+          }
+        ],
+        "fit": [
+          {
+            "t": "뷰티 커머스 · 토스 2030 여성 타깃 핏",
+            "u": "",
+            "d": "",
+            "s": "업종 분석"
+          }
+        ]
+      },
+      "news": [
+        {
+          "t": "올리브영 면접 후기, 합격자가 받은 PT·2차 질문은?",
+          "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9GLWd0dWRTOWR6aTAtQW12eEhlbDlzQkdzMnRmWlRrUzlOc0xXNDE0eDVrbmRBdW9KTWZSSDJfNGJHWkFnWmp3bUxDbl90VXQzcVgtS0plRy1yQQ?oc=5",
+          "d": "2026-10-26",
+          "s": "잡플래닛"
+        },
+        {
+          "t": "K뷰티 브랜드 베이시아, 올리브영·홍대 팜픽약국 입점… 국내외 유통 접점 확대",
+          "u": "https://news.google.com/rss/articles/CBMib0FVX3lxTE4wbFFlMFJGQVpETEhqLUpwTjY3V0gybGxmTEQ5b0FITElmeHdtTEFmOWdFWmNfRnRXT1B0aWtkY0NJeFlrLUVKUGZLQUwzZ2FRMFE3WkhLX2FmSmV1SzlNd2dXeDNPWTFRSFRzOEJITQ?oc=5",
+          "d": "2026-10-21",
+          "s": "서울신문"
+        },
+        {
+          "t": "[라이엇 스토어] 트렌드팟 바이 올리브영 N 성수 Riot Games Music & Worlds 26 Popup Store에서 라이엇 스토어를 만나보세요!",
+          "u": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPOHJmNUg1dmktNTZJaDhqeHF6cVJfXzdOUVZQT2Fqb3pHNGVnTlo4MWRLcEVIREJVWWtXSTB1S3pFYjFIcTdncTZpQmxoWVVHWFRSNXpLejNnNlFGU3VnTE1VSWZ3S3p2WXFPcEg3UGk3V1ZJcEpIUkNxVGtGMFpfMHNSZDI0bm5YSVVUZkxOd0dQVHEtNm1KTm50X1B5VXM?oc=5",
+          "d": "2026-10-28",
+          "s": "League of Legends"
+        },
+        {
+          "t": "[기업 이모저모] 올리브영의 '상생 사다리' 어디까지 왔나",
+          "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTFB0enZ0bk5oN1RqNWM2ZzA2Q0NiSlNQaFM2dXJMZFN2d0pZS2hGVGN6b0hWMmxscC1pcGJaVWQ0VTlmbi1rWlppMlkyNHVodkZDQ3NOOWI1ZHo1UGE1cWlndEpSSmdkampLeUh0U1JITmc?oc=5",
+          "d": "2026-10-25",
+          "s": "연합인포맥스"
+        },
+        {
+          "t": "올리브영·무신사 유통망 타고 해외로…중기부, 소비재 수출 돕는다",
+          "u": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQMU5nenJ5S2FOclZmRTJEVG5waWVMQWg1NDAzR05NcFdTYWNjRTFfSWlFbktNdHRmV1JMUm52alF1SWR5aEIzNlZmWWZneFVFc2NKRGZIME1iZGJFNHZmMm5TWnpkRk9qWFc0eVdvSEFkVzA4WHE3b05TcDR3VWhfUmdibGx4UWhLZ3VNVWMwVUnSAaQBQVVfeXFMT1I0MDNxRVZycC1SUU5SUkRHdlR4d3UxY0Y0U0wtVk0xQ3ZwUzVaYVRaQ1dDcGdZRHFvUGRjalJJUV9JbXA2TVJwRUhjWE1UWl9JdnFEaXZYRE1DUWJCRl9jWmlfTDQ0VUF1blJZZXcxN3lrTGdhSnZaaDloOXFtYWZOcE9MMWthY3kxdGVkVHRTNkxiajdwNy0xQXJLaFFkMmVpZ3k?oc=5",
+          "d": "2026-10-28",
+          "s": "Chosunbiz"
+        },
+        {
+          "t": "올리브영, K팝 연계 라이브 쇼핑 콘텐츠 '그린룸' 선보여",
+          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA2aVQ2eGhwYVVnaXg1YnBqOWJMNVZSbWdFX3lPNVVkWWkwTkVnVnRaLVh2aTF5dTZjUURjcTBfYWF5YVZXUjBrMk9LckJIcTJOcGVBRi1XanJ1dTDSAWBBVV95cUxNOXotYkYzSWNrUUkycmxscUlVZU5ieTdTbmtnd3NrSlp6YmZabml0MkN3U0NLRTgxRmxYWGVCaUZXUUc0X3RhTmoyMnZBZVFvc2dwZU1EVm9reFFFZjZlUzU?oc=5",
+          "d": "2026-10-21",
+          "s": "연합뉴스"
+        },
+        {
+          "t": "시장점유율 80~90% 내세웠지만…올리브영 색채상표 제동",
+          "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTFAtdUFmcWI1bGxOdDQ1QTlfZmZuVFozTERwbHY5a2xUTEtMY0RpSjFxRVF5R3hmTm9OSUh5dDVhbUhOR1BQYzdYdVFFdnVJdjVlZ2YyLUdMa2g3QlNteHVCRzhPRzZTaFVBOHfSAW9BVV95cUxQWkRRSU82ak1pcEwtU21nc2VvNmJBOE1iRmVhMzhacm1CWDMxY0twUm5iLWg4bUJTZS1lOE9wc3FvYThQWlFrYm1mMjA3UGVwdC1mVHlqV19kcHNkcUlhNUtoendCMV9iVnFTU3RKS1U?oc=5",
+          "d": "2026-10-27",
+          "s": "머니투데이"
+        },
+        {
+          "t": "\"엔믹스 앨범도 올리브영에서\"…K팝 팬덤까지 잡는 '올영라이브'",
+          "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5xMjc1eHdZN1J1OHE3YnN2Snc4WUJtNU9pVkFFZnhpZFl1Wldna3pZdE1ocHZzU1hTbVdkWjlweFZzd2xZdER0eVljSjZac24tNElZajhn?oc=5",
+          "d": "2026-10-29",
+          "s": "지디넷코리아"
+        }
+      ],
+      "jobs": []
+    },
+    {
       "n": "밀리의서재",
       "i": "독서 구독",
       "hp": "https://corp.millie.co.kr",
@@ -200,22 +310,22 @@
             "s": "싱글리스트"
           },
           {
-            "t": "밀리의서재, 노벨문학상 앤 카슨 작품 3종 공개",
-            "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE1nYTRMSWFWNE1MUm1FRkJJbS10WGhNczFBX05XY2pyU3piS25lR1V6enR5MGx4ekY3blo3WDJ5UDhycFhkSVhtUXN6RzhGSFhJWG5wcHl5UklFZw?oc=5",
-            "d": "2026-10-13",
-            "s": "뉴스1"
+            "t": "밀리의서재, 11월 추천 도서 4권 공개…상실과 위로 담은 작품 선정",
+            "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBkM2g1NG1ycEVWVWZwRGZjR3NMREVhY3EycTBjVnlocGNyRnFpV2FXcVNpYy0wYjl1Rms0WVZxMlVzbDNweWZ5LVR2NlZsN3dmX29Yd3A3SVZJRGN3YjAwUlI0TEo4UQ?oc=5",
+            "d": "2026-11-04",
+            "s": "싱글리스트"
+          },
+          {
+            "t": "kt 밀리의서재, 11월 '제철 독서' 추천 도서 4권 공개",
+            "u": "https://news.google.com/rss/articles/CBMie0FVX3lxTE9kdnBfRmhXaWVTMEItQ0dDMkVHTnZZaGpVNVZMVUJET1o2LWJ0X19LcHd5TmMwTExqM3lrZlh6RzBvUXZ0VlRxXzBacDNVWl92NnNVLVNoTGtidUVKaEUyTUN5ZDYxenBrSmFkdDFzUFVtNVlzVHNCSGZZOA?oc=5",
+            "d": "2026-11-04",
+            "s": "비욘드포스트"
           },
           {
             "t": "[Telecom & Now] 밀리의서재, 10월 '제철 독서 챌린지' 도서 공개",
             "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ZZnEwZ0pOVkxhUnJZWXhsR05KWjZ2MF9DR3JZQ01YdTFxc08yb1psUmNXUXhWTVZ5aW5BZEIxQ2hDZS0zdFo5NTRFRDZFdDY2OFhJclNzRXpXeVV1VGtmN0lzQnJkWEth?oc=5",
             "d": "2026-10-07",
             "s": "www.ebn.co.kr"
-          },
-          {
-            "t": "고독·죽음·슬픔·안부…밀리의서재, 10월 '제철 독서' 4권 공개",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE14Z0pCUFBud012ZEJLbnlhYm1raFBBNXg0SFdjclJaYW83aGFDam1OZWJQTTdPMk1nTDltVVNRU254X3RaSUUxblRUZFFIWmxmSVVDa21kckVBNlRpaTNWbQ?oc=5",
-            "d": "2026-10-07",
-            "s": "아시아경제"
           }
         ],
         "admarket": [
@@ -224,18 +334,6 @@
             "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBKQlFIZWR4YUViZnhxSktpOVF6UzRTNzBvRTFncHlnWnFTTi1RanptTkp4SXc0QnNraFJsdWtPNndvMWxObGtXTEsyWm1STVNIUXd4WFQ0eUNCRkViMURmc1IwR0R1WVlnVVBTNGlDcHY?oc=5",
             "d": "2026-10-13",
             "s": "신아일보"
-          },
-          {
-            "t": "밀리의서재, 10주년 기념 프로모션 진행…“첫 달 구독시 2개월간 50% 할인”",
-            "u": "https://news.google.com/rss/articles/CBMiggFBVV95cUxOWHY3X2FlYUc5ajlpcmRzSGdjZnA1ZndkMDBsbUJUaER3dlZndHlDMnk4Rk16bXlFendTYXN6YmVFbFdEdjdmNjFjQVo4ejNHelhwZ05rZUFUTGFZRFV4MmpWZXo5OGhqaVRDekZHazkzdnRnZXUxVTljLU5pUUxZVF9n0gGWAUFVX3lxTFA0aF9fSTk3MEh0NXpaT1RsNE44M3hQLXZxYnB5WVo1T0lLN3VvR05iNjBfcmFrNDhjUFNFQXBXaVpyYl93bVVRMFF4Qk45MmZFcFQ4LU1LcnlUcXZBU0hHaGd2RXBJWnhueEx4TG5Zd2I0enZjM1hOMURIM3VXZTFmWTJ3cDY2MXV2YkFkZktaNDVCcnFjdw?oc=5",
-            "d": "2026-11-03",
-            "s": "Chosunbiz"
-          },
-          {
-            "t": "kt 밀리의서재, SKT T멤버십과 첫 'T day' 프로모션 진행",
-            "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1DaWNRN0NTS0RLOG5xTC1fTFVuYUpmN3ZOQkw2NmZKbWdtMklOT0E3aGY3bV82MHVQRUtLQXRNd2RTdVRBNThYdF9oLWhGcEg4M2p5Q2Vyc004RllaNTFPc2xzYVMweGxlUkpV?oc=5",
-            "d": "2026-10-13",
-            "s": "파이낸셜신문"
           }
         ],
         "season": [
@@ -256,12 +354,6 @@
         ]
       },
       "news": [
-        {
-          "t": "책 요약부터 연관 도서 추천까지… 밀리의서재, AI 검색 강화",
-          "u": "https://news.google.com/rss/articles/CBMiggFBVV95cUxNR0VjYnI4QTl5djlMME1BdkVvZ3V0ZUdmZG9lSnZXUHpocFEyQldlUkFoTG1FVU90NVMzZGhReDUtd3d0d1FOOEhWVjlmcjVWclFCUk51Nm5ISVRTcjYyMXEwdDZhOUNLRl9PX012eExvVG1VRGM2MWE2emtqSy1RVkt30gGWAUFVX3lxTFA1MmUtSm9kV1VLTi1qVV9icURTTllkcE1FT2FGTzZlZVdaVU11dFNNOGZOQVZQRzA4aFNDaEplQmpmM0hKa3VBeWpHeWUxaldZR0htVnZXV0g1Z25UcFBGbzNzY0YzQm4xM2RYR2lrWWxRMHJqSVNPbExjLVlETkpFTElZNGpjX080VVpQejUxTFcyZWdfQQ?oc=5",
-          "d": "2026-10-20",
-          "s": "Chosunbiz"
-        },
         {
           "t": "밀리의서재 T day 첫 참여 \"구독 문턱 낮춰 이용층 넓힌다\"",
           "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5yRC1TMzFYYkQ4UVJwc3VKQjZSUGo5OWpVSnNvNkpFUEVObktYZXZ6eV93NGdHR1pJQ0FqWjlkNThNTXdQSDZYSDc3QU5fM0YtMFQ5YXVJaG5STFdRTnZ2aTBoaEt5RzRzSGxjWA?oc=5",
@@ -303,6 +395,12 @@
           "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB3bEd4ZmhfeEVLcm9PSTVSbXhGbTdOT1hkOWNDSkdxakZVMWp4NklHX0tITUpfSlZTWTR3ZENIRE8wNTlKc2VvR3N6ZEtSTWFuaFZIeXE4RElBRU1NeWhERGNFRTdFZw?oc=5",
           "d": "2026-10-07",
           "s": "싱글리스트"
+        },
+        {
+          "t": "\"전자책 시대라더니\"…밀리의서재, 종이책에 꽂힌 뜻밖의 이유",
+          "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9MS2JsQXN5MHAxbXRWaDlxZVFOSk9EY3F0cmRQT0F3Wm5hekNLNVNMbkExVU5mOWxqdGxQVUpDakFCQVFPSGFuckhvTFV5ZHhrb0FVNFhHM1ctQQ?oc=5",
+          "d": "2026-10-27",
+          "s": "한국경제"
         }
       ],
       "jobs": []
@@ -328,16 +426,22 @@
             "s": "서울경제"
           },
           {
+            "t": "신한카드, 컬리 제휴카드 출시…“최대 14% 적립”",
+            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5hSjRONnNldkdUd1NGOVZLZlg3NVZLZUVPWFFieDBVS01mSWFXVWFQMmRxRUVRSHlUaVVnVE9XWmdzcFQ4b2pZNW5mLXFrdw?oc=5",
+            "d": "2026-10-07",
+            "s": "전자신문"
+          },
+          {
             "t": "컬리, 한혜진 패션 브랜드 '헤디트' 단독 론칭",
             "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBXaW9hc21hSXRMMjU4WE9kODNHUUxDTElGdE8zQjdyMHZMa2dfSFJDVTl5TmpoVzV6dWRJa1lYbU1RdzlEdG1YNUthYkNZQQ?oc=5",
             "d": "2026-10-12",
             "s": "전자신문"
           },
           {
-            "t": "[게시판] 최대 14% 적립금 쌓아주는 '컬리 신한카드' 출시",
-            "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE03dUtHMWxFcVdjSXladW9PdUdqM3hhZVlKRFJlaElKSHRIQmliUWNJM3VLVC1QM3Jqb19IMTc0bjFsUDgxblYzajNMMV9VVTdxR0wwVWt6U09kbTDSAWBBVV95cUxOUkVFUWwtOTV2eFdzLXh0MkJjdElLTEhTTnU2MkRnVUVXOUsyNEV2QjAwLVJ6YVJlQ2lnRE1HSm1ORkJEQ1Rqa292MHlWOVAxVXVGSnNOQ2tQNzZIOU1qNG4?oc=5",
+            "t": "신한카드, 최대 14% 적립 '컬리 신한카드' 출시",
+            "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAzblJuWnNkT0VOQ3dSTDBNdGMyVHI2eWlIWXREUzJiOTBCMEVaUVhZZ0dLNjlGanJDZjEwaXRGVWRJbEFtcDNfQjB0YURGR3hxTDVGNWk1VHVqQjZD?oc=5",
             "d": "2026-10-07",
-            "s": "연합뉴스"
+            "s": "뉴스핌"
           }
         ],
         "admarket": [
@@ -346,6 +450,12 @@
             "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1yeTZDb3hETllNa1Fubm5JM2RQNjFLd0huckZlNHNoU1hQZ29MTWVyYUdiZGVuWGF1clFobTZ5cHlKc1JGUDhERGZmWWFyOFlVWFpTVG9mVS1Ody1jWENV?oc=5",
             "d": "2026-09-30",
             "s": "뉴스1"
+          },
+          {
+            "t": "컬리, 연중 최대 할인 프로모션 '블랙위크' 개최",
+            "u": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1tbnl3VDZ3OTlDc2pNTXZBQ3FUVjF0X3lIRjFlb3JjUk16SzdZWTBrbjBXMGtHcmpIcGVnb2kzTTVNSld5Q2xnUjNnbDZDcm5fdzVOcXE0MzdlVjBZeldsZWpuellWVFR5b1Z5S1Jnd1N2SXItRFpv0gF3QVVfeXFMTW1ueXdUNnc5OUNzak1NdkFDcVRWMXRfeUhGMWVvcmNSTXpLN1lZMGtuMFcwa0dyakhwZWdvaTNNNU1KV3lDbGdSM2dsNkNybl93NU5xcTQzN2VWMFl6V2xlam56WVZUVHlvVnlLUmd3U3ZJci1EWm8?oc=5",
+            "d": "2026-11-02",
+            "s": "핀포인트뉴스"
           }
         ],
         "season": [
@@ -379,22 +489,28 @@
           "s": "비즈워치"
         },
         {
+          "t": "IPO 재시동 건 컬리…네이버 협업 득실은",
+          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFA1VzZ2SVlvNm9ESkZibjZBOW1aNW96cVhhZUc2OS03WHBMaVFYZFI4Q3M2M3Q0dGZ3TWE5Qzc2WnJja1psc240LUNtMGZzdjQ?oc=5",
+          "d": "2026-10-02",
+          "s": "딜사이트"
+        },
+        {
           "t": "컬리, 아모레퍼시픽과 단독 상품 개발…공동 마케팅도 추진",
           "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE1yeTZDb3hETllNa1Fubm5JM2RQNjFLd0huckZlNHNoU1hQZ29MTWVyYUdiZGVuWGF1clFobTZ5cHlKc1JGUDhERGZmWWFyOFlVWFpTVG9mVS1Ody1jWENV?oc=5",
           "d": "2026-09-30",
           "s": "뉴스1"
         },
         {
+          "t": "컬리·아모레퍼시픽, '컬리온리' 뷰티 상품 공동개발",
+          "u": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFAxMUdLRkdSRURvMjctRFBkc1plYjd3N0xFenpRWDVIOXpsZkpDN3N1WFg1c2ZWeTZfNkRWTDZwYmN1enVVSWlfUjM5UQ?oc=5",
+          "d": "2026-09-30",
+          "s": "아이뉴스24"
+        },
+        {
           "t": "네이버제트, 4억 다운로드 ‘스티컬리’ 분할…독자 성장 추진",
           "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1nYWRDcy1xSFl5b3c0MVRPUHp5LWhnb2hadS1oejZHSXZsNzlhTkRxSXNhY0xOZTBMNHJKRGFYZWcwczJZYXZCeXFLZG9zLW9jNWxrcg?oc=5",
           "d": "2026-09-29",
           "s": "바이라인네트워크"
-        },
-        {
-          "t": "‘고비용’ 신선식품 한계, 뷰티로 뚫는다…컬리의 외연확장",
-          "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBYWWlwNjB4VjBQemRCNXdtRjRERDlVY0dMUUpqQ0VvWUpqVFNsVFZFWklNZ0FpNjhMd3dsaWhJbDZCWHNuMFhsLXVMemZqeVVuclY5OF9UREZUM1d5RVVnWnpLczRDNTJJdUlaU1F0X0nSAXRBVV95cUxOdkNGMUE4MFhLZTZhM25KZTVaNEVoMy03NnBDV19MS1RLYktlRWUzcXpZbjdqNzNTN3QxSkhmSXdBUU82NnNHQXZmRmNnRFZfdXpSd1VpUDlaY1N6ZVoybF93OU96RE9XeGVZZHhfRGJ3SVRNYw?oc=5",
-          "d": "2026-10-22",
-          "s": "IT조선"
         },
         {
           "t": "컬리, 간편식 전문 넥스트키친 자회사로 편입",
@@ -407,12 +523,6 @@
           "u": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5ZR25wQ2FOek15MmxYc3Y4ZnpCS0wxcno5Ylp0ZExFRDB5N3lHck0wczlQWllldkIyLU1CenYxazJrUFFnMkI2MVN3R3VWcnJpUXfSAVNBVV95cUxQWUVyUi1PX3VhU0NLQ2VTb29qRF95YU5vWmtaNGI0Y2s4VncwSGRhWWY5a0g0elREN3FVM0VsVnJrUFIyN3d2Zk1qS2ktVWlpUUZwMA?oc=5",
           "d": "2026-10-07",
           "s": "서울경제"
-        },
-        {
-          "t": "컬리N마트 성공 공식 통할까…토스·오아시스, 장보기 시장 승부수",
-          "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE41SUtidzlLWXcyMkZhNElqYjJMX3V3LUtwVFUyZlNRbVE0YXZqdGV0UE03NFNJNWNQWTlzRUJrd0tXcGg3THAtRWtsMng0YWVfaWxac0dR?oc=5",
-          "d": "2026-10-11",
-          "s": "지디넷코리아"
         }
       ],
       "jobs": []
@@ -444,30 +554,30 @@
             "s": "전자신문"
           },
           {
+            "t": "29CM, 새 브랜드 메시지·서체 공개…”취향 큐레이션 플랫폼 정체성 강화”",
+            "u": "https://news.google.com/rss/articles/CBMiWEFVX3lxTFBjT0M1T1ZFMGtaakpyRXFhWWFteURhSmFOVTh6Y0xBeWhHRThibEdOeWFlWGd3ejFWdDNNZWZCdUEwRFhUQWRoQWxRRDhuZjRJWXlPbWxLalM?oc=5",
+            "d": "2026-10-07",
+            "s": "바이라인네트워크"
+          },
+          {
             "t": "29CM, 새 태그라인 '모든 취향 곁에' 공개…전용 서체도 선보여",
             "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9NLWVZSXYwc0VGZHgxa0F4ejAtTmd1eklfUmlDMk5BeFdMcTUwbUZhdnNIZllqTnE1bll1bVpoMWp2OW5zN2ZGekpXQ3pLNGJkV1B3R1hibUxrUQ?oc=5",
             "d": "2026-10-07",
             "s": "한국경제"
-          },
-          {
-            "t": "'모든 취향 곁에' 29CM, 새 브랜드 메시지·전용 서체 공개",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBvRHZteEFacTc0eS1zSVdzWmo4ZF9VYTBZaTJ2bjFFNXZLS2lWX01zMElOM0V4SmJxbElsa29sQXAyT1daYTdVOVhDaHJUQ0VRWWU3aTlYTXJVSERESk85QdIBeEFVX3lxTE9KenR0S2drQU1KTGJjcjlOU0p5dlpBWDdibzY5LWNrN0E3NV9GeU1pRU9KcnE2cVFGOUdZcEVqSlQtYkttVFdCWjRQdG5EbnYzTkNjblZ6TkFVbzZ5WFN5aVk3WkhQN01tZXZNQWZpRXVram90SW1UdQ?oc=5",
-            "d": "2026-10-07",
-            "s": "뉴시스"
           }
         ],
         "admarket": [
-          {
-            "t": "무신사·29CM, '폴로 랄프 로렌' FW 캠페인 동시 전개…단독 상품도",
-            "u": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1UZHUtcGRLTmtaRi1WMTYxdEh0UnhwWkluXzA4S2pING0yNDBtZGV3REJKSElRek9GU2p1bUJMRl9mVDU0SEhDLVZ2Y0lGWG55bG1VWDhMaDNpeXNYcUZCUTZKZ1NGeDlhQ1lWSU9FdFJsRFdSUTZQV9IBeEFVX3lxTE1UZHUtcGRLTmtaRi1WMTYxdEh0UnhwWkluXzA4S2pING0yNDBtZGV3REJKSElRek9GU2p1bUJMRl9mVDU0SEhDLVZ2Y0lGWG55bG1VWDhMaDNpeXNYcUZCUTZKZ1NGeDlhQ1lWSU9FdFJsRFdSUTZQVw?oc=5",
-            "d": "2026-11-02",
-            "s": "뉴시스"
-          },
           {
             "t": "무신사-29CM, '폴로 랄프로렌' 신상품 캠페인…다운재킷 등 선봬",
             "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9GWUFGUDlfWER3UkR5RTllUXUyZkxfdGxyMVBEdVp6LWRjNXNWTmZ2NXBiX0NIc1dpaW5VN1Y4Y1RhdjNIcGVjYnUwa0dwRU1uNWx1Wms0VENXNTTSAWBBVV95cUxOaG9wMTAwM2lJY3Z1MzIwTHZpajdWbDFpelp0Zy1aVkhBVmNBLS1YR0dvb243MzZGcmg1WGFfRHFXTUh6eUZGSG55a3kxdmdaQW0zZDQ4bDdYRkdxUUhPVU4?oc=5",
             "d": "2026-11-02",
             "s": "연합뉴스"
+          },
+          {
+            "t": "무신사·29CM, '폴로 랄프 로렌' FW 캠페인 동시 전개…단독 상품도",
+            "u": "https://news.google.com/rss/articles/CBMieEFVX3lxTE1UZHUtcGRLTmtaRi1WMTYxdEh0UnhwWkluXzA4S2pING0yNDBtZGV3REJKSElRek9GU2p1bUJMRl9mVDU0SEhDLVZ2Y0lGWG55bG1VWDhMaDNpeXNYcUZCUTZKZ1NGeDlhQ1lWSU9FdFJsRFdSUTZQV9IBeEFVX3lxTE1UZHUtcGRLTmtaRi1WMTYxdEh0UnhwWkluXzA4S2pING0yNDBtZGV3REJKSElRek9GU2p1bUJMRl9mVDU0SEhDLVZ2Y0lGWG55bG1VWDhMaDNpeXNYcUZCUTZKZ1NGeDlhQ1lWSU9FdFJsRFdSUTZQVw?oc=5",
+            "d": "2026-11-02",
+            "s": "뉴시스"
           },
           {
             "t": "무신사·29CM, '폴로 랄프 로렌' FW 시즌 캠페인 동시 전개",
@@ -507,12 +617,6 @@
           "s": "한국경제"
         },
         {
-          "t": "[단독] 무신사 ‘29CM’서 개인정보 3만건 추가 유출",
-          "u": "https://news.google.com/rss/articles/CBMickFVX3lxTFBWSGRyenh4T3ZZaEYzemNMWlRnRFZVZnozWndkZzNvcnJnb0dudXUyS1M2ZVNzRUhWWk1xUWVsZTN6aW5tZXk2c05BODUzRUhrbnZ3TEQ3bzZ5SUVhLVo1eDhJYmtwTEZVcXZqcG5QLTVKQQ?oc=5",
-          "d": "2026-10-06",
-          "s": "한겨레"
-        },
-        {
           "t": "29CM, 굵기에 따라 표정이 달라지는 첫 브랜드 서체 공개",
           "u": "https://news.google.com/rss/articles/CBMibkFVX3lxTFB4MUZSUFEtVEQ4Qjh5MGtDWndRby1iZThlekUzekxiUmpOaE15aFFMRzlqNEFBZWNLVWozNGp1UzhEZ1JiYzl4SEtEN1JxQmRaamhVcGtoT0pDQzRhcjhzRHZxMXJ0R3lYd2Y0TnZ3?oc=5",
           "d": "2026-10-09",
@@ -541,6 +645,12 @@
           "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBpc0xFNm1LdExyX1EtcGdnOW9KSW9DWU5iUVZ5TWxrcVNTdGd0ZEJUMl9WdGo1bkh2VG5zNktUcmlXNkJmV04tX29LR0VLQQ?oc=5",
           "d": "2026-10-07",
           "s": "전자신문"
+        },
+        {
+          "t": "29CM 이구데이에 쟁이기 좋은 올겨울 아우터 10",
+          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0zeTRXeWRvQXJGWDlLUkdkSU05TjFseWJVR19PYWc5bmtLSlVUOEF2bHBnSVBOT25tZzctbG5mWGEyOE1iLWlBRTBHbXlNVjQ?oc=5",
+          "d": "2026-10-28",
+          "s": "엘르 코리아 │ ELLE KOREA"
         }
       ],
       "jobs": []
@@ -565,16 +675,22 @@
             "s": "지디넷코리아"
           },
           {
+            "t": "지그재그, 쇼핑몰·크리에이터 협업 가을 신상품 쇼케이스 선보인다",
+            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1CMFZvUjVrY0xtYmxIZEkxNFVUQk1ZQzFxMHJIVFl3QXA2eHJOUnBMUlhzb1pnU2x6bEE0RldPYm1xb2FPamhJZWxOTm9Ydw?oc=5",
+            "d": "2026-10-06",
+            "s": "전자신문"
+          },
+          {
             "t": "지그재그, 자체 결제 서비스 '지그재그페이' 출시",
             "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9GVVI4OVNIcm10QnUzTGNsV05taklFa3VubmJPbnE0cDkybFFPOU5IdmgxY3lwQThNcHotQUgtREwxUWxkMkFVOG11d1V2cS12RTMxVTZRSExid0pLbk1SRXotdldYUC1jYnc?oc=5",
             "d": "2026-11-02",
             "s": "서울파이낸스"
           },
           {
-            "t": "지그재그, '선물하기' 서비스 오픈…패션·뷰티 등 900만 개 상품",
-            "u": "https://news.google.com/rss/articles/CBMiX0FVX3lxTE0yNzJoQkRnbG5wY2FnZTltbkJJTTFXQjdkU0xScWQzYzNPX3plV0RsWUFIb0ZtaHh5NDU2LWNYNndueDYzOEwzUVRscFlDT1pwOGtsT0syM1R2M3VjaDFZ?oc=5",
+            "t": "\"선물도 직진배송으로\"…지그재그, '선물하기' 서비스 출시",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Mc21JN0M4OEVUSktZWlVCQ1VRVWlIZmhyXzdIVmtHdElMMGxJeW9YaVpuZEZYNHlkTzBTMzItRUFwdk1BU1NtV2ZBanlmYWNlQm02OTlURHIzTGNpUWFHQtIBeEFVX3lxTFAzcGtwZGZfQzdpN0xLTGJXa3NTWEVoNVROWUZ0Tk8yb0F1aFBxNENtazB1U0YyT3I0cXV6dE5QYmxMZXdFQ1FzRVZ1RWltamNfTDZ3RDNtNzMwT21TVkZfU1lHY1RQYUZuUVVyZWhfcEJDMFgwMGVKSw?oc=5",
             "d": "2026-10-20",
-            "s": "뉴스1"
+            "s": "뉴시스"
           }
         ],
         "season": [
@@ -638,10 +754,10 @@
           "s": "시사저널e"
         },
         {
-          "t": "'선물하기' 시장 뛰어든 지그재그, 900만개 상품 앞세워 '도전장'",
-          "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE96OXlnM29FMS1JNTFKQWFZYlpDQVkxV0xCOHhhYVY1Vk95Y0VUbjNPQ1FuaFBzSHFoS1JSUjY3TEx6T0QtNHNpOWJNeTdodmNaT1pNYjVtajV2RWFXU3JjeVlDV1EyR0tOYjZoLQ?oc=5",
-          "d": "2026-10-20",
-          "s": "ER 이코노믹리뷰"
+          "t": "지그재그, '가을 직잭팟' 시작…최대 99% 할인 쿠폰",
+          "u": "https://news.google.com/rss/articles/CBMiggJBVV95cUxQdHM5UUNfWUZyMUNJU2EydVByWnR5UFo2N2tfaHlQUGxCMHVwaC1nVVhPaUExT3FDUDFfR3FVR3IzeUIxc01aMlYwblp2aWdDbVhZWXBnYUZJTW8zbU1IYmlvdFpWdDJXRlRCT0diZk5ZaWJSRXpGOHFpbXFSaHR3MUw5WHV0ckZCOXJBdU11OWZzMEJESDdFSHFWWTFrbVpQZUhXbmhrTXBZcTZtelJwZUowZmRWV1VWWF8zQ05qM1h6ellaNVY3Um12Ykw5Q1o3UTJwSnBFYzZ2Umk4SVdGTmR3ZVlzOFRaYkpqY2RrZ0RsSHVmNXYybGhoUy1NWmpYZ2c?oc=5",
+          "d": "2026-09-28",
+          "s": "데일리안"
         }
       ],
       "jobs": []
@@ -666,15 +782,15 @@
             "s": "무신사"
           },
           {
-            "t": "“한 달에 100개씩 쏟아진다”…1030 잡은 무신사 뷰티, 신제품 ‘첫 무대’로",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBrSnZmaTZ0WlJyRzBYZHBSMEZZR2lwNkJjYzNtYjk0b0dmNVFsMjZaUnZ4SEsxRUUyTWFWVkdKc001N0tLS3BFaUUyXzhUb1JNZXRsdFBlZmFBbDBkYlAtNw?oc=5",
-            "d": "2026-10-02",
-            "s": "무신사"
-          },
-          {
             "t": "“성수에 펼쳐진 코랄빛 뷰티 성지”...1만여 개 상품 집결한 ‘무신사 뷰티 성수’ 내달 오픈",
             "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE53ZnoxTUFWQmgxQ2Y1d0l4UUF3NHZNaEtzZk45a1pMOXVSdGl3M29IRVNBQTR5VHNNejJQSklYNVpLNHREVUlxWEhPRFNOd3VCdGEzU0pfRHpjN2xBN3M0NA?oc=5",
             "d": "2026-10-30",
+            "s": "무신사"
+          },
+          {
+            "t": "“한 달에 100개씩 쏟아진다”…1030 잡은 무신사 뷰티, 신제품 ‘첫 무대’로",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBrSnZmaTZ0WlJyRzBYZHBSMEZZR2lwNkJjYzNtYjk0b0dmNVFsMjZaUnZ4SEsxRUUyTWFWVkdKc001N0tLS3BFaUUyXzhUb1JNZXRsdFBlZmFBbDBkYlAtNw?oc=5",
+            "d": "2026-10-02",
             "s": "무신사"
           },
           {
@@ -727,6 +843,12 @@
           "s": "연합뉴스"
         },
         {
+          "t": "무신사부터 자라까지! 놓칠 수 없는 '2026 블랙 프라이데이' 일정",
+          "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtT1FlOFNycmRpeDE1WEtnYmRlZnQwemZxMGtTRENmNHBEZFhUMDFvN0ZrSGdTNzZXV0N1Z2hEYlNYX0NCbHJMcEV0b3JDb2FNQ3FNSVQ3MjZXZw?oc=5",
+          "d": "2026-11-03",
+          "s": "에스콰이어 코리아"
+        },
+        {
           "t": "매장 늘리는 무신사, 멀어지는 '플랫폼 밸류'…LF·휠라와 비교되는 까닭",
           "u": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNZUR5NGNFMnVwU2FzMWozdTg0Z0NMbnhhZkpjVmhyTzVCb1pCbThCR3ZZVlQxOUNwWG9LRnN3bGMwaFJCWWhaN3llUlM2cTkxc2hLZm9YcEx5emxTVGxVNHhGQ0dYSUQ2WE5WOFZrVTZkSE03bVNXaWRJSVl6QVp3bEpFYw?oc=5",
           "d": "2026-09-29",
@@ -739,117 +861,10 @@
           "s": "머니투데이"
         },
         {
-          "t": "무신사 스탠다드, 효성티앤씨와 손잡고 ‘리커버리 웨어’ 첫선… “기능성에 디자인 더한 일상 패션으로 제안”",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0yZFRYNGJlUVh0VzVGcVRTWG1iQXFxVTFaR3dhSDNUc3dSenB6Z2kxZldYTUh5ZGU0VnR3aXVqN0daYzc4YjMwR3g0RnAtRmNTM3BqeFlpNmVvSVVMWXItZA?oc=5",
-          "d": "2026-09-29",
-          "s": "무신사"
-        },
-        {
           "t": "무신사, 사진 한 장으로 상품 찾는 AI 이미지 검색 ‘무신사 렌즈’ 오픈",
           "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1USlFRMVVJRDBDTXczTmhPQ2Jub3BabFVwV0RfZmpLeHBkdS1IeGdpd1M4bHBsODcxR2lXbEhTV1RGN2dKZW5UQVBTdWJTM0txRjRwVTVUN3YwSkRYM0ZkSw?oc=5",
           "d": "2026-10-29",
           "s": "무신사"
-        }
-      ],
-      "jobs": []
-    },
-    {
-      "n": "올리브영",
-      "i": "뷰티 커머스",
-      "hp": "https://corp.oliveyoung.com",
-      "target": "2030 여성",
-      "sigs": [
-        "launch",
-        "season",
-        "fit"
-      ],
-      "score": 44,
-      "sources": {
-        "launch": [
-          {
-            "t": "올리브영, K팝 연계 라이브 쇼핑 콘텐츠 '그린룸' 선보여",
-            "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFA2aVQ2eGhwYVVnaXg1YnBqOWJMNVZSbWdFX3lPNVVkWWkwTkVnVnRaLVh2aTF5dTZjUURjcTBfYWF5YVZXUjBrMk9LckJIcTJOcGVBRi1XanJ1dTDSAWBBVV95cUxNOXotYkYzSWNrUUkycmxscUlVZU5ieTdTbmtnd3NrSlp6YmZabml0MkN3U0NLRTgxRmxYWGVCaUZXUUc0X3RhTmoyMnZBZVFvc2dwZU1EVm9reFFFZjZlUzU?oc=5",
-            "d": "2026-10-21",
-            "s": "연합뉴스"
-          },
-          {
-            "t": "앰플엔, 올리브영 단독 ‘세라마이드샷 앰플’, FW 시즌맞이 대용량 한정 기획세트 출시",
-            "u": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5zZkhib05nZG55VUZyQ1lmSkJjTWwyd05CQTdTZkNCM18wSnBZWnJTMTBpZFFPYWxjVzQ4UmRxQU80RDRoZDlrZE53Ri10YUFNRHBCUm1ibFNKbXFFSVRKb0M3MFZyQjRFbVE4MFJfRlNjc1RLQUZB?oc=5",
-            "d": "2026-10-30",
-            "s": "한국경제TV"
-          },
-          {
-            "t": "CJ올리브영, K팝 뮤직 토크쇼와 쇼핑 결합 ‘그린룸’ 론칭",
-            "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE00OXVQWlFnRlkyaHBTUzRPUTVXcklMTHBYUjBGQXBhY3doN21Yd1BzQndHaEo1eEhrcGFHWFMtbThuY1BINmNSbmE1SUpydjhuVDdzNl8wMGk0QdIBX0FVX3lxTFBIQkg3S2dJb3VaT045bTRHOGo4ZDJERHU3aEdjRU1wcXZ1Z2lKNktVaXo5cFFvMU5hUEFrYmVpeXRubmV3bjB3NmxEaTAyc3g5TEVSOUxMSjVOREVtTUtR?oc=5",
-            "d": "2026-10-21",
-            "s": "경향신문"
-          }
-        ],
-        "season": [
-          {
-            "t": "뷰티 커머스 성수기 구간 (월 11)",
-            "u": "",
-            "d": "",
-            "s": "시즌 캘린더"
-          }
-        ],
-        "fit": [
-          {
-            "t": "뷰티 커머스 · 토스 2030 여성 타깃 핏",
-            "u": "",
-            "d": "",
-            "s": "업종 분석"
-          }
-        ]
-      },
-      "news": [
-        {
-          "t": "올리브영 앞 플라워노즈, 거세지는 C뷰티의 공습",
-          "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5RcUE0X2psOXZrMUV4bWc5TnpUTm5zZ0JUYThsX29acjFOZUM2cDcwVUhPMWF2Z01mbGlvMGR1R3EyMzRUQVpmWm5udWtPSFdaNmR5bGZjbzBldw?oc=5",
-          "d": "2026-10-19",
-          "s": "한국경제"
-        },
-        {
-          "t": "“올리브영 잡겠다”…연내 100호점 내겠다는 ‘보라색 매장’의 정체는 [신수현의 남돈남산]",
-          "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1lWFhyMS1BWldzX2hVYnYyMlU2c0wtaFowajAwY3JNRDRleHRNV0Utd1Qta2FVcU9KNG5RM2xuTmdYZmhkZDltMGNZX2JSSWd6OWpQUA?oc=5",
-          "d": "2026-10-05",
-          "s": "매일경제"
-        },
-        {
-          "t": "미국서 인기 끄는 올리브영 가방…K컬처 타고 ‘역수입 소비’ 뜬다",
-          "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9VTE0tNGV6T21XaHdoTFdHSkIyanRWdzNPYy1fWXFuNWlvOWwwdEw3SmMtLTY5czROSG12SEtQaVIzdUtWeWtTdjU5N0FyOTBkTmtqVUljY20xSGNNMGVwcHEtc1Z0UTZD?oc=5",
-          "d": "2026-10-19",
-          "s": "녹색경제신문"
-        },
-        {
-          "t": "1000년 수도 K뷰티 재해석…CJ올리브영 '경주신라점' 개점",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9TMFpnV3hyMy1TSmJfV3prRHhIdVluelFkcjVXdXZvWjEySUxwZTE5TzBPaVBxbjUxdWZVY3htX3JrM0c1eXdQaUJLZmsyOG9kQjZ0Um9WUTZyQ1E1aVFrZQ?oc=5",
-          "d": "2026-10-19",
-          "s": "아시아경제"
-        },
-        {
-          "t": "CJ올리브영, 동남아 세포라 48곳에 ‘K뷰티 매대’…美 이어 아시아로",
-          "u": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNUF9EeHhLZzBtbmtsWlhjRlJFaWJRTjVCZDZrNmE0bjk0NTliMk80b1pYWnhzMFlSN1ViZGhLRFhvT3VxeVBEbGdoZlgtX0ZiU2F1SUtIT2E3WXNzbjVYbW0zRlhPeWt4Z3N1c04yU2Q4MmxybzhjV2Z3c0dPT3VxSHJCNWxYbXduc1HSAZ4BQVVfeXFMT3dkNG1zclBvNmVUX04xelE3aGd5UjYzUTFFTW5vcVUwSEtpcWpMcEpyRXlsWDlqTmxZOWV6QVlHTDNQd0dzMkF3VjBQNW94LXh4RlBWcHg3N196M0I5ZEpFVkxkR0FEdTZHLTE3cTFFbWplZ0pORHFmNVJ5Q2p0RVdtVzNMNDk0NDlUc1REOGRfT0dEN21JZnY1ZmFqUnc?oc=5",
-          "d": "2026-10-12",
-          "s": "Chosunbiz"
-        },
-        {
-          "t": "CJ올리브영, 동남아 세포라에 'K뷰티에딧' 입점",
-          "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5mRWU0WExNeXVBSzgyT1JMV3QyMnlVSU5KMGRBaTFpd0x2MkZMbU04bi1fRXoxSTd1NUFFdWFKWkdQS0xjTUd1c0NXWTFadS1IQXhPZk0zQXJOUXFEbU1TRTA5UWw0SnVySWl2WA?oc=5",
-          "d": "2026-10-12",
-          "s": "비즈워치"
-        },
-        {
-          "t": "‘제2의 올리브영’은 없다?⋯ 분화하는 오프라인 뷰티 전문점",
-          "u": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBwcTFnZEkzcXJQN3ZnZG5ZXzdqQm8yWVJsb1Y3RUpDZHlULUZ1TGZLX1UyRHRiUEt3bkRLMFZrU2dHcjZRQXhnR0RhLVlLOW9hMjA1b2tvTQ?oc=5",
-          "d": "2026-09-28",
-          "s": "브릿지경제"
-        },
-        {
-          "t": "[라이엇 스토어] 트렌드팟 바이 올리브영 N 성수 Riot Games Music & Worlds 26 Popup Store에서 라이엇 스토어를 만나보세요!",
-          "u": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPOHJmNUg1dmktNTZJaDhqeHF6cVJfXzdOUVZQT2Fqb3pHNGVnTlo4MWRLcEVIREJVWWtXSTB1S3pFYjFIcTdncTZpQmxoWVVHWFRSNXpLejNnNlFGU3VnTE1VSWZ3S3p2WXFPcEg3UGk3V1ZJcEpIUkNxVGtGMFpfMHNSZDI0bm5YSVVUZkxOd0dQVHEtNm1KTm50X1B5VXM?oc=5",
-          "d": "2026-10-28",
-          "s": "League of Legends"
         }
       ],
       "jobs": []
@@ -911,16 +926,16 @@
       },
       "news": [
         {
-          "t": "\"직접 보고 산다\"…오늘의집, 온라인 한계 넘을까",
-          "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB6a2xOME4wRFpRTy1wSVJHNjFIVGNEWWd2TEJRTU5mdl85XzNiZHpPWk9YanIzWGw0S3E5QURrTk9WbDhabHQtVFlLbVN4TEFSeXNXNUlmbWtaMG1xQWNNODRpSWpqdFBqOUNIdQ?oc=5",
-          "d": "2026-10-14",
-          "s": "비즈워치"
-        },
-        {
           "t": "오늘의집, 이사·인테리어 고객 겨냥 첫 멤버십 ‘무빙패스’ 출시…180일간 쇼핑·홈서비스 혜택",
           "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFB6WWpZbzlZZkJpSUNLbk9KdWdDdThzeS1Ud1JSWkpra2drTDgyRHcwR1dVUHUyeHRSNjI1Y1FMNXU1dkQxZVNwcnZyTlVEZ1U?oc=5",
           "d": "2026-10-14",
           "s": "벤처스퀘어"
+        },
+        {
+          "t": "\"직접 보고 산다\"…오늘의집, 온라인 한계 넘을까",
+          "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTFB6a2xOME4wRFpRTy1wSVJHNjFIVGNEWWd2TEJRTU5mdl85XzNiZHpPWk9YanIzWGw0S3E5QURrTk9WbDhabHQtVFlLbVN4TEFSeXNXNUlmbWtaMG1xQWNNODRpSWpqdFBqOUNIdQ?oc=5",
+          "d": "2026-10-14",
+          "s": "비즈워치"
         },
         {
           "t": "오늘의집, 선물하기 개시…쇼핑 수요 공략 승부수",
@@ -947,16 +962,16 @@
           "s": "서울경제TV"
         },
         {
-          "t": "오프라인 거점 계속 늘리는 오늘의집…\"투자 지속 확대\"",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5STHlNczZKb0NhNWFDVjlnWmVwOU1Ua0w1b1lNMzZDT3RORzgzbk90aTVOWWF3WFRvRlA5cWpGVXJ4QWlEME5TQXl6d0RrSWRxZW9NV2JnYUN4eTNRS05EdQ?oc=5",
-          "d": "2026-10-20",
-          "s": "아시아경제"
-        },
-        {
           "t": "오늘의집, 첫 멤버십 ‘무빙패스’ 개시…“계획적인 이사 쇼핑 지원”",
           "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9qREFxOE1GWW9aazJvaGNCXzVhczQ2MHduSGh2TzV0Uk9oR0lOYmpJZFhnSW54NHc1d1JlMlhyNHZKR1NGNXE4MUFhQl9qbGtJVlc2Zl93T2xRVy1kY25uQnMwdHBaeURpSUHSAW5BVV95cUxOY18yeWZkUEtIeF9ETmRKandjbGpJb3BaQjh1MGtxR0FGSW82UEpJaFVvbC1YNU9IN3VCM0lMN0pONHp0T09ISlBkaDF0N0c5elU0X29uVG1VUnlzSG1fWU9rYXBZWmRwVExGYzNmQQ?oc=5",
           "d": "2026-10-14",
           "s": "파이낸셜투데이"
+        },
+        {
+          "t": "오프라인 거점 계속 늘리는 오늘의집…\"투자 지속 확대\"",
+          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5STHlNczZKb0NhNWFDVjlnWmVwOU1Ua0w1b1lNMzZDT3RORzgzbk90aTVOWWF3WFRvRlA5cWpGVXJ4QWlEME5TQXl6d0RrSWRxZW9NV2JnYUN4eTNRS05EdQ?oc=5",
+          "d": "2026-10-20",
+          "s": "아시아경제"
         }
       ],
       "jobs": []
@@ -1048,6 +1063,12 @@
           "s": "아시아타임즈"
         },
         {
+          "t": "\"커뮤니티 추천글 하나에 판매량 180배\"…리디, '팬덤 선순환' 통했다",
+          "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5VSzRsOTlhVHdvTlhoREY1cEpiSUgwX2ZJaE5hYWVHTTVPQTlfaWJXb3NGMDNGaVZieFdtVHcxYURiaVhGZjBURU9meEV5dXNHREU4ZFo4X2dhdkxLcTBMUzNPcHF0R2PSAWxBVV95cUxOQWJZa0tCeUhwd3V3S2xNcDMxVXBjdk1oSzZKdzh3M3hMNUhYWDRrY0dfV2VQdGVPTDhMU1F4X0UtYnk2TFdDVzZvbG1mWXJfd3hfaGNZZ0VHNmtKWTB1YXh0ekpSLTFITXpHdDA?oc=5",
+          "d": "2026-11-02",
+          "s": "머니투데이"
+        },
+        {
           "t": "리디, 웹소설 수수료 40%···배기식 \"대부분 업체와 비슷한 수준\"",
           "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA5M0lZMzJGZDJmT3NvUUVFeFYtbER3WFRvRVpTNXdxcW1wZExXSE96bVA1M0U5QlpRSTFyZTlsTVI2cDU0ZkpXYjVqdVJLX3BtWXFfMTM5b3R2OFRtRHROMUdTbGFZbzg3dUE?oc=5",
           "d": "2026-10-07",
@@ -1058,12 +1079,6 @@
           "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9MczY5cnFPYW9DbU9uc0VqX24zem5xSVNQRlB4V3VCUXRmX1lTc0VWeWdlNEVUYlZXQVpndEFYUndyWnpRRTZxS2VUMGtERlByLUZYYV9BY2FrSXhZemVmVU5oQjA5S2VZNUww0gFvQVVfeXFMUDlLR2NtNlI0N01NWERmY2JLUHFNRzl1dy00ejhtSGJzZklNS1loWnRxR3pKSkc2ZEZEUF9hMFhvWlB5NE9GQ1JRdmRKS0xaRjNkd1VDZkJMUlFWNHlOYklIc2xfYmtPY2lnWjVGTURj?oc=5",
           "d": "2026-10-07",
           "s": "더퍼블릭"
-        },
-        {
-          "t": "조희대 대법원장, 아프리디 파키스탄 대법원장 접견",
-          "u": "https://news.google.com/rss/articles/CBMibkFVX3lxTE5yVkxBVklqY09nMlZoRFRUbWxRSG1feHU3MENycU9kQ05QbzRlaHJyWHpUSEJibnYwQjBWZHVySTBwSl9xTEZBal8wTWd1U2MwUWJJQWxUUVl3X3ZwVGFNakh4OXdxRTZSblM5SUpB0gFyQVVfeXFMUG1NdUpPdnpUSzkyRVQxMV9mSl9aWG1iaExZZGZ4MTJJamlJYjBhVjFsd21tT0pvQjZ4STlYZ1JJUEw0b1JCb09hUFg4N0pBdHhqV0RSRkJhUHF3UE54dDFtZjNyb1BpQ18xTVVacGlNQ3dn?oc=5",
-          "d": "2026-10-30",
-          "s": "법률신문"
         }
       ],
       "jobs": []
@@ -1116,16 +1131,22 @@
           "s": "재외동포신문"
         },
         {
-          "t": "“2030 세대 인기” 트래블월렛, 누적 카드 발급 1000만장 돌파",
-          "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBDMmp6UlVhY1ZuQXRETjc4ZHM5b1JJRnVYbUNRT2M0VGJTOGVCRGdDSFRKbUJLaWdtUGdFQTJtTElHV3FHTEdXSmcyZ2VjT1AzQ3Y0blZ4Qjg1eUh6QUdkbDR3?oc=5",
+          "t": "트래블월렛, 누적 거래액 10조원·카드 발급 1,000만장 돌파",
+          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBZcVZ0ZW9NOFR3d0hNMU9UaW1zZGxreWtkUURDMXNjQTNUeDV4M3VvRUxCekNBbEFoY1BDTG9zUEFzNzdoT2g0eUxwZktYbTg?oc=5",
           "d": "2026-09-22",
-          "s": "이코노미스트"
+          "s": "와우테일"
         },
         {
           "t": "트래블월렛, 누적 거래액 10조원·카드 발급 1000만장 넘었다",
           "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBmRzNlLTZqWVZydUxNSGdoemdSYjYzZGRiMEpGeVNIQUJJRTBXUi1jM1dlaVFDRzFYNS12YWJmT3ZVam1FT0JBRk5uUzNoM0F1eWtpcg?oc=5",
           "d": "2026-09-22",
           "s": "매일경제"
+        },
+        {
+          "t": "“2030 세대 인기” 트래블월렛, 누적 카드 발급 1000만장 돌파",
+          "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTFBDMmp6UlVhY1ZuQXRETjc4ZHM5b1JJRnVYbUNRT2M0VGJTOGVCRGdDSFRKbUJLaWdtUGdFQTJtTElHV3FHTEdXSmcyZ2VjT1AzQ3Y0blZ4Qjg1eUh6QUdkbDR3?oc=5",
+          "d": "2026-09-22",
+          "s": "이코노미스트"
         },
         {
           "t": "트래블월렛, 추석·한글날 해외결제 이벤트⋯최대 35달러 혜택 받는다",
@@ -1138,12 +1159,6 @@
           "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE80WUlveDVfYWdNb0x2Nm5qMUo0TDVPUEZrckh5ZVhvNkFFZXZXc3ViemVZZEhWOWxMYXFuTXJrR1ZqWk5zM0M3RlVSOW14clQwaVZTQXMxT3R3QlNuMzJQbXc5akg0eDVrdmfSAW9BVV95cUxNUk5SNGx3V01qMXlZVXF5aWJnQnMzckVMdzluOVdWZWtxYjlKZE9OSTVvNE9MRjNfd0phU0twWFpWUVI2Nmx0dEhuR0lkSUhjNEFLS1Jha05IQnUtTTJmeWN3LWlYOEpOUHNqMzNkejg?oc=5",
           "d": "2026-09-22",
           "s": "머니투데이"
-        },
-        {
-          "t": "트래블월렛, 해외서 10조원 긁었다…카드 발급 1000만장 돌파",
-          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1RVnh5dWpaU1djY2d4d0x1UmRmXzQ5STVMbjY4dE12cDUwZ2dEQUxiaVlKaFQxakZNSnNjcmVQX3M2LXltdVdzM1RfTkNrN1U?oc=5",
-          "d": "2026-09-22",
-          "s": "벤처스퀘어"
         }
       ],
       "jobs": []
@@ -1214,16 +1229,16 @@
           "s": "뉴스1"
         },
         {
+          "t": "당근·번개장터 등 중고거래 사기 피해 8741억원…정부, 국가표준 마련",
+          "u": "https://news.google.com/rss/articles/CBMic0FVX3lxTE5GRHlQMnktZEFacjExLUZoOWV2SE1xLWwxaVkzNndKUGMyNzRMc3BHSlNPVG1RTExjMWtHbGZhZ1kzZ1hyUHV5bGJYNFRTVmk0M2N5RU1PMFVONFcxZm8zbVFqcFhHWmNLeEM5S3BGQWthb3c?oc=5",
+          "d": "2026-10-29",
+          "s": "마켓인"
+        },
+        {
           "t": "번개장터, 한글날 첫 '번개절' 개최…추가 할인 혜택",
           "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9ITVoxeTVER2cyZlhZMnFEcC1QdEhWZzhGeVA1RHFpbUlTYjR1bGpPaGRGMUVmN1hCOXBIMnR5NDlSdUd1RF90elRfbG1mVnNpUDV6VTRuaFg5dw?oc=5",
           "d": "2026-10-07",
           "s": "파이낸셜뉴스"
-        },
-        {
-          "t": "나에게 딱 맞는 2026 중고거래: 당근·중고나라·번개장터 : 소비자",
-          "u": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5EcnlvSzFGMGZheV9UWW1iaGhTWDJVeTVsRHVWTVhlUjlTeU1ZZml3amVwa1FJbXB4UEtsN2Rxa3R3OHR4WndYRnZn?oc=5",
-          "d": "2026-09-21",
-          "s": "재경일보"
         }
       ],
       "jobs": []
@@ -1398,12 +1413,6 @@
           "s": "CEO스코어데일리"
         },
         {
-          "t": "여행 계획부터 호텔·아파트 관리까지…야놀자 AI, 내달 총출동",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1nQ1pYckZ3VXBnVUJuZHdobk1wQmJjcE9JRUJwTHF1NlpsTTA2cXQwNm9SSHNVNnVjbGxpcUV0b3BpTFJWeDFCOXp3SHRKN0RPNjFPTjhfWXNXRTRMTGdtbdIBeEFVX3lxTE81Umd3SlJTTkUzaFBXQUNReGFFTnd5bU5ubnMweFZoRlNiWWxoR3FRMkcxYTh3S1huc2NvR1I4OVhuZUN1eWcyT3QxWGxORzV5a29HckF6OUJuUGlhSTRjRmVLUDVLU29lX0xHX252MFFlbU1HNllBeQ?oc=5",
-          "d": "2026-09-22",
-          "s": "뉴시스"
-        },
-        {
           "t": "야놀자, AI 페스타 2026 참가...\"그룹 AI 기술 한 자리에\"",
           "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9Cb0ZXdFRfbkZUV00xMlNKbnV5WEZOT1c0OVJfelA5NVhTVGg1YmR5ZTZVbVZhZXdxbWIxRFdPb3E3ZTk2WXRMeGN0cVRWdmI2dmJDUWdR?oc=5",
           "d": "2026-09-22",
@@ -1420,6 +1429,12 @@
           "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9sTHFwSUV3VE56YzMzRFpDU2xKRkZWNkRwS012c2toMDRrSlNDRExscmlPMEwzUkZEN1BFQ3I2YV9KcTUzMzVsZFdqdmhENmc4MER6bVBNZTk1aG1LNVBrc2RqWklmYzNmZXc?oc=5",
           "d": "2026-10-06",
           "s": "비즈워치"
+        },
+        {
+          "t": "여행 계획부터 호텔·아파트 관리까지…야놀자 AI, 내달 총출동",
+          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1nQ1pYckZ3VXBnVUJuZHdobk1wQmJjcE9JRUJwTHF1NlpsTTA2cXQwNm9SSHNVNnVjbGxpcUV0b3BpTFJWeDFCOXp3SHRKN0RPNjFPTjhfWXNXRTRMTGdtbdIBeEFVX3lxTE81Umd3SlJTTkUzaFBXQUNReGFFTnd5bU5ubnMweFZoRlNiWWxoR3FRMkcxYTh3S1huc2NvR1I4OVhuZUN1eWcyT3QxWGxORzV5a29HckF6OUJuUGlhSTRjRmVLUDVLU29lX0xHX252MFFlbU1HNllBeQ?oc=5",
+          "d": "2026-09-22",
+          "s": "뉴시스"
         }
       ],
       "jobs": []
@@ -1511,16 +1526,16 @@
       },
       "news": [
         {
-          "t": "클래스101 라이브 특강을 하게 됐습니다!",
-          "u": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBJRVk1U3ZyOTU0WEhzT3FDUVRybk5Gb18xRG9tZVVrT0x3QkdpWGV3VkRqYkFpeUZjbHZkV3M4RzdvNkZac0ZkdmdsTmlUeEZqVGc?oc=5",
-          "d": "2026-09-22",
-          "s": "브런치"
-        },
-        {
           "t": "클래스101, 프라이머와 'Creator Summit 2026' 개최",
           "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9Tc0dWUHZMRHQ3anpXbm1NQzA1Ql94dHRPclVtU0RIT0ZzaHZHTFBpekszUEdBeGZsa0pYNXg0alJ0VEJWT3ZLZTZPV3BDc1VrZC1fRDAyamtnSXFYcFd0NlhjcTl6WGEyRG5iMXhnd0rSAXRBVV95cUxOb0dXMXZ6ZlM4YlNXUDBxVWllNDM5VmlUODJJWUsxWk54cTlNd2tfeUlCMV9aOW1xZUlQNEpxVE5zbXotaE9MbUxqVXNna25iV085OF9ZQzVidmFTV2lMZEVwQ203QW1saHNIUmt0N3NWcy1QOQ?oc=5",
           "d": "2026-10-01",
           "s": "이뉴스투데이"
+        },
+        {
+          "t": "클래스101 라이브 특강을 하게 됐습니다!",
+          "u": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBJRVk1U3ZyOTU0WEhzT3FDUVRybk5Gb18xRG9tZVVrT0x3QkdpWGV3VkRqYkFpeUZjbHZkV3M4RzdvNkZac0ZkdmdsTmlUeEZqVGc?oc=5",
+          "d": "2026-09-22",
+          "s": "브런치"
         },
         {
           "t": "콘텐츠로 돈 버는 법 공유한다, 클래스101·프라이머 크리에이터 서밋",
