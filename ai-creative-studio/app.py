@@ -41,7 +41,8 @@ html, body, [class*="css"], .stApp, input, textarea, select, button {{ font-fami
     radial-gradient(48% 56% at 74% 110%, rgba(92,200,255,.13), transparent 62%),
     {BG};
   background-attachment:fixed; }}
-#MainMenu, header, footer {{ visibility:hidden; }}
+#MainMenu {{ visibility:hidden; }}
+[data-testid="stHeader"], [data-testid="stToolbar"] {{ display:none !important; }}
 .block-container {{ padding-top:1.4rem; max-width:1300px; }}
 .block-container h1 {{ font-size:1.95rem; font-weight:800; letter-spacing:-.025em;
   background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF);
@@ -82,6 +83,7 @@ div[data-testid="stDataFrame"] {{ border:1px solid {BORDER}; border-radius:12px;
 .stAlert {{ border-radius:12px; }}
 /* 운영기간 달력 — 월 이동 헤더/화살표 선명하게 (다크) */
 div[data-baseweb="calendar"] {{ background:#15151f !important; border:1px solid rgba(124,92,255,.35) !important; border-radius:12px !important; padding:6px !important; }}
+div[data-baseweb="calendar"] header, div[data-baseweb="calendar"] [role="presentation"] {{ visibility:visible !important; display:flex !important; align-items:center !important; justify-content:space-between !important; }}
 div[data-baseweb="calendar"] *, div[data-baseweb="calendar"] [role="gridcell"] {{ color:{TEXT} !important; }}
 div[data-baseweb="calendar"] button {{ background:transparent !important; opacity:1 !important; visibility:visible !important; border:none !important; box-shadow:none !important; }}
 div[data-baseweb="calendar"] button:hover {{ background:rgba(124,92,255,.25) !important; border-radius:8px !important; }}
@@ -214,14 +216,13 @@ def to_excel_bytes(df, sheet="sheet1"):
 
 
 def date_range(container, df, key):
-    """운영기간 달력(일자 범위) 선택 → (시작, 종료) 'YYYY-MM-DD'."""
+    """운영기간: 시작일/종료일 달력 2개 → (시작, 종료) 'YYYY-MM-DD'."""
     dts = pd.to_datetime(df["date"], errors="coerce")
     dmin, dmax = dts.min().date(), dts.max().date()
-    r = container.date_input("운영기간 (달력에서 시작~종료일 선택)", (dmin, dmax),
-                             min_value=dmin, max_value=dmax, key=key, format="YYYY-MM-DD")
-    if isinstance(r, (list, tuple)) and len(r) == 2:
-        return str(r[0]), str(r[1])
-    return str(dmin), str(dmax)
+    cc = container.columns(2)
+    s = cc[0].date_input("운영 시작일", dmin, min_value=dmin, max_value=dmax, key=key + "_s", format="YYYY-MM-DD")
+    e = cc[1].date_input("운영 종료일", dmax, min_value=dmin, max_value=dmax, key=key + "_e", format="YYYY-MM-DD")
+    return str(min(s, e)), str(max(s, e))
 
 
 def apply_dates(df, s, e):
