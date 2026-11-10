@@ -74,7 +74,7 @@
     <div class="nav-links">
       <a href="index.html">Home</a>
       <a href="portfolio.html">Portfolio</a>
-      <a href="tool.html">AI 소재 생성기</a>
+      <a href="tool.html">컷별 프롬프트 생성</a>
       <a href="insights.html" class="active">소재 성과 분석</a>
       <a href="resume.html">이력서</a>
     </div>
@@ -148,12 +148,22 @@
     </table>
   </div>
 
+  <div class="sec-h">🧭 소재 기획 리뷰 <small>· 다음 소재 만들기 전, 과거 이긴 소재의 공통점 확인</small></div>
+  <div class="icard" style="background:var(--panel)">
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end">
+      <div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:11.5px;font-weight:700;color:var(--mute)">업종</label><select id="rvBiz" style="background:#12121e;color:var(--k);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px;min-width:180px"></select></div>
+      <div style="display:flex;flex-direction:column;gap:6px"><label style="font-size:11.5px;font-weight:700;color:var(--mute)">목표</label><select id="rvGoal" style="background:#12121e;color:var(--k);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px"><option>전환 최대화 (CVR)</option><option>효율 최대화 (CPA 최소)</option></select></div>
+      <button id="rvBtn" style="background:linear-gradient(135deg,#7C5CFF,#C06BFF);color:#fff;border:0;border-radius:11px;padding:11px 20px;font-weight:800;font-size:13.5px;cursor:pointer">🧭 리뷰 보기</button>
+    </div>
+    <div id="rvOut" style="margin-top:14px"></div>
+  </div>
+
   <div class="note">※ 위 데이터는 <b>분석 로직·대시보드 구조를 보여주는 샘플</b>입니다. 실제 서비스 버전은 광고 플랫폼 API로 소재 성과를 수집하고, <b>LLM으로 각 소재의 속성(소구·후킹·비주얼 요소)을 자동 태깅</b>한 뒤 성과와 교차 분석하도록 설계되어 있습니다 (성과 대시보드와 동일하게 Streamlit + API). 인사이트 방향(자극형 CTR↑·CVR↓, 숏폼·12초 우위 등)은 실제 운영 데이터에서 검증된 패턴입니다.</div>
 </main>
 
 <footer>
   <div>© 2026 윤지욱 (JIUK.YOON) · AI 마케터</div>
-  <div><a href="tool.html">AI 소재 생성기</a> · <a href="portfolio.html#ctool">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
+  <div><a href="tool.html">컷별 프롬프트 생성</a> · <a href="portfolio.html#ctool">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
 </footer>
 
 <script>
@@ -194,6 +204,30 @@ function render(){
 }
 document.querySelectorAll('#tbl th').forEach(th=>{ th.onclick=()=>{ const k=th.dataset.k; if(sortK===k) sortAsc=!sortAsc; else {sortK=k; sortAsc=(k==="cpa");} render(); }; });
 render();
+
+// ── 소재 기획 리뷰 ──
+(function(){
+  const biz=[...new Set(ROWS.map(r=>r.biz))];
+  const sel=document.getElementById('rvBiz');
+  biz.forEach(b=>{const o=document.createElement('option');o.textContent=b;sel.appendChild(o);});
+  const mode=arr=>{const m={};let best=arr[0],bc=0;arr.forEach(x=>{m[x]=(m[x]||0)+1;if(m[x]>bc){bc=m[x];best=x;}});return best;};
+  function review(){
+    const b=sel.value, goal=document.getElementById('rvGoal').value;
+    let rows=ROWS.filter(r=>r.biz===b);
+    rows.sort((x,y)=> goal.indexOf('CVR')>=0 ? y.cvr-x.cvr : x.cpa-y.cpa);
+    const top=rows.slice(0,4);
+    if(!top.length){document.getElementById('rvOut').innerHTML='해당 업종 데이터가 없습니다.';return;}
+    const a=mode(top.map(r=>r.angle)), h=mode(top.map(r=>r.hook)), f=mode(top.map(r=>r.fmt));
+    const avgCvr=(top.reduce((s,r)=>s+r.cvr,0)/top.length).toFixed(1);
+    const chip=(k,v)=>`<div style="background:rgba(124,92,255,.08);border:1px solid var(--line);border-radius:10px;padding:10px 14px"><div style="font-size:10.5px;color:var(--dim);font-weight:700">${k}</div><div style="font-size:15px;font-weight:800;color:var(--signal)">${v}</div></div>`;
+    document.getElementById('rvOut').innerHTML=
+      `<div style="font-size:14px;font-weight:800;color:#fff;margin-bottom:10px">✅ '${b}' 이기는 소재의 공통점</div>
+       <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">${chip('이기는 소구',a)}${chip('이기는 후킹',h)}${chip('최적 포맷',f)}${chip('평균 CVR',avgCvr+'%')}</div>
+       <div style="background:rgba(123,224,163,.08);border:1px solid rgba(123,224,163,.25);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--k);line-height:1.6">💡 <b>다음 소재 가이드</b> — <b style="color:var(--signal)">${a}</b> 소구를 <b style="color:var(--signal)">${h}</b> 후킹으로, <b style="color:var(--signal)">${f}</b> 포맷으로 제작 추천. (과거 상위 소재 공통 패턴)</div>`;
+  }
+  document.getElementById('rvBtn').onclick=review;
+  review();
+})();
 </script>
 </body>
 </html>
