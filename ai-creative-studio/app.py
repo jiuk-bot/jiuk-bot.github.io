@@ -253,8 +253,11 @@ st.markdown(f"# AI 소재 A/B 스튜디오")
 st.markdown("<div class='demo-banner'>📘 데이원컴퍼니 지원용 데모 · 표시되는 모든 수치는 가상(샘플) 데이터입니다 (교육 콘텐츠 소재 운영 예시)</div>",
             unsafe_allow_html=True)
 
+# 기획 리뷰 → 컷 생성 원클릭 점프 (위젯 생성 전에 상태 설정)
+if st.session_state.pop("_goto_gen", False):
+    st.session_state["nav"] = "🎬 컷별 프롬프트 생성"
 PAGE = st.radio("nav", ["📊 성과 분석", "📝 소재 A/B 기록", "🔍 과거 데이터 조회", "🧭 소재 기획 리뷰", "🎬 컷별 프롬프트 생성"],
-                horizontal=True, label_visibility="collapsed")
+                horizontal=True, label_visibility="collapsed", key="nav")
 
 
 # ════════════════ 1) 성과 분석 ════════════════
@@ -262,6 +265,20 @@ if PAGE == "📊 성과 분석":
     df = load_df()
     cats = st.multiselect("카테고리 필터", sorted(df["카테고리"].unique()), default=sorted(df["카테고리"].unique()))
     v = df[df["카테고리"].isin(cats)] if cats else df
+
+    # 한눈에 액션 요약
+    if len(v):
+        av = v[v["등급"] == "A"]
+        wh = (av["후킹"].mode().iloc[0] if len(av) and len(av["후킹"].mode())
+              else v.groupby("후킹")["CVR"].mean().idxmax())
+        wf = (av["포맷"].mode().iloc[0] if len(av) and len(av["포맷"].mode())
+              else v.groupby("포맷")["CTR"].mean().idxmax())
+        n_bad = int((v["등급"] == "C").sum())
+        st.markdown(
+            "<div class='demo-banner' style='background:rgba(123,224,163,.08);border-color:rgba(123,224,163,.3);color:#bdeccf'>"
+            f"💡 <b>한눈에</b> — 지금 이기는 공식: <b>{wh} 후킹 × {wf}</b>. "
+            f"교체 후보: 등급 C 소재 <b>{n_bad}건</b>(CTR만 높고 전환 낮음) → 공감·신뢰형으로 교체 권장.</div>",
+            unsafe_allow_html=True)
 
     k = st.columns(4)
     k[0].metric("소재 수", f"{len(v)}개")
@@ -413,11 +430,12 @@ elif PAGE == "🧭 소재 기획 리뷰":
         st.markdown("<div class='sec-sub' style='margin-top:14px'>근거가 된 우수 소재</div>", unsafe_allow_html=True)
         st.dataframe(winners[["date", "강의", "소재명", "소구포인트", "후킹", "포맷", "컷수", "길이초", "CTR", "CVR", "CPA", "등급"]],
                      use_container_width=True, hide_index=True)
-        if st.button("🎬 이 방향으로 컷별 프롬프트 만들기 →"):
+        if st.button("🎬 이 방향으로 컷별 프롬프트 만들기 →", type="primary"):
             st.session_state["plan"] = {"강의": winners.iloc[0]["강의"], "소구": mode("소구포인트"),
                                         "후킹": mode("후킹"), "길이": int(winners["길이초"].median()),
                                         "컷수": max(3, int(winners["컷수"].median()))}
-            st.info("위 탭에서 **🎬 컷별 프롬프트 생성**으로 이동하면 이 방향이 자동 입력됩니다.")
+            st.session_state["_goto_gen"] = True
+            st.rerun()
 
 
 # ════════════════ 5) 컷별 프롬프트 생성 ════════════════
