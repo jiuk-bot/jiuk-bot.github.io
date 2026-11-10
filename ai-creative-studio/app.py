@@ -206,14 +206,19 @@ def to_excel_bytes(df, sheet="sheet1"):
     return buf.getvalue()
 
 
-def date_range(container, df, key):
-    """운영기간 범위 선택 → (시작, 종료) ISO 문자열."""
-    dts = pd.to_datetime(df["date"], errors="coerce")
-    dmin, dmax = dts.min().date(), dts.max().date()
-    r = container.date_input("운영기간", (dmin, dmax), min_value=dmin, max_value=dmax, key=key, format="YYYY-MM-DD")
-    if isinstance(r, (list, tuple)) and len(r) == 2:
-        return str(r[0]), str(r[1])
-    return str(dmin), str(dmax)
+def month_range(container, df, key):
+    """운영기간(월) 범위 슬라이더 → (시작월, 종료월) 'YYYY-MM'."""
+    months = sorted(set(df["date"].str[:7]))
+    if len(months) < 2:
+        only = months[0] if months else ""
+        return only, only
+    r = container.select_slider("운영기간 (월)", options=months, value=(months[0], months[-1]), key=key)
+    return (r[0], r[1]) if isinstance(r, (list, tuple)) else (r, r)
+
+
+def apply_months(df, s, e):
+    m = df["date"].str[:7]
+    return df[(m >= s) & (m <= e)]
 
 
 def fmt_display(d):
@@ -292,9 +297,9 @@ if PAGE == P1:
     df = load_df()
     fc = st.columns([1.2, 1.8])
     cat_sel = fc[0].selectbox("📚 강의 카테고리", ["전체 카테고리"] + sorted(df["카테고리"].unique()))
-    s, e = date_range(fc[1], df, "perf_range")
+    s, e = month_range(fc[1], df, "perf_range")
     v = df if cat_sel.startswith("전체") else df[df["카테고리"] == cat_sel]
-    v = v[(v["date"] >= s) & (v["date"] <= e)]
+    v = apply_months(v, s, e)
     st.caption(f"📚 포함 강의 — {' · '.join(sorted(v['강의'].unique())) or '없음'}  ·  운영기간 {s} ~ {e}")
 
     if v.empty:
@@ -411,9 +416,8 @@ elif PAGE == P3:
     f_grade = c[3].multiselect("등급", ["A", "B", "C"])
     sc = st.columns([2, 2])
     kw = sc[0].text_input("강의/소재명 검색", "")
-    s, e = date_range(sc[1], df, "hist_range")
-    v = df.copy()
-    v = v[(v["date"] >= s) & (v["date"] <= e)]
+    s, e = month_range(sc[1], df, "hist_range")
+    v = apply_months(df.copy(), s, e)
     if f_cat: v = v[v["카테고리"].isin(f_cat)]
     if f_hook: v = v[v["후킹"].isin(f_hook)]
     if f_fmt: v = v[v["포맷"].isin(f_fmt)]
@@ -437,8 +441,8 @@ elif PAGE == P4:
     cat = c[0].selectbox("강의 카테고리", sorted(df["카테고리"].unique()))
     goal = c[1].selectbox("목표", ["전환 최대화 (CVR)", "효율 최대화 (CPA 최소)"])
     topk = c[2].slider("우수 소재 기준 상위 N", 2, 10, 4)
-    s, e = date_range(c[3], df, "review_range")
-    sub = df[(df["카테고리"] == cat) & (df["date"] >= s) & (df["date"] <= e)].copy()
+    s, e = month_range(c[3], df, "review_range")
+    sub = apply_months(df[df["카테고리"] == cat], s, e).copy()
     if len(sub) == 0:
         st.warning("해당 카테고리 데이터가 없습니다.")
     else:
