@@ -511,48 +511,60 @@ elif PAGE == P5:
     product = c[0].text_input("강의/상품", plan.get("강의") or (top1["강의"] if top1 is not None else "패스트캠퍼스 · 데이터 분석 올인원"))
     angle = c[1].selectbox("소구포인트(방향)", ang_opts, index=_idx(ang_opts, plan.get("소구") or (top1["소구포인트"] if top1 is not None else "")))
     hook = c[2].selectbox("후킹 유형", HOOKS, index=_idx(HOOKS, plan.get("후킹") or (top1["후킹"] if top1 is not None else "공감")))
-    c = st.columns(3)
+    c = st.columns(4)
     tone = c[0].selectbox("톤", ["공감 드라마", "다큐/뉴스", "경쾌/밈", "프리미엄"])
     _dl = int(plan.get("길이") or (top1["길이초"] if top1 is not None else 16))
     dur = c[1].slider("길이(초)", 8, 60, max(8, _dl))
-    cuts = c[2].slider("컷/프롬프트 수 (최대 100)", 3, 100, max(3, int(plan.get("컷수", 5))))
+    cuts = c[2].slider("컷 수 (소재당, 최대 20)", 3, 20, min(20, max(3, int(plan.get("컷수", 5)))))
+    n_mat = c[3].slider("생성할 소재 수", 1, 8, 2)
+    extra = st.text_area("💬 추가 요청사항 (선택) — Claude에게 그대로 전달됩니다",
+                         placeholder="예: 40대 직장인 타깃 톤으로, 가격 강조는 빼고, 첫 컷은 강한 훅으로. 자막은 짧게.")
 
     if st.button("✨ 최종 컷별 프롬프트 생성", type="primary"):
-        rows = None
+        creatives = None
         if _client:
             try:
-                prompt = ("너는 온라인 교육(강의) 광고의 AI 영상 디렉터다. 아래 조건으로 컷(씬)별 스토리보드를 만들어라.\n"
-                          f"[강의] {product} / [소구] {angle} / [후킹] {hook} / [톤] {tone} / [길이] {dur}초 / [컷수] {cuts}\n"
-                          "각 컷마다: scene(장면설명 한국어), video_prompt(영문 영상생성 프롬프트, 끝에 반드시 \"No text, no letters.\" 포함), "
-                          f"subtitle(한국어 자막), narration(한국어 나레이션). 정확히 {cuts}개의 컷을 만들어라.\n"
-                          "반드시 JSON으로만 응답(설명·코드펜스 금지): "
-                          '{"cuts":[{"scene":"","video_prompt":"","subtitle":"","narration":""}]}')
-                mt = min(16000, 700 + cuts * 150)
-                with st.spinner(f"Claude({CLAUDE_MODEL})가 {cuts}개 컷을 생성 중..."):
+                prompt = ("너는 온라인 교육(강의) 광고의 AI 영상 디렉터다.\n"
+                          f"[강의] {product} / [소구] {angle} / [후킹] {hook} / [톤] {tone} / [길이] {dur}초\n"
+                          f"서로 다른 접근(후킹·전개)의 소재 {n_mat}개를 만들고, 각 소재는 정확히 {cuts}개의 컷(씬)으로 구성한다.\n"
+                          "각 컷: scene(장면설명 한국어), video_prompt(영문 영상생성 프롬프트, 끝에 반드시 \"No text, no letters.\" 포함), "
+                          "subtitle(한국어 자막), narration(한국어 나레이션).\n"
+                          + (f"[추가 요청사항] {extra.strip()}\n" if extra.strip() else "")
+                          + '반드시 JSON으로만 응답(설명·코드펜스 금지): '
+                          '{"creatives":[{"name":"소재명(접근 요약)","cuts":[{"scene":"","video_prompt":"","subtitle":"","narration":""}]}]}')
+                mt = min(16000, 900 + n_mat * cuts * 130)
+                with st.spinner(f"Claude({CLAUDE_MODEL})가 소재 {n_mat}개 × {cuts}컷 생성 중..."):
                     resp = _client.messages.create(model=CLAUDE_MODEL, max_tokens=mt,
                                                    messages=[{"role": "user", "content": prompt}])
                 rawt = next((b.text for b in resp.content if b.type == "text"), "").strip()
                 if rawt.startswith("```"):
                     rawt = rawt.strip("`"); rawt = rawt[rawt.find("{"): rawt.rfind("}") + 1]
-                rows = json.loads(rawt).get("cuts", [])
-            except Exception as e:  # noqa
-                st.error(f"생성 실패(템플릿으로 대체): {e}")
-        if rows is None:
-            rows = [{"scene": f"{angle} 관련 장면 {i+1} ({hook} 후킹, {tone} 톤)",
-                     "video_prompt": f"Cinematic {tone} scene for an online course about {product}, photorealistic, highly detailed. No text, no letters.",
-                     "subtitle": f"[{i+1}컷 자막] {angle} 메시지",
-                     "narration": f"[{i+1}컷 나레이션] {angle}을(를) {hook}으로 전달"} for i in range(cuts)]
+                creatives = json.loads(rawt).get("creatives", [])
+            except Exception as ex:  # noqa
+                st.error(f"생성 실패(템플릿으로 대체): {ex}")
+        if not creatives:
+            hvar = [hook] + [h for h in HOOKS if h != hook]
+            creatives = [{"name": f"소재 {mi+1} · {hvar[mi % len(hvar)]}형",
+                          "cuts": [{"scene": f"{angle} 장면 {i+1} ({hvar[mi % len(hvar)]} 후킹, {tone})",
+                                    "video_prompt": f"Cinematic {tone} scene for an online course about {product}, photorealistic. No text, no letters.",
+                                    "subtitle": f"[{i+1}컷] {angle}",
+                                    "narration": f"[{i+1}컷] {angle}을(를) {hvar[mi % len(hvar)]}으로 전달"} for i in range(cuts)]}
+                         for mi in range(n_mat)]
             if not _client:
-                st.warning("데모 모드(템플릿)입니다. Secrets에 ANTHROPIC_API_KEY를 넣으면 실제 생성됩니다.")
+                st.warning("데모 모드(템플릿)입니다. Secrets에 ANTHROPIC_API_KEY를 넣으면 실제 생성 + 추가 요청사항이 반영됩니다.")
         seg = max(1, round(dur / max(1, cuts)))
-        out = pd.DataFrame([{"컷": i + 1, "시간(초)": f"{i*seg}-{min(dur, (i+1)*seg)}",
-                             "장면": r.get("scene", ""), "영상 프롬프트(영문)": r.get("video_prompt", ""),
-                             "자막": r.get("subtitle", ""), "나레이션": r.get("narration", "")} for i, r in enumerate(rows)])
-        st.session_state["cuts_out"] = out
+        rows_out = []
+        for mi, cr in enumerate(creatives):
+            nm = cr.get("name") or f"소재 {mi+1}"
+            for i, r in enumerate(cr.get("cuts", [])):
+                rows_out.append({"소재": nm, "컷": i + 1, "시간(초)": f"{i*seg}-{min(dur, (i+1)*seg)}",
+                                 "장면": r.get("scene", ""), "영상 프롬프트(영문)": r.get("video_prompt", ""),
+                                 "자막": r.get("subtitle", ""), "나레이션": r.get("narration", "")})
+        st.session_state["cuts_out"] = pd.DataFrame(rows_out)
 
     if "cuts_out" in st.session_state:
         out = st.session_state["cuts_out"]
-        st.caption(f"{len(out)}개 컷")
+        st.caption(f"{out['소재'].nunique()}개 소재 · 총 {len(out)}개 컷")
         st.dataframe(out, use_container_width=True, hide_index=True)
         c = st.columns(2)
         c[0].download_button("⬇ 엑셀(.xlsx) 다운로드", to_excel_bytes(out, "컷별프롬프트"), "cut_prompts.xlsx",
