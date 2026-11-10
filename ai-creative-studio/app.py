@@ -263,8 +263,9 @@ PAGE = st.radio("nav", ["📊 성과 분석", "📝 소재 A/B 기록", "🔍 �
 # ════════════════ 1) 성과 분석 ════════════════
 if PAGE == "📊 성과 분석":
     df = load_df()
-    cats = st.multiselect("카테고리 필터", sorted(df["카테고리"].unique()), default=sorted(df["카테고리"].unique()))
-    v = df[df["카테고리"].isin(cats)] if cats else df
+    cat_sel = st.columns([1, 2])[0].selectbox("📚 강의 카테고리", ["전체 카테고리"] + sorted(df["카테고리"].unique()))
+    v = df if cat_sel.startswith("전체") else df[df["카테고리"] == cat_sel]
+    st.caption("📚 포함 강의 — " + " · ".join(sorted(v["강의"].unique())))
 
     # 한눈에 액션 요약
     if len(v):
@@ -319,8 +320,8 @@ elif PAGE == "📝 소재 A/B 기록":
     with st.form("rec"):
         c = st.columns(3)
         d = c[0].date_input("집행일", value=date.today())
-        cat = c[1].selectbox("카테고리", CATS)
-        course = c[2].text_input("강의/클래스", "데이터 분석 올인원")
+        cat = c[1].selectbox("강의 카테고리", CATS)
+        course = c[2].text_input("강의/클래스명", "데이터 분석 올인원")
         name = st.text_input("소재명", "")
         c = st.columns(4)
         angle = c[0].text_input("소구포인트", "커리어 전환")
@@ -376,7 +377,7 @@ elif PAGE == "📝 소재 A/B 기록":
 elif PAGE == "🔍 과거 데이터 조회":
     df = load_df()
     c = st.columns(4)
-    f_cat = c[0].multiselect("카테고리", sorted(df["카테고리"].unique()))
+    f_cat = c[0].multiselect("강의 카테고리", sorted(df["카테고리"].unique()))
     f_hook = c[1].multiselect("후킹", sorted(df["후킹"].unique()))
     f_fmt = c[2].multiselect("포맷", sorted(df["포맷"].unique()))
     f_grade = c[3].multiselect("등급", ["A", "B", "C"])
@@ -402,7 +403,7 @@ elif PAGE == "🧭 소재 기획 리뷰":
     st.markdown("<div class='sec-title'>소재 기획 리뷰</div><div class='sec-sub'>다음 소재를 기획하기 전, 과거 이긴 소재의 공통점을 확인하세요</div>", unsafe_allow_html=True)
     df = load_df()
     c = st.columns(3)
-    cat = c[0].selectbox("카테고리", sorted(df["카테고리"].unique()))
+    cat = c[0].selectbox("강의 카테고리", sorted(df["카테고리"].unique()))
     goal = c[1].selectbox("목표", ["전환 최대화 (CVR)", "효율 최대화 (CPA 최소)"])
     topk = c[2].slider("우수 소재 기준 상위 N", 2, 10, 4)
     sub = df[df["카테고리"] == cat].copy()
