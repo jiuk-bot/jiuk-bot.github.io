@@ -63,19 +63,13 @@ section[data-testid="stSidebar"] * {{ color:{TEXT}; }}
 .demo-banner {{ background:rgba(124,92,255,.12); color:{LILAC}; border:1px solid rgba(124,92,255,.3);
   border-radius:12px; padding:10px 16px; font-size:12.5px; font-weight:600; margin:2px 0 18px;
   -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }}
-/* 상단 버튼형 네비 (nav 전용) */
-.st-key-nav div[role="radiogroup"] {{ gap:10px; flex-wrap:wrap; border-bottom:none; margin-bottom:24px; }}
-.st-key-nav div[role="radiogroup"] > label {{ margin:0 !important; padding:10px 20px; border-radius:12px;
-  background:rgba(124,92,255,.07); border:1px solid rgba(124,92,255,.22);
-  transition:transform .18s, border-color .18s, box-shadow .18s, background .18s; }}
-.st-key-nav div[role="radiogroup"] > label > div:first-child {{ display:none !important; }}
-.st-key-nav div[role="radiogroup"] > label p {{ font-size:14px; font-weight:800; color:{LILAC}; }}
-.st-key-nav div[role="radiogroup"] > label:hover {{ border-color:rgba(170,120,255,.6); transform:translateY(-1px); box-shadow:0 8px 20px -12px rgba(124,92,255,.6); }}
-.st-key-nav div[role="radiogroup"] > label:has(input:checked) {{ background:linear-gradient(135deg,#7C5CFF,#C06BFF); border-color:transparent; box-shadow:0 12px 28px -10px rgba(124,92,255,.75); }}
-.st-key-nav div[role="radiogroup"] > label:has(input:checked) p {{ color:#fff; }}
-/* 인라인 라디오 동그라미 숨김 */
-div[role="radiogroup"] > label > div:first-child {{ display:none !important; }}
-div[role="radiogroup"] > label p {{ color:{MUTED}; font-weight:600; }}
+/* 상단 탭 네비 (텍스트 + 하단 바, 선택 시 마젠타) */
+[class*="st-key-navbtn_"] button {{ background:transparent !important; border:none !important;
+  border-bottom:2px solid rgba(124,92,255,.14) !important; border-radius:0 !important;
+  color:{MUTED} !important; font-weight:700 !important; font-size:14.5px !important;
+  padding:8px 4px 12px !important; box-shadow:none !important; transition:color .15s, border-color .15s; }}
+[class*="st-key-navbtn_"] button:hover {{ color:{TEXT} !important; transform:none !important; box-shadow:none !important; border-color:rgba(124,92,255,.4) !important; }}
+[class*="st-key-navbtn_"] button[kind="primary"] {{ color:#fff !important; border-bottom:2px solid {ACCENT2} !important; background:transparent !important; box-shadow:none !important; }}
 /* 입력 */
 div[data-baseweb="select"] > div, .stTextInput input, .stNumberInput input, .stDateInput input {{
   border:1px solid {BORDER} !important; border-radius:10px !important; background:rgba(18,18,30,.6) !important; color:{TEXT} !important; }}
@@ -259,17 +253,26 @@ with st.sidebar:
     st.divider()
     st.caption("🟢 Claude 연결됨 · " + CLAUDE_MODEL if _client else "⚪ 데모 모드 (생성은 API 키 필요)")
 
-# ── 페이지 정의 (고급 이모지) ──
-P1 = "📈 성과 분석"; P2 = "✍️ 소재 A/B 기록"; P3 = "🗂️ 과거 데이터 조회"
-P4 = "🧭 소재 기획 리뷰"; P5 = "✨ 컷별 프롬프트 생성"
+# ── 페이지 정의 (텍스트 탭) ──
+P1 = "성과 분석"; P2 = "소재 A/B 기록"; P3 = "과거 데이터 조회"; P4 = "소재 기획 리뷰"; P5 = "컷별 프롬프트 생성"
 PAGES = [P1, P2, P3, P4, P5]
 
 st.markdown("# AI 소재 A/B 스튜디오")
 st.markdown("<div class='demo-banner'>📘 데이원컴퍼니 지원용 데모 · 표시되는 모든 수치는 가상(샘플) 데이터입니다 (교육 콘텐츠 소재 운영 예시)</div>", unsafe_allow_html=True)
 
+if "nav" not in st.session_state:
+    st.session_state["nav"] = P1
 if st.session_state.pop("_goto_gen", False):
     st.session_state["nav"] = P5
-PAGE = st.radio("nav", PAGES, horizontal=True, label_visibility="collapsed", key="nav")
+
+_nc = st.columns(len(PAGES))
+for _i, _pg in enumerate(PAGES):
+    if _nc[_i].button(_pg, key=f"navbtn_{_i}", use_container_width=True,
+                      type=("primary" if st.session_state["nav"] == _pg else "secondary")):
+        st.session_state["nav"] = _pg
+        st.rerun()
+st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+PAGE = st.session_state["nav"]
 
 
 # ════════════════ 1) 성과 분석 ════════════════
