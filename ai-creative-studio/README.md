@@ -13,7 +13,7 @@
 | **🎬 컷별 프롬프트 생성** | 방향 입력 → 컷(씬)별 영상 프롬프트·자막·나레이션 생성 → **엑셀(.xlsx) 다운로드** |
 
 - 데이터: **SQLite**(`ab_studio.db`) · 첫 실행 시 샘플 자동 시드
-- 컷별 생성: **Gemini**(키 있을 때) / 키 없으면 템플릿 데모
+- 컷별 생성: **Claude**(Anthropic API, 키 있을 때) / 키 없으면 템플릿 데모
 - 생성 결과·조회 결과 모두 **엑셀·CSV 다운로드**
 
 > 공개 포폴 데모(정적): https://jiuk-bot.github.io/day1/tool.html · /insights.html
@@ -34,8 +34,8 @@ streamlit run app.py        # 또는: python3 -m streamlit run app.py
 2. https://share.streamlit.io → New app → `app.py` → Deploy
 3. **Settings → Secrets** 에 붙여넣기 (키는 코드에 안 넣음)
    ```toml
-   GEMINI_API_KEY = "실제_키"
-   GEMINI_MODEL   = "gemini-1.5-flash"
+   ANTHROPIC_API_KEY = "실제_Claude_키"
+   CLAUDE_MODEL      = "claude-opus-4-8"   # 비용 아끼려면 claude-haiku-4-5
    APP_PASSWORD   = "팀_공유_비밀번호"
    ```
 4. **접근 제어**: Settings → Sharing → "Only specific people" → **팀원 구글 이메일 추가** (+ 비밀번호 이중 잠금)

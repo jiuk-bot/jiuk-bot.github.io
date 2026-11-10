@@ -131,16 +131,16 @@ def to_excel_bytes(df, sheet="sheet1"):
 
 init_db()
 
-# ── Gemini(컷별 프롬프트 생성용) ────────────────────────────────
-_model = None
-if sget("GEMINI_API_KEY"):
+# ── Claude(컷별 프롬프트 생성용) ──────────────────────────────
+_client = None
+CLAUDE_MODEL = sget("CLAUDE_MODEL", "claude-opus-4-8")  # 비용 민감 시 claude-haiku-4-5 로 교체
+if sget("ANTHROPIC_API_KEY"):
     try:
-        import google.generativeai as genai
+        import anthropic
 
-        genai.configure(api_key=sget("GEMINI_API_KEY"))
-        _model = genai.GenerativeModel(sget("GEMINI_MODEL", "gemini-1.5-flash"))
+        _client = anthropic.Anthropic(api_key=sget("ANTHROPIC_API_KEY"))
     except Exception as e:  # noqa
-        st.sidebar.error(f"Gemini 초기화 실패: {e}")
+        st.sidebar.error(f"Claude 초기화 실패: {e}")
 
 # ── 사이드바 네비게이션(탭 대신 분리 버튼) ──────────────────────
 st.sidebar.title("🎬 AI 소재 A/B 스튜디오")
@@ -151,7 +151,7 @@ PAGE = st.sidebar.radio(
     label_visibility="collapsed",
 )
 st.sidebar.divider()
-st.sidebar.caption(("🟢 Gemini 연결됨" if _model else "⚪ 데모 모드(생성 기능은 API 키 필요)"))
+st.sidebar.caption(("🟢 Claude 연결됨 · " + CLAUDE_MODEL if _client else "⚪ 데모 모드(생성 기능은 API 키 필요)"))
 
 
 # ════════════════════════════════════════════════════════════════
@@ -363,13 +363,23 @@ elif PAGE == "🎬 컷별 프롬프트 생성":
 
     if st.button("⚡ 컷별 프롬프트 생성", type="primary"):
         rows = None
-        if _model:
+        if _client:
             try:
-                prompt = f"""너는 AI 영상 광고 디렉터다. 아래 조건으로 컷(씬)별 스토리보드를 만들어라.
-[상품] {product} / [소구] {angle} / [후킹] {hook} / [톤] {tone} / [길이] {dur}초 / [컷수] {cuts}
-각 컷마다: scene(장면설명 한국어), video_prompt(영문 영상생성 프롬프트, 끝에 반드시 "No text, no letters."),
-subtitle(한국어 자막), narration(한국어 나레이션). JSON으로만: {{"cuts":[{{"scene":"","video_prompt":"","subtitle":"","narration":""}}]}}"""
-                raw = (_model.generate_content(prompt).text or "").strip()
+                prompt = (
+                    "너는 AI 영상 광고 디렉터다. 아래 조건으로 컷(씬)별 스토리보드를 만들어라.\n"
+                    f"[상품] {product} / [소구] {angle} / [후킹] {hook} / [톤] {tone} / [길이] {dur}초 / [컷수] {cuts}\n"
+                    "각 컷마다: scene(장면설명 한국어), video_prompt(영문 영상생성 프롬프트, 끝에 반드시 \"No text, no letters.\" 포함), "
+                    f"subtitle(한국어 자막), narration(한국어 나레이션). 정확히 {cuts}개의 컷을 만들어라.\n"
+                    "반드시 JSON으로만 응답(설명·코드펜스 금지): "
+                    '{"cuts":[{"scene":"","video_prompt":"","subtitle":"","narration":""}]}'
+                )
+                with st.spinner(f"Claude({CLAUDE_MODEL})가 컷별 스토리보드를 생성 중..."):
+                    resp = _client.messages.create(
+                        model=CLAUDE_MODEL,
+                        max_tokens=4000,
+                        messages=[{"role": "user", "content": prompt}],
+                    )
+                raw = next((b.text for b in resp.content if b.type == "text"), "").strip()
                 if raw.startswith("```"):
                     raw = raw.strip("`"); raw = raw[raw.find("{"): raw.rfind("}") + 1]
                 rows = json.loads(raw).get("cuts", [])
@@ -383,8 +393,8 @@ subtitle(한국어 자막), narration(한국어 나레이션). JSON으로만: {{
                 "subtitle": f"[{i+1}컷 자막] {angle} 메시지",
                 "narration": f"[{i+1}컷 나레이션] {angle}을(를) {hook}으로 전달",
             } for i in range(cuts)]
-            if not _model:
-                st.warning("데모 모드(템플릿)입니다. Secrets에 GEMINI_API_KEY를 넣으면 실제 생성됩니다.")
+            if not _client:
+                st.warning("데모 모드(템플릿)입니다. Secrets에 ANTHROPIC_API_KEY를 넣으면 실제 생성됩니다.")
 
         out = pd.DataFrame([{
             "컷": i + 1,
