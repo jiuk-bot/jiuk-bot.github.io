@@ -80,6 +80,13 @@ div[data-testid="stExpander"] {{ background:{CARD}; border:1px solid {BORDER}; b
 .stButton>button[kind="primary"] {{ background:linear-gradient(135deg,#7C5CFF,#C06BFF) !important; border:0 !important; color:#fff !important; box-shadow:0 12px 32px -10px rgba(124,92,255,.7); }}
 div[data-testid="stDataFrame"] {{ border:1px solid {BORDER}; border-radius:12px; }}
 .stAlert {{ border-radius:12px; }}
+/* 운영기간 달력 — 월 이동 헤더/화살표 선명하게 (다크) */
+div[data-baseweb="calendar"] {{ background:#15151f !important; border:1px solid rgba(124,92,255,.35) !important; border-radius:12px !important; padding:6px !important; }}
+div[data-baseweb="calendar"] *, div[data-baseweb="calendar"] [role="gridcell"] {{ color:{TEXT} !important; }}
+div[data-baseweb="calendar"] button {{ background:transparent !important; opacity:1 !important; visibility:visible !important; border:none !important; box-shadow:none !important; }}
+div[data-baseweb="calendar"] button:hover {{ background:rgba(124,92,255,.25) !important; border-radius:8px !important; }}
+div[data-baseweb="calendar"] svg {{ fill:{TEXT} !important; color:{TEXT} !important; width:22px !important; height:22px !important; }}
+div[data-baseweb="calendar"] [aria-selected="true"] {{ background:linear-gradient(135deg,#7C5CFF,#C06BFF) !important; color:#fff !important; border-radius:8px !important; }}
 .sec-title {{ font-size:15px; font-weight:800; color:{TEXT}; margin:8px 0 2px; }}
 .sec-sub {{ font-size:12px; color:{MUTED}; margin-bottom:10px; }}
 ::selection {{ background:rgba(192,107,255,.4); color:#fff; }}
@@ -206,19 +213,19 @@ def to_excel_bytes(df, sheet="sheet1"):
     return buf.getvalue()
 
 
-def month_range(container, df, key):
-    """운영기간(월) 범위 슬라이더 → (시작월, 종료월) 'YYYY-MM'."""
-    months = sorted(set(df["date"].str[:7]))
-    if len(months) < 2:
-        only = months[0] if months else ""
-        return only, only
-    r = container.select_slider("운영기간 (월)", options=months, value=(months[0], months[-1]), key=key)
-    return (r[0], r[1]) if isinstance(r, (list, tuple)) else (r, r)
+def date_range(container, df, key):
+    """운영기간 달력(일자 범위) 선택 → (시작, 종료) 'YYYY-MM-DD'."""
+    dts = pd.to_datetime(df["date"], errors="coerce")
+    dmin, dmax = dts.min().date(), dts.max().date()
+    r = container.date_input("운영기간 (달력에서 시작~종료일 선택)", (dmin, dmax),
+                             min_value=dmin, max_value=dmax, key=key, format="YYYY-MM-DD")
+    if isinstance(r, (list, tuple)) and len(r) == 2:
+        return str(r[0]), str(r[1])
+    return str(dmin), str(dmax)
 
 
-def apply_months(df, s, e):
-    m = df["date"].str[:7]
-    return df[(m >= s) & (m <= e)]
+def apply_dates(df, s, e):
+    return df[(df["date"] >= s) & (df["date"] <= e)]
 
 
 def fmt_display(d):
@@ -297,9 +304,9 @@ if PAGE == P1:
     df = load_df()
     fc = st.columns([1.2, 1.8])
     cat_sel = fc[0].selectbox("📚 강의 카테고리", ["전체 카테고리"] + sorted(df["카테고리"].unique()))
-    s, e = month_range(fc[1], df, "perf_range")
+    s, e = date_range(fc[1], df, "perf_range")
     v = df if cat_sel.startswith("전체") else df[df["카테고리"] == cat_sel]
-    v = apply_months(v, s, e)
+    v = apply_dates(v, s, e)
     st.caption(f"📚 포함 강의 — {' · '.join(sorted(v['강의'].unique())) or '없음'}  ·  운영기간 {s} ~ {e}")
 
     if v.empty:
@@ -416,8 +423,8 @@ elif PAGE == P3:
     f_grade = c[3].multiselect("등급", ["A", "B", "C"])
     sc = st.columns([2, 2])
     kw = sc[0].text_input("강의/소재명 검색", "")
-    s, e = month_range(sc[1], df, "hist_range")
-    v = apply_months(df.copy(), s, e)
+    s, e = date_range(sc[1], df, "hist_range")
+    v = apply_dates(df.copy(), s, e)
     if f_cat: v = v[v["카테고리"].isin(f_cat)]
     if f_hook: v = v[v["후킹"].isin(f_hook)]
     if f_fmt: v = v[v["포맷"].isin(f_fmt)]
@@ -441,8 +448,8 @@ elif PAGE == P4:
     cat = c[0].selectbox("강의 카테고리", sorted(df["카테고리"].unique()))
     goal = c[1].selectbox("목표", ["전환 최대화 (CVR)", "효율 최대화 (CPA 최소)"])
     topk = c[2].slider("우수 소재 기준 상위 N", 2, 10, 4)
-    s, e = month_range(c[3], df, "review_range")
-    sub = apply_months(df[df["카테고리"] == cat], s, e).copy()
+    s, e = date_range(c[3], df, "review_range")
+    sub = apply_dates(df[df["카테고리"] == cat], s, e).copy()
     if len(sub) == 0:
         st.warning("해당 카테고리 데이터가 없습니다.")
     else:
