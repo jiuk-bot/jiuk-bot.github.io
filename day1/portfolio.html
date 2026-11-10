@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" style="background:#07070E;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,7 +31,9 @@ html{ scroll-behavior:smooth; }
 
 html,body{
   font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;
+  color:#EDEBFA;
   color:var(--ink);
+  background:#07070E;
   background:var(--void);
   line-height:1.72;
   word-break:keep-all;
@@ -39,6 +41,8 @@ html,body{
   -webkit-font-smoothing:antialiased;
 }
 p,h1,h2,h3,h4,li,span,div,td,th{ word-break:keep-all; overflow-wrap:break-word; }
+/* 링크 기본색(파란색) 방지 — 스타일이 일부 유실돼도 링크가 파랗게 뜨지 않도록 전역 리셋 */
+a{ color:inherit; text-decoration:none; }
 
 /* soft warm aura — premium depth instead of a hard grid */
 body::before{
@@ -434,7 +438,7 @@ body::after{
 ::selection{ background:rgba(192,107,255,.4); color:#fff; }
 .mstrip.ctr .m{text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 26px;}.mstrip.ctr .m .cap{font-size:14px;}.mstrip.ctr .m .val{font-size:44px;margin-top:18px;}.mstrip.ctr .m .val .u{font-size:20px;}.mstrip.ctr .m .sub{font-size:14px;margin-top:14px;}.hero .lead{padding:0;text-align:left;}</style>
 </head>
-<body>
+<body style="background:#07070E;color:#EDEBFA;">
 
 <nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
   <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
