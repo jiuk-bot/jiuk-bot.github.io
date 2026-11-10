@@ -450,13 +450,12 @@ body::after{
   }
   .hero-anim, .reveal, .grow-x, .grow-y { opacity:1 !important; transform:none !important; }
   .statusbar { position:static !important; }
-  header.hero { break-after: page; page-break-after: always; }   /* 표지 단독 */
-  .case { break-before: page; page-break-before: always; }       /* 케이스마다 새 페이지 */
-  .case:first-of-type { break-before: auto; page-break-before: auto; }
-  .case-top { break-after: avoid; page-break-after: avoid; }
-  .sec { break-inside: avoid; page-break-inside: avoid; }
-  h1,h2,h3,h4 { break-after: avoid; page-break-after: avoid; }
-  img, .readout, figure { break-inside: avoid; page-break-inside: avoid; }
+  header.hero { break-after: page; page-break-after: always; }   /* 표지만 단독 페이지 */
+  /* 모든 블록이 페이지에 걸쳐 자연스럽게 흐르게 — 큰 섹션이 통째로 밀려 빈공간 생기는 것 방지 */
+  .case, .sec { break-inside: auto; }
+  /* 작은 단위(이미지·지표박스)만 쪼개지지 않게 보호 */
+  img, .rd, figure { break-inside: avoid; page-break-inside: avoid; }
+  h2,h3,h4 { break-after: avoid; page-break-after: avoid; }      /* 제목이 내용과 떨어지지 않게 */
   /* 제목 글로우/지원동기 그라데이션 텍스트는 인쇄 시 색막대로 깨짐 → 단색 고정 */
   .hero h1 .glow { background:none !important; -webkit-text-fill-color:#C98BFF !important; color:#C98BFF !important; }
   .hero-anim[style*="border-left:3px solid #C06BFF"] { background:#140F28 !important; }
