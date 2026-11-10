@@ -208,6 +208,16 @@ def to_excel_bytes(df, sheet="sheet1"):
     return buf.getvalue()
 
 
+def date_range(container, df, key):
+    """운영기간 범위 선택 → (시작, 종료) ISO 문자열."""
+    dts = pd.to_datetime(df["date"], errors="coerce")
+    dmin, dmax = dts.min().date(), dts.max().date()
+    r = container.date_input("운영기간", (dmin, dmax), min_value=dmin, max_value=dmax, key=key, format="YYYY-MM-DD")
+    if isinstance(r, (list, tuple)) and len(r) == 2:
+        return str(r[0]), str(r[1])
+    return str(dmin), str(dmax)
+
+
 def fmt_display(d):
     """표시용: date→운영기간, CPA 천단위 콤마."""
     d = d.copy()
@@ -265,12 +275,16 @@ if "nav" not in st.session_state:
 if st.session_state.pop("_goto_gen", False):
     st.session_state["nav"] = P5
 
+
+def _nav_to(p):
+    st.session_state["nav"] = p
+
+
 _nc = st.columns(len(PAGES))
 for _i, _pg in enumerate(PAGES):
-    if _nc[_i].button(_pg, key=f"navbtn_{_i}", use_container_width=True,
-                      type=("primary" if st.session_state["nav"] == _pg else "secondary")):
-        st.session_state["nav"] = _pg
-        st.rerun()
+    _nc[_i].button(_pg, key=f"navbtn_{_i}", use_container_width=True,
+                   type=("primary" if st.session_state["nav"] == _pg else "secondary"),
+                   on_click=_nav_to, args=(_pg,))
 st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
 PAGE = st.session_state["nav"]
 
@@ -278,9 +292,16 @@ PAGE = st.session_state["nav"]
 # ════════════════ 1) 성과 분석 ════════════════
 if PAGE == P1:
     df = load_df()
-    cat_sel = st.columns([1, 2])[0].selectbox("📚 강의 카테고리", ["전체 카테고리"] + sorted(df["카테고리"].unique()))
+    fc = st.columns([1.2, 1.8])
+    cat_sel = fc[0].selectbox("📚 강의 카테고리", ["전체 카테고리"] + sorted(df["카테고리"].unique()))
+    s, e = date_range(fc[1], df, "perf_range")
     v = df if cat_sel.startswith("전체") else df[df["카테고리"] == cat_sel]
-    st.caption("📚 포함 강의 — " + " · ".join(sorted(v["강의"].unique())))
+    v = v[(v["date"] >= s) & (v["date"] <= e)]
+    st.caption(f"📚 포함 강의 — {' · '.join(sorted(v['강의'].unique())) or '없음'}  ·  운영기간 {s} ~ {e}")
+
+    if v.empty:
+        st.info("선택한 운영기간/카테고리에 데이터가 없습니다.")
+        st.stop()
 
     if len(v):
         av = v[v["등급"] == "A"]
@@ -390,8 +411,11 @@ elif PAGE == P3:
     f_hook = c[1].multiselect("후킹", sorted(df["후킹"].unique()))
     f_fmt = c[2].multiselect("포맷", sorted(df["포맷"].unique()))
     f_grade = c[3].multiselect("등급", ["A", "B", "C"])
-    kw = st.text_input("강의/소재명 검색", "")
+    sc = st.columns([2, 2])
+    kw = sc[0].text_input("강의/소재명 검색", "")
+    s, e = date_range(sc[1], df, "hist_range")
     v = df.copy()
+    v = v[(v["date"] >= s) & (v["date"] <= e)]
     if f_cat: v = v[v["카테고리"].isin(f_cat)]
     if f_hook: v = v[v["후킹"].isin(f_hook)]
     if f_fmt: v = v[v["포맷"].isin(f_fmt)]
@@ -411,11 +435,12 @@ elif PAGE == P3:
 elif PAGE == P4:
     st.markdown("<div class='sec-title'>소재 기획 리뷰</div><div class='sec-sub'>다음 소재를 기획하기 전, 과거 이긴 소재의 공통점을 확인하세요</div>", unsafe_allow_html=True)
     df = load_df()
-    c = st.columns(3)
+    c = st.columns([1.2, 1.3, 1, 1.6])
     cat = c[0].selectbox("강의 카테고리", sorted(df["카테고리"].unique()))
     goal = c[1].selectbox("목표", ["전환 최대화 (CVR)", "효율 최대화 (CPA 최소)"])
     topk = c[2].slider("우수 소재 기준 상위 N", 2, 10, 4)
-    sub = df[df["카테고리"] == cat].copy()
+    s, e = date_range(c[3], df, "review_range")
+    sub = df[(df["카테고리"] == cat) & (df["date"] >= s) & (df["date"] <= e)].copy()
     if len(sub) == 0:
         st.warning("해당 카테고리 데이터가 없습니다.")
     else:
