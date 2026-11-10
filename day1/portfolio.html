@@ -782,6 +782,12 @@ body::after{
       #cvid .pstep .ptitle{ font-size:12.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; }
       #cvid .pstep .pdesc{ font-size:10.5px; color:var(--dim); line-height:1.45; }
       #cvid .parrow{ display:flex; align-items:center; justify-content:center; flex:0 0 22px; color:var(--signal); font-size:15px; }
+      #cvid .vthumb{ display:block; position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0f0d1c; text-decoration:none; }
+      #cvid .vthumb .th{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+      #cvid .vthumb:hover .th{ transform:scale(1.05); }
+      #cvid .vthumb .pbtn{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%; background:rgba(12,10,22,.58); border:1.5px solid rgba(255,255,255,.85); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:.25s; }
+      #cvid .vthumb:hover .pbtn{ background:var(--signal-d); border-color:transparent; transform:translate(-50%,-50%) scale(1.08); }
+      #cvid .vbtnrow{ margin-top:18px; }
       @media(max-width:720px){ #cvid .pgrid,#cvid .vidgrid{ grid-template-columns:1fr; } #cvid .pipe{ flex-direction:column; } #cvid .parrow{ flex-basis:22px; transform:rotate(90deg); } }
     </style>
     <section class="case reveal" id="cvid">
@@ -836,46 +842,50 @@ body::after{
           <p style="margin-bottom:10px">7개월간 제작한 임플란트 가로형 AI 영상 광고입니다. <b>위로 올수록 최신작</b>이며, AI 영상 퀄리티가 올라가는 과정을 그대로 확인할 수 있습니다.</p>
           <div class="vidgrid">
             <div class="feat">
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/dzGux_ALcu0" title="인터뷰 (대표)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/dzGux_ALcu0" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/dzGux_ALcu0/hqdefault.jpg" alt="26.05 인터뷰 (대표)" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">⭐ 26.05 · 인터뷰 · <b>대표 영상</b></div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/9a9m3_IFDmw" title="경기도민 임플란트 이야기 3화" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/9a9m3_IFDmw" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/9a9m3_IFDmw/hqdefault.jpg" alt="경기도민 임플란트 이야기 3화" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">경기도민 임플란트 이야기 3화 · <b>브랜드 시리즈</b></div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/5zzOggCOYAo" title="지역구강건강" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/5zzOggCOYAo" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/5zzOggCOYAo/hqdefault.jpg" alt="지역구강건강" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.09 · 지역구강건강 <b style="color:var(--signal)">· 최신작</b></div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/0CqPuhEU3GA" title="명의특집" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/0CqPuhEU3GA" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/0CqPuhEU3GA/hqdefault.jpg" alt="명의특집" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.08 · 명의특집</div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/utoazwFX-_o" title="Q&A" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/utoazwFX-_o" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/utoazwFX-_o/hqdefault.jpg" alt="치아 Q&amp;A" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.07 · 치아 Q&amp;A</div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/T8ZnZbMt0fk" title="치아백서" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/T8ZnZbMt0fk" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/T8ZnZbMt0fk/hqdefault.jpg" alt="치아백서" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.07 · 치아백서</div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/dpH4sNvDWVc" title="치아정보톡" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/dpH4sNvDWVc" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/dpH4sNvDWVc/hqdefault.jpg" alt="치아정보톡" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.06 · 치아정보톡</div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/PURz9uwrKdU" title="원장 인터뷰" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/PURz9uwrKdU" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/PURz9uwrKdU/hqdefault.jpg" alt="원장 인터뷰" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.06 · 원장 인터뷰</div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/PDesxP32WWM" title="명의는어디에 전국편" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/PDesxP32WWM" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/PDesxP32WWM/hqdefault.jpg" alt="명의는어디에 전국편" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.05 · 명의는어디에 (전국편)</div>
             </div>
             <div>
-              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/kGVvjXjE5J4" title="임플란트 명의" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <a class="vthumb" href="https://youtu.be/kGVvjXjE5J4" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/kGVvjXjE5J4/hqdefault.jpg" alt="임플란트 명의" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.02 · 임플란트 명의</div>
             </div>
           </div>
+          <div class="vbtnrow">
+            <a class="cta-live" href="https://jiuk-bot.github.io/day1/videos.html"><span class="pulse"></span>▶ AI 영상 10편 전체 재생 페이지 열기</a>
+          </div>
+          <p class="note" style="margin-top:8px">썸네일을 클릭하면 해당 영상이, 위 버튼을 누르면 전체 재생 페이지가 열립니다.</p>
         </div>
 
         <div class="sec">
