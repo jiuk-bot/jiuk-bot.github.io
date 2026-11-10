@@ -494,6 +494,7 @@ body::after{
       <div class="rail-h">CASE INDEX</div>
       <nav class="rail">
         <a href="#cvid"><span class="rn">▶</span><span>AI 영상 크리에이티브</span></a>
+        <a href="#ctool"><span class="rn">⚙</span><span>AI 소재 생성·분석 툴</span></a>
         <a href="#c2"><span class="rn">01</span><span>AI 성과 대시보드</span></a>
         <a href="#c3"><span class="rn">02</span><span>광고 운영 자동화 봇</span></a>
         <a href="#c1"><span class="rn">03</span><span>치과 임플란트 다매체</span></a>
@@ -697,6 +698,61 @@ body::after{
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
           <p class="insight">AI 영상은 <b>"생성"만으로 끝나지 않는다</b> — 후킹 시나리오 설계, 깨진 글자 제어, 로고 제거·자막 합성 같은 <b>'마감'까지 직접 해야</b> 실제 광고로 쓸 수 있는 결과물이 된다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TOOL · 소재 생성→분석 루프 ===================== -->
+    <style>
+      #ctool .tbadge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.32); padding:3px 10px; border-radius:999px; }
+      #ctool .loop{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:4px 0 6px; }
+      #ctool .loop .ls{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
+      #ctool .loop .la{ color:var(--signal); font-weight:800; }
+      #ctool .loop .ls.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
+      #ctool .twins{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; }
+      #ctool .tcard{ display:flex; flex-direction:column; gap:10px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; transition:transform .3s, border-color .3s, box-shadow .3s; }
+      #ctool .tcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
+      #ctool .tcard .ti{ font-size:26px; } #ctool .tcard h4{ font-size:15px; font-weight:800; color:var(--ink); }
+      #ctool .tcard p{ font-size:12.5px; color:var(--mute); line-height:1.6; flex:1; }
+      #ctool .tcard .go{ align-self:flex-start; display:inline-flex; align-items:center; gap:7px; padding:10px 16px; border-radius:11px; font-weight:800; font-size:13px; text-decoration:none; border:1px solid rgba(124,92,255,.5); color:#C9A6FF; }
+      #ctool .tcard .go:hover{ background:var(--neon,linear-gradient(135deg,#7C5CFF,#C06BFF)); color:#fff; border-color:transparent; }
+      @media(max-width:720px){ #ctool .twins{ grid-template-columns:1fr; } }
+    </style>
+    <section class="case reveal" id="ctool">
+      <div class="case-top">
+        <div class="ch"><span class="tbadge">TOOL · SIDE PROJECT</span><span class="org">직접 설계·구현한 AI 마케팅 툴</span></div>
+        <h2>AI 소재 생성 → 성과 분석, 닫힌 학습 루프</h2>
+        <div class="tags">
+          <span class="tag">생성형 AI · 바이브코딩</span>
+          <span class="tag">A/B 자동화</span>
+          <span class="tag">크리에이티브 인텔리전스</span>
+        </div>
+      </div>
+      <p class="lead">소재를 <b>AI로 생성</b>하고, <b>A/B 결과를 분석</b>해 다음 소재에 피드백하는 <b>루프를 직접 만들었습니다</b> — 반복되는 소재 기획·성과 분석을 시스템화한 사이드 프로젝트입니다.</p>
+      <div class="body">
+        <div class="sec">
+          <div class="loop">
+            <span class="ls me">① AI 소재 생성</span><span class="la">→</span>
+            <span class="ls">② A/B 테스트</span><span class="la">→</span>
+            <span class="ls me">③ 성과 분석</span><span class="la">→</span>
+            <span class="ls">④ 공통점 학습</span><span class="la">↺</span>
+            <span class="ls me">더 나은 소재</span>
+          </div>
+          <div class="twins">
+            <div class="tcard">
+              <div class="ti">⚡</div>
+              <h4>AI 광고 소재 A/B 자동 생성기</h4>
+              <p>실제 운영에서 쓴 <b>"소구포인트 × 후킹 2단계 A/B"</b>를 제품화. 상품을 입력하면 소구별·후킹별로 <b>광고 카피·이미지 프롬프트·숏폼 스크립트</b>를 A/B 매트릭스로 생성합니다.</p>
+              <a class="go" href="tool.html">▶ 생성기 체험하기 →</a>
+            </div>
+            <div class="tcard">
+              <div class="ti">📊</div>
+              <h4>AI 소재 성과 분석 대시보드</h4>
+              <p>A/B 결과를 모아 <b>소재 속성(소구·후킹·포맷)과 성과(CTR·CVR·CPA)를 교차 분석</b> — <b>이기는 소재의 공통점</b>과 <b>업종별 최적 소재</b>를 데이터로 도출합니다.</p>
+              <a class="go" href="insights.html">▶ 분석 대시보드 열기 →</a>
+            </div>
+          </div>
+          <p class="note" style="margin-top:14px">실서비스 버전은 광고 API + LLM(속성 자동 태깅)으로 실시간 동작하도록 설계. 두 페이지는 로직·출력 형태를 보여주는 데모입니다.</p>
         </div>
       </div>
     </section>

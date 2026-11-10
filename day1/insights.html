@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · AI 소재 성과 분석 대시보드</title>
+<meta name="description" content="A/B 테스트 결과를 모아 소재 속성(소구·후킹·포맷)과 성과(CTR·CVR·CPA)를 교차 분석해 '이기는 소재의 공통점'과 '업종별 최적 소재'를 도출하는 크리에이티브 인텔리전스 대시보드." />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  :root{ --k:#EDEBFA; --mute:#9E99BC; --dim:#615D83; --line:rgba(124,92,255,.18); --panel:rgba(18,18,30,.6); --signal:#B794F6; --sd:#7C5CFF; --good:#7BE0A3; --warn:#FFB86B; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{ background:#07070E; color:var(--k); font-family:'Pretendard',-apple-system,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  body::before{ content:""; position:fixed; inset:-12%; z-index:0; pointer-events:none;
+    background:radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.2), transparent 62%),
+              radial-gradient(34% 46% at 92% 16%, rgba(255,92,225,.13), transparent 62%),
+              radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.12), transparent 64%); filter:blur(26px); }
+  nav,main,footer{ position:relative; z-index:1; }
+  nav{ position:sticky; top:0; z-index:50; background:rgba(10,10,18,.74); backdrop-filter:saturate(1.2) blur(14px); border-bottom:1px solid var(--line); }
+  .nav-in{ max-width:1120px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .logo{ font-weight:800; font-size:17px; color:#EDEBFA; text-decoration:none; } .logo span{ color:#C06BFF; }
+  .nav-links{ display:flex; gap:2px; align-items:center; font-size:14.5px; flex-wrap:wrap; justify-content:flex-end; }
+  .nav-links a{ color:#9E99BC; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:10px; }
+  .nav-links a.active{ color:#fff; font-weight:800; background:rgba(124,92,255,.18); }
+  main{ max-width:1120px; margin:0 auto; padding:40px 24px 70px; }
+  .eyebrow{ font-size:12.5px; font-weight:800; letter-spacing:.14em; color:#C9A6FF; }
+  h1{ font-size:clamp(25px,4vw,38px); font-weight:800; letter-spacing:-.04em; margin:10px 0 12px; line-height:1.22; }
+  h1 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .lead{ color:var(--mute); font-size:15px; line-height:1.7; max-width:68ch; } .lead b{ color:#C9A6FF; }
+  .back{ display:inline-flex; gap:8px; margin-top:18px; padding:11px 18px; border-radius:12px; border:1px solid rgba(124,92,255,.45); color:#EDEBFA; text-decoration:none; font-weight:700; font-size:14px; }
+  .back:hover{ background:rgba(124,92,255,.14); }
+  .sec-h{ font-size:14px; font-weight:800; color:#C9A6FF; letter-spacing:.02em; margin:42px 0 14px; display:flex; align-items:center; gap:8px; }
+  .sec-h::before{ content:''; width:5px; height:16px; background:linear-gradient(180deg,#7C5CFF,#FF5CE1); border-radius:2px; }
+  .sec-h small{ font-weight:600; color:var(--dim); font-size:12px; letter-spacing:0; }
+  /* filter chips */
+  .filters{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
+  .chip{ padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--mute); font-size:13px; font-weight:700; cursor:pointer; }
+  .chip.on{ background:rgba(124,92,255,.16); color:#fff; border-color:rgba(124,92,255,.45); }
+  /* table */
+  .tblwrap{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+  table{ width:100%; border-collapse:collapse; min-width:720px; }
+  th,td{ padding:11px 13px; text-align:left; font-size:12.5px; border-bottom:1px solid rgba(124,92,255,.08); white-space:nowrap; }
+  th{ color:var(--dim); font-weight:700; font-size:11px; letter-spacing:.03em; cursor:pointer; user-select:none; }
+  th:hover{ color:var(--signal); }
+  td.name{ font-weight:700; color:#fff; white-space:normal; min-width:150px; }
+  .pill{ font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:6px; background:rgba(124,92,255,.12); color:#C9A6FF; border:1px solid rgba(124,92,255,.22); }
+  .pill.hook-emp{ background:rgba(123,224,163,.1); color:var(--good); border-color:rgba(123,224,163,.28); }
+  .pill.hook-agg{ background:rgba(255,184,107,.1); color:var(--warn); border-color:rgba(255,184,107,.28); }
+  .num{ font-variant-numeric:tabular-nums; }
+  .grade{ font-weight:800; } .g-A{ color:var(--good); } .g-B{ color:var(--signal); } .g-C{ color:var(--warn); }
+  /* insight cards */
+  .ins{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+  .icard{ background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 17px; }
+  .icard h3{ font-size:14px; font-weight:800; color:#fff; margin-bottom:4px; }
+  .icard p{ font-size:12.5px; color:var(--mute); line-height:1.55; margin-bottom:12px; }
+  .bar{ display:flex; align-items:center; gap:10px; margin:7px 0; font-size:12px; }
+  .bar .bl{ width:92px; flex:0 0 92px; color:var(--mute); font-weight:700; }
+  .bar .bt{ flex:1; height:16px; border-radius:5px; background:rgba(255,255,255,.05); overflow:hidden; }
+  .bar .bf{ height:100%; border-radius:5px; display:flex; align-items:center; justify-content:flex-end; padding-right:7px; font-size:10.5px; font-weight:800; color:#0a0a12; }
+  .bf.good{ background:linear-gradient(90deg,#4FB783,#7BE0A3); } .bf.warn{ background:linear-gradient(90deg,#C98A4A,#FFB86B); } .bf.sig{ background:linear-gradient(90deg,#7C5CFF,#C06BFF); color:#fff; }
+  /* matrix */
+  .mtx{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; background:var(--panel); }
+  .mtx table{ min-width:640px; } .mtx td{ white-space:normal; }
+  .mtx td.win{ color:#fff; font-weight:700; }
+  .note{ font-size:11.5px; color:var(--dim); margin-top:16px; line-height:1.6; } .note b{ color:var(--mute); }
+  footer{ max-width:1120px; margin:0 auto; padding:26px 24px 50px; color:var(--dim); font-size:13px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; } footer a{ color:#C9A6FF; text-decoration:none; }
+  @media(max-width:720px){ .ins{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="index.html">JIUK<span>.</span>YOON</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="tool.html">AI 소재 생성기</a>
+      <a href="insights.html" class="active">소재 성과 분석</a>
+      <a href="resume.html">이력서</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">AI CREATIVE INTELLIGENCE · DASHBOARD</div>
+  <h1>AI 소재 성과 분석 — <span class="hl">이기는 소재의 공통점을 찾다</span></h1>
+  <p class="lead">A/B 테스트 결과를 모아 <b>소재의 속성(소구·후킹·포맷·길이)과 성과(CTR·CVR·CPA)를 교차 분석</b>합니다. <b>어떤 공통점을 가진 소재가 이기는지</b>, <b>업종별로 어떤 소재가 효율이 좋은지</b>를 데이터로 도출해 — 다음 소재 제작에 바로 피드백하는 <b>생성 → 테스트 → 학습 루프</b>의 '학습' 단계입니다.</p>
+  <a class="back" href="portfolio.html#ctool">← 포트폴리오로 돌아가기</a>
+
+  <div class="sec-h">소재 A/B 테스트 결과 <small>· 업종 필터 · 열 머리글 클릭 시 정렬</small></div>
+  <div class="filters" id="filters"></div>
+  <div class="tblwrap">
+    <table id="tbl">
+      <thead><tr>
+        <th data-k="name">소재</th>
+        <th data-k="biz">업종</th>
+        <th data-k="angle">소구포인트</th>
+        <th data-k="hook">후킹 유형</th>
+        <th data-k="fmt">포맷</th>
+        <th data-k="ctr" class="num">CTR(%)</th>
+        <th data-k="cvr" class="num">CVR(%)</th>
+        <th data-k="cpa" class="num">CPA(상대)</th>
+        <th data-k="grade">등급</th>
+      </tr></thead>
+      <tbody id="tbody"></tbody>
+    </table>
+  </div>
+
+  <div class="sec-h">이기는 소재의 공통점 <small>· 전 업종 교차 분석</small></div>
+  <div class="ins">
+    <div class="icard">
+      <h3>후킹: 공감형 &gt; 자극형 (전환 기준)</h3>
+      <p>자극형은 CTR은 높지만 <b>CVR이 급락</b>(클릭만 많고 전환 약함). 공감·문제해결형이 <b>전환을 만든다</b> — 전 업종 공통.</p>
+      <div class="bar"><span class="bl">공감형 CVR</span><span class="bt"><span class="bf good" style="width:92%">4.5%</span></span></div>
+      <div class="bar"><span class="bl">자극형 CVR</span><span class="bt"><span class="bf warn" style="width:44%">2.1%</span></span></div>
+    </div>
+    <div class="icard">
+      <h3>포맷: 세로 숏폼 = CTR 최고 · 이미지 = 이탈 최저</h3>
+      <p>세로 숏폼이 <b>CTR을 끌고</b>, 이미지는 <b>이탈이 낮아 CVR이 안정</b>적. 둘을 역할로 나눠 쓰는 게 효율적.</p>
+      <div class="bar"><span class="bl">세로 숏폼</span><span class="bt"><span class="bf sig" style="width:100%">CTR 2.0</span></span></div>
+      <div class="bar"><span class="bl">가로 영상</span><span class="bt"><span class="bf sig" style="width:80%">CTR 1.6</span></span></div>
+      <div class="bar"><span class="bl">이미지</span><span class="bt"><span class="bf sig" style="width:55%">CTR 1.1</span></span></div>
+    </div>
+    <div class="icard">
+      <h3>길이: 짧을수록 끝까지 본다</h3>
+      <p>20초 → <b>12초로 줄이자 CTR +42.7%</b>. 긴 AI 컷은 부자연스러운 장면이 섞여 이탈↑ — <b>짧게 끊어 붙이는</b> 편집이 완성도·성과 모두 유리.</p>
+      <div class="bar"><span class="bl">12초</span><span class="bt"><span class="bf good" style="width:96%">CTR 9.56%</span></span></div>
+      <div class="bar"><span class="bl">20초</span><span class="bt"><span class="bf warn" style="width:67%">CTR 6.70%</span></span></div>
+    </div>
+    <div class="icard">
+      <h3>승자 소재의 구조 공통점</h3>
+      <p>등급 A 소재 대부분이 동일한 서사 구조를 공유:</p>
+      <div class="bar"><span class="bl">① 문제 공감</span><span class="bt"><span class="bf sig" style="width:90%">인트로 Hook</span></span></div>
+      <div class="bar"><span class="bl">② 해결 제시</span><span class="bt"><span class="bf sig" style="width:72%">핵심 가치</span></span></div>
+      <div class="bar"><span class="bl">③ 행동 유도</span><span class="bt"><span class="bf sig" style="width:54%">명확한 CTA</span></span></div>
+    </div>
+  </div>
+
+  <div class="sec-h">업종별 최적 소재 <small>· 데이터가 말하는 '이 업종엔 이 소재'</small></div>
+  <div class="mtx">
+    <table>
+      <thead><tr><th>업종</th><th>이기는 소구포인트</th><th>이기는 후킹</th><th>최적 포맷</th><th>핵심 인사이트</th></tr></thead>
+      <tbody>
+        <tr><td class="win">교육 (강의·클래스)</td><td>커리어 전환 · 실익(연봉/부업)</td><td class="pill-wrap"><span class="pill hook-emp">현실 공감</span></td><td>세로 숏폼</td><td>‘나도 될까?’ 불안을 공감으로 풀면 전환↑</td></tr>
+        <tr><td class="win">의료 (임플란트)</td><td>가격 투명성 · 신뢰</td><td class="pill-wrap"><span class="pill hook-emp">문제 제기 → 안심</span></td><td>가로 영상 + 이미지</td><td>자극·공포형은 CTR만↑, 신뢰형이 전환</td></tr>
+        <tr><td class="win">생활서비스 (공유창고)</td><td>문제 해결 · 일상 공감</td><td class="pill-wrap"><span class="pill hook-emp">직장인 공감</span></td><td>세로 숏폼 + 리뷰 이미지</td><td>가격 자극형은 CVR 최저, 공감형이 승</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note">※ 위 데이터는 <b>분석 로직·대시보드 구조를 보여주는 샘플</b>입니다. 실제 서비스 버전은 광고 플랫폼 API로 소재 성과를 수집하고, <b>LLM으로 각 소재의 속성(소구·후킹·비주얼 요소)을 자동 태깅</b>한 뒤 성과와 교차 분석하도록 설계되어 있습니다 (성과 대시보드와 동일하게 Streamlit + API). 인사이트 방향(자극형 CTR↑·CVR↓, 숏폼·12초 우위 등)은 실제 운영 데이터에서 검증된 패턴입니다.</div>
+</main>
+
+<footer>
+  <div>© 2026 윤지욱 (JIUK.YOON) · AI 마케터</div>
+  <div><a href="tool.html">AI 소재 생성기</a> · <a href="portfolio.html#ctool">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
+</footer>
+
+<script>
+const ROWS = [
+  {name:"데이터강의 · 커리어 공감", biz:"교육", angle:"커리어 전환", hook:"공감", fmt:"세로 숏폼", ctr:2.1, cvr:4.8, cpa:72, grade:"A"},
+  {name:"데이터강의 · 연봉 숫자", biz:"교육", angle:"커리어 전환", hook:"숫자", fmt:"가로 영상", ctr:1.6, cvr:3.9, cpa:91, grade:"B"},
+  {name:"영상편집 · 부업 수익", biz:"교육", angle:"부업·수익화", hook:"공감", fmt:"세로 숏폼", ctr:2.4, cvr:4.2, cpa:80, grade:"A"},
+  {name:"영상편집 · 자극 인트로", biz:"교육", angle:"부업·수익화", hook:"자극", fmt:"가로 영상", ctr:2.8, cvr:2.1, cpa:142, grade:"C"},
+  {name:"임플란트 · 가격 문제제기", biz:"의료", angle:"가격 신뢰", hook:"공감", fmt:"가로 영상", ctr:1.2, cvr:5.6, cpa:61, grade:"A"},
+  {name:"임플란트 · 자녀 관여", biz:"의료", angle:"가격 신뢰", hook:"공감", fmt:"세로 숏폼", ctr:1.4, cvr:4.9, cpa:69, grade:"A"},
+  {name:"임플란트 · 공포 자극", biz:"의료", angle:"가격 신뢰", hook:"자극", fmt:"가로 영상", ctr:1.9, cvr:2.3, cpa:133, grade:"C"},
+  {name:"임플란트 · 원장 권위", biz:"의료", angle:"전문성", hook:"권위", fmt:"이미지", ctr:1.0, cvr:4.4, cpa:74, grade:"B"},
+  {name:"공유창고 · 직장인 공감", biz:"생활서비스", angle:"문제 해결", hook:"공감", fmt:"세로 숏폼", ctr:1.5, cvr:3.8, cpa:83, grade:"A"},
+  {name:"공유창고 · 가격 자극", biz:"생활서비스", angle:"가격", hook:"자극", fmt:"가로 영상", ctr:2.2, cvr:1.9, cpa:151, grade:"C"},
+  {name:"공유창고 · 리뷰 신뢰", biz:"생활서비스", angle:"신뢰", hook:"사회적 증거", fmt:"이미지", ctr:1.1, cvr:4.1, cpa:78, grade:"B"},
+  {name:"공유창고 · 문제 해결", biz:"생활서비스", angle:"문제 해결", hook:"공감", fmt:"세로 숏폼", ctr:1.7, cvr:3.6, cpa:86, grade:"B"}
+];
+const hookClass = h => h==="공감"? "hook-emp" : (h==="자극"? "hook-agg" : "");
+const tbody = document.getElementById('tbody');
+const filters = document.getElementById('filters');
+let bizFilter = "전체", sortK = "grade", sortAsc = true;
+const bizes = ["전체", ...Array.from(new Set(ROWS.map(r=>r.biz)))];
+bizes.forEach((b,i)=>{ const c=document.createElement('button'); c.className='chip'+(i===0?' on':''); c.textContent=b; c.onclick=()=>{bizFilter=b;[...filters.children].forEach(x=>x.classList.remove('on'));c.classList.add('on');render();}; filters.appendChild(c); });
+function render(){
+  let rows = ROWS.filter(r=> bizFilter==="전체" || r.biz===bizFilter);
+  rows.sort((a,b)=>{ let x=a[sortK],y=b[sortK]; if(typeof x==="string"){x=x.localeCompare(y);return sortAsc?x:-x;} return sortAsc?x-y:y-x; });
+  tbody.innerHTML = rows.map(r=>`<tr>
+    <td class="name">${r.name}</td>
+    <td>${r.biz}</td>
+    <td>${r.angle}</td>
+    <td><span class="pill ${hookClass(r.hook)}">${r.hook}</span></td>
+    <td>${r.fmt}</td>
+    <td class="num">${r.ctr.toFixed(1)}</td>
+    <td class="num">${r.cvr.toFixed(1)}</td>
+    <td class="num">${r.cpa}</td>
+    <td class="grade g-${r.grade}">${r.grade}</td>
+  </tr>`).join('');
+}
+document.querySelectorAll('#tbl th').forEach(th=>{ th.onclick=()=>{ const k=th.dataset.k; if(sortK===k) sortAsc=!sortAsc; else {sortK=k; sortAsc=(k==="cpa");} render(); }; });
+render();
+</script>
+</body>
+</html>

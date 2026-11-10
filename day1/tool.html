@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · AI 광고 소재 A/B 자동 생성기</title>
+<meta name="description" content="소구포인트 × 후킹 2단계 A/B 방법론을 제품화한 AI 광고 소재 자동 생성기. 상품을 입력하면 소구포인트별·후킹별로 광고 카피·이미지 프롬프트·숏폼 스크립트를 A/B 매트릭스로 생성합니다." />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  :root{ --k:#EDEBFA; --mute:#9E99BC; --dim:#615D83; --line:rgba(124,92,255,.18); --panel:rgba(18,18,30,.6); --signal:#B794F6; --sd:#7C5CFF; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{ background:#07070E; color:var(--k); font-family:'Pretendard',-apple-system,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  body::before{ content:""; position:fixed; inset:-12%; z-index:0; pointer-events:none;
+    background:radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.22), transparent 62%),
+              radial-gradient(34% 46% at 92% 16%, rgba(255,92,225,.14), transparent 62%),
+              radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.12), transparent 64%); filter:blur(26px); }
+  nav,main,footer{ position:relative; z-index:1; }
+  nav{ position:sticky; top:0; z-index:50; background:rgba(10,10,18,.74); backdrop-filter:saturate(1.2) blur(14px); border-bottom:1px solid var(--line); }
+  .nav-in{ max-width:1100px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .logo{ font-weight:800; font-size:17px; color:#EDEBFA; text-decoration:none; letter-spacing:-.02em; }
+  .logo span{ color:#C06BFF; }
+  .nav-links{ display:flex; gap:2px; align-items:center; font-size:14.5px; flex-wrap:wrap; justify-content:flex-end; }
+  .nav-links a{ color:#9E99BC; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:10px; }
+  .nav-links a.active{ color:#fff; font-weight:800; background:rgba(124,92,255,.18); }
+  main{ max-width:1100px; margin:0 auto; padding:40px 24px 70px; }
+  .eyebrow{ font-size:12.5px; font-weight:800; letter-spacing:.14em; color:#C9A6FF; }
+  h1{ font-size:clamp(26px,4vw,40px); font-weight:800; letter-spacing:-.04em; margin:10px 0 12px; line-height:1.22; }
+  h1 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .lead{ color:var(--mute); font-size:15px; line-height:1.7; max-width:66ch; }
+  .lead b{ color:#C9A6FF; }
+  .back{ display:inline-flex; align-items:center; gap:8px; margin-top:18px; padding:11px 18px; border-radius:12px; border:1px solid rgba(124,92,255,.45); color:#EDEBFA; text-decoration:none; font-weight:700; font-size:14px; }
+  .back:hover{ background:rgba(124,92,255,.14); }
+  /* 작동 원리 */
+  .sec-h{ font-size:13px; font-weight:800; color:#C9A6FF; letter-spacing:.04em; margin:40px 0 14px; display:flex; align-items:center; gap:8px; }
+  .sec-h::before{ content:''; width:5px; height:15px; background:linear-gradient(180deg,#7C5CFF,#FF5CE1); border-radius:2px; }
+  .pipe{ display:flex; align-items:stretch; gap:0; }
+  .pstep{ flex:1; min-width:0; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 10px 13px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:6px; position:relative; }
+  .pnum{ position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .pico{ font-size:23px; margin-top:3px; } .ptitle{ font-size:12px; font-weight:800; } .pdesc{ font-size:10.5px; color:var(--dim); line-height:1.4; }
+  .parrow{ display:flex; align-items:center; padding:0 5px; color:var(--signal); font-size:14px; }
+  /* 컨트롤 */
+  .panel{ margin-top:16px; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; }
+  .ctl{ display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; }
+  .fld{ display:flex; flex-direction:column; gap:6px; }
+  .fld label{ font-size:11.5px; font-weight:700; color:var(--mute); }
+  select, input{ background:#12121e; color:var(--k); border:1px solid var(--line); border-radius:10px; padding:11px 13px; font-size:14px; font-family:inherit; min-width:260px; }
+  .target{ font-size:12px; color:var(--dim); margin-top:10px; } .target b{ color:var(--signal); }
+  .gen{ margin-left:auto; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; border:0; border-radius:12px; padding:12px 22px; font-weight:800; font-size:14px; cursor:pointer; }
+  .tabs{ display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
+  .tab{ padding:8px 15px; border-radius:999px; border:1px solid var(--line); background:transparent; color:var(--mute); font-size:13px; font-weight:700; cursor:pointer; }
+  .tab.on{ background:rgba(124,92,255,.16); color:#fff; border-color:rgba(124,92,255,.45); }
+  .ab{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+  .card{ background:#101019; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  .card .hd{ padding:12px 15px; font-weight:800; font-size:13px; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--line); }
+  .badge{ font-size:10px; font-weight:800; padding:2px 9px; border-radius:999px; }
+  .badge.a{ background:rgba(124,92,255,.18); color:#C9A6FF; border:1px solid rgba(124,92,255,.4); }
+  .badge.b{ background:rgba(92,200,255,.14); color:#8fd3ff; border:1px solid rgba(92,200,255,.4); }
+  .card .bd{ padding:14px 15px; display:flex; flex-direction:column; gap:12px; }
+  .row .rl{ font-size:10.5px; font-weight:800; color:var(--dim); letter-spacing:.04em; margin-bottom:4px; display:flex; align-items:center; gap:6px; }
+  .headline{ font-size:16px; font-weight:800; color:#fff; line-height:1.35; }
+  .copy{ font-size:13px; color:var(--mute); line-height:1.55; }
+  .mono{ font-family:ui-monospace,Menlo,monospace; font-size:11.5px; color:var(--mute); background:rgba(124,92,255,.06); border:1px dashed rgba(124,92,255,.28); border-radius:8px; padding:9px 11px; line-height:1.5; }
+  .short{ font-size:12.5px; color:var(--mute); line-height:1.55; background:rgba(255,255,255,.03); border-left:2px solid var(--signal); border-radius:0 8px 8px 0; padding:8px 11px; }
+  .note{ font-size:11.5px; color:var(--dim); margin-top:16px; line-height:1.6; }
+  .note b{ color:var(--mute); }
+  .cta-live{ display:inline-flex; align-items:center; gap:8px; margin-top:8px; padding:11px 18px; border-radius:12px; border:1px solid rgba(124,92,255,.5); color:#C9A6FF; text-decoration:none; font-weight:700; font-size:13.5px; }
+  footer{ max-width:1100px; margin:0 auto; padding:26px 24px 50px; color:var(--dim); font-size:13px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; }
+  footer a{ color:#C9A6FF; text-decoration:none; }
+  @media(max-width:720px){ .pipe{ flex-direction:column; } .parrow{ transform:rotate(90deg); padding:4px 0; } .ab{ grid-template-columns:1fr; } select,input{ min-width:0; width:100%; } .ctl{ flex-direction:column; align-items:stretch; } .gen{ margin-left:0; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="index.html">JIUK<span>.</span>YOON</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="videos.html">AI 영상</a>
+      <a href="tool.html" class="active">AI 소재 생성기</a>
+      <a href="resume.html">이력서</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">SIDE PROJECT · AI CREATIVE TOOL</div>
+  <h1>AI 광고 소재 <span class="hl">A/B 자동 생성기</span></h1>
+  <p class="lead">실제 운영에서 쓴 <b>"소구포인트 × 후킹 2단계 A/B" 방법론을 그대로 제품화</b>했습니다. 상품만 입력하면 <b>소구포인트별·후킹별로 ① 광고 카피 ② 이미지 프롬프트 ③ 숏폼 스크립트</b>를 A/B 매트릭스로 자동 생성합니다 — 소재 기획의 반복 업무를 시스템화한 사이드 프로젝트입니다.</p>
+  <a class="back" href="portfolio.html#ctool">← 포트폴리오로 돌아가기</a>
+
+  <div class="sec-h">작동 원리</div>
+  <div class="pipe">
+    <div class="pstep"><span class="pnum">1</span><div class="pico">📦</div><div class="ptitle">상품 입력</div><div class="pdesc">상품·타겟 입력</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">2</span><div class="pico">🎯</div><div class="ptitle">소구포인트 분해</div><div class="pdesc">AI가 핵심 소구 N개 도출</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">3</span><div class="pico">🪝</div><div class="ptitle">후킹 A/B 변형</div><div class="pdesc">소구별 후킹 2종 생성</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">4</span><div class="pico">✍️</div><div class="ptitle">소재 동시 생성</div><div class="pdesc">카피·이미지 프롬프트·숏폼</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">5</span><div class="pico">🧪</div><div class="ptitle">A/B 매트릭스</div><div class="pdesc">바로 테스트할 세트 출력</div></div>
+  </div>
+
+  <div class="sec-h">생성 데모</div>
+  <div class="panel">
+    <div class="ctl">
+      <div class="fld">
+        <label>상품 선택</label>
+        <select id="product"></select>
+      </div>
+      <div class="fld" style="flex:1;">
+        <label>타겟 (자동 세팅)</label>
+        <input id="target" readonly />
+      </div>
+      <button class="gen" id="gen">⚡ 소재 생성</button>
+    </div>
+    <div class="target" id="targetline"></div>
+    <div class="tabs" id="tabs"></div>
+    <div class="ab" id="ab"></div>
+    <div class="note">※ 위 결과는 <b>실제 생성 예시</b>입니다. 실제 서비스 버전은 입력값을 받아 <b>Gemini / Claude API로 실시간 생성</b>하도록 설계되어 있습니다 (대시보드와 동일하게 Streamlit + API). 이 페이지는 로직·출력 형태를 보여주는 데모입니다.</div>
+  </div>
+</main>
+
+<footer>
+  <div>© 2026 윤지욱 (JIUK.YOON) · AI 마케터</div>
+  <div><a href="portfolio.html#ctool">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
+</footer>
+
+<script>
+const DATA = {
+  fastcampus: {
+    label: "패스트캠퍼스 · 데이터 분석 올인원 강의",
+    target: "비전공 2~5년차 직장인 · 데이터 직무 커리어 전환 희망",
+    angles: [
+      { name: "커리어 전환", variants: [
+        { k:"A", kname:"현실 공감형",
+          headline:"문과 출신이라 데이터는 무리? 6개월이면 바뀝니다",
+          copy:"비전공·노베이스에서 현업 데이터 분석가로 — 커리큘럼·포트폴리오·이직까지 한 번에.",
+          imgp:"A Korean office worker in their late 20s smiling while looking at a laptop showing colorful data charts, bright modern office, cinematic lighting, photorealistic. No text, no letters.",
+          short:"0–3초 훅: ‘문과 출신, 데이터 분석가 됨’ 자막 + 반전 표정 → 3–8초: 수강 전/후 비교 → 라스트: 커리큘럼 1컷 + CTA" },
+        { k:"B", kname:"숫자 호기심형",
+          headline:"데이터 분석가 몸값이 지금 가장 빠르게 오르는 이유",
+          copy:"채용 공고가 3배 늘어난 직무 — 비전공도 6개월 포트폴리오로 진입 가능.",
+          imgp:"A rising glowing line graph made of data points over a city skyline at dusk, premium, cinematic, photorealistic. No text, no letters.",
+          short:"0–3초 훅: 연봉 그래프 급상승 애니메이션 → 중반: 채용 수요 폭증 데이터 → 라스트: ‘지금이 적기’ CTA" }
+      ]},
+      { name: "실무 즉시 적용", variants: [
+        { k:"A", kname:"업무 효율형",
+          headline:"엑셀 야근, SQL 한 줄이면 끝납니다",
+          copy:"실무에서 바로 쓰는 SQL·태블로·파이썬 — 배운 걸 내일 업무에 적용.",
+          imgp:"Split screen of messy spreadsheets vs a clean automated dashboard, modern office desk, cinematic, photorealistic. No text, no letters.",
+          short:"0–3초: 야근하는 직장인 → 전환: SQL 한 줄로 끝나는 장면 → 라스트: ‘퇴근각’ 자막 + CTA" },
+        { k:"B", kname:"현직자 권위형",
+          headline:"현업 데이터 분석가가 실제로 쓰는 스킬만",
+          copy:"이론 말고 실무 — 현직자 커리큘럼으로 바로 써먹는 역량을.",
+          imgp:"A confident data analyst presenting a dashboard to colleagues in a bright meeting room, photorealistic, cinematic. No text, no letters.",
+          short:"0–3초: ‘현직자가 알려주는’ 자막 → 중반: 실무 화면 시연 → 라스트: 수강생 후기 1컷" }
+      ]},
+      { name: "비전공자 접근성", variants: [
+        { k:"A", kname:"불안 해소형",
+          headline:"코딩 1도 몰라도 괜찮습니다",
+          copy:"노베이스 전용 커리큘럼 — 기초부터 포트폴리오까지 손 잡고 갑니다.",
+          imgp:"A beginner smiling with relief while coding on a laptop, warm encouraging home atmosphere, photorealistic. No text, no letters.",
+          short:"0–3초: ‘코딩 처음인데 괜찮을까?’ → 전환: 단계별 커리큘럼 → 라스트: ‘누구나 가능’ CTA" },
+        { k:"B", kname:"사회적 증거형",
+          headline:"비전공 수강생 수천 명이 선택한 이유",
+          copy:"같은 고민을 한 비전공자들의 실제 전환 후기로 증명합니다.",
+          imgp:"A warm grid of diverse happy Korean learners' portraits, premium, photorealistic. No text, no letters.",
+          short:"0–3초: 후기 자막 빠르게 흐름 → 중반: 누적 수강생 숫자 → 라스트: CTA" }
+      ]}
+    ]
+  },
+  coloso: {
+    label: "콜로소 · 영상 편집 실무 클래스",
+    target: "숏폼 크리에이터 지망 · 부업 희망 직장인",
+    angles: [
+      { name: "부업·수익화", variants: [
+        { k:"A", kname:"수익 인증형",
+          headline:"영상 편집, 부업으로 월 100 버는 법",
+          copy:"숏폼 편집 수요 폭발 — 외주로 수익화하는 실전 클래스.",
+          imgp:"A person editing video on a laptop at a cozy home desk at night, glowing screen, cinematic, photorealistic. No text, no letters.",
+          short:"0–3초: ‘편집 부업 정산 내역’ → 중반: 작업 장면 → 라스트: ‘당신도’ CTA" },
+        { k:"B", kname:"라이프스타일형",
+          headline:"퇴근 후 2시간, 영상 편집으로 바뀐 삶",
+          copy:"직장 다니며 시작한 편집 부업 — 이렇게 시작하세요.",
+          imgp:"A relaxed person smiling at editing software after work, warm lamp light, photorealistic. No text, no letters.",
+          short:"0–3초: 퇴근 후 노트북 켜는 장면 → 중반: 결과물 → 라스트: 수익 자막" }
+      ]},
+      { name: "실무 기술력", variants: [
+        { k:"A", kname:"결과물 과시형",
+          headline:"유튜버가 실제로 쓰는 편집 기술",
+          copy:"프리미어·애프터이펙트 실무 워크플로를 그대로.",
+          imgp:"A creator editing a dynamic video timeline on dual monitors in a studio, cinematic, photorealistic. No text, no letters.",
+          short:"0–3초: 화려한 편집 결과물 → 중반: 작업 과정 → 라스트: ‘당신도 가능’" },
+        { k:"B", kname:"공식·방법론형",
+          headline:"조회수 터지는 편집엔 공식이 있습니다",
+          copy:"컷 편집·자막·리듬 — 조회수를 올리는 편집 공식을 공개.",
+          imgp:"A smartphone showing a viral short-form video with a rising view counter, vibrant, photorealistic. No text, no letters.",
+          short:"0–3초: 조회수 급상승 숫자 → 중반: 편집 공식 3가지 → 라스트: CTA" }
+      ]}
+    ]
+  },
+  implant: {
+    label: "치과 임플란트 (운영 도메인 · 일반화 검증)",
+    target: "50~60대 임플란트 고려층 + 결정에 관여하는 자녀",
+    angles: [
+      { name: "가격 신뢰", variants: [
+        { k:"A", kname:"문제 제기형",
+          headline:"임플란트, 추가금 폭탄 피하는 법",
+          copy:"숨은 비용 없이 투명한 가격 — 지원금 적용까지 안내.",
+          imgp:"A trustworthy Korean dentist explaining to an elderly patient in a bright clinic, reassuring, photorealistic. No text, no letters.",
+          short:"0–3초: ‘추가금 폭탄?’ 경고 자막 → 전환: 투명 가격표 → 라스트: 상담 CTA" },
+        { k:"B", kname:"자녀 관여형",
+          headline:"부모님 임플란트, 자녀가 꼭 확인할 것",
+          copy:"분납·사후관리까지 — 자녀가 알아야 할 체크리스트.",
+          imgp:"An adult child and elderly parent smiling together outdoors in warm sunlight, photorealistic. No text, no letters.",
+          short:"0–3초: ‘부모님께 꼭’ → 중반: 체크리스트 → 라스트: 상담 CTA" }
+      ]}
+    ]
+  }
+};
+
+const $ = s => document.querySelector(s);
+const sel = $('#product'), tgt = $('#target'), tgtline = $('#targetline'), tabsEl = $('#tabs'), abEl = $('#ab');
+let curProd = 'fastcampus', curAngle = 0;
+
+Object.keys(DATA).forEach(k => {
+  const o = document.createElement('option'); o.value = k; o.textContent = DATA[k].label; sel.appendChild(o);
+});
+
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderTabs(){
+  const angles = DATA[curProd].angles;
+  tabsEl.innerHTML = '';
+  angles.forEach((a,i) => {
+    const b = document.createElement('button');
+    b.className = 'tab' + (i===curAngle?' on':'');
+    b.textContent = '소구 ' + (i+1) + ' · ' + a.name;
+    b.onclick = () => { curAngle = i; renderTabs(); renderAB(); };
+    tabsEl.appendChild(b);
+  });
+}
+function card(v){
+  return `<div class="card">
+    <div class="hd"><span class="badge ${v.k.toLowerCase()}">${v.k}안</span> 후킹 · ${esc(v.kname)}</div>
+    <div class="bd">
+      <div class="row"><div class="rl">① 광고 카피</div><div class="headline">${esc(v.headline)}</div><div class="copy" style="margin-top:6px">${esc(v.copy)}</div></div>
+      <div class="row"><div class="rl">② 이미지 프롬프트 (영문)</div><div class="mono">${esc(v.imgp)}</div></div>
+      <div class="row"><div class="rl">③ 숏폼 스크립트</div><div class="short">${esc(v.short)}</div></div>
+    </div>
+  </div>`;
+}
+function renderAB(){
+  const a = DATA[curProd].angles[curAngle];
+  abEl.innerHTML = a.variants.map(card).join('');
+}
+function renderAll(){
+  tgt.value = DATA[curProd].target;
+  tgtline.innerHTML = '타겟: <b>' + esc(DATA[curProd].target) + '</b> · 소구포인트 ' + DATA[curProd].angles.length + '종 × 후킹 A/B 자동 생성';
+  curAngle = 0; renderTabs(); renderAB();
+}
+sel.onchange = () => { curProd = sel.value; renderAll(); };
+$('#gen').onclick = () => { renderAll(); $('#gen').textContent = '✓ 생성 완료'; setTimeout(()=>$('#gen').textContent='⚡ 소재 생성', 1200); };
+renderAll();
+</script>
+</body>
+</html>
