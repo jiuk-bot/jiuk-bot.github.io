@@ -26,49 +26,71 @@ except Exception:
 st.set_page_config(page_title="데이원 · AI 소재 A/B 스튜디오", page_icon="🎬", layout="wide",
                    initial_sidebar_state="expanded")
 
-# ── shadcn zinc 다크 팔레트 (실제 대시보드와 동일) ──
-BG = "#09090b"; CARD = "#18181b"; BORDER = "#27272a"
-TEXT = "#fafafa"; MUTED = "#a1a1aa"
-ACCENT = "#6366f1"; GREEN = "#22c55e"; RED = "#ef4444"; AMBER = "#f59e0b"
+# ── 네온 퍼플 팔레트 (포트폴리오와 동일 톤) ──
+BG = "#07070E"; CARD = "rgba(22,22,34,.55)"; BORDER = "rgba(124,92,255,.18)"
+TEXT = "#EDEBFA"; MUTED = "#9E99BC"
+ACCENT = "#7C5CFF"; ACCENT2 = "#C06BFF"; PINK = "#FF6BD6"; LILAC = "#C9A6FF"
+GREEN = "#7BE0A3"; AMBER = "#f59e0b"
 
 st.markdown(f"""
 <style>
-.stApp {{ background:{BG}; }}
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+html, body, [class*="css"], .stApp, input, textarea, select, button {{ font-family:'Pretendard',-apple-system,system-ui,sans-serif; }}
+.stApp {{
+  background:
+    radial-gradient(38% 50% at 10% 3%, rgba(124,92,255,.22), transparent 60%),
+    radial-gradient(34% 46% at 95% 13%, rgba(255,92,225,.15), transparent 60%),
+    radial-gradient(48% 56% at 74% 110%, rgba(92,200,255,.13), transparent 62%),
+    {BG};
+  background-attachment:fixed;
+}}
 #MainMenu, header, footer {{ visibility:hidden; }}
-.block-container {{ padding-top:1.6rem; max-width:1280px; }}
-h1,h2,h3,h4,h5 {{ color:{TEXT}; letter-spacing:-0.01em; }}
-.block-container h1 {{ font-size:1.5rem; }}
-.block-container h3 {{ font-size:1.05rem; }}
+.block-container {{ padding-top:1.4rem; max-width:1280px; }}
+.block-container h1 {{ font-size:1.95rem; font-weight:800; letter-spacing:-.025em;
+  background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 26px rgba(170,110,255,.35)); }}
+h2,h3,h4,h5 {{ color:{TEXT}; letter-spacing:-.01em; }}
 p, label, span, .stMarkdown {{ color:{TEXT}; }}
-div[data-testid="stMetric"] {{ background:{CARD}; border:1px solid {BORDER}; border-radius:12px;
-    padding:16px 18px; transition:border-color .15s; min-height:104px;
-    display:flex; flex-direction:column; justify-content:center; }}
-div[data-testid="stMetric"]:hover {{ border-color:{ACCENT}; }}
-div[data-testid="stMetricLabel"] p {{ color:{MUTED}; font-size:11.5px; font-weight:600; letter-spacing:.2px; }}
-div[data-testid="stMetricValue"] {{ color:{TEXT}; font-size:22px; font-weight:700; font-variant-numeric:tabular-nums; }}
-div[data-testid="stMetricDelta"] {{ font-size:12px; }}
-section[data-testid="stSidebar"] {{ background:#0a0a0c; border-right:1px solid {BORDER}; }}
+/* glass 메트릭 카드 */
+div[data-testid="stMetric"] {{ background:{CARD}; -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border:1px solid {BORDER}; border-radius:16px; padding:18px 20px; min-height:108px;
+  display:flex; flex-direction:column; justify-content:center;
+  box-shadow:0 24px 60px -36px rgba(0,0,0,.85); transition:transform .35s, border-color .35s, box-shadow .35s; }}
+div[data-testid="stMetric"]:hover {{ transform:translateY(-5px); border-color:rgba(160,110,255,.55);
+  box-shadow:0 40px 90px -40px rgba(124,92,255,.5); }}
+div[data-testid="stMetricLabel"] p {{ color:{MUTED}; font-size:11.5px; font-weight:600; letter-spacing:.3px; }}
+div[data-testid="stMetricValue"] {{ font-size:25px; font-weight:800; font-variant-numeric:tabular-nums;
+  background:linear-gradient(135deg,#B794F6,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }}
+section[data-testid="stSidebar"] {{ background:rgba(10,10,18,.6); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); border-right:1px solid {BORDER}; }}
 section[data-testid="stSidebar"] * {{ color:{TEXT}; }}
-.demo-banner {{ background:rgba(99,102,241,.12); color:#a5b4fc; border:1px solid rgba(99,102,241,.3);
-    border-radius:10px; padding:9px 14px; font-size:12.5px; font-weight:600; margin:2px 0 16px; }}
-/* 가로 탭 네비 (사이드바 라디오 대체) */
-div[role="radiogroup"] {{ gap:4px 22px; flex-wrap:wrap; border-bottom:1px solid {BORDER}; margin-bottom:20px; }}
-div[role="radiogroup"] > label {{ margin:0 !important; padding:0 2px 10px 2px; border-bottom:2px solid transparent; white-space:nowrap; flex:0 0 auto; }}
+.demo-banner {{ background:rgba(124,92,255,.12); color:{LILAC}; border:1px solid rgba(124,92,255,.3);
+  border-radius:12px; padding:10px 16px; font-size:12.5px; font-weight:600; margin:2px 0 18px;
+  -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); }}
+/* 가로 탭 네비 (글로우 언더라인) */
+div[role="radiogroup"] {{ gap:4px 26px; flex-wrap:wrap; border-bottom:1px solid {BORDER}; margin-bottom:22px; }}
+div[role="radiogroup"] > label {{ margin:0 !important; padding:0 2px 11px 2px; border-bottom:2px solid transparent; white-space:nowrap; flex:0 0 auto; }}
 div[role="radiogroup"] > label > div:first-child {{ display:none !important; }}
-div[role="radiogroup"] > label p {{ font-size:14.5px; font-weight:600; color:{MUTED}; transition:color .15s; }}
+div[role="radiogroup"] > label p {{ font-size:14.5px; font-weight:700; color:{MUTED}; transition:color .15s; }}
 div[role="radiogroup"] > label:hover p {{ color:{TEXT}; }}
-div[role="radiogroup"] > label:has(input:checked) {{ border-bottom-color:{ACCENT}; }}
-div[role="radiogroup"] > label:has(input:checked) p {{ color:{ACCENT}; }}
-/* 입력 요소 */
+div[role="radiogroup"] > label:has(input:checked) {{ border-bottom-color:{ACCENT2}; }}
+div[role="radiogroup"] > label:has(input:checked) p {{ color:#fff; text-shadow:0 0 16px rgba(170,110,255,.65); }}
+/* 입력 */
 div[data-baseweb="select"] > div, .stTextInput input, .stNumberInput input, .stDateInput input {{
-    border:1px solid {BORDER} !important; border-radius:8px !important; background:{CARD} !important; color:{TEXT} !important; }}
-div[data-testid="stExpander"] {{ background:{CARD}; border:1px solid {BORDER}; border-radius:12px; }}
-.stButton>button, .stDownloadButton>button {{ border-radius:9px; font-weight:700; }}
-.stButton>button[kind="primary"] {{ background:{ACCENT}; border:0; }}
-div[data-testid="stDataFrame"] {{ border:1px solid {BORDER}; border-radius:10px; }}
-.sec-title {{ font-size:14px; font-weight:800; color:{TEXT}; margin:6px 0 4px; }}
+  border:1px solid {BORDER} !important; border-radius:10px !important; background:rgba(18,18,30,.6) !important; color:{TEXT} !important; }}
+div[data-testid="stExpander"] {{ background:{CARD}; border:1px solid {BORDER}; border-radius:14px; }}
+.stButton>button, .stDownloadButton>button {{ border-radius:11px; font-weight:800; border:1px solid rgba(124,92,255,.42);
+  background:rgba(124,92,255,.08); color:{TEXT}; transition:transform .2s, box-shadow .2s, border-color .2s; }}
+.stButton>button:hover, .stDownloadButton>button:hover {{ transform:translateY(-2px); border-color:rgba(170,120,255,.85);
+  box-shadow:0 0 26px -6px rgba(124,92,255,.55); }}
+.stButton>button[kind="primary"] {{ background:linear-gradient(135deg,#7C5CFF,#C06BFF) !important; border:0 !important;
+  color:#fff !important; box-shadow:0 12px 32px -10px rgba(124,92,255,.7); }}
+div[data-testid="stDataFrame"] {{ border:1px solid {BORDER}; border-radius:12px; }}
+.stAlert {{ border-radius:12px; }}
+.sec-title {{ font-size:14.5px; font-weight:800; color:{TEXT}; margin:6px 0 2px; }}
 .sec-sub {{ font-size:12px; color:{MUTED}; margin-bottom:10px; }}
 hr {{ border-color:{BORDER}; }}
+::selection {{ background:rgba(192,107,255,.4); color:#fff; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -193,10 +215,10 @@ def bar(series, color=ACCENT, suffix="", h=300):
     fig = go.Figure(go.Bar(
         x=[str(i) for i in s.index], y=list(s.values), marker_color=color,
         text=[f"{v:.1f}{suffix}" for v in s.values], textposition="outside"))
-    fig.update_layout(font_color=TEXT, plot_bgcolor=CARD, paper_bgcolor=CARD, height=h,
-                      margin=dict(l=10, r=10, t=20, b=10), showlegend=False)
-    fig.update_xaxes(showgrid=False, linecolor=BORDER)
-    fig.update_yaxes(showgrid=True, gridcolor=BORDER, zeroline=False)
+    fig.update_layout(font_color=TEXT, plot_bgcolor="rgba(0,0,0,0)", paper_bgcolor="rgba(0,0,0,0)",
+                      height=h, margin=dict(l=10, r=10, t=22, b=10), showlegend=False)
+    fig.update_xaxes(showgrid=False, linecolor="rgba(124,92,255,.25)")
+    fig.update_yaxes(showgrid=True, gridcolor="rgba(124,92,255,.13)", zeroline=False)
     return fig
 
 
@@ -251,7 +273,7 @@ if PAGE == "📊 성과 분석":
     g1, g2 = st.columns(2)
     with g1:
         st.markdown("<div class='sec-title'>후킹 유형별 평균 CVR</div><div class='sec-sub'>공감·신뢰형이 전환을 만든다</div>", unsafe_allow_html=True)
-        st.plotly_chart(bar(v.groupby("후킹")["CVR"].mean(), GREEN, "%"), use_container_width=True)
+        st.plotly_chart(bar(v.groupby("후킹")["CVR"].mean(), ACCENT2, "%"), use_container_width=True)
     with g2:
         st.markdown("<div class='sec-title'>포맷별 평균 CTR</div><div class='sec-sub'>세로 숏폼이 클릭을 끈다</div>", unsafe_allow_html=True)
         st.plotly_chart(bar(v.groupby("포맷")["CTR"].mean(), ACCENT, "%"), use_container_width=True)
