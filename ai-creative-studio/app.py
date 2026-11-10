@@ -172,6 +172,15 @@ def won(v):
     return f"₩{int(v):,}"
 
 
+def num_comma(col, label, default):
+    """천 단위 콤마가 보이는 숫자 입력(폼 안에서 사용). 콤마/공백 제거 후 int 반환."""
+    raw = col.text_input(label, f"{int(default):,}")
+    try:
+        return int(str(raw).replace(",", "").replace(" ", "").strip() or 0)
+    except ValueError:
+        return 0
+
+
 def to_excel_bytes(df, sheet="sheet1"):
     buf = io.BytesIO()
     with pd.ExcelWriter(buf, engine="openpyxl") as w:
@@ -284,13 +293,13 @@ elif PAGE == "📝 소재 A/B 기록":
             c = st.columns(3)
             ctr = c[0].number_input("CTR(%)", 0.0, 100.0, 2.0, 0.01)
             cvr = c[1].number_input("CVR(%)", 0.0, 100.0, 4.0, 0.01)
-            cpa = c[2].number_input("CPA(원)", 0, 2000000, 80000, 1000)
+            cpa = num_comma(c[2], "CPA(원)", 80000)
         else:
             c = st.columns(4)
-            imp = c[0].number_input("노출", 0, 100000000, 200000)
-            clk = c[1].number_input("클릭", 0, 10000000, 4000)
-            cv = c[2].number_input("수강신청(전환)", 0, 1000000, 160)
-            spend = c[3].number_input("비용(원)", 0, 1000000000, 12000000)
+            imp = num_comma(c[0], "노출", 200000)
+            clk = num_comma(c[1], "클릭", 4000)
+            cv = num_comma(c[2], "수강신청(전환)", 160)
+            spend = num_comma(c[3], "비용(원)", 12000000)
             ctr = round(100 * clk / imp, 2) if imp else 0.0
             cvr = round(100 * cv / clk, 2) if clk else 0.0
             cpa = round(spend / cv) if cv else 0
