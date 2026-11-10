@@ -34,7 +34,15 @@
   .grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:34px; }
   .card.feat{ grid-column:1 / -1; }
   .ytwrap{ position:relative; width:100%; padding-top:56.25%; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(135deg,#171427,#0f0d1c); box-shadow:0 24px 60px -34px rgba(0,0,0,.8); }
-  .ytwrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .ytwrap img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+  .ytwrap::after{ content:""; position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,rgba(0,0,0,.04),rgba(0,0,0,.34)); }
+  .ytwrap .playbtn{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:66px; height:46px; border-radius:13px; background:rgba(237,28,36,.94); z-index:2; transition:transform .2s, background .2s; }
+  .ytwrap .playbtn::after{ content:""; position:absolute; left:50%; top:50%; transform:translate(-38%,-50%); border-style:solid; border-width:10px 0 10px 17px; border-color:transparent transparent transparent #fff; }
+  a.card{ display:block; text-decoration:none; color:inherit; transition:transform .2s; }
+  a.card:hover{ transform:translateY(-4px); }
+  a.card:hover .ytwrap{ border-color:rgba(170,120,255,.8); }
+  a.card:hover .playbtn{ transform:translate(-50%,-50%) scale(1.08); background:#ED1C24; }
+  .cap .watch{ color:#C9A6FF; font-weight:800; }
   .cap{ font-size:13px; font-weight:700; color:var(--mute); margin-top:10px; }
   .cap b{ color:var(--signal); }
   .cap .n{ color:#C9A6FF; font-weight:800; }
@@ -64,46 +72,46 @@
   <a class="back" href="portfolio.html#cvid">← 포트폴리오로 돌아가기</a>
 
   <div class="grid">
-    <div class="card feat">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/dzGux_ALcu0" title="인터뷰 (대표)" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-      <div class="cap"><span class="n">⭐ 대표</span> · 26.05 인터뷰</div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/9a9m3_IFDmw" title="경기도민 임플란트 이야기 3화" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    <a class="card feat" href="https://www.youtube.com/watch?v=dzGux_ALcu0" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/dzGux_ALcu0/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/dzGux_ALcu0/hqdefault.jpg'" alt="인터뷰 (대표)" loading="lazy"><span class="playbtn"></span></div>
+      <div class="cap"><span class="n">⭐ 대표</span> · 26.05 인터뷰 · <span class="watch">YouTube에서 보기 →</span></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=9a9m3_IFDmw" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/9a9m3_IFDmw/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/9a9m3_IFDmw/hqdefault.jpg'" alt="경기도민 임플란트 이야기 3화" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">경기도민 임플란트 이야기 3화 · <b>브랜드 시리즈</b></div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/5zzOggCOYAo" title="지역구강건강" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=5zzOggCOYAo" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/5zzOggCOYAo/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/5zzOggCOYAo/hqdefault.jpg'" alt="지역구강건강" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.09 · 지역구강건강 <b>· 최신작</b></div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/0CqPuhEU3GA" title="명의특집" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=0CqPuhEU3GA" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/0CqPuhEU3GA/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/0CqPuhEU3GA/hqdefault.jpg'" alt="명의특집" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.08 · 명의특집</div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/utoazwFX-_o" title="치아 Q&amp;A" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=utoazwFX-_o" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/utoazwFX-_o/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/utoazwFX-_o/hqdefault.jpg'" alt="치아 Q&amp;A" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.07 · 치아 Q&amp;A</div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/T8ZnZbMt0fk" title="치아백서" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=T8ZnZbMt0fk" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/T8ZnZbMt0fk/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/T8ZnZbMt0fk/hqdefault.jpg'" alt="치아백서" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.07 · 치아백서</div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/dpH4sNvDWVc" title="치아정보톡" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=dpH4sNvDWVc" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/dpH4sNvDWVc/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/dpH4sNvDWVc/hqdefault.jpg'" alt="치아정보톡" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.06 · 치아정보톡</div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/PURz9uwrKdU" title="원장 인터뷰" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=PURz9uwrKdU" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/PURz9uwrKdU/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/PURz9uwrKdU/hqdefault.jpg'" alt="원장 인터뷰" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.06 · 원장 인터뷰</div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/PDesxP32WWM" title="명의는어디에 전국편" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=PDesxP32WWM" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/PDesxP32WWM/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/PDesxP32WWM/hqdefault.jpg'" alt="명의는어디에 전국편" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.05 · 명의는어디에 (전국편)</div>
-    </div>
-    <div class="card">
-      <div class="ytwrap"><iframe src="https://www.youtube.com/embed/kGVvjXjE5J4" title="임플란트 명의" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+    </a>
+    <a class="card" href="https://www.youtube.com/watch?v=kGVvjXjE5J4" target="_blank" rel="noopener">
+      <div class="ytwrap"><img src="https://img.youtube.com/vi/kGVvjXjE5J4/maxresdefault.jpg" onerror="this.onerror=null;this.src='https://img.youtube.com/vi/kGVvjXjE5J4/hqdefault.jpg'" alt="임플란트 명의" loading="lazy"><span class="playbtn"></span></div>
       <div class="cap">26.02 · 임플란트 명의</div>
-    </div>
+    </a>
   </div>
 </main>
 

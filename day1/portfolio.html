@@ -437,6 +437,32 @@ body::after{
 .closing h3 b, .hero .lead b{ color:#C9A6FF; }
 ::selection{ background:rgba(192,107,255,.4); color:#fff; }
 .mstrip.ctr .m{text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 26px;}.mstrip.ctr .m .cap{font-size:14px;}.mstrip.ctr .m .val{font-size:44px;margin-top:18px;}.mstrip.ctr .m .val .u{font-size:20px;}.mstrip.ctr .m .sub{font-size:14px;margin-top:14px;}.hero .lead{padding:0;text-align:left;}</style>
+<style>
+/* ===== PDF/인쇄: A4 페이지 분리 (브라우저 Cmd+P·Claude Design 내보내기 모두 적용) ===== */
+@media print {
+  @page { size: A4 portrait; margin: 10mm 9mm; }
+  html { zoom: 0.62; }                 /* 1280px 데스크톱 레이아웃을 A4 폭에 맞춰 축소 */
+  html, body { background:#07070E !important; }
+  *, *::before, *::after {
+    -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;
+    -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+    box-shadow:none !important; filter:none !important; animation:none !important;
+  }
+  .hero-anim, .reveal, .grow-x, .grow-y { opacity:1 !important; transform:none !important; }
+  .statusbar { position:static !important; }
+  header.hero { break-after: page; page-break-after: always; }   /* 표지 단독 */
+  .case { break-before: page; page-break-before: always; }       /* 케이스마다 새 페이지 */
+  .case:first-of-type { break-before: auto; page-break-before: auto; }
+  .case-top { break-after: avoid; page-break-after: avoid; }
+  .sec { break-inside: avoid; page-break-inside: avoid; }
+  h1,h2,h3,h4 { break-after: avoid; page-break-after: avoid; }
+  img, .readout, figure { break-inside: avoid; page-break-inside: avoid; }
+  /* 제목 글로우/지원동기 그라데이션 텍스트는 인쇄 시 색막대로 깨짐 → 단색 고정 */
+  .hero h1 .glow { background:none !important; -webkit-text-fill-color:#C98BFF !important; color:#C98BFF !important; }
+  .hero-anim[style*="border-left:3px solid #C06BFF"] { background:#140F28 !important; }
+  .hero-anim[style*="border-left:3px solid #C06BFF"] b[style*="text-fill-color"] { -webkit-text-fill-color:#D7A8FF !important; color:#D7A8FF !important; background:none !important; }
+}
+</style>
 </head>
 <body style="background:#07070E;color:#EDEBFA;">
 
