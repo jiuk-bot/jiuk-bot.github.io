@@ -768,12 +768,10 @@ body::after{
       #cvid .pcard .sub-ko{ font-size:12px; font-weight:700; color:var(--signal); }
       #cvid .pcard .sub-ko::before{ content:'자막 '; font-size:10px; font-weight:800; color:var(--dim); }
       #cvid .vidgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:6px; }
+      #cvid .vidgrid .feat{ grid-column:1 / -1; }
+      #cvid .vidgrid .feat .vidcap{ font-size:13px; }
       #cvid .ytwrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(135deg,#171427,#0f0d1c); }
       #cvid .ytwrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
-      #cvid .ytph{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; text-align:center; padding:16px; }
-      #cvid .ytph .play{ width:54px; height:54px; border-radius:50%; background:rgba(124,92,255,.22); border:1.5px solid rgba(170,120,255,.6); display:flex; align-items:center; justify-content:center; color:#EDEBFA; font-size:20px; }
-      #cvid .ytph .pl-t{ font-size:13px; font-weight:800; color:#EDEBFA; }
-      #cvid .ytph .pl-s{ font-size:11px; color:var(--dim); }
       #cvid .vidcap{ font-size:12px; font-weight:700; color:var(--mute); margin-top:8px; }
       #cvid .vidcap b{ color:var(--signal); }
       @media(max-width:720px){ #cvid .pgrid,#cvid .vidgrid{ grid-template-columns:1fr; } }
@@ -793,9 +791,9 @@ body::after{
       <div class="body">
 
         <div class="mstrip c4">
-          <div class="m"><div class="cap">셀프스토리지 AI 영상 · CTR</div><div class="val num">+43<span class="u">%</span></div><div class="sub num">6.7% → 9.56% (Kling AI)</div></div>
-          <div class="m"><div class="cap">임플란트 다큐 영상</div><div class="val num">50<span class="u">초</span></div><div class="sub neu">씬별 프롬프트 직접 설계</div></div>
-          <div class="m"><div class="cap">AI 로고 제거</div><div class="val">ProPainter</div><div class="sub neu">프레임 단위 후처리</div></div>
+          <div class="m"><div class="cap">임플란트 AI 영상 광고</div><div class="val num">9<span class="u">편</span></div><div class="sub neu">2026.02~09 · 가로형</div></div>
+          <div class="m"><div class="cap">제작 방식</div><div class="val">100% AI</div><div class="sub neu">생성·로고제거·자막 직접</div></div>
+          <div class="m"><div class="cap">셀프스토리지(B2B) · CTR</div><div class="val num">+43<span class="u">%</span></div><div class="sub num">6.7% → 9.56% (Kling AI)</div></div>
           <div class="m"><div class="cap">화면 텍스트</div><div class="val">0 오류</div><div class="sub neu">프롬프트 제어 + 자막 합성</div></div>
         </div>
 
@@ -838,19 +836,44 @@ body::after{
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>완성 영상</div>
+          <div class="sh"><span class="bar"></span>완성 영상 — 가로형 시리즈 (최신순 · 최신작일수록 고도화)</div>
+          <p style="margin-bottom:10px">7개월간 제작한 임플란트 가로형 AI 영상 광고입니다. <b>위로 올수록 최신작</b>이며, AI 영상 퀄리티가 올라가는 과정을 그대로 확인할 수 있습니다.</p>
           <div class="vidgrid">
-            <div>
-              <div class="ytwrap" data-yt="implant">
-                <div class="ytph"><div class="play">▶</div><div class="pl-t">임플란트 '100세동행' AI 영상</div><div class="pl-s">YouTube 비공개 링크 연결 예정</div></div>
-              </div>
-              <div class="vidcap">임플란트 50초 다큐 · <b>Veo 생성 + ProPainter 로고 제거 + 자막 합성</b></div>
+            <div class="feat">
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/9a9m3_IFDmw" title="경기도민 임플란트 이야기 3화" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">⭐ 경기도민 임플란트 이야기 3화 · <b>대표 브랜드 시리즈</b></div>
             </div>
             <div>
-              <div class="ytwrap" data-yt="storage">
-                <div class="ytph"><div class="play">▶</div><div class="pl-t">셀프스토리지 AI 영상</div><div class="pl-s">YouTube 비공개 링크 연결 예정</div></div>
-              </div>
-              <div class="vidcap">Kling AI 제작 · 광고 <b>CTR 6.7% → 9.56% (+43%)</b></div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/5zzOggCOYAo" title="지역구강건강" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.09 · 지역구강건강 <b style="color:var(--signal)">· 최신작</b></div>
+            </div>
+            <div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/0CqPuhEU3GA" title="명의특집" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.08 · 명의특집</div>
+            </div>
+            <div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/utoazwFX-_o" title="Q&A" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.07 · 치아 Q&amp;A</div>
+            </div>
+            <div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/T8ZnZbMt0fk" title="치아백서" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.07 · 치아백서</div>
+            </div>
+            <div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/dpH4sNvDWVc" title="치아정보톡" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.06 · 치아정보톡</div>
+            </div>
+            <div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/PURz9uwrKdU" title="원장 인터뷰" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.06 · 원장 인터뷰</div>
+            </div>
+            <div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/PDesxP32WWM" title="명의는어디에 전국편" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.05 · 명의는어디에 (전국편)</div>
+            </div>
+            <div>
+              <div class="ytwrap"><iframe src="https://www.youtube.com/embed/kGVvjXjE5J4" title="임플란트 명의" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+              <div class="vidcap">26.02 · 임플란트 명의</div>
             </div>
           </div>
         </div>
