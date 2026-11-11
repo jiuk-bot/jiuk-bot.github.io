@@ -1,6 +1,6 @@
 {
-  "generated": "2026-11-10 12:55 KST",
-  "date": "2026-11-10",
+  "generated": "2026-11-11 10:39 KST",
+  "date": "2026-11-11",
   "mode": "live",
   "sources_used": [
     "Google News RSS",
@@ -165,22 +165,22 @@
           "s": "머니투데이"
         },
         {
-          "t": "[똑똑한패션] LF 던스트, 에이블리, 신성통상 탑텐, 마운티아, 멀버리, 세정 데일리스트, 형지엘리트 윌비플레이, 론론",
-          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1TSG9iMUdWQnhmMG5pRURpOGtnLVhlRVFUbjNxRjV4cXlqeXBiQThQREZSMEZUekU1cFFFdDdxRVZraDFoQnJLWW5IMm1IUWxHQ2pqRGhyNUJIMEk?oc=5",
-          "d": "2026-10-23",
-          "s": "에너지경제신문"
-        },
-        {
           "t": "유안타증권, 에이블리·4910과 제휴 이벤트…10월 15일까지",
           "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTFAzWUJsbXh1LWRXVjRuMkdwbG9pY3pfckVBZUExaS00VC1EMlo4WHM1Wk1uaW5zLUxhVVRNaklvczkxUmMwRUVkODdnWU5ONjEwN19JVndzbUNZNWtqVVl6ZXoyNzlydFdNTFc0?oc=5",
           "d": "2026-10-05",
           "s": "비즈월드"
         },
         {
-          "t": "에이블리 플레이스, 공식 론칭 12일 만에 월 거래액 1억 원 돌파",
-          "u": "https://news.google.com/rss/articles/CBMiekFVX3lxTE1BZHcyNWJZS3A2WXdNOXJsMXNtcERQR0E1V3ljbFdFZ2FGdV9IOFRLTEd2d1ZVa3JYRjE0NnBvWWs2VjlTM0lMLWJ1bVpaZGpTc3JPWTBCVWNRZzQxWDhJcE5IVzhWb25pdFliS0dKTTF6OFVFTmJlV2JR?oc=5",
-          "d": "2026-11-04",
-          "s": "패션포스트"
+          "t": "유안타증권, 에이블리·4910 제휴…쇼핑 고객 대상 주식 투자 혜택 제공",
+          "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE8yUEdzM2xZZlh6YUlYU0lRWmRJVEZ4MFRiaWZnbUIzNXpjSmRQLS1nbzFPWXQ2d0ZIRXBhVXo1RDZ3dG95YnloSXJmZ3lsd0ZVVVZXS2JxdjNFNWxrNjFZX0lYQVY?oc=5",
+          "d": "2026-10-02",
+          "s": "매일일보"
+        },
+        {
+          "t": "[똑똑한패션] LF 던스트, 에이블리, 신성통상 탑텐, 마운티아, 멀버리, 세정 데일리스트, 형지엘리트 윌비플레이, 론론",
+          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1TSG9iMUdWQnhmMG5pRURpOGtnLVhlRVFUbjNxRjV4cXlqeXBiQThQREZSMEZUekU1cFFFdDdxRVZraDFoQnJLWW5IMm1IUWxHQ2pqRGhyNUJIMEk?oc=5",
+          "d": "2026-10-23",
+          "s": "에너지경제신문"
         }
       ],
       "jobs": []
@@ -233,6 +233,12 @@
       },
       "news": [
         {
+          "t": "올리브영, 내년 상반기 美 매장 7개로 늘린다",
+          "u": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPT29yMk5XOFpwRld1enBnUWhJYVAzd1lEclBGVmdiVjdLRmdnUE9SRTVtb0M4UWh6N0N6N2xmWDhmQnh0MndiM0N4NHUyVEc3Mnc2OWhGenE4VXRicFRJU3k3aUtGWGNKUkVjV29uQ1NPMGtkMzFsLTJiOVJOR2llcUotUkFzaC1zLVE?oc=5",
+          "d": "2026-11-09",
+          "s": "조선일보"
+        },
+        {
           "t": "“올리브영 잡겠다”…연내 100호점 내겠다는 ‘보라색 매장’의 정체는 [신수현의 남돈남산]",
           "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1lWFhyMS1BWldzX2hVYnYyMlU2c0wtaFowajAwY3JNRDRleHRNV0Utd1Qta2FVcU9KNG5RM2xuTmdYZmhkZDltMGNZX2JSSWd6OWpQUA?oc=5",
           "d": "2026-10-05",
@@ -243,12 +249,6 @@
           "u": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5mTFVJZVZtOVlWY3BVVldEWXFGNnhIdEdleTZKS3pCcWhneURORl9VUThyVmRSTTRiMGhfSHdSS09TczdHZ2FyTW1LYzcxN2JMVDlpT0NrR2lpdw?oc=5",
           "d": "2026-10-13",
           "s": "한국경제"
-        },
-        {
-          "t": "CJ올리브영, 동남아 세포라 48곳에 ‘K뷰티 매대’…美 이어 아시아로",
-          "u": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNUF9EeHhLZzBtbmtsWlhjRlJFaWJRTjVCZDZrNmE0bjk0NTliMk80b1pYWnhzMFlSN1ViZGhLRFhvT3VxeVBEbGdoZlgtX0ZiU2F1SUtIT2E3WXNzbjVYbW0zRlhPeWt4Z3N1c04yU2Q4MmxybzhjV2Z3c0dPT3VxSHJCNWxYbXduc1HSAZ4BQVVfeXFMT3dkNG1zclBvNmVUX04xelE3aGd5UjYzUTFFTW5vcVUwSEtpcWpMcEpyRXlsWDlqTmxZOWV6QVlHTDNQd0dzMkF3VjBQNW94LXh4RlBWcHg3N196M0I5ZEpFVkxkR0FEdTZHLTE3cTFFbWplZ0pORHFmNVJ5Q2p0RVdtVzNMNDk0NDlUc1REOGRfT0dEN21JZnY1ZmFqUnc?oc=5",
-          "d": "2026-10-12",
-          "s": "Chosunbiz"
         },
         {
           "t": "레페리, CJ올리브영 출신 진세훈 공동대표 영입",
@@ -304,22 +304,16 @@
             "s": "싱글리스트"
           },
           {
-            "t": "밀리의서재, 11월 추천 도서 4권 공개…상실과 위로 담은 작품 선정",
-            "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBkM2g1NG1ycEVWVWZwRGZjR3NMREVhY3EycTBjVnlocGNyRnFpV2FXcVNpYy0wYjl1Rms0WVZxMlVzbDNweWZ5LVR2NlZsN3dmX29Yd3A3SVZJRGN3YjAwUlI0TEo4UQ?oc=5",
-            "d": "2026-11-02",
-            "s": "싱글리스트"
-          },
-          {
-            "t": "밀리의서재, 11월 제철 독서 챌린지 도서 공개",
-            "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5Wa3JORG00cXdMaVdQSHdzSDZ6NkZoeDlOdzZlU1JidXVmRDhVVFVIZDRpRWYzVzRQVF9rQ3FGQWJ2NWE5S3RhekhmMUdKYUFudmVJTXJCaGhUaDBNMXBlVEF6ZHBDSE1l?oc=5",
-            "d": "2026-11-04",
-            "s": "https://www.2news.co.kr/"
-          },
-          {
             "t": "[Telecom & Now] 밀리의서재, 10월 '제철 독서 챌린지' 도서 공개",
             "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9ZZnEwZ0pOVkxhUnJZWXhsR05KWjZ2MF9DR3JZQ01YdTFxc08yb1psUmNXUXhWTVZ5aW5BZEIxQ2hDZS0zdFo5NTRFRDZFdDY2OFhJclNzRXpXeVV1VGtmN0lzQnJkWEth?oc=5",
             "d": "2026-10-07",
             "s": "www.ebn.co.kr"
+          },
+          {
+            "t": "고독·죽음·슬픔·안부…밀리의서재, 10월 '제철 독서' 4권 공개",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE14Z0pCUFBud012ZEJLbnlhYm1raFBBNXg0SFdjclJaYW83aGFDam1OZWJQTTdPMk1nTDltVVNRU254X3RaSUUxblRUZFFIWmxmSVVDa21kckVBNlRpaTNWbQ?oc=5",
+            "d": "2026-10-07",
+            "s": "아시아경제"
           }
         ],
         "admarket": [
@@ -379,12 +373,6 @@
           "s": "전자신문"
         },
         {
-          "t": "\"무슨 책 읽을까\" 검색하면 요약·추천까지…밀리의서재, AI 브리핑 도입",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4tbExGcTlmUXR6eDhydmZtS003RVM0LWJjVEtCX1VwR0xjX2gyZVotaS1tZDBQUXFoZzZTOTZfWXBiWC1tcW5JeDh1MkMxWHBhOUlrU0d1c195SHB5LWV5NtIBeEFVX3lxTE43WVloWnNSUkZ2ZTM5TjJLZ3VobHdTdFFhSE1pelpHNEk0dldKWTVkMnZ5eWxIWllMWWZtVllWeXJ1ZEhLaDlTRTIwdVhka3hVZWVkb2wxMFVONXZjSGZlMkN4N2o5cnF2SlVxN0NqZWhTWUtRUllkVg?oc=5",
-          "d": "2026-10-20",
-          "s": "뉴시스"
-        },
-        {
           "t": "밀리의서재, 10월 가을 맞춤 ‘제철 도서’ 4권 공개",
           "u": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB3bEd4ZmhfeEVLcm9PSTVSbXhGbTdOT1hkOWNDSkdxakZVMWp4NklHX0tITUpfSlZTWTR3ZENIRE8wNTlKc2VvR3N6ZEtSTWFuaFZIeXE4RElBRU1NeWhERGNFRTdFZw?oc=5",
           "d": "2026-10-07",
@@ -397,10 +385,132 @@
           "s": "Chosunbiz"
         },
         {
+          "t": "\"무슨 책 읽을까\" 검색하면 요약·추천까지…밀리의서재, AI 브리핑 도입",
+          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE4tbExGcTlmUXR6eDhydmZtS003RVM0LWJjVEtCX1VwR0xjX2gyZVotaS1tZDBQUXFoZzZTOTZfWXBiWC1tcW5JeDh1MkMxWHBhOUlrU0d1c195SHB5LWV5NtIBeEFVX3lxTE43WVloWnNSUkZ2ZTM5TjJLZ3VobHdTdFFhSE1pelpHNEk0dldKWTVkMnZ5eWxIWllMWWZtVllWeXJ1ZEhLaDlTRTIwdVhka3hVZWVkb2wxMFVONXZjSGZlMkN4N2o5cnF2SlVxN0NqZWhTWUtRUllkVg?oc=5",
+          "d": "2026-10-20",
+          "s": "뉴시스"
+        },
+        {
           "t": "kt 밀리의서재 \"3년 내 오리지널 콘텐츠·신인 작가 중심 플랫폼될 것\"",
           "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1jNlBNb01idXQ1MzBEOG5ySTdJQjY5dG5jRE9TY05xR25nVFBuUGxGODl6TWJUVHROUHYyMS1uWjFtZjN4NWZGSEVVamdNOTR4YWZLSzln?oc=5",
           "d": "2026-10-01",
           "s": "지디넷코리아"
+        }
+      ],
+      "jobs": []
+    },
+    {
+      "n": "무신사",
+      "i": "패션 커머스",
+      "hp": "https://corp.musinsa.com",
+      "target": "2030",
+      "sigs": [
+        "launch",
+        "admarket",
+        "season",
+        "fit"
+      ],
+      "score": 60,
+      "sources": {
+        "launch": [
+          {
+            "t": "무신사, 사진 한 장으로 상품 찾는 AI 이미지 검색 ‘무신사 렌즈’ 오픈",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1USlFRMVVJRDBDTXczTmhPQ2Jub3BabFVwV0RfZmpLeHBkdS1IeGdpd1M4bHBsODcxR2lXbEhTV1RGN2dKZW5UQVBTdWJTM0txRjRwVTVUN3YwSkRYM0ZkSw?oc=5",
+            "d": "2026-10-29",
+            "s": "무신사"
+          },
+          {
+            "t": "“한 달에 100개씩 쏟아진다”…1030 잡은 무신사 뷰티, 신제품 ‘첫 무대’로",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBrSnZmaTZ0WlJyRzBYZHBSMEZZR2lwNkJjYzNtYjk0b0dmNVFsMjZaUnZ4SEsxRUUyTWFWVkdKc001N0tLS3BFaUUyXzhUb1JNZXRsdFBlZmFBbDBkYlAtNw?oc=5",
+            "d": "2026-10-02",
+            "s": "무신사"
+          },
+          {
+            "t": "무신사, 훗카이도 최대 도시 삿포로에 마뗑킴 5호점 오픈... “현지 고객부터 글로벌 관광객까지 K-패션 접점 넓힌다”",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1DNWwzTmtFZENZdXdvZ2Q1VXpJSGM5NXlBeEx2UVZJR3AxdXRTQWV1WjZZUDA3bDFVYWp5QmwwOXdSWVQ5U09uX2VsNEFVR05sbmR5NjhtTmpzcTBxYzVJcg?oc=5",
+            "d": "2026-10-01",
+            "s": "무신사"
+          },
+          {
+            "t": "[현장] 무신사, 中 선전 '무신사 스토어·무신사 스탠다드' 동시 오픈… 첫 주말 약 4만 명 방문",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6a3NtUXNYeHZDTzRuMVVRbjdnOE0weUViSDB2b1p0X3JGMXFQU3NjQzA1OXFvLXR0ajZRa2JTZ1JRN1NDOGhDT3ZGeW5zbG1JVnhidUg5SDFKSi04SlBWTg?oc=5",
+            "d": "2026-11-01",
+            "s": "무신사"
+          }
+        ],
+        "admarket": [
+          {
+            "t": "무신사 스탠다드, ‘서울 스탠다드’ 글로벌 캠페인 첫선…“日 패션 인플루언서 ‘카토 준코’와 현지 MZ세대 공략”",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBlYllVekkxV25ISU4tMEhLaHBrZjJ0Q3JtaXJfNWd5bV84VkVVckhhMko1dXgyYktzSlc0bmIzM01PZ2hyNXZMcURWYTFpVkpWZlJyWmkwOHM5SGtzR3B5Yw?oc=5",
+            "d": "2026-11-09",
+            "s": "무신사"
+          }
+        ],
+        "season": [
+          {
+            "t": "패션 커머스 성수기 구간 (월 11)",
+            "u": "",
+            "d": "",
+            "s": "시즌 캘린더"
+          }
+        ],
+        "fit": [
+          {
+            "t": "패션 커머스 · 토스 2030 타깃 핏",
+            "u": "",
+            "d": "",
+            "s": "업종 분석"
+          }
+        ]
+      },
+      "news": [
+        {
+          "t": "무신사, 한정판 거래 플랫폼 '솔드아웃' 종료 후 '유즈드'로 통합···패션 리커머스 지속 확대한다",
+          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBEeEREWkJNbk1jbEhYcGl5VVJRM294SHVPNHdiMTBMdXlNd0ptV3lsbTJoRXliT0JObkxBS1AxUUxJV3BJaGpDMUxqcjdtNWdJUXJheXV6SUdVSldCb0pPeQ?oc=5",
+          "d": "2026-10-01",
+          "s": "무신사"
+        },
+        {
+          "t": "무신사 스탠다드, 경남 창원 첫 매장 개점…지역 거점 출점 가속화",
+          "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5vN0txRjVQSWtCWFd2NFdqUTlXcTBzQzQ3UWZCNzE5cVZUMEtlVEJfWDZGVFRLTEF2UkdCbldVbmdyeDU5Q2psUVRDeEZXcU1vSW83MWpmMnpkQkt6MWhBMGJ4SE9sQmZ6cWc0RmJDX3TSAXRBVV95cUxQTy02WWh4SnFWcy1qalduc3ZHQUtyRHNIcjc1R09FWi1sbkszamRRTzhoZjhadjE1eXc0aF9KTUJ1WTlpdHIwZGdYbnBuUkhRTVpKYXlDc19iLXg2YVdlaFRnMDhkQmlPR0ZBaFAzWGYwamJ6Qg?oc=5",
+          "d": "2026-10-15",
+          "s": "주간한국"
+        },
+        {
+          "t": "무신사 \"채용 담당자 사칭한 피싱 사기 시도 확인…주의 당부\"",
+          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE5yN2ptLWtsMDFBWTV6d3FfeV9oSDZlRHJYalR0cjk0Ul82X1VhUGtPNUNLTGRIblR5M0xUanBCb01BWFVaUW5QTTFNb0F1WXBYYlhOZ3pNRVR4MlHSAWBBVV95cUxQNnVMZGVMWU1qN0xqX3BQSUdWaUFjWHNCTGRVajRsS2ZEVS1SN3ZUY1ZZUVBoWjctRDJ1V0ItTDdlaEF6YWJkOHM4ZncxNkJIUnpqaFNGTmZyQnpjSlg0M1M?oc=5",
+          "d": "2026-11-10",
+          "s": "연합뉴스"
+        },
+        {
+          "t": "\"무신사 인턴 합격 축하합니다\" 런던 파견 안내까지 받았지만…피싱이었다",
+          "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5YcHhJb29IV2pKTnpOY0RrQmFNcVhEMnBwck43bU9rSUNSN2tPUVRkUGRSaEtSR1JuUkJQM2VXOVBXX2xQVXJTeGhMSjJPdlJFTVJMaw?oc=5",
+          "d": "2026-11-09",
+          "s": "JTBC"
+        },
+        {
+          "t": "매장 늘리는 무신사, 멀어지는 '플랫폼 밸류'…LF·휠라와 비교되는 까닭",
+          "u": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNZUR5NGNFMnVwU2FzMWozdTg0Z0NMbnhhZkpjVmhyTzVCb1pCbThCR3ZZVlQxOUNwWG9LRnN3bGMwaFJCWWhaN3llUlM2cTkxc2hLZm9YcEx5emxTVGxVNHhGQ0dYSUQ2WE5WOFZrVTZkSE03bVNXaWRJSVl6QVp3bEpFYw?oc=5",
+          "d": "2026-09-29",
+          "s": "인베스트조선"
+        },
+        {
+          "t": "무신사·강남언니·위버스…해킹사고 모두 '이곳'이 뚫렸다",
+          "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBkdlR4dXJlNThfZ1UwQnJZdE50cVNkTlJRSFNtWGdKd3JfYmQwT3YzS2RCN203NE5WRVFDMzVITW54azg2eGp5QVdfT1NWNDJUU0p5VWxEMXh0dUE4YzZwQ25zeWl4UjjSAWxBVV95cUxOVGQtUmUwTXNhYjBldldhSlJPa0wtMkVXYTZFRHJLSkNXc1NrcmpaWnZzSUs1cExmOVo0MGdFZ1Q0dHQwcUZzTXZQd1FPSTdkYnFaTGFsZW90eEpnOGhDX1A4dlBfQXFvUFVCNHA?oc=5",
+          "d": "2026-09-28",
+          "s": "머니투데이"
+        },
+        {
+          "t": "무신사, 사진 한 장으로 상품 찾는 AI 이미지 검색 ‘무신사 렌즈’ 오픈",
+          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1USlFRMVVJRDBDTXczTmhPQ2Jub3BabFVwV0RfZmpLeHBkdS1IeGdpd1M4bHBsODcxR2lXbEhTV1RGN2dKZW5UQVBTdWJTM0txRjRwVTVUN3YwSkRYM0ZkSw?oc=5",
+          "d": "2026-10-29",
+          "s": "무신사"
+        },
+        {
+          "t": "상장 앞둔 무신사, 적정 기업가치는…\"8조∼10조원 거론\"",
+          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBaSzlWbklHZmNXUWxrTHpmUEF4WDJoS1FWdEliM1lwa1dxMEkxSUFoWXdkWFVHeGdfcGdpWFc4bGl3Wml1bFZjcWZOdURZVm9KRkxqekZVV09iZ2fSAWBBVV95cUxOWXpvcHp2dzB3alhZSGs3azQ5WGdDTVhRU0RraGNueUxQc3ZYWm5KY1ppT2pMNHlBcllUYTM2YVowZTQyVUdfVHBNbUtnVDFUZmhPS05PWlVaYjlnWkRMOWo?oc=5",
+          "d": "2026-10-02",
+          "s": "연합뉴스"
         }
       ],
       "jobs": []
@@ -426,22 +536,10 @@
             "s": "서울경제"
           },
           {
-            "t": "컬리, 멤버십 최대 14% 적립 '컬리 신한카드' 출시",
-            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9zekstZHcwc2o5U3RFTlo1N2pzZnZpLS1NM0c3SFpfRDFEYTNsZnNXZFAzeWpCRjlqdEdFd0p1cGJfOVNJRUplV2pRYmR5Zw?oc=5",
-            "d": "2026-10-07",
-            "s": "전자신문"
-          },
-          {
-            "t": "신한카드, 최대 14% 적립 '컬리 신한카드' 출시",
-            "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTFAzblJuWnNkT0VOQ3dSTDBNdGMyVHI2eWlIWXREUzJiOTBCMEVaUVhZZ0dLNjlGanJDZjEwaXRGVWRJbEFtcDNfQjB0YURGR3hxTDVGNWk1VHVqQjZD?oc=5",
-            "d": "2026-10-07",
-            "s": "뉴스핌"
-          },
-          {
-            "t": "컬리, 한혜진 패션 브랜드 '헤디트' 단독 출시",
-            "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBQTTVlNjZ2OGxlWFAzRmRjeWlTNEo0aW5Qa01OOHlnNkNpU1VUeHBOclNhUk84QnhkNnFjN2prX3FmZmZMTFQtQVJhRFJRWDYtZXNxZDVn?oc=5",
+            "t": "컬리, 한혜진 패션 브랜드 '헤디트' 단독 론칭",
+            "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBXaW9hc21hSXRMMjU4WE9kODNHUUxDTElGdE8zQjdyMHZMa2dfSFJDVTl5TmpoVzV6dWRJa1lYbU1RdzlEdG1YNUthYkNZQQ?oc=5",
             "d": "2026-10-12",
-            "s": "지디넷코리아"
+            "s": "전자신문"
           }
         ],
         "admarket": [
@@ -605,7 +703,7 @@
           "s": "디자인 나침반"
         },
         {
-          "t": "29CM가 옷장 밖 취향을 이야기하는 이유 | 디자인플러스",
+          "t": "29CM가 옷장 밖 취향을 이야기하는 이유",
           "u": "https://news.google.com/rss/articles/CBMiTEFVX3lxTFBiNkNEMFJlcW0yYVRxYmV1RERpRVE5RjBOMXRrVnhoMmpDanB3bFpwbkNOdmFmcjlVX0gzZ0tLQWtzNDloanZ6SGJudkk?oc=5",
           "d": "2026-10-30",
           "s": "디자인플러스"
@@ -617,16 +715,16 @@
           "s": "전자신문"
         },
         {
-          "t": "[단독] 무신사 ‘29CM’서 개인정보 3만건 추가 유출",
-          "u": "https://news.google.com/rss/articles/CBMickFVX3lxTFBWSGRyenh4T3ZZaEYzemNMWlRnRFZVZnozWndkZzNvcnJnb0dudXUyS1M2ZVNzRUhWWk1xUWVsZTN6aW5tZXk2c05BODUzRUhrbnZ3TEQ3bzZ5SUVhLVo1eDhJYmtwTEZVcXZqcG5QLTVKQQ?oc=5",
-          "d": "2026-10-06",
-          "s": "한겨레"
-        },
-        {
           "t": "29CM 이구데이에 쟁이기 좋은 올겨울 아우터 10",
           "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE0zeTRXeWRvQXJGWDlLUkdkSU05TjFseWJVR19PYWc5bmtLSlVUOEF2bHBnSVBOT25tZzctbG5mWGEyOE1iLWlBRTBHbXlNVjQ?oc=5",
           "d": "2026-10-28",
           "s": "엘르 코리아 │ ELLE KOREA"
+        },
+        {
+          "t": "[단독] 무신사 ‘29CM’서 개인정보 3만건 추가 유출",
+          "u": "https://news.google.com/rss/articles/CBMickFVX3lxTFBWSGRyenh4T3ZZaEYzemNMWlRnRFZVZnozWndkZzNvcnJnb0dudXUyS1M2ZVNzRUhWWk1xUWVsZTN6aW5tZXk2c05BODUzRUhrbnZ3TEQ3bzZ5SUVhLVo1eDhJYmtwTEZVcXZqcG5QLTVKQQ?oc=5",
+          "d": "2026-10-06",
+          "s": "한겨레"
         },
         {
           "t": "29CM, 새 태그라인 '모든 취향 곁에' 공개…전용 서체도 선보여",
@@ -669,10 +767,10 @@
             "s": "전자신문"
           },
           {
-            "t": "\"선물도 직진배송으로\"…지그재그, '선물하기' 서비스 출시",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5Mc21JN0M4OEVUSktZWlVCQ1VRVWlIZmhyXzdIVmtHdElMMGxJeW9YaVpuZEZYNHlkTzBTMzItRUFwdk1BU1NtV2ZBanlmYWNlQm02OTlURHIzTGNpUWFHQtIBeEFVX3lxTFAzcGtwZGZfQzdpN0xLTGJXa3NTWEVoNVROWUZ0Tk8yb0F1aFBxNENtazB1U0YyT3I0cXV6dE5QYmxMZXdFQ1FzRVZ1RWltamNfTDZ3RDNtNzMwT21TVkZfU1lHY1RQYUZuUVVyZWhfcEJDMFgwMGVKSw?oc=5",
-            "d": "2026-10-20",
-            "s": "뉴시스"
+            "t": "지그재그, AI 기술 활용한 '쇼핑몰 런웨이' 공개…입점사 경쟁력 강화",
+            "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFA2S1hUekNUaEp2NzM1SUY3Ym9ybkdncGt3dUVTY2xjMkItc3Etc0ExckJUUllxbzZkS2N5VWMyZUNSVno5UVRHbmg5ZDJsQWN6Q0pCM2xJeVdaNDBxQ2tadFpzcmI?oc=5",
+            "d": "2026-11-09",
+            "s": "매일일보"
           }
         ],
         "season": [
@@ -694,16 +792,22 @@
       },
       "news": [
         {
+          "t": "지그재그, 16일부터 성수동서 팝업스토어…쇼핑몰 50곳 참여",
+          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1QUzdRcTJLWFNJVzZhUHZiS3BGZEZkZEljNWVZUE80bGVrZ2RlcmhBTWNsclVFTzNrNDNwSDhuMmpuQkhRTmN2LXBtVTFoMzcwTkJMMzdOM2VNWjjSAWBBVV95cUxQTjJ1OEQyVlpjZkpIS3VOb3JjbGpOSFp4S2JXaE9JSGxOZGVkS3hsNmNCSlZfUjc1dV9YZzlCWG1jZmJubUh1NFpzeEFreS1OdVNVRU1XLVZSWDlmaUp5akM?oc=5",
+          "d": "2026-10-14",
+          "s": "연합뉴스"
+        },
+        {
           "t": "[가봤어요] 직접 입어보고, 내일 받는다… 성수동 ‘지그재그 익스프레스’",
           "u": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPRFV4c3A4Q0M5dm5Gb1FLck5BRDR2NTFNaVVtT0s3dFhldkt6aU8tQ1lLdU9BVEctTzZjNHNCOTBka1pRN3NUZnhRMG5FQXhpcjI3a1NkR1p2emJEbHBWN2NocGpoX2EtVE50Wi05TnM0LUlNeVNIVnhkNHhxZnhGNUl2aEhwbXFSYnfSAZ4BQVVfeXFMT2RSRC1jOEE5VlpZekNGZFQxTDdJV053dThoTE1MREFEb3VyQmx1bXZiMG5UOXJKMDdHdERrclBGa2d2SG9QSk1JWHQtQXE3cFlabzFBTHJwLVk4a0dNVngzYmF3SDh0NWRubHd2QXlmdHFTSWRjc1lacGljbWJPSkRSamFBajE2eXFRaEFFcExFZUt4WXcyVmZOZEFHeHc?oc=5",
           "d": "2026-10-16",
           "s": "Chosunbiz"
         },
         {
-          "t": "지그재그, 16일부터 성수동서 팝업스토어…쇼핑몰 50곳 참여",
-          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1QUzdRcTJLWFNJVzZhUHZiS3BGZEZkZEljNWVZUE80bGVrZ2RlcmhBTWNsclVFTzNrNDNwSDhuMmpuQkhRTmN2LXBtVTFoMzcwTkJMMzdOM2VNWjjSAWBBVV95cUxQTjJ1OEQyVlpjZkpIS3VOb3JjbGpOSFp4S2JXaE9JSGxOZGVkS3hsNmNCSlZfUjc1dV9YZzlCWG1jZmJubUh1NFpzeEFreS1OdVNVRU1XLVZSWDlmaUp5akM?oc=5",
-          "d": "2026-10-14",
-          "s": "연합뉴스"
+          "t": "지그재그 옷·화장품 카톡으로 보낸다…'선물하기' 출시",
+          "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE84eUxDMmh0eEJCMVR0bUN6Y21Ud3BIOG0ydU84VVJ5OWtCZ1FhWjF3RDQ5ZWRQelV5amhDdGlTTFc0clJKbHNUTW5sT3FPamJGd09vbWh3?oc=5",
+          "d": "2026-10-20",
+          "s": "지디넷코리아"
         },
         {
           "t": "지그재그, 화면 밖으로 나왔다…성수서 팝업 진행",
@@ -718,12 +822,6 @@
           "s": "에너지경제신문"
         },
         {
-          "t": "지그재그 옷·화장품 카톡으로 보낸다…'선물하기' 출시",
-          "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE84eUxDMmh0eEJCMVR0bUN6Y21Ud3BIOG0ydU84VVJ5OWtCZ1FhWjF3RDQ5ZWRQelV5amhDdGlTTFc0clJKbHNUTW5sT3FPamJGd09vbWh3?oc=5",
-          "d": "2026-10-20",
-          "s": "지디넷코리아"
-        },
-        {
           "t": "지그재그, 오프라인 팝업스토어 ‘지그재그 익스프레스’ 오픈",
           "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5pRXBETW9pWDlyYndSblZuc3kydjBsRmlEOWI3d1VadURSeFozOHQ1dkpMVmZQQWdRLXFKMHYxSFhiZFY2SGxqMUxHZEFXWlNmSkJTUGZNVk5qZTYxNkV3RQ?oc=5",
           "d": "2026-10-15",
@@ -736,10 +834,10 @@
           "s": "전자신문"
         },
         {
-          "t": "\"인기 쇼핑몰 50곳 한자리에\"…'지그재그 익스프레스' 성수 팝업",
-          "u": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8takZock1vQ05fazRmTm90OUhLSmJkZkYzN3FJNUlUeEMySXhPSWMyenJ5bm5LcHF3bWgzZW1qWmNjZ0JVS2FXSVdUc0ZUdnJZcy1qSjZUUGN1bnhYLWhHSW5zT0JzTjA3V240enNCTk1fMmFKSHEzNtIBeEFVX3lxTE8takZock1vQ05fazRmTm90OUhLSmJkZkYzN3FJNUlUeEMySXhPSWMyenJ5bm5LcHF3bWgzZW1qWmNjZ0JVS2FXSVdUc0ZUdnJZcy1qSjZUUGN1bnhYLWhHSW5zT0JzTjA3V240enNCTk1fMmFKSHEzNg?oc=5",
-          "d": "2026-10-15",
-          "s": "뉴시스"
+          "t": "색조 넘어 기초케어까지…지그재그, 뷰티 영토 넓힌다",
+          "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBoMUkwbW5JczFEQTgzUk1mSmFZYjBzSVJBZ3IzaHVSQ0UwSEZmRklzOU1UTnlacTFvNVBjSmFZQmZtNjBtR1k5ZHVIMlUtSVVGdFFDc1NzenF2UGhyTmhKZTJETjIxd1hWZEVKcw?oc=5",
+          "d": "2026-11-04",
+          "s": "매경헬스"
         }
       ],
       "jobs": []
@@ -852,113 +950,6 @@
       "jobs": []
     },
     {
-      "n": "무신사",
-      "i": "패션 커머스",
-      "hp": "https://corp.musinsa.com",
-      "target": "2030",
-      "sigs": [
-        "launch",
-        "season",
-        "fit"
-      ],
-      "score": 44,
-      "sources": {
-        "launch": [
-          {
-            "t": "무신사, 사진 한 장으로 상품 찾는 AI 이미지 검색 ‘무신사 렌즈’ 오픈",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1USlFRMVVJRDBDTXczTmhPQ2Jub3BabFVwV0RfZmpLeHBkdS1IeGdpd1M4bHBsODcxR2lXbEhTV1RGN2dKZW5UQVBTdWJTM0txRjRwVTVUN3YwSkRYM0ZkSw?oc=5",
-            "d": "2026-10-29",
-            "s": "무신사"
-          },
-          {
-            "t": "“한 달에 100개씩 쏟아진다”…1030 잡은 무신사 뷰티, 신제품 ‘첫 무대’로",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBrSnZmaTZ0WlJyRzBYZHBSMEZZR2lwNkJjYzNtYjk0b0dmNVFsMjZaUnZ4SEsxRUUyTWFWVkdKc001N0tLS3BFaUUyXzhUb1JNZXRsdFBlZmFBbDBkYlAtNw?oc=5",
-            "d": "2026-10-02",
-            "s": "무신사"
-          },
-          {
-            "t": "무신사, 훗카이도 최대 도시 삿포로에 마뗑킴 5호점 오픈... “현지 고객부터 글로벌 관광객까지 K-패션 접점 넓힌다”",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1DNWwzTmtFZENZdXdvZ2Q1VXpJSGM5NXlBeEx2UVZJR3AxdXRTQWV1WjZZUDA3bDFVYWp5QmwwOXdSWVQ5U09uX2VsNEFVR05sbmR5NjhtTmpzcTBxYzVJcg?oc=5",
-            "d": "2026-10-01",
-            "s": "무신사"
-          },
-          {
-            "t": "[현장] 무신사, 中 선전 '무신사 스토어·무신사 스탠다드' 동시 오픈… 첫 주말 약 4만 명 방문",
-            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFB6a3NtUXNYeHZDTzRuMVVRbjdnOE0weUViSDB2b1p0X3JGMXFQU3NjQzA1OXFvLXR0ajZRa2JTZ1JRN1NDOGhDT3ZGeW5zbG1JVnhidUg5SDFKSi04SlBWTg?oc=5",
-            "d": "2026-11-01",
-            "s": "무신사"
-          }
-        ],
-        "season": [
-          {
-            "t": "패션 커머스 성수기 구간 (월 11)",
-            "u": "",
-            "d": "",
-            "s": "시즌 캘린더"
-          }
-        ],
-        "fit": [
-          {
-            "t": "패션 커머스 · 토스 2030 타깃 핏",
-            "u": "",
-            "d": "",
-            "s": "업종 분석"
-          }
-        ]
-      },
-      "news": [
-        {
-          "t": "무신사, 한정판 거래 플랫폼 '솔드아웃' 종료 후 '유즈드'로 통합···패션 리커머스 지속 확대한다",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBEeEREWkJNbk1jbEhYcGl5VVJRM294SHVPNHdiMTBMdXlNd0ptV3lsbTJoRXliT0JObkxBS1AxUUxJV3BJaGpDMUxqcjdtNWdJUXJheXV6SUdVSldCb0pPeQ?oc=5",
-          "d": "2026-10-01",
-          "s": "무신사"
-        },
-        {
-          "t": "무신사 스탠다드, 경남 창원 첫 매장 개점…지역 거점 출점 가속화",
-          "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE5vN0txRjVQSWtCWFd2NFdqUTlXcTBzQzQ3UWZCNzE5cVZUMEtlVEJfWDZGVFRLTEF2UkdCbldVbmdyeDU5Q2psUVRDeEZXcU1vSW83MWpmMnpkQkt6MWhBMGJ4SE9sQmZ6cWc0RmJDX3TSAXRBVV95cUxQTy02WWh4SnFWcy1qalduc3ZHQUtyRHNIcjc1R09FWi1sbkszamRRTzhoZjhadjE1eXc0aF9KTUJ1WTlpdHIwZGdYbnBuUkhRTVpKYXlDc19iLXg2YVdlaFRnMDhkQmlPR0ZBaFAzWGYwamJ6Qg?oc=5",
-          "d": "2026-10-15",
-          "s": "주간한국"
-        },
-        {
-          "t": "\"무신사 인턴 합격 축하합니다\" 런던 파견 안내까지 받았지만…피싱이었다",
-          "u": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE5YcHhJb29IV2pKTnpOY0RrQmFNcVhEMnBwck43bU9rSUNSN2tPUVRkUGRSaEtSR1JuUkJQM2VXOVBXX2xQVXJTeGhMSjJPdlJFTVJMaw?oc=5",
-          "d": "2026-11-09",
-          "s": "JTBC"
-        },
-        {
-          "t": "상장 앞둔 무신사, 적정 기업가치는…\"8조∼10조원 거론\"",
-          "u": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBaSzlWbklHZmNXUWxrTHpmUEF4WDJoS1FWdEliM1lwa1dxMEkxSUFoWXdkWFVHeGdfcGdpWFc4bGl3Wml1bFZjcWZOdURZVm9KRkxqekZVV09iZ2fSAWBBVV95cUxOWXpvcHp2dzB3alhZSGs3azQ5WGdDTVhRU0RraGNueUxQc3ZYWm5KY1ppT2pMNHlBcllUYTM2YVowZTQyVUdfVHBNbUtnVDFUZmhPS05PWlVaYjlnWkRMOWo?oc=5",
-          "d": "2026-10-02",
-          "s": "연합뉴스"
-        },
-        {
-          "t": "매장 늘리는 무신사, 멀어지는 '플랫폼 밸류'…LF·휠라와 비교되는 까닭",
-          "u": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNZUR5NGNFMnVwU2FzMWozdTg0Z0NMbnhhZkpjVmhyTzVCb1pCbThCR3ZZVlQxOUNwWG9LRnN3bGMwaFJCWWhaN3llUlM2cTkxc2hLZm9YcEx5emxTVGxVNHhGQ0dYSUQ2WE5WOFZrVTZkSE03bVNXaWRJSVl6QVp3bEpFYw?oc=5",
-          "d": "2026-09-29",
-          "s": "인베스트조선"
-        },
-        {
-          "t": "무신사·강남언니·위버스…해킹사고 모두 '이곳'이 뚫렸다",
-          "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBkdlR4dXJlNThfZ1UwQnJZdE50cVNkTlJRSFNtWGdKd3JfYmQwT3YzS2RCN203NE5WRVFDMzVITW54azg2eGp5QVdfT1NWNDJUU0p5VWxEMXh0dUE4YzZwQ25zeWl4UjjSAWxBVV95cUxOVGQtUmUwTXNhYjBldldhSlJPa0wtMkVXYTZFRHJLSkNXc1NrcmpaWnZzSUs1cExmOVo0MGdFZ1Q0dHQwcUZzTXZQd1FPSTdkYnFaTGFsZW90eEpnOGhDX1A4dlBfQXFvUFVCNHA?oc=5",
-          "d": "2026-09-28",
-          "s": "머니투데이"
-        },
-        {
-          "t": "무신사, 사진 한 장으로 상품 찾는 AI 이미지 검색 ‘무신사 렌즈’ 오픈",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1USlFRMVVJRDBDTXczTmhPQ2Jub3BabFVwV0RfZmpLeHBkdS1IeGdpd1M4bHBsODcxR2lXbEhTV1RGN2dKZW5UQVBTdWJTM0txRjRwVTVUN3YwSkRYM0ZkSw?oc=5",
-          "d": "2026-10-29",
-          "s": "무신사"
-        },
-        {
-          "t": "무신사 스탠다드, 효성티앤씨와 손잡고 ‘리커버리 웨어’ 첫선… “기능성에 디자인 더한 일상 패션으로 제안”",
-          "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE0yZFRYNGJlUVh0VzVGcVRTWG1iQXFxVTFaR3dhSDNUc3dSenB6Z2kxZldYTUh5ZGU0VnR3aXVqN0daYzc4YjMwR3g0RnAtRmNTM3BqeFlpNmVvSVVMWXItZA?oc=5",
-          "d": "2026-09-29",
-          "s": "무신사"
-        }
-      ],
-      "jobs": []
-    },
-    {
       "n": "오늘의집",
       "i": "리빙 커머스",
       "hp": "https://www.bucketplace.com",
@@ -1015,16 +1006,16 @@
       },
       "news": [
         {
-          "t": "오늘의집, 이사·인테리어 고객 겨냥 첫 멤버십 ‘무빙패스’ 출시…180일간 쇼핑·홈서비스 혜택",
-          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFB6WWpZbzlZZkJpSUNLbk9KdWdDdThzeS1Ud1JSWkpra2drTDgyRHcwR1dVUHUyeHRSNjI1Y1FMNXU1dkQxZVNwcnZyTlVEZ1U?oc=5",
-          "d": "2026-10-14",
-          "s": "벤처스퀘어"
-        },
-        {
           "t": "오늘의집, 선물하기 개시…쇼핑 수요 공략 승부수",
           "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE5UcXJtYVVNMWhxTjVmWDh6RUctNXFWWURfRmtkNW5sSmdHWm9yaEIxTXF4Z21Ra1VkN2dYX2NvT0c4bjZDZ3F1bFZzWmtVZw?oc=5",
           "d": "2026-10-21",
           "s": "전자신문"
+        },
+        {
+          "t": "오늘의집, 이사·인테리어 고객 겨냥 첫 멤버십 ‘무빙패스’ 출시…180일간 쇼핑·홈서비스 혜택",
+          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFB6WWpZbzlZZkJpSUNLbk9KdWdDdThzeS1Ud1JSWkpra2drTDgyRHcwR1dVUHUyeHRSNjI1Y1FMNXU1dkQxZVNwcnZyTlVEZ1U?oc=5",
+          "d": "2026-10-14",
+          "s": "벤처스퀘어"
         },
         {
           "t": "\"직접 보고 산다\"…오늘의집, 온라인 한계 넘을까",
@@ -1051,191 +1042,16 @@
           "s": "서울경제TV"
         },
         {
-          "t": "오늘의집, 서울 첫 인테리어 거점 목동라운지 오픈",
-          "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE45UzBpMDdzZXdjelNmaXdNRjRVNm5CNFY1R2ZTN2FxYXVyRGlUM1dIZGpDY3RvZUZEV3EtMUJOMEM5TDUtRmlFdVpHb25NeUxKNmtJeGxVd0lQVktVRGtBMzRoc0hic1JZZWc?oc=5",
-          "d": "2026-10-20",
-          "s": "나무신문"
-        },
-        {
           "t": "오늘의집, 첫 멤버십 ‘무빙패스’ 개시…“계획적인 이사 쇼핑 지원”",
           "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9qREFxOE1GWW9aazJvaGNCXzVhczQ2MHduSGh2TzV0Uk9oR0lOYmpJZFhnSW54NHc1d1JlMlhyNHZKR1NGNXE4MUFhQl9qbGtJVlc2Zl93T2xRVy1kY25uQnMwdHBaeURpSUHSAW5BVV95cUxOY18yeWZkUEtIeF9ETmRKandjbGpJb3BaQjh1MGtxR0FGSW82UEpJaFVvbC1YNU9IN3VCM0lMN0pONHp0T09ISlBkaDF0N0c5elU0X29uVG1VUnlzSG1fWU9rYXBZWmRwVExGYzNmQQ?oc=5",
           "d": "2026-10-14",
           "s": "파이낸셜투데이"
-        }
-      ],
-      "jobs": []
-    },
-    {
-      "n": "리디",
-      "i": "웹툰·콘텐츠",
-      "hp": "https://ridicorp.com",
-      "target": "1030",
-      "sigs": [
-        "launch",
-        "admarket",
-        "fit"
-      ],
-      "score": 38,
-      "sources": {
-        "launch": [
-          {
-            "t": "앱솔루틀리 리디큘러스, 야구장에 '스타워즈' 스톰트루퍼 아머 선보인다",
-            "u": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNbFREOE04cjRleHAyck1CN0d3X2Y5SlBiX2ZsWG9seWtyWVFTYmFZRVdVNm03Qjk2Rzhhd2hDOFBjQkpzNERhdGlxZ2R1TEZkNHA4aTV5b25hVUxLcEF2N2Vfd1pZbWZ0RXVkSWdobC1HdnlNRU5RdUhQc2g5RjZzREpiTnF3R2I4ZXlLNGpuZDYwbGw1cTRSYmVGbnYxclpPTUZyVmZfZGg2VUd6WkZJ?oc=5",
-            "d": "2026-10-30",
-            "s": "Hypebeast.KR"
-          }
-        ],
-        "admarket": [
-          {
-            "t": "리디 `프로모션 40%` 논란…창작자들 \"수수료 부담\" [2026 국감]",
-            "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE55YncyRV9NVXY0RzVBMnFvb2ozOFVMZ2RwemZVLU8tdkxEMmtqYkFtdUtiYzBqYV8xYnRVRlhZYXZ3ZmpqZ1pKUGtBSGV0M0J5VWtLczV4d285ZGxJTVVaV1p3?oc=5",
-            "d": "2026-10-08",
-            "s": "디지털데일리"
-          },
-          {
-            "t": "[국정감사]리디북스, 웹소설 작가 수수료·프로모션 부담 논란…국감서 질타",
-            "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9MczY5cnFPYW9DbU9uc0VqX24zem5xSVNQRlB4V3VCUXRmX1lTc0VWeWdlNEVUYlZXQVpndEFYUndyWnpRRTZxS2VUMGtERlByLUZYYV9BY2FrSXhZemVmVU5oQjA5S2VZNUww0gFvQVVfeXFMUDlLR2NtNlI0N01NWERmY2JLUHFNRzl1dy00ejhtSGJzZklNS1loWnRxR3pKSkc2ZEZEUF9hMFhvWlB5NE9GQ1JRdmRKS0xaRjNkd1VDZkJMUlFWNHlOYklIc2xfYmtPY2lnWjVGTURj?oc=5",
-            "d": "2026-10-07",
-            "s": "더퍼블릭"
-          }
-        ],
-        "fit": [
-          {
-            "t": "웹툰·콘텐츠 · 토스 1030 타깃 핏",
-            "u": "",
-            "d": "",
-            "s": "업종 분석"
-          }
-        ]
-      },
-      "news": [
-        {
-          "t": "웹소설 작가들, 리디 '갑질' 규탄… \"할인 비용 90% 작가에 전가\"",
-          "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9zN21QRkFJenY2blpVdV9NdmxaWHNvb1RCdjlRRmRPa3B3M2xrRF9nSUwtNGdnZU5EREtFSUVBbW9GT3JYbkZSTGlCa2Q2VGVENEVTU0hYTjd1YTBENFhaUEtJQ2JFMWZnWHhjLThSbTTSAXRBVV95cUxNUlVIUTZKc3VnaWgzQTJVVzNvQi05SFB5RjgwaEFkUVY5bllIY3hVUUVBQUhCMFJadXBrSnNzM0JEempZZEtJendQdGtrT0NMUlE1Zy1pS1Vuc2VxZ1ktYl9zcDFjV0IyblFQX0U4Qng0Ukt6Tg?oc=5",
-          "d": "2026-10-06",
-          "s": "IT조선"
         },
         {
-          "t": "웹소설 작가 76% \"독자 리디에 몰려 못 떠나\"…국감서 '수수료 40%' 질타",
-          "u": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOejhPb2V6YThwRzFSS3RreFQ1b05taDFHNFozcFFwYTN4SXdoNGZMbkFYdUtaUlNlV0x1eUhPTTE3azFyM2wwdEVkVG16em1pRHVLQVpIS2lwSXkxRFBnVTUwUGoyVmphWEFTWXhpcWowcFFUc0hWQjBTaC1vYmRtaA?oc=5",
-          "d": "2026-10-07",
-          "s": "이데일리"
-        },
-        {
-          "t": "리디 국감 앞두고 웹소설 수익배분 논란…수수료·할인 비용 부담 쟁점",
-          "u": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5zb01EeF90Qi1GUUZuRmwwc0Q1QWhXak9iX3JJYkNUc0JNclo2ci1USk9CYkFVRVNJUlAwYlRveUhpZFl1YlEyRzBFZWd0eGQxTFdoaUN4SHlNRkJTczh0TlZCNm1MLVdfbTdGaXNnWQ?oc=5",
-          "d": "2026-10-07",
-          "s": "이코리아"
-        },
-        {
-          "t": "리디 `프로모션 40%` 논란…창작자들 \"수수료 부담\" [2026 국감]",
-          "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE55YncyRV9NVXY0RzVBMnFvb2ozOFVMZ2RwemZVLU8tdkxEMmtqYkFtdUtiYzBqYV8xYnRVRlhZYXZ3ZmpqZ1pKUGtBSGV0M0J5VWtLczV4d285ZGxJTVVaV1p3?oc=5",
-          "d": "2026-10-08",
-          "s": "디지털데일리"
-        },
-        {
-          "t": "[2026 국감] 리디 웹소설 수수료 40% 논란…배기식 대표 “특이한 조건 아냐”",
-          "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBxM3VnTFI0bGpzVGVacmdfMUR3ZHVSeVM5dF80Z19mTy1UU045bHJTZXYwLUdKNkMtWjd0ZkFwRUo2T3B0YlZjUkpYeVRMVmRmQXFwVF9CaUZIX25wQ2c?oc=5",
-          "d": "2026-10-07",
-          "s": "아시아타임즈"
-        },
-        {
-          "t": "\"커뮤니티 추천글 하나에 판매량 180배\"…리디, '팬덤 선순환' 통했다",
-          "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5VSzRsOTlhVHdvTlhoREY1cEpiSUgwX2ZJaE5hYWVHTTVPQTlfaWJXb3NGMDNGaVZieFdtVHcxYURiaVhGZjBURU9meEV5dXNHREU4ZFo4X2dhdkxLcTBMUzNPcHF0R2PSAWxBVV95cUxOQWJZa0tCeUhwd3V3S2xNcDMxVXBjdk1oSzZKdzh3M3hMNUhYWDRrY0dfV2VQdGVPTDhMU1F4X0UtYnk2TFdDVzZvbG1mWXJfd3hfaGNZZ0VHNmtKWTB1YXh0ekpSLTFITXpHdDA?oc=5",
-          "d": "2026-11-02",
-          "s": "머니투데이"
-        },
-        {
-          "t": "[국정감사]리디북스, 웹소설 작가 수수료·프로모션 부담 논란…국감서 질타",
-          "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9MczY5cnFPYW9DbU9uc0VqX24zem5xSVNQRlB4V3VCUXRmX1lTc0VWeWdlNEVUYlZXQVpndEFYUndyWnpRRTZxS2VUMGtERlByLUZYYV9BY2FrSXhZemVmVU5oQjA5S2VZNUww0gFvQVVfeXFMUDlLR2NtNlI0N01NWERmY2JLUHFNRzl1dy00ejhtSGJzZklNS1loWnRxR3pKSkc2ZEZEUF9hMFhvWlB5NE9GQ1JRdmRKS0xaRjNkd1VDZkJMUlFWNHlOYklIc2xfYmtPY2lnWjVGTURj?oc=5",
-          "d": "2026-10-07",
-          "s": "더퍼블릭"
-        },
-        {
-          "t": "리디, 웹소설 수수료 40%···배기식 \"대부분 업체와 비슷한 수준\"",
-          "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA5M0lZMzJGZDJmT3NvUUVFeFYtbER3WFRvRVpTNXdxcW1wZExXSE96bVA1M0U5QlpRSTFyZTlsTVI2cDU0ZkpXYjVqdVJLX3BtWXFfMTM5b3R2OFRtRHROMUdTbGFZbzg3dUE?oc=5",
-          "d": "2026-10-07",
-          "s": "뉴스웨이"
-        }
-      ],
-      "jobs": []
-    },
-    {
-      "n": "번개장터",
-      "i": "중고 커머스",
-      "hp": "https://bgzt.co.kr",
-      "target": "2030 가성비",
-      "sigs": [
-        "invest",
-        "fit"
-      ],
-      "score": 30,
-      "sources": {
-        "invest": [
-          {
-            "t": "[진단_공유플랫폼 ④번개장터] 프랙시스 인수 후 몸값 5배 거론... 매출 성장에도 수익성 부담",
-            "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9BSGtWaXFITjlCWWJKZDI0dDV6bmh3VF8xbTNRamtjVy1hZEM1QWpfWExUb0VpMGwtSFd1dzhJRGNZeDdNWnI4RW5nczJINS1jOGNBbFF4cjRVLXhTQ0tCcjJNODVMRmp4SERGSk84d3HSAXRBVV95cUxOakt3M3h4NU1McF9xZ0IycTl3YU1mRDVWckhPcmp5UE9jVC1kWHNlb05lNlVEczRpWEcwcm1kd0YwcHJReEdZTW1qd3RBRDd6NUEya2IzdnVKLWhTWGhzbkJLLUxGN0JScE1ySjYxaWxHWEJBRg?oc=5",
-            "d": "2026-10-14",
-            "s": "뉴스워커"
-          }
-        ],
-        "fit": [
-          {
-            "t": "중고 커머스 · 토스 2030 가성비 타깃 핏",
-            "u": "",
-            "d": "",
-            "s": "업종 분석"
-          }
-        ]
-      },
-      "news": [
-        {
-          "t": "번개장터, '공유현' 신임 공동대표 내정",
-          "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1LUHlDX1lxVDA4TFRnZFh0a2NsSTlIWkIzVXkwX3hFclAwd2Z4ZU5DbFZ5OExqZWpLQURBdmp6WGxjVFZGSk1UOTZYbmY4QXcwQlZUNXJn?oc=5",
-          "d": "2026-10-13",
-          "s": "지디넷코리아"
-        },
-        {
-          "t": "번개장터, 공유현 신임 공동대표 내정…4년 만에 대표체제 개편",
-          "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9pbTFmTzNHU3FVUWd0RFdFdDF4UDJvWE4yNjNsbG1PRndwZi1QelBBRXUzem5HN3Nwbi1kX2QxUVVXU3gtTkw1aDFxdzAwZw?oc=5",
-          "d": "2026-10-13",
-          "s": "전자신문"
-        },
-        {
-          "t": "번개장터, 첫 ‘번개절’ 개최…중고거래도 쇼핑축제 시대",
-          "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9SZzF5ZXRFY0ZyMHl5dXdMSHFsTUg0TnYzczVJWTBoeUk5d3VTT0cxbUFuMWtKSjVmUlFFWTMwY3ZCRUFEck05U1dzOWlHRWVhQWwwbVFjNjEwRnp4bnVsU3ZHWHc?oc=5",
-          "d": "2026-10-07",
-          "s": "서울경제TV"
-        },
-        {
-          "t": "번개장터 번개절, 한글날 하루 개최 3700만 개 상품 바로쿠폰 푼다",
-          "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE14Z21yWjVpbFhfMUtPX0FzNUVPS2p4QldQX1JaczNMM3A2aU5HeFpwSG8zcVJPOWFpQk9JV3lGVW5UdktFZ0FjUUI1b0Faa3NpN3Z3bjBlamtzclBJVGVMRGFSSEVIY3JWTWwyRg?oc=5",
-          "d": "2026-10-07",
-          "s": "ER 이코노믹리뷰"
-        },
-        {
-          "t": "여의도공원에 중고장터 열린다…번개장터, 역대 최대 규모로 개최",
-          "u": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB0T1p1VHREMTFQUFBXQk50d1F0VU1ray1kT0F6R0pScndhU2ZQa0h4X3c0VXJDMWpmTXh4Y1ZvQy0zRG5KYUxWRGRDNGZpcDVlUkhGXzAwZnFvSnpBekZlZkhjanJuTmtnVFkwTkVKONIBb0FVX3lxTFB0T1p1VHREMTFQUFBXQk50d1F0VU1ray1kT0F6R0pScndhU2ZQa0h4X3c0VXJDMWpmTXh4Y1ZvQy0zRG5KYUxWRGRDNGZpcDVlUkhGXzAwZnFvSnpBekZlZkhjanJuTmtnVFkwTkVKOA?oc=5",
-          "d": "2026-11-09",
-          "s": "머니투데이"
-        },
-        {
-          "t": "중고거래도 쇼핑축제…번개장터, 한글날 첫 '번개절'",
-          "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9jU3l3Um4tenVoSExVQnRXYWY5SUZrUmpGSDZfTEt6aGMzR0hrYXJ4TDBQeWVlZ2R0OUpiYW4yOTlneTh4M1BoTmRiWXB6UzBhSEtuM0h2QjZmNzNm?oc=5",
-          "d": "2026-10-07",
-          "s": "뉴스핌"
-        },
-        {
-          "t": "번개장터, 찜한 상품에만 48시간 할인…‘비밀가격제안’ 도입 후 평균 7.4시간 만에 거래",
-          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9ERzJVakc2RGwtX3ZpNkFrbVZacDBsUEEwSjFQNUtXMDZROHo4b0dwLUpKN3NrNWVzZEx3bHctTTFjQXduSkhzR3lCRWJEd0k?oc=5",
-          "d": "2026-10-15",
-          "s": "벤처스퀘어"
-        },
-        {
-          "t": "번개장터 포켓몬 카드 거래 7.6배 껑충…한 장 600만원",
-          "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5TUHlIZ2szeGpkT3lJd1ltcXJ5N3I4eFJaWHBwekxDR2tIRXFRQlVVb3ViSjN4cTVnelRtTTZWOTVkWG5EMUFhbWdEcFV6c29weUFhRm05UkNleWdUNTJMUW8zclo5d2pj?oc=5",
-          "d": "2026-10-01",
-          "s": "뉴스1"
+          "t": "오늘의집, 서울 첫 인테리어 거점 목동라운지 오픈",
+          "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTE45UzBpMDdzZXdjelNmaXdNRjRVNm5CNFY1R2ZTN2FxYXVyRGlUM1dIZGpDY3RvZUZEV3EtMUJOMEM5TDUtRmlFdVpHb25NeUxKNmtJeGxVd0lQVktVRGtBMzRoc0hic1JZZWc?oc=5",
+          "d": "2026-10-20",
+          "s": "나무신문"
         }
       ],
       "jobs": []
@@ -1246,11 +1062,20 @@
       "hp": "https://yanolja.co",
       "target": "2040 액티브",
       "sigs": [
+        "invest",
         "launch",
         "fit"
       ],
-      "score": 22,
+      "score": 44,
       "sources": {
+        "invest": [
+          {
+            "t": "[K유니콘 리포트]8조몸값 옛말 야놀자…나스닥지연·소프트뱅크투자'빨간불'",
+            "u": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1sclUyZ1hZTU5kYW84Y1FUQ25UQmxYSGdVQVdEaEk5QThUYVIwOTgzaEJHMklxdkkwWDdobzU1cGFwT0pQMVV5Ti1MXzQ1U1R5X0dHV0c0YndiNGo4WG5lUXVTcVRtM0NGMzBLVmJFcw?oc=5",
+            "d": "2026-11-11",
+            "s": "뉴스톱"
+          }
+        ],
         "launch": [
           {
             "t": "\"기업 AI 요금 폭탄 막는다\"…야놀자넥스트, '에이먹스' 출시",
@@ -1334,6 +1159,187 @@
           "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE1MMW9UdURXZF9IODA1ZVh1WmJ2NGotTW5oWnh5d0MzWklJUGVLZ0FSbkJaOVB5S0YyZWdiMjZ6MkdfMFMzWWlQLWhoV2NZS19oaXo1UXgtbF92SGhKT2E3NQ?oc=5",
           "d": "2026-11-03",
           "s": "뉴스토마토"
+        }
+      ],
+      "jobs": []
+    },
+    {
+      "n": "리디",
+      "i": "웹툰·콘텐츠",
+      "hp": "https://ridicorp.com",
+      "target": "1030",
+      "sigs": [
+        "launch",
+        "admarket",
+        "fit"
+      ],
+      "score": 38,
+      "sources": {
+        "launch": [
+          {
+            "t": "앱솔루틀리 리디큘러스, 야구장에 '스타워즈' 스톰트루퍼 아머 선보인다",
+            "u": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNbFREOE04cjRleHAyck1CN0d3X2Y5SlBiX2ZsWG9seWtyWVFTYmFZRVdVNm03Qjk2Rzhhd2hDOFBjQkpzNERhdGlxZ2R1TEZkNHA4aTV5b25hVUxLcEF2N2Vfd1pZbWZ0RXVkSWdobC1HdnlNRU5RdUhQc2g5RjZzREpiTnF3R2I4ZXlLNGpuZDYwbGw1cTRSYmVGbnYxclpPTUZyVmZfZGg2VUd6WkZJ?oc=5",
+            "d": "2026-10-30",
+            "s": "Hypebeast.KR"
+          }
+        ],
+        "admarket": [
+          {
+            "t": "리디 `프로모션 40%` 논란…창작자들 \"수수료 부담\" [2026 국감]",
+            "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE55YncyRV9NVXY0RzVBMnFvb2ozOFVMZ2RwemZVLU8tdkxEMmtqYkFtdUtiYzBqYV8xYnRVRlhZYXZ3ZmpqZ1pKUGtBSGV0M0J5VWtLczV4d285ZGxJTVVaV1p3?oc=5",
+            "d": "2026-10-08",
+            "s": "디지털데일리"
+          },
+          {
+            "t": "[국정감사]리디북스, 웹소설 작가 수수료·프로모션 부담 논란…국감서 질타",
+            "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9MczY5cnFPYW9DbU9uc0VqX24zem5xSVNQRlB4V3VCUXRmX1lTc0VWeWdlNEVUYlZXQVpndEFYUndyWnpRRTZxS2VUMGtERlByLUZYYV9BY2FrSXhZemVmVU5oQjA5S2VZNUww0gFvQVVfeXFMUDlLR2NtNlI0N01NWERmY2JLUHFNRzl1dy00ejhtSGJzZklNS1loWnRxR3pKSkc2ZEZEUF9hMFhvWlB5NE9GQ1JRdmRKS0xaRjNkd1VDZkJMUlFWNHlOYklIc2xfYmtPY2lnWjVGTURj?oc=5",
+            "d": "2026-10-07",
+            "s": "더퍼블릭"
+          }
+        ],
+        "fit": [
+          {
+            "t": "웹툰·콘텐츠 · 토스 1030 타깃 핏",
+            "u": "",
+            "d": "",
+            "s": "업종 분석"
+          }
+        ]
+      },
+      "news": [
+        {
+          "t": "웹소설 작가들, 리디 '갑질' 규탄… \"할인 비용 90% 작가에 전가\"",
+          "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9zN21QRkFJenY2blpVdV9NdmxaWHNvb1RCdjlRRmRPa3B3M2xrRF9nSUwtNGdnZU5EREtFSUVBbW9GT3JYbkZSTGlCa2Q2VGVENEVTU0hYTjd1YTBENFhaUEtJQ2JFMWZnWHhjLThSbTTSAXRBVV95cUxNUlVIUTZKc3VnaWgzQTJVVzNvQi05SFB5RjgwaEFkUVY5bllIY3hVUUVBQUhCMFJadXBrSnNzM0JEempZZEtJendQdGtrT0NMUlE1Zy1pS1Vuc2VxZ1ktYl9zcDFjV0IyblFQX0U4Qng0Ukt6Tg?oc=5",
+          "d": "2026-10-06",
+          "s": "IT조선"
+        },
+        {
+          "t": "웹소설 작가 76% \"독자 리디에 몰려 못 떠나\"…국감서 '수수료 40%' 질타",
+          "u": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOejhPb2V6YThwRzFSS3RreFQ1b05taDFHNFozcFFwYTN4SXdoNGZMbkFYdUtaUlNlV0x1eUhPTTE3azFyM2wwdEVkVG16em1pRHVLQVpIS2lwSXkxRFBnVTUwUGoyVmphWEFTWXhpcWowcFFUc0hWQjBTaC1vYmRtaA?oc=5",
+          "d": "2026-10-07",
+          "s": "이데일리"
+        },
+        {
+          "t": "리디 국감 앞두고 웹소설 수익배분 논란…수수료·할인 비용 부담 쟁점",
+          "u": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5zb01EeF90Qi1GUUZuRmwwc0Q1QWhXak9iX3JJYkNUc0JNclo2ci1USk9CYkFVRVNJUlAwYlRveUhpZFl1YlEyRzBFZWd0eGQxTFdoaUN4SHlNRkJTczh0TlZCNm1MLVdfbTdGaXNnWQ?oc=5",
+          "d": "2026-10-07",
+          "s": "이코리아"
+        },
+        {
+          "t": "[2026 국감] 리디 웹소설 수수료 40% 논란…배기식 대표 “특이한 조건 아냐”",
+          "u": "https://news.google.com/rss/articles/CBMiXkFVX3lxTFBxM3VnTFI0bGpzVGVacmdfMUR3ZHVSeVM5dF80Z19mTy1UU045bHJTZXYwLUdKNkMtWjd0ZkFwRUo2T3B0YlZjUkpYeVRMVmRmQXFwVF9CaUZIX25wQ2c?oc=5",
+          "d": "2026-10-07",
+          "s": "아시아타임즈"
+        },
+        {
+          "t": "리디 `프로모션 40%` 논란…창작자들 \"수수료 부담\" [2026 국감]",
+          "u": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE55YncyRV9NVXY0RzVBMnFvb2ozOFVMZ2RwemZVLU8tdkxEMmtqYkFtdUtiYzBqYV8xYnRVRlhZYXZ3ZmpqZ1pKUGtBSGV0M0J5VWtLczV4d285ZGxJTVVaV1p3?oc=5",
+          "d": "2026-10-08",
+          "s": "디지털데일리"
+        },
+        {
+          "t": "\"커뮤니티 추천글 하나에 판매량 180배\"…리디, '팬덤 선순환' 통했다",
+          "u": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5VSzRsOTlhVHdvTlhoREY1cEpiSUgwX2ZJaE5hYWVHTTVPQTlfaWJXb3NGMDNGaVZieFdtVHcxYURiaVhGZjBURU9meEV5dXNHREU4ZFo4X2dhdkxLcTBMUzNPcHF0R2PSAWxBVV95cUxOQWJZa0tCeUhwd3V3S2xNcDMxVXBjdk1oSzZKdzh3M3hMNUhYWDRrY0dfV2VQdGVPTDhMU1F4X0UtYnk2TFdDVzZvbG1mWXJfd3hfaGNZZ0VHNmtKWTB1YXh0ekpSLTFITXpHdDA?oc=5",
+          "d": "2026-11-02",
+          "s": "머니투데이"
+        },
+        {
+          "t": "[국정감사]리디북스, 웹소설 작가 수수료·프로모션 부담 논란…국감서 질타",
+          "u": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9MczY5cnFPYW9DbU9uc0VqX24zem5xSVNQRlB4V3VCUXRmX1lTc0VWeWdlNEVUYlZXQVpndEFYUndyWnpRRTZxS2VUMGtERlByLUZYYV9BY2FrSXhZemVmVU5oQjA5S2VZNUww0gFvQVVfeXFMUDlLR2NtNlI0N01NWERmY2JLUHFNRzl1dy00ejhtSGJzZklNS1loWnRxR3pKSkc2ZEZEUF9hMFhvWlB5NE9GQ1JRdmRKS0xaRjNkd1VDZkJMUlFWNHlOYklIc2xfYmtPY2lnWjVGTURj?oc=5",
+          "d": "2026-10-07",
+          "s": "더퍼블릭"
+        },
+        {
+          "t": "리디, 웹소설 수수료 40%···배기식 \"대부분 업체와 비슷한 수준\"",
+          "u": "https://news.google.com/rss/articles/CBMiakFVX3lxTFA5M0lZMzJGZDJmT3NvUUVFeFYtbER3WFRvRVpTNXdxcW1wZExXSE96bVA1M0U5QlpRSTFyZTlsTVI2cDU0ZkpXYjVqdVJLX3BtWXFfMTM5b3R2OFRtRHROMUdTbGFZbzg3dUE?oc=5",
+          "d": "2026-10-07",
+          "s": "뉴스웨이"
+        }
+      ],
+      "jobs": []
+    },
+    {
+      "n": "번개장터",
+      "i": "중고 커머스",
+      "hp": "https://bgzt.co.kr",
+      "target": "2030 가성비",
+      "sigs": [
+        "invest",
+        "fit"
+      ],
+      "score": 30,
+      "sources": {
+        "invest": [
+          {
+            "t": "[진단_공유플랫폼 ④번개장터] 프랙시스 인수 후 몸값 5배 거론... 매출 성장에도 수익성 부담",
+            "u": "https://news.google.com/rss/articles/CBMicEFVX3lxTE9BSGtWaXFITjlCWWJKZDI0dDV6bmh3VF8xbTNRamtjVy1hZEM1QWpfWExUb0VpMGwtSFd1dzhJRGNZeDdNWnI4RW5nczJINS1jOGNBbFF4cjRVLXhTQ0tCcjJNODVMRmp4SERGSk84d3HSAXRBVV95cUxOakt3M3h4NU1McF9xZ0IycTl3YU1mRDVWckhPcmp5UE9jVC1kWHNlb05lNlVEczRpWEcwcm1kd0YwcHJReEdZTW1qd3RBRDd6NUEya2IzdnVKLWhTWGhzbkJLLUxGN0JScE1ySjYxaWxHWEJBRg?oc=5",
+            "d": "2026-10-14",
+            "s": "뉴스워커"
+          },
+          {
+            "t": "번개장터·뮤직카우…한때 인기였던 플랫폼 투자, 회수는 '난항'[PE는 지금]",
+            "u": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE11bUhMN19YcVZuMHJheHR3czU4eDlCM2VyVlVVY3h4Y3dMN0Ntemg0LTA2SDJxQno3ZWprWTl3QkJCY2s4bzlzNU5QVGEyQzZ2SjJpbi1tdDUweG11eXI5bg?oc=5",
+            "d": "2026-11-09",
+            "s": "아시아경제"
+          }
+        ],
+        "fit": [
+          {
+            "t": "중고 커머스 · 토스 2030 가성비 타깃 핏",
+            "u": "",
+            "d": "",
+            "s": "업종 분석"
+          }
+        ]
+      },
+      "news": [
+        {
+          "t": "번개장터, '공유현' 신임 공동대표 내정",
+          "u": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1LUHlDX1lxVDA4TFRnZFh0a2NsSTlIWkIzVXkwX3hFclAwd2Z4ZU5DbFZ5OExqZWpLQURBdmp6WGxjVFZGSk1UOTZYbmY4QXcwQlZUNXJn?oc=5",
+          "d": "2026-10-13",
+          "s": "지디넷코리아"
+        },
+        {
+          "t": "번개장터, 공유현 신임 공동대표 내정…4년 만에 대표체제 개편",
+          "u": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9pbTFmTzNHU3FVUWd0RFdFdDF4UDJvWE4yNjNsbG1PRndwZi1QelBBRXUzem5HN3Nwbi1kX2QxUVVXU3gtTkw1aDFxdzAwZw?oc=5",
+          "d": "2026-10-13",
+          "s": "전자신문"
+        },
+        {
+          "t": "번개장터, 첫 ‘번개절’ 개최…중고거래도 쇼핑축제 시대",
+          "u": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE9SZzF5ZXRFY0ZyMHl5dXdMSHFsTUg0TnYzczVJWTBoeUk5d3VTT0cxbUFuMWtKSjVmUlFFWTMwY3ZCRUFEck05U1dzOWlHRWVhQWwwbVFjNjEwRnp4bnVsU3ZHWHc?oc=5",
+          "d": "2026-10-07",
+          "s": "서울경제TV"
+        },
+        {
+          "t": "번개장터 번개절, 한글날 하루 개최 3700만 개 상품 바로쿠폰 푼다",
+          "u": "https://news.google.com/rss/articles/CBMibEFVX3lxTE14Z21yWjVpbFhfMUtPX0FzNUVPS2p4QldQX1JaczNMM3A2aU5HeFpwSG8zcVJPOWFpQk9JV3lGVW5UdktFZ0FjUUI1b0Faa3NpN3Z3bjBlamtzclBJVGVMRGFSSEVIY3JWTWwyRg?oc=5",
+          "d": "2026-10-07",
+          "s": "ER 이코노믹리뷰"
+        },
+        {
+          "t": "여의도공원에 중고장터 열린다…번개장터, 역대 최대 규모로 개최",
+          "u": "https://news.google.com/rss/articles/CBMib0FVX3lxTFB0T1p1VHREMTFQUFBXQk50d1F0VU1ray1kT0F6R0pScndhU2ZQa0h4X3c0VXJDMWpmTXh4Y1ZvQy0zRG5KYUxWRGRDNGZpcDVlUkhGXzAwZnFvSnpBekZlZkhjanJuTmtnVFkwTkVKONIBb0FVX3lxTFB0T1p1VHREMTFQUFBXQk50d1F0VU1ray1kT0F6R0pScndhU2ZQa0h4X3c0VXJDMWpmTXh4Y1ZvQy0zRG5KYUxWRGRDNGZpcDVlUkhGXzAwZnFvSnpBekZlZkhjanJuTmtnVFkwTkVKOA?oc=5",
+          "d": "2026-11-09",
+          "s": "머니투데이"
+        },
+        {
+          "t": "중고거래도 쇼핑축제…번개장터, 한글날 첫 '번개절'",
+          "u": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE9jU3l3Um4tenVoSExVQnRXYWY5SUZrUmpGSDZfTEt6aGMzR0hrYXJ4TDBQeWVlZ2R0OUpiYW4yOTlneTh4M1BoTmRiWXB6UzBhSEtuM0h2QjZmNzNm?oc=5",
+          "d": "2026-10-07",
+          "s": "뉴스핌"
+        },
+        {
+          "t": "번개장터, 찜한 상품에만 48시간 할인…‘비밀가격제안’ 도입 후 평균 7.4시간 만에 거래",
+          "u": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9ERzJVakc2RGwtX3ZpNkFrbVZacDBsUEEwSjFQNUtXMDZROHo4b0dwLUpKN3NrNWVzZEx3bHctTTFjQXduSkhzR3lCRWJEd0k?oc=5",
+          "d": "2026-10-15",
+          "s": "벤처스퀘어"
+        },
+        {
+          "t": "번개장터 포켓몬 카드 거래 7.6배 껑충…한 장 600만원",
+          "u": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5TUHlIZ2szeGpkT3lJd1ltcXJ5N3I4eFJaWHBwekxDR2tIRXFRQlVVb3ViSjN4cTVnelRtTTZWOTVkWG5EMUFhbWdEcFV6c29weUFhRm05UkNleWdUNTJMUW8zclo5d2pj?oc=5",
+          "d": "2026-10-01",
+          "s": "뉴스1"
         }
       ],
       "jobs": []
