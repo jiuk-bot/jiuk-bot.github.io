@@ -561,10 +561,12 @@ body::after{
       #ccom .abcard .ba2 .c.a{ background:rgba(255,107,157,.05); border-color:rgba(255,107,157,.25); color:var(--mute); } #ccom .abcard .ba2 .c.a .l{ color:var(--red); }
       #ccom .abcard .ba2 .c.b{ background:rgba(156,181,150,.06); border-color:rgba(124,92,255,.3); color:var(--ink); } #ccom .abcard .ba2 .c.b .l{ color:var(--signal); }
       #ccom .abcard .ba2 .ar{ display:flex; align-items:center; color:var(--signal); font-weight:800; font-size:14px; }
-      #ccom .abcard .res{ display:flex; flex-wrap:wrap; gap:7px; margin-top:1px; }
+      /* 결과 수치 밴드 (성과 강조) */
+      #ccom .abcard .res{ display:flex; flex-wrap:wrap; gap:8px; padding:13px 14px; background:rgba(124,92,255,.05); border:1px solid rgba(124,92,255,.16); border-radius:12px; }
       #ccom .abcard .res .r{ font-size:13px; font-weight:800; color:var(--ink); background:var(--void); border:1px solid var(--line); border-radius:999px; padding:6px 13px; }
       #ccom .abcard .res .r b{ color:var(--signal); }
-      #ccom .abcard .abx{ font-size:12.5px; line-height:1.6; color:var(--dim); border-top:1px dashed var(--line); padding-top:11px; margin-top:1px; }
+      /* 보조 디테일 (라이트, 성과 밴드 바로 아래 각주) */
+      #ccom .abcard .abx{ font-size:12px; line-height:1.55; color:var(--dim); padding-left:2px; margin-top:-4px; }
       #ccom .abcard .abx b{ color:var(--cyan); font-weight:700; }
       #ccom .abcard .abx .raw{ color:var(--mute); font-weight:700; font-variant-numeric:tabular-nums; }
       #ccom .commerce{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:6px; }
@@ -598,16 +600,16 @@ body::after{
       @media(max-width:720px){ #ccom .tl{ flex-direction:column; } #ccom .tl .tla{ justify-content:center; transform:rotate(90deg); padding:5px 0; } #ccom .tl .tlo{ margin-top:4px; } }
       /* 같은 행 카드끼리 러닝을 하단에 자연 정렬 (내용은 자연 높이 유지) */
       #ccom .abgrid{ align-items:stretch; }
-      #ccom .abcard .qa.l{ margin-top:auto; }
-      /* 카드 상단(포맷+기간) + 문제/가설/러닝 */
+      /* 카드 상단(포맷+기간) */
       #ccom .abcard .abhead{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
       #ccom .abcard .per{ font-size:12px; font-weight:800; color:var(--mute); font-variant-numeric:tabular-nums; }
-      #ccom .abcard .qa{ font-size:14px; line-height:1.68; color:var(--mute); }
-      #ccom .abcard .qa .lab{ display:inline-block; font-size:10.5px; font-weight:800; letter-spacing:.04em; padding:3px 8px; border-radius:6px; margin-right:8px; vertical-align:1.5px; }
+      /* 문제·가설·러닝: 라벨 열 + 텍스트 2단 정렬 */
+      #ccom .abcard .qa{ display:flex; gap:11px; font-size:14px; line-height:1.6; color:var(--mute); }
+      #ccom .abcard .qa .lab{ flex:0 0 42px; box-sizing:border-box; align-self:flex-start; text-align:center; font-size:10.5px; font-weight:800; letter-spacing:.02em; padding:4px 0; border-radius:7px; }
       #ccom .abcard .qa.p .lab{ background:rgba(255,107,157,.1); color:#ff9b9b; border:1px solid rgba(255,107,157,.3); }
       #ccom .abcard .qa.h .lab{ background:rgba(110,231,255,.1); color:var(--cyan); border:1px solid rgba(110,231,255,.3); }
       #ccom .abcard .qa.h b{ color:var(--cyan); font-weight:700; }
-      #ccom .abcard .qa.l{ border-top:1px dashed var(--line); padding-top:10px; margin-top:2px; color:var(--ink); }
+      #ccom .abcard .qa.l{ margin-top:auto; padding-top:17px; border-top:1px solid var(--line-soft); color:var(--ink); }
       #ccom .abcard .qa.l .lab{ background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
       #ccom .abcard .qa.l b{ color:var(--signal); font-weight:700; }
       #ccom .abcard .qa b{ color:var(--ink); font-weight:700; }
