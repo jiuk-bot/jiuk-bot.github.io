@@ -530,21 +530,223 @@ body::after{
     <aside class="railwrap">
       <div class="rail-h">CASE INDEX</div>
       <nav class="rail">
-        <a href="#cvid"><span class="rn">▶</span><span>AI 영상 크리에이티브</span></a>
         <a href="#ccom"><span class="rn">★</span><span>커머스·리드 소재 A/B 아카이브</span></a>
-        <a href="#ctool"><span class="rn">⚙</span><span>AI 소재 생성·분석 툴</span></a>
+        <a href="#cvid"><span class="rn">▶</span><span>AI 영상 크리에이티브</span></a>
         <a href="#c1"><span class="rn">01</span><span>치과 임플란트 다매체 소재</span></a>
         <a href="#c2"><span class="rn">02</span><span>AI 성과 대시보드</span></a>
-        <a href="#c3"><span class="rn">03</span><span>광고 운영 자동화 봇</span></a>
-        <a href="#c4"><span class="rn">04</span><span>KB 스타틴즈 5채널</span></a>
-        <a href="#c5"><span class="rn">05</span><span>KB 패밀리뱅킹</span></a>
-        <a href="#c6"><span class="rn">06</span><span>공유창고 GA4 퍼널</span></a>
-        <a href="#c7"><span class="rn">07</span><span>어스텀 창업·대표</span></a>
+        <a href="#c4"><span class="rn">03</span><span>KB 스타틴즈 5채널</span></a>
+        <a href="#c5"><span class="rn">04</span><span>KB 패밀리뱅킹</span></a>
+        <a href="#c6"><span class="rn">05</span><span>공유창고 GA4 퍼널</span></a>
+        <a href="#c7"><span class="rn">06</span><span>어스텀 창업·대표</span></a>
       </nav>
     </aside>
 
     <!-- cases -->
     <main>
+
+    <!-- ===================== ARCHIVE · 커머스·리드 소재 A/B ===================== -->
+    <style>
+      #ccom .abadge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.32); padding:3px 10px; border-radius:999px; }
+      #ccom .method{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:2px 0 8px; }
+      #ccom .method .ms{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
+      #ccom .method .ms.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
+      #ccom .method .ma{ color:var(--signal); font-weight:800; }
+      #ccom .abgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
+      #ccom .abcard{ border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px 18px 16px; display:flex; flex-direction:column; gap:11px; transition:transform .3s,border-color .3s,box-shadow .3s; }
+      #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
+      #ccom .abcard .fmt{ align-self:flex-start; font-size:10px; font-weight:800; letter-spacing:.04em; padding:3px 9px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
+      #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
+      #ccom .abcard h4{ font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; line-height:1.4; }
+      #ccom .abcard .hyp{ font-size:12.5px; line-height:1.6; color:var(--mute); }
+      #ccom .abcard .hyp b{ color:var(--cyan); font-weight:700; }
+      #ccom .abcard .ba2{ display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:stretch; }
+      #ccom .abcard .ba2 .c{ border:1px solid var(--line); border-radius:9px; padding:9px 10px; font-size:11px; line-height:1.45; }
+      #ccom .abcard .ba2 .c .l{ font-size:9.5px; font-weight:800; letter-spacing:.03em; margin-bottom:3px; }
+      #ccom .abcard .ba2 .c.a{ background:rgba(255,107,157,.05); border-color:rgba(255,107,157,.25); color:var(--mute); } #ccom .abcard .ba2 .c.a .l{ color:var(--red); }
+      #ccom .abcard .ba2 .c.b{ background:rgba(156,181,150,.06); border-color:rgba(124,92,255,.3); color:var(--ink); } #ccom .abcard .ba2 .c.b .l{ color:var(--signal); }
+      #ccom .abcard .ba2 .ar{ display:flex; align-items:center; color:var(--signal); font-weight:800; font-size:14px; }
+      #ccom .abcard .res{ display:flex; flex-wrap:wrap; gap:7px; margin-top:1px; }
+      #ccom .abcard .res .r{ font-size:11.5px; font-weight:800; color:var(--ink); background:var(--void); border:1px solid var(--line); border-radius:999px; padding:4px 11px; }
+      #ccom .abcard .res .r b{ color:var(--signal); }
+      #ccom .commerce{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:6px; }
+      #ccom .cc{ border:1px solid var(--line); border-left:2px solid var(--cyan); border-radius:12px; background:var(--panel); padding:18px; }
+      #ccom .cc .ct{ font-size:13px; font-weight:800; color:var(--cyan); margin-bottom:8px; }
+      #ccom .cc p{ font-size:13px; line-height:1.65; color:var(--mute); } #ccom .cc p b{ color:var(--ink); }
+      /* 실제 소재 이미지 As-is → To-be */
+      #ccom .imgab{ display:grid; grid-template-columns:1fr auto 1fr; gap:9px; align-items:center; }
+      #ccom .imgab figure{ margin:0; }
+      #ccom .imgab img{ width:100%; height:168px; object-fit:contain; background:#0b0a12; border:1px solid var(--line); border-radius:10px; display:block; }
+      #ccom .imgab figcaption{ font-size:9.5px; font-weight:800; letter-spacing:.03em; margin-top:6px; line-height:1.4; color:var(--mute); }
+      #ccom .imgab .fa figcaption{ color:#ff9b9b; } #ccom .imgab .fb figcaption{ color:var(--signal); }
+      #ccom .imgab .fb img{ border-color:rgba(124,92,255,.45); }
+      #ccom .imgab .ar{ display:flex; align-items:center; justify-content:center; color:var(--signal); font-weight:800; font-size:15px; }
+      /* 4종 토너먼트 */
+      #ccom .tngrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:7px; }
+      #ccom .tngrid figure{ margin:0; }
+      #ccom .tngrid img{ width:100%; height:96px; object-fit:cover; border:1px solid var(--line); border-radius:8px; display:block; }
+      #ccom .tngrid figcaption{ font-size:9px; font-weight:800; text-align:center; margin-top:4px; color:var(--dim); }
+      #ccom .tngrid .win img{ border-color:var(--signal); box-shadow:0 0 0 1.5px var(--signal); }
+      #ccom .tngrid .win figcaption{ color:var(--signal); }
+      @media(max-width:720px){ #ccom .abgrid,#ccom .commerce{ grid-template-columns:1fr; } }
+    </style>
+    <section class="case reveal" id="ccom">
+      <div class="case-top">
+        <div class="ch"><span class="abadge">ARCHIVE · 기여도 100%</span><span class="org">박스풀 공유창고·풀필먼트 / 다이나믹 서플라이 · 2024.07~2025.05</span></div>
+        <h2>커머스·리드 소재 A/B 아카이브 — 직접 만든 소재로 지표를 움직인 실험들</h2>
+        <div class="tags">
+          <span class="tag">영상·이미지 직접 제작</span>
+          <span class="tag">소구×후킹 A/B</span>
+          <span class="tag">Meta · 당근 · 스마트스토어</span>
+          <span class="tag role">기획·제작·운영 100%</span>
+        </div>
+      </div>
+
+      <p class="lead">소재를 <b>'느낌'이 아니라 실험 단위</b>로 운영했습니다 — 소구를 가설로 세워 비교하고, <b>고효율 소구 위에서 후킹·CTA·포맷을 다시 비교하고</b>, 고효율 소재의 공통점을 다음 소재에 반영했습니다. 아래는 그 루프로 지표를 바꾼 <b>기여도 100% 소재 케이스</b>입니다.</p>
+
+      <div class="body">
+        <div class="mstrip c4">
+          <div class="m"><div class="cap">짐보관 AI영상 · CTR</div><div class="val num">9.56<span class="u">%</span></div><div class="sub">6.7% → 9.56% · +42.7%</div></div>
+          <div class="m"><div class="cap">공감형 Hook · 전환</div><div class="val num">+31.3<span class="u">%</span></div><div class="sub">CPA −24% 동반</div></div>
+          <div class="m"><div class="cap">리드 리프레이밍 · 타겟적중</div><div class="val num">70<span class="u">%</span></div><div class="sub">40% → 70% · 전환 124→208건</div></div>
+          <div class="m"><div class="cap">프랜차이즈 리드 · CPA</div><div class="val num">−39<span class="u">%</span></div><div class="sub">19,366 → 11,888원</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>소재를 실험 단위로 설계했습니다</div>
+          <div class="method">
+            <span class="ms">🎯 소구포인트별 제작</span><span class="ma">→</span>
+            <span class="ms">⚔️ 소구 A/B</span><span class="ma">→</span>
+            <span class="ms me">📈 고효율 소구 고정</span><span class="ma">→</span>
+            <span class="ms">🪝 후킹·CTA A/B</span><span class="ma">→</span>
+            <span class="ms">📊 고효율 소재 공통점 반영 ↺</span>
+          </div>
+          <p>가격·신뢰·사후관리·공감 등 <b>소구별로 소재를 만들어 비교하고</b>, 고효율 소구를 축으로 <span class="g">인트로 Hook·CTA·영상↔이미지 포맷을 다시 실험</span>했습니다. 아래 8개는 그 결과물입니다.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>소재 A/B 케이스 8선</div>
+          <div class="abgrid">
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>짐보관 — 20초 공감형 → 12초 Hook형</h4>
+              <div class="hyp"><b>가설</b> 앞 7초에 이탈하니, 인트로 Hook + 텍스트 요약으로 시청 전 핵심 전달</div>
+              <div class="imgab">
+                <figure class="fa"><img src="assets/cases/jim_asis.png" alt="As-is 짐보관 20초 공감형 소재"><figcaption>AS-IS · 20초 공감형</figcaption></figure>
+                <span class="ar">→</span>
+                <figure class="fb"><img src="assets/cases/jim_tobe.png" alt="To-be 짐보관 12초 Hook형 소재"><figcaption>TO-BE · 12초 Hook형</figcaption></figure>
+              </div>
+              <div class="res"><span class="r">CTR <b>9.56%</b> (+42.7%)</span><span class="r">전환 <b>+31.3%</b></span><span class="r">CPA <b>−24%</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>직장인 공감형 시나리오 소재</h4>
+              <div class="hyp"><b>가설</b> 자극적 인트로보다, 퇴근 후 현실을 비추면 '내 얘기'로 전환이 오른다</div>
+              <div class="imgab">
+                <figure class="fa"><img src="assets/cases/office_asis.png" alt="As-is 자극적 시선집중형 소재"><figcaption>AS-IS · 자극 시선집중</figcaption></figure>
+                <span class="ar">→</span>
+                <figure class="fb"><img src="assets/cases/office_tobe.png" alt="To-be 퇴근 후 집 공감형 소재"><figcaption>TO-BE · 퇴근 후 공감</figcaption></figure>
+              </div>
+              <div class="res"><span class="r">전환 85→<b>106회</b> (+25%)</span><span class="r">신규 81→<b>132명</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>리마케팅 · 리뷰 기반 정보전달 소재</h4>
+              <div class="hyp"><b>가설</b> 결제까지 평균 3.89일 → 그 안에 실제 리뷰로 신뢰를 재주입하면 전환</div>
+              <div class="imgab">
+                <figure class="fa"><img src="assets/cases/office_tobe.png" alt="초기 공감형 소재"><figcaption>초기 · 공감형</figcaption></figure>
+                <span class="ar">→</span>
+                <figure class="fb"><img src="assets/cases/remk_review.png" alt="실고객 리뷰 정보형 리마케팅 소재"><figcaption>추가 · 리뷰 정보형</figcaption></figure>
+              </div>
+              <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">전환 <b>144건</b></span><span class="r">신규 <b>+63%</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">이미지 ×4</span>
+              <h4>소재 4종 토너먼트 (해결·밈가격·공감·궁금증)</h4>
+              <div class="hyp"><b>가설</b> 소구가 다른 4종을 동시에 비교해 '고효율 소구'를 데이터로 확정</div>
+              <div class="tngrid">
+                <figure><img src="assets/cases/tn_a.png" alt="A 해결 중심 소재"><figcaption>A · 해결</figcaption></figure>
+                <figure class="win"><img src="assets/cases/tn_b.png" alt="B 밈+가격강조 소재 (고효율)"><figcaption>B · 밈+가격 ★</figcaption></figure>
+                <figure><img src="assets/cases/tn_c.png" alt="C 현실 공감 소재"><figcaption>C · 공감</figcaption></figure>
+                <figure><img src="assets/cases/tn_d.png" alt="D 궁금증 유발 소재"><figcaption>D · 궁금증</figcaption></figure>
+              </div>
+              <div class="res"><span class="r">META 248 &gt; 당근 192</span><span class="r">러닝: <b>가격 강조=최대 후킹</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">이미지 → AI 영상</span>
+              <h4>프랜차이즈 리드 · 타겟 리프레이밍</h4>
+              <div class="hyp"><b>가설</b> 자극 카피는 클릭만 올리고 비타겟 유입 → '임대인' 공감 소재로 품질 개선</div>
+              <div class="imgab">
+                <figure class="fa"><img src="assets/cases/fr_asis.png" alt="As-is 5000으로 연봉1억 자극 이미지"><figcaption>AS-IS · 자극 이미지 (40%)</figcaption></figure>
+                <span class="ar">→</span>
+                <figure class="fb"><img src="assets/cases/fr_tobe.png" alt="To-be 상가공실 공감 영상"><figcaption>TO-BE · 공감 영상 (70%)</figcaption></figure>
+              </div>
+              <div class="res"><span class="r">전환 124→<b>208건</b></span><span class="r">CPA <b>−39%</b></span><span class="r">CTR 3.54→<b>4.14</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>프랜차이즈 · 영상 재생시간 A/B</h4>
+              <div class="hyp"><b>가설</b> 결과중심 인트로보다 궁금증 Hook이 끝까지 보게 만든다 (50% 재생 기준)</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">AS-IS</div>공감형 인트로 → 결과중심</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">TO-BE</div>궁금증 Hook → 공감→전환→해결</div>
+              </div>
+              <div class="res"><span class="r">CPA <b>−16.7%</b></span><span class="r">재생수 <b>+31.1%</b></span><span class="r">CPC −1.6%</span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>B2B 셀러 리드 · 핵심가치 전달형</h4>
+              <div class="hyp"><b>가설</b> 메시지 없는 현장영상보다, Hook→신뢰→핵심가치 구조가 리드를 만든다</div>
+              <div class="imgab">
+                <figure class="fa"><img src="assets/cases/b2b1_asis.png" alt="As-is 텍스트 없는 창고 현장 영상"><figcaption>AS-IS · 단순 현장</figcaption></figure>
+                <span class="ar">→</span>
+                <figure class="fb"><img src="assets/cases/b2b1_tobe.png" alt="To-be 세계로 나가고 싶나요 Hook 영상"><figcaption>TO-BE · Hook+핵심가치</figcaption></figure>
+              </div>
+              <div class="res"><span class="r">CTR <b>3.06%</b> (+36.6%)</span><span class="r">전환 <b>+26.7%</b></span><span class="r">CPA <b>−20.9%</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt img">이미지</span>
+              <h4>B2B 셀러 리드 · 텍스트 중심 이미지</h4>
+              <div class="hyp"><b>가설</b> 영상 이탈이 크면, 한눈에 읽히는 텍스트 이미지가 이탈을 줄이고 전환을 올린다</div>
+              <div class="imgab">
+                <figure class="fa"><img src="assets/cases/b2b2_asis.png" alt="As-is 에펠탑 영상 소재"><figcaption>AS-IS · 영상 (이탈↑)</figcaption></figure>
+                <span class="ar">→</span>
+                <figure class="fb"><img src="assets/cases/b2b2_tobe.png" alt="To-be 업계최저 물류대행비 텍스트 이미지"><figcaption>TO-BE · 텍스트 이미지</figcaption></figure>
+              </div>
+              <div class="res"><span class="r">CTR <b>3.37%</b> (+12.3%)</span><span class="r">전환 <b>+17.6%</b></span><span class="r">CPA <b>−14.7%</b></span></div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>커머스 UA — 상품을 '사게' 만든 경험</div>
+          <div class="commerce">
+            <div class="cc">
+              <div class="ct">뷰티 스마트스토어 · 다이나믹 서플라이</div>
+              <p>SEO 기반 스토어를 직접 운영하며 <b>상품 상세페이지 30건을 직접 기획·디자인</b> → <b>월매출 +167%</b>. 소재가 곧 구매전환인 커머스 환경에서 제작–운영을 한 손으로.</p>
+            </div>
+            <div class="cc">
+              <div class="ct">공유창고 · 예약 결제 전환</div>
+              <p>조회 1,698회에 <b>결제 0건</b>이던 예약 LP를 '즉시 결제 불가' 병목으로 진단 → 실시간 결제 도입 제안·LP 재구성으로 <b>결제 0→16건, 매출 +1,653%</b>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">소재의 효율은 <b>'예쁨'이 아니라 소구와 Hook의 가설</b>에서 갈린다 — 고효율 소재의 공통점(가격 강조·현실 공감·궁금증 Hook)을 <b>다음 소재에 반영하는 루프</b>를 돌릴 때, 같은 예산에서도 CTR·전환이 계속 올라간다.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- ===================== GALLERY · AI 영상 크리에이티브 ===================== -->
     <style>
@@ -740,398 +942,6 @@ body::after{
       </div>
     </section>
 
-    <!-- ===================== ARCHIVE · 커머스·리드 소재 A/B ===================== -->
-    <style>
-      #ccom .abadge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.32); padding:3px 10px; border-radius:999px; }
-      #ccom .method{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:2px 0 8px; }
-      #ccom .method .ms{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
-      #ccom .method .ms.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
-      #ccom .method .ma{ color:var(--signal); font-weight:800; }
-      #ccom .abgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
-      #ccom .abcard{ border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px 18px 16px; display:flex; flex-direction:column; gap:11px; transition:transform .3s,border-color .3s,box-shadow .3s; }
-      #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
-      #ccom .abcard .fmt{ align-self:flex-start; font-size:10px; font-weight:800; letter-spacing:.04em; padding:3px 9px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
-      #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
-      #ccom .abcard h4{ font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; line-height:1.4; }
-      #ccom .abcard .hyp{ font-size:12.5px; line-height:1.6; color:var(--mute); }
-      #ccom .abcard .hyp b{ color:var(--cyan); font-weight:700; }
-      #ccom .abcard .ba2{ display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:stretch; }
-      #ccom .abcard .ba2 .c{ border:1px solid var(--line); border-radius:9px; padding:9px 10px; font-size:11px; line-height:1.45; }
-      #ccom .abcard .ba2 .c .l{ font-size:9.5px; font-weight:800; letter-spacing:.03em; margin-bottom:3px; }
-      #ccom .abcard .ba2 .c.a{ background:rgba(255,107,157,.05); border-color:rgba(255,107,157,.25); color:var(--mute); } #ccom .abcard .ba2 .c.a .l{ color:var(--red); }
-      #ccom .abcard .ba2 .c.b{ background:rgba(156,181,150,.06); border-color:rgba(124,92,255,.3); color:var(--ink); } #ccom .abcard .ba2 .c.b .l{ color:var(--signal); }
-      #ccom .abcard .ba2 .ar{ display:flex; align-items:center; color:var(--signal); font-weight:800; font-size:14px; }
-      #ccom .abcard .res{ display:flex; flex-wrap:wrap; gap:7px; margin-top:1px; }
-      #ccom .abcard .res .r{ font-size:11.5px; font-weight:800; color:var(--ink); background:var(--void); border:1px solid var(--line); border-radius:999px; padding:4px 11px; }
-      #ccom .abcard .res .r b{ color:var(--signal); }
-      #ccom .commerce{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:6px; }
-      #ccom .cc{ border:1px solid var(--line); border-left:2px solid var(--cyan); border-radius:12px; background:var(--panel); padding:18px; }
-      #ccom .cc .ct{ font-size:13px; font-weight:800; color:var(--cyan); margin-bottom:8px; }
-      #ccom .cc p{ font-size:13px; line-height:1.65; color:var(--mute); } #ccom .cc p b{ color:var(--ink); }
-      @media(max-width:720px){ #ccom .abgrid,#ccom .commerce{ grid-template-columns:1fr; } }
-    </style>
-    <section class="case reveal" id="ccom">
-      <div class="case-top">
-        <div class="ch"><span class="abadge">ARCHIVE · 기여도 100%</span><span class="org">박스풀 공유창고·풀필먼트 / 다이나믹 서플라이 · 2024.07~2025.05</span></div>
-        <h2>커머스·리드 소재 A/B 아카이브 — 직접 만든 소재로 지표를 움직인 실험들</h2>
-        <div class="tags">
-          <span class="tag">영상·이미지 직접 제작</span>
-          <span class="tag">소구×후킹 A/B</span>
-          <span class="tag">Meta · 당근 · 스마트스토어</span>
-          <span class="tag role">기획·제작·운영 100%</span>
-        </div>
-      </div>
-
-      <p class="lead">소재를 <b>'느낌'이 아니라 실험 단위</b>로 운영했습니다 — 소구를 가설로 세워 비교하고, <b>고효율 소구 위에서 후킹·CTA·포맷을 다시 비교하고</b>, 고효율 소재의 공통점을 다음 소재에 반영했습니다. 아래는 그 루프로 지표를 바꾼 <b>기여도 100% 소재 케이스</b>입니다.</p>
-
-      <div class="body">
-        <div class="mstrip c4">
-          <div class="m"><div class="cap">짐보관 AI영상 · CTR</div><div class="val num">9.56<span class="u">%</span></div><div class="sub">6.7% → 9.56% · +42.7%</div></div>
-          <div class="m"><div class="cap">공감형 Hook · 전환</div><div class="val num">+31.3<span class="u">%</span></div><div class="sub">CPA −24% 동반</div></div>
-          <div class="m"><div class="cap">리드 리프레이밍 · 타겟적중</div><div class="val num">70<span class="u">%</span></div><div class="sub">40% → 70% · 전환 124→208건</div></div>
-          <div class="m"><div class="cap">프랜차이즈 리드 · CPA</div><div class="val num">−39<span class="u">%</span></div><div class="sub">19,366 → 11,888원</div></div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>소재를 실험 단위로 설계했습니다</div>
-          <div class="method">
-            <span class="ms">🎯 소구포인트별 제작</span><span class="ma">→</span>
-            <span class="ms">⚔️ 소구 A/B</span><span class="ma">→</span>
-            <span class="ms me">📈 고효율 소구 고정</span><span class="ma">→</span>
-            <span class="ms">🪝 후킹·CTA A/B</span><span class="ma">→</span>
-            <span class="ms">📊 고효율 소재 공통점 반영 ↺</span>
-          </div>
-          <p>가격·신뢰·사후관리·공감 등 <b>소구별로 소재를 만들어 비교하고</b>, 고효율 소구를 축으로 <span class="g">인트로 Hook·CTA·영상↔이미지 포맷을 다시 실험</span>했습니다. 아래 8개는 그 결과물입니다.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>소재 A/B 케이스 8선</div>
-          <div class="abgrid">
-
-            <div class="abcard">
-              <span class="fmt">AI 영상</span>
-              <h4>짐보관 — 20초 공감형 → 12초 Hook형</h4>
-              <div class="hyp"><b>가설</b> 앞 7초에 이탈하니, 인트로 Hook + 텍스트 요약으로 시청 전 핵심 전달</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">AS-IS</div>공감형 인트로·20초·이용예시→가격</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">TO-BE</div>Hook 인트로·12초·텍스트 요약 전달</div>
-              </div>
-              <div class="res"><span class="r">CTR <b>9.56%</b> (+42.7%)</span><span class="r">전환 <b>+31.3%</b></span><span class="r">CPA <b>−24%</b></span></div>
-            </div>
-
-            <div class="abcard">
-              <span class="fmt">AI 영상</span>
-              <h4>직장인 공감형 시나리오 소재</h4>
-              <div class="hyp"><b>가설</b> 자극적 인트로보다, 퇴근 후 현실을 비추면 '내 얘기'로 전환이 오른다</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">AS-IS</div>자극적 인트로·즉각 시선집중형</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">TO-BE</div>퇴근 후 집 풍경 공감형 시나리오</div>
-              </div>
-              <div class="res"><span class="r">전환 85→<b>106회</b> (+25%)</span><span class="r">신규 81→<b>132명</b></span></div>
-            </div>
-
-            <div class="abcard">
-              <span class="fmt">AI 영상</span>
-              <h4>리마케팅 · 리뷰 기반 정보전달 소재</h4>
-              <div class="hyp"><b>가설</b> 결제까지 평균 3.89일 → 그 안에 실제 리뷰로 신뢰를 재주입하면 전환</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">초기</div>공감형 단독 소재</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">추가</div>차별점·실고객 리뷰 정보형 리마케팅</div>
-              </div>
-              <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">전환 <b>144건</b></span><span class="r">신규 <b>+63%</b></span></div>
-            </div>
-
-            <div class="abcard">
-              <span class="fmt">이미지 ×4</span>
-              <h4>소재 4종 토너먼트 (해결·밈가격·공감·궁금증)</h4>
-              <div class="hyp"><b>가설</b> 소구가 다른 4종을 동시에 비교해 '고효율 소구'를 데이터로 확정</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">후보</div>A해결 · B밈+가격 · C공감 · D궁금증</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">고효율</div>B 밈+가격강조 → B-1·B-2로 확장</div>
-              </div>
-              <div class="res"><span class="r">META 248 &gt; 당근 192</span><span class="r">러닝: <b>가격 강조=최대 후킹</b></span></div>
-            </div>
-
-            <div class="abcard">
-              <span class="fmt">이미지 → AI 영상</span>
-              <h4>프랜차이즈 리드 · 타겟 리프레이밍</h4>
-              <div class="hyp"><b>가설</b> 자극 카피는 클릭만 올리고 비타겟 유입 → '임대인' 공감 소재로 품질 개선</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">AS-IS</div>자극 이미지 카피 (타겟적중 40%)</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">TO-BE</div>"상가공실 힘드시죠?" 공감 영상 (70%)</div>
-              </div>
-              <div class="res"><span class="r">전환 124→<b>208건</b></span><span class="r">CPA <b>−39%</b></span><span class="r">CTR 3.54→<b>4.14</b></span></div>
-            </div>
-
-            <div class="abcard">
-              <span class="fmt">AI 영상</span>
-              <h4>프랜차이즈 · 영상 재생시간 A/B</h4>
-              <div class="hyp"><b>가설</b> 결과중심 인트로보다 궁금증 Hook이 끝까지 보게 만든다 (50% 재생 기준)</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">AS-IS</div>공감형 인트로 → 결과중심</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">TO-BE</div>궁금증 Hook → 공감→전환→해결</div>
-              </div>
-              <div class="res"><span class="r">CPA <b>−16.7%</b></span><span class="r">재생수 <b>+31.1%</b></span><span class="r">CPC −1.6%</span></div>
-            </div>
-
-            <div class="abcard">
-              <span class="fmt">AI 영상</span>
-              <h4>B2B 셀러 리드 · 핵심가치 전달형</h4>
-              <div class="hyp"><b>가설</b> 메시지 없는 현장영상보다, Hook→신뢰→핵심가치 구조가 리드를 만든다</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">AS-IS</div>텍스트 없는 단순 현장 영상</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">TO-BE</div>"세계로 나가고 싶나요?" Hook+핵심가치</div>
-              </div>
-              <div class="res"><span class="r">CTR <b>3.06%</b> (+36.6%)</span><span class="r">전환 <b>+26.7%</b></span><span class="r">CPA <b>−20.9%</b></span></div>
-            </div>
-
-            <div class="abcard">
-              <span class="fmt img">이미지</span>
-              <h4>B2B 셀러 리드 · 텍스트 중심 이미지</h4>
-              <div class="hyp"><b>가설</b> 영상 이탈이 크면, 한눈에 읽히는 텍스트 이미지가 이탈을 줄이고 전환을 올린다</div>
-              <div class="ba2">
-                <div class="c a"><div class="l">AS-IS</div>영상 소재 (이탈률 높음)</div>
-                <div class="ar">→</div>
-                <div class="c b"><div class="l">TO-BE</div>"업계최저 물류대행비" 텍스트 이미지</div>
-              </div>
-              <div class="res"><span class="r">CTR <b>3.37%</b> (+12.3%)</span><span class="r">전환 <b>+17.6%</b></span><span class="r">CPA <b>−14.7%</b></span></div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>커머스 UA — 상품을 '사게' 만든 경험</div>
-          <div class="commerce">
-            <div class="cc">
-              <div class="ct">뷰티 스마트스토어 · 다이나믹 서플라이</div>
-              <p>SEO 기반 스토어를 직접 운영하며 <b>상품 상세페이지 30건을 직접 기획·디자인</b> → <b>월매출 +167%</b>. 소재가 곧 구매전환인 커머스 환경에서 제작–운영을 한 손으로.</p>
-            </div>
-            <div class="cc">
-              <div class="ct">공유창고 · 예약 결제 전환</div>
-              <p>조회 1,698회에 <b>결제 0건</b>이던 예약 LP를 '즉시 결제 불가' 병목으로 진단 → 실시간 결제 도입 제안·LP 재구성으로 <b>결제 0→16건, 매출 +1,653%</b>.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">소재의 효율은 <b>'예쁨'이 아니라 소구와 Hook의 가설</b>에서 갈린다 — 고효율 소재의 공통점(가격 강조·현실 공감·궁금증 Hook)을 <b>다음 소재에 반영하는 루프</b>를 돌릴 때, 같은 예산에서도 CTR·전환이 계속 올라간다.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== TOOL · 소재 생성→분석 루프 ===================== -->
-    <style>
-      #ctool .tbadge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.32); padding:3px 10px; border-radius:999px; }
-      #ctool .loop{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:4px 0 6px; }
-      #ctool .loop .ls{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
-      #ctool .loop .la{ color:var(--signal); font-weight:800; }
-      #ctool .loop .ls.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
-      #ctool .twins{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; }
-      #ctool .tcard{ display:flex; flex-direction:column; gap:10px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; transition:transform .3s, border-color .3s, box-shadow .3s; }
-      #ctool .tcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
-      #ctool .tcard .ti{ font-size:26px; } #ctool .tcard h4{ font-size:15px; font-weight:800; color:var(--ink); }
-      #ctool .tcard p{ font-size:12.5px; color:var(--mute); line-height:1.6; flex:1; }
-      #ctool .tcard .go{ align-self:flex-start; display:inline-flex; align-items:center; gap:7px; padding:10px 16px; border-radius:11px; font-weight:800; font-size:13px; text-decoration:none; border:1px solid rgba(124,92,255,.5); color:#C9A6FF; }
-      #ctool .tcard .go:hover{ background:var(--neon,linear-gradient(135deg,#7C5CFF,#C06BFF)); color:#fff; border-color:transparent; }
-      @media(max-width:720px){ #ctool .twins{ grid-template-columns:1fr; } }
-    </style>
-    <section class="case reveal" id="ctool">
-      <div class="case-top">
-        <div class="ch"><span class="tbadge">TOOL · SIDE PROJECT</span><span class="org">직접 설계·구현한 AI 마케팅 툴</span></div>
-        <h2>AI 소재 A/B 운영 스튜디오 <span style="font-size:.58em;color:var(--dim);font-weight:700;letter-spacing:0;">· Streamlit</span></h2>
-        <div class="tags">
-          <span class="tag">Streamlit · SQLite</span>
-          <span class="tag">A/B 데이터 운영</span>
-          <span class="tag">크리에이티브 인텔리전스</span>
-        </div>
-      </div>
-      <p class="lead">퍼포먼스 대시보드를 소재 A/B에 맞춘 <b>내부 운영 툴</b>입니다. A/B 결과를 <b>기록·조회·분석</b>하고, 다음 소재 기획 시 <b>고효율 소재의 공통점을 리뷰</b>하며, <b>컷별 프롬프트를 엑셀로</b> 뽑습니다 — 소재 운영의 반복 업무를 시스템화한 사이드 프로젝트입니다.</p>
-      <div class="body">
-        <div class="sec">
-          <div class="loop">
-            <span class="ls me">① A/B 기록</span><span class="la">→</span>
-            <span class="ls">② 성과 분석</span><span class="la">→</span>
-            <span class="ls me">③ 기획 리뷰(공통점)</span><span class="la">→</span>
-            <span class="ls">④ 컷별 프롬프트·엑셀</span><span class="la">→</span>
-            <span class="ls me">집행</span><span class="la">↺</span>
-          </div>
-          <div class="stackrow" style="margin:14px 0 2px">
-            <span class="spill">📝 A/B 데이터 기록 (등급 자동산정)</span>
-            <span class="spill">🔍 과거 데이터 조회·필터</span>
-            <span class="spill">📊 고효율 소재 공통점 분석</span>
-            <span class="spill">🧭 소재 기획 리뷰 + 가이드</span>
-            <span class="spill">🎬 컷별 프롬프트 → 엑셀</span>
-          </div>
-          <div class="twins">
-            <div class="tcard">
-              <div class="ti">📊</div>
-              <h4>성과 분석 · 소재 기획 리뷰 (데모)</h4>
-              <p>A/B 결과로 <b>소재 속성(소구·후킹·포맷)과 성과(CTR·CVR·CPA)를 교차 분석</b> — <b>고효율 소재의 공통점</b>·업종별 최적 소재·<b>다음 소재 기획 가이드</b>까지.</p>
-              <a class="go" href="https://jiuk-bot.github.io/tossmarketing/insights.html" target="_blank" rel="noopener">▶ 분석·기획 리뷰 열기 →</a>
-            </div>
-            <div class="tcard">
-              <div class="ti">🎬</div>
-              <h4>컷별 프롬프트 생성 · 엑셀 (데모)</h4>
-              <p>기획 방향을 넣으면 <b>컷(씬)별 영상 프롬프트·자막·나레이션</b>을 만들고 <b>엑셀로 다운로드</b> — 실제 영상 제작에 바로 투입.</p>
-              <a class="go" href="https://jiuk-bot.github.io/tossmarketing/tool.html" target="_blank" rel="noopener">▶ 컷 생성 체험하기 →</a>
-            </div>
-          </div>
-          <p class="note" style="margin-top:14px">위 2개는 <b>공개 데모</b>(샘플 데이터)입니다. 실제 툴은 <b>Streamlit 앱(SQLite 기록 + Claude 생성)</b>으로, 팀에 <b>비공개 URL + 이메일 허용목록</b>으로 공유하도록 설계·구현했습니다.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CASE 2 ===================== -->
-    <section class="case reveal" id="c2">
-      <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 01</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
-        <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
-        <div class="tags">
-          <span class="tag">구글·메타·틱톡 API</span>
-          <span class="tag">AI 바이브코딩</span>
-          <span class="tag role">1인 · 100%</span>
-        </div>
-      </div>
-      <p class="lead">운영이 막히면 도구를 직접 만듭니다 — 다매체·<b>월 5억+ 취급고</b>를 소수 인원으로 돌리는 <b>성과 대시보드를 직접 구축</b>했습니다.</p>
-      <div class="body">
-
-        <div class="mstrip c2">
-          <div class="m"><div class="cap">소수 인원 운영 취급고</div><div class="val num">5억+<span class="u">/월</span></div><div class="sub neu">3개 매체 통합 운영</div></div>
-          <div class="m"><div class="cap">운영 효율</div><div class="val">자동화</div><div class="sub neu">데이터 가공 시간 최소화</div></div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떤 대상인가</div>
-          <p><b>3개 매체·월평균 5억+ 취급고</b>를 소수 인원으로 운영해야 하는 내부 운영 환경.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
-          <p>매일 반복되는 수작업 데이터 가공에 시간을 뺏겨 <b>의사결정이 느려지고</b>, 다매체·대규모 운영이 병목에 걸림.</p>
-          <div class="vcap">수작업 데이터 → 자동 대시보드 → 빠른 의사결정</div>
-          <div class="viz">
-            <div class="flow">
-              <div class="fn before"><div class="fi">🗂</div><div class="ft">수작업 데이터 가공</div><div class="fd">매일 반복 · 의사결정 지연</div></div>
-              <div class="far">→</div>
-              <div class="fn core"><div class="fi">⚙</div><div class="ft">자동 대시보드</div><div class="fd">구글·메타·틱톡 API 연동<br>직접 구축</div></div>
-              <div class="far">→</div>
-              <div class="fn"><div class="fi">⚡</div><div class="ft">빠른 의사결정</div><div class="fd">실시간 KPI · 계획 유동 조정</div></div>
-            </div>
-            <div class="stackrow">
-              <span class="spill">실시간 성과 통합 조회</span>
-              <span class="spill">A/B 테스트 플래닝</span>
-              <span class="spill">코호트 분석</span>
-              <span class="spill">KPI 달성율 체크</span>
-              <span class="spill">운영 히스토리 챗봇</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
-          <p class="quote">"<b>수작업 데이터 가공을 없애야</b> 소수 인원 운영이 가능하다. 단순 조회 툴을 넘어, <b>운영 판단까지 돕는 도구를 직접 만들자</b>."</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
-          <ol class="steps">
-            <li>구글·메타·틱톡 광고 성과 데이터를 API로 연동해 자동 가공하는 대시보드를 <b>바이브코딩으로 직접 개발</b></li>
-            <li>실시간 성과 통합 조회 · A/B 테스트 플래닝 · 코호트 분석 · KPI 관리를 <b>한 화면에 통합</b></li>
-            <li>운영 히스토리 챗봇 구축 — "언제·무엇을·왜 했는지"를 <b>자연어로 즉시 질의응답</b></li>
-            <li><b>실시간 KPI 달성율 체크</b>로 일·주·월 계획을 유동적으로 조정</li>
-          </ol>
-          <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">성과 조회를 넘어 <b>'운영의 맥락(히스토리)'까지 관리</b>해야 판단이 축적된다.</p>
-        </div>
-
-        <div class="foot">
-          <a class="cta-live" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener"><span class="pulse"></span>실제 대시보드 체험하기</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CASE 3 (AI 자동화) ===================== -->
-    <section class="case reveal" id="c3">
-      <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 02</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
-        <h2>광고 운영 자동화 — 무인 모니터링 봇 &amp; 경쟁사 감시</h2>
-        <div class="tags">
-          <span class="tag">Python · Google Ads API</span>
-          <span class="tag">GitHub Actions · Telegram</span>
-          <span class="tag">Playwright</span>
-          <span class="tag role">1인 · 100%</span>
-        </div>
-      </div>
-      <p class="lead">반복되는 감시 업무는 사람이 아니라 봇에게 — <b>GitHub Actions로 하루 5회 무인 실행</b>되며, 이상 징후만 텔레그램으로 알리고 <b>사람은 '판단'에만 집중</b>하게 만들었습니다.</p>
-      <div class="body">
-
-        <div class="mstrip c4">
-          <div class="m"><div class="cap">무인 자동 실행</div><div class="val num">5<span class="u">회/일</span></div><div class="sub neu">GitHub Actions 크론</div></div>
-          <div class="m"><div class="cap">감시 룰</div><div class="val num">4<span class="u">종</span></div><div class="sub neu">CVR·CPA·과지출·피로도</div></div>
-          <div class="m"><div class="cap">동시 감시</div><div class="val num">2<span class="u">계정</span></div><div class="sub neu">구글 메인 + 서브</div></div>
-          <div class="m"><div class="cap">오탐 방지</div><div class="val">관망 로직</div><div class="sub neu">회복추세 = OFF 보류</div></div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
-          <p>다매체·2계정을 하루에도 몇 번씩 사람이 직접 들여다봐야 <b>CVR 급락·CPA 폭등·새벽 과지출</b> 같은 이상 징후를 잡을 수 있었습니다. 수작업 감시는 놓치기 쉽고, 경쟁사 LP·소재 변화도 매번 손으로 확인해야 했습니다.</p>
-          <div class="vcap">수동 감시 → 무인 봇 감시 → 사람은 판단만</div>
-          <div class="viz">
-            <div class="flow">
-              <div class="fn before"><div class="fi">👁</div><div class="ft">수동 감시</div><div class="fd">하루 수 회 직접 확인<br>놓침·피로 누적</div></div>
-              <div class="far">→</div>
-              <div class="fn core"><div class="fi">🤖</div><div class="ft">무인 모니터링 봇</div><div class="fd">API 수집 + 룰 판정<br>이상 징후만 알림</div></div>
-              <div class="far">→</div>
-              <div class="fn"><div class="fi">🧠</div><div class="ft">사람은 판단만</div><div class="fd">예외 케이스에 집중<br>소수 인원 운영</div></div>
-            </div>
-            <div class="stackrow">
-              <span class="spill">CVR 3일 연속 −50%</span>
-              <span class="spill">CPA 7일평균 +80%</span>
-              <span class="spill">새벽 과지출</span>
-              <span class="spill">소재 피로도</span>
-              <span class="spill">회복추세 = 관망</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
-          <p class="quote">"감시는 <b>규칙이 명확하다</b> → 24시간 대신 봐 줄 봇을 만들고, 사람은 봇이 못 내리는 <b>'예외 판단'에만 집중</b>하자. 단, 1일 스파이크로 끄는 <b>오탐은 반드시 막자</b>."</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
-          <ol class="steps">
-            <li>구글 <b>메인·서브 2계정</b> 성과를 Google Ads API로 수집하는 모니터링 스크립트를 직접 작성</li>
-            <li>감시 룰 4종을 코드화 — <b>CVR 3일 연속 피크 대비 −50%</b>(CPA 동반 악화 시에만), <b>CPA 7일평균 +80%</b>, <b>새벽 시간당 일예산 15% 초과·2시간 연속</b>, 소재 피로도</li>
-            <li>단순 알림이 아니라 <b>'회복 추세면 관망 권고'</b> 판단 로직을 넣어 성급한 OFF(오탐)를 차단</li>
-            <li>과거 운영 인사이트를 매칭해 알림에 <b>맥락 브리핑</b>을 덧붙임 (왜 지금 이 신호가 중요한지까지)</li>
-            <li><b>GitHub Actions 크론으로 하루 5회 무인 실행</b>(새벽 과지출 2회 + 정기 8·14·22시) + 실행 실패 시 자동 알림</li>
-            <li>경쟁사 LP·광고 소재를 <b>Playwright로 24시간 주기 스크래핑</b> — 가격·CTA·Transparency Center 소재 변경 감지 시 알림</li>
-          </ol>
-          <p class="note">원칙 : 봇은 '감지·브리핑'까지. OFF/증액 같은 최종 실행은 사람이 판단 후 결정</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">규칙이 명확한 감시는 자동화하고 <b>사람은 '예외 판단'에 집중</b>할 때 소수 인원으로도 다매체를 안정 운영할 수 있다. 그리고 <b>오탐을 줄이는 '관망' 로직</b>이 자동화에 대한 신뢰를 만든다.</p>
-        </div>
-      </div>
-    </section>
-
     <!-- ===================== CASE 1 ===================== -->
     <section class="case reveal" id="c1">
       <div class="case-top">
@@ -1236,6 +1046,79 @@ body::after{
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
           <p class="insight">리드 '수'가 아니라 <b>'내원당 단가'가 진짜 지표</b>다. <b>성과가 신뢰를, 신뢰가 예산 증액으로 이어지는 선순환</b>을 데이터로 만들 수 있다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 2 ===================== -->
+    <section class="case reveal" id="c2">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 01</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
+        <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
+        <div class="tags">
+          <span class="tag">구글·메타·틱톡 API</span>
+          <span class="tag">AI 바이브코딩</span>
+          <span class="tag role">1인 · 100%</span>
+        </div>
+      </div>
+      <p class="lead">운영이 막히면 도구를 직접 만듭니다 — 다매체·<b>월 5억+ 취급고</b>를 소수 인원으로 돌리는 <b>성과 대시보드를 직접 구축</b>했습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c2">
+          <div class="m"><div class="cap">소수 인원 운영 취급고</div><div class="val num">5억+<span class="u">/월</span></div><div class="sub neu">3개 매체 통합 운영</div></div>
+          <div class="m"><div class="cap">운영 효율</div><div class="val">자동화</div><div class="sub neu">데이터 가공 시간 최소화</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 대상인가</div>
+          <p><b>3개 매체·월평균 5억+ 취급고</b>를 소수 인원으로 운영해야 하는 내부 운영 환경.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>매일 반복되는 수작업 데이터 가공에 시간을 뺏겨 <b>의사결정이 느려지고</b>, 다매체·대규모 운영이 병목에 걸림.</p>
+          <div class="vcap">수작업 데이터 → 자동 대시보드 → 빠른 의사결정</div>
+          <div class="viz">
+            <div class="flow">
+              <div class="fn before"><div class="fi">🗂</div><div class="ft">수작업 데이터 가공</div><div class="fd">매일 반복 · 의사결정 지연</div></div>
+              <div class="far">→</div>
+              <div class="fn core"><div class="fi">⚙</div><div class="ft">자동 대시보드</div><div class="fd">구글·메타·틱톡 API 연동<br>직접 구축</div></div>
+              <div class="far">→</div>
+              <div class="fn"><div class="fi">⚡</div><div class="ft">빠른 의사결정</div><div class="fd">실시간 KPI · 계획 유동 조정</div></div>
+            </div>
+            <div class="stackrow">
+              <span class="spill">실시간 성과 통합 조회</span>
+              <span class="spill">A/B 테스트 플래닝</span>
+              <span class="spill">코호트 분석</span>
+              <span class="spill">KPI 달성율 체크</span>
+              <span class="spill">운영 히스토리 챗봇</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"<b>수작업 데이터 가공을 없애야</b> 소수 인원 운영이 가능하다. 단순 조회 툴을 넘어, <b>운영 판단까지 돕는 도구를 직접 만들자</b>."</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <ol class="steps">
+            <li>구글·메타·틱톡 광고 성과 데이터를 API로 연동해 자동 가공하는 대시보드를 <b>바이브코딩으로 직접 개발</b></li>
+            <li>실시간 성과 통합 조회 · A/B 테스트 플래닝 · 코호트 분석 · KPI 관리를 <b>한 화면에 통합</b></li>
+            <li>운영 히스토리 챗봇 구축 — "언제·무엇을·왜 했는지"를 <b>자연어로 즉시 질의응답</b></li>
+            <li><b>실시간 KPI 달성율 체크</b>로 일·주·월 계획을 유동적으로 조정</li>
+          </ol>
+          <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">성과 조회를 넘어 <b>'운영의 맥락(히스토리)'까지 관리</b>해야 판단이 축적된다.</p>
+        </div>
+
+        <div class="foot">
+          <a class="cta-live" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener"><span class="pulse"></span>실제 대시보드 체험하기</a>
         </div>
       </div>
     </section>
