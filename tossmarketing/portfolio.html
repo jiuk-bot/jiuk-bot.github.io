@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="ko" style="background:#07070E;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>윤지욱 · AI 마케팅 케이스 (시각화)</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+
+:root{
+  --void:#07070E;
+  --panel:#101019;
+  --panel2:#14141F;
+  --line:#2B2842;
+  --line-soft:#201E30;
+  --ink:#EDEBFA;
+  --mute:#9E99BC;
+  --dim:#615D83;
+  --signal:#B794F6;
+  --signal-d:#7C5CFF;
+  --amber:#5CC8FF;
+  --cyan:#6EE7FF;
+  --red:#FF6B9D;
+  --neon:linear-gradient(135deg,#7C5CFF 0%,#C06BFF 52%,#FF5CE1 100%);
+  --shadow:0 28px 70px -34px rgba(0,0,0,.85);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{ scroll-behavior:smooth; }
+
+html,body{
+  font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;
+  color:#EDEBFA;
+  color:var(--ink);
+  background:#07070E;
+  background:var(--void);
+  line-height:1.72;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+  -webkit-font-smoothing:antialiased;
+}
+p,h1,h2,h3,h4,li,span,div,td,th{ word-break:keep-all; overflow-wrap:break-word; }
+/* 링크 기본색(파란색) 방지 — 스타일이 일부 유실돼도 링크가 파랗게 뜨지 않도록 전역 리셋 */
+a{ color:inherit; text-decoration:none; }
+
+/* soft warm aura — premium depth instead of a hard grid */
+body::before{
+  content:"";
+  position:fixed; inset:-12%; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.26), transparent 62%),
+    radial-gradient(34% 46% at 92% 20%, rgba(255,92,225,.18), transparent 62%),
+    radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.16), transparent 64%);
+  filter:blur(26px);
+  animation:aurora 18s ease-in-out infinite alternate;
+}
+@keyframes aurora{ 0%{transform:translate(0,0) scale(1);} 100%{transform:translate(2.5%,-2%) scale(1.09);} }
+body::after{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.028) 1px, transparent 1px);
+  background-size:26px 26px; opacity:.5;
+}
+
+.num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+
+/* ============ top status bar ============ */
+.statusbar{
+  position:sticky; top:0; z-index:60;
+  background:rgba(26,23,20,.72);
+  -webkit-backdrop-filter:blur(18px) saturate(1.2); backdrop-filter:blur(18px) saturate(1.2);
+  border-bottom:1px solid var(--line-soft);
+}
+.statusbar .in{
+  max-width:1280px; margin:0 auto; padding:16px 40px;
+  display:flex; align-items:center; justify-content:space-between; gap:18px;
+}
+.logo{ font-weight:700; font-size:15px; letter-spacing:.01em; color:var(--ink); text-decoration:none; white-space:nowrap; }
+.logo b{ color:var(--signal); }
+.statusbar .live{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:12px; font-weight:600; color:var(--mute); white-space:nowrap;
+}
+.pulse{ width:6px;height:6px;border-radius:50%;background:var(--signal); opacity:.9; }
+.statusbar nav{ display:flex; gap:2px; font-size:13.5px; }
+.statusbar nav a{ color:var(--mute); text-decoration:none; font-weight:500; padding:8px 13px; border-radius:8px; transition:color .25s ease, background .25s ease; }
+.statusbar nav a:hover{ color:var(--ink); }
+.statusbar nav a.on{ color:var(--ink); background:rgba(156,181,150,.09); font-weight:600; }
+
+/* ============ shell ============ */
+.shell{ position:relative; z-index:1; max-width:1280px; margin:0 auto; padding:0 40px 160px; }
+
+/* ============ hero ============ */
+.hero{ padding:140px 0 110px 290px; }  /* 본문 컬럼(레일 250 + 갭 40)에 맞춰 정렬 */
+.kicker{ font-size:13.5px; font-weight:500; color:var(--mute); margin-bottom:40px; display:flex; align-items:center; gap:14px; letter-spacing:.005em; }
+.kicker .tick{ width:28px; height:1px; background:var(--signal); opacity:.7; flex-shrink:0; }
+.hero h1{ font-size:clamp(34px,5vw,62px); line-height:1.14; font-weight:700; letter-spacing:-.04em; color:var(--ink); max-width:17ch; }
+.hero h1 .glow{ color:var(--signal); font-weight:700; }
+.hero .lead{ margin-top:36px; font-size:18px; color:var(--mute); max-width:56ch; line-height:1.78; font-weight:400; }
+.hero .contact{ margin-top:30px; font-size:14.5px; font-weight:600; color:var(--ink); letter-spacing:.01em; }
+.hero .contact span{ color:var(--dim); font-weight:500; margin:0 4px; }
+
+/* hero readout — the characteristic outcome, as instrument panels */
+.readout{
+  margin-top:72px;
+  display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+  background:var(--line-soft); border:1px solid var(--line-soft); border-radius:18px; overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.rd{ background:var(--panel); padding:34px 28px; position:relative; }
+.rd .cap{ font-size:12.5px; font-weight:500; color:var(--mute); letter-spacing:.005em; }
+.rd .val{ margin-top:18px; font-size:clamp(32px,3.8vw,46px); font-weight:700; letter-spacing:-.035em; line-height:1; color:var(--ink); }
+.rd .val .u{ font-size:15px; font-weight:600; color:var(--signal); margin-left:3px; }
+.rd .delta{ margin-top:14px; font-size:13px; font-weight:500; color:var(--signal); }
+.rd .delta.neu{ color:var(--mute); }
+.rd .spark{ margin-top:20px; display:block; }
+
+/* ============ case index (left rail + grid) ============ */
+.layout{ display:grid; grid-template-columns:250px 1fr; gap:40px; align-items:start; }
+.railwrap{ position:sticky; top:96px; }
+.rail-h{ font-size:12px; font-weight:600; color:var(--dim); margin-bottom:22px; letter-spacing:.01em; }
+.rail{ display:flex; flex-direction:column; border-left:1px solid var(--line-soft); }
+.rail a{
+  text-decoration:none; color:var(--mute); padding:15px 0 15px 22px; margin-left:-1px;
+  border-left:1px solid transparent; font-size:14px; font-weight:400; line-height:1.45;
+  display:flex; align-items:baseline; gap:10px;
+  transition:color .3s ease, border-color .3s ease, padding-left .3s ease;
+}
+.rail a .rn{ font-size:11.5px; font-weight:600; color:var(--dim); font-variant-numeric:tabular-nums; transition:color .3s ease; }
+.rail a:hover, .rail a.active{ color:var(--ink); border-left-color:var(--signal); padding-left:28px; }
+.rail a:hover .rn, .rail a.active .rn{ color:var(--signal); }
+
+/* ============ case panel ============ */
+.case{
+  background:var(--panel);
+  border:1px solid var(--line-soft);
+  border-radius:22px;
+  overflow:hidden;
+  margin-bottom:72px;
+  scroll-margin-top:110px;
+  box-shadow:var(--shadow);
+}
+.case-top{
+  padding:48px 56px 42px;
+  border-bottom:1px solid var(--line-soft);
+  background:var(--panel2);
+}
+.ch{ display:flex; align-items:baseline; gap:16px; margin-bottom:22px; }
+.ch .idx{ font-size:12.5px; font-weight:600; color:var(--signal); font-variant-numeric:tabular-nums; letter-spacing:.04em; }
+.ch .org{ font-size:12.5px; font-weight:400; color:var(--mute); }
+.case-top h2{ font-size:clamp(22px,2.7vw,30px); font-weight:700; letter-spacing:-.03em; line-height:1.28; color:var(--ink); max-width:26ch; }
+.tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+.tag{ font-size:11.5px; font-weight:400; color:var(--mute); border:1px solid var(--line); background:transparent; padding:5px 12px; border-radius:999px; }
+.tag.role{ color:var(--signal); border-color:rgba(156,181,150,.35); }
+
+.lead{
+  margin:0; padding:34px 56px;
+  border-bottom:1px solid var(--line-soft);
+  font-size:17px; line-height:1.76; color:var(--ink); font-weight:400; max-width:none;
+}
+.lead b{ color:var(--signal); font-weight:600; }
+.lead .amb{ color:var(--amber); font-weight:600; }
+
+.body{ padding:48px 56px 56px; }
+
+/* headline metric strip inside case */
+.mstrip{ display:grid; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:16px; overflow:hidden; margin-bottom:48px; }
+.mstrip.c4{ grid-template-columns:repeat(4,1fr); }
+.mstrip.c3{ grid-template-columns:repeat(3,1fr); }
+.mstrip.c2{ grid-template-columns:repeat(2,1fr); }
+.m{ background:var(--panel2); padding:28px 26px; }
+.m .cap{ font-size:12px; font-weight:400; color:var(--mute); }
+.m .val{ margin-top:16px; font-size:30px; font-weight:700; letter-spacing:-.035em; line-height:1; color:var(--ink); }
+.m .val .u{ font-size:14px; font-weight:600; color:var(--signal); margin-left:3px; letter-spacing:0; }
+.m .sub{ margin-top:12px; font-size:12px; font-weight:500; color:var(--signal); }
+.m .sub.neu{ color:var(--mute); }
+
+/* section */
+.sec{ margin-top:52px; }
+.sec:first-of-type{ margin-top:0; }
+.sh{ display:flex; align-items:center; gap:14px; font-size:14px; font-weight:600; letter-spacing:-.01em; color:var(--ink); margin-bottom:20px; }
+.sh .bar{ width:20px; height:1px; background:var(--signal); border-radius:2px; flex-shrink:0; }
+.sec p{ font-size:16px; color:var(--mute); line-height:1.8; max-width:72ch; }
+.sec p b{ color:var(--ink); font-weight:600; }
+.sec p .g{ color:var(--signal); font-weight:600; }
+
+.quote{
+  border-left:2px solid var(--signal);
+  background:transparent;
+  padding:6px 0 6px 26px;
+  font-size:19px; line-height:1.72; color:var(--ink); font-weight:400; max-width:60ch;
+  letter-spacing:-.01em;
+}
+.quote b{ color:var(--signal); font-weight:600; }
+
+.note{
+  margin-top:20px; font-size:13.5px; font-weight:500; color:var(--amber);
+  border-left:2px solid rgba(201,154,94,.45); border-radius:0; padding:4px 0 4px 16px; background:transparent;
+}
+
+/* numbered execution steps (real sequence → numbering OK) */
+.steps{ list-style:none; counter-reset:s; display:flex; flex-direction:column; gap:2px; }
+.steps li{ counter-increment:s; position:relative; padding:18px 18px 18px 56px;
+  background:transparent; border:0; border-bottom:1px solid var(--line-soft); border-radius:0;
+  font-size:15px; line-height:1.7; color:var(--mute); max-width:74ch; }
+.steps li:last-child{ border-bottom:0; }
+.steps li b{ color:var(--ink); font-weight:600; }
+.steps li::before{ content:counter(s); position:absolute; left:8px; top:19px;
+  font-size:13px; font-weight:500; color:var(--signal); font-variant-numeric:tabular-nums;
+  border:0; width:28px; text-align:left; }
+
+.insight{
+  font-size:17px; line-height:1.72; color:var(--ink); font-weight:400;
+  border:0; border-left:2px solid var(--cyan); border-radius:0; padding:6px 0 6px 26px;
+  background:transparent; max-width:62ch; letter-spacing:-.005em;
+}
+.insight b{ color:var(--cyan); font-weight:600; }
+
+.vcap{ font-size:12.5px; font-weight:600; letter-spacing:.005em; color:var(--signal); margin:44px 0 18px; }
+.vcap.amb{ color:var(--amber); }
+.vnote{ font-size:14px; color:var(--mute); line-height:1.7; margin-top:18px; max-width:72ch; }
+.vnote b{ color:var(--ink); font-weight:600; }
+.vnote .g{ color:var(--signal); font-weight:600; }
+
+/* generic viz panel */
+.viz{ border:1px solid var(--line-soft); border-radius:16px; background:var(--panel2); padding:32px; }
+
+/* before/after conflict cells */
+.ba{ display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:center; }
+.cell{ border:1px solid var(--line); border-radius:12px; padding:16px; text-align:center; background:var(--panel); }
+.cell.bad{ border-color:rgba(192,130,100,.3); background:rgba(192,130,100,.05); }
+.cell.good{ border-color:rgba(156,181,150,.35); background:rgba(156,181,150,.06); }
+.cell.warn{ border-color:rgba(201,154,94,.3); background:rgba(201,154,94,.05); }
+.cell .t{ font-size:11.5px; font-weight:800; letter-spacing:.02em; color:var(--mute); margin-bottom:8px; }
+.cell.good .t{ color:var(--signal); } .cell.bad .t{ color:var(--red); } .cell.warn .t{ color:var(--amber); }
+.cell .v{ font-size:16px; font-weight:800; color:var(--ink); line-height:1.4; }
+.cell .v small{ display:block; font-size:11.5px; font-weight:600; color:var(--dim); margin-top:4px; }
+.arrow{ font-size:20px; font-weight:800; color:var(--signal); }
+.arrow.clash{ color:var(--red); }
+.arrow.vs{ font-size:13px; color:var(--dim); font-weight:800; }
+
+/* gap meter */
+.meter .mh{ display:flex; justify-content:space-between; align-items:center; font-size:12px; font-weight:700; color:var(--mute); margin-bottom:11px; flex-wrap:wrap; gap:6px; }
+.meter .gap{ color:var(--amber); font-weight:800; background:rgba(201,154,94,.1); border:1px solid rgba(201,154,94,.25); border-radius:999px; padding:3px 10px; }
+.meter .track{ position:relative; height:34px; background:var(--void); border:1px solid var(--line); border-radius:9px; overflow:hidden; display:flex; align-items:center; }
+.meter .fill{ height:100%; background:linear-gradient(90deg,var(--signal-d),var(--signal)); display:flex; align-items:center; justify-content:flex-end; padding-right:11px; color:var(--void); font-size:12.5px; font-weight:800; }
+.meter .goal{ position:absolute; right:11px; font-size:12px; font-weight:800; color:var(--dim); }
+
+/* media-expansion stepper (real sequence) */
+.exp{ display:flex; flex-direction:column; gap:12px; }
+.expr{ display:grid; grid-template-columns:150px 1fr; gap:14px; align-items:stretch; }
+.expr .node{ border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:14px 12px; text-align:center; position:relative; }
+.expr .node .step{ font-size:11px; font-weight:800; color:var(--cyan); letter-spacing:.04em; }
+.expr .node .med{ font-size:14px; font-weight:800; margin:6px 0 10px; color:var(--ink); }
+.expr .node .big{ font-size:26px; font-weight:800; color:var(--signal); line-height:1; }
+.expr .node .big span{ font-size:12px; color:var(--mute); font-weight:600; }
+.expr .node .cpa{ margin-top:9px; display:inline-block; font-size:11px; font-weight:700; color:var(--mute); background:var(--void); border:1px solid var(--line); border-radius:999px; padding:3px 9px; }
+.expr .desc{ border:1px solid var(--line); border-left:2px solid var(--cyan); border-radius:12px; background:var(--panel); padding:14px 17px; display:flex; flex-direction:column; justify-content:center; }
+.expr .desc .dt{ font-size:12px; font-weight:800; color:var(--cyan); margin-bottom:5px; }
+.expr .desc p{ font-size:13.5px; line-height:1.62; color:var(--mute); }
+.expr .desc p b{ color:var(--ink); font-weight:700; }
+
+/* comparison bars (region visit rate) */
+.vbars{ display:flex; align-items:flex-end; gap:46px; justify-content:center; padding:14px 0 4px; min-height:168px; }
+.vbar{ display:flex; flex-direction:column; align-items:center; justify-content:flex-end; }
+.vbar .pv{ font-size:22px; font-weight:800; margin-bottom:9px; }
+.vbar .col{ width:66px; border-radius:7px 7px 0 0; }
+.vbar.hi .pv{ color:var(--signal); } .vbar.hi .col{ background:linear-gradient(180deg,var(--signal),var(--signal-d)); }
+.vbar.lo .pv{ color:var(--dim); } .vbar.lo .col{ background:linear-gradient(180deg,#4A4438,#38353F); }
+.vbar .lb{ font-size:13px; font-weight:700; color:var(--mute); margin-top:9px; }
+
+/* system flow (dashboard) */
+.flow{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:12px; align-items:center; }
+.flow .fn{ border:1px solid var(--line); border-radius:12px; background:var(--panel); padding:18px 14px; text-align:center; }
+.flow .fn.before{ border-color:rgba(201,154,94,.3); }
+.flow .fn.core{ border-color:rgba(156,181,150,.4); background:rgba(156,181,150,.06); }
+.flow .fn .fi{ font-size:20px; line-height:1; }
+.flow .fn .ft{ font-size:13.5px; font-weight:800; color:var(--ink); margin:9px 0 5px; }
+.flow .fn .fd{ font-size:11.5px; color:var(--mute); line-height:1.5; }
+.flow .far{ font-size:18px; color:var(--signal); font-weight:800; }
+.stackrow{ display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.spill{ font-size:12px; font-weight:700; color:var(--cyan); border:1px solid rgba(134,163,156,.3); background:rgba(134,163,156,.05); border-radius:8px; padding:5px 11px; }
+
+/* myth vs measured split */
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.split .pane{ border:1px solid var(--line); border-radius:14px; padding:20px; }
+.split .pane.myth{ background:rgba(192,130,100,.05); border-color:rgba(192,130,100,.25); }
+.split .pane.real{ background:rgba(156,181,150,.06); border-color:rgba(156,181,150,.35); }
+.split .pane .pl{ font-size:12px; font-weight:800; letter-spacing:.02em; margin-bottom:12px; }
+.split .pane.myth .pl{ color:var(--red); } .split .pane.real .pl{ color:var(--signal); }
+.split .pane .claim{ font-size:16px; font-weight:800; color:var(--ink); line-height:1.4; }
+.split .pane .claim s{ color:var(--dim); text-decoration-thickness:2px; }
+/* donut for 69% */
+.donut-wrap{ display:flex; align-items:center; gap:16px; margin-top:14px; }
+.donut-wrap .dl{ font-size:12.5px; color:var(--mute); line-height:1.5; }
+.donut-wrap .dl b{ color:var(--ink); font-weight:800; }
+
+/* audience / media map (quanda discovery) */
+.map{ display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:center; }
+.chipcol{ display:flex; flex-direction:column; gap:8px; }
+.mchip{ border:1px solid var(--line); border-radius:9px; padding:10px 13px; font-size:13px; font-weight:700; color:var(--mute); background:var(--panel); }
+.mchip.fit{ color:var(--signal); border-color:rgba(156,181,150,.35); background:rgba(156,181,150,.06); }
+.mchip small{ display:block; font-size:11px; font-weight:600; color:var(--dim); margin-top:2px; }
+
+/* DMP targeting diagram */
+.dmp{ display:grid; grid-template-columns:1fr auto 1fr; gap:16px; align-items:center; }
+.dmp .funnelcol{ display:flex; flex-direction:column; gap:7px; align-items:center; }
+.dmp .seg{ border:1px solid var(--line); border-radius:8px; padding:9px 12px; font-size:12.5px; font-weight:700; color:var(--mute); background:var(--panel); text-align:center; width:100%; }
+.dmp .seg.pick{ color:var(--signal); border-color:rgba(156,181,150,.4); background:rgba(156,181,150,.08); font-weight:800; }
+
+/* sales funnel (b2b) */
+.sfun{ display:flex; flex-direction:column; align-items:center; gap:0; }
+.sfun .rung{ position:relative; text-align:center; color:var(--void); font-weight:800; padding:13px 0; margin-bottom:5px; border-radius:7px; }
+.sfun .rung .rl{ font-size:13.5px; }
+.sfun .rung .rr{ font-size:11.5px; font-weight:700; opacity:.85; margin-top:2px; }
+.lead-tiers{ display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:center; }
+
+.foot{ margin-top:32px; }
+.cta-live{
+  display:inline-flex; align-items:center; gap:10px; margin-top:4px;
+  background:transparent; color:var(--signal); font-weight:600; font-size:15px;
+  text-decoration:none; padding:14px 26px; border-radius:999px;
+  border:1px solid rgba(156,181,150,.4);
+  transition:background .3s ease, color .3s ease, border-color .3s ease;
+}
+.cta-live:hover{ background:var(--signal); color:var(--void); border-color:var(--signal); }
+.cta-live .pulse{ background:currentColor; box-shadow:none; }
+
+.closing{ margin-top:40px; border:0; border-top:1px solid var(--line-soft); border-radius:0; padding:120px 40px 40px; text-align:center; background:transparent; }
+.closing h3{ font-size:clamp(24px,3.2vw,36px); font-weight:700; letter-spacing:-.035em; line-height:1.34; color:var(--ink); max-width:22ch; margin:0 auto; }
+.closing h3 b{ color:var(--signal); font-weight:700; }
+.closing .mail{ margin-top:36px; font-size:18px; font-weight:600; color:var(--ink); }
+.closing .sig{ margin-top:14px; font-size:13.5px; font-weight:400; color:var(--mute); }
+
+@media (max-width:1000px){
+  .layout{ grid-template-columns:1fr; }
+  .railwrap{ display:none; }
+  .readout{ grid-template-columns:repeat(2,1fr); }
+  .hero{ padding-left:0; padding-top:100px; padding-bottom:72px; }
+}
+@media (max-width:760px){
+  .shell{ padding:0 22px 90px; }
+  .statusbar .in{ padding:14px 22px; }
+  .statusbar .live{ display:none; }
+  .case-top{ padding:34px 26px 30px; }
+  .lead{ padding:28px 26px; }
+  .body{ padding:34px 26px 40px; }
+  .ba,.flow,.map,.dmp,.lead-tiers{ grid-template-columns:1fr; }
+  .arrow{ transform:rotate(90deg); justify-self:center; }
+  .flow .far{ transform:rotate(90deg); justify-self:center; }
+  .mstrip.c4,.mstrip.c3{ grid-template-columns:repeat(2,1fr); }
+  .expr{ grid-template-columns:1fr; }
+  .split{ grid-template-columns:1fr; }
+  .readout{ grid-template-columns:1fr; }
+}
+
+/* ============ motion system ============ */
+/* default-visible: nothing is ever stuck invisible if JS fails */
+.reveal{ opacity:1; transform:none; }
+/* only hide once JS confirms it can animate */
+.js-motion .reveal{
+  opacity:0; transform:translateY(22px);
+  transition:opacity .72s cubic-bezier(.22,.61,.36,1), transform .72s cubic-bezier(.22,.61,.36,1);
+  will-change:opacity, transform;
+}
+.js-motion .reveal.in{ opacity:1; transform:none; }
+
+/* hero orchestrated load — staggered */
+.js-motion .hero-anim{ opacity:0; transform:translateY(24px); }
+.js-motion.loaded .hero-anim{
+  opacity:1; transform:none;
+  transition:opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1);
+}
+.js-motion.loaded .hero-anim.d1{ transition-delay:.08s; }
+.js-motion.loaded .hero-anim.d2{ transition-delay:.18s; }
+.js-motion.loaded .hero-anim.d3{ transition-delay:.28s; }
+.js-motion.loaded .hero-anim.d4{ transition-delay:.42s; }
+
+/* metric bars/meters grow on reveal */
+.js-motion .meter .fill, .js-motion .sfun .rung, .js-motion .vbar .col{
+  --grow:1;
+}
+.js-motion .grow-x{ transform:scaleX(0); transform-origin:left center; transition:transform .9s cubic-bezier(.22,.61,.36,1); }
+.js-motion .grow-x.in{ transform:scaleX(1); }
+.js-motion .grow-y{ transform:scaleY(0); transform-origin:bottom center; transition:transform .9s cubic-bezier(.22,.61,.36,1); }
+.js-motion .grow-y.in{ transform:scaleY(1); }
+
+@media (prefers-reduced-motion:reduce){
+  html{ scroll-behavior:auto; }
+  .js-motion .reveal, .js-motion .hero-anim,
+  .js-motion .grow-x, .js-motion .grow-y{
+    opacity:1 !important; transform:none !important; transition:none !important;
+  }
+}
+
+/* ============ NEON PREMIUM OVERLAY ============ */
+.statusbar{ background:rgba(10,10,18,.74); border-bottom:1px solid rgba(124,92,255,.16); }
+.logo b{ color:#C06BFF; }
+.pulse{ background:#C06BFF; box-shadow:0 0 10px rgba(192,107,255,.9); }
+.statusbar nav a.on{ background:rgba(124,92,255,.15); color:#fff; }
+
+.hero h1{ font-weight:800; letter-spacing:-.045em; }
+.hero h1 .glow{
+  background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
+  filter:drop-shadow(0 0 26px rgba(170,110,255,.5));
+  background-size:220% auto; animation:nshimmer 7s linear infinite;
+}
+@keyframes nshimmer{ to{ background-position:220% center; } }
+.kicker .tick{ background:linear-gradient(90deg,#7C5CFF,#FF5CE1); height:2px; opacity:.95; box-shadow:0 0 8px rgba(124,92,255,.6); }
+
+/* glass + neon panels */
+.readout,.case,.viz,.mstrip{ position:relative; -webkit-backdrop-filter:blur(8px) saturate(1.1); backdrop-filter:blur(8px) saturate(1.1); }
+.case{ background:rgba(16,16,26,.56); border:1px solid rgba(124,92,255,.16);
+  transition:transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s ease, border-color .45s ease; }
+.case:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55);
+  box-shadow:0 44px 100px -44px rgba(124,92,255,.5), var(--shadow); }
+.case-top{ background:linear-gradient(180deg,rgba(124,92,255,.09),rgba(124,92,255,0)); border-bottom:1px solid rgba(124,92,255,.14); }
+.rd,.m{ background:rgba(18,18,30,.62); transition:box-shadow .35s ease; }
+.rd::before{ content:""; position:absolute; left:0; top:0; width:100%; height:2px; background:var(--neon); opacity:.6; }
+.rd:hover,.m:hover{ box-shadow:inset 0 0 0 1px rgba(124,92,255,.32), 0 0 40px -10px rgba(124,92,255,.45); }
+.rd .val .u,.m .val .u{ background:var(--neon); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+
+/* neon fills */
+.meter .track{ background:rgba(8,8,16,.85); border-color:rgba(124,92,255,.22); }
+.meter .fill{ background:linear-gradient(90deg,#7C5CFF,#C06BFF,#FF5CE1); color:#fff; box-shadow:0 0 24px rgba(160,100,255,.55); }
+.vbar.hi .col{ background:linear-gradient(180deg,#C06BFF,#7C5CFF)!important; box-shadow:0 0 28px rgba(140,90,255,.5); }
+.vbar.hi .pv{ color:#CBA7FF; }
+.sfun .rung{ box-shadow:0 0 22px -4px rgba(124,92,255,.42); }
+
+/* accents */
+.sh .bar{ background:linear-gradient(90deg,#7C5CFF,#FF5CE1); height:2px; box-shadow:0 0 8px rgba(124,92,255,.6); }
+.quote{ border-left-color:#C06BFF; }
+.rail a:hover,.rail a.active{ border-left-color:#C06BFF; }
+.cta-live{ border-color:rgba(124,92,255,.5); color:#C9A6FF; }
+.cta-live:hover{ background:var(--neon); color:#fff; border-color:transparent; box-shadow:0 0 34px rgba(124,92,255,.55); }
+.closing h3 b, .hero .lead b{ color:#C9A6FF; }
+::selection{ background:rgba(192,107,255,.4); color:#fff; }
+.mstrip.ctr .m{text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:40px 26px;}.mstrip.ctr .m .cap{font-size:14px;}.mstrip.ctr .m .val{font-size:44px;margin-top:18px;}.mstrip.ctr .m .val .u{font-size:20px;}.mstrip.ctr .m .sub{font-size:14px;margin-top:14px;}.hero .lead{padding:0;text-align:left;}</style>
+<style>
+/* ===== PDF/인쇄: A4 페이지 분리 (브라우저 Cmd+P·Claude Design 내보내기 모두 적용) ===== */
+@media print {
+  @page { size: A4 portrait; margin: 10mm 9mm; }
+  html { zoom: 0.62; }                 /* 1280px 데스크톱 레이아웃을 A4 폭에 맞춰 축소 */
+  html, body { background:#07070E !important; }
+  *, *::before, *::after {
+    -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;
+    -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
+    box-shadow:none !important; filter:none !important; animation:none !important;
+  }
+  .hero-anim, .reveal, .grow-x, .grow-y { opacity:1 !important; transform:none !important; }
+  .statusbar { position:static !important; }
+  header.hero { break-after: page; page-break-after: always; }   /* 표지만 단독 페이지 */
+  /* 모든 블록이 페이지에 걸쳐 자연스럽게 흐르게 — 큰 섹션이 통째로 밀려 빈공간 생기는 것 방지 */
+  .case, .sec { break-inside: auto; }
+  /* 작은 단위(이미지·지표박스)만 쪼개지지 않게 보호 */
+  img, .rd, figure { break-inside: avoid; page-break-inside: avoid; }
+  h2,h3,h4 { break-after: avoid; page-break-after: avoid; }      /* 제목이 내용과 떨어지지 않게 */
+  /* 제목 글로우/지원동기 그라데이션 텍스트는 인쇄 시 색막대로 깨짐 → 단색 고정 */
+  .hero h1 .glow { background:none !important; -webkit-text-fill-color:#C98BFF !important; color:#C98BFF !important; }
+  .hero-anim[style*="border-left:3px solid #C06BFF"] { background:#140F28 !important; }
+  .hero-anim[style*="border-left:3px solid #C06BFF"] b[style*="text-fill-color"] { -webkit-text-fill-color:#D7A8FF !important; color:#D7A8FF !important; background:none !important; }
+}
+</style>
+</head>
+<body style="background:#07070E;color:#EDEBFA;">
+
+<nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
+  <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
+    <a href="https://jiuk-bot.github.io/tossmarketing/index.html" style="font-weight:800;font-size:17px;color:#EDEBFA;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="https://jiuk-bot.github.io/tossmarketing/index.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Home</a><a href="https://jiuk-bot.github.io/tossmarketing/portfolio.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">Portfolio</a><a href="https://jiuk-bot.github.io/tossmarketing/resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="https://jiuk-bot.github.io/tossmarketing/videos.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">성과분석 대시보드</a><a href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 소재 스튜디오</a></div>
+  </div>
+</nav>
+
+<div class="shell">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="kicker hero-anim d1"><span class="tick"></span>소재를 직접 만들고 · 가설로 검증하고 · 지표를 바꾸는 퍼포먼스 크리에이터</div>
+    <h1 class="hero-anim d2">소재를 직접 만들고,<br><span class="glow">가설로 검증하고</span><br>지표를 바꿉니다.</h1>
+    <p class="lead hero-anim d3">영상·이미지 소재를 <b>직접 기획·제작</b>하고, <b>소구×후킹·CTA·포맷을 A/B로 검증</b>해 CTR·전환을 끌어올린 — 커머스·리드·금융까지 <b>기여도 100% 소재로 지표를 움직인</b> 실제 기록입니다.</p>
+    <div class="hero-anim d3" style="margin-top:26px;background:linear-gradient(135deg,rgba(124,92,255,.16),rgba(255,107,214,.075));border:1px solid rgba(124,92,255,.32);border-left:3px solid #C06BFF;border-radius:16px;padding:20px 24px;box-shadow:0 26px 64px -42px rgba(124,92,255,.5);max-width:820px;">
+      <div style="font-size:11.5px;font-weight:800;letter-spacing:.16em;color:#C9A6FF;margin-bottom:11px;">WHY TOSS · 지원 동기</div>
+      <p style="font-size:15.5px;line-height:1.8;color:#EDEBFA;margin:0;font-weight:500;">좋은 소재는 <b style="color:#fff;">유려함이 아니라, 끊임없는 시도로 지표를 바꾸는 것</b>이라 믿습니다. 저는 패션디자인 전공으로 영상·이미지를 직접 만들고, <span style="color:#C9A6FF;">소구를 가설로 세워 A/B로 겨루고, 이긴 소재의 공통점을 다음 소재에 반영하는</span> 루프를 혼자 돌려 왔습니다. <b style="background:linear-gradient(120deg,#C06BFF,#FF6BD6);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;">이 제작–검증–반복 역량으로, 토스 커머스의 User Acquisition 지표를 직접 끌어올리는 Creative 마케터로 기여하고 싶어 지원했습니다.</b></p>
+    </div>
+    <div class="hero-anim d3" style="margin-top:12px;font-size:12px;font-weight:700;letter-spacing:.14em;color:#8C83B8;">▼ 직접 구축한 AI 툴 바로가기</div>
+    <div class="hero-anim d3" style="margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;max-width:840px;">
+      <a href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:13px;background:linear-gradient(135deg,#7C5CFF,#C06BFF);color:#fff;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(124,92,255,.7);letter-spacing:-.01em;">◉ AI 소재 A/B 스튜디오 접속 →</a>
+      <a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:13px;background:linear-gradient(135deg,#C06BFF,#FF6BD6);color:#fff;font-weight:700;font-size:15.5px;text-decoration:none;box-shadow:0 10px 30px -10px rgba(192,107,255,.7);letter-spacing:-.01em;">◉ AI 성과 대시보드 →</a>
+    </div>
+
+    <div class="readout hero-anim d4">
+      <div class="rd">
+        <div class="cap">짐보관 AI영상 A/B · CTR</div>
+        <div class="val num"><span class="n" data-to="9.56">9.56</span><span class="u">%</span></div>
+        <div class="delta num">6.7% → 9.56% · +42.7%</div>
+        <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
+          <polyline points="2,22 26,20 50,15 74,12 98,6 126,2" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="rd">
+        <div class="cap">공감형 Hook 소재 · 전환 리프트</div>
+        <div class="val num"><span class="n" data-to="31.3">31.3</span><span class="u">%</span></div>
+        <div class="delta num">같은 예산 · 전환 +31.3% · CPA −24%</div>
+        <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
+          <polyline points="2,23 30,22 58,19 86,12 126,2" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="rd">
+        <div class="cap">리드 소재 리프레이밍 · 타겟적중</div>
+        <div class="val num"><span class="n" data-to="70">70</span><span class="u">%</span></div>
+        <div class="delta num">40% → 70% · 전환 124→208건</div>
+        <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
+          <polyline points="2,22 34,20 66,14 98,8 126,3" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="rd">
+        <div class="cap">커머스 UA · 뷰티 스토어 월매출 증가</div>
+        <div class="val num"><span class="n" data-to="167">167</span><span class="u">%</span></div>
+        <div class="delta num">상세 30건 직접 제작 · 전월 대비 +167%</div>
+        <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
+          <polyline points="2,23 30,20 58,16 86,10 126,2" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <!-- left rail -->
+    <aside class="railwrap">
+      <div class="rail-h">CASE INDEX</div>
+      <nav class="rail">
+        <a href="#cvid"><span class="rn">▶</span><span>AI 영상 크리에이티브</span></a>
+        <a href="#ccom"><span class="rn">★</span><span>커머스·리드 소재 A/B 아카이브</span></a>
+        <a href="#ctool"><span class="rn">⚙</span><span>AI 소재 생성·분석 툴</span></a>
+        <a href="#c1"><span class="rn">01</span><span>치과 임플란트 다매체 소재</span></a>
+        <a href="#c2"><span class="rn">02</span><span>AI 성과 대시보드</span></a>
+        <a href="#c3"><span class="rn">03</span><span>광고 운영 자동화 봇</span></a>
+        <a href="#c4"><span class="rn">04</span><span>KB 스타틴즈 5채널</span></a>
+        <a href="#c5"><span class="rn">05</span><span>KB 패밀리뱅킹</span></a>
+        <a href="#c6"><span class="rn">06</span><span>공유창고 GA4 퍼널</span></a>
+        <a href="#c7"><span class="rn">07</span><span>어스텀 창업·대표</span></a>
+      </nav>
+    </aside>
+
+    <!-- cases -->
+    <main>
+
+    <!-- ===================== GALLERY · AI 영상 크리에이티브 ===================== -->
+    <style>
+      #cvid .gal-badge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#C9A6FF; background:rgba(124,92,255,.14); border:1px solid rgba(124,92,255,.3); padding:3px 10px; border-radius:999px; }
+      #cvid .pgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:4px; }
+      #cvid .pcard{ border:1px solid var(--line); border-radius:12px; padding:14px; background:var(--panel); display:flex; flex-direction:column; gap:8px; }
+      #cvid .pcard .pt{ font-size:12px; font-weight:800; color:var(--ink); }
+      #cvid .pcard .pt small{ display:block; font-weight:600; color:var(--dim); font-size:10.5px; margin-top:1px; }
+      #cvid .pcard .prompt{ font-size:11px; line-height:1.5; color:var(--mute); background:rgba(124,92,255,.05); border:1px dashed rgba(124,92,255,.28); border-radius:8px; padding:9px 10px; font-family:ui-monospace,Menlo,monospace; }
+      #cvid .pcard .sub-ko{ font-size:12px; font-weight:700; color:var(--signal); }
+      #cvid .pcard .sub-ko::before{ content:'자막 '; font-size:10px; font-weight:800; color:var(--dim); }
+      #cvid .vidgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:6px; }
+      #cvid .vidgrid .feat{ grid-column:1 / -1; }
+      #cvid .vidgrid .feat .vidcap{ font-size:13px; }
+      #cvid .ytwrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(135deg,#171427,#0f0d1c); }
+      #cvid .ytwrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+      #cvid .vidcap{ font-size:12px; font-weight:700; color:var(--mute); margin-top:8px; }
+      #cvid .vidcap b{ color:var(--signal); }
+      #cvid .pipe{ display:flex; align-items:stretch; margin-top:10px; }
+      #cvid .pstep{ flex:1; min-width:0; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 10px 14px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:6px; position:relative; transition:transform .3s,border-color .3s,box-shadow .3s; }
+      #cvid .pstep:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.55); box-shadow:0 24px 50px -30px rgba(124,92,255,.6); }
+      #cvid .pstep .pnum{ position:absolute; top:-11px; left:50%; transform:translateX(-50%); width:23px; height:23px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px -2px rgba(124,92,255,.7); }
+      #cvid .pstep .pico{ font-size:26px; line-height:1; margin-top:3px; }
+      #cvid .pstep .ptitle{ font-size:12.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; }
+      #cvid .pstep .pdesc{ font-size:10.5px; color:var(--dim); line-height:1.45; }
+      #cvid .parrow{ display:flex; align-items:center; justify-content:center; flex:0 0 22px; color:var(--signal); font-size:15px; }
+      #cvid .vthumb{ display:block; position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0f0d1c; text-decoration:none; }
+      #cvid .vthumb .th{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+      #cvid .vthumb:hover .th{ transform:scale(1.05); }
+      #cvid .vthumb .pbtn{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%; background:rgba(12,10,22,.58); border:1.5px solid rgba(255,255,255,.85); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:.25s; }
+      #cvid .vthumb:hover .pbtn{ background:var(--signal-d); border-color:transparent; transform:translate(-50%,-50%) scale(1.08); }
+      #cvid .vbtnrow{ margin-top:18px; }
+      #cvid .psolve{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:6px; }
+      #cvid .ps{ border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--panel); }
+      #cvid .ps .ps-p,#cvid .ps .ps-s{ padding:11px 13px; font-size:12px; line-height:1.55; color:var(--mute); display:flex; gap:8px; align-items:flex-start; }
+      #cvid .ps .ps-p{ border-bottom:1px solid var(--line); }
+      #cvid .ps b{ color:var(--ink); }
+      #cvid .ps .tg{ flex:0 0 auto; font-size:10px; font-weight:800; padding:2px 7px; border-radius:6px; margin-top:1px; }
+      #cvid .ps .tg.p{ background:rgba(255,120,120,.12); color:#ff9b9b; border:1px solid rgba(255,120,120,.32); }
+      #cvid .ps .tg.s{ background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.32); }
+      @media(max-width:720px){ #cvid .psolve{ grid-template-columns:1fr; } }
+      @media(max-width:720px){ #cvid .pgrid,#cvid .vidgrid{ grid-template-columns:1fr; } #cvid .pipe{ flex-direction:column; } #cvid .parrow{ flex-basis:22px; transform:rotate(90deg); } }
+    </style>
+    <section class="case reveal" id="cvid">
+      <div class="case-top">
+        <div class="ch"><span class="gal-badge">GALLERY</span><span class="org">AI 영상 크리에이티브 · 글로벌랩스 / 박스풀</span></div>
+        <h2>AI 영상 크리에이티브 — 대본부터 생성·후처리·자막까지 직접</h2>
+        <div class="tags">
+          <span class="tag">Veo · Kling AI</span>
+          <span class="tag">ProPainter · FFmpeg</span>
+          <span class="tag">편집(Capcut)</span>
+          <span class="tag role">1인 · 100%</span>
+        </div>
+      </div>
+      <p class="lead">텍스트 한 줄짜리 소재가 아니라, <b>AI로 영상 광고를 처음부터 끝까지 직접</b> 만듭니다 — 시나리오 · 씬별 프롬프트 · AI 보이스 · 한국어 자막 · 후 보정까지.</p>
+      <div class="body">
+
+        <div class="mstrip c4">
+          <div class="m"><div class="cap">임플란트 AI 영상 광고</div><div class="val num">10<span class="u">편+</span></div><div class="sub neu">2026.02~09 · 가로형</div></div>
+          <div class="m"><div class="cap">제작 방식</div><div class="val">100% AI</div><div class="sub neu">기획·생성·편집·자막 직접</div></div>
+          <div class="m"><div class="cap">셀프스토리지(B2B) · CTR</div><div class="val num">+43<span class="u">%</span></div><div class="sub num">6.7% → 9.56% (Kling AI)</div></div>
+          <div class="m"><div class="cap">글로벌랩스 · 확장기 CTR</div><div class="val num">+50<span class="u">%</span></div><div class="sub num">CPC −38% · 저점→하반기</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>제작 파이프라인 — 기획부터 완성까지 직접</div>
+          <div class="pipe">
+            <div class="pstep"><span class="pnum">1</span><div class="pico">📝</div><div class="ptitle">시나리오 기획</div><div class="pdesc">후킹·소구 구조 설계</div></div>
+            <div class="parrow">▶</div>
+            <div class="pstep"><span class="pnum">2</span><div class="pico">🎯</div><div class="ptitle">씬별 프롬프트</div><div class="pdesc">컷 단위 영문 프롬프트</div></div>
+            <div class="parrow">▶</div>
+            <div class="pstep"><span class="pnum">3</span><div class="pico">🖼️</div><div class="ptitle">컷별 이미지 제작</div><div class="pdesc">키 프레임 이미지 생성</div></div>
+            <div class="parrow">▶</div>
+            <div class="pstep"><span class="pnum">4</span><div class="pico">🎬</div><div class="ptitle">AI 영상 생성</div><div class="pdesc">이미지 → 영상 · AI 보이스</div></div>
+            <div class="parrow">▶</div>
+            <div class="pstep"><span class="pnum">5</span><div class="pico">✂️</div><div class="ptitle">후보정 편집</div><div class="pdesc">CapCut · 프리미어프로 · 자막</div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>실험 설계 — 소구포인트 × 후킹 2단계 A/B</div>
+          <p style="margin-bottom:4px">단순 제작이 아니라 <b>소재를 실험 단위로 설계</b>했습니다. 소구포인트별로 소재를 만들어 겨루고, 이긴 소구를 축으로 후킹을 다시 겨룹니다.</p>
+          <div class="pipe">
+            <div class="pstep"><span class="pnum">1</span><div class="pico">🎯</div><div class="ptitle">소구포인트별 제작</div><div class="pdesc">가격·신뢰·사후관리 등 포인트별 소재</div></div>
+            <div class="parrow">▶</div>
+            <div class="pstep"><span class="pnum">2</span><div class="pico">⚔️</div><div class="ptitle">소구포인트 A/B</div><div class="pdesc">어떤 소구가 먹히는지 검증</div></div>
+            <div class="parrow">▶</div>
+            <div class="pstep"><span class="pnum">3</span><div class="pico">🏆</div><div class="ptitle">승자 소구 선정</div><div class="pdesc">효율 우수 소구를 주축으로</div></div>
+            <div class="parrow">▶</div>
+            <div class="pstep"><span class="pnum">4</span><div class="pico">🪝</div><div class="ptitle">후킹 A/B</div><div class="pdesc">승자 소구 위에서 후킹 재실험</div></div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>AI 영상 제작하며 겪은 문제와 해결</div>
+          <div class="psolve">
+            <div class="ps">
+              <div class="ps-p"><span class="tg p">문제</span>인물이 화면에 <b>작게 잡힐수록 이목구비가 뭉개지고 깨져</b> 보임</div>
+              <div class="ps-s"><span class="tg s">해결</span>인물을 <b>클로즈업·대면 구도</b>로 배치하도록 프롬프트를 설계해 얼굴 디테일 확보</div>
+            </div>
+            <div class="ps">
+              <div class="ps-p"><span class="tg p">문제</span>나레이션에서 <b>특정 키워드 발음이 부정확</b>하게 생성됨</div>
+              <div class="ps-s"><span class="tg s">해결</span><b>발음이 잘 되는 단어로 치환</b>하거나 표현을 바꿔 스크립트·프롬프트를 재작성</div>
+            </div>
+            <div class="ps">
+              <div class="ps-p"><span class="tg p">문제</span>AI 컷이 <b>길어질수록 부자연스러운 동작·장면</b>이 섞임</div>
+              <div class="ps-s"><span class="tg s">해결</span><b>컷을 짧게 끊고 화면 구도를 바꿔</b> 여러 컷을 이어붙여 완성 → 가장 자연스럽고 완성도 ↑</div>
+            </div>
+            <div class="ps">
+              <div class="ps-p"><span class="tg p">문제</span>프롬프트 한 번으로는 <b>원하는 결과가 잘 안 나옴</b></div>
+              <div class="ps-s"><span class="tg s">해결</span>프롬프트마다 <b>참고 이미지를 다량 생성</b>해 베스트 컷을 선별 (품질의 핵심)</div>
+            </div>
+            <div class="ps">
+              <div class="ps-p"><span class="tg p">문제</span>AI 영상에 <b>깨진 글자·가짜 텍스트</b>가 섞여 신뢰도·심의 리스크</div>
+              <div class="ps-s"><span class="tg s">해결</span>프롬프트로 <b>"No text" 원천 차단 + 자막 직접 합성</b>해 화면 텍스트 0 오류로 통제</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>소재가 만든 효율 — 광고비 10배 확장 중에도</div>
+          <p style="margin-bottom:10px">광고비를 <b>월 2천만 → 3억+(10배 이상)</b>로 밀어붙인 저점(3~4월)에서, 신규 AI 영상 소재를 <b>지속 제작·교체</b>하며 효율을 되살렸습니다. <b>CTR은 소재 품질에 가장 직결되는 지표</b>입니다.</p>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell"><div class="t">CTR · 확장기 저점(3~4월)</div><div class="v">0.66%</div></div>
+              <div class="arrow">→</div>
+              <div class="cell good"><div class="t">CTR · 하반기(7~9월)</div><div class="v">0.99%<small>+50% 회복</small></div></div>
+            </div>
+            <div class="ba" style="margin-top:12px">
+              <div class="cell"><div class="t">CPC · 확장기 저점(3~4월)</div><div class="v">1,425원</div></div>
+              <div class="arrow">→</div>
+              <div class="cell good"><div class="t">CPC · 하반기(7~9월)</div><div class="v">887원<small>−38% 개선</small></div></div>
+            </div>
+            <p class="vnote">※ 기준: 전 캠페인 합산(구글애즈 API) · <b>확장기 저점(3~4월) 평균 → 하반기(7~9월) 평균</b>. 10배 확장은 보통 효율을 영구 악화시키는데, 소재 지속 투입으로 저점 대비 회복시킨 결과입니다.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>완성 영상 — 가로형 시리즈 (최신순 · 최신작일수록 고도화)</div>
+          <p style="margin-bottom:10px">7개월간 제작한 임플란트 가로형 AI 영상 광고입니다. <b>위로 올수록 최신작</b>이며, AI 영상 퀄리티가 올라가는 과정을 그대로 확인할 수 있습니다.</p>
+          <div class="vidgrid">
+            <div class="feat">
+              <a class="vthumb" href="https://youtu.be/dzGux_ALcu0" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/dzGux_ALcu0/hqdefault.jpg" alt="26.05 인터뷰 (대표)" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">⭐ 26.05 · 인터뷰 · <b>대표 영상</b></div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/9a9m3_IFDmw" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/9a9m3_IFDmw/hqdefault.jpg" alt="경기도민 임플란트 이야기 3화" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">경기도민 임플란트 이야기 3화 · <b>브랜드 시리즈</b></div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/5zzOggCOYAo" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/5zzOggCOYAo/hqdefault.jpg" alt="지역구강건강" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.09 · 지역구강건강 <b style="color:var(--signal)">· 최신작</b></div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/0CqPuhEU3GA" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/0CqPuhEU3GA/hqdefault.jpg" alt="명의특집" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.08 · 명의특집</div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/utoazwFX-_o" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/utoazwFX-_o/hqdefault.jpg" alt="치아 Q&amp;A" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.07 · 치아 Q&amp;A</div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/T8ZnZbMt0fk" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/T8ZnZbMt0fk/hqdefault.jpg" alt="치아백서" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.07 · 치아백서</div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/dpH4sNvDWVc" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/dpH4sNvDWVc/hqdefault.jpg" alt="치아정보톡" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.06 · 치아정보톡</div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/PURz9uwrKdU" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/PURz9uwrKdU/hqdefault.jpg" alt="원장 인터뷰" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.06 · 원장 인터뷰</div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/PDesxP32WWM" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/PDesxP32WWM/hqdefault.jpg" alt="명의는어디에 전국편" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.05 · 명의는어디에 (전국편)</div>
+            </div>
+            <div>
+              <a class="vthumb" href="https://youtu.be/kGVvjXjE5J4" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/kGVvjXjE5J4/hqdefault.jpg" alt="임플란트 명의" loading="lazy"><span class="pbtn">▶</span></a>
+              <div class="vidcap">26.02 · 임플란트 명의</div>
+            </div>
+          </div>
+          <div class="vbtnrow">
+            <a class="cta-live" href="https://jiuk-bot.github.io/tossmarketing/videos.html"><span class="pulse"></span>▶ AI 영상 10편 전체 재생 페이지 열기</a>
+          </div>
+          <p class="note" style="margin-top:8px">썸네일을 클릭하면 해당 영상이, 위 버튼을 누르면 전체 재생 페이지가 열립니다.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">AI 영상은 <b>"생성"만으로 끝나지 않는다</b> — 후킹 시나리오 설계, 깨진 글자 제어, 로고 제거·자막 합성 같은 <b>'마감'까지 직접 해야</b> 실제 광고로 쓸 수 있는 결과물이 된다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== ARCHIVE · 커머스·리드 소재 A/B ===================== -->
+    <style>
+      #ccom .abadge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.32); padding:3px 10px; border-radius:999px; }
+      #ccom .method{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:2px 0 8px; }
+      #ccom .method .ms{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
+      #ccom .method .ms.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
+      #ccom .method .ma{ color:var(--signal); font-weight:800; }
+      #ccom .abgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:6px; }
+      #ccom .abcard{ border:1px solid var(--line); border-radius:14px; background:var(--panel); padding:18px 18px 16px; display:flex; flex-direction:column; gap:11px; transition:transform .3s,border-color .3s,box-shadow .3s; }
+      #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
+      #ccom .abcard .fmt{ align-self:flex-start; font-size:10px; font-weight:800; letter-spacing:.04em; padding:3px 9px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
+      #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
+      #ccom .abcard h4{ font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; line-height:1.4; }
+      #ccom .abcard .hyp{ font-size:12.5px; line-height:1.6; color:var(--mute); }
+      #ccom .abcard .hyp b{ color:var(--cyan); font-weight:700; }
+      #ccom .abcard .ba2{ display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:stretch; }
+      #ccom .abcard .ba2 .c{ border:1px solid var(--line); border-radius:9px; padding:9px 10px; font-size:11px; line-height:1.45; }
+      #ccom .abcard .ba2 .c .l{ font-size:9.5px; font-weight:800; letter-spacing:.03em; margin-bottom:3px; }
+      #ccom .abcard .ba2 .c.a{ background:rgba(255,107,157,.05); border-color:rgba(255,107,157,.25); color:var(--mute); } #ccom .abcard .ba2 .c.a .l{ color:var(--red); }
+      #ccom .abcard .ba2 .c.b{ background:rgba(156,181,150,.06); border-color:rgba(124,92,255,.3); color:var(--ink); } #ccom .abcard .ba2 .c.b .l{ color:var(--signal); }
+      #ccom .abcard .ba2 .ar{ display:flex; align-items:center; color:var(--signal); font-weight:800; font-size:14px; }
+      #ccom .abcard .res{ display:flex; flex-wrap:wrap; gap:7px; margin-top:1px; }
+      #ccom .abcard .res .r{ font-size:11.5px; font-weight:800; color:var(--ink); background:var(--void); border:1px solid var(--line); border-radius:999px; padding:4px 11px; }
+      #ccom .abcard .res .r b{ color:var(--signal); }
+      #ccom .commerce{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:6px; }
+      #ccom .cc{ border:1px solid var(--line); border-left:2px solid var(--cyan); border-radius:12px; background:var(--panel); padding:18px; }
+      #ccom .cc .ct{ font-size:13px; font-weight:800; color:var(--cyan); margin-bottom:8px; }
+      #ccom .cc p{ font-size:13px; line-height:1.65; color:var(--mute); } #ccom .cc p b{ color:var(--ink); }
+      @media(max-width:720px){ #ccom .abgrid,#ccom .commerce{ grid-template-columns:1fr; } }
+    </style>
+    <section class="case reveal" id="ccom">
+      <div class="case-top">
+        <div class="ch"><span class="abadge">ARCHIVE · 기여도 100%</span><span class="org">박스풀 공유창고·풀필먼트 / 다이나믹 서플라이 · 2024.07~2025.05</span></div>
+        <h2>커머스·리드 소재 A/B 아카이브 — 직접 만든 소재로 지표를 움직인 실험들</h2>
+        <div class="tags">
+          <span class="tag">영상·이미지 직접 제작</span>
+          <span class="tag">소구×후킹 A/B</span>
+          <span class="tag">Meta · 당근 · 스마트스토어</span>
+          <span class="tag role">기획·제작·운영 100%</span>
+        </div>
+      </div>
+
+      <p class="lead">소재를 <b>'느낌'이 아니라 실험 단위</b>로 운영했습니다 — 소구를 가설로 세워 겨루고, <b>이긴 소구 위에서 후킹·CTA·포맷을 다시 겨루고</b>, 이긴 소재의 공통점을 다음 소재에 반영했습니다. 아래는 그 루프로 지표를 바꾼 <b>기여도 100% 소재 케이스</b>입니다.</p>
+
+      <div class="body">
+        <div class="mstrip c4">
+          <div class="m"><div class="cap">짐보관 AI영상 · CTR</div><div class="val num">9.56<span class="u">%</span></div><div class="sub">6.7% → 9.56% · +42.7%</div></div>
+          <div class="m"><div class="cap">공감형 Hook · 전환</div><div class="val num">+31.3<span class="u">%</span></div><div class="sub">CPA −24% 동반</div></div>
+          <div class="m"><div class="cap">리드 리프레이밍 · 타겟적중</div><div class="val num">70<span class="u">%</span></div><div class="sub">40% → 70% · 전환 124→208건</div></div>
+          <div class="m"><div class="cap">프랜차이즈 리드 · CPA</div><div class="val num">−39<span class="u">%</span></div><div class="sub">19,366 → 11,888원</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>소재를 실험 단위로 설계했습니다</div>
+          <div class="method">
+            <span class="ms">🎯 소구포인트별 제작</span><span class="ma">→</span>
+            <span class="ms">⚔️ 소구 A/B</span><span class="ma">→</span>
+            <span class="ms me">🏆 승자 소구 고정</span><span class="ma">→</span>
+            <span class="ms">🪝 후킹·CTA A/B</span><span class="ma">→</span>
+            <span class="ms">📊 이긴 소재 공통점 반영 ↺</span>
+          </div>
+          <p>가격·신뢰·사후관리·공감 등 <b>소구별로 소재를 만들어 겨루고</b>, 이긴 소구를 축으로 <span class="g">인트로 Hook·CTA·영상↔이미지 포맷을 다시 실험</span>했습니다. 아래 8개는 그 결과물입니다.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>소재 A/B 케이스 8선</div>
+          <div class="abgrid">
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>짐보관 — 20초 공감형 → 12초 Hook형</h4>
+              <div class="hyp"><b>가설</b> 앞 7초에 이탈하니, 인트로 Hook + 텍스트 요약으로 시청 전 핵심 전달</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">AS-IS</div>공감형 인트로·20초·이용예시→가격</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">TO-BE</div>Hook 인트로·12초·텍스트 요약 전달</div>
+              </div>
+              <div class="res"><span class="r">CTR <b>9.56%</b> (+42.7%)</span><span class="r">전환 <b>+31.3%</b></span><span class="r">CPA <b>−24%</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>직장인 공감형 시나리오 소재</h4>
+              <div class="hyp"><b>가설</b> 자극적 인트로보다, 퇴근 후 현실을 비추면 '내 얘기'로 전환이 오른다</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">AS-IS</div>자극적 인트로·즉각 시선집중형</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">TO-BE</div>퇴근 후 집 풍경 공감형 시나리오</div>
+              </div>
+              <div class="res"><span class="r">전환 85→<b>106회</b> (+25%)</span><span class="r">신규 81→<b>132명</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>리마케팅 · 리뷰 기반 정보전달 소재</h4>
+              <div class="hyp"><b>가설</b> 결제까지 평균 3.89일 → 그 안에 실제 리뷰로 신뢰를 재주입하면 전환</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">초기</div>공감형 단독 소재</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">추가</div>차별점·실고객 리뷰 정보형 리마케팅</div>
+              </div>
+              <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">전환 <b>144건</b></span><span class="r">신규 <b>+63%</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">이미지 ×4</span>
+              <h4>소재 4종 토너먼트 (해결·밈가격·공감·궁금증)</h4>
+              <div class="hyp"><b>가설</b> 소구가 다른 4종을 동시에 겨뤄 '이기는 소구'를 데이터로 확정</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">후보</div>A해결 · B밈+가격 · C공감 · D궁금증</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">승자</div>B 밈+가격강조 → B-1·B-2로 확장</div>
+              </div>
+              <div class="res"><span class="r">META 248 &gt; 당근 192</span><span class="r">러닝: <b>가격 강조=최대 후킹</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">이미지 → AI 영상</span>
+              <h4>프랜차이즈 리드 · 타겟 리프레이밍</h4>
+              <div class="hyp"><b>가설</b> 자극 카피는 클릭만 올리고 비타겟 유입 → '임대인' 공감 소재로 품질 개선</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">AS-IS</div>자극 이미지 카피 (타겟적중 40%)</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">TO-BE</div>"상가공실 힘드시죠?" 공감 영상 (70%)</div>
+              </div>
+              <div class="res"><span class="r">전환 124→<b>208건</b></span><span class="r">CPA <b>−39%</b></span><span class="r">CTR 3.54→<b>4.14</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>프랜차이즈 · 영상 재생시간 A/B</h4>
+              <div class="hyp"><b>가설</b> 결과중심 인트로보다 궁금증 Hook이 끝까지 보게 만든다 (50% 재생 기준)</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">AS-IS</div>공감형 인트로 → 결과중심</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">TO-BE</div>궁금증 Hook → 공감→전환→해결</div>
+              </div>
+              <div class="res"><span class="r">CPA <b>−16.7%</b></span><span class="r">재생수 <b>+31.1%</b></span><span class="r">CPC −1.6%</span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt">AI 영상</span>
+              <h4>B2B 셀러 리드 · 핵심가치 전달형</h4>
+              <div class="hyp"><b>가설</b> 메시지 없는 현장영상보다, Hook→신뢰→핵심가치 구조가 리드를 만든다</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">AS-IS</div>텍스트 없는 단순 현장 영상</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">TO-BE</div>"세계로 나가고 싶나요?" Hook+핵심가치</div>
+              </div>
+              <div class="res"><span class="r">CTR <b>3.06%</b> (+36.6%)</span><span class="r">전환 <b>+26.7%</b></span><span class="r">CPA <b>−20.9%</b></span></div>
+            </div>
+
+            <div class="abcard">
+              <span class="fmt img">이미지</span>
+              <h4>B2B 셀러 리드 · 텍스트 중심 이미지</h4>
+              <div class="hyp"><b>가설</b> 영상 이탈이 크면, 한눈에 읽히는 텍스트 이미지가 이탈을 줄이고 전환을 올린다</div>
+              <div class="ba2">
+                <div class="c a"><div class="l">AS-IS</div>영상 소재 (이탈률 높음)</div>
+                <div class="ar">→</div>
+                <div class="c b"><div class="l">TO-BE</div>"업계최저 물류대행비" 텍스트 이미지</div>
+              </div>
+              <div class="res"><span class="r">CTR <b>3.37%</b> (+12.3%)</span><span class="r">전환 <b>+17.6%</b></span><span class="r">CPA <b>−14.7%</b></span></div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>커머스 UA — 상품을 '사게' 만든 경험</div>
+          <div class="commerce">
+            <div class="cc">
+              <div class="ct">뷰티 스마트스토어 · 다이나믹 서플라이</div>
+              <p>SEO 기반 스토어를 직접 운영하며 <b>상품 상세페이지 30건을 직접 기획·디자인</b> → <b>월매출 +167%</b>. 소재가 곧 구매전환인 커머스 환경에서 제작–운영을 한 손으로.</p>
+            </div>
+            <div class="cc">
+              <div class="ct">공유창고 · 예약 결제 전환</div>
+              <p>조회 1,698회에 <b>결제 0건</b>이던 예약 LP를 '즉시 결제 불가' 병목으로 진단 → 실시간 결제 도입 제안·LP 재구성으로 <b>결제 0→16건, 매출 +1,653%</b>.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">소재의 승패는 <b>'예쁨'이 아니라 소구와 Hook의 가설</b>에서 갈린다 — 이기는 소재의 공통점(가격 강조·현실 공감·궁금증 Hook)을 <b>다음 소재에 반영하는 루프</b>를 돌릴 때, 같은 예산에서도 CTR·전환이 계속 올라간다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TOOL · 소재 생성→분석 루프 ===================== -->
+    <style>
+      #ctool .tbadge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.32); padding:3px 10px; border-radius:999px; }
+      #ctool .loop{ display:flex; align-items:center; flex-wrap:wrap; gap:8px; margin:4px 0 6px; }
+      #ctool .loop .ls{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
+      #ctool .loop .la{ color:var(--signal); font-weight:800; }
+      #ctool .loop .ls.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
+      #ctool .twins{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; }
+      #ctool .tcard{ display:flex; flex-direction:column; gap:10px; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px; transition:transform .3s, border-color .3s, box-shadow .3s; }
+      #ctool .tcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
+      #ctool .tcard .ti{ font-size:26px; } #ctool .tcard h4{ font-size:15px; font-weight:800; color:var(--ink); }
+      #ctool .tcard p{ font-size:12.5px; color:var(--mute); line-height:1.6; flex:1; }
+      #ctool .tcard .go{ align-self:flex-start; display:inline-flex; align-items:center; gap:7px; padding:10px 16px; border-radius:11px; font-weight:800; font-size:13px; text-decoration:none; border:1px solid rgba(124,92,255,.5); color:#C9A6FF; }
+      #ctool .tcard .go:hover{ background:var(--neon,linear-gradient(135deg,#7C5CFF,#C06BFF)); color:#fff; border-color:transparent; }
+      @media(max-width:720px){ #ctool .twins{ grid-template-columns:1fr; } }
+    </style>
+    <section class="case reveal" id="ctool">
+      <div class="case-top">
+        <div class="ch"><span class="tbadge">TOOL · SIDE PROJECT</span><span class="org">직접 설계·구현한 AI 마케팅 툴</span></div>
+        <h2>AI 소재 A/B 운영 스튜디오 <span style="font-size:.58em;color:var(--dim);font-weight:700;letter-spacing:0;">· Streamlit</span></h2>
+        <div class="tags">
+          <span class="tag">Streamlit · SQLite</span>
+          <span class="tag">A/B 데이터 운영</span>
+          <span class="tag">크리에이티브 인텔리전스</span>
+        </div>
+      </div>
+      <p class="lead">퍼포먼스 대시보드를 소재 A/B에 맞춘 <b>내부 운영 툴</b>입니다. A/B 결과를 <b>기록·조회·분석</b>하고, 다음 소재 기획 시 <b>이긴 소재의 공통점을 리뷰</b>하며, <b>컷별 프롬프트를 엑셀로</b> 뽑습니다 — 소재 운영의 반복 업무를 시스템화한 사이드 프로젝트입니다.</p>
+      <div class="body">
+        <div class="sec">
+          <div class="loop">
+            <span class="ls me">① A/B 기록</span><span class="la">→</span>
+            <span class="ls">② 성과 분석</span><span class="la">→</span>
+            <span class="ls me">③ 기획 리뷰(공통점)</span><span class="la">→</span>
+            <span class="ls">④ 컷별 프롬프트·엑셀</span><span class="la">→</span>
+            <span class="ls me">집행</span><span class="la">↺</span>
+          </div>
+          <div class="stackrow" style="margin:14px 0 2px">
+            <span class="spill">📝 A/B 데이터 기록 (등급 자동산정)</span>
+            <span class="spill">🔍 과거 데이터 조회·필터</span>
+            <span class="spill">📊 이기는 소재 공통점 분석</span>
+            <span class="spill">🧭 소재 기획 리뷰 + 가이드</span>
+            <span class="spill">🎬 컷별 프롬프트 → 엑셀</span>
+          </div>
+          <div class="twins">
+            <div class="tcard">
+              <div class="ti">📊</div>
+              <h4>성과 분석 · 소재 기획 리뷰 (데모)</h4>
+              <p>A/B 결과로 <b>소재 속성(소구·후킹·포맷)과 성과(CTR·CVR·CPA)를 교차 분석</b> — <b>이기는 소재의 공통점</b>·업종별 최적 소재·<b>다음 소재 기획 가이드</b>까지.</p>
+              <a class="go" href="https://jiuk-bot.github.io/tossmarketing/insights.html" target="_blank" rel="noopener">▶ 분석·기획 리뷰 열기 →</a>
+            </div>
+            <div class="tcard">
+              <div class="ti">🎬</div>
+              <h4>컷별 프롬프트 생성 · 엑셀 (데모)</h4>
+              <p>기획 방향을 넣으면 <b>컷(씬)별 영상 프롬프트·자막·나레이션</b>을 만들고 <b>엑셀로 다운로드</b> — 실제 영상 제작에 바로 투입.</p>
+              <a class="go" href="https://jiuk-bot.github.io/tossmarketing/tool.html" target="_blank" rel="noopener">▶ 컷 생성 체험하기 →</a>
+            </div>
+          </div>
+          <p class="note" style="margin-top:14px">위 2개는 <b>공개 데모</b>(샘플 데이터)입니다. 실제 툴은 <b>Streamlit 앱(SQLite 기록 + Claude 생성)</b>으로, 팀에 <b>비공개 URL + 이메일 허용목록</b>으로 공유하도록 설계·구현했습니다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 2 ===================== -->
+    <section class="case reveal" id="c2">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 01</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
+        <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
+        <div class="tags">
+          <span class="tag">구글·메타·틱톡 API</span>
+          <span class="tag">AI 바이브코딩</span>
+          <span class="tag role">1인 · 100%</span>
+        </div>
+      </div>
+      <p class="lead">운영이 막히면 도구를 직접 만듭니다 — 다매체·<b>월 5억+ 취급고</b>를 소수 인원으로 돌리는 <b>성과 대시보드를 직접 구축</b>했습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c2">
+          <div class="m"><div class="cap">소수 인원 운영 취급고</div><div class="val num">5억+<span class="u">/월</span></div><div class="sub neu">3개 매체 통합 운영</div></div>
+          <div class="m"><div class="cap">운영 효율</div><div class="val">자동화</div><div class="sub neu">데이터 가공 시간 최소화</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 대상인가</div>
+          <p><b>3개 매체·월평균 5억+ 취급고</b>를 소수 인원으로 운영해야 하는 내부 운영 환경.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>매일 반복되는 수작업 데이터 가공에 시간을 뺏겨 <b>의사결정이 느려지고</b>, 다매체·대규모 운영이 병목에 걸림.</p>
+          <div class="vcap">수작업 데이터 → 자동 대시보드 → 빠른 의사결정</div>
+          <div class="viz">
+            <div class="flow">
+              <div class="fn before"><div class="fi">🗂</div><div class="ft">수작업 데이터 가공</div><div class="fd">매일 반복 · 의사결정 지연</div></div>
+              <div class="far">→</div>
+              <div class="fn core"><div class="fi">⚙</div><div class="ft">자동 대시보드</div><div class="fd">구글·메타·틱톡 API 연동<br>직접 구축</div></div>
+              <div class="far">→</div>
+              <div class="fn"><div class="fi">⚡</div><div class="ft">빠른 의사결정</div><div class="fd">실시간 KPI · 계획 유동 조정</div></div>
+            </div>
+            <div class="stackrow">
+              <span class="spill">실시간 성과 통합 조회</span>
+              <span class="spill">A/B 테스트 플래닝</span>
+              <span class="spill">코호트 분석</span>
+              <span class="spill">KPI 달성율 체크</span>
+              <span class="spill">운영 히스토리 챗봇</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"<b>수작업 데이터 가공을 없애야</b> 소수 인원 운영이 가능하다. 단순 조회 툴을 넘어, <b>운영 판단까지 돕는 도구를 직접 만들자</b>."</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <ol class="steps">
+            <li>구글·메타·틱톡 광고 성과 데이터를 API로 연동해 자동 가공하는 대시보드를 <b>바이브코딩으로 직접 개발</b></li>
+            <li>실시간 성과 통합 조회 · A/B 테스트 플래닝 · 코호트 분석 · KPI 관리를 <b>한 화면에 통합</b></li>
+            <li>운영 히스토리 챗봇 구축 — "언제·무엇을·왜 했는지"를 <b>자연어로 즉시 질의응답</b></li>
+            <li><b>실시간 KPI 달성율 체크</b>로 일·주·월 계획을 유동적으로 조정</li>
+          </ol>
+          <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">성과 조회를 넘어 <b>'운영의 맥락(히스토리)'까지 관리</b>해야 판단이 축적된다.</p>
+        </div>
+
+        <div class="foot">
+          <a class="cta-live" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener"><span class="pulse"></span>실제 대시보드 체험하기</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 3 (AI 자동화) ===================== -->
+    <section class="case reveal" id="c3">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 02</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
+        <h2>광고 운영 자동화 — 무인 모니터링 봇 &amp; 경쟁사 감시</h2>
+        <div class="tags">
+          <span class="tag">Python · Google Ads API</span>
+          <span class="tag">GitHub Actions · Telegram</span>
+          <span class="tag">Playwright</span>
+          <span class="tag role">1인 · 100%</span>
+        </div>
+      </div>
+      <p class="lead">반복되는 감시 업무는 사람이 아니라 봇에게 — <b>GitHub Actions로 하루 5회 무인 실행</b>되며, 이상 징후만 텔레그램으로 알리고 <b>사람은 '판단'에만 집중</b>하게 만들었습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c4">
+          <div class="m"><div class="cap">무인 자동 실행</div><div class="val num">5<span class="u">회/일</span></div><div class="sub neu">GitHub Actions 크론</div></div>
+          <div class="m"><div class="cap">감시 룰</div><div class="val num">4<span class="u">종</span></div><div class="sub neu">CVR·CPA·과지출·피로도</div></div>
+          <div class="m"><div class="cap">동시 감시</div><div class="val num">2<span class="u">계정</span></div><div class="sub neu">구글 메인 + 서브</div></div>
+          <div class="m"><div class="cap">오탐 방지</div><div class="val">관망 로직</div><div class="sub neu">회복추세 = OFF 보류</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>다매체·2계정을 하루에도 몇 번씩 사람이 직접 들여다봐야 <b>CVR 급락·CPA 폭등·새벽 과지출</b> 같은 이상 징후를 잡을 수 있었습니다. 수작업 감시는 놓치기 쉽고, 경쟁사 LP·소재 변화도 매번 손으로 확인해야 했습니다.</p>
+          <div class="vcap">수동 감시 → 무인 봇 감시 → 사람은 판단만</div>
+          <div class="viz">
+            <div class="flow">
+              <div class="fn before"><div class="fi">👁</div><div class="ft">수동 감시</div><div class="fd">하루 수 회 직접 확인<br>놓침·피로 누적</div></div>
+              <div class="far">→</div>
+              <div class="fn core"><div class="fi">🤖</div><div class="ft">무인 모니터링 봇</div><div class="fd">API 수집 + 룰 판정<br>이상 징후만 알림</div></div>
+              <div class="far">→</div>
+              <div class="fn"><div class="fi">🧠</div><div class="ft">사람은 판단만</div><div class="fd">예외 케이스에 집중<br>소수 인원 운영</div></div>
+            </div>
+            <div class="stackrow">
+              <span class="spill">CVR 3일 연속 −50%</span>
+              <span class="spill">CPA 7일평균 +80%</span>
+              <span class="spill">새벽 과지출</span>
+              <span class="spill">소재 피로도</span>
+              <span class="spill">회복추세 = 관망</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"감시는 <b>규칙이 명확하다</b> → 24시간 대신 봐 줄 봇을 만들고, 사람은 봇이 못 내리는 <b>'예외 판단'에만 집중</b>하자. 단, 1일 스파이크로 끄는 <b>오탐은 반드시 막자</b>."</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <ol class="steps">
+            <li>구글 <b>메인·서브 2계정</b> 성과를 Google Ads API로 수집하는 모니터링 스크립트를 직접 작성</li>
+            <li>감시 룰 4종을 코드화 — <b>CVR 3일 연속 피크 대비 −50%</b>(CPA 동반 악화 시에만), <b>CPA 7일평균 +80%</b>, <b>새벽 시간당 일예산 15% 초과·2시간 연속</b>, 소재 피로도</li>
+            <li>단순 알림이 아니라 <b>'회복 추세면 관망 권고'</b> 판단 로직을 넣어 성급한 OFF(오탐)를 차단</li>
+            <li>과거 운영 인사이트를 매칭해 알림에 <b>맥락 브리핑</b>을 덧붙임 (왜 지금 이 신호가 중요한지까지)</li>
+            <li><b>GitHub Actions 크론으로 하루 5회 무인 실행</b>(새벽 과지출 2회 + 정기 8·14·22시) + 실행 실패 시 자동 알림</li>
+            <li>경쟁사 LP·광고 소재를 <b>Playwright로 24시간 주기 스크래핑</b> — 가격·CTA·Transparency Center 소재 변경 감지 시 알림</li>
+          </ol>
+          <p class="note">원칙 : 봇은 '감지·브리핑'까지. OFF/증액 같은 최종 실행은 사람이 판단 후 결정</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">규칙이 명확한 감시는 자동화하고 <b>사람은 '예외 판단'에 집중</b>할 때 소수 인원으로도 다매체를 안정 운영할 수 있다. 그리고 <b>오탐을 줄이는 '관망' 로직</b>이 자동화에 대한 신뢰를 만든다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 1 ===================== -->
+    <section class="case reveal" id="c1">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 03</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
+        <h2>치과 임플란트 다매체 마케팅 &amp; 지역 예산 컨설팅</h2>
+        <div class="tags">
+          <span class="tag">구글·메타·틱톡·GA4</span>
+          <span class="tag role">3인 · 기여 90%</span>
+        </div>
+      </div>
+      <p class="lead">광고주는 <b>전환 볼륨(리드 수)</b>을 원했지만, <b>지역별 CAC를 데이터로 분해</b>해 '질 중심'으로 설득 — <b>ROAS +226%(103→336%)</b>, <b>취급고 +817%(약 9.2배)</b> 상승시켰습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c4">
+          <div class="m"><div class="cap">월 취급고 · 6개월</div><div class="val num">9.2<span class="u">배</span></div><div class="sub num">0.6억 → 5.5억</div></div>
+          <div class="m"><div class="cap">ROAS</div><div class="val num">336<span class="u">%</span></div><div class="sub num">103% → 336% (3.3배)</div></div>
+          <div class="m"><div class="cap">내원율</div><div class="val num">7.1<span class="u">%</span></div><div class="sub num">0.2% → 7.1% (약 36배)</div></div>
+          <div class="m"><div class="cap">지역 CAC · 누적 리드</div><div class="val num">−25<span class="u">%</span></div><div class="sub neu num">누적 리드 91,000건+</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
+          <p>치과 임플란트 병원의 신규 환자 유치. 온라인 광고로 상담 리드를 모으고, 그 리드가 실제 병원 내원 → 시술로 이어져야 비로소 매출이 되는 <b>고관여 오프라인 서비스</b>.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>광고주는 리드 볼륨(일 300개+)을, 내부적으로는 CPA 6만 이내를 둘 다 지켜야 했다 — 구글 단독으론 둘이 <b>충돌</b>.</p>
+          <div class="vcap amb">볼륨 vs 효율 — 구글 단독으로는 둘 다 벽</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell warn"><div class="t">광고주 요구</div><div class="v">일 리드 300개+<small>최대 500개까지 필요</small></div></div>
+              <div class="arrow clash">↯</div>
+              <div class="cell warn"><div class="t">내부 목표</div><div class="v">CPA ≤ 6만원<small>구글 단독 = 일 70개가 한계</small></div></div>
+            </div>
+            <div class="meter" style="margin-top:18px">
+              <div class="mh"><span>구글애즈 단독 — 효율 유지 가능 구간</span><span class="gap">목표까지 −230개/일</span></div>
+              <div class="track"><div class="fill num" style="width:23%">일 70개</div><div class="goal num">목표 일 300개</div></div>
+            </div>
+            <p class="vnote">일 <b>70개</b>를 넘기는 순간 CPA가 <b>6만원</b>을 초과 — <b>볼륨과 효율이 동시에 벽에 부딪힘.</b></p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"임플란트는 <b>오프라인 내원이 필수인 고관여 상품</b>이다. 그러니 <b>'리드 CPA'가 아니라 '지역별 내원율·CAC·ROAS'</b>로 성과를 봐야 <b>진짜 효율</b>이 보인다"는 관점을 세움.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <ol class="steps">
+            <li>리드 → 상담 → 내원 → 시술로 이어지는 전환 퍼널을 역산해, 광고를 <b>'내원'까지 책임지는 구조</b>로 재정의</li>
+            <li>오프라인 방문이 가능한 고객을 지역 단위로 캠페인을 분리·분류해 <b>지역별 성과를 독립적으로 측정</b>할 수 있게 설계</li>
+            <li>지역별 내원율·CAC·ROAS를 데이터로 집계 — 리드 CPA가 아닌 <b>'지역별 CAC'까지 추적</b></li>
+            <li>내원율이 높아 ROAS가 우수한 핵심 지역을 식별하고, <b>저효율 지역은 감액·정리</b>로 예산 누수 차단</li>
+            <li>구글·메타·틱톡 3개 매체 × 매체별 소재·오디언스를 A/B 테스트하며 <b>리드 볼륨과 품질을 동시 관리</b></li>
+            <li>신규 매체(틱톡)의 주 타겟(시니어) 규모를 <b>데이터로 검증 후 확장 제안</b></li>
+            <li>핵심 지역에 광고비 볼륨 증액을 데이터로 광고주에게 설득 → 고효율 지역 중심으로 <b>취급고 확대</b></li>
+          </ol>
+
+          <div class="vcap">단계적 매체 확장 — 구글 단독 → 메타 → 구글 2계정 → 틱톡 (일 리드 70 → 250)</div>
+          <p class="vnote" style="margin-top:0;margin-bottom:14px">한 번에 늘리지 않고 매체를 하나씩 더하며 <span class="g">단계적으로</span> 볼륨을 끌어올렸습니다. 각 단계는 앞 단계 데이터를 보고 결정했습니다.</p>
+          <div class="exp">
+            <div class="expr">
+              <div class="node"><div class="step">START</div><div class="med">구글애즈 단독</div><div class="big num">70<span>개/일</span></div><div class="cpa">CPA 6만 이내</div></div>
+              <div class="desc"><div class="dt">1단계 · 구글애즈 단독</div><p>내부 목표(CPA 6만원 이내)를 달성하면서 광고주 니즈인 일 리드 300개 달성에 어려움 존재. 당시 <b>일 리드 평균 70개</b>.</p></div>
+            </div>
+            <div class="expr">
+              <div class="node"><div class="step">+ META</div><div class="med">메타 확장</div><div class="big num">150<span>개/일</span></div><div class="cpa">CPA 4.5만</div></div>
+              <div class="desc"><div class="dt">2단계 · 메타 확장</div><p>추가 수량 확보를 위해 메타까지 매체를 확장. 일 리드 70 → 150개. 다만 내원율이 메타 2% &lt; 구글 4%로, 볼륨은 늘되 <b>매체별 리드 품질 차이를 데이터로 확인</b>.</p></div>
+            </div>
+            <div class="expr">
+              <div class="node"><div class="step">+ 구글 2계정</div><div class="med">계정 분리</div><div class="big num">200<span>개/일</span></div><div class="cpa">자가잠식 최소화</div></div>
+              <div class="desc"><div class="dt">3단계 · 구글 2계정 분리</div><p>구글 계정을 '연령 타겟 / 관심사 타겟'으로 분리 신설. 계정 간 자가잠식을 최소화하며 일 리드 150 → 200개. 광고주가 원한 <b>구글 80 : 메타 20</b> 비율도 유지.</p></div>
+            </div>
+            <div class="expr">
+              <div class="node"><div class="step">+ TikTok</div><div class="med">틱톡 확장</div><div class="big num">250<span>개/일</span></div><div class="cpa">CPA 4만대</div></div>
+              <div class="desc"><div class="dt">4단계 · 틱톡 확장</div><p>마지막으로 KB국민은행에서 검증한 시니어(45+) 오디언스를 겨냥해 틱톡까지 확장. 일 리드 200 → 250개로 늘리며 CPA는 <b>4만대로 안정화</b>.</p></div>
+            </div>
+          </div>
+
+          <div class="vcap">지역별 내원율 — 치과 인근일수록 압도적 (최대 15배 격차 → '양보다 질' 설득 근거)</div>
+          <div class="viz">
+            <div class="vbars">
+              <div class="vbar hi"><div class="pv num">15%</div><div class="col" style="height:124px"></div><div class="lb">경기남부</div></div>
+              <div class="vbar lo"><div class="pv num">1%</div><div class="col" style="height:11px"></div><div class="lb">경북</div></div>
+            </div>
+            <p class="vnote">치과와 가까운 지역일수록 내원율이 압도적으로 높아(지역별 최대 15배 격차), 수량만 늘리는 건 비효율 — <b>고효율 지역 집중 + 저효율 매체(메타 ROAS 120%) OFF</b>가 답이었습니다.</p>
+          </div>
+
+          <div class="vcap">설득 — 관점 전환 + 정산구조 재설계 (수량 → 질/ROAS에 정렬)</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell bad"><div class="t">기존 정산</div><div class="v">DB당 정산<small>→ '수량' 압박 구조</small></div></div>
+              <div class="arrow">→</div>
+              <div class="cell good"><div class="t">전환 후</div><div class="v">CPA 투명 공개 + 광고비 커미션<small>→ '질(ROAS)'에 정렬</small></div></div>
+            </div>
+            <p class="vnote">고효율 지역에 집중하면 CPA가 다소 올라도 ROAS는 더 좋아진다는 예측 데이터로 광고주를 설득했고, 수량 중심의 'DB당 정산'을 <b>성과(ROAS)에 정렬되는 커미션 구조</b>로 함께 바꿨습니다.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">리드 '수'가 아니라 <b>'내원당 단가'가 진짜 지표</b>다. <b>성과가 신뢰를, 신뢰가 예산 증액으로 이어지는 선순환</b>을 데이터로 만들 수 있다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 4 ===================== -->
+    <section class="case reveal" id="c4">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 04</span><span class="org">블루오렌지 · 2025.09~2025.12</span></div>
+        <h2>KB국민은행 '스타틴즈' 서비스 캠페인 (5채널)</h2>
+        <div class="tags">
+          <span class="tag">유튜브·인스타·간편결제앱·틱톡·콴다·KB DMP</span>
+          <span class="tag role">1인 · 100%</span>
+        </div>
+      </div>
+      <p class="lead"><span class="amb">'틱톡=10대'</span> 통념을 실측으로 뒤집고, 10대가 진짜 모인 <b>신규 매체(콴다)를 발굴</b>해 앱실행 단가를 <b>41% 개선</b>했습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c3">
+          <div class="m"><div class="cap">앱실행 단가</div><div class="val num">−41<span class="u">%</span></div><div class="sub">캠페인 기간 중 개선</div></div>
+          <div class="m"><div class="cap">콴다 VTR</div><div class="val num">99<span class="u">%</span></div><div class="sub num">5채널 1위 · CPV −67%</div></div>
+          <div class="m"><div class="cap">총 앱실행</div><div class="val num">1.7만<span class="u">건</span></div><div class="sub neu num">집행 5억 · 5채널</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
+          <p>KB국민은행의 10대(청소년) 대상 금융 브랜드 '스타틴즈'. 앱 실행·회원가입을 유도하는 대형 브랜드 캠페인 (<b>집행 5억</b>).</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>10대라는 특수 타겟에 효율적으로 도달하면서 <b>앱실행 단가를 낮춰야</b> 했다.</p>
+          <div class="vcap amb">통념 vs 실측 — '틱톡=10대'를 데이터로 뒤집다</div>
+          <div class="split">
+            <div class="pane myth">
+              <div class="pl">통념</div>
+              <div class="claim"><s>틱톡 = 10대 매체</s></div>
+              <p class="vnote" style="margin-top:12px">통념대로 예산을 균등 배분하면 10대에 닿는다고 가정.</p>
+            </div>
+            <div class="pane real">
+              <div class="pl">실측 데이터</div>
+              <div class="claim">노출·조회 <span class="num">69%</span>가 <span class="num">45세+</span></div>
+              <div class="donut-wrap">
+                <svg width="76" height="76" viewBox="0 0 76 76">
+                  <circle cx="38" cy="38" r="30" fill="none" stroke="#3A342B" stroke-width="12"/>
+                  <circle cx="38" cy="38" r="30" fill="none" stroke="#C99A5E" stroke-width="12"
+                    stroke-dasharray="130 189" stroke-dashoffset="0" transform="rotate(-90 38 38)" stroke-linecap="butt"/>
+                  <text x="38" y="35" text-anchor="middle" fill="#ECE3D3" font-size="17" font-weight="700">69%</text>
+                  <text x="38" y="49" text-anchor="middle" fill="#A99E89" font-size="9" font-weight="600">45세+</text>
+                </svg>
+                <div class="dl">실측 결과 틱톡 노출·조회의 <b>69%가 45세 이상</b> → 연령 축소 + 학부모 관심사 재집중으로 선회.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"<b>채널은 통념이 아니라 실측 데이터로 정한다</b>. 10대 타겟의 모수가 고효율인 매체를 추가하고, <b>데이터로 타겟을 계속 좁혀간다</b>."</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <ol class="steps">
+            <li>유튜브·인스타·간편결제앱·틱톡 <b>4채널로 라이브</b></li>
+            <li>타겟을 연령(13-19)·관심사(학부모/자녀/가족)·<b>KB DMP(학원비 납부·상품 가입)</b>·콘텐츠 타겟으로 설계, 예산 균등 분배로 라이브</li>
+            <li>앱실행 단가·CPV·전환 볼륨을 매일 추적하며 저효율 타겟 감액, 고효율로 이관 (<b>타겟·소재·매체 3단계 능동 재배분</b>)</li>
+            <li>'틱톡=10대' 통념과 달리 노출·조회 69%가 45세+임을 실측 검증 → <b>연령 축소·학부모 관심사 재집중</b></li>
+            <li>모수 적어 CPV 높던 리타겟 예산을 관심사 타겟으로 이관 (<b>관심사 CPV −38%</b>)</li>
+            <li>학생 타겟에 맞는 신규 매체 10대 교육앱 '콴다'를 직접 발굴·제안해 <b>5채널로 확장</b></li>
+          </ol>
+
+          <div class="vcap">상세 케이스 — 신규 매체 '콴다' 발굴·제안 (오디언스 기반 미디어믹스)</div>
+          <p class="vnote" style="margin-top:0;margin-bottom:14px">핵심 타겟이 10대인데 기존 금융 매체(검색·디스플레이)는 주 사용층이 달라 적합도가 낮았다. 포화가 아니라 <b>'10대가 실제 모여 있는 매체를 고르는 것'</b>이 진짜 과제였다.</p>
+          <div class="viz">
+            <div class="map">
+              <div class="chipcol">
+                <div class="mchip">검색<small>주 사용층 불일치</small></div>
+                <div class="mchip">디스플레이<small>10대 적합도 낮음</small></div>
+              </div>
+              <div class="arrow">→</div>
+              <div class="chipcol">
+                <div class="mchip fit">콴다 (10대 교육앱)<small>타겟 정조준 · 신규 매체</small></div>
+                <div class="mchip fit">VTR 99% · CPV −67%<small>5채널 효율 1위</small></div>
+              </div>
+            </div>
+            <p class="vnote">매체 조사 → 광고주 제안 → 세팅·소재·집행까지 주도. 단순히 매체를 늘린 게 아니라 <b>타겟이 실제로 있는 곳에 예산을 배치한 '오디언스 기반 미디어믹스'</b>였다.</p>
+          </div>
+          <p class="insight" style="margin-top:14px">미디어믹스는 '예산을 얼마나'가 아니라 <b>'타겟이 있는 매체를 고르는 것'</b>. 오디언스에 맞는 매체라면 — 새 매체여도 — <b>가장 좋은 성과</b>를 만든다.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight"><b>통념이 아닌 실측 데이터가 타겟을 정한다</b>. <b>신규 매체 발굴은 강력한 효율 레버</b>다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 5 ===================== -->
+    <section class="case reveal" id="c5">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 05</span><span class="org">블루오렌지 · 2025.09~2025.12</span></div>
+        <h2>KB국민은행 '패밀리뱅킹' 브랜드 캠페인</h2>
+        <div class="tags">
+          <span class="tag">유튜브·간편결제앱·인스타·KB DMP</span>
+          <span class="tag role">1인 · 100%</span>
+        </div>
+      </div>
+      <p class="lead">새 고객을 찾기보다, <b>이미 조건에 맞는 고객을 DMP로 활성화</b>해 앱실행 단가를 <b>29% 개선</b>했습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c2">
+          <div class="m"><div class="cap">앱실행 단가</div><div class="val num">−29<span class="u">%</span></div><div class="sub">DMP 세그먼트 집중 효과</div></div>
+          <div class="m"><div class="cap">채널 재배분</div><div class="val">효율 안정화</div><div class="sub neu">일자별 성과 추이 기반</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
+          <p>KB국민은행의 가족 단위 금융 서비스(자녀 적금·펀드, 모임통장 등) 앱 실행 유도 (<b>집행 약 3억</b>).</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p><b>신규 고객 획득 위주 운영</b>의 낮은 효율을 개선해야 했다.</p>
+          <div class="vcap">DMP 타겟팅 — 신규 탐색 대신 '조건 충족 고객'을 활성화</div>
+          <div class="viz">
+            <div class="dmp">
+              <div class="cell bad" style="text-align:center"><div class="t">신규 고객 탐색</div><div class="v">넓은 모수 · 낮은 효율<small>조건 미상 → 비용 분산</small></div></div>
+              <div class="arrow">→</div>
+              <div class="funnelcol">
+                <div class="seg">KB 1st-party DMP 전체</div>
+                <div class="seg">마이데이터 · 모임통장 · 공과금</div>
+                <div class="seg pick">자녀 적금/펀드 보유 고객 ✓</div>
+              </div>
+            </div>
+            <p class="vnote">전체 DMP를 조건별로 초세분화한 뒤, 효율이 가장 높은 <b>'자녀 보유 고객' 세그먼트로 예산·소재를 집중</b>했습니다.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"새 고객을 찾기보다, <b>이미 조건에 맞는 고객(자녀 보유 고객)을 활성화</b>하는 게 더 효율적일 것이다"를 <b>DMP 데이터로 검증</b>.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <ol class="steps">
+            <li>KB 1st-party DMP를 마이데이터 연동·모임통장 가입·자녀 적금/펀드·공과금 결제이력·노후/연금 가입자 등으로 <b>초세분화</b></li>
+            <li>세그먼트별 <b>앱실행 단가·전환 효율을 비교</b></li>
+            <li>효율 높은 <b>세그먼트(자녀 보유 고객)로 예산·소재 비중 집중</b></li>
+            <li>채널별 실행당 비용 격차를 근거로 <b>비효율 채널 예산을 고효율 채널(간편결제앱)로 이관</b></li>
+            <li>'자녀 보유 고객 활성화'가 효율적이라는 점을 DMP 데이터로 규명해 <b>광고주에게 주도적으로 제안·설득</b></li>
+          </ol>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight"><b>'신규 획득'만이 답이 아니다</b>. <b>데이터로 광고주를 설득</b>하면 더 효율적인 길이 열린다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 6 ===================== -->
+    <section class="case reveal" id="c6">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 06</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
+        <h2>GA4 구매 전환 퍼널 설계 &amp; 데이터 기반 최적화</h2>
+        <div class="tags">
+          <span class="tag">GA4 · 퍼널 설계</span>
+          <span class="tag">A/B 테스트 · CRO</span>
+          <span class="tag role">2인 · 70%</span>
+        </div>
+      </div>
+      <p class="lead">고객의 <b>첫 유입부터 결제까지</b>를 GA4로 분해해 <b>퍼널을 설계</b>하고, <b>병목을 데이터로 찾아 개선</b>했습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c4">
+          <div class="m"><div class="cap">결제까지 평균</div><div class="val num">3.89<span class="u">일</span></div><div class="sub neu">GA4 전환경로 분석</div></div>
+          <div class="m"><div class="cap">예약 LP 개선</div><div class="val num">16<span class="u">배↑</span></div><div class="sub num">매출 +1,653% (병목 제거)</div></div>
+          <div class="m"><div class="cap">AI 영상 A/B · CTR</div><div class="val num">9.56<span class="u">%</span></div><div class="sub num">+42.7% · 전환 +31.3%</div></div>
+          <div class="m"><div class="cap">리마케팅 CVR</div><div class="val num">62<span class="u">%</span></div><div class="sub num">신규고객 +63%</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
+          <p>박스풀 공유창고 — 짐보관·셀프스토리지 서비스. 온라인으로 고객을 유입시켜 <b>홈페이지 예약·결제까지 전환</b>시켜야 매출이 되는 구조.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>유입은 있는데 <b>어디서 전환이 새는지</b>가 안 보였고, 예약 페이지는 <b>조회는 많은데 결제가 0</b>이었다 — 퍼널을 데이터로 분해할 필요가 있었다.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"감이 아니라 <b>GA4로 '첫 유입 → 결제'까지의 경로와 소요 일수를 분해</b>하자. 그러면 <b>어디가 병목인지</b>가 숫자로 보이고, 거기를 고치는 게 가장 큰 레버다."</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — GA4 구매 전환 퍼널 설계</div>
+          <p style="margin-bottom:10px">GA4로 <b>첫 유입부터 결제까지 평균 3.89일</b>, 매체별 전환 기여도를 분석해 4단계 퍼널을 설계했습니다.</p>
+          <div class="viz">
+            <div class="sfun">
+              <div class="rung" style="width:100%;background:linear-gradient(180deg,#5EAE80,#3E8159)">
+                <div class="rl">1 · 포털검색 유입</div><div class="rr">SEO 블로그·검색광고 → 홈페이지 유입 8,538건</div>
+              </div>
+              <div class="rung" style="width:76%;background:linear-gradient(180deg,#53A086,#3A7D62)">
+                <div class="rl">2 · Meta 광고·리마케팅</div><div class="rr">평균 3.89일 고려한 리마인드 캠페인</div>
+              </div>
+              <div class="rung" style="width:54%;background:linear-gradient(180deg,#5A9E9A,#3E7D7A)">
+                <div class="rl">3 · 블로그 후기로 신뢰</div><div class="rr">경쟁사 대비 차별점·리뷰 콘텐츠</div>
+              </div>
+              <div class="rung" style="width:34%;background:linear-gradient(180deg,#D79A52,#B07A3A);color:#1a1200">
+                <div class="rl">4 · 결제 전환</div><div class="rr">예약 페이지 직접 랜딩 → 즉시 전환 유도</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vcap">병목 진단 → LP 개선 (CRO) — 조회는 많은데 결제가 0</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell bad"><div class="t">기존 예약 구조</div><div class="v">조회 1,698 · 예약 0<small>고객센터 경유 = '즉시 결제 불가' 병목</small></div></div>
+              <div class="arrow">→</div>
+              <div class="cell good"><div class="t">실시간 결제 도입</div><div class="v"><span class="num">매출 16배↑</span><small>25.02 → 25.05 · +1,653%</small></div></div>
+            </div>
+            <p class="vnote" style="margin-top:12px">예약 페이지 조회수는 높은데 결제가 0 — GA4로 <b>'즉시 결제 불가' 구조를 병목으로 진단</b>하고, 실시간 결제 도입 + 전환 경로 단축을 제안·반영해 실매출 전환율을 끌어올렸습니다.</p>
+          </div>
+
+          <div class="vcap">퍼널 데이터 기반 소재 A/B — '클릭'이 아니라 '전환'을 키움</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell bad"><div class="t">기존 (자극적 인트로)</div><div class="v">CTR은 높지만 CVR 낮음<small>클릭은 많아도 전환은 약함</small></div></div>
+              <div class="arrow">→</div>
+              <div class="cell good"><div class="t">직장인 공감형 AI 영상</div><div class="v"><span class="num">전환 +25%</span><small>CTR은 낮아도 ROI 개선</small></div></div>
+            </div>
+            <p class="vnote" style="margin-top:12px">짐보관 서비스: 20초 → <b>12초 AI 영상</b>으로 교체 → CTR 9.56%(<b>+42.7%</b>)·전환 <b>+31.3%</b>·CPA <b>−24%</b>. GA4 3.8일 데이터 기반 <b>리마케팅</b>으로 CVR <b>62%</b>·신규고객 <b>+63%</b> 달성.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">성과는 감이 아니라 <b>'퍼널을 데이터로 분해'</b>할 때 움직인다. <b>어디서 새는지(병목)를 GA4로 찾아 거기를 고치는 것</b>이 가장 큰 레버다.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CASE 7 ===================== -->
+    <section class="case reveal" id="c7">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 07</span><span class="org">어스텀(Ustom) · 2022.05~2023.04</span></div>
+        <h2>어스텀(Ustom) 창업 · 대표</h2>
+        <div class="tags">
+          <span class="tag">서비스 기획·UI/UX·사업화</span>
+          <span class="tag role">4인 · 40%</span>
+        </div>
+      </div>
+      <p class="lead">문제를 <b>'구조'로 바라보는 사업가적 관점</b> — 기획부터 사업화까지 <b>대표로 추진</b>했습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c2">
+          <div class="m"><div class="cap">정부지원사업 선정</div><div class="val num">1,000만 원</div><div class="sub neu">기획~사업화 리더십 경험</div></div>
+          <div class="m"><div class="cap">역할</div><div class="val">대표 (4인)</div><div class="sub neu">기획·UI/UX·사업화 주도</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
+          <p>의류 <b>커스터마이징 수요를 이어주는 중개 플랫폼</b>.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>과제 · 접근 · 실행</div>
+          <p>커스터마이징 수요를 중개 플랫폼 모델로 구조화 → 서비스·UI/UX 구조 설계 주도 → 대표로서 <b>기획부터 사업화까지 추진</b>.</p>
+          <div class="vcap">문제를 '구조'로 — 흩어진 수요·공급을 중개 모델로</div>
+          <div class="viz">
+            <div class="flow">
+              <div class="fn before"><div class="fi">◇</div><div class="ft">흩어진 수요</div><div class="fd">의류 커스터마이징 니즈</div></div>
+              <div class="far">→</div>
+              <div class="fn core"><div class="fi">⬡</div><div class="ft">중개 플랫폼 구조</div><div class="fd">수요 ↔ 공급 연결<br>서비스·UI/UX 설계</div></div>
+              <div class="far">→</div>
+              <div class="fn"><div class="fi">◈</div><div class="ft">사업화</div><div class="fd">대표 추진 · 정부지원 선정</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">문제를 <b>'구조'로 바라보는 사업가적 관점</b>.</p>
+        </div>
+      </div>
+    </section>
+
+    </main>
+  </div>
+
+  <!-- ============ CLOSING ============ -->
+  <section class="closing reveal">
+    <h3>AI로 직접 만들고 데이터로 검증하는 방식을, <b>전사 마케팅의 표준</b>으로 만들고 싶습니다.</h3>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce) return; // leave everything default-visible, no motion
+
+  var root = document.documentElement;
+  root.classList.add('js-motion');
+
+  // tag grow targets (bars / meters) once, so they animate on reveal
+  document.querySelectorAll('.meter .fill').forEach(function(el){ el.classList.add('grow-x'); });
+  document.querySelectorAll('.sfun .rung').forEach(function(el){ el.classList.add('grow-x'); });
+  document.querySelectorAll('.vbar .col').forEach(function(el){ el.classList.add('grow-y'); });
+
+  // orchestrated hero load
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){ root.classList.add('loaded'); });
+  });
+
+  // scroll reveals
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          e.target.classList.add('in');
+          // grow bars inside a revealed block, lightly staggered
+          var bars = e.target.querySelectorAll('.grow-x, .grow-y');
+          bars.forEach(function(b,i){ b.style.transitionDelay = (0.12 + i*0.06) + 's'; b.classList.add('in'); });
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+    // standalone bars not wrapped in a .reveal (safety)
+    document.querySelectorAll('.grow-x, .grow-y').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal, .grow-x, .grow-y').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  // count-up on hero readout values
+  function animCount(el){
+    var raw = el.getAttribute('data-to'); if(raw===null) return;
+    var to = parseFloat(raw), dec = (raw.indexOf('.')>-1)?1:0, neg = raw.indexOf('-')>-1;
+    var start = null, dur = 1100;
+    function tick(t){
+      if(!start) start = t;
+      var p = Math.min((t-start)/dur, 1);
+      var eased = 1 - Math.pow(1-p, 3);
+      var v = to * eased;
+      el.textContent = (neg && v>0 ? '−' : '') + Math.abs(v).toFixed(dec);
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ animCount(e.target); io2.unobserve(e.target); } });
+    }, { threshold:0.6 });
+    document.querySelectorAll('.rd .val .n[data-to]').forEach(function(el){ io2.observe(el); });
+  }
+
+  // active rail item on scroll
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail a'));
+  var sections = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if('IntersectionObserver' in window){
+    var io3 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          var i = sections.indexOf(e.target);
+          links.forEach(function(l){ l.classList.remove('active'); });
+          if(i>-1) links[i].classList.add('active');
+        }
+      });
+    }, { rootMargin:'-45% 0px -50% 0px' });
+    sections.forEach(function(s){ if(s) io3.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

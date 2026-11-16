@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · AI 컷별 프롬프트 생성기</title>
+<meta name="description" content="기획 방향을 입력하면 컷(씬)별 영상 프롬프트·자막·나레이션을 만들고 엑셀로 다운로드하는 AI 영상 소재 제작 도구. AI 소재 A/B 운영 스튜디오(Streamlit)의 생성 모듈 데모." />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  :root{ --k:#EDEBFA; --mute:#9E99BC; --dim:#615D83; --line:rgba(124,92,255,.18); --panel:rgba(18,18,30,.6); --signal:#B794F6; --sd:#7C5CFF; }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{ background:#07070E; color:var(--k); font-family:'Pretendard',-apple-system,system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  body::before{ content:""; position:fixed; inset:-12%; z-index:0; pointer-events:none;
+    background:radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.22), transparent 62%),
+              radial-gradient(34% 46% at 92% 16%, rgba(255,92,225,.14), transparent 62%),
+              radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.12), transparent 64%); filter:blur(26px); }
+  nav,main,footer{ position:relative; z-index:1; }
+  nav{ position:sticky; top:0; z-index:50; background:rgba(10,10,18,.74); backdrop-filter:saturate(1.2) blur(14px); border-bottom:1px solid var(--line); }
+  .nav-in{ max-width:1120px; margin:0 auto; padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:12px; }
+  .logo{ font-weight:800; font-size:17px; color:#EDEBFA; text-decoration:none; } .logo span{ color:#C06BFF; }
+  .nav-links{ display:flex; gap:2px; align-items:center; font-size:14.5px; flex-wrap:wrap; justify-content:flex-end; }
+  .nav-links a{ color:#9E99BC; text-decoration:none; font-weight:600; padding:8px 12px; border-radius:10px; }
+  .nav-links a.active{ color:#fff; font-weight:800; background:rgba(124,92,255,.18); }
+  main{ max-width:1120px; margin:0 auto; padding:40px 24px 70px; }
+  .eyebrow{ font-size:12.5px; font-weight:800; letter-spacing:.14em; color:#C9A6FF; }
+  h1{ font-size:clamp(25px,4vw,38px); font-weight:800; letter-spacing:-.04em; margin:10px 0 12px; line-height:1.22; }
+  h1 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .lead{ color:var(--mute); font-size:15px; line-height:1.7; max-width:68ch; } .lead b{ color:#C9A6FF; }
+  .back{ display:inline-flex; gap:8px; margin-top:18px; padding:11px 18px; border-radius:12px; border:1px solid rgba(124,92,255,.45); color:#EDEBFA; text-decoration:none; font-weight:700; font-size:14px; } .back:hover{ background:rgba(124,92,255,.14); }
+  .sec-h{ font-size:13px; font-weight:800; color:#C9A6FF; letter-spacing:.04em; margin:40px 0 14px; display:flex; align-items:center; gap:8px; }
+  .sec-h::before{ content:''; width:5px; height:15px; background:linear-gradient(180deg,#7C5CFF,#FF5CE1); border-radius:2px; }
+  .pipe{ display:flex; align-items:stretch; }
+  .pstep{ flex:1; min-width:0; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px 10px 13px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:6px; position:relative; }
+  .pnum{ position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .pico{ font-size:23px; margin-top:3px; } .ptitle{ font-size:12px; font-weight:800; } .pdesc{ font-size:10.5px; color:var(--dim); line-height:1.4; }
+  .parrow{ display:flex; align-items:center; padding:0 5px; color:var(--signal); font-size:14px; }
+  .panel{ margin-top:16px; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:20px; }
+  .ctl{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+  .fld{ display:flex; flex-direction:column; gap:6px; }
+  .fld label{ font-size:11.5px; font-weight:700; color:var(--mute); }
+  select,input{ background:#12121e; color:var(--k); border:1px solid var(--line); border-radius:10px; padding:11px 13px; font-size:14px; font-family:inherit; width:100%; }
+  .gen{ margin-top:16px; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; border:0; border-radius:12px; padding:13px 24px; font-weight:800; font-size:14px; cursor:pointer; }
+  .dl{ background:rgba(124,92,255,.08); color:#C9A6FF; border:1px solid rgba(124,92,255,.5); border-radius:12px; padding:13px 20px; font-weight:800; font-size:14px; cursor:pointer; }
+  .tblwrap{ overflow-x:auto; border:1px solid var(--line); border-radius:14px; margin-top:16px; }
+  table{ width:100%; border-collapse:collapse; min-width:820px; }
+  th,td{ padding:11px 13px; text-align:left; font-size:12.5px; border-bottom:1px solid rgba(124,92,255,.08); vertical-align:top; }
+  th{ color:var(--dim); font-weight:700; font-size:11px; background:rgba(18,18,30,.6); white-space:nowrap; }
+  td.cut{ font-weight:800; color:#fff; white-space:nowrap; } td.t{ color:var(--dim); white-space:nowrap; }
+  td.mono{ font-family:ui-monospace,Menlo,monospace; font-size:11px; color:var(--mute); min-width:260px; }
+  td.sub{ color:var(--signal); font-weight:700; min-width:140px; } td.nar{ color:var(--mute); min-width:160px; }
+  .note{ font-size:11.5px; color:var(--dim); margin-top:16px; line-height:1.6; } .note b{ color:var(--mute); }
+  footer{ max-width:1120px; margin:0 auto; padding:26px 24px 50px; color:var(--dim); font-size:13px; border-top:1px solid var(--line); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; } footer a{ color:#C9A6FF; text-decoration:none; }
+  @media(max-width:720px){ .pipe{ flex-direction:column; } .parrow{ transform:rotate(90deg); padding:4px 0; } .ctl{ grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="logo" href="index.html">JIUK<span>.</span>YOON</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="insights.html">소재 성과 분석</a>
+      <a href="tool.html" class="active">컷별 프롬프트 생성</a>
+      <a href="resume.html">이력서</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="eyebrow">AI CREATIVE TOOL · 생성 모듈</div>
+  <h1>AI <span class="hl">컷별 프롬프트 생성기</span></h1>
+  <p class="lead">기획 방향(상품·소구·후킹·톤·길이·컷수)을 넣으면 <b>컷(씬)별 영상 프롬프트·자막·나레이션</b>을 만들고 <b>엑셀로 다운로드</b>합니다. 실제 영상 제작에 바로 투입하는 생성 모듈입니다 — <b>AI 소재 A/B 운영 스튜디오</b>의 일부.</p>
+  <a class="back" href="portfolio.html#ctool">← 포트폴리오로 돌아가기</a>
+
+  <div class="sec-h">작동 원리</div>
+  <div class="pipe">
+    <div class="pstep"><span class="pnum">1</span><div class="pico">🧭</div><div class="ptitle">기획 방향 입력</div><div class="pdesc">소구·후킹·톤·길이</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">2</span><div class="pico">🎬</div><div class="ptitle">씬 분해</div><div class="pdesc">후킹→해결→CTA 구조</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">3</span><div class="pico">✍️</div><div class="ptitle">컷별 생성</div><div class="pdesc">프롬프트·자막·나레이션</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">4</span><div class="pico">📑</div><div class="ptitle">엑셀 내보내기</div><div class="pdesc">제작팀 바로 공유</div></div>
+    <div class="parrow">▶</div>
+    <div class="pstep"><span class="pnum">5</span><div class="pico">🎞️</div><div class="ptitle">영상 제작</div><div class="pdesc">Veo·Kling 투입</div></div>
+  </div>
+
+  <div class="sec-h">생성 데모</div>
+  <div class="panel">
+    <div class="ctl">
+      <div class="fld"><label>상품 / 서비스</label><input id="product" value="패스트캠퍼스 · 데이터 분석 올인원 강의" /></div>
+      <div class="fld"><label>소구포인트</label><input id="angle" value="커리어 전환" /></div>
+      <div class="fld"><label>후킹 유형</label>
+        <select id="hook"><option>공감</option><option>자극</option><option>숫자</option><option>권위</option><option>사회적증거</option><option>호기심</option></select>
+      </div>
+      <div class="fld"><label>톤</label>
+        <select id="tone"><option>다큐/뉴스</option><option>공감 드라마</option><option>경쾌/밈</option><option>프리미엄</option></select>
+      </div>
+      <div class="fld"><label>길이(초)</label><input id="dur" type="number" value="15" min="8" max="40" /></div>
+      <div class="fld"><label>컷 수</label><input id="cuts" type="number" value="5" min="3" max="10" /></div>
+    </div>
+    <button class="gen" id="gen">🎬 컷별 프롬프트 생성</button>
+    <span id="dlwrap"></span>
+    <div id="out"></div>
+    <div class="note">※ 데모는 <b>구조 템플릿 기반</b>으로 생성합니다. 실제 툴은 <b>Streamlit + Claude</b>로 컷별 문구를 실시간 생성하고, 동일하게 <b>엑셀(.xlsx) 다운로드</b>를 제공합니다.</div>
+  </div>
+</main>
+
+<footer>
+  <div>© 2026 윤지욱 (JIUK.YOON) · AI 마케터</div>
+  <div><a href="insights.html">소재 성과 분석</a> · <a href="portfolio.html#ctool">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
+</footer>
+
+<script>
+const $ = s => document.querySelector(s);
+const BEATS = [
+  {k:"문제 공감 (Hook)", scene:"타겟의 현실 문제를 보여주는 일상 장면", vp:"A relatable everyday scene showing the target's problem", sub:"{angle}, 혹시 당신 얘기?", nar:"{angle} 때문에 고민인 분들 많으시죠?"},
+  {k:"문제 심화", scene:"문제가 쌓여 답답함이 커지는 장면", vp:"The problem escalating, frustration building up", sub:"미루면 더 커지는 고민", nar:"그냥 두면 상황은 더 어려워집니다."},
+  {k:"해결책 제시", scene:"{product}로 문제가 풀리는 전환 장면", vp:"A clear turning point where the solution resolves the problem", sub:"{product}, 이렇게 해결", nar:"{product}이(가) 답이 될 수 있습니다."},
+  {k:"신뢰/근거", scene:"실제 결과·후기로 신뢰를 주는 장면", vp:"Trustworthy proof — real results and testimonials", sub:"검증된 결과", nar:"실제 데이터와 후기가 증명합니다."},
+  {k:"행동 유도 (CTA)", scene:"지금 행동하도록 유도하는 마지막 장면", vp:"A confident closing shot encouraging action now", sub:"지금 시작하세요", nar:"지금 바로 시작하세요."}
+];
+const TONE_EN = {"다큐/뉴스":"documentary news style, cinematic","공감 드라마":"emotional cinematic drama","경쾌/밈":"upbeat playful meme style","프리미엄":"premium high-end cinematic"};
+let LAST = [];
+
+function gen(){
+  const product=$('#product').value.trim()||"상품";
+  const angle=$('#angle').value.trim()||"핵심 소구";
+  const hook=$('#hook').value, tone=$('#tone').value;
+  const dur=Math.max(8,Math.min(40,+$('#dur').value||15));
+  const n=Math.max(3,Math.min(10,+$('#cuts').value||5));
+  const seg=Math.max(1,Math.round(dur/n));
+  const rows=[];
+  for(let i=0;i<n;i++){
+    const b=BEATS[Math.min(i, BEATS.length-1)] ;
+    const fill=s=>s.replace(/{product}/g,product).replace(/{angle}/g,angle);
+    rows.push({
+      cut:i+1,
+      time:`${i*seg}-${Math.min(dur,(i+1)*seg)}초`,
+      scene:`${fill(b.scene)} · ${hook} 후킹 / ${tone}`,
+      vp:`${fill(b.vp)}, ${TONE_EN[tone]}, photorealistic, highly detailed. No text, no letters.`,
+      sub:fill(b.sub),
+      nar:fill(b.nar)
+    });
+  }
+  LAST=rows;
+  $('#out').innerHTML = `<div class="tblwrap"><table>
+    <thead><tr><th>컷</th><th>시간</th><th>장면</th><th>영상 프롬프트 (영문)</th><th>자막</th><th>나레이션</th></tr></thead>
+    <tbody>${rows.map(r=>`<tr>
+      <td class="cut">${r.cut}</td><td class="t">${r.time}</td>
+      <td>${esc(r.scene)}</td><td class="mono">${esc(r.vp)}</td>
+      <td class="sub">${esc(r.sub)}</td><td class="nar">${esc(r.nar)}</td></tr>`).join('')}</tbody></table></div>`;
+  $('#dlwrap').innerHTML = `<button class="dl" id="dl" style="margin-left:10px">⬇ 엑셀(CSV) 다운로드</button>`;
+  $('#dl').onclick = downloadCSV;
+}
+function esc(s){ return (s+'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function downloadCSV(){
+  const head=["컷","시간","장면","영상 프롬프트(영문)","자막","나레이션"];
+  const q=s=>`"${(s+'').replace(/"/g,'""')}"`;
+  const lines=[head.map(q).join(',')].concat(LAST.map(r=>[r.cut,r.time,r.scene,r.vp,r.sub,r.nar].map(q).join(',')));
+  const blob=new Blob(["﻿"+lines.join('\r\n')],{type:'text/csv;charset=utf-8;'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download='cut_prompts.csv'; a.click(); URL.revokeObjectURL(a.href);
+}
+$('#gen').onclick=gen;
+gen();
+</script>
+</body>
+</html>
