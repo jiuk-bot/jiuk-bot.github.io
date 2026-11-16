@@ -547,8 +547,13 @@ body::after{
       #ccom .method .ms{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
       #ccom .method .ms.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
       #ccom .method .ma{ color:var(--signal); font-weight:800; }
-      #ccom .abgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; margin-top:8px; }
-      #ccom .abcard{ border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:24px 24px 22px; display:flex; flex-direction:column; gap:14px; transition:transform .3s,border-color .3s,box-shadow .3s; }
+      #ccom .abgrid{ display:flex; flex-direction:column; gap:18px; margin-top:8px; }
+      /* 카드 1개 = 전체 폭 가로 행 (이미지 왼쪽 · 텍스트 오른쪽) */
+      #ccom .abcard{ border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:26px 30px; transition:transform .3s,border-color .3s,box-shadow .3s;
+        display:grid; grid-template-columns:330px 1fr; column-gap:30px; row-gap:13px; align-items:start; }
+      #ccom .abcard .abhead, #ccom .abcard h4{ grid-column:1 / -1; }
+      #ccom .abcard .imgab, #ccom .abcard .tngrid, #ccom .abcard .ba2{ grid-column:1; grid-row:3 / span 5; align-self:start; }
+      #ccom .abcard .qa, #ccom .abcard .res, #ccom .abcard .abx{ grid-column:2; }
       #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
       #ccom .abcard .fmt{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; padding:4px 11px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
       #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
@@ -609,11 +614,12 @@ body::after{
       #ccom .abcard .qa.p .lab{ background:rgba(255,107,157,.1); color:#ff9b9b; border:1px solid rgba(255,107,157,.3); }
       #ccom .abcard .qa.h .lab{ background:rgba(110,231,255,.1); color:var(--cyan); border:1px solid rgba(110,231,255,.3); }
       #ccom .abcard .qa.h b{ color:var(--cyan); font-weight:700; }
-      #ccom .abcard .qa.l{ margin-top:auto; padding-top:17px; border-top:1px solid var(--line-soft); color:var(--ink); }
+      #ccom .abcard .qa.l{ margin-top:4px; padding-top:16px; border-top:1px solid var(--line-soft); color:var(--ink); }
       #ccom .abcard .qa.l .lab{ background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
       #ccom .abcard .qa.l b{ color:var(--signal); font-weight:700; }
       #ccom .abcard .qa b{ color:var(--ink); font-weight:700; }
-      @media(max-width:720px){ #ccom .abgrid,#ccom .commerce,#ccom .tl{ grid-template-columns:1fr; } }
+      @media(max-width:720px){ #ccom .commerce,#ccom .tl{ grid-template-columns:1fr; } }
+      @media(max-width:860px){ #ccom .abcard{ grid-template-columns:1fr; } #ccom .abcard .imgab,#ccom .abcard .tngrid,#ccom .abcard .ba2{ grid-column:1; grid-row:auto; max-width:440px; } #ccom .abcard .qa,#ccom .abcard .res,#ccom .abcard .abx{ grid-column:1; } }
     </style>
     <section class="case reveal" id="ccom">
       <div class="case-top">
@@ -678,7 +684,7 @@ body::after{
               <div class="qa p"><span class="lab">문제</span> 기존 소재는 <b>CTR은 높은데 CVR이 낮다</b> — 클릭은 오는데 전환이 안 됨</div>
               <div class="qa h"><span class="lab">가설</span> 자극적 인트로 대신 <b>'퇴근 후 복잡한 집'</b> 현실을 제시하면 타겟이 자기 상황으로 인식해 전환된다</div>
               <div class="imgab">
-                <figure class="fa"><img src="assets/cases/office_asis.png" alt="As-is 자극적 시선집중형 소재"><figcaption>AS-IS · 자극 시선집중</figcaption></figure>
+                <figure class="fa"><img src="assets/cases/jim_tobe.png" alt="As-is 자극적 시선집중형 소재"><figcaption>AS-IS · 자극 시선집중</figcaption></figure>
                 <span class="ar">→</span>
                 <figure class="fb"><img src="assets/cases/office_tobe.png" alt="To-be 퇴근 후 집 공감형 소재"><figcaption>TO-BE · 퇴근 후 공감</figcaption></figure>
               </div>
@@ -759,6 +765,7 @@ body::after{
                 <figure class="fb"><img src="assets/cases/b2b1_tobe.png" alt="To-be 세계로 나가고 싶나요 Hook 영상"><figcaption>TO-BE · Hook+핵심가치</figcaption></figure>
               </div>
               <div class="res"><span class="r">CTR <b>3.06%</b> (+36.6%)</span><span class="r">전환 <b>+26.7%</b></span><span class="r">CPA <b>−20.9%</b></span></div>
+              <div class="abx">텍스트 없는 단순 현장 영상 → <b>Hook → 신뢰 → 핵심가치</b> 구조로 재구성</div>
               <div class="qa l"><span class="lab">러닝</span> B2B도 결국 <b>Hook과 메시지 구조</b>가 CTR을 가른다 (+36.6%)</div>
             </div>
 
@@ -773,6 +780,7 @@ body::after{
                 <figure class="fb"><img src="assets/cases/b2b2_tobe.png" alt="To-be 업계최저 물류대행비 텍스트 이미지"><figcaption>TO-BE · 텍스트 이미지</figcaption></figure>
               </div>
               <div class="res"><span class="r">CTR <b>3.37%</b> (+12.3%)</span><span class="r">전환 <b>+17.6%</b></span><span class="r">CPA <b>−14.7%</b></span></div>
+              <div class="abx">영상 이탈이 큰 구간 → <b>한눈에 읽히는 텍스트 중심 이미지</b>로 포맷 전환</div>
               <div class="qa l"><span class="lab">러닝</span> 포맷은 상황 따라 — <b>B2B 정보형은 '이미지'가 영상보다 이탈이 적다</b></div>
             </div>
 
