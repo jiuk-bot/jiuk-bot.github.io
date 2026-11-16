@@ -578,6 +578,16 @@ body::after{
       #ccom .cc{ border:1px solid var(--line); border-left:2px solid var(--cyan); border-radius:12px; background:var(--panel); padding:18px; }
       #ccom .cc .ct{ font-size:13px; font-weight:800; color:var(--cyan); margin-bottom:8px; }
       #ccom .cc p{ font-size:13px; line-height:1.65; color:var(--mute); } #ccom .cc p b{ color:var(--ink); }
+      /* 종합 공식 4카드 */
+      #ccom .formula{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:4px; }
+      #ccom .fx{ border:1px solid var(--line); border-radius:13px; background:var(--panel); padding:18px 20px; display:flex; gap:14px; align-items:flex-start; transition:transform .3s,border-color .3s,box-shadow .3s; }
+      #ccom .fx:hover{ transform:translateY(-3px); border-color:rgba(160,110,255,.5); box-shadow:0 26px 54px -34px rgba(124,92,255,.55); }
+      #ccom .fx .fn{ flex:0 0 28px; width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:14px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 5px 14px -4px rgba(124,92,255,.7); }
+      #ccom .fx .ft{ font-size:13.5px; line-height:1.55; color:var(--mute); }
+      #ccom .fx .ft .k{ display:block; font-size:14.5px; font-weight:800; color:var(--ink); margin-bottom:5px; letter-spacing:-.01em; }
+      #ccom .fx .ft b{ color:var(--ink); font-weight:800; }
+      #ccom .fx .ft .g{ color:var(--signal); font-weight:800; }
+      @media(max-width:720px){ #ccom .formula{ grid-template-columns:1fr; } }
       /* 실제 소재 이미지 As-is → To-be */
       #ccom .imgab{ display:grid; grid-template-columns:1fr auto 1fr; gap:9px; align-items:center; }
       #ccom .imgab figure{ margin:0; }
@@ -803,7 +813,13 @@ body::after{
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>8번의 A/B가 남긴 공식</div>
-          <p class="insight">7개월간 돌린 8번의 소재 A/B에서 반복된 패턴 — <b>① 소구는 '가격 강조'가 최대 후킹</b>(META 집중), <b>② 클릭보다 '타겟 적중'(40→70%)이 CPA를 −38.6% 만든다</b>, <b>③ 리텐션은 '인트로 Hook·구성 순서'로 바뀐다</b>(7초 이탈→CTR +42.7%, 50% 재생 리텐션 +31%), <b>④ 포맷은 상황 따라 영상↔이미지 분기</b>. 소재의 유려함이 아니라 <b>가설 → 수치 → 다음 소재 반영</b> 루프가 지표를 만든다.</p>
+          <div class="formula">
+            <div class="fx"><div class="fn">1</div><div class="ft"><span class="k">소구 — '가격 강조'가 최대 후킹</span>4종 토너먼트 결과 가격 강조 소구 우세 · <span class="g">META 집중</span></div></div>
+            <div class="fx"><div class="fn">2</div><div class="ft"><span class="k">타겟 — 클릭보다 '적중'</span>타겟 적중 <b>40→70%</b>가 <span class="g">CPA −38.6%</span>를 만든다</div></div>
+            <div class="fx"><div class="fn">3</div><div class="ft"><span class="k">리텐션 — Hook·구성 순서</span>7초 이탈 → <span class="g">CTR +42.7%</span> · 50% 재생 리텐션 <span class="g">+31%</span></div></div>
+            <div class="fx"><div class="fn">4</div><div class="ft"><span class="k">포맷 — 상황 따라 분기</span>B2B·정보형은 <b>영상 ↔ 이미지</b>를 상황에 맞게 선택</div></div>
+          </div>
+          <p class="insight" style="margin-top:18px">소재의 유려함이 아니라 <b>가설 → 수치 → 다음 소재 반영</b> 루프가 지표를 만든다.</p>
         </div>
       </div>
     </section>
@@ -1509,7 +1525,7 @@ body::after{
           io.unobserve(e.target);
         }
       });
-    }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+    }, { threshold:0, rootMargin:'0px 0px 80px 0px' });
     document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
     // standalone bars not wrapped in a .reveal (safety)
     document.querySelectorAll('.grow-x, .grow-y').forEach(function(el){ io.observe(el); });
