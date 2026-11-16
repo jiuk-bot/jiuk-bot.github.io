@@ -590,7 +590,26 @@ body::after{
       #ccom .tngrid figcaption{ font-size:9px; font-weight:800; text-align:center; margin-top:4px; color:var(--dim); }
       #ccom .tngrid .win img{ border-color:var(--signal); box-shadow:0 0 0 1.5px var(--signal); }
       #ccom .tngrid .win figcaption{ color:var(--signal); }
-      @media(max-width:720px){ #ccom .abgrid,#ccom .commerce{ grid-template-columns:1fr; } }
+      /* 타임라인 (5단계 저니) */
+      #ccom .tl{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:14px; overflow:hidden; margin-top:4px; }
+      #ccom .tl .tlc{ background:var(--panel2); padding:17px 15px; position:relative; }
+      #ccom .tl .tlp{ font-size:10.5px; font-weight:800; color:var(--signal); letter-spacing:.02em; font-variant-numeric:tabular-nums; }
+      #ccom .tl .tlt{ font-size:13px; font-weight:800; color:var(--ink); margin:7px 0 6px; line-height:1.35; letter-spacing:-.01em; }
+      #ccom .tl .tld{ font-size:11px; color:var(--mute); line-height:1.55; }
+      #ccom .tl .tld b{ color:var(--cyan); font-weight:700; }
+      /* 카드 상단(포맷+기간) + 문제/가설/러닝 */
+      #ccom .abcard .abhead{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
+      #ccom .abcard .per{ font-size:10.5px; font-weight:700; color:var(--dim); font-variant-numeric:tabular-nums; }
+      #ccom .abcard .qa{ font-size:12.5px; line-height:1.62; color:var(--mute); }
+      #ccom .abcard .qa .lab{ display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:.04em; padding:2px 7px; border-radius:6px; margin-right:7px; vertical-align:1.5px; }
+      #ccom .abcard .qa.p .lab{ background:rgba(255,107,157,.1); color:#ff9b9b; border:1px solid rgba(255,107,157,.3); }
+      #ccom .abcard .qa.h .lab{ background:rgba(110,231,255,.1); color:var(--cyan); border:1px solid rgba(110,231,255,.3); }
+      #ccom .abcard .qa.h b{ color:var(--cyan); font-weight:700; }
+      #ccom .abcard .qa.l{ border-top:1px dashed var(--line); padding-top:10px; margin-top:2px; color:var(--ink); }
+      #ccom .abcard .qa.l .lab{ background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
+      #ccom .abcard .qa.l b{ color:var(--signal); font-weight:700; }
+      #ccom .abcard .qa b{ color:var(--ink); font-weight:700; }
+      @media(max-width:720px){ #ccom .abgrid,#ccom .commerce,#ccom .tl{ grid-template-columns:1fr; } }
     </style>
     <section class="case reveal" id="ccom">
       <div class="case-top">
@@ -604,26 +623,26 @@ body::after{
         </div>
       </div>
 
-      <p class="lead">소재를 <b>'느낌'이 아니라 실험 단위</b>로 운영했습니다 — 소구를 가설로 세워 비교하고, <b>고효율 소구 위에서 후킹·CTA·포맷을 다시 비교하고</b>, 고효율 소재의 공통점을 다음 소재에 반영했습니다. 아래는 그 루프로 지표를 바꾼 <b>기여도 100% 소재 케이스</b>입니다.</p>
+      <p class="lead"><b>2024.11 → 2025.05, 약 7개월간 8번의 소재 A/B</b>를 직접 돌렸습니다 — 소재를 '느낌'이 아니라 <b>실험 단위</b>로 운영하며, <span class="amb">① 어떤 매체·소구가 먹히나 → ② 클릭 말고 타겟이 맞나 → ③ 왜 끝까지 안 보나 → ④ 영상이냐 이미지냐 → ⑤ 언제 다시 도달하나</span> 순으로 질문을 바꿔가며 실험했습니다. 각 소재마다 <b>문제·가설·러닝을 수치로</b> 남긴 기여도 100% 아카이브입니다.</p>
 
       <div class="body">
         <div class="mstrip c4">
           <div class="m"><div class="cap">짐보관 AI영상 · CTR</div><div class="val num">9.56<span class="u">%</span></div><div class="sub">6.7% → 9.56% · +42.7%</div></div>
-          <div class="m"><div class="cap">공감형 Hook · 전환</div><div class="val num">+31.3<span class="u">%</span></div><div class="sub">CPA −24% 동반</div></div>
-          <div class="m"><div class="cap">리드 리프레이밍 · 타겟적중</div><div class="val num">70<span class="u">%</span></div><div class="sub">40% → 70% · 전환 124→208건</div></div>
-          <div class="m"><div class="cap">프랜차이즈 리드 · CPA</div><div class="val num">−39<span class="u">%</span></div><div class="sub">19,366 → 11,888원</div></div>
+          <div class="m"><div class="cap">타겟 리프레이밍 · 전환</div><div class="val num">+67.7<span class="u">%</span></div><div class="sub">124 → 208건 · CPA −38.6%</div></div>
+          <div class="m"><div class="cap">리드 리프레이밍 · 타겟적중</div><div class="val num">70<span class="u">%</span></div><div class="sub">40% → 70% · 임대인 비율</div></div>
+          <div class="m"><div class="cap">재생시간 A/B · 50% 리텐션</div><div class="val num">+31.1<span class="u">%</span></div><div class="sub">469 → 615회 · CPA −16.7%</div></div>
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>소재를 실험 단위로 설계했습니다</div>
-          <div class="method">
-            <span class="ms">🎯 소구포인트별 제작</span><span class="ma">→</span>
-            <span class="ms">⚔️ 소구 A/B</span><span class="ma">→</span>
-            <span class="ms me">📈 고효율 소구 고정</span><span class="ma">→</span>
-            <span class="ms">🪝 후킹·CTA A/B</span><span class="ma">→</span>
-            <span class="ms">📊 고효율 소재 공통점 반영 ↺</span>
+          <div class="sh"><span class="bar"></span>7개월, 5단계로 질문을 바꿔가며 실험했습니다</div>
+          <div class="tl">
+            <div class="tlc"><div class="tlp">2024.11~12</div><div class="tlt">① 매체·소구 탐색</div><div class="tld">"어떤 매체·소구가 먹히나" — 4종 소구를 META·당근 동시 집행 → <b>가격 강조·META</b></div></div>
+            <div class="tlc"><div class="tlp">2025.01~03</div><div class="tlt">② 타겟 품질</div><div class="tld">"클릭 말고 타겟이 맞나" — 자극 이미지→임대인 공감 영상 → 적중 <b>40→70%</b></div></div>
+            <div class="tlc"><div class="tlp">2025.03~04</div><div class="tlt">③ 리텐션·Hook</div><div class="tld">"왜 7초에 이탈하나" — 인트로 Hook·구성 순서 재설계 → 리텐션 <b>469→615</b></div></div>
+            <div class="tlc"><div class="tlp">2025.04~05</div><div class="tlt">④ 포맷 실험</div><div class="tld">"영상이냐 이미지냐" — B2B 영상↔이미지 A/B → 상황별 <b>포맷 분기</b></div></div>
+            <div class="tlc"><div class="tlp">2025.05</div><div class="tlt">⑤ 전환 타이밍</div><div class="tld">"언제 다시 도달하나" — GA4 3.89일 기반 리뷰 리마케팅 → CVR <b>62%</b></div></div>
           </div>
-          <p>가격·신뢰·사후관리·공감 등 <b>소구별로 소재를 만들어 비교하고</b>, 고효율 소구를 축으로 <span class="g">인트로 Hook·CTA·영상↔이미지 포맷을 다시 실험</span>했습니다. 아래 8개는 그 결과물입니다.</p>
+          <p style="margin-top:16px">각 단계의 질문에 소재로 답했습니다. 아래 <b>8개 케이스</b>는 그 실험의 <span class="g">문제 → 가설 → 실제 소재(As-is→To-be) → 수치 → 러닝</span>입니다.</p>
         </div>
 
         <div class="sec">
@@ -631,9 +650,10 @@ body::after{
           <div class="abgrid">
 
             <div class="abcard">
-              <span class="fmt">AI 영상</span>
+              <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.03</span></div>
               <h4>짐보관 — 20초 공감형 → 12초 Hook형</h4>
-              <div class="hyp"><b>가설</b> 앞 7초에 이탈하니, 인트로 Hook + 텍스트 요약으로 시청 전 핵심 전달</div>
+              <div class="qa p"><span class="lab">문제</span> 20초 영상인데 재생시간이 <b>평균 7초</b>에 불과 — 핵심 메시지 전에 이탈</div>
+              <div class="qa h"><span class="lab">가설</span> 앞에 <b>Hook</b>을 걸고 텍스트로 요약하면, 끝까지 안 봐도 '짐보관 서비스'가 꽂힌다</div>
               <div class="imgab">
                 <figure class="fa"><img src="assets/cases/jim_asis.png" alt="As-is 짐보관 20초 공감형 소재"><figcaption>AS-IS · 20초 공감형</figcaption></figure>
                 <span class="ar">→</span>
@@ -641,12 +661,14 @@ body::after{
               </div>
               <div class="res"><span class="r">CTR <b>9.56%</b> (+42.7%)</span><span class="r">전환 <b>+31.3%</b></span><span class="r">CPA <b>−24%</b></span></div>
               <div class="abx">20초 영상 <b>평균 시청 7초</b>에서 이탈 → <b>12초</b>로 압축 · CTR <span class="raw">6.7%→9.56%</span></div>
+              <div class="qa l"><span class="lab">러닝</span> 영상 '길이'가 아니라 <b>인트로 Hook 설계</b>가 CTR을 만든다 — 20→12초 압축만으로 CTR +42.7%</div>
             </div>
 
             <div class="abcard">
-              <span class="fmt">AI 영상</span>
+              <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04~05</span></div>
               <h4>직장인 공감형 시나리오 소재</h4>
-              <div class="hyp"><b>가설</b> 자극적 인트로보다, 퇴근 후 현실을 비추면 '내 얘기'로 전환이 오른다</div>
+              <div class="qa p"><span class="lab">문제</span> 기존 소재는 <b>CTR은 높은데 CVR이 낮다</b> — 클릭은 오는데 전환이 안 됨</div>
+              <div class="qa h"><span class="lab">가설</span> 자극적 인트로 대신 <b>'퇴근 후 복잡한 집'</b> 현실을 비추면 '내 얘기'가 되어 전환된다</div>
               <div class="imgab">
                 <figure class="fa"><img src="assets/cases/office_asis.png" alt="As-is 자극적 시선집중형 소재"><figcaption>AS-IS · 자극 시선집중</figcaption></figure>
                 <span class="ar">→</span>
@@ -654,12 +676,14 @@ body::after{
               </div>
               <div class="res"><span class="r">전환 85→<b>106회</b> (+25%)</span><span class="r">신규 81→<b>132명</b></span></div>
               <div class="abx"><b>CTR은 감소했지만 전환 +25%</b> — 클릭 수가 아닌 전환 품질을 택한 소재 (2025.04 vs 05)</div>
+              <div class="qa l"><span class="lab">러닝</span> <b>CTR을 일부 포기하더라도 공감이 전환을 만든다</b> — 클릭 수 ≠ 전환 품질</div>
             </div>
 
             <div class="abcard">
-              <span class="fmt">AI 영상</span>
+              <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.05</span></div>
               <h4>리마케팅 · 리뷰 기반 정보전달 소재</h4>
-              <div class="hyp"><b>가설</b> 결제까지 평균 3.89일 → 그 안에 실제 리뷰로 신뢰를 재주입하면 전환</div>
+              <div class="qa p"><span class="lab">문제</span> GA4상 결제까지 <b>평균 3.89일</b> — 첫 노출 한 번으론 전환이 안 되고, 자사·경쟁사 모두 리뷰 노출이 없어 소비자는 블로그로 리뷰를 찾음</div>
+              <div class="qa h"><span class="lab">가설</span> 3.89일 안에 <b>실제 고객 리뷰</b>로 신뢰를 재주입하면 전환된다 (참여자+유사 2%+픽셀 세분화 타겟)</div>
               <div class="imgab">
                 <figure class="fa"><img src="assets/cases/office_tobe.png" alt="초기 공감형 소재"><figcaption>초기 · 공감형</figcaption></figure>
                 <span class="ar">→</span>
@@ -667,70 +691,81 @@ body::after{
               </div>
               <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">전환 <b>144건</b></span><span class="r">신규 <b>+63%</b></span></div>
               <div class="abx">클릭 <span class="raw">233회</span> → 전환 <span class="raw">144건</span>(CVR 62%) · 신규고객 <span class="raw">81→132명</span> · 2025.05 1개월 리타게팅</div>
+              <div class="qa l"><span class="lab">러닝</span> 리마케팅은 '같은 소재 반복'이 아니라 <b>'신뢰 단계'를 바꿔야</b> CVR이 나온다 (CVR 62%)</div>
             </div>
 
             <div class="abcard">
-              <span class="fmt">이미지 ×4</span>
+              <div class="abhead"><span class="fmt">이미지 ×4</span><span class="per">2024.11~12</span></div>
               <h4>소재 4종 토너먼트 (해결·밈가격·공감·궁금증)</h4>
-              <div class="hyp"><b>가설</b> 소구가 다른 4종을 동시에 비교해 '고효율 소구'를 데이터로 확정</div>
+              <div class="qa p"><span class="lab">문제</span> 어떤 <b>소구·어떤 매체</b>가 먹히는지 근거가 없다</div>
+              <div class="qa h"><span class="lab">가설</span> 소구가 다른 4종을 <b>META·당근에 동시 집행</b>하면 '고효율 소구'가 데이터로 드러난다</div>
               <div class="tngrid">
                 <figure><img src="assets/cases/tn_a.png" alt="A 해결 중심 소재"><figcaption>A · 해결</figcaption></figure>
                 <figure class="win"><img src="assets/cases/tn_b.png" alt="B 밈+가격강조 소재 (고효율)"><figcaption>B · 밈+가격 ★</figcaption></figure>
                 <figure><img src="assets/cases/tn_c.png" alt="C 현실 공감 소재"><figcaption>C · 공감</figcaption></figure>
                 <figure><img src="assets/cases/tn_d.png" alt="D 궁금증 유발 소재"><figcaption>D · 궁금증</figcaption></figure>
               </div>
-              <div class="res"><span class="r">META 248 &gt; 당근 192</span><span class="r">러닝: <b>가격 강조=최대 후킹</b></span></div>
-              <div class="abx">클릭수 <span class="raw">META 248 / 당근 192회</span> · CPC <span class="raw">META 1,312원 / 당근 1,553원</span>(−241원) → META로 집중 최적화</div>
+              <div class="res"><span class="r">META 248 &gt; 당근 192</span><span class="r">B(밈+가격) 최다 클릭</span></div>
+              <div class="abx">클릭수 <span class="raw">META 248 / 당근 192회</span> · CPC <span class="raw">META 1,312원 / 당근 1,553원</span>(−241원)</div>
+              <div class="qa l"><span class="lab">러닝</span> <b>'가격 강조'가 최대 후킹</b> + 같은 소재도 META가 당근보다 CPC 241원 저렴 → 이후 <b>B 소재·META 집중</b></div>
             </div>
 
             <div class="abcard">
-              <span class="fmt">이미지 → AI 영상</span>
+              <div class="abhead"><span class="fmt">이미지 → AI 영상</span><span class="per">2025.01~03</span></div>
               <h4>프랜차이즈 리드 · 타겟 리프레이밍</h4>
-              <div class="hyp"><b>가설</b> 자극 카피는 클릭만 올리고 비타겟 유입 → '임대인' 공감 소재로 품질 개선</div>
+              <div class="qa p"><span class="lab">문제</span> 자극 이미지가 클릭은 올리는데 <b>상담의 절반 이상이 비타겟</b> — 리드 '양'은 늘고 '질'은 저조</div>
+              <div class="qa h"><span class="lab">가설</span> 실제 창업자 인터뷰 기반으로 <b>'상가공실 임대인'</b>을 정조준한 공감 영상이면 적중률이 오른다</div>
               <div class="imgab">
                 <figure class="fa"><img src="assets/cases/fr_asis.png" alt="As-is 5000으로 연봉1억 자극 이미지"><figcaption>AS-IS · 자극 이미지 (40%)</figcaption></figure>
                 <span class="ar">→</span>
                 <figure class="fb"><img src="assets/cases/fr_tobe.png" alt="To-be 상가공실 공감 영상"><figcaption>TO-BE · 공감 영상 (70%)</figcaption></figure>
               </div>
-              <div class="res"><span class="r">전환 124→<b>208건</b></span><span class="r">CPA <b>−39%</b></span><span class="r">CTR 3.54→<b>4.14</b></span></div>
+              <div class="res"><span class="r">전환 <b>+67.7%</b> (124→208)</span><span class="r">CPA <b>−38.6%</b></span><span class="r">CTR 3.54→<b>4.14</b></span></div>
               <div class="abx">CPA <span class="raw">19,366→11,888원</span> · 임대인 적중률 <b>40%→70%</b> · 동일 비용 지출 기준 비교</div>
+              <div class="qa l"><span class="lab">러닝</span> 클릭 최적화가 아니라 <b>'타겟 적중' 최적화</b> — 적중 40→70%면 CPA가 38.6% 내려간다</div>
             </div>
 
             <div class="abcard">
-              <span class="fmt">AI 영상</span>
+              <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04~05</span></div>
               <h4>프랜차이즈 · 영상 재생시간 A/B</h4>
-              <div class="hyp"><b>가설</b> 결과중심 인트로보다 궁금증 Hook이 끝까지 보게 만든다 (50% 재생 기준)</div>
+              <div class="qa p"><span class="lab">문제</span> 기존 영상은 <b>결과부터</b> 보여줘 50% 지점까지 안 본다</div>
+              <div class="qa h"><span class="lab">가설</span> <b>궁금증 Hook → 공감 → 생각전환 → 해결</b> 순서로 바꾸면 더 오래 본다</div>
               <div class="ba2">
                 <div class="c a"><div class="l">AS-IS</div>공감형 인트로 → 결과중심</div>
                 <div class="ar">→</div>
                 <div class="c b"><div class="l">TO-BE</div>궁금증 Hook → 공감→전환→해결</div>
               </div>
-              <div class="res"><span class="r">CPA <b>−16.7%</b></span><span class="r">재생수 <b>+31.1%</b></span><span class="r">CPC −1.6%</span></div>
+              <div class="res"><span class="r">재생수 <b>+31.1%</b></span><span class="r">CPA <b>−16.7%</b></span><span class="r">CPC −1.6%</span></div>
               <div class="abx"><b>50% 지점 재생수</b> <span class="raw">469→615회</span> · 전환 <span class="raw">10→12건</span> · CPA <span class="raw">15,337→12,779원</span> · CPC <span class="raw">2,434→2,396원</span></div>
+              <div class="qa l"><span class="lab">러닝</span> 같은 소재도 <b>'구성 순서'</b>를 바꾸면 리텐션(50% 재생)이 +31% 오른다</div>
             </div>
 
             <div class="abcard">
-              <span class="fmt">AI 영상</span>
+              <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04</span></div>
               <h4>B2B 셀러 리드 · 핵심가치 전달형</h4>
-              <div class="hyp"><b>가설</b> 메시지 없는 현장영상보다, Hook→신뢰→핵심가치 구조가 리드를 만든다</div>
+              <div class="qa p"><span class="lab">문제</span> <b>단일 영상 소재</b>로는 CTR·전환 개선에 한계 (텍스트 없는 현장 영상)</div>
+              <div class="qa h"><span class="lab">가설</span> <b>Hook → 신뢰 → 핵심가치(해외 물류대행)</b> 구조로 메시지를 넣으면 반응이 온다</div>
               <div class="imgab">
                 <figure class="fa"><img src="assets/cases/b2b1_asis.png" alt="As-is 텍스트 없는 창고 현장 영상"><figcaption>AS-IS · 단순 현장</figcaption></figure>
                 <span class="ar">→</span>
                 <figure class="fb"><img src="assets/cases/b2b1_tobe.png" alt="To-be 세계로 나가고 싶나요 Hook 영상"><figcaption>TO-BE · Hook+핵심가치</figcaption></figure>
               </div>
               <div class="res"><span class="r">CTR <b>3.06%</b> (+36.6%)</span><span class="r">전환 <b>+26.7%</b></span><span class="r">CPA <b>−20.9%</b></span></div>
+              <div class="qa l"><span class="lab">러닝</span> B2B도 결국 <b>Hook과 메시지 구조</b>가 CTR을 가른다 (+36.6%)</div>
             </div>
 
             <div class="abcard">
-              <span class="fmt img">이미지</span>
+              <div class="abhead"><span class="fmt img">이미지</span><span class="per">2025.05</span></div>
               <h4>B2B 셀러 리드 · 텍스트 중심 이미지</h4>
-              <div class="hyp"><b>가설</b> 영상 이탈이 크면, 한눈에 읽히는 텍스트 이미지가 이탈을 줄이고 전환을 올린다</div>
+              <div class="qa p"><span class="lab">문제</span> <b>영상 소재는 이탈률이 크다</b> — 앞 단계 Hook 영상도 끝까지 못 보고 이탈</div>
+              <div class="qa h"><span class="lab">가설</span> <b>한눈에 읽히는 텍스트 중심 이미지</b>가 이탈을 줄이고 전환을 올린다</div>
               <div class="imgab">
                 <figure class="fa"><img src="assets/cases/b2b2_asis.png" alt="As-is 에펠탑 영상 소재"><figcaption>AS-IS · 영상 (이탈↑)</figcaption></figure>
                 <span class="ar">→</span>
                 <figure class="fb"><img src="assets/cases/b2b2_tobe.png" alt="To-be 업계최저 물류대행비 텍스트 이미지"><figcaption>TO-BE · 텍스트 이미지</figcaption></figure>
               </div>
               <div class="res"><span class="r">CTR <b>3.37%</b> (+12.3%)</span><span class="r">전환 <b>+17.6%</b></span><span class="r">CPA <b>−14.7%</b></span></div>
+              <div class="qa l"><span class="lab">러닝</span> 포맷은 상황 따라 — <b>B2B 정보형은 '이미지'가 영상보다 이탈이 적다</b></div>
             </div>
 
           </div>
@@ -744,15 +779,15 @@ body::after{
               <p>SEO 기반 스토어를 직접 운영하며 <b>상품 상세페이지 30건을 직접 기획·디자인</b> → <b>월매출 +167%</b>. 소재가 곧 구매전환인 커머스 환경에서 제작–운영을 한 손으로.</p>
             </div>
             <div class="cc">
-              <div class="ct">공유창고 · 예약 결제 전환</div>
-              <p>조회 1,698회에 <b>결제 0건</b>이던 예약 LP를 '즉시 결제 불가' 병목으로 진단 → 실시간 결제 도입 제안·LP 재구성으로 <b>결제 0→16건, 매출 +1,653%</b>.</p>
+              <div class="ct">공유창고 · 예약 LP 결제 전환 (CRO)</div>
+              <p>조회 1,698회에 <b>결제 0건</b>이던 예약 LP를 '즉시 결제 불가' 병목으로 진단 → 실시간 결제 도입 제안·LP 재구성으로 <b>결제 0→16건</b> 확보. 취미공간 예약 랜딩 개선으론 <b>매출 +1,653%</b>(25.02→05).</p>
             </div>
           </div>
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">소재의 효율은 <b>'예쁨'이 아니라 소구와 Hook의 가설</b>에서 갈린다 — 고효율 소재의 공통점(가격 강조·현실 공감·궁금증 Hook)을 <b>다음 소재에 반영하는 루프</b>를 돌릴 때, 같은 예산에서도 CTR·전환이 계속 올라간다.</p>
+          <div class="sh"><span class="bar"></span>8번의 A/B가 남긴 공식</div>
+          <p class="insight">7개월간 돌린 8번의 소재 A/B에서 반복된 패턴 — <b>① 소구는 '가격 강조'가 최대 후킹</b>(META 집중), <b>② 클릭보다 '타겟 적중'(40→70%)이 CPA를 −38.6% 만든다</b>, <b>③ 리텐션은 '인트로 Hook·구성 순서'로 바뀐다</b>(7초 이탈→CTR 9.56%, 50% 재생 469→615), <b>④ 포맷은 상황 따라 영상↔이미지 분기</b>. 소재의 유려함이 아니라 <b>가설 → 수치 → 다음 소재 반영</b> 루프가 지표를 만든다.</p>
         </div>
       </div>
     </section>
@@ -816,7 +851,7 @@ body::after{
         <div class="mstrip c4">
           <div class="m"><div class="cap">임플란트 AI 영상 광고</div><div class="val num">10<span class="u">편+</span></div><div class="sub neu">2026.02~09 · 가로형</div></div>
           <div class="m"><div class="cap">제작 방식</div><div class="val">100% AI</div><div class="sub neu">기획·생성·편집·자막 직접</div></div>
-          <div class="m"><div class="cap">셀프스토리지(B2B) · CTR</div><div class="val num">+43<span class="u">%</span></div><div class="sub num">6.7% → 9.56% (Kling AI)</div></div>
+          <div class="m"><div class="cap">짐보관 소재 A/B · CTR</div><div class="val num">+42.7<span class="u">%</span></div><div class="sub num">6.7% → 9.56% (Kling AI)</div></div>
           <div class="m"><div class="cap">글로벌랩스 · 확장기 CTR</div><div class="val num">+50<span class="u">%</span></div><div class="sub num">CPC −38% · 저점→하반기</div></div>
         </div>
 
