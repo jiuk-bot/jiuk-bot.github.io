@@ -587,12 +587,19 @@ body::after{
       #ccom .tngrid .win img{ border-color:var(--signal); box-shadow:0 0 0 1.5px var(--signal); }
       #ccom .tngrid .win figcaption{ color:var(--signal); }
       /* 타임라인 (5단계 저니) */
-      #ccom .tl{ display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:14px; overflow:hidden; margin-top:4px; }
-      #ccom .tl .tlc{ background:var(--panel2); padding:20px 17px; position:relative; }
-      #ccom .tl .tlp{ font-size:11.5px; font-weight:800; color:var(--signal); letter-spacing:.02em; font-variant-numeric:tabular-nums; }
-      #ccom .tl .tlt{ font-size:14.5px; font-weight:800; color:var(--ink); margin:8px 0 7px; line-height:1.35; letter-spacing:-.01em; }
-      #ccom .tl .tld{ font-size:12.5px; color:var(--mute); line-height:1.6; }
-      #ccom .tl .tld b{ color:var(--cyan); font-weight:700; }
+      #ccom .tl{ display:flex; align-items:stretch; gap:0; margin-top:6px; }
+      #ccom .tl .tlc{ flex:1; background:var(--panel2); border:1px solid var(--line-soft); border-radius:13px; padding:20px 12px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; }
+      #ccom .tl .tln{ width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 16px -4px rgba(124,92,255,.7); }
+      #ccom .tl .tlt{ font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; line-height:1.3; }
+      #ccom .tl .tlo{ font-size:12px; font-weight:800; color:var(--cyan); background:rgba(110,231,255,.08); border:1px solid rgba(110,231,255,.28); border-radius:999px; padding:5px 11px; margin-top:auto; }
+      #ccom .tl .tla{ display:flex; align-items:center; color:var(--signal); font-size:17px; font-weight:800; padding:0 5px; flex:0 0 auto; }
+      @media(max-width:720px){ #ccom .tl{ flex-direction:column; } #ccom .tl .tla{ justify-content:center; transform:rotate(90deg); padding:5px 0; } #ccom .tl .tlo{ margin-top:4px; } }
+      /* 같은 행 카드끼리 문제·가설·수치·러닝 가로 정렬 (subgrid) */
+      @supports (grid-template-rows: subgrid){
+        #ccom .abgrid{ grid-auto-rows:auto; }
+        #ccom .abcard{ display:grid; grid-template-rows:subgrid; grid-row:span 8; row-gap:14px; }
+        #ccom .abcard.r7{ grid-row:span 7; }
+      }
       /* 카드 상단(포맷+기간) + 문제/가설/러닝 */
       #ccom .abcard .abhead{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
       #ccom .abcard .per{ font-size:12px; font-weight:800; color:var(--mute); font-variant-numeric:tabular-nums; }
@@ -632,13 +639,17 @@ body::after{
         <div class="sec">
           <div class="sh"><span class="bar"></span>5단계로 질문을 바꿔가며 실험했습니다</div>
           <div class="tl">
-            <div class="tlc"><div class="tlp">2024.11~12</div><div class="tlt">① 매체·소구 탐색</div><div class="tld">"어떤 매체·소구가 유효한가" — 4종 소구를 META·당근 동시 집행 → <b>가격 강조·META</b></div></div>
-            <div class="tlc"><div class="tlp">2025.01~03</div><div class="tlt">② 타겟 품질</div><div class="tld">"클릭 말고 타겟이 맞나" — 자극 이미지→임대인 공감 영상 → 적중 <b>40→70%</b></div></div>
-            <div class="tlc"><div class="tlp">2025.03~04</div><div class="tlt">③ 리텐션·Hook</div><div class="tld">"왜 7초에 이탈하나" — 인트로 Hook·구성 순서 재설계 → 리텐션 <b>469→615</b></div></div>
-            <div class="tlc"><div class="tlp">2025.04~05</div><div class="tlt">④ 포맷 실험</div><div class="tld">"영상이냐 이미지냐" — B2B 영상↔이미지 A/B → 상황별 <b>포맷 분기</b></div></div>
-            <div class="tlc"><div class="tlp">2025.05</div><div class="tlt">⑤ 전환 타이밍</div><div class="tld">"언제 다시 도달하나" — GA4 3.89일 기반 리뷰 리마케팅 → CVR <b>62%</b></div></div>
+            <div class="tlc"><div class="tln">1</div><div class="tlt">매체·소구 탐색</div><div class="tlo">가격·META</div></div>
+            <div class="tla">→</div>
+            <div class="tlc"><div class="tln">2</div><div class="tlt">타겟 품질</div><div class="tlo">적중 40→70%</div></div>
+            <div class="tla">→</div>
+            <div class="tlc"><div class="tln">3</div><div class="tlt">리텐션·Hook</div><div class="tlo">재생 469→615</div></div>
+            <div class="tla">→</div>
+            <div class="tlc"><div class="tln">4</div><div class="tlt">포맷 실험</div><div class="tlo">영상↔이미지</div></div>
+            <div class="tla">→</div>
+            <div class="tlc"><div class="tln">5</div><div class="tlt">전환 타이밍</div><div class="tlo">CVR 62%</div></div>
           </div>
-          <p style="margin-top:16px">각 단계의 질문에 소재로 답했습니다. 아래 <b>8개 케이스</b>는 그 실험의 <span class="g">문제 → 가설 → 실제 소재(As-is→To-be) → 수치 → 러닝</span>입니다.</p>
+          <p style="margin-top:18px">각 단계의 질문에 소재로 답했습니다. 아래 <b>8개 케이스</b>는 그 실험의 <span class="g">문제 → 가설 → 소재(As-is→To-be) → 수치 → 러닝</span>입니다.</p>
         </div>
 
         <div class="sec">
@@ -736,7 +747,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> 같은 소재도 <b>'구성 순서'</b>를 바꾸면 리텐션(50% 재생)이 +31% 오른다</div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard r7">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04</span></div>
               <h4>B2B 셀러 리드 · 핵심가치 전달형</h4>
               <div class="qa p"><span class="lab">문제</span> <b>단일 영상 소재</b>로는 CTR·전환 개선에 한계 (텍스트 없는 현장 영상)</div>
@@ -750,7 +761,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> B2B도 결국 <b>Hook과 메시지 구조</b>가 CTR을 가른다 (+36.6%)</div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard r7">
               <div class="abhead"><span class="fmt img">이미지</span><span class="per">2025.05</span></div>
               <h4>B2B 셀러 리드 · 텍스트 중심 이미지</h4>
               <div class="qa p"><span class="lab">문제</span> <b>영상 소재는 이탈률이 크다</b> — 앞 단계 Hook 영상도 끝까지 못 보고 이탈</div>
