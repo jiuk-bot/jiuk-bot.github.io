@@ -552,7 +552,8 @@ body::after{
       #ccom .abcard{ border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:26px 30px; transition:transform .3s,border-color .3s,box-shadow .3s;
         display:grid; grid-template-columns:330px 1fr; column-gap:30px; row-gap:13px; align-items:start; }
       #ccom .abcard .abhead, #ccom .abcard h4{ grid-column:1 / -1; }
-      #ccom .abcard .imgab, #ccom .abcard .tngrid, #ccom .abcard .ba2{ grid-column:1; grid-row:3 / span 5; align-self:start; }
+      #ccom .abcard .abhook{ grid-column:1 / -1; font-size:14.5px; font-weight:800; color:var(--cyan); letter-spacing:-.015em; margin-top:-3px; line-height:1.4; }
+      #ccom .abcard .imgab, #ccom .abcard .tngrid, #ccom .abcard .ba2{ grid-column:1; grid-row:4 / span 5; align-self:center; }
       #ccom .abcard .qa, #ccom .abcard .res, #ccom .abcard .abx{ grid-column:2; }
       #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
       #ccom .abcard .fmt{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; padding:4px 11px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
@@ -591,7 +592,7 @@ body::after{
       /* 실제 소재 이미지 As-is → To-be */
       #ccom .imgab{ display:grid; grid-template-columns:1fr auto 1fr; gap:9px; align-items:center; }
       #ccom .imgab figure{ margin:0; }
-      #ccom .imgab img{ width:100%; height:188px; object-fit:contain; background:#0b0a12; border:1px solid var(--line); border-radius:10px; display:block; }
+      #ccom .imgab img{ width:100%; height:250px; object-fit:contain; background:#0b0a12; border:1px solid var(--line); border-radius:10px; display:block; }
       #ccom .imgab figcaption{ font-size:11px; font-weight:800; letter-spacing:.03em; margin-top:7px; line-height:1.4; color:var(--mute); }
       #ccom .imgab .fa figcaption{ color:#ff9b9b; } #ccom .imgab .fb figcaption{ color:var(--signal); }
       #ccom .imgab .fb img{ border-color:rgba(124,92,255,.45); }
@@ -677,6 +678,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.03</span></div>
               <h4>짐보관 — 20초 공감형 → 12초 Hook형</h4>
+              <div class="abhook">영상 길이가 아니라 '앞 3초 Hook'이 CTR을 만든다</div>
               <div class="qa p"><span class="lab">문제</span> 20초 영상인데 재생시간이 <b>평균 7초</b>에 불과 — 핵심 메시지 전에 이탈</div>
               <div class="qa h"><span class="lab">가설</span> 인트로에 <b>Hook</b>과 텍스트 요약을 배치하면, 완주하지 않아도 '짐보관 서비스' 메시지가 전달된다</div>
               <div class="imgab">
@@ -692,6 +694,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04~05</span></div>
               <h4>직장인 공감형 시나리오 소재</h4>
+              <div class="abhook">클릭을 양보하고 '전환'을 택한 소재</div>
               <div class="qa p"><span class="lab">문제</span> 기존 자극형 소재는 <b>CTR은 높지만 CVR이 낮다</b> — 유입 대비 전환 효율이 받쳐주지 못함</div>
               <div class="qa h"><span class="lab">가설</span> 자극적 인트로 대신 <b>'퇴근 후 복잡한 집'</b> 현실을 제시하면 타겟이 자기 상황으로 인식해 전환된다</div>
               <div class="imgab">
@@ -707,6 +710,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.05</span></div>
               <h4>리마케팅 · 리뷰 기반 정보전달 소재</h4>
+              <div class="abhook">리마케팅은 반복이 아니라 '신뢰'를 다시 심는 것</div>
               <div class="qa p"><span class="lab">문제</span> GA4상 결제까지 <b>평균 3.89일</b> — 첫 노출 한 번으론 전환이 안 되고, 자사·경쟁사 모두 리뷰 노출이 없어 소비자는 블로그로 리뷰를 찾음</div>
               <div class="qa h"><span class="lab">가설</span> 3.89일 안에 <b>실제 고객 리뷰</b>로 신뢰를 재주입하면 전환된다 (참여자+유사 2%+픽셀 세분화 타겟)</div>
               <div class="imgab">
@@ -722,6 +726,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt">이미지 ×4</span><span class="per">2024.11~12</span></div>
               <h4>소재 4종 토너먼트 (해결·밈가격·공감·궁금증)</h4>
+              <div class="abhook">소구는 '감'이 아니라 토너먼트로 정한다</div>
               <div class="qa p"><span class="lab">문제</span> 어떤 <b>소구·어떤 매체</b>가 유효한지 검증 근거가 없다</div>
               <div class="qa h"><span class="lab">가설</span> 소구가 다른 4종을 <b>META·당근에 동시 집행</b>하면 '고효율 소구'가 데이터로 드러난다</div>
               <div class="tngrid">
@@ -738,6 +743,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt">이미지 → AI 영상</span><span class="per">2025.01~03</span></div>
               <h4>프랜차이즈 리드 · 타겟 리프레이밍</h4>
+              <div class="abhook">'많은 클릭'보다 '맞는 타겟'이 CPA를 낮춘다</div>
               <div class="qa p"><span class="lab">문제</span> 단순 자극형 소재는 <b>CPA는 우수하나 리드 품질 저하에 큰 영향</b> — 임차인이 아닌 '임대인' 리드 확보가 관건</div>
               <div class="qa h"><span class="lab">가설</span> 실제 리드콜 분석 결과 <b>'상가공실' 임대인이 임대인 리드의 80% 이상</b> → 이들을 정조준한 공감 영상으로 적중률 개선</div>
               <div class="imgab">
@@ -753,6 +759,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04~05</span></div>
               <h4>프랜차이즈 · 영상 재생시간 A/B</h4>
+              <div class="abhook">구성 '순서'만 바꿔 끝까지 보게 만든다</div>
               <div class="qa p"><span class="lab">문제</span> 기존 영상은 <b>결과부터</b> 보여줘 50% 지점까지 안 본다</div>
               <div class="qa h"><span class="lab">가설</span> <b>궁금증 Hook → 공감 → 생각전환 → 해결</b> 순서로 바꾸면 더 오래 본다</div>
               <div class="ba2">
@@ -767,6 +774,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04</span></div>
               <h4>B2B 셀러 리드 · 핵심가치 전달형</h4>
+              <div class="abhook">현장 영상에 'Hook·핵심가치'를 입히다</div>
               <div class="qa p"><span class="lab">문제</span> <b>단일 영상 소재</b>로는 CTR·전환 개선에 한계 (텍스트 없는 현장 영상)</div>
               <div class="qa h"><span class="lab">가설</span> <b>Hook → 신뢰 → 핵심가치(해외 물류대행)</b> 구조로 소재 구성 시 전환율 개선 기대</div>
               <div class="imgab">
@@ -782,6 +790,7 @@ body::after{
             <div class="abcard">
               <div class="abhead"><span class="fmt img">이미지</span><span class="per">2025.05</span></div>
               <h4>B2B 셀러 리드 · 텍스트 중심 이미지</h4>
+              <div class="abhook">이탈이 크면 '텍스트 이미지'가 영상을 이긴다</div>
               <div class="qa p"><span class="lab">문제</span> <b>영상 소재는 이탈률이 크다</b> — 앞 단계 Hook 영상도 끝까지 못 보고 이탈</div>
               <div class="qa h"><span class="lab">가설</span> <b>한눈에 읽히는 텍스트 중심 이미지</b>가 이탈을 줄이고 전환을 올린다</div>
               <div class="imgab">
