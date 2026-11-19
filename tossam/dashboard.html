@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>토스페이 광고주 모니터링 대시보드 (데모) · 윤지욱</title>
+<meta name="description" content="토스페이 광고주·구좌별 노출·CTR·CPC·CVR·CPM·CPA를 기간 비교하고, 캠페인→광고세트→소재 드릴다운, 광고주별 KPI·메모 히스토리와 엑셀 리포트까지 관리하는 토스페이 AM 모니터링 대시보드 데모." />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  :root{ --primary:#3182F6; --primary-dark:#1b64da; --soft:#EAF2FE; --ink:#1f1f1f; --sub:#777;
+         --line:#e5e7eb; --ok:#2e9e52; --okbg:#eefaf0; --warn:#e8414f; --warnbg:#fff1f1; --shadow:0 2px 16px rgba(0,0,0,.06); }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{ font-family:'Pretendard','Apple SD Gothic Neo',sans-serif; color:var(--ink); background:#f4f5f7; line-height:1.5; word-break:keep-all; overflow-wrap:break-word; -webkit-font-smoothing:antialiased; }
+  a{color:inherit;text-decoration:none;}
+  .nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.9); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  .nav-inner{ max-width:1160px; margin:0 auto; padding:13px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .nav-logo{ font-weight:800; font-size:17px; } .nav-logo .dot{ color:#3182F6; }
+  .nav-links{ display:flex; gap:4px; align-items:center; }
+  .nav-links a{ color:var(--sub); font-weight:600; font-size:14px; padding:8px 11px; border-radius:10px; }
+  .nav-links a:hover{ background:#f4f5f7; color:var(--ink); }
+  .nav-links a.cta{ background:#3182F6; color:#fff; padding:8px 14px; border-radius:999px; } .nav-links a.cta:hover{ background:#1b64da; color:#fff; }
+  .wrap{ max-width:1160px; margin:0 auto; padding:26px 24px 60px; }
+  .head{ display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+  .head h1{ font-size:24px; font-weight:800; letter-spacing:-.4px; }
+  .head .sub{ font-size:13.5px; color:var(--sub); margin-top:4px; }
+  .badge-demo{ font-size:11.5px; font-weight:800; color:var(--primary); background:var(--soft); padding:6px 12px; border-radius:999px; }
+  .tabs{ display:flex; gap:6px; margin:20px 0 18px; border-bottom:1px solid var(--line); flex-wrap:wrap; }
+  .tab{ font-size:14.5px; font-weight:700; color:var(--sub); padding:11px 16px; cursor:pointer; border-bottom:2px solid transparent; }
+  .tab.active{ color:var(--primary); border-bottom-color:var(--primary); }
+
+  .ovcontrols{ display:flex; gap:20px; flex-wrap:wrap; align-items:center; margin-bottom:10px; }
+  .octl{ display:flex; align-items:center; gap:7px; }
+  .octl label{ font-size:12.5px; font-weight:700; color:var(--sub); }
+  input[type=date], select{ font-family:inherit; font-size:13.5px; font-weight:700; padding:7px 10px; border:1px solid var(--line); border-radius:9px; background:#fff; color:var(--ink); }
+  select:disabled{ background:#f4f5f7; color:#bbb; }
+  .seg{ display:inline-flex; border:1px solid var(--line); border-radius:9px; overflow:hidden; }
+  .seg button{ font-family:inherit; font-size:13.5px; font-weight:700; padding:7px 14px; border:0; background:#fff; color:var(--sub); cursor:pointer; border-right:1px solid var(--line); }
+  .seg button:last-child{ border-right:0; } .seg button.on{ background:var(--primary); color:#fff; }
+  .clrbtn{ font-family:inherit; font-size:12px; font-weight:700; border:1px solid var(--line); background:#fff; color:var(--sub); border-radius:8px; padding:6px 10px; cursor:pointer; }
+  .periodinfo{ background:var(--soft); color:var(--primary-dark); font-size:13.5px; font-weight:700; padding:11px 15px; border-radius:11px; margin:12px 0 16px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+  .periodinfo .pp{ background:#fff; border-radius:8px; padding:3px 9px; font-size:12.5px; } .periodinfo .vs{ color:var(--sub); }
+
+  .sum{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px; }
+  .sumc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:15px 20px; box-shadow:var(--shadow); }
+  .sumc .n{ font-size:25px; font-weight:800; } .sumc .n.warn{ color:var(--warn); }
+  .sumc .l{ font-size:12.5px; color:var(--sub); font-weight:600; margin-top:2px; }
+
+  .GRID{ display:grid; grid-template-columns:2.3fr 1.3fr 1fr 1fr .9fr 70px 30px; gap:10px; align-items:center; }
+  .advhead{ padding:2px 20px 8px; font-size:11px; font-weight:700; color:#b0b0b0; }
+  .advhead > div{ text-align:center; } .advhead > div:first-child{ text-align:left; }
+  .adv{ background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow); margin-bottom:12px; overflow:hidden; }
+  .adv.flag{ border-color:#f6c9c9; }
+  .adv-top{ padding:15px 20px; cursor:pointer; }
+  .advc0 .adv-name{ font-size:15.5px; font-weight:800; } .advc0 .adv-cat{ font-size:11.5px; color:var(--sub); font-weight:600; margin-top:1px; }
+  .kpiwrap{ display:flex; align-items:center; gap:5px; margin-top:7px; }
+  .kpilbl{ font-size:9.5px; font-weight:800; color:#fff; background:var(--primary); border-radius:5px; padding:2px 6px; letter-spacing:.3px; }
+  .kpisel{ font-size:11px; font-weight:700; padding:3px 7px; border:1px solid var(--line); border-radius:7px; background:#fff; max-width:150px; }
+  .gchips{ display:flex; flex-wrap:wrap; gap:4px; margin-top:8px; }
+  .gchips span{ font-size:10px; font-weight:700; color:var(--ok); background:var(--okbg); border:1px solid #cfe9d6; border-radius:6px; padding:2px 8px; }
+  .cell{ text-align:center; } .cell .v{ font-size:15px; font-weight:800; } .cell.big .v{ font-size:17px; color:var(--primary-dark); }
+  .cell .p{ font-size:10.5px; color:#aaa; margin-top:1px; } .kpitag{ font-size:9.5px; font-weight:800; color:var(--sub); background:#f1f3f6; border-radius:5px; padding:1px 6px; display:inline-block; margin-bottom:3px; }
+  .delta{ font-size:11.5px; font-weight:800; margin-top:2px; } .delta.up{ color:var(--ok); } .delta.down{ color:var(--warn); } .delta.flat{ color:#bbb; }
+  .status{ text-align:center; } .st-ok{ font-size:11.5px; font-weight:800; color:var(--ok); background:var(--okbg); padding:5px 9px; border-radius:999px; } .st-warn{ font-size:11px; font-weight:800; color:var(--warn); background:var(--warnbg); padding:5px 8px; border-radius:999px; }
+  .memobtn{ font-family:inherit; font-size:12px; font-weight:700; border:1px solid var(--line); background:#fff; border-radius:8px; padding:6px 7px; cursor:pointer; color:#555; }
+  .memobtn b{ color:var(--primary); }
+  .caret{ text-align:center; color:#bbb; font-size:13px; transition:transform .2s; } .adv.open .caret{ transform:rotate(180deg); }
+  .camps{ display:none; border-top:1px solid var(--line); background:#fafbfc; padding:12px 16px 14px; } .adv.open .camps{ display:block; }
+  .mscroll{ overflow-x:auto; }
+  .mtable{ width:100%; border-collapse:collapse; font-size:12.5px; min-width:840px; }
+  .mtable th,.mtable td{ padding:8px 10px; text-align:right; border-bottom:1px solid #eef0f3; white-space:nowrap; } .mtable th:first-child,.mtable td:first-child{ text-align:left; }
+  .mtable th{ font-size:11px; color:#888; font-weight:700; } .mtable td .mv{ font-weight:800; } .mtable td .md{ font-size:10px; font-weight:700; }
+  .mtable td.per{ font-size:11px; font-weight:800; color:var(--sub); text-align:left; } .mtable td.per.cur{ color:var(--primary-dark); }
+  .mtable tr.rowcur td{ background:#f0f6ff; }
+  .plat{ font-size:9.5px; font-weight:800; color:var(--ok); background:var(--okbg); padding:2px 7px; border-radius:5px; margin-left:6px; }
+
+  .controls{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+  .controls label{ font-size:12.5px; font-weight:700; color:var(--sub); margin-right:6px; }
+  .dnode{ font-size:13px; font-weight:800; color:var(--ink); background:#fff; border:1px solid var(--line); border-radius:11px; padding:11px 15px; margin-bottom:14px; box-shadow:var(--shadow); }
+  .dnode .pathsep{ color:var(--primary); margin:0 6px; font-weight:800; }
+  .cmp{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:18px; }
+  .cmpc{ flex:1; min-width:160px; background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 18px; box-shadow:var(--shadow); }
+  .cmpc.prev{ background:#fafbfc; }
+  .cmpc .cl{ font-size:11.5px; color:var(--sub); font-weight:700; } .cmpc .cvv{ font-size:21px; font-weight:800; margin-top:4px; } .cmpc .cd{ font-size:12.5px; font-weight:800; margin-top:4px; }
+  .chartbox{ background:#fff; border:1px solid var(--line); border-radius:16px; padding:18px 20px; box-shadow:var(--shadow); margin-bottom:18px; }
+  table.dt{ width:100%; border-collapse:collapse; font-size:13px; background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; }
+  table.dt th,table.dt td{ padding:9px 12px; text-align:right; border-bottom:1px solid #eef0f3; } table.dt th:first-child,table.dt td:first-child{ text-align:left; } table.dt th:nth-child(2),table.dt td:nth-child(2){ text-align:left; }
+  table.dt th{ background:#fafafa; font-weight:700; font-size:12px; color:#555; } table.dt tr.recent td{ background:#f0f6ff; }
+  .wktag{ font-size:9.5px; font-weight:800; padding:2px 7px; border-radius:5px; } .wktag.prev{ color:var(--sub); background:#eef0f3; } .wktag.cur{ color:var(--primary); background:var(--soft); }
+  .dtscroll{ overflow-x:auto; } table.dt.wide{ min-width:780px; } table.dt.wide th:nth-child(2),table.dt.wide td:nth-child(2){ text-align:right; }
+
+  /* 히스토리 */
+  .histbar{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-bottom:8px; }
+  .dlbtn{ font-family:inherit; font-size:13.5px; font-weight:800; background:var(--ok); color:#fff; border:0; border-radius:10px; padding:9px 18px; cursor:pointer; }
+  .histnote{ font-size:12px; color:var(--sub); margin-bottom:16px; }
+  .htable .htext{ text-align:left; white-space:normal; line-height:1.55; }
+  .histmeta{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:14px; }
+
+  .modal{ position:fixed; inset:0; background:rgba(0,0,0,.42); display:flex; align-items:center; justify-content:center; z-index:100; }
+  .modal.hide{ display:none; }
+  .modal-box{ background:#fff; border-radius:18px; width:min(500px,92vw); max-height:84vh; overflow:auto; padding:22px; }
+  .modal-head{ display:flex; align-items:center; justify-content:space-between; font-size:16px; font-weight:800; margin-bottom:14px; }
+  .modal-head .x{ cursor:pointer; color:#999; font-size:18px; }
+  #memoText{ width:100%; min-height:82px; font-family:inherit; font-size:14px; border:1px solid var(--line); border-radius:10px; padding:11px; resize:vertical; }
+  .savebtn{ margin-top:10px; background:var(--primary); color:#fff; font-weight:800; font-size:14px; border:0; border-radius:10px; padding:10px 20px; cursor:pointer; }
+  .memoitem{ border:1px solid var(--line); border-radius:10px; padding:11px 13px; margin-top:10px; font-size:13.5px; line-height:1.55; }
+  .memoitem .mt{ font-size:11.5px; color:var(--sub); font-weight:700; display:flex; justify-content:space-between; margin-bottom:4px; }
+  .memoitem .mt .del{ cursor:pointer; color:#caa; }
+  .empty{ font-size:13px; color:#aaa; text-align:center; padding:16px; }
+
+  /* AI 대시보드 장점 카드 */
+  .benh{ font-size:16px; font-weight:800; margin:26px 0 12px; }
+  .bengrid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .benc{ background:#fff; border:1px solid var(--line); border-radius:14px; padding:16px 16px 17px; box-shadow:var(--shadow); }
+  .benc .bico{ font-size:20px; } .benc .bt{ font-size:13.5px; font-weight:800; margin:8px 0 5px; }
+  .benc .bd{ font-size:12px; color:var(--sub); line-height:1.55; font-weight:600; }
+  @media (max-width:820px){ .bengrid{ grid-template-columns:1fr 1fr; } }
+
+  .hide{ display:none; }
+  .disc{ font-size:12px; background:#fffdf7; border:1px dashed #e8c98f; border-radius:12px; padding:14px 16px; margin-top:22px; line-height:1.6; color:#8a6d33; }
+  code{ font-family:ui-monospace,Menlo,monospace; }
+  @media (max-width:880px){
+    .GRID{ grid-template-columns:1.6fr 1.3fr 66px 28px; }
+    .advhead > div:nth-child(3),.advhead > div:nth-child(4),.advhead > div:nth-child(5){ display:none; }
+    .adv-top .cell:not(.big),.adv-top .status{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<nav style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(180%) blur(12px);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid #E5E8EB">
+  <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
+    <a href="index.html" style="font-weight:800;font-size:17px;color:#191F28;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#3182F6">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Home</a><a href="portfolio.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="resume.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="dashboard.html" style="color:#3182F6;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:#EAF2FE">광고주 대시보드</a><a href="prd.html" style="color:#4E5968;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">PRD</a><a href="proposal.html" style="background:#3182F6;color:#fff;text-decoration:none;font-weight:700;padding:8px 15px;border-radius:999px;margin-left:4px;white-space:nowrap">🎟️ 에이블리 제안서</a></div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="head">
+    <div><h1>토스페이 광고주 모니터링 대시보드</h1>
+      <div class="sub">토스페이 구좌별 성과(노출·CTR·CPC·CVR·CPM·CPA) 기간 비교 + 구좌(쿠폰 광고상품)→광고세트→소재 드릴다운 + KPI·메모 히스토리.</div></div>
+    <span class="badge-demo">● 데모 · 가상 데이터</span>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="overview">광고주 대시보드</div>
+    <div class="tab" data-tab="daily">일자별 성과</div>
+    <div class="tab" data-tab="history">광고주 히스토리</div>
+  </div>
+
+  <!-- Overview -->
+  <div id="overview">
+    <div class="ovcontrols">
+      <div class="octl"><label>빠른 설정</label><div class="seg" id="unitSeg">
+        <button data-w="1">일</button><button data-w="7" class="on">주</button><button data-w="30">월</button><button data-w="0">전체</button></div></div>
+    </div>
+    <div class="ovcontrols">
+      <div class="octl"><label>현재 기간</label><input type="date" id="cs"> ~ <input type="date" id="ce"></div>
+      <div class="octl"><label>비교 기간</label><input type="date" id="ps"> ~ <input type="date" id="pe">
+        <button class="clrbtn" id="clrCmp">비교 해제</button></div>
+    </div>
+    <div class="periodinfo" id="periodInfo"></div>
+    <div class="sum" id="sum"></div>
+    <div class="advhead GRID">
+      <div>광고주 / KPI</div><div>선택 KPI</div><div>노출</div><div>전환</div><div>상태</div><div>메모</div><div></div>
+    </div>
+    <div id="advList"></div>
+  </div>
+
+  <!-- Daily -->
+  <div id="daily" class="hide">
+    <div class="controls">
+      <div><label>광고주</label><select id="selAdv"></select></div>
+      <div><label>캠페인(구좌)</label><select id="selCamp"></select></div>
+      <div><label>광고세트</label><select id="selSet"></select></div>
+      <div><label>소재</label><select id="selCr"></select></div>
+      <div><label>지표</label><select id="selMetric"></select></div>
+      <div><label>조회 기간</label><input type="date" id="drs"> ~ <input type="date" id="dre">
+        <span class="seg" id="dqseg" style="margin-left:6px"><button data-r="14">14일</button><button data-r="30">30일</button><button data-r="60">60일</button></span></div>
+    </div>
+    <div class="dnode" id="dnode"></div>
+    <div class="cmp" id="cmp"></div>
+    <div class="chartbox"><canvas id="chart" height="110"></canvas></div>
+    <div class="dtscroll"><table class="dt wide" id="dtable"></table></div>
+    <div class="histnote" style="margin-top:8px;">※ <b>조회 기간(시작~종료 날짜)</b>을 직접 선택하면 차트·표·비교가 해당 기간으로 갱신됩니다. 비교는 <b>직전 동기간(동일 길이)</b> 자동 산출 · 최근 7일은 강조 표시.</div>
+  </div>
+
+  <!-- History -->
+  <div id="history" class="hide">
+    <div class="histbar">
+      <div><label style="font-size:12.5px;font-weight:700;color:var(--sub);margin-right:6px;">광고주</label><select id="selHist"></select></div>
+      <button class="dlbtn" id="dlXls">📥 엑셀 리포트 다운로드</button>
+    </div>
+    <div class="histnote">담당자 인수인계용 — 선택한 광고주(또는 전체)의 <b>메모 히스토리를 엑셀(.xls) 리포트로 내보냅니다.</b> 담당자가 바뀌어도 운영 맥락을 그대로 넘겨줄 수 있습니다.</div>
+    <div class="histmeta" id="histMeta"></div>
+    <div class="dtscroll"><table class="dt" id="histView"></table></div>
+  </div>
+
+  <div class="disc">⚠️ 본 대시보드는 <b>윤지욱이 AM 유지 전략을 보여주기 위해 제작한 데모</b>로, 모든 광고주·수치는 <b>가상 데이터</b>입니다. (엑셀 업로드 / 토스페이 광고 API 연동으로 실데이터 수집 가능) · 메모·KPI 설정은 <b>이 브라우저에만 저장</b>됩니다.</div>
+  <div class="disc" style="background:#f3f7ff;border-color:#bcd4f5;color:#2f5a9e;">
+    🔒 <b>광고주 데이터 보안 관리 (실제 운영 시)</b> — 데이터 유출 가능성을 원천 차단하기 위해, 대시보드는 <b>담당자 로컬 환경(개인 노트북)에서만 구동</b>(localhost)하며 외부 서버·클라우드에 광고주 데이터를 저장·배포하지 않습니다. API 토큰·인증키는 <code style="background:#e6eefb;padding:1px 5px;border-radius:4px;">.env</code>로 분리해 환경변수로 관리하고, 데이터는 <b>읽기 전용(read-only)</b>·접근 권한 최소화 원칙으로 다룹니다.
+  </div>
+</div>
+
+<!-- Memo modal -->
+<div id="memoModal" class="modal hide">
+  <div class="modal-box">
+    <div class="modal-head"><span><span id="memoAdv"></span> · 메모 히스토리</span><span class="x" onclick="closeMemo()">✕</span></div>
+    <textarea id="memoText" placeholder="예: 10/8 전환율 ▼22% — 소재 피로도 의심. A/B 소재 2종 제안 예정. / 다음 주 QBR에서 구좌 확장 논의"></textarea>
+    <button class="savebtn" onclick="saveMemo()">메모 저장</button>
+    <div id="memoList"></div>
+  </div>
+</div>
+
+<script>
+const DAYS=90;
+function mul(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function gen(base,drift,dip,seed,noise,rate){const r=mul(seed);const o=[];for(let i=0;i<DAYS;i++){let v=base*(1+drift*(i/(DAYS-1)))*(1+(r()*2-1)*noise);if(dip&&i>=DAYS-7){const t=(i-(DAYS-8))/7;v*=(1-dip*t);}o.push(rate?Math.max(0.0005,v):Math.max(1,Math.round(v)));}return o;}
+const C=(b,dr,dp,s,n=0.07)=>gen(b,dr,dp,s,n,false), R=(b,dr,dp,s,n=0.06)=>gen(b,dr,dp,s,n,true);
+
+// 전부 토스페이 쿠폰 광고 '구좌' · 구좌 > 광고세트 > 소재 계층
+const CFG=[
+ {name:'에이블리',cat:'패션 커머스',camps:[
+   {name:'최상단 AD (동영상 쿠폰)',sets:[
+     {name:'45세+ 결제이력',crs:[
+       {name:'15% 쿠폰 소개 15s',imp:C(26000,.12,0,101),ctr:R(.011,.05,0,102),cvr:R(.07,.10,0,103),cpc:R(950,.03,0,104)},
+       {name:'혜택 강조 15s',imp:C(20000,.10,0,105),ctr:R(.012,.04,0,106),cvr:R(.075,.08,0,107),cpc:R(980,.02,0,108)},
+     ]},
+     {name:'결제이력 리타겟',crs:[
+       {name:'재구매 유도 10s',imp:C(16000,.08,0,109),ctr:R(.013,.03,0,110),cvr:R(.085,.06,0,111),cpc:R(1020,0,0,112)},
+     ]},
+   ]},
+   {name:'오늘딜 쿠폰',sets:[
+     {name:'전체 노출',crs:[
+       {name:'오늘딜 배너 A',imp:C(17000,.05,0,113),ctr:R(.013,0,0,114),cvr:R(.09,.06,0,115),cpc:R(1100,.02,0,116)},
+       {name:'오늘딜 배너 B',imp:C(13000,.04,0,117),ctr:R(.012,0,0,118),cvr:R(.082,.05,0,119),cpc:R(1050,0,0,120)},
+     ]},
+   ]},
+   {name:'기본딜 쿠폰',sets:[
+     {name:'전체 노출',crs:[
+       {name:'상시 쿠폰 배너',imp:C(45000,.03,0,121),ctr:R(.010,0,0,122),cvr:R(.06,0,0,123),cpc:R(820,0,0,124)},
+     ]},
+   ]},
+ ]},
+ {name:'올리브영',cat:'뷰티 커머스',camps:[
+   {name:'오늘딜 쿠폰',sets:[
+     {name:'전체 노출',crs:[
+       {name:'뷰티 쿠폰 티저',imp:C(32000,0,0,201),ctr:R(.009,0,0,202),cvr:R(.06,0,.42,203),cpc:R(700,0,.1,204)},
+       {name:'할인 소구',imp:C(23000,0,0,205),ctr:R(.010,0,0,206),cvr:R(.058,0,.40,207),cpc:R(720,0,.1,208)},
+     ]},
+   ]},
+   {name:'방문미션',sets:[
+     {name:'전체 노출',crs:[
+       {name:'적립 쿠폰 미션',imp:C(35000,-.03,0,209),ctr:R(.010,0,0,210),cvr:R(.055,0,.34,211),cpc:R(760,.04,0,212)},
+     ]},
+   ]},
+ ]},
+ {name:'무신사',cat:'패션 커머스',camps:[
+   {name:'최상단 AD',sets:[
+     {name:'전체 노출',crs:[
+       {name:'시즌 컬렉션 쿠폰',imp:C(52000,.10,0,301),ctr:R(.013,.04,0,302),cvr:R(.05,.08,0,303),cpc:R(520,0,0,304)},
+       {name:'베스트 상품 쿠폰',imp:C(38000,.09,0,305),ctr:R(.012,.03,0,306),cvr:R(.048,.07,0,307),cpc:R(540,0,0,308)},
+     ]},
+   ]},
+   {name:'오늘딜 쿠폰',sets:[
+     {name:'전체 노출',crs:[
+       {name:'기획전 쿠폰 배너',imp:C(60000,.06,0,309),ctr:R(.012,0,0,310),cvr:R(.045,.04,0,311),cpc:R(480,0,0,312)},
+     ]},
+   ]},
+ ]},
+ {name:'컬리',cat:'식품 커머스',camps:[
+   {name:'최상단 AD (동영상 쿠폰)',sets:[
+     {name:'전체 노출',crs:[
+       {name:'첫구매 쿠폰 15s',imp:C(70000,0,.48,401),ctr:R(.007,0,0,402),cvr:R(.10,0,0,403),cpc:R(1300,.05,0,404)},
+       {name:'혜택 강조 15s',imp:C(50000,0,.48,405),ctr:R(.0075,0,0,406),cvr:R(.105,0,0,407),cpc:R(1280,.04,0,408)},
+     ]},
+   ]},
+   {name:'상품미션',sets:[
+     {name:'전체 노출',crs:[
+       {name:'재구매 쿠폰 미션',imp:C(40000,0,.30,409),ctr:R(.009,0,0,410),cvr:R(.12,0,0,411),cpc:R(1500,0,0,412)},
+     ]},
+   ]},
+ ]},
+];
+const DATES=[];{const t=new Date();for(let i=DAYS-1;i>=0;i--){const d=new Date(t);d.setDate(t.getDate()-i);DATES.push({iso:d.toISOString().slice(0,10),label:`${d.getMonth()+1}/${d.getDate()}`});}}
+
+/* 계층 집계: 소재 → 광고세트 → 구좌 → 광고주 */
+const aggKids=(kids,k)=>DATES.map((_,i)=>kids.reduce((s,c)=>s+c[k][i],0));
+function finLeaf(c){
+  const clicks=c.imp.map((v,i)=>Math.max(1,Math.round(v*c.ctr[i])));
+  const conv=clicks.map((v,i)=>Math.max(0,Math.round(v*c.cvr[i])));
+  const spend=clicks.map((v,i)=>Math.round(v*c.cpc[i]));
+  return {name:c.name,imp:c.imp,clicks,conv,spend};
+}
+function build(){return CFG.map(a=>{
+  const camps=a.camps.map(c=>{
+    const sets=c.sets.map(s=>{
+      const crs=s.crs.map(finLeaf);
+      return {name:s.name,crs,imp:aggKids(crs,'imp'),clicks:aggKids(crs,'clicks'),conv:aggKids(crs,'conv'),spend:aggKids(crs,'spend')};
+    });
+    return {name:c.name,sets,imp:aggKids(sets,'imp'),clicks:aggKids(sets,'clicks'),conv:aggKids(sets,'conv'),spend:aggKids(sets,'spend')};
+  });
+  return {name:a.name,cat:a.cat,camps,imp:aggKids(camps,'imp'),clicks:aggKids(camps,'clicks'),conv:aggKids(camps,'conv'),spend:aggKids(camps,'spend')};
+});}
+const DATA=build();
+
+/* 지표 정의 */
+const MET={imp:{l:'노출',t:'cnt',g:'up'},clicks:{l:'클릭',t:'cnt',g:'up'},ctr:{l:'CTR',t:'rate',g:'up'},
+  cvr:{l:'전환율',t:'rate',g:'up'},conv:{l:'전환',t:'cnt',g:'up'},cpc:{l:'CPC',t:'won',g:'down'},
+  cpm:{l:'CPM',t:'won',g:'down'},cpa:{l:'CPA',t:'won',g:'down'},spend:{l:'광고비',t:'won',g:'flat'}};
+const MKEYS=['imp','clicks','ctr','cvr','conv','cpc','cpm','cpa'];
+const sumv=(a,s,e)=>{let t=0;for(let i=s;i<=e;i++)t+=a[i];return t;};
+function mval(o,m,s,e){const S=k=>sumv(o[k],s,e);switch(m){
+  case 'imp':case 'clicks':case 'conv':case 'spend':return S(m);
+  case 'ctr':return S('imp')?S('clicks')/S('imp'):0;
+  case 'cvr':return S('clicks')?S('conv')/S('clicks'):0;
+  case 'cpc':return S('clicks')?S('spend')/S('clicks'):0;
+  case 'cpm':return S('imp')?S('spend')/S('imp')*1000:0;
+  case 'cpa':return S('conv')?S('spend')/S('conv'):0;}}
+const fmt=n=>n>=10000?(n/10000).toFixed(1)+'만':Math.round(n).toLocaleString();
+function mfmt(m,v){const t=MET[m].t;return t==='rate'?(v*100).toFixed(2)+'%':t==='won'?Math.round(v).toLocaleString()+'원':fmt(v);}
+const change=(c,p)=>(p!==null&&p!==0)?((c-p)/p*100):null;
+function deltaHtml(ch,g){if(ch===null)return '<div class="delta flat">–</div>';const flat=Math.abs(ch)<3;const bad=g==='up'?ch<0:(g==='down'?ch>0:false);const cls=flat?'flat':(bad?'down':'up');const ar=flat?'–':(ch>0?'▲':'▼');return `<div class="delta ${cls}">${ar} ${Math.abs(ch).toFixed(0)}%</div>`;}
+function isFlag(m,ch){if(ch===null)return false;return MET[m].g==='up'?ch<=-12:(MET[m].g==='down'?ch>=15:false);}
+
+/* 메모 시드 (일자별 샘플) */
+function seedMemo(){
+  const t=(i,hm)=>{const [y,mo,d]=DATES[i].iso.split('-');return `${y}.${mo}.${d} ${hm}`;};
+  return {
+   '에이블리':[
+     {ts:t(DAYS-2,'09:40'),text:'최상단 AD CVR ▼18% (전주比) — 소재 피로 의심. 신규 쿠폰 소재 2종 교체 제안 예정.'},
+     {ts:t(DAYS-6,'14:10'),text:'오늘딜 쿠폰 CPA 안정권 유지. 다음 주 일예산 +15% 증액 논의.'},
+     {ts:t(DAYS-11,'11:05'),text:'월간 리뷰 — 기본딜은 상시 전환, 최상단 AD는 신상품 버스트 중심으로 운영 합의.'},
+   ],
+   '올리브영':[
+     {ts:t(DAYS-4,'16:22'),text:'방문미션 CTR 하락 추세 — 결제이력 타겟 A/B 제안.'},
+     {ts:t(DAYS-13,'10:48'),text:'행사 버스트 종료. 상시 전환 구좌(오늘딜 쿠폰)로 예산 이관 완료.'},
+   ],
+   '무신사':[
+     {ts:t(DAYS-8,'10:30'),text:'최상단 AD 전환 우수 — 예산 비중 확대 제안.'},
+   ],
+   '컬리':[
+     {ts:t(DAYS-3,'17:05'),text:'첫구매 쿠폰 CPA 급등 — 최상단 AD 노출 과열. 상품미션으로 일부 예산 분산 제안.'},
+   ],
+  };
+}
+
+/* 저장 (최초 1회 시드) */
+const KPI=JSON.parse(localStorage.getItem('amdemo_kpi')||'null')||{'에이블리':'cpa','컬리':'cpa'};
+const MEMO=JSON.parse(localStorage.getItem('amdemo_memo')||'null')||seedMemo();
+const saveKPI=()=>localStorage.setItem('amdemo_kpi',JSON.stringify(KPI));
+const saveMemoLS=()=>localStorage.setItem('amdemo_memo',JSON.stringify(MEMO));
+if(!localStorage.getItem('amdemo_kpi'))saveKPI();
+if(!localStorage.getItem('amdemo_memo'))saveMemoLS();
+function getKPI(n){return KPI[n]||'cvr';}
+window.setKPI=(n,v)=>{KPI[n]=v;saveKPI();renderOverview();};
+
+/* 기간 */
+const idx=iso=>DATES.findIndex(d=>d.iso===iso);
+function getRanges(){
+  let cs=idx(document.getElementById('cs').value),ce=idx(document.getElementById('ce').value);
+  let ps=idx(document.getElementById('ps').value),pe=idx(document.getElementById('pe').value);
+  if(cs<0)cs=DAYS-7; if(ce<0)ce=DAYS-1; if(cs>ce)[cs,ce]=[ce,cs];
+  const hasCmp=document.getElementById('ps').value&&document.getElementById('pe').value&&ps>=0&&pe>=0;
+  if(hasCmp&&ps>pe)[ps,pe]=[pe,ps];
+  return {cs,ce,ps:hasCmp?ps:null,pe:hasCmp?pe:null};
+}
+function setInputs(cs,ce,ps,pe){
+  document.getElementById('cs').value=DATES[cs].iso; document.getElementById('ce').value=DATES[ce].iso;
+  document.getElementById('ps').value=ps===null?'':DATES[ps].iso; document.getElementById('pe').value=pe===null?'':DATES[pe].iso;
+}
+
+function renderOverview(){
+  const {cs,ce,ps,pe}=getRanges();
+  const curR=cs===ce?DATES[ce].label:`${DATES[cs].label}~${DATES[ce].label}`;
+  const cmpR=ps===null?'비교 없음':(ps===pe?DATES[pe].label:`${DATES[ps].label}~${DATES[pe].label}`);
+  document.getElementById('periodInfo').innerHTML=`📊 현재 <span class="pp">${curR}</span> <span class="vs">vs</span> 비교 <span class="pp">${cmpR}</span>`;
+  let flags=0;
+  const rows=DATA.map(a=>{
+    const kpi=getKPI(a.name);
+    const stat=m=>{const cur=mval(a,m,cs,ce);const prev=ps===null?null:mval(a,m,ps,pe);return {cur,prev,ch:change(cur,prev)};};
+    const k=stat(kpi), imp=stat('imp'), conv=stat('conv');
+    const flagged=isFlag(kpi,k.ch); if(flagged)flags++;
+    const status=flagged?`<span class="st-warn">⚠ ${MET[kpi].l} 악화</span>`:(ps!==null?`<span class="st-ok">정상</span>`:`<span style="font-size:11px;color:#bbb">–</span>`);
+    const cellK=`<div class="cell big"><div class="kpitag">${MET[kpi].l}</div><div class="v">${mfmt(kpi,k.cur)}</div>${k.prev!==null?`<div class="p">전기 ${mfmt(kpi,k.prev)}</div>`:''}${deltaHtml(k.ch,MET[kpi].g)}</div>`;
+    const cellS=(o,m)=>`<div class="cell"><div class="v">${mfmt(m,o.cur)}</div>${deltaHtml(o.ch,MET[m].g)}</div>`;
+    const opts=MKEYS.map(m=>`<option value="${m}" ${m===kpi?'selected':''}>${MET[m].l}</option>`).join('');
+    const mc=(MEMO[a.name]||[]).length;
+    const chips=a.camps.map(c=>`<span>${c.name}</span>`).join('');
+    // 구좌(캠페인) 지표 테이블 — 비교 시 전주(위)/이번주(아래) 2행
+    const cols=['imp','clicks','ctr','cvr','conv','cpc','cpm','cpa'];
+    const thead=`<tr><th>구좌(캠페인)</th><th>기간</th>${cols.map(m=>`<th>${MET[m].l}</th>`).join('')}</tr>`;
+    const valTds=(c,s,e,base)=>cols.map(m=>{const cur=mval(c,m,s,e);
+      if(!base)return `<td><div class="mv">${mfmt(m,cur)}</div></td>`;
+      const prev=mval(c,m,base.s,base.e);const ch=change(cur,prev);
+      return `<td><div class="mv">${mfmt(m,cur)}</div>${ch===null?'':`<div class="md ${(MET[m].g==='up'?ch<0:ch>0)&&Math.abs(ch)>=3?'delta down':(Math.abs(ch)<3?'delta flat':'delta up')}">${Math.abs(ch)<3?'–':(ch>0?'▲':'▼')}${Math.abs(ch).toFixed(0)}%</div>`}</td>`;}).join('');
+    const body=a.camps.map(c=>{
+      if(ps===null) return `<tr><td>${c.name}<span class="plat">● 운영중</span></td><td class="per cur">현재 ${curR}</td>${valTds(c,cs,ce,null)}</tr>`;
+      return `<tr class="rowprev"><td rowspan="2">${c.name}<span class="plat">● 운영중</span></td><td class="per">전주 ${cmpR}</td>${valTds(c,ps,pe,null)}</tr>`+
+             `<tr class="rowcur"><td class="per cur">이번주 ${curR}</td>${valTds(c,cs,ce,{s:ps,e:pe})}</tr>`;
+    }).join('');
+    const foot=ps===null?'※ 비교 기간을 설정하면 전주(위)·이번주(아래) 2행으로 변화율까지 표시됩니다.':'※ 전주(위) → 이번주(아래) 순 · 이번주 셀 아래 숫자는 전주 대비 변화율';
+    return `<div class="adv ${flagged?'flag':''}">
+      <div class="adv-top GRID" onclick="this.parentNode.classList.toggle('open')">
+        <div class="advc0"><div class="adv-name">${a.name}</div><div class="adv-cat">${a.cat} · 운영 구좌 ${a.camps.length}개</div>
+          <div class="kpiwrap"><span class="kpilbl">KPI</span><select class="kpisel" onclick="event.stopPropagation()" onchange="setKPI('${a.name}',this.value)">${opts}</select></div>
+          <div class="gchips">${chips}</div></div>
+        ${cellK}${cellS(imp,'imp')}${cellS(conv,'conv')}
+        <div class="status">${status}</div>
+        <button class="memobtn" onclick="event.stopPropagation();openMemo('${a.name}')">📝${mc?` <b>${mc}</b>`:''}</button>
+        <div class="caret">▼</div>
+      </div>
+      <div class="camps"><div class="mscroll"><table class="mtable">${thead}${body}</table></div>
+        <div style="font-size:11px;color:#aaa;margin-top:8px;">${foot}</div></div>
+    </div>`;
+  }).join('');
+  document.getElementById('advList').innerHTML=rows;
+  document.getElementById('sum').innerHTML=
+    `<div class="sumc"><div class="n">${DATA.length}</div><div class="l">관리 광고주</div></div>
+     <div class="sumc"><div class="n ${flags?'warn':''}">${flags}</div><div class="l">⚠ 주의 필요 (KPI 악화)</div></div>
+     <div class="sumc"><div class="n">${DATA.reduce((s,a)=>s+a.camps.length,0)}</div><div class="l">총 운영 구좌</div></div>`;
+}
+
+/* 메모 */
+let memoAdv='';
+window.openMemo=n=>{memoAdv=n;document.getElementById('memoAdv').textContent=n;document.getElementById('memoText').value='';renderMemo();document.getElementById('memoModal').classList.remove('hide');};
+window.closeMemo=()=>document.getElementById('memoModal').classList.add('hide');
+window.saveMemo=()=>{const t=document.getElementById('memoText').value.trim();if(!t)return;const d=new Date();
+  const ts=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+  (MEMO[memoAdv]=MEMO[memoAdv]||[]).unshift({ts,text:t});saveMemoLS();document.getElementById('memoText').value='';renderMemo();renderOverview();};
+window.delMemo=i=>{MEMO[memoAdv].splice(i,1);saveMemoLS();renderMemo();renderOverview();};
+function renderMemo(){const list=MEMO[memoAdv]||[];
+  document.getElementById('memoList').innerHTML=list.length?list.map((m,i)=>`<div class="memoitem"><div class="mt"><span>🕒 ${m.ts}</span><span class="del" onclick="delMemo(${i})">삭제</span></div><div>${m.text.replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div></div>`).join(''):'<div class="empty">아직 메모가 없습니다. 위에 작성해 저장하세요.</div>';}
+
+/* 일자별 — 드릴다운 */
+let chart;
+const el=id=>document.getElementById(id);
+function dseries(o,m){return DATES.map((_,i)=>{switch(m){case 'imp':case 'clicks':case 'conv':case 'spend':return o[m][i];
+  case 'ctr':return o.imp[i]?o.clicks[i]/o.imp[i]*100:0; case 'cvr':return o.clicks[i]?o.conv[i]/o.clicks[i]*100:0;
+  case 'cpc':return o.clicks[i]?o.spend[i]/o.clicks[i]:0; case 'cpm':return o.imp[i]?o.spend[i]/o.imp[i]*1000:0; case 'cpa':return o.conv[i]?o.spend[i]/o.conv[i]:0;}});}
+function fillSel(elm,items,allLabel){elm.innerHTML=`<option value="">${allLabel}</option>`+items.map((it,i)=>`<option value="${i}">${it.name}</option>`).join('');}
+function syncDailySelectors(level){
+  const a=DATA[+el('selAdv').value];
+  if(level<=1){fillSel(el('selCamp'),a.camps,'전체 구좌'); el('selCamp').value='';}
+  const c=el('selCamp').value!==''?a.camps[+el('selCamp').value]:null;
+  if(level<=2){ if(c){fillSel(el('selSet'),c.sets,'전체 광고세트'); el('selSet').disabled=false;} else {el('selSet').innerHTML='<option value="">전체 광고세트</option>'; el('selSet').disabled=true;} el('selSet').value=''; }
+  const s=(c&&el('selSet').value!=='')?c.sets[+el('selSet').value]:null;
+  if(level<=3){ if(s){fillSel(el('selCr'),s.crs,'전체 소재'); el('selCr').disabled=false;} else {el('selCr').innerHTML='<option value="">전체 소재</option>'; el('selCr').disabled=true;} el('selCr').value=''; }
+}
+function dailyNode(){
+  const a=DATA[+el('selAdv').value]; const P='<span class="pathsep">›</span>';
+  if(el('selCamp').value==='')return {node:a,label:a.name};
+  const c=a.camps[+el('selCamp').value]; if(el('selSet').value==='')return {node:c,label:a.name+P+c.name};
+  const s=c.sets[+el('selSet').value]; if(el('selCr').value==='')return {node:s,label:a.name+P+c.name+P+s.name};
+  const r=s.crs[+el('selCr').value]; return {node:r,label:a.name+P+c.name+P+s.name+P+r.name};
+}
+function renderDaily(){
+  const {node:o,label:nodeLabel}=dailyNode();
+  const m=el('selMetric').value;
+  let s=idx(el('drs').value), e=idx(el('dre').value);
+  if(s<0)s=DAYS-14; if(e<0)e=DAYS-1; if(s>e){const t=s;s=e;e=t;}
+  const len=e-s+1;
+  const full=dseries(o,m),labels=DATES.slice(s,e+1).map(d=>d.label),series=full.slice(s,e+1);
+  const isRate=MET[m].t==='rate';
+  const ps=Math.max(0,s-len), pe=s-1, hasPrev=pe>=0&&pe>=ps;
+  const cur=mval(o,m,s,e),prev=hasPrev?mval(o,m,ps,pe):null,ch=change(cur,prev);
+  const vf=v=>mfmt(m,v),L=MET[m].l,good=MET[m].g;
+  const chGood=ch===null?true:(good==='up'?ch>=0:ch<=0);
+  el('dnode').innerHTML=`🔎 조회 대상 — <b>${nodeLabel}</b> · 기간 <b>${DATES[s].label}~${DATES[e].label}</b> (${len}일)`;
+  el('cmp').innerHTML=
+    `<div class="cmpc prev"><div class="cl">${L} · 직전 동기간 ${hasPrev?`(${DATES[ps].label}~${DATES[pe].label})`:'(데이터 없음)'}</div><div class="cvv" style="color:var(--sub)">${hasPrev?vf(prev):'–'}</div></div>
+     <div class="cmpc"><div class="cl">${L} · 선택 기간 (${DATES[s].label}~${DATES[e].label})</div><div class="cvv">${vf(cur)}</div></div>
+     <div class="cmpc"><div class="cl">변화율 (선택 vs 직전 동기간)</div><div class="cvv" style="color:${chGood?'var(--ok)':'var(--warn)'}">${ch===null?'–':(ch>=0?'+':'')+ch.toFixed(1)+'%'}</div><div class="cd" style="color:${chGood?'var(--ok)':'var(--warn)'}">${ch===null?'':(ch>0?'▲':'▼')} ${ch===null?'비교 불가':(chGood?'양호':'주의')}</div></div>`;
+  const n=series.length,rec=Math.min(7,n);
+  if(chart)chart.destroy();
+  chart=new Chart(el('chart'),{type:'line',
+    data:{labels,datasets:[{label:L,data:series,borderColor:'#3182F6',backgroundColor:'rgba(49,130,246,.10)',fill:true,tension:.3,pointRadius:series.map((_,i)=>i>=n-rec?3:0),pointBackgroundColor:'#3182F6',borderWidth:2.5}]},
+    options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${L}: ${mfmt(m,isRate?c.parsed.y/100:c.parsed.y)}`}}},
+      scales:{y:{beginAtZero:MET[m].t==='cnt',grid:{color:'#f0f0f0'},ticks:{callback:v=>isRate?v+'%':fmt(v)}},x:{grid:{display:false}}}}});
+  // 표: 선택 기간 전체 (최근 7일 강조)
+  let rows='<tr><th>날짜</th><th>노출</th><th>클릭</th><th>CTR</th><th>CVR</th><th>전환</th><th>CPC</th><th>CPM</th><th>CPA</th></tr>';
+  for(let i=s;i<=e;i++){const isRec=i>e-7;
+    const ctr=o.imp[i]?o.clicks[i]/o.imp[i]*100:0,cvr=o.clicks[i]?o.conv[i]/o.clicks[i]*100:0,
+      cpc=o.clicks[i]?o.spend[i]/o.clicks[i]:0,cpm=o.imp[i]?o.spend[i]/o.imp[i]*1000:0,cpa=o.conv[i]?o.spend[i]/o.conv[i]:0;
+    rows+=`<tr class="${isRec?'recent':''}"><td>${DATES[i].label}${isRec?' <span class="wktag cur">최근</span>':''}</td>
+      <td>${o.imp[i].toLocaleString()}</td><td>${o.clicks[i].toLocaleString()}</td><td>${ctr.toFixed(2)}%</td><td>${cvr.toFixed(2)}%</td><td>${o.conv[i].toLocaleString()}</td><td>${Math.round(cpc).toLocaleString()}원</td><td>${Math.round(cpm).toLocaleString()}원</td><td>${Math.round(cpa).toLocaleString()}원</td></tr>`;}
+  el('dtable').innerHTML=rows;
+}
+
+/* 광고주 히스토리 + 엑셀 리포트 */
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,' ');
+function histItems(sel){
+  const advs = sel==='__all__' ? DATA.map(a=>a.name) : [sel];
+  let items=[]; advs.forEach(n=>(MEMO[n]||[]).forEach(mm=>items.push({adv:n,ts:mm.ts,text:mm.text})));
+  return items;
+}
+function renderHistory(){
+  const sel=el('selHist').value;
+  const items=histItems(sel).sort((a,b)=>a.ts<b.ts?1:-1); // 최신순
+  const title=sel==='__all__'?'전체 광고주':sel;
+  el('histMeta').innerHTML=
+    `<div class="sumc"><div class="n">${title}</div><div class="l">조회 대상</div></div>
+     <div class="sumc"><div class="n">${items.length}</div><div class="l">누적 메모</div></div>
+     <div class="sumc"><div class="n">${items[items.length-1]?items[items.length-1].ts.slice(0,10):'–'}</div><div class="l">최초 기록</div></div>`;
+  const rows=items.length?items.map(it=>`<tr><td>${it.ts}</td><td>${esc(it.adv)}</td><td class="htext">${esc(it.text)}</td></tr>`).join(''):'<tr><td colspan="3" class="empty">메모 히스토리가 없습니다.</td></tr>';
+  el('histView').innerHTML=`<tr><th>작성일시</th><th>광고주</th><th>메모(히스토리)</th></tr>${rows}`;
+}
+window.downloadXls=()=>{
+  const sel=el('selHist').value, title=sel==='__all__'?'전체 광고주':sel;
+  const items=histItems(sel).sort((a,b)=>a.ts<b.ts?-1:1); // 리포트는 오래된 순(타임라인)
+  const d=new Date(); const td=`${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
+  const body=items.length?items.map((it,i)=>`<tr><td>${i+1}</td><td>${it.ts}</td><td>${esc(it.adv)}</td><td>${esc(it.text)}</td></tr>`).join(''):'<tr><td colspan="4" style="text-align:center">메모 없음</td></tr>';
+  const html=`<html xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"></head><body>`+
+    `<table border="1" cellspacing="0" cellpadding="4">`+
+    `<tr><td colspan="4" style="font-weight:bold;font-size:14px;background:#fff2ea">광고주 운영 히스토리 리포트 — ${esc(title)}</td></tr>`+
+    `<tr><td colspan="4">발행일 ${td} · 담당자 윤지욱 · 출처 AM 모니터링 대시보드 (인수인계용)</td></tr>`+
+    `<tr style="background:#f1f3f6;font-weight:bold"><td>번호</td><td>작성일시</td><td>광고주</td><td>메모(히스토리)</td></tr>${body}</table></body></html>`;
+  const blob=new Blob(['﻿'+html],{type:'application/vnd.ms-excel;charset=utf-8'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a');
+  a.href=url; a.download=`광고주히스토리_${title}_${td}.xls`; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+};
+
+/* init */
+['cs','ce','ps','pe'].forEach(id=>{const e=el(id);e.min=DATES[0].iso;e.max=DATES[DAYS-1].iso;e.onchange=renderOverview;});
+setInputs(DAYS-7,DAYS-1,DAYS-14,DAYS-8);
+document.querySelectorAll('#unitSeg button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('#unitSeg button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const W=+b.dataset.w;const E=DAYS-1;
+  if(W===0)setInputs(0,E,null,null);
+  else if(W===1)setInputs(E,E,E-1,E-1);
+  else setInputs(E-W+1,E,E-2*W+1,E-W);
+  renderOverview();});
+el('clrCmp').onclick=()=>{el('ps').value='';el('pe').value='';renderOverview();};
+document.querySelectorAll('.tab').forEach(t=>t.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  const id=t.dataset.tab;
+  ['overview','daily','history'].forEach(x=>el(x).classList.toggle('hide',x!==id));
+  if(id==='daily')renderDaily(); if(id==='history')renderHistory();});
+
+// daily selects
+el('selAdv').innerHTML=DATA.map((a,i)=>`<option value="${i}">${a.name}</option>`).join('');
+el('selMetric').innerHTML=MKEYS.map(m=>`<option value="${m}" ${m==='cpa'?'selected':''}>${MET[m].l}</option>`).join('');
+syncDailySelectors(1);
+el('selAdv').onchange=()=>{syncDailySelectors(1);renderDaily();};
+el('selCamp').onchange=()=>{syncDailySelectors(2);renderDaily();};
+el('selSet').onchange=()=>{syncDailySelectors(3);renderDaily();};
+['drs','dre'].forEach(id=>{const e=el(id);e.min=DATES[0].iso;e.max=DATES[DAYS-1].iso;e.onchange=renderDaily;});
+el('drs').value=DATES[DAYS-14].iso; el('dre').value=DATES[DAYS-1].iso;
+document.querySelectorAll('#dqseg button').forEach(b=>b.onclick=()=>{const r=+b.dataset.r;el('drs').value=DATES[DAYS-r].iso;el('dre').value=DATES[DAYS-1].iso;renderDaily();});
+['selCr','selMetric'].forEach(id=>el(id).onchange=renderDaily);
+
+// history select
+el('selHist').innerHTML=`<option value="__all__">전체 광고주</option>`+DATA.map(a=>`<option value="${a.name}">${a.name}</option>`).join('');
+el('selHist').onchange=renderHistory;
+el('dlXls').onclick=downloadXls;
+
+el('memoModal').onclick=e=>{if(e.target.id==='memoModal')closeMemo();};
+renderOverview();
+</script>
+</body>
+</html>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#b08968">
+<title>웨딩홀 견적 비교</title>
+<style>
+  :root{
+    --bg:#f6f3ef; --card:#fff; --ink:#2d2a26; --sub:#8c8378;
+    --line:#e9e3da; --gold:#b08968; --goldbg:#f3ebe2;
+    --ceco:#b08968; --gl:#5f7a52; --grand:#5b6b86;
+    --ok:#3f9d6e; --add:#d9a441; --no:#c76b6b; --blue:#5b6b86;
+    --shadow:0 2px 12px rgba(80,60,40,.08);
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
+    background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;padding-bottom:90px}
+  h1,h2,h3{margin:0;font-weight:700}
+  .wrap{max-width:720px;margin:0 auto;padding:0 14px}
+
+  header{background:linear-gradient(135deg,#b08968,#9c7a5b);color:#fff;padding:18px 0 14px;text-align:center;box-shadow:var(--shadow)}
+  header h1{font-size:19px;letter-spacing:-.3px}
+  header p{margin:4px 0 0;font-size:12px;opacity:.85}
+  .cstat{display:inline-block;margin-top:8px;font-size:11px;font-weight:700;padding:3px 11px;border-radius:12px;background:rgba(255,255,255,.2)}
+  .cstat.on{background:rgba(63,157,110,.9)}
+  .cstat.off{background:rgba(199,107,107,.9)}
+  .cstat.local{background:rgba(255,255,255,.22)}
+
+  .guestbar{background:var(--card);border-radius:14px;box-shadow:var(--shadow);margin:14px 0;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .guestbar label{font-size:13px;color:var(--sub);font-weight:600}
+  .guestbar .g{display:flex;align-items:center;gap:8px}
+  .stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .stepper button{border:0;background:#faf7f3;width:38px;height:38px;font-size:20px;color:var(--gold);font-weight:700}
+  .stepper input{border:0;width:58px;text-align:center;font-size:16px;font-weight:700;color:var(--ink);background:#fff}
+  .stepper input:focus{outline:none}
+
+  .tabs{position:sticky;top:0;z-index:20;background:var(--bg);padding:8px 0 6px;overflow-x:auto;display:flex;gap:7px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .tab{flex:0 0 auto;padding:9px 14px;border-radius:20px;background:var(--card);border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--sub);white-space:nowrap}
+  .tab.active{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .panel{display:none}
+  .panel.active{display:block}
+
+  /* summary swipe */
+  .swipe{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:4px -14px 0;padding:4px 14px;scrollbar-width:none}
+  .swipe::-webkit-scrollbar{display:none}
+  .scard{flex:0 0 87%;scroll-snap-align:center;background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+  .scard .bar{position:absolute;left:0;top:0;bottom:0;width:5px}
+  .scard h3{font-size:16px}
+  .scard .ven-sub{font-size:12px;color:var(--sub);margin-top:2px}
+  .scard .ven-type{display:inline-block;margin-top:8px;font-size:11px;background:var(--goldbg);color:var(--gold);padding:3px 9px;border-radius:12px;font-weight:600}
+  .scard .total{margin-top:12px;font-size:12px;color:var(--sub)}
+  .scard .total b{display:block;font-size:25px;color:var(--ink);font-weight:800;letter-spacing:-.5px;margin-top:2px}
+  .rank{position:absolute;right:14px;top:14px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px}
+  .rank.low{background:#e7f5ee;color:var(--ok)}
+  .rank.mid{background:#fdf4e1;color:#c08b1f}
+  .rank.high{background:#faeaea;color:var(--no)}
+  .bdtoggle{margin-top:12px;width:100%;background:#faf7f3;border:1px solid var(--line);border-radius:10px;padding:9px;font-size:12.5px;font-weight:600;color:var(--sub)}
+  .bdlist{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px;display:none}
+  .bdlist.open{display:block}
+  .bdrow{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;font-size:12.5px;padding:6px 0;color:var(--ink)}
+  .bdrow .bl{flex:1;min-width:0}
+  .bdrow .bl .bn{display:block;font-weight:600}
+  .bdrow .bl .bnt{display:block;color:var(--sub);font-size:10.5px;line-height:1.35;margin-top:2px}
+  .bdrow>span:last-child{white-space:nowrap;font-weight:700}
+  .bdrow .free{color:var(--ok)}
+  .bdrow.sum{border-top:1px solid var(--line);margin-top:4px;padding-top:8px;font-weight:800;font-size:14px}
+  .dots{display:flex;justify-content:center;gap:6px;margin-top:14px}
+  .d2{width:8px;height:8px;border-radius:50%;background:var(--line);transition:.2s}
+  .d2.on{width:22px;border-radius:4px}
+  .swipehint{font-size:11px;color:var(--sub);text-align:center;margin-top:6px}
+  .hint{font-size:12px;color:var(--sub);text-align:center;margin:14px 2px;line-height:1.6}
+
+  /* compare table */
+  .cmpsel{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:4px 0 12px}
+  .cmpsel select{width:100%;padding:11px 10px;border-radius:12px;border:1px solid var(--line);background:#fff;font-size:14px;font-weight:700;color:var(--ink);box-shadow:var(--shadow);-webkit-appearance:none;text-align:center}
+  .ctable{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:12px}
+  .ctable th{padding:10px 6px;font-size:12px;font-weight:800;color:#fff}
+  .ctable td{padding:9px 7px;border-bottom:1px solid #f1ece4;text-align:center;vertical-align:middle}
+  .ctable td.cat{text-align:left;font-weight:600;font-size:11.5px;color:var(--ink);line-height:1.25}
+  .ctable .gh td{background:#faf7f3;font-size:10.5px;font-weight:800;color:var(--sub);text-align:left;padding:6px 8px;letter-spacing:.3px}
+  .ctable tr:last-child td{border-bottom:0}
+  .cv{font-weight:800;font-size:12.5px}
+  .cv.val{color:var(--ink)} .cv.sep{color:var(--blue)}
+  .pill{display:inline-block;padding:3px 7px;border-radius:8px;font-size:10.5px;font-weight:700}
+  .p-ok{background:#e7f5ee;color:var(--ok)} .p-mut{background:#f0ece6;color:#a79e92}
+  .p-no{background:#f6eeee;color:var(--no)} .p-add{background:#fdf4e1;color:#b8821c}
+  .ctable tr.totrow td{background:#2d2a26;color:#fff;font-weight:800;font-size:13px;border:0}
+  .totcards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin:4px 0 12px}
+  .tc{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:11px 8px;text-align:center;border-top:4px solid var(--gold);position:relative}
+  .tc .tcn{font-size:12px;font-weight:800;line-height:1.2}
+  .tc .tcv{font-size:14.5px;font-weight:800;margin-top:5px;letter-spacing:-.4px}
+  .tc .tcr{display:inline-block;margin-top:5px;font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:9px}
+  .tc .tcr.low{background:#e7f5ee;color:var(--ok)} .tc .tcr.mid{background:#fdf4e1;color:#c08b1f} .tc .tcr.high{background:#faeaea;color:var(--no)}
+  .ctable .hcat{background:#8c8378;text-align:left;padding-left:10px}
+  .ctable tr.sumtot td{background:#f3ebe2;font-weight:800;font-size:13px;color:var(--ink)}
+  .ctable tr.sumtot td.tl{text-align:left;padding-left:10px}
+  .ctable tr.sumtot td.best{background:#d8efe1;color:var(--ok)}
+  .diffbox{margin-top:12px;background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:14px;text-align:center}
+  .diffbox .dt{font-size:12px;color:var(--sub)}
+  .diffbox .dv{font-size:22px;font-weight:800;margin-top:3px;letter-spacing:-.5px}
+
+  /* matrix */
+  .mtable{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);font-size:12px;margin-top:4px}
+  .mtable th,.mtable td{padding:9px 5px;text-align:center;border-bottom:1px solid var(--line)}
+  .mtable th{background:#faf7f3;font-size:11px;font-weight:700}
+  .mtable td.cat{text-align:left;font-weight:600;font-size:11.5px;padding-left:10px}
+  .mtable .gh td{background:#faf7f3;text-align:left;font-size:10.5px;font-weight:800;color:var(--sub);padding:6px 10px}
+  .mtable tr:last-child td{border-bottom:0}
+  .badge{display:inline-block;min-width:42px;padding:4px 5px;border-radius:9px;font-size:10.5px;font-weight:700}
+  .b-ok{background:#e7f5ee;color:var(--ok)} .b-base{background:var(--goldbg);color:var(--gold)}
+  .b-sep{background:#eef1f6;color:var(--blue)} .b-add{background:#fdf4e1;color:#b8821c}
+  .b-no{background:#f6eeee;color:var(--no)}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 2px;font-size:11px;color:var(--sub)}
+  .legend span{display:flex;align-items:center;gap:4px}
+  .ldot{width:10px;height:10px;border-radius:3px;display:inline-block}
+
+  /* detail */
+  .vhead{display:flex;align-items:center;gap:10px;margin:4px 0 12px;padding:14px;border-radius:16px;color:#fff}
+  .vhead h2{font-size:18px}
+  .vhead p{margin:2px 0 0;font-size:12px;opacity:.9}
+  .vhead .vtot{margin-left:auto;text-align:right}
+  .vhead .vtot small{font-size:11px;opacity:.85;display:block}
+  .vhead .vtot b{font-size:19px}
+  .group{margin-bottom:16px}
+  .group .glabel{font-size:12px;font-weight:700;color:var(--sub);margin:0 4px 7px;letter-spacing:.3px}
+  .item{background:var(--card);border-radius:12px;box-shadow:var(--shadow);padding:12px 13px;margin-bottom:8px;display:flex;align-items:center;gap:11px}
+  .item.off{opacity:.55} .item.info-only{opacity:.92}
+  .chk{flex:0 0 auto;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);background:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;font-weight:900}
+  .chk.on{background:var(--gold);border-color:var(--gold)}
+  .item .info{flex:1 1 auto;min-width:0}
+  .item .lbl{font-size:14px;font-weight:600}
+  .item .nt{font-size:11px;color:var(--sub);margin-top:2px;line-height:1.4}
+  .item .amt{flex:0 0 auto;display:flex;align-items:center;gap:3px}
+  .item .amt input{width:72px;border:1px solid var(--line);border-radius:9px;padding:8px 6px;text-align:right;font-size:15px;font-weight:700;color:var(--ink);background:#fbfaf8}
+  .item .amt input:focus{outline:none;border-color:var(--gold);background:#fff}
+  .item .amt .u{font-size:12px;color:var(--sub);font-weight:600;width:26px}
+  .item .sub{font-size:10.5px;color:var(--gold);text-align:right;margin-top:3px;font-weight:600}
+  .item .spill{flex:0 0 auto;padding:5px 10px;border-radius:9px;font-size:11.5px;font-weight:700}
+  .tagbadge{display:inline-block;margin-left:6px;padding:2px 7px;border-radius:8px;font-size:10px;font-weight:700;vertical-align:middle}
+
+  .footbtns{display:flex;gap:8px;margin:18px 0}
+  .footbtns button{flex:1;padding:12px;border-radius:12px;border:0;font-size:13.5px;font-weight:700;box-shadow:var(--shadow)}
+  .btn-share{background:var(--gold);color:#fff}
+  .btn-reset{background:var(--card);color:var(--no)}
+
+  .savebar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#2d2a26;color:#fff;padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 -4px 20px rgba(0,0,0,.2)}
+  .savebar.show{display:flex}
+  .savebar span{font-size:13px;font-weight:600}
+  .savebar button{background:var(--gold);color:#fff;border:0;border-radius:10px;padding:11px 22px;font-size:14px;font-weight:800}
+  .toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:#2d2a26;color:#fff;padding:11px 20px;border-radius:24px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:50;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>웨딩홀 견적 비교</h1>
+    <p>세코 더 그레이드 · GL 웨딩컨벤션 · 그랜드머큐어 창원</p>
+    <div id="cloudStatus" class="cstat">연결 확인 중…</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="guestbar">
+    <label>하객 인원 (지불보증)</label>
+    <div class="g">
+      <div class="stepper">
+        <button onclick="bumpGuest(-10)">−</button>
+        <input id="guest" type="text" inputmode="numeric" value="150" onchange="setGuest(this.value)">
+        <button onclick="bumpGuest(10)">+</button>
+      </div>
+      <span style="font-size:13px;color:var(--sub);font-weight:600">명</span>
+    </div>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+
+  <!-- 종합비교 (3곳 한눈에) -->
+  <div class="panel active" id="p-sum">
+    <div class="totcards" id="totcards"></div>
+    <div style="overflow-x:auto"><table class="ctable" id="sumtable"></table></div>
+    <p class="hint">같은 줄에서 세 식장을 바로 비교하세요. 숫자=유료(만원) / 포함=패키지 / 서비스=무료 / 옵션=선택 / –=미제공.<br>금액 수정은 각 식장 탭에서 → 저장하면 여기 반영됩니다.</p>
+  </div>
+
+  <!-- 2곳 비교 -->
+  <div class="panel" id="p-compare">
+    <div class="cmpsel">
+      <select id="cmpA" onchange="renderCompare()"></select>
+      <select id="cmpB" onchange="renderCompare()"></select>
+    </div>
+    <div style="overflow-x:auto"><table class="ctable" id="ctable"></table></div>
+    <div class="diffbox" id="diffbox"></div>
+    <p class="hint">같은 항목이 같은 줄에 있어, 여기는 포함·저기는 별도인 게 한눈에 보입니다. (금액=유료 / 포함=패키지 / 서비스=무료 / 옵션=선택 / –=미제공)</p>
+  </div>
+
+  <!-- 항목별 포함 -->
+  <div class="panel" id="p-matrix">
+    <div class="legend">
+      <span><i class="ldot" style="background:var(--gold)"></i>기본요금</span>
+      <span><i class="ldot" style="background:var(--ok)"></i>패키지 포함/서비스</span>
+      <span><i class="ldot" style="background:var(--blue)"></i>협력업체 별도</span>
+      <span><i class="ldot" style="background:var(--add)"></i>옵션(선택)</span>
+      <span><i class="ldot" style="background:var(--no)"></i>미제공</span>
+    </div>
+    <div style="overflow-x:auto"><table class="mtable" id="matrix"></table></div>
+  </div>
+
+  <div class="panel" id="p-ceco"></div>
+  <div class="panel" id="p-gl"></div>
+  <div class="panel" id="p-grand"></div>
+
+  <div class="footbtns">
+    <button class="btn-share" onclick="share()">이 견적 공유 링크 복사</button>
+    <button class="btn-reset" onclick="resetAll()">초기화</button>
+  </div>
+  <p class="hint">공유 링크를 복사해 카톡으로 보내면, 받는 사람도 지금 저장된 금액 그대로 볼 수 있어요.</p>
+</div>
+
+<div class="savebar" id="savebar">
+  <span>저장 안 된 변경사항이 있어요</span>
+  <button onclick="saveChanges()">저장하고 반영</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- Firebase 실시간 동기화 SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+<script>
+const FIREBASE_CONFIG={
+  apiKey:"AIzaSyB36v8ZOXcEX5BN8YLNsMF_BYJCWFzwq-4",
+  authDomain:"marryme-6c0e6.firebaseapp.com",
+  databaseURL:"https://marryme-6c0e6-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:"marryme-6c0e6",
+  appId:"1:337226159198:web:4b3dce9ef3cd1cb99510cf"
+};
+const ROOM="jiuk-wedding";
+
+const COLORS={ceco:'#b08968',gl:'#5f7a52',grand:'#5b6b86'};
+function shade(hex){const n=parseInt(hex.slice(1),16);let r=Math.max(0,(n>>16)-25),g=Math.max(0,((n>>8)&255)-25),b=Math.max(0,(n&255)-25);return '#'+((1<<24)+(r<<16)+(g<<8)+b).toString(16).slice(1);}
+
+/* 공통 항목 (모든 식장 동일 순서) */
+const CATS=[
+  {id:'food',group:'예식 기본',label:'뷔페 식대 (1인)'},
+  {id:'hall',group:'예식 기본',label:'대관료·웨딩홀'},
+  {id:'dress',group:'드레스·뷰티',label:'드레스 (신부+신랑 턱시도)'},
+  {id:'hmB',group:'드레스·뷰티',label:'신랑신부 헤어&메이크업'},
+  {id:'hmP',group:'드레스·뷰티',label:'혼주 헤어&메이크업 (4인)'},
+  {id:'hmR',group:'드레스·뷰티',label:'리허설 헤어&메이크업'},
+  {id:'bouquet',group:'드레스·뷰티',label:'부케·부토니아'},
+  {id:'studio',group:'촬영·연출',label:'스튜디오 촬영 (웨딩촬영)'},
+  {id:'album',group:'촬영·연출',label:'원판 앨범'},
+  {id:'snap',group:'촬영·연출',label:'본식 스냅'},
+  {id:'dvd',group:'촬영·연출',label:'DVD 영상'},
+  {id:'prod',group:'촬영·연출',label:'특수연출·혼구용품·도우미'},
+  {id:'mc',group:'옵션·기타',label:'전문 사회자'},
+  {id:'officiant',group:'옵션·기타',label:'주례'},
+];
+/* 상태 정의 */
+const ST={
+  cost   :{txt:'',       chk:true, edit:true, defOn:true,  zero:false, cls:'base'},
+  sep    :{txt:'별도',    chk:true, edit:true, defOn:true,  zero:false, cls:'sep'},
+  option :{txt:'옵션',    chk:true, edit:true, defOn:false, zero:false, cls:'add'},
+  ask    :{txt:'확인필요', chk:true, edit:true, defOn:false, zero:false, cls:'add'},
+  service:{txt:'서비스(무료)', chk:false, edit:false, defOn:true, zero:true, cls:'ok'},
+  incl   :{txt:'패키지 포함', chk:false, edit:false, defOn:true, zero:true, cls:'ok'},
+  none   :{txt:'미제공',   chk:false, edit:false, defOn:false, zero:true, cls:'no'},
+};
+
+/* 식장별 셀. s=상태, a=금액, u=단위(기본 만), k=종류(fix/per), nt=설명, on=기본체크(생략시 상태기본) */
+const VENUES={
+  ceco:{name:'세코 더 그레이드',sub:'창원컨벤션센터 · 055-212-1251',type:'대관료형 (스드메 협력업체 별도)',
+    cells:{
+      food:{s:'cost',a:50000,u:'원',k:'per',nt:'소인 4~7세 25,000원 · 소모량 정산'},
+      hall:{s:'cost',a:300,nt:'웨딩홀·신부대기실·플라워·특수조명·음향·포토테이블·혼구용품·예식도우미 포함'},
+      dress:{s:'sep',a:180,nt:'엘렌브라이드 등 협력업체 · level 선택'},
+      hmB:{s:'ask',a:0,nt:'견적서 미표기 · 드레스샵 포함 여부 확인 필요'},
+      hmP:{s:'sep',a:50,nt:'양가혼주 4인'},
+      hmR:{s:'ask',a:0,nt:'견적서 미표기 · 확인 필요'},
+      bouquet:{s:'ask',a:0,nt:'드레스샵 문의 (견적서 미표기)'},
+      studio:{s:'sep',a:120,nt:'블랑드원느·로라하우스·세미앙·라앤디'},
+      album:{s:'sep',a:75,nt:'원판&스냅 묶음 · 앨범 3권 (창포토·유니크픽처스·콴그라피)'},
+      snap:{s:'incl',nt:'원판&스냅에 포함'},
+      dvd:{s:'none'},
+      prod:{s:'incl',nt:'대관료에 포함 (특수조명·음향·혼구용품·도우미)'},
+      mc:{s:'none'},
+      officiant:{s:'none'},
+    },
+    extras:[
+      {label:'웰컴바 & 포토존',s:'cost',a:50,nt:'포도/오렌지쥬스 외 계절음료 차세팅'},
+      {label:'한복',s:'option',a:55,nt:'자민·메리앤부띠끄·테힐라·함초롱'},
+      {label:'테일러 (예복)',s:'option',a:75,nt:'살로토·커민테일러 · level 선택'},
+    ]},
+  gl:{name:'GL 웨딩컨벤션',sub:'창원중앙역 · Garden홀 · 055-266-6668',type:'패키지 프로모션형',
+    cells:{
+      food:{s:'cost',a:53000,u:'원',k:'per',nt:'음/주류·VAT 포함 · 소인 25,000 / 유아 15,000'},
+      hall:{s:'cost',a:280,nt:'프로모션 패키지: 대관료+드레스+신랑신부 H&M+부케 (원래 380만, 스튜디오 자체진행으로 100만 제외=280만)'},
+      dress:{s:'incl',nt:'패키지 포함 (신부 드레스+신랑 정장, 추가금 없음)'},
+      hmB:{s:'incl',nt:'패키지 포함'},
+      hmP:{s:'service',nt:'서비스로 무료 제공'},
+      hmR:{s:'service',nt:'신랑신부 리허설 — 서비스로 무료 제공'},
+      bouquet:{s:'incl',nt:'패키지 포함 (부케 세트)'},
+      studio:{s:'option',a:100,on:false,nt:'자체 스튜디오 별도 진행 (GL 패키지에서 제외됨). 포함하려면 체크'},
+      album:{s:'incl',nt:'아래 특수연출 패키지(500만)에 원판사진 포함'},
+      snap:{s:'option',a:80,nt:'GL 모먼트 스냅 (선택)'},
+      dvd:{s:'option',a:50,nt:'50만 기본 / 100만 하이라이트+풀영상'},
+      prod:{s:'cost',a:500,nt:'원판사진+혼구용품+특수연출+전문도우미 포함 패키지'},
+      mc:{s:'option',a:30,nt:'옵션으로 제외 (필요 시 30~50만)'},
+      officiant:{s:'option',a:20,nt:'옵션으로 제외'},
+    },
+    extras:[
+      {label:'드레스 업그레이드 (STELLA 4벌)',s:'option',a:100,nt:'ENZO·ROSEROSA·YIJU'},
+    ]},
+  grand:{name:'그랜드머큐어 창원',sub:'앰배서더 호텔 · Garden House홀',type:'호텔 올인클루시브형',
+    cells:{
+      food:{s:'cost',a:55000,u:'원',k:'per',nt:'소인 5~11세 30,000원 · 음료5천/주류7천 별도'},
+      hall:{s:'cost',a:550,nt:'올인클루시브: 드레스·턱시도·신랑신부 H&M·부케·원판앨범3권·플라워·웨딩연출·혼구용품 포함 (Grand홀 580만)'},
+      dress:{s:'incl',nt:'패키지 포함'},
+      hmB:{s:'incl',nt:'패키지 포함'},
+      hmP:{s:'option',a:50,on:true,nt:'양가혼주 4인 (추가)'},
+      hmR:{s:'option',a:25,nt:'부산샵 기준'},
+      bouquet:{s:'incl',nt:'패키지 포함'},
+      studio:{s:'none',nt:'사전 웨딩촬영 미제공 (본식 스냅으로 대체)'},
+      album:{s:'incl',nt:'패키지 포함 (원판 10P × 앨범 3권)'},
+      snap:{s:'option',a:70,on:true,nt:'라임스튜디오 · PKG 계약시 70만 (단독 80만)'},
+      dvd:{s:'option',a:47,nt:'앤위고 데이터형 (베이직70/디럭스99)'},
+      prod:{s:'incl',nt:'패키지 포함 (웨딩연출·플라워·혼구용품)'},
+      mc:{s:'option',a:30,nt:'30~35만'},
+      officiant:{s:'option',a:15},
+    },
+    extras:[
+      {label:'현악 3중주',s:'option',a:55,nt:'피아노·첼로·바이올린'},
+      {label:'생화 장식',s:'option',a:75,nt:'대기실 75~250만 / 입구 180~600만'},
+      {label:'포토부스 (피루필름)',s:'option',a:38,nt:''},
+      {label:'폐백 음식 + 수모비',s:'option',a:23,nt:'음식 13만~ + 수모비 10만'},
+    ]},
+};
+
+/* 아이템 전개 (식장별 동일 순서) */
+const ITEMS={};
+function buildItems(){
+  for(const v in VENUES){
+    const V=VENUES[v];const arr=[];
+    CATS.forEach(cat=>{
+      const c=V.cells[cat.id]||{s:'none'};
+      arr.push({id:v+'_'+cat.id,rowKey:cat.id,v,label:cat.label,group:cat.group,nt:c.nt||'',
+        amount:c.a||0,unit:c.u||'만',kind:c.k||'fix',status:c.s,defOn:(c.on!==undefined?c.on:ST[c.s].defOn)});
+    });
+    V.extras.forEach((e,i)=>{
+      arr.push({id:v+'_x'+i,rowKey:'x:'+e.label,v,label:e.label,group:'식장 단독 옵션',nt:e.nt||'',
+        amount:e.a||0,unit:e.u||'만',kind:e.k||'fix',status:e.s,defOn:(e.on!==undefined?e.on:ST[e.s].defOn)});
+    });
+    ITEMS[v]=arr;
+  }
+}
+buildItems();
+const ITEM_BY_ID={};for(const v in ITEMS)ITEMS[v].forEach(it=>ITEM_BY_ID[it.id]=it);
+
+/* 상태 */
+let STATE,DRAFT;const compareSel={a:'ceco',b:'gl'};const openCards={};
+function defaultState(){const s={guest:150,items:{}};for(const v in ITEMS)ITEMS[v].forEach(it=>s.items[it.id]={amount:it.amount,on:it.defOn});return s;}
+function clone(o){return JSON.parse(JSON.stringify(o));}
+function mergeState(d){const base=defaultState();if(d&&d.guest)base.guest=d.guest;if(d&&d.items)for(const k in d.items)if(base.items[k])base.items[k]={...base.items[k],...d.items[k]};return base;}
+function loadState(){
+  if(location.hash.length>1){try{STATE=mergeState(JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(1))))));DRAFT=clone(STATE);return;}catch(e){}}
+  const ls=localStorage.getItem('weddingCompare');
+  if(ls){try{STATE=mergeState(JSON.parse(ls));DRAFT=clone(STATE);return;}catch(e){}}
+  STATE=defaultState();DRAFT=clone(STATE);
+}
+function save(){localStorage.setItem('weddingCompare',JSON.stringify(STATE));}
+function isDirty(){return JSON.stringify(DRAFT.items)!==JSON.stringify(STATE.items);}
+
+/* 계산 */
+function itemWon(it,src){if(ST[it.status].zero)return 0;const st=src.items[it.id];if(!st||!st.on)return 0;let a=Number(st.amount)||0;if(it.unit==='만')a*=10000;if(it.kind==='per')a*=src.guest;return a;}
+function venueTotal(v,src){let t=0;ITEMS[v].forEach(it=>t+=itemWon(it,src));return t;}
+function won(n){return n.toLocaleString('ko-KR');}
+function man(n){if(n===0)return '0';const m=n/10000;return (Math.round(m*10)/10).toLocaleString('ko-KR')+'만';}
+
+/* 탭 */
+const TABS=[{id:'sum',label:'종합비교'},{id:'compare',label:'2곳 비교'},{id:'matrix',label:'항목별포함'},{id:'ceco',label:'세코'},{id:'gl',label:'GL'},{id:'grand',label:'그랜드머큐어'}];
+function renderTabs(){document.getElementById('tabs').innerHTML=TABS.map((t,i)=>`<div class="tab${i===0?' active':''}" data-tab="${t.id}" onclick="switchTab('${t.id}')">${t.label}</div>`).join('');}
+function switchTab(id){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id));document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.getElementById('p-'+id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+
+const SHORT={ceco:'세코',gl:'GL',grand:'그랜드'};
+function findItem(v,rowKey){return ITEMS[v].find(it=>it.rowKey===rowKey);}
+function cmpCell(v,rowKey){
+  const it=findItem(v,rowKey);if(!it)return '<span class="pill p-mut">–</span>';
+  const s=ST[it.status];const st=STATE.items[it.id];
+  if(s.zero){if(it.status==='incl')return '<span class="pill p-ok">포함</span>';if(it.status==='service')return '<span class="pill p-ok">서비스</span>';return '<span class="pill p-mut">미제공</span>';}
+  if(!st.on){if(it.status==='option')return '<span class="pill p-add">옵션</span>';if(it.status==='ask')return '<span class="pill p-add">확인</span>';return '<span class="pill p-mut">제외</span>';}
+  const w=itemWon(it,STATE);return `<span class="cv ${it.status==='sep'?'sep':'val'}">${man(w)}</span>`;
+}
+/* 공통: 정렬 비교표 (식장 여러 곳) */
+function compareTableHTML(vlist){
+  let groups={};CATS.forEach(c=>{(groups[c.group]=groups[c.group]||[]).push({rowKey:c.id,label:c.label});});
+  const extraKeys=[];vlist.forEach(v=>ITEMS[v].forEach(it=>{if(it.rowKey.startsWith('x:')&&!extraKeys.find(e=>e.rowKey===it.rowKey))extraKeys.push({rowKey:it.rowKey,label:it.label});}));
+  if(extraKeys.length)groups['식장 단독 옵션']=extraKeys;
+  const tots=vlist.map(v=>venueTotal(v,STATE));const min=Math.min(...tots);
+  let html=`<tr><th class="hcat">항목</th>`+vlist.map(v=>`<th style="background:${COLORS[v]}">${SHORT[v]}</th>`).join('')+`</tr>`;
+  html+=`<tr class="sumtot"><td class="tl">예상 총액</td>`+vlist.map((v,i)=>`<td class="${tots[i]===min&&vlist.length>1?'best':''}">${man(tots[i])}</td>`).join('')+`</tr>`;
+  for(const g in groups){
+    html+=`<tr class="gh"><td colspan="${vlist.length+1}">${g}</td></tr>`;
+    groups[g].forEach(row=>{html+=`<tr><td class="cat">${row.label}</td>`+vlist.map(v=>`<td>${cmpCell(v,row.rowKey)}</td>`).join('')+`</tr>`;});
+  }
+  return html;
+}
+/* 종합비교 (3곳 한눈에) */
+function renderSummary(){
+  const vs=Object.keys(VENUES);
+  const tots=vs.map(v=>venueTotal(v,STATE));const sorted=[...tots].sort((a,b)=>a-b);
+  document.getElementById('totcards').innerHTML=vs.map((v,i)=>{
+    const t=tots[i];const r=sorted.indexOf(t);const rc=t===sorted[0]?'low':(t===sorted[sorted.length-1]?'high':'mid');const rt=t===sorted[0]?'최저가':(t===sorted[sorted.length-1]?'최고가':'중간');
+    return `<div class="tc" style="border-color:${COLORS[v]}"><div class="tcn" style="color:${COLORS[v]}">${SHORT[v]}</div><div class="tcv">${won(t)}원</div><span class="tcr ${rc}">${rt}</span></div>`;
+  }).join('');
+  document.getElementById('sumtable').innerHTML=compareTableHTML(vs);
+}
+/* 2곳 비교 */
+function renderCompareSelectors(){const opts=Object.keys(VENUES).map(v=>`<option value="${v}">${VENUES[v].name}</option>`).join('');const a=document.getElementById('cmpA'),b=document.getElementById('cmpB');a.innerHTML=opts;b.innerHTML=opts;a.value=compareSel.a;b.value=compareSel.b;}
+function renderCompare(){
+  compareSel.a=document.getElementById('cmpA').value;compareSel.b=document.getElementById('cmpB').value;
+  const A=compareSel.a,B=compareSel.b;
+  document.getElementById('ctable').innerHTML=compareTableHTML([A,B]);
+  const ta=venueTotal(A,STATE),tb=venueTotal(B,STATE);const diff=Math.abs(ta-tb);const cheaper=ta===tb?null:(ta<tb?A:B);const dbox=document.getElementById('diffbox');
+  if(A===B)dbox.innerHTML=`<div class="dt">같은 식장을 선택했습니다</div>`;
+  else dbox.innerHTML=`<div class="dt"><b style="color:${COLORS[cheaper]}">${VENUES[cheaper].name}</b> 가 더 저렴</div><div class="dv" style="color:${COLORS[cheaper]}">${won(diff)}원 차이</div>`;
+}
+
+/* 항목별 포함 매트릭스 (데이터 자동 생성) */
+function statusBadge(v,catid){
+  const it=findItem(v,catid);if(!it)return '<span class="badge b-no">미제공</span>';
+  const map={cost:['기본','b-base'],sep:['별도','b-sep'],option:['옵션','b-add'],ask:['확인','b-add'],service:['서비스','b-ok'],incl:['포함','b-ok'],none:['미제공','b-no']};
+  const[txt,cls]=map[it.status];return `<span class="badge ${cls}">${txt}</span>`;
+}
+function renderMatrix(){
+  let html=`<tr><th style="text-align:left;padding-left:10px">항목</th><th style="color:${COLORS.ceco}">세코</th><th style="color:${COLORS.gl}">GL</th><th style="color:${COLORS.grand}">그랜드</th></tr>`;
+  let lastG='';
+  CATS.forEach(cat=>{
+    if(cat.group!==lastG){html+=`<tr class="gh"><td colspan="4">${cat.group}</td></tr>`;lastG=cat.group;}
+    html+=`<tr><td class="cat">${cat.label}</td><td>${statusBadge('ceco',cat.id)}</td><td>${statusBadge('gl',cat.id)}</td><td>${statusBadge('grand',cat.id)}</td></tr>`;
+  });
+  document.getElementById('matrix').innerHTML=html;
+}
+
+/* 식장 상세 (DRAFT) */
+function renderVenue(v){
+  const d=VENUES[v];const tot=venueTotal(v,DRAFT);
+  let html=`<div class="vhead" style="background:linear-gradient(135deg,${COLORS[v]},${shade(COLORS[v])})"><div><h2>${d.name}</h2><p>${d.type}</p></div><div class="vtot"><small>체크된 항목 합계</small><b>${won(tot)}원</b></div></div>`;
+  let lastG='';
+  ITEMS[v].forEach(it=>{
+    if(it.group!==lastG){if(lastG)html+='</div>';html+=`<div class="group"><div class="glabel">${it.group}</div>`;lastG=it.group;}
+    const s=ST[it.status];const st=DRAFT.items[it.id];
+    const tag=s.txt?`<span class="tagbadge ${'b-'+s.cls}">${s.txt}</span>`:'';
+    if(s.chk){
+      const sub=it.kind==='per'?`× ${won(DRAFT.guest)}명 = ${won((Number(st.amount)||0)*DRAFT.guest)}원`:'';
+      html+=`<div class="item${st.on?'':' off'}">
+        <div class="chk${st.on?' on':''}" onclick="toggle('${it.id}','${v}')">${st.on?'✓':''}</div>
+        <div class="info"><div class="lbl">${it.label}${tag}</div>${it.nt?`<div class="nt">${it.nt}</div>`:''}</div>
+        <div style="text-align:right"><div class="amt"><input type="text" inputmode="numeric" value="${won(Number(st.amount))}" onfocus="this.select()" onchange="setAmt('${it.id}','${v}',this.value)"><span class="u">${it.unit==='만'?'만원':'원'}</span></div>${sub?`<div class="sub">${sub}</div>`:''}</div></div>`;
+    }else{
+      const pill=it.status==='none'?'p-no':(it.status==='service'||it.status==='incl'?'p-ok':'p-mut');
+      html+=`<div class="item info-only">
+        <div class="info"><div class="lbl">${it.label}</div>${it.nt?`<div class="nt">${it.nt}</div>`:''}</div>
+        <span class="spill ${pill}">${s.txt}</span></div>`;
+    }
+  });
+  if(lastG)html+='</div>';
+  document.getElementById('p-'+v).innerHTML=html;
+}
+
+function renderAll(){renderSummary();renderMatrix();renderCompare();Object.keys(VENUES).forEach(renderVenue);document.getElementById('guest').value=STATE.guest;updateSaveBar();}
+function updateSaveBar(){document.getElementById('savebar').classList.toggle('show',isDirty());}
+
+/* 이벤트 */
+function toggle(id,v){DRAFT.items[id].on=!DRAFT.items[id].on;renderVenue(v);updateSaveBar();}
+function setAmt(id,v,val){DRAFT.items[id].amount=Number(String(val).replace(/[^0-9]/g,''))||0;renderVenue(v);updateSaveBar();}
+function saveChanges(){STATE.items=clone(DRAFT.items);STATE.guest=DRAFT.guest;save();cloudPush();renderSummary();renderCompare();renderMatrix();updateSaveBar();toast('저장 완료 · 종합비교에 반영됨');switchTab('sum');}
+function setGuest(val){let n=Math.max(0,Number(String(val).replace(/[^0-9]/g,''))||0);STATE.guest=n;DRAFT.guest=n;save();cloudPush();renderAll();}
+function bumpGuest(d){setGuest(STATE.guest+d);}
+function resetAll(){if(!confirm('모든 금액·체크를 처음 견적 상태로 되돌릴까요? (둘이 함께 쓰는 중이면 상대 화면도 초기화됩니다)'))return;STATE=defaultState();DRAFT=clone(STATE);save();cloudPush();history.replaceState(null,'',location.pathname);renderAll();toast('초기화 완료');}
+function share(){
+  let url,msg;
+  if(cloudReady){url=location.origin+location.pathname;msg='접속 링크 복사됨 · 아내도 이 링크로 들어오면 실시간 공유';}
+  else{if(isDirty()&&!confirm('저장 안 된 변경사항은 공유 링크에 포함되지 않습니다. 계속할까요?'))return;url=location.origin+location.pathname+'#'+btoa(unescape(encodeURIComponent(JSON.stringify(STATE))));msg='공유 링크 복사됨';}
+  if(navigator.share){navigator.share({title:'웨딩홀 견적 비교',url}).catch(()=>copy(url,msg));}else copy(url,msg);
+}
+function copy(text,msg){navigator.clipboard?.writeText(text).then(()=>toast(msg||'복사됨')).catch(()=>prompt('아래 링크를 복사하세요',text));}
+let toastT;function toast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>el.classList.remove('show'),1800);}
+
+/* Firebase 실시간 동기화 */
+let dbRef=null,cloudReady=false,applyingRemote=false;
+function setStatus(mode){const el=document.getElementById('cloudStatus');if(!el)return;el.className='cstat '+mode;el.textContent={on:'● 실시간 공유 연결됨 (둘이 함께 수정 가능)',off:'○ 오프라인 · 재연결 중…',local:'이 기기에만 저장 중 (공유 설정 전)',error:'연결 오류 · 이 기기에만 저장'}[mode]||'';}
+function cloudPush(){if(cloudReady&&!applyingRemote){try{dbRef.set(STATE);}catch(e){}}}
+function initCloud(){
+  if(!FIREBASE_CONFIG.apiKey||FIREBASE_CONFIG.apiKey.startsWith('PASTE')){setStatus('local');return;}
+  try{
+    firebase.initializeApp(FIREBASE_CONFIG);dbRef=firebase.database().ref('weddingCompare/'+ROOM);cloudReady=true;
+    dbRef.on('value',snap=>{const data=snap.val();if(!data){dbRef.set(STATE);return;}applyingRemote=true;STATE=mergeState(data);save();if(!isDirty())DRAFT=clone(STATE);renderAll();applyingRemote=false;},()=>setStatus('error'));
+    firebase.database().ref('.info/connected').on('value',s=>setStatus(s.val()?'on':'off'));
+  }catch(e){setStatus('error');}
+}
+
+loadState();renderTabs();renderCompareSelectors();renderAll();initCloud();
+</script>
+</body>
+</html>
