@@ -111,7 +111,7 @@ body::after{
 .rd .cap{ font-size:12.5px; font-weight:500; color:var(--mute); letter-spacing:.005em; }
 .rd .val{ margin-top:18px; font-size:clamp(32px,3.8vw,46px); font-weight:700; letter-spacing:-.035em; line-height:1; color:var(--ink); }
 .rd .val .u{ font-size:15px; font-weight:600; color:var(--signal); margin-left:3px; }
-.rd .val .kpi{ font-size:0.6em; font-weight:800; color:var(--ink); margin-right:10px; letter-spacing:-.02em; }
+.rd .val .kpi,.m .val .kpi{ font-size:0.6em; font-weight:800; color:var(--ink); margin-right:10px; letter-spacing:-.02em; }
 .rd .delta{ margin-top:14px; font-size:13px; font-weight:500; color:var(--signal); }
 .rd .delta.neu{ color:var(--mute); }
 .rd .spark{ margin-top:20px; display:block; }
@@ -651,9 +651,9 @@ body::after{
 
       <div class="body">
         <div class="mstrip c3">
-          <div class="m"><div class="cap">짐보관 AI영상 · CTR</div><div class="val num">+43<span class="u">%</span></div></div>
-          <div class="m"><div class="cap">타겟 리프레이밍 · 전환</div><div class="val num">+67.7<span class="u">%</span></div></div>
-          <div class="m"><div class="cap">리드 리프레이밍 · 타겟적중</div><div class="val num">+30<span class="u">%</span></div></div>
+          <div class="m"><div class="cap">짐보관 AI영상</div><div class="val num"><span class="kpi">CTR</span>+43<span class="u">%</span></div></div>
+          <div class="m"><div class="cap">타겟 리프레이밍</div><div class="val num"><span class="kpi">전환</span>+67.7<span class="u">%</span></div></div>
+          <div class="m"><div class="cap">리드 리프레이밍</div><div class="val num"><span class="kpi">타겟적중</span>+30<span class="u">%</span></div></div>
         </div>
 
         <div class="sec">
