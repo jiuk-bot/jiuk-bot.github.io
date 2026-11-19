@@ -111,6 +111,7 @@ body::after{
 .rd .cap{ font-size:12.5px; font-weight:500; color:var(--mute); letter-spacing:.005em; }
 .rd .val{ margin-top:18px; font-size:clamp(32px,3.8vw,46px); font-weight:700; letter-spacing:-.035em; line-height:1; color:var(--ink); }
 .rd .val .u{ font-size:15px; font-weight:600; color:var(--signal); margin-left:3px; }
+.rd .val .kpi{ font-size:0.6em; font-weight:800; color:var(--ink); margin-right:10px; letter-spacing:-.02em; }
 .rd .delta{ margin-top:14px; font-size:13px; font-weight:500; color:var(--signal); }
 .rd .delta.neu{ color:var(--mute); }
 .rd .spark{ margin-top:20px; display:block; }
@@ -487,32 +488,32 @@ body::after{
 
     <div class="readout hero-anim d4">
       <div class="rd">
-        <div class="cap">짐보관 AI영상 A/B · <b style="color:var(--signal);font-weight:800">CTR</b></div>
-        <div class="val num"><span class="n" data-to="9.56">9.56</span><span class="u">%</span></div>
+        <div class="cap">짐보관 AI영상 A/B</div>
+        <div class="val num"><span class="kpi">CTR</span><span class="n" data-to="9.56">9.56</span><span class="u">%</span></div>
         <div class="delta num">6.7% → 9.56% · +42.7%</div>
         <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
           <polyline points="2,22 26,20 50,15 74,12 98,6 126,2" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="rd">
-        <div class="cap">의료 마케팅 · <b style="color:var(--signal);font-weight:800">ROAS</b></div>
-        <div class="val num"><span class="n" data-to="3">3</span><span class="u">배</span></div>
+        <div class="cap">의료 마케팅</div>
+        <div class="val num"><span class="kpi">ROAS</span><span class="n" data-to="3">3</span><span class="u">배</span></div>
         <div class="delta num">광고 집행 최적화 · ROAS 3배 상승</div>
         <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
           <polyline points="2,23 30,22 58,19 86,12 126,2" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="rd">
-        <div class="cap">KB국민은행 · <b style="color:var(--signal);font-weight:800">CPI(앱 실행 단가)</b></div>
-        <div class="val num">−<span class="n" data-to="41">41</span><span class="u">%</span></div>
+        <div class="cap">KB국민은행 · 앱 실행</div>
+        <div class="val num"><span class="kpi">CPI</span>−<span class="n" data-to="41">41</span><span class="u">%</span></div>
         <div class="delta num">앱 실행 단가(CPI) 41% 개선</div>
         <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
           <polyline points="2,3 34,7 66,12 98,18 126,23" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="rd">
-        <div class="cap">리드 소재 리프레이밍 · <b style="color:var(--signal);font-weight:800">타겟적중</b></div>
-        <div class="val num"><span class="n" data-to="70">70</span><span class="u">%</span></div>
+        <div class="cap">리드 소재 리프레이밍</div>
+        <div class="val num"><span class="kpi">타겟적중</span><span class="n" data-to="70">70</span><span class="u">%</span></div>
         <div class="delta num">40% → 70% · 임대인 비율</div>
         <svg class="spark" width="128" height="26" viewBox="0 0 128 26" fill="none">
           <polyline points="2,22 34,20 66,14 98,8 126,3" stroke="#9CB596" stroke-width="2" fill="none" stroke-linecap="round"/>
