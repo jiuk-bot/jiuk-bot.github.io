@@ -210,6 +210,13 @@ body::after{
   font-size:13px; font-weight:500; color:var(--signal); font-variant-numeric:tabular-nums;
   border:0; width:28px; text-align:left; }
 
+.stepflow{ display:flex; flex-direction:column; gap:9px; margin:14px 0 6px; }
+.sc{ display:flex; gap:13px; align-items:flex-start; background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--signal); border-radius:12px; padding:12px 15px; }
+.sc .scn{ flex:0 0 24px; width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+.sc .sct{ font-size:13px; line-height:1.5; color:var(--mute); }
+.sc .sct b{ display:block; color:var(--ink); font-weight:800; font-size:13.5px; margin-bottom:2px; }
+.sc .sct em{ font-style:normal; color:var(--signal); font-weight:700; }
+
 .insight{
   font-size:17px; line-height:1.72; color:var(--ink); font-weight:400;
   border:0; border-left:2px solid var(--cyan); border-radius:0; padding:6px 0 6px 26px;
@@ -1054,15 +1061,15 @@ body::after{
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
-          <ol class="steps">
-            <li>리드 → 상담 → 내원 → 시술로 이어지는 전환 퍼널을 역산해, 광고를 <b>'내원'까지 책임지는 구조</b>로 재정의</li>
-            <li>오프라인 방문이 가능한 고객을 지역 단위로 캠페인을 분리·분류해 <b>지역별 성과를 독립적으로 측정</b>할 수 있게 설계</li>
-            <li>지역별 내원율·CAC·ROAS를 데이터로 집계 — 리드 CPA가 아닌 <b>'지역별 CAC'까지 추적</b></li>
-            <li>내원율이 높아 ROAS가 우수한 핵심 지역을 식별하고, <b>저효율 지역은 감액·정리</b>로 예산 누수 차단</li>
-            <li>구글애즈·메타·틱톡 3개 매체 × 매체별 소재·오디언스를 A/B 테스트하며 <b>리드 볼륨과 품질을 동시 관리</b></li>
-            <li>신규 매체(틱톡)의 주 타겟(시니어) 규모를 <b>데이터로 검증 후 확장 제안</b></li>
-            <li>핵심 지역에 광고비 볼륨 증액을 데이터로 광고주에게 설득 → 고효율 지역 중심으로 <b>취급고 확대</b></li>
-          </ol>
+          <div class="stepflow">
+            <div class="sc"><span class="scn">1</span><div class="sct"><b>퍼널 역산·재정의</b>리드→상담→내원→시술까지 역산해 광고를 <em>'내원까지 책임지는 구조'</em>로 재정의</div></div>
+            <div class="sc"><span class="scn">2</span><div class="sct"><b>지역별 독립 측정</b>지역 단위로 캠페인을 분리해 지역별 성과를 독립적으로 측정</div></div>
+            <div class="sc"><span class="scn">3</span><div class="sct"><b>지역 CAC 추적</b>리드 CPA가 아닌 <em>지역별 내원율·CAC·ROAS</em>까지 데이터로 집계</div></div>
+            <div class="sc"><span class="scn">4</span><div class="sct"><b>고효율 지역 집중</b>ROAS 우수 지역 식별 + 저효율 지역·매체는 감액으로 예산 누수 차단</div></div>
+            <div class="sc"><span class="scn">5</span><div class="sct"><b>다매체 A/B</b>구글애즈·메타·틱톡 3매체 × 소재·오디언스를 A/B로 볼륨·품질 동시 관리</div></div>
+            <div class="sc"><span class="scn">6</span><div class="sct"><b>신규 매체 검증 확장</b>틱톡 시니어 타겟 규모를 데이터로 검증 후 확장</div></div>
+            <div class="sc"><span class="scn">7</span><div class="sct"><b>예산 증액 설득</b>고효율 지역에 광고비 증액을 데이터로 설득 → <em>취급고 확대</em></div></div>
+          </div>
 
           <div class="vcap">단계적 매체 확장 — 구글애즈 단독 → 메타 → 구글애즈 2계정 → 틱톡 (일 리드 70 → 250)</div>
           <p class="vnote" style="margin-top:0;margin-bottom:14px">한 번에 늘리지 않고 매체를 하나씩 더하며 <span class="g">단계적으로</span> 볼륨을 끌어올렸습니다. 각 단계는 앞 단계 데이터를 보고 결정했습니다.</p>
@@ -1185,12 +1192,12 @@ body::after{
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
-          <ol class="steps">
-            <li>구글애즈·메타·틱톡 광고 성과 데이터를 API로 연동해 자동 가공하는 대시보드를 <b>바이브코딩으로 직접 개발</b></li>
-            <li>실시간 성과 통합 조회 · A/B 테스트 플래닝 · 코호트 분석 · KPI 관리를 <b>한 화면에 통합</b></li>
-            <li>운영 히스토리 챗봇 구축 — "언제·무엇을·왜 했는지"를 <b>자연어로 즉시 질의응답</b></li>
-            <li><b>실시간 KPI 달성율 체크</b>로 일·주·월 계획을 유동적으로 조정</li>
-          </ol>
+          <div class="stepflow">
+            <div class="sc"><span class="scn">1</span><div class="sct"><b>API 연동 대시보드</b>구글애즈·메타·틱톡 성과를 API로 연동·자동 가공, 바이브코딩으로 직접 개발</div></div>
+            <div class="sc"><span class="scn">2</span><div class="sct"><b>한 화면 통합</b>실시간 성과 조회·A/B 플래닝·코호트·KPI를 한 화면에서 관리</div></div>
+            <div class="sc"><span class="scn">3</span><div class="sct"><b>운영 히스토리 챗봇</b>"언제·무엇을·왜 했는지"를 <em>자연어로 즉시 질의응답</em></div></div>
+            <div class="sc"><span class="scn">4</span><div class="sct"><b>실시간 KPI 체크</b>달성율을 실시간으로 보며 일·주·월 계획을 유동 조정</div></div>
+          </div>
           <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
         </div>
 
@@ -1263,14 +1270,14 @@ body::after{
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
-          <ol class="steps">
-            <li>유튜브·인스타·토스·틱톡 <b>4채널로 라이브</b></li>
-            <li>타겟을 연령(13-19)·관심사(학부모/자녀/가족)·<b>KB DMP(학원비 납부·상품 가입)</b>·콘텐츠 타겟으로 설계, 예산 균등 분배로 라이브</li>
-            <li>앱실행 단가·CPV·전환 볼륨을 매일 추적하며 저효율 타겟 감액, 고효율로 이관 (<b>타겟·소재·매체 3단계 능동 재배분</b>)</li>
-            <li>'틱톡=10대' 통념과 달리 노출 57%·조회 69%가 45세+임을 실측 검증 → <b>연령 축소·학부모 관심사 재집중</b></li>
-            <li>모수 적어 CPV 높던 리타겟 예산을 관심사 타겟으로 이관 (<b>관심사 CPV −38%</b>)</li>
-            <li>학생 타겟에 맞는 신규 매체 10대 교육앱 '콴다'를 직접 발굴·제안해 <b>5채널로 확장</b></li>
-          </ol>
+          <div class="stepflow">
+            <div class="sc"><span class="scn">1</span><div class="sct"><b>4채널 라이브</b>유튜브·인스타·토스·틱톡으로 캠페인 시작</div></div>
+            <div class="sc"><span class="scn">2</span><div class="sct"><b>타겟 설계</b>연령·관심사·KB DMP·콘텐츠 타겟 설계 후 예산 균등 분배로 출발</div></div>
+            <div class="sc"><span class="scn">3</span><div class="sct"><b>3단계 능동 재배분</b>앱실행 단가·CPV·전환을 매일 추적, 저효율 감액·고효율 이관</div></div>
+            <div class="sc"><span class="scn">4</span><div class="sct"><b>연령 실측 선회</b>틱톡 <em>노출 57%·조회 69%가 45세+</em> 확인 → 연령 축소·학부모 관심사 재집중</div></div>
+            <div class="sc"><span class="scn">5</span><div class="sct"><b>리타겟→관심사 이관</b>저모수 리타겟 예산을 관심사 타겟으로 이관 (<em>CPV −38%</em>)</div></div>
+            <div class="sc"><span class="scn">6</span><div class="sct"><b>신규 매체 발굴</b>10대 교육앱 '콴다' 직접 발굴·제안 → <em>5채널 확장</em></div></div>
+          </div>
 
           <div class="vcap">상세 케이스 — 신규 매체 '콴다' 발굴·제안 (오디언스 기반 미디어믹스)</div>
           <p class="vnote" style="margin-top:0;margin-bottom:14px">핵심 타겟이 10대인데 기존 금융 매체(검색·디스플레이)는 주 사용층이 달라 적합도가 낮았다. 포화가 아니라 <b>'10대가 실제 모여 있는 매체를 고르는 것'</b>이 진짜 과제였다.</p>
