@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-AI 소재 A/B 스튜디오 — 데이원컴퍼니 지원용 데모 (교육 콘텐츠 소재 운영)
+AI 소재 A/B 스튜디오 — 데모용 (상품·서비스 소재 운영)
 윤지욱 · AI 마케터
 ① 성과 분석  ② 소재 A/B 기록  ③ 과거 데이터 조회  ④ 소재 기획 리뷰  ⑤ 컷별 프롬프트 생성(→엑셀)
 - 디자인: 포트폴리오 네온 퍼플 테마 · 데이터: SQLite · 수치는 전부 가상(샘플)
@@ -21,7 +21,7 @@ try:
 except Exception:
     pass
 
-st.set_page_config(page_title="데이원 · AI 소재 A/B 스튜디오", page_icon="🎬", layout="wide",
+st.set_page_config(page_title="AI 소재 A/B 스튜디오", page_icon="🎬", layout="wide",
                    initial_sidebar_state="expanded")
 
 # ── 네온 퍼플 팔레트 (포트폴리오와 동일 톤) ──
@@ -118,18 +118,18 @@ def check_password():
 
 check_password()
 
-# ── 데이터 (교육 콘텐츠 소재 · 가상 샘플 · 6개 카테고리 × 5) ──
-DB_PATH = "ab_studio.db"
+# ── 데이터 (상품·서비스 소재 · 가상 샘플 · 6개 카테고리 × 5) ──
+DB_PATH = "ab_studio_general.db"
 HOOKS = ["공감", "자극", "숫자", "권위", "사회적증거", "호기심"]
 FORMATS = ["세로 숏폼", "가로 영상", "이미지", "카드뉴스"]
-CATS = ["데이터", "AI", "개발", "영상/디자인", "마케팅", "기타"]
+CATS = ["패션", "뷰티", "식품", "리빙", "디지털/가전", "서비스"]
 
 def _gen_seed(per=10):
     import random, datetime
     rnd = random.Random(42)
-    courses = [("데이터", "데이터 분석 올인원"), ("AI", "AI 실무 부트캠프"), ("개발", "백엔드 개발 입문"),
-               ("영상/디자인", "영상편집 마스터"), ("마케팅", "그로스 마케팅"), ("기타", "직무 영어 스피킹")]
-    angles = ["커리어 전환", "연봉 상승", "부업·수익화", "실무 즉시적용", "비전공 접근성", "포트폴리오 완성"]
+    courses = [("패션", "가을 니트 컬렉션"), ("뷰티", "수분 진정 세럼"), ("식품", "프리미엄 그래놀라"),
+               ("리빙", "무선 핸디 청소기"), ("디지털/가전", "노이즈캔슬링 이어폰"), ("서비스", "간편송금 앱")]
+    angles = ["가격 혜택", "품질·성능", "후기·신뢰", "간편함", "한정·시즌", "신규 혜택"]
     cvr_base = {"공감": 4.7, "권위": 4.5, "사회적증거": 4.2, "호기심": 3.4, "숫자": 3.6, "자극": 2.0}
     ctr_base = {"세로 숏폼": 2.3, "가로 영상": 1.7, "이미지": 1.1, "카드뉴스": 1.0}
     dur_base = {"세로 숏폼": (15, 18), "가로 영상": (20, 23), "이미지": (0, 0), "카드뉴스": (0, 0)}
@@ -154,7 +154,7 @@ def _gen_seed(per=10):
 
 SEED = _gen_seed(10)
 
-COLS = ["date", "카테고리", "강의", "소재명", "소구포인트", "후킹", "포맷", "컷수", "길이초", "CTR", "CVR", "CPA", "등급", "링크", "메모"]
+COLS = ["date", "카테고리", "상품", "소재명", "소구포인트", "후킹", "포맷", "컷수", "길이초", "CTR", "CVR", "CPA", "등급", "링크", "메모"]
 
 
 def conn():
@@ -164,7 +164,7 @@ def conn():
 def init_db():
     c = conn()
     c.execute("""CREATE TABLE IF NOT EXISTS ab (
-        id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, 카테고리 TEXT, 강의 TEXT, 소재명 TEXT,
+        id INTEGER PRIMARY KEY AUTOINCREMENT, date TEXT, 카테고리 TEXT, 상품 TEXT, 소재명 TEXT,
         소구포인트 TEXT, 후킹 TEXT, 포맷 TEXT, 컷수 INTEGER, 길이초 INTEGER,
         CTR REAL, CVR REAL, CPA REAL, 등급 TEXT, 링크 TEXT, 메모 TEXT )""")
     c.commit()
@@ -268,7 +268,7 @@ with st.sidebar:
     st.markdown(f"<div style='font-size:12px;color:{MUTED};margin-top:2px'>윤지욱 · AI 마케터</div>", unsafe_allow_html=True)
     st.divider()
     st.markdown(f"<div style='font-size:12px;color:{MUTED};line-height:1.7'>"
-                "교육 콘텐츠(패스트캠퍼스·콜로소) 광고 소재의<br>"
+                "상품·서비스 광고 소재의<br>"
                 f"A/B 결과를 <b style='color:{LILAC}'>기록·분석</b>하고, 다음 소재의<br>"
                 f"<b style='color:{LILAC}'>이기는 공통점</b>을 리뷰하는 운영 툴.</div>", unsafe_allow_html=True)
     st.divider()
@@ -279,7 +279,7 @@ P1 = "성과 분석"; P2 = "소재 A/B 기록"; P3 = "과거 데이터 조회"; 
 PAGES = [P1, P2, P3, P4, P5]
 
 st.markdown("# AI 소재 A/B 스튜디오")
-st.markdown("<div class='demo-banner'>📘 데이원컴퍼니 지원용 데모 · 표시되는 모든 수치는 가상(샘플) 데이터입니다 (교육 콘텐츠 소재 운영 예시)</div>", unsafe_allow_html=True)
+st.markdown("<div class='demo-banner'>📘 데모용 · 표시되는 모든 수치는 가상(샘플) 데이터입니다 (상품·서비스 소재 운영 예시)</div>", unsafe_allow_html=True)
 
 if "nav" not in st.session_state:
     st.session_state["nav"] = P1
@@ -304,11 +304,11 @@ PAGE = st.session_state["nav"]
 if PAGE == P1:
     df = load_df()
     fc = st.columns([1.2, 1.8])
-    cat_sel = fc[0].selectbox("📚 강의 카테고리", ["전체 카테고리"] + sorted(df["카테고리"].unique()))
+    cat_sel = fc[0].selectbox("📦 상품 카테고리", ["전체 카테고리"] + sorted(df["카테고리"].unique()))
     s, e = date_range(fc[1], df, "perf_range")
     v = df if cat_sel.startswith("전체") else df[df["카테고리"] == cat_sel]
     v = apply_dates(v, s, e)
-    st.caption(f"📚 포함 강의 — {' · '.join(sorted(v['강의'].unique())) or '없음'}  ·  운영기간 {s} ~ {e}")
+    st.caption(f"📦 포함 상품 — {' · '.join(sorted(v['상품'].unique())) or '없음'}  ·  운영기간 {s} ~ {e}")
 
     if v.empty:
         st.info("선택한 운영기간/카테고리에 데이터가 없습니다.")
@@ -326,7 +326,7 @@ if PAGE == P1:
     k = st.columns(4)
     k[0].metric("소재 수", f"{len(v)}개")
     k[1].metric("평균 CTR", f"{v['CTR'].mean():.2f}%")
-    k[2].metric("평균 CVR (수강전환)", f"{v['CVR'].mean():.2f}%")
+    k[2].metric("평균 CVR (전환)", f"{v['CVR'].mean():.2f}%")
     k[3].metric("평균 CPA", won(v["CPA"].mean()))
 
     st.markdown("")
@@ -350,23 +350,23 @@ if PAGE == P1:
 
     st.markdown("<div class='sec-title'>상위 소재 TOP (CVR 기준)</div>", unsafe_allow_html=True)
     top = v.sort_values("CVR", ascending=False).head(8)[
-        ["date", "카테고리", "강의", "소재명", "소구포인트", "후킹", "포맷", "CTR", "CVR", "CPA", "등급"]]
+        ["date", "카테고리", "상품", "소재명", "소구포인트", "후킹", "포맷", "CTR", "CVR", "CPA", "등급"]]
     st.dataframe(fmt_display(top), use_container_width=True, hide_index=True)
-    st.info("핵심 패턴: 자극형은 CTR↑·CVR↓(클릭만), **공감·권위·사회적증거형이 수강 전환**을 만든다. 세로 숏폼=CTR 우위, 이미지/카드뉴스=이탈 낮아 CVR 안정.")
+    st.info("핵심 패턴: 자극형은 CTR↑·CVR↓(클릭만), **공감·권위·사회적증거형이 구매·가입 전환**을 만든다. 세로 숏폼=CTR 우위, 이미지/카드뉴스=이탈 낮아 CVR 안정.")
 
 
 # ════════════════ 2) 소재 A/B 기록 ════════════════
 elif PAGE == P2:
-    st.markdown("<div class='sec-title'>소재 A/B 결과 기록</div><div class='sec-sub'>지표를 직접 입력하거나, 노출·클릭·수강신청·비용으로 자동 계산</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sec-title'>소재 A/B 결과 기록</div><div class='sec-sub'>지표를 직접 입력하거나, 노출·클릭·전환·비용으로 자동 계산</div>", unsafe_allow_html=True)
     mode = st.radio("입력 방식", ["지표 직접 입력", "원시값으로 자동 계산"], horizontal=True, key="recmode")
     with st.form("rec"):
         c = st.columns(3)
         d = c[0].date_input("운영 시작일", value=date.today())
-        cat = c[1].selectbox("강의 카테고리", CATS)
-        course = c[2].text_input("강의/클래스명", "데이터 분석 올인원")
+        cat = c[1].selectbox("상품 카테고리", CATS)
+        course = c[2].text_input("상품/서비스명", "가을 니트 컬렉션")
         name = st.text_input("소재명", "")
         c = st.columns(4)
-        angle = c[0].text_input("소구포인트", "커리어 전환")
+        angle = c[0].text_input("소구포인트", "가격 혜택")
         hook = c[1].selectbox("후킹 유형", HOOKS)
         fmt = c[2].selectbox("포맷", FORMATS)
         cuts = c[3].number_input("컷 수", 0, 100, 5)
@@ -380,7 +380,7 @@ elif PAGE == P2:
             c = st.columns(4)
             imp = num_comma(c[0], "노출", 200000)
             clk = num_comma(c[1], "클릭", 4000)
-            cv = num_comma(c[2], "수강신청(전환)", 160)
+            cv = num_comma(c[2], "전환수(구매·가입)", 160)
             spend = num_comma(c[3], "비용(원)", 12000000)
             ctr = round(100 * clk / imp, 2) if imp else 0.0
             cvr = round(100 * cv / clk, 2) if clk else 0.0
@@ -395,14 +395,14 @@ elif PAGE == P2:
         if not name.strip():
             st.error("소재명을 입력하세요.")
         else:
-            add_row({"date": str(d), "카테고리": cat, "강의": course, "소재명": name, "소구포인트": angle,
+            add_row({"date": str(d), "카테고리": cat, "상품": course, "소재명": name, "소구포인트": angle,
                      "후킹": hook, "포맷": fmt, "컷수": int(cuts), "길이초": int(dur), "CTR": float(ctr),
                      "CVR": float(cvr), "CPA": int(cpa), "등급": ag if gr.startswith("자동") else gr,
                      "링크": link, "메모": memo})
             st.success(f"저장 완료 · '{name}' (등급 {ag if gr.startswith('자동') else gr})")
 
     st.divider()
-    st.markdown("<div class='sec-sub'>CSV 일괄 업로드 (열: date,카테고리,강의,소재명,소구포인트,후킹,포맷,컷수,길이초,CTR,CVR,CPA,등급,링크,메모)</div>", unsafe_allow_html=True)
+    st.markdown("<div class='sec-sub'>CSV 일괄 업로드 (열: date,카테고리,상품,소재명,소구포인트,후킹,포맷,컷수,길이초,CTR,CVR,CPA,등급,링크,메모)</div>", unsafe_allow_html=True)
     up = st.file_uploader("CSV", type="csv", label_visibility="collapsed")
     if up and st.button("일괄 추가"):
         try:
@@ -418,12 +418,12 @@ elif PAGE == P2:
 elif PAGE == P3:
     df = load_df()
     c = st.columns(4)
-    f_cat = c[0].multiselect("강의 카테고리", sorted(df["카테고리"].unique()))
+    f_cat = c[0].multiselect("상품 카테고리", sorted(df["카테고리"].unique()))
     f_hook = c[1].multiselect("후킹", sorted(df["후킹"].unique()))
     f_fmt = c[2].multiselect("포맷", sorted(df["포맷"].unique()))
     f_grade = c[3].multiselect("등급", ["A", "B", "C"])
     sc = st.columns([2, 2])
-    kw = sc[0].text_input("강의/소재명 검색", "")
+    kw = sc[0].text_input("상품/소재명 검색", "")
     s, e = date_range(sc[1], df, "hist_range")
     v = apply_dates(df.copy(), s, e)
     if f_cat: v = v[v["카테고리"].isin(f_cat)]
@@ -431,7 +431,7 @@ elif PAGE == P3:
     if f_fmt: v = v[v["포맷"].isin(f_fmt)]
     if f_grade: v = v[v["등급"].isin(f_grade)]
     if kw.strip():
-        v = v[v["강의"].str.contains(kw, case=False, na=False) | v["소재명"].str.contains(kw, case=False, na=False)]
+        v = v[v["상품"].str.contains(kw, case=False, na=False) | v["소재명"].str.contains(kw, case=False, na=False)]
     st.caption(f"{len(v)}건")
     raw = v.drop(columns=["id"])
     st.dataframe(fmt_display(raw), use_container_width=True, hide_index=True)
@@ -446,7 +446,7 @@ elif PAGE == P4:
     st.markdown("<div class='sec-title'>소재 기획 리뷰</div><div class='sec-sub'>다음 소재를 기획하기 전, 과거 이긴 소재의 공통점을 확인하세요</div>", unsafe_allow_html=True)
     df = load_df()
     c = st.columns([1.2, 1.3, 1, 1.6])
-    cat = c[0].selectbox("강의 카테고리", sorted(df["카테고리"].unique()))
+    cat = c[0].selectbox("상품 카테고리", sorted(df["카테고리"].unique()))
     goal = c[1].selectbox("목표", ["전환 최대화 (CVR)", "효율 최대화 (CPA 최소)"])
     topk = c[2].slider("우수 소재 기준 상위 N", 2, 10, 4)
     s, e = date_range(c[3], df, "review_range")
@@ -469,10 +469,10 @@ elif PAGE == P4:
                    f"**{w1['포맷']}** 포맷 · 약 **{int(w1['길이초'])}초 / {int(w1['컷수'])}컷** 구성 추천. "
                    f"(이 목표 기준 1위 소재: CTR {w1['CTR']}% · CVR {w1['CVR']}% · CPA {int(w1['CPA']):,}원)")
         st.markdown(f"<div class='sec-sub' style='margin-top:14px'>상위 소재 ({goal_short} 순 정렬)</div>", unsafe_allow_html=True)
-        st.dataframe(fmt_display(winners[["date", "강의", "소재명", "소구포인트", "후킹", "포맷", "컷수", "길이초", "CTR", "CVR", "CPA", "등급"]]),
+        st.dataframe(fmt_display(winners[["date", "상품", "소재명", "소구포인트", "후킹", "포맷", "컷수", "길이초", "CTR", "CVR", "CPA", "등급"]]),
                      use_container_width=True, hide_index=True)
         if st.button("✨ 이 방향으로 컷별 프롬프트 만들기 →", type="primary"):
-            st.session_state["plan"] = {"카테고리": cat, "강의": w1["강의"], "소구": w1["소구포인트"],
+            st.session_state["plan"] = {"카테고리": cat, "상품": w1["상품"], "소구": w1["소구포인트"],
                                         "후킹": w1["후킹"], "포맷": w1["포맷"], "길이": int(w1["길이초"]), "컷수": max(3, int(w1["컷수"]))}
             st.session_state["_goto_gen"] = True
             st.rerun()
@@ -488,7 +488,7 @@ elif PAGE == P5:
     cat_opts = ["전체 카테고리"] + sorted(df["카테고리"].unique())
     c = st.columns([1.3, 1.3, 1])
     _ci = cat_opts.index(plan["카테고리"]) if plan.get("카테고리") in cat_opts else 0
-    g_cat = c[0].selectbox("강의 카테고리", cat_opts, index=_ci)
+    g_cat = c[0].selectbox("상품 카테고리", cat_opts, index=_ci)
     g_goal = c[1].selectbox("정렬 기준", ["전환율(CVR) 높은 순", "효율(CPA) 좋은 순", "클릭률(CTR) 높은 순"])
     topn = c[2].slider("상위 N위", 3, 10, 5)
     sub = df if g_cat.startswith("전체") else df[df["카테고리"] == g_cat]
@@ -498,17 +498,17 @@ elif PAGE == P5:
     show = rank.copy()
     show.insert(0, "순위", [f"{i+1}위" for i in range(len(show))])
     show["CVR 평균대비"] = show["CVR"].map(lambda x: f"{'+' if (x-avg_cvr) >= 0 else ''}{(x/avg_cvr-1)*100:.0f}%" if avg_cvr else "-")
-    cols_show = ["순위", "date", "강의", "소재명", "소구포인트", "후킹", "포맷", "CTR", "CVR", "CVR 평균대비", "CPA", "등급"]
+    cols_show = ["순위", "date", "상품", "소재명", "소구포인트", "후킹", "포맷", "CTR", "CVR", "CVR 평균대비", "CPA", "등급"]
     st.dataframe(fmt_display(show[cols_show]), use_container_width=True, hide_index=True)
 
     # ── 2단계 · 방향 선택 → 생성 ──
     st.markdown("<div class='sec-title' style='margin-top:12px'>2단계 · 방향 선택 → 최종 프롬프트 생성</div><div class='sec-sub'>위 순위를 참고해 원하는 방향 옵션을 고르세요 (기본값=1위 소재)</div>", unsafe_allow_html=True)
     top1 = rank.iloc[0] if len(rank) else None
-    ang_opts = sorted(sub["소구포인트"].unique()) if len(sub) else ["커리어 전환"]
+    ang_opts = sorted(sub["소구포인트"].unique()) if len(sub) else ["가격 혜택"]
     def _idx(lst, val, d=0):
         return lst.index(val) if val in lst else d
     c = st.columns(3)
-    product = c[0].text_input("강의/상품", plan.get("강의") or (top1["강의"] if top1 is not None else "패스트캠퍼스 · 데이터 분석 올인원"))
+    product = c[0].text_input("상품/서비스", plan.get("상품") or (top1["상품"] if top1 is not None else "가을 니트 컬렉션"))
     angle = c[1].selectbox("소구포인트(방향)", ang_opts, index=_idx(ang_opts, plan.get("소구") or (top1["소구포인트"] if top1 is not None else "")))
     hook = c[2].selectbox("후킹 유형", HOOKS, index=_idx(HOOKS, plan.get("후킹") or (top1["후킹"] if top1 is not None else "공감")))
     c = st.columns(4)
@@ -524,8 +524,8 @@ elif PAGE == P5:
         creatives = None
         if _client:
             try:
-                prompt = ("너는 온라인 교육(강의) 광고의 AI 영상 디렉터다.\n"
-                          f"[강의] {product} / [소구] {angle} / [후킹] {hook} / [톤] {tone} / [길이] {dur}초\n"
+                prompt = ("너는 상품·서비스 광고 소재의 AI 영상 디렉터다.\n"
+                          f"[상품] {product} / [소구] {angle} / [후킹] {hook} / [톤] {tone} / [길이] {dur}초\n"
                           f"서로 다른 접근(후킹·전개)의 소재 {n_mat}개를 만들고, 각 소재는 정확히 {cuts}개의 컷(씬)으로 구성한다.\n"
                           "각 컷: scene(장면설명 한국어), video_prompt(영문 영상생성 프롬프트, 끝에 반드시 \"No text, no letters.\" 포함), "
                           "subtitle(한국어 자막), narration(한국어 나레이션).\n"
@@ -546,7 +546,7 @@ elif PAGE == P5:
             hvar = [hook] + [h for h in HOOKS if h != hook]
             creatives = [{"name": f"소재 {mi+1} · {hvar[mi % len(hvar)]}형",
                           "cuts": [{"scene": f"{angle} 장면 {i+1} ({hvar[mi % len(hvar)]} 후킹, {tone})",
-                                    "video_prompt": f"Cinematic {tone} scene for an online course about {product}, photorealistic. No text, no letters.",
+                                    "video_prompt": f"Cinematic {tone} scene for a product/service ad about {product}, photorealistic. No text, no letters.",
                                     "subtitle": f"[{i+1}컷] {angle}",
                                     "narration": f"[{i+1}컷] {angle}을(를) {hvar[mi % len(hvar)]}으로 전달"} for i in range(cuts)]}
                          for mi in range(n_mat)]
