@@ -133,6 +133,7 @@ body::after{
 .rd .spark{ margin-top:20px; display:block; }
 
 /* ============ case index (left rail + grid) ============ */
+.mobilenav{ display:none; }
 .layout{ display:grid; grid-template-columns:250px minmax(0,1fr); gap:40px; align-items:start; }
 main{ min-width:0; }
 .railwrap{ position:sticky; top:96px; }
@@ -360,6 +361,9 @@ main{ min-width:0; }
 @media (max-width:1000px){
   .layout{ grid-template-columns:1fr; }
   .railwrap{ display:none; }
+  .mobilenav{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+  .mobilenav a{ flex:1 1 30%; text-align:center; font-size:12.5px; font-weight:700; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:11px 10px; white-space:nowrap; transition:border-color .2s,color .2s; }
+  .mobilenav a:active, .mobilenav a:focus-visible, .mobilenav a:hover{ border-color:var(--signal); color:var(--signal); }
   .readout{ grid-template-columns:repeat(2,1fr); }
   .hero{ padding-left:0; padding-top:100px; padding-bottom:72px; }
 }
@@ -538,7 +542,6 @@ main{ min-width:0; }
       <div class="rd"><div class="cap">의료 마케팅 · 구글 메인</div><div class="val num"><span class="kpi">ROAS</span><span class="n" data-to="336">336</span><span class="u">%</span></div><div class="delta num">103% → 336% (약 3.3배)</div></div>
       <div class="rd"><div class="cap">고객군 재정의</div><div class="val num" style="white-space:nowrap"><span class="kpi">임대인 비중</span><span class="n" data-to="70">70</span><span class="u">%</span></div><div class="delta num">전체 리드 중 40% → 70%</div></div>
     </div>
-    </div>
   </header>
 
 
@@ -561,6 +564,11 @@ main{ min-width:0; }
 
     <!-- cases -->
     <main>
+    <nav class="mobilenav" aria-label="사례 바로가기">
+      <a href="#ccom">짐보관 광고 비교</a>
+      <a href="#c6">GA4 구매 여정</a>
+      <a href="#c6b">취미공간 즉시결제</a>
+    </nav>
 
     <!-- ===================== ARCHIVE · 커머스·리드 소재 A/B ===================== -->
     <style>
@@ -1780,6 +1788,7 @@ main{ min-width:0; }
   <section class="closing reveal">
     <h3>직접 만든 소재와 데이터로,<br><b>토스 커머스의 User Acquisition 지표</b>를 끌어올리고 싶습니다.</h3>
   </section>
+</div>
 
 <script>
 (function(){
