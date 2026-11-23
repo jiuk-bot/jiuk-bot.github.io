@@ -117,7 +117,8 @@ body::after{
 .rd .spark{ margin-top:20px; display:block; }
 
 /* ============ case index (left rail + grid) ============ */
-.layout{ display:grid; grid-template-columns:250px 1fr; gap:40px; align-items:start; }
+.layout{ display:grid; grid-template-columns:250px minmax(0,1fr); gap:40px; align-items:start; }
+main{ min-width:0; }
 .railwrap{ position:sticky; top:96px; }
 .rail-h{ font-size:12px; font-weight:600; color:var(--dim); margin-bottom:22px; letter-spacing:.01em; }
 .rail{ display:flex; flex-direction:column; border-left:1px solid var(--line-soft); }
@@ -346,6 +347,7 @@ body::after{
   .readout{ grid-template-columns:repeat(2,1fr); }
   .hero{ padding-left:0; padding-top:100px; padding-bottom:72px; }
 }
+@media (max-width:460px){ .mstrip.c3,.mstrip.c4{ grid-template-columns:1fr !important; } }
 @media (max-width:760px){
   .shell{ padding:0 22px 90px; }
   .statusbar .in{ padding:14px 22px; }
@@ -360,6 +362,11 @@ body::after{
   .expr{ grid-template-columns:1fr; }
   .split{ grid-template-columns:1fr; }
   .readout{ grid-template-columns:1fr; }
+  .mstrip .m, .readout .rd{ min-width:0; }
+  #ccom .tl{ flex-direction:column; }
+  #ccom .tl .tla{ transform:rotate(90deg); margin:2px auto; align-self:center; }
+  .imgab{ grid-template-columns:1fr; }
+  .exp{ display:block; }
 }
 
 /* ============ motion system ============ */
