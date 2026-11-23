@@ -556,6 +556,10 @@ body::after{
       #ccom .abcard .abhook{ grid-column:1 / -1; font-size:14.5px; font-weight:800; color:var(--cyan); letter-spacing:-.015em; margin-top:-3px; line-height:1.4; }
       #ccom .abcard .imgab, #ccom .abcard .tngrid, #ccom .abcard .ba2{ grid-column:1; grid-row:4 / span 5; align-self:center; }
       #ccom .abcard .qa, #ccom .abcard .res, #ccom .abcard .abx{ grid-column:2; }
+      #ccom .abcard.extra{ display:none; order:5; }
+      #ccom .abgrid.show-all .abcard.extra{ display:grid; }
+      #ccom .ab-toggle{ display:block; margin:22px auto 0; background:var(--panel); border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14px; padding:12px 24px; border-radius:12px; cursor:pointer; transition:border-color .2s,color .2s; }
+      #ccom .ab-toggle:hover{ border-color:var(--signal); color:var(--signal); }
       #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
       #ccom .abcard .fmt{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; padding:4px 11px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
       #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
@@ -675,7 +679,7 @@ body::after{
           <div class="sh"><span class="bar"></span>소재 A/B 케이스 7선</div>
           <div class="abgrid">
 
-            <div class="abcard">
+            <div class="abcard" style="order:1">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.03</span></div>
               <h4>짐보관 — 20초 공감형 → 12초 Hook형</h4>
               <div class="abhook">영상 길이가 아니라 '앞 3초 Hook'이 CTR을 만든다</div>
@@ -691,7 +695,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> 영상 '길이'가 아니라 <b>인트로 Hook 설계</b>가 CTR을 만든다 — 30%만 시청해도 메시지가 전달되면 전환이 따라온다</div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard extra">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04~05</span></div>
               <h4>직장인 공감형 시나리오 소재</h4>
               <div class="abhook">클릭을 양보하고 '전환'을 택한 소재</div>
@@ -707,7 +711,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> 광범위 후킹으로 트래픽을 넓히기보다 <b>타겟 적합도를 높인 소재</b>가 유효 — CTR은 일부 하락했지만 유입 품질이 개선돼 <b>CVR 기준 전환 +25%</b> 확보. <b>클릭 수 손실 &lt; 전환 이득</b>으로 순증</div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard" style="order:3">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.05</span></div>
               <h4>리마케팅 · 리뷰 기반 정보전달 소재</h4>
               <div class="abhook">리마케팅은 반복이 아니라 '신뢰'를 다시 심는 것</div>
@@ -723,7 +727,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> 리마케팅은 '같은 소재 반복'이 아니라 <b>'신뢰 단계'를 바꿔야</b> CVR이 나온다 (CVR 62%)</div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard extra">
               <div class="abhead"><span class="fmt">이미지 ×4</span><span class="per">2024.11~12</span></div>
               <h4>소재 매체 A/B테스트</h4>
               <div class="abhook">성과 데이터 기반으로 소재 / 매체 선택</div>
@@ -740,7 +744,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> <b>'가격 강조'가 최대 후킹</b> + 같은 소재도 META가 당근보다 CPC 약 16% 우수 → 이후 <b>B 소재·META 집중</b></div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard" style="order:2">
               <div class="abhead"><span class="fmt">이미지 → AI 영상</span><span class="per">2025.01~03</span></div>
               <h4>프랜차이즈 리드 · 타겟 리프레이밍</h4>
               <div class="abhook">'많은 클릭'보다 '맞는 타겟'이 CPA를 낮춘다</div>
@@ -756,7 +760,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> 클릭 최적화가 아니라 <b>'타겟 적중' 최적화</b> — 계약율이 10배 높은 '상가공실 임대인'에 정확히 닿는 것이 CPA를 결정한다</div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard extra">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04</span></div>
               <h4>B2B 풀필먼트 서비스 셀러 리드확보 캠페인 · 핵심가치 전달형</h4>
               <div class="abhook">현장 영상에 'Hook·핵심가치'를 입히다</div>
@@ -772,7 +776,7 @@ body::after{
               <div class="qa l"><span class="lab">러닝</span> B2B도 결국 <b>Hook과 메시지 구조</b>가 CTR을 가른다 (+36.6%)</div>
             </div>
 
-            <div class="abcard">
+            <div class="abcard extra">
               <div class="abhead"><span class="fmt img">이미지</span><span class="per">2025.05</span></div>
               <h4>B2B 풀필먼트 서비스 셀러 리드확보 캠페인 · 텍스트 중심 이미지</h4>
               <div class="abhook">이탈이 크면 '이미지 소재'의 전환 효율이 우수할 수 있다</div>
@@ -789,6 +793,7 @@ body::after{
             </div>
 
           </div>
+          <button class="ab-toggle" onclick="var g=this.previousElementSibling;g.classList.toggle('show-all');this.textContent=g.classList.contains('show-all')?'접기 \u25B4':'전체 실험 보기 (+4) \u25BE';">전체 실험 보기 (+4) ▾</button>
         </div>
 
         <div class="sec">
