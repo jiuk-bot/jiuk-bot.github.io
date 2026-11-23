@@ -468,6 +468,18 @@ body::after{
   .hero h1 .glow { background:none !important; -webkit-text-fill-color:#C98BFF !important; color:#C98BFF !important; }
   .hero-anim[style*="border-left:3px solid #C06BFF"] { background:#140F28 !important; }
   .hero-anim[style*="border-left:3px solid #C06BFF"] b[style*="text-fill-color"] { -webkit-text-fill-color:#D7A8FF !important; color:#D7A8FF !important; background:none !important; }
+
+  /* ===== PDF 제출용: 접힌 분석 전부 펼침 + UI 정리 + 페이지 나눔 ===== */
+  nav, .ab-toggle, .railwrap { display:none !important; }
+  .layout { grid-template-columns:1fr !important; gap:0 !important; }
+  .selwork { margin-left:0 !important; break-after:page; page-break-after:always; }
+  .moredetail { display:block !important; }       /* 임플란트 상세·영상 전체 그리드 */
+  .abcard.extra { display:grid !important; }        /* 아카이브 숨김 4카드 */
+  .ps.psx { display:block !important; }             /* AI영상 제작노하우 숨김 3개 */
+  .case { break-before:page; page-break-before:always; }   /* 프로젝트별 페이지 구분 */
+  .viz,.mstrip,.imgab,figure,.ifun,.sfun,.idxbars,.ba,.vbars,.exp,.stepflow,.sc,.abcard,.ps,.rd,.sw-card,.meter,.tl,.psolve,table,.dmp { break-inside:avoid; page-break-inside:avoid; }
+  .vthumb { break-inside:avoid; }
+  .vcap, .sh { break-after:avoid; page-break-after:avoid; }   /* 소제목이 내용과 붙게 */
 }
 </style>
 </head>
