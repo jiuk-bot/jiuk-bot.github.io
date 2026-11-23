@@ -447,6 +447,8 @@ main{ min-width:0; }
 
 /* glass + neon panels */
 .readout,.case,.viz,.mstrip{ position:relative; -webkit-backdrop-filter:blur(8px) saturate(1.1); backdrop-filter:blur(8px) saturate(1.1); }
+.case.alt{ background:linear-gradient(180deg, rgba(124,92,255,.07), rgba(16,16,26,.56) 200px); }
+.case.alt .case-top{ background:linear-gradient(180deg,rgba(124,92,255,.14),rgba(124,92,255,0)); }
 .case{ background:rgba(16,16,26,.56); border:1px solid rgba(124,92,255,.16);
   transition:transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s ease, border-color .45s ease; }
 .case:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55);
@@ -917,11 +919,11 @@ main{ min-width:0; }
           <div class="commerce">
             <div class="cc">
               <div class="ct">뷰티 스마트스토어 · 다이나믹 서플라이</div>
-              <p>SEO 기반 스토어를 직접 운영하며 <b>상품 상세페이지 30건을 직접 기획·디자인</b> → <b>월매출 +167%</b>. 소재가 곧 구매전환인 커머스 환경에서 제작부터 운영까지 단독 수행.</p>
+              <p>상품 상세페이지 <b>30건 직접 기획·디자인</b> + SEO 스토어 운영 → <b>월매출 +167%</b></p>
             </div>
             <div class="cc">
               <div class="ct">공유창고 · 예약 LP 결제 전환 최적화</div>
-              <p>조회는 쌓이는데 <b>결제 전환이 0</b>이던 예약 LP를 '즉시 결제 불가' 병목으로 진단 → 실시간 결제 도입 제안·LP 재구성으로 <b>결제 전환을 발생</b>시킴. 취미공간 예약 랜딩 개선으론 <b>매출 +1,653%</b>(25.02→05).</p>
+              <p>예약 LP <b>'즉시 결제 불가' 병목 진단</b> → 즉시결제 도입으로 결제 전환 발생 → <b>매출 +1,653%</b> <span class="note">(상세는 아래 취미공간 사례)</span></p>
             </div>
           </div>
         </div>
@@ -929,7 +931,7 @@ main{ min-width:0; }
       </div>
     </section>
 
-<section class="case reveal" id="c1">
+<section class="case reveal alt" id="c1">
       <div class="case-top">
         <div class="ch"><span class="idx num">CASE 01</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
         <h2>임플란트 — 지역별 내원당 비용을 비교해 예산을 재배분했습니다</h2>
@@ -1102,7 +1104,7 @@ main{ min-width:0; }
       #cvid .pcard .sub-ko{ font-size:12px; font-weight:700; color:var(--signal); }
       #cvid .pcard .sub-ko::before{ content:'자막 '; font-size:10px; font-weight:800; color:var(--dim); }
       #cvid .vidgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:6px; }
-      #cvid .vfeat{ display:grid; grid-template-columns:1.6fr 1fr; gap:14px; margin-top:6px; }
+      #cvid .vfeat{ display:grid; grid-template-columns:2fr 1fr; gap:12px; margin-top:6px; align-items:stretch; }
       #cvid .vfeat > div:first-child{ grid-row:span 2; }
       #cvid .vfeat .vidcap{ margin-top:7px; }
       @media(max-width:720px){ #cvid .vfeat{ grid-template-columns:1fr; } #cvid .vfeat > div:first-child{ grid-row:auto; } }
@@ -1300,7 +1302,7 @@ main{ min-width:0; }
       </div>
     </section>
 
-<section class="case reveal" id="c4">
+<section class="case reveal alt" id="c4">
       <div class="case-top">
         <div class="ch"><span class="idx num">CASE 02</span><span class="org">블루오렌지 · 2025.09~2025.12</span></div>
         <h2>KB국민은행 '스타틴즈' 서비스 캠페인 (5채널)</h2>
@@ -1504,7 +1506,7 @@ main{ min-width:0; }
       </div>
     </section>
 
-<section class="case reveal" id="c6">
+<section class="case reveal alt" id="c6">
       <div class="case-top">
         <div class="ch"><span class="idx num">CASE 04</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
         <h2>B2C 짐보관 서비스 퍼포먼스 마케팅 — GA4 퍼널·소재 A/B·리마케팅</h2>
@@ -1547,7 +1549,7 @@ main{ min-width:0; }
               <div class="gtl-bar"><span class="gtl-band">리뷰 리마케팅 운영 · 2025.05</span></div>
               <div class="gtl-pt"><span class="gtl-dot hot"></span><div class="gtl-lab"><b>결제</b><small>평균 3.89일</small></div></div>
             </div>
-            <p class="note">첫 유입 → 결제까지 <b>평균 3.89일</b>(GA4 · 2024.12~2025.02). 이 평균 소요 기간 안에 리뷰 소재로 재도달하도록 리마케팅을 운영했습니다.</p>
+            <p class="note">첫 유입 → 결제까지 <b>평균 3.89일</b>(GA4 · 2024.12~2025.02) — 한 번의 노출로 바로 사지 않는 <b>고관여 서비스</b>임을 데이터로 확인했습니다. 그래서 이 평균 소요 기간 안에 <b>리뷰 소재로 재도달</b>하도록 리마케팅 노출 시점을 설계했습니다.</p>
           </div>
           <div class="viz">
             <div class="sfun">
@@ -1652,7 +1654,7 @@ main{ min-width:0; }
       </div>
     </section>
 
-<section class="case reveal" id="c2">
+<section class="case reveal alt" id="c2">
       <div class="case-top">
         <div class="ch"><span class="idx num">CASE 06</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
         <h2>광고 API 연동 성과 대시보드 직접 구축</h2>
