@@ -7,69 +7,76 @@
 <meta name="description" content="커머스 User Acquisition을 위해 Paid 소재를 직접 기획·제작하고, 가설 검증 A/B로 지표를 끌어올리는 퍼포먼스 크리에이티브 마케터 윤지욱입니다. 영상·이미지 소재를 독립적으로 제작하고 소구×후킹 A/B로 CTR·전환을 개선한 기여도 100% 소재 케이스를 담았습니다." />
 <link rel="stylesheet" href="/assets/style.css" />
 <style>
-  /* ===== HOME · LIGHT EDITORIAL (포트폴리오와 동일 톤) ===== */
-  :root{ --nk:#1B1A22; --nmute:#6B6975; --nacc:#5B3FE0; --nline:#E4E1D9; }
-  html,body{ background:#FBFAF8 !important; color:var(--nk); }
-  body::before{ content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  /* ===== HOME · 다크 네온 (내용 유지, 스타일만) ===== */
+  :root{ --nk:#EDEBFA; --nmute:#9E99BC; }
+  html,body{ background:#07070E !important; color:var(--nk); }
+  body::before{ content:""; position:fixed; inset:-12%; z-index:0; pointer-events:none;
     background:
-      radial-gradient(42% 52% at 8% 0%, rgba(91,63,224,.05), transparent 60%),
-      radial-gradient(38% 48% at 98% 10%, rgba(91,63,224,.035), transparent 60%); }
+      radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.26), transparent 62%),
+      radial-gradient(34% 46% at 92% 20%, rgba(255,92,225,.18), transparent 62%),
+      radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.16), transparent 64%);
+    filter:blur(26px); animation:homeAurora 18s ease-in-out infinite alternate; }
   body::after{ content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-    background-image:radial-gradient(rgba(27,26,34,.028) 1px, transparent 1px); background-size:28px 28px; opacity:.5; }
+    background-image:radial-gradient(rgba(255,255,255,.028) 1px, transparent 1px); background-size:26px 26px; opacity:.5; }
+  @keyframes homeAurora{ to{ transform:translate(2.5%,-2%) scale(1.09); } }
   nav, header, section, footer{ position:relative; z-index:1; }
 
-  .hero .applytag{ background:rgba(91,63,224,.08) !important; color:var(--nacc) !important; border:1px solid rgba(91,63,224,.25) !important; }
+  .hero .applytag{ background:rgba(124,92,255,.12) !important; color:#C9A6FF !important; border:1px solid rgba(124,92,255,.3) !important; }
   .hero .hello{ color:var(--nmute) !important; }
   .hero h1{ color:var(--nk) !important; font-weight:800; letter-spacing:-.045em; }
-  .hero h1 .hl{ color:var(--nacc) !important; -webkit-text-fill-color:currentColor; background:none; }
+  .hero h1 .hl{
+    background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent !important;
+    filter:drop-shadow(0 0 26px rgba(170,110,255,.5)); background-size:220% auto; animation:nshimmer 7s linear infinite; }
+  @keyframes nshimmer{ to{ background-position:220% center; } }
   .hero .sub{ color:var(--nmute) !important; }
-  .hero .sub b{ color:var(--nk) !important; }
+  .hero .sub b{ color:#C9A6FF !important; }
   .hi-list li{ color:var(--nmute) !important; }
   .hi-list li b{ color:var(--nk) !important; }
-  .hil-k{ background:rgba(91,63,224,.1) !important; color:var(--nacc) !important; border:1px solid rgba(91,63,224,.22) !important; }
+  .hil-k{ background:rgba(124,92,255,.15) !important; color:#C9A6FF !important; border:1px solid rgba(124,92,255,.28) !important; }
 
-  .btns .btn{ background:#fff !important; color:var(--nk) !important; border:1px solid var(--nline) !important; box-shadow:none !important; transition:transform .2s, box-shadow .2s, border-color .2s, color .2s; }
-  .btns .btn:hover{ transform:translateY(-2px); background:#fff !important; border-color:var(--nacc) !important; color:var(--nacc) !important; box-shadow:0 12px 30px -20px rgba(28,26,50,.22) !important; }
+  .btns .btn{ background:rgba(124,92,255,.05) !important; color:#EDEBFA !important; border:1px solid rgba(124,92,255,.45) !important; box-shadow:none !important; position:relative; overflow:hidden; transition:transform .2s, box-shadow .2s, background .2s, border-color .2s; }
+  .btns .btn:hover{ transform:translateY(-3px); background:rgba(124,92,255,.12) !important; border-color:rgba(170,120,255,.85) !important; box-shadow:0 0 26px -6px rgba(124,92,255,.5) !important; }
 
-  .stats .stat{ background:#fff !important; border:1px solid var(--nline) !important; -webkit-backdrop-filter:none; backdrop-filter:none; box-shadow:0 10px 30px -22px rgba(28,26,50,.16); transition:transform .3s, box-shadow .3s, border-color .3s; }
-  .stats .stat:hover{ transform:translateY(-3px); border-color:var(--nacc) !important; box-shadow:0 16px 40px -24px rgba(91,63,224,.22) !important; }
+  .stats .stat{ background:rgba(18,18,30,.6) !important; border:1px solid rgba(124,92,255,.16) !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); box-shadow:0 24px 60px -34px rgba(0,0,0,.8); transition:transform .4s, box-shadow .4s, border-color .4s; }
+  .stats .stat:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5) !important; box-shadow:0 40px 90px -40px rgba(124,92,255,.45) !important; }
   .stats .stat .cat{ color:var(--nmute) !important; }
-  .stats .stat .big{ background:none !important; -webkit-text-fill-color:currentColor; color:var(--nacc) !important; }
+  .stats .stat .big{ background:linear-gradient(135deg,#B794F6,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent !important; }
   .stats .stat .desc{ color:var(--nmute) !important; }
 
-  section .eyebrow{ color:var(--nacc) !important; }
+  section .eyebrow{ color:#C9A6FF !important; }
   section h2{ color:var(--nk) !important; }
-  .cards .card{ background:#fff !important; border:1px solid var(--nline) !important; -webkit-backdrop-filter:none; backdrop-filter:none; transition:transform .3s, box-shadow .3s, border-color .3s; }
-  .cards .card:hover{ transform:translateY(-3px); border-color:var(--nacc) !important; box-shadow:0 16px 40px -24px rgba(91,63,224,.2) !important; }
+  .cards .card{ background:rgba(18,18,30,.55) !important; border:1px solid rgba(124,92,255,.16) !important; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:transform .4s, box-shadow .4s, border-color .4s; }
+  .cards .card:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55) !important; box-shadow:0 40px 90px -40px rgba(124,92,255,.5) !important; }
   .cards .card h3{ color:var(--nk) !important; }
   .cards .card p{ color:var(--nmute) !important; }
-  .cards .card .go{ color:var(--nacc) !important; }
+  .cards .card .go{ color:#C9A6FF !important; }
 
-  footer{ background:transparent !important; border-top:1px solid var(--nline) !important; color:var(--nmute) !important; }
-  footer a{ color:var(--nacc) !important; }
-  ::selection{ background:rgba(91,63,224,.18); color:var(--nk); }
-  @media (prefers-reduced-motion:reduce){ body::before{ animation:none; } }
+  footer{ background:transparent !important; border-top:1px solid rgba(124,92,255,.14) !important; color:var(--nmute) !important; }
+  footer a{ color:#C9A6FF !important; }
+  ::selection{ background:rgba(192,107,255,.4); color:#fff; }
+  @media (prefers-reduced-motion:reduce){ body::before{ animation:none; } .hero h1 .hl{ animation:none; } }
 
-  /* 핵심역량 카드 */
+  /* ===== 핵심역량 2×2 비주얼 카드 (hi-list 대체) ===== */
   .capgrid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:26px 0 22px; }
-  .capcard{ background:#fff; border:1px solid var(--nline); border-radius:16px; padding:18px 20px; transition:transform .3s, border-color .3s, box-shadow .3s; }
-  .capcard:hover{ transform:translateY(-3px); border-color:var(--nacc); box-shadow:0 16px 40px -26px rgba(91,63,224,.2); }
+  .capcard{ background:rgba(18,18,30,.55); border:1px solid rgba(124,92,255,.16); border-radius:16px; padding:18px 20px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:transform .3s, border-color .3s, box-shadow .3s; }
+  .capcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 70px -40px rgba(124,92,255,.5); }
   .capcard .cap-top{ display:flex; align-items:center; gap:10px; margin-bottom:13px; }
   .capcard .cap-ic{ font-size:21px; line-height:1; }
-  .capcard .cap-k{ font-size:12.5px; font-weight:800; color:var(--nacc); background:rgba(91,63,224,.1); border:1px solid rgba(91,63,224,.22); padding:4px 11px; border-radius:999px; }
-  .capcard .cap-v{ font-size:17px; font-weight:800; color:var(--nk); letter-spacing:-.015em; line-height:1.3; }
-  .capcard .cap-v b{ color:var(--nacc); }
-  .capcard .cap-s{ margin-top:7px; font-size:12.5px; font-weight:500; color:var(--nmute); line-height:1.5; }
+  .capcard .cap-k{ font-size:12.5px; font-weight:800; letter-spacing:.01em; color:#C9A6FF; background:rgba(124,92,255,.14); border:1px solid rgba(124,92,255,.28); padding:4px 11px; border-radius:999px; }
+  .capcard .cap-v{ font-size:17px; font-weight:800; color:#EDEBFA; letter-spacing:-.015em; line-height:1.3; }
+  .capcard .cap-v b{ background:linear-gradient(135deg,#B794F6,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .capcard .cap-s{ margin-top:7px; font-size:12.5px; font-weight:500; color:#9E99BC; line-height:1.5; }
   @media(max-width:640px){ .capgrid{ grid-template-columns:1fr; } }
   @media(max-width:760px){ nav a[href*="streamlit.app"], nav a[href*="videos.html"], nav a[href*="dashboard"]{ display:none !important; } }
 </style>
 </head>
 <body>
 
-<nav style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(1.1) blur(14px);backdrop-filter:saturate(1.1) blur(14px);border-bottom:1px solid #E4E1D9">
+<nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
   <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
-    <a href="index.html" style="font-weight:800;font-size:17px;color:#1B1A22;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
-    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#4A2FD0;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(91,63,224,.1)">Home</a><a href="portfolio.html" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="resume.html" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="videos.html" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">성과분석 대시보드</a><a href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 소재 스튜디오</a></div>
+    <a href="index.html" style="font-weight:800;font-size:17px;color:#EDEBFA;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">Home</a><a href="portfolio.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="videos.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">성과분석 대시보드</a><a href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 소재 스튜디오</a></div>
   </div>
 </nav>
 
@@ -83,7 +90,7 @@
     <ul class="hi-list">
       <li><span class="hil-k">커머스 운영</span> 뷰티 스마트스토어 직접 운영 → 월매출 <b>+167%</b></li>
       <li><span class="hil-k">퍼포먼스</span> 글로벌랩스 마케팅 팀장 · 데이터로 예산 증액 설득 → 6개월 <b>취급고 9.2배 · ROAS 3.3배</b></li>
-      <li><span class="hil-k">대형 캠페인</span> <img src="/assets/logo-kb.jpeg" alt="KB국민은행" style="height:3.3em;vertical-align:middle;border-radius:8px;padding:3px 8px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.12);border:1px solid #E4E1D9;" /> 약 <b>8억</b> 캠페인 대행 → <b>신규 매체 발굴·제안</b></li>
+      <li><span class="hil-k">대형 캠페인</span> <img src="/assets/logo-kb.jpeg" alt="KB국민은행" style="height:3.3em;vertical-align:middle;border-radius:8px;padding:3px 8px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);" /> 약 <b>8억</b> 캠페인 대행 → <b>신규 매체 발굴·제안</b></li>
       <li><span class="hil-k">B2B 세일즈</span> 셀프스토리지 발굴 → 제안 → 발표 → <b>현장 계약 클로징 단독 완주</b></li>
     </ul>
     <p class="sub"><b>소재를 직접 만들고 데이터로 검증</b>해, <b>토스 커머스의 User Acquisition 지표를 끌어올리는 Creative 마케터</b>로 기여하고 싶습니다.</p>
