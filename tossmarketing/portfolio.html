@@ -615,7 +615,8 @@ body::after{
       .idxbars .ibfill{ height:100%; display:flex; align-items:center; justify-content:flex-end; padding:0 10px; font-size:12px; font-weight:800; color:#fff; background:linear-gradient(90deg,var(--signal-d),var(--signal)); border-radius:8px; }
       .idxbars .ibfill.base{ background:rgba(158,153,188,.45); color:var(--ink); }
       @media(max-width:600px){ .idxbars .ibl{ flex-basis:80px; font-size:11px; } }
-      .selwork{ padding:66px 0 6px; }
+      .selwork{ padding:66px 0 6px; margin-left:290px; }  /* 좌측 CASE INDEX 레일(250)+gap(40) 비우고 콘텐츠 컬럼 정렬 */
+      @media(max-width:1000px){ .selwork{ margin-left:0; } }  /* 레일 숨김 시 풀너비 */
       .sw-head{ margin-bottom:30px; }
       .sw-eyebrow{ font-size:12px; font-weight:800; letter-spacing:.2em; color:var(--signal); }
       .sw-head h2{ font-size:clamp(25px,4vw,38px); font-weight:800; line-height:1.16; margin:10px 0 8px; letter-spacing:-.02em; color:var(--ink); }
