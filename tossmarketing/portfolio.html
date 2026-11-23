@@ -465,8 +465,18 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
 .case{ position:relative; }
 .case::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--ca,var(--signal)), transparent 58%); z-index:4; }
 .case .ch .idx, .case .abadge, .case .gal-badge{ color:var(--ca,var(--signal)); }
-.case.reveal .case-top{ background:linear-gradient(180deg, color-mix(in srgb, var(--ca) 14%, transparent), transparent 150px); border-bottom:1px solid color-mix(in srgb, var(--ca) 24%, transparent); }
-.case.reveal{ border-color:color-mix(in srgb, var(--ca) 20%, var(--line-soft)); }
+.case.reveal .case-top{ background:linear-gradient(180deg, color-mix(in srgb, var(--ca) 22%, transparent), transparent 170px); border-bottom:1px solid color-mix(in srgb, var(--ca) 26%, transparent); }
+.case.reveal{ border-color:color-mix(in srgb, var(--ca) 22%, var(--line-soft)); }
+/* 케이스별 본문 배경 틴트 — 명시 rgba(브라우저 호환 보장) · 상단 짙게 → 아래로 다크 패널 */
+#ccom.case.reveal{ background:linear-gradient(172deg, rgba(183,148,246,.12), rgba(16,16,26,.62) 520px); }
+#c1.case.reveal{   background:linear-gradient(172deg, rgba(69,196,214,.12),  rgba(16,16,26,.62) 520px); }
+#cvid.case.reveal{ background:linear-gradient(172deg, rgba(192,107,255,.13), rgba(16,16,26,.62) 520px); }
+#c4.case.reveal{   background:linear-gradient(172deg, rgba(224,169,75,.12),  rgba(16,16,26,.62) 520px); }
+#c5.case.reveal{   background:linear-gradient(172deg, rgba(99,192,138,.12),  rgba(16,16,26,.62) 520px); }
+#c6.case.reveal{   background:linear-gradient(172deg, rgba(110,155,255,.12), rgba(16,16,26,.62) 520px); }
+#c6b.case.reveal{  background:linear-gradient(172deg, rgba(226,123,176,.13), rgba(16,16,26,.62) 520px); }
+#c2.case.reveal{   background:linear-gradient(172deg, rgba(138,123,255,.12), rgba(16,16,26,.62) 520px); }
+#c7.case.reveal{   background:linear-gradient(172deg, rgba(154,166,192,.12), rgba(16,16,26,.62) 520px); }
 .case:hover{ border-color:color-mix(in srgb, var(--ca) 55%, transparent) !important; box-shadow:0 44px 100px -44px color-mix(in srgb, var(--ca) 45%, transparent), var(--shadow); }
 .case .sh .bar{ background:var(--ca,var(--signal)); }
 
@@ -1214,9 +1224,10 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
       #cvid .pcard .sub-ko::before{ content:'자막 '; font-size:10px; font-weight:800; color:var(--dim); }
       #cvid .vidgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:6px; }
       #cvid .vfeat{ display:grid; grid-template-columns:2fr 1fr; gap:12px; margin-top:6px; align-items:stretch; }
-      #cvid .vfeat > div:first-child{ grid-row:span 2; }
+      #cvid .vfeat > div:first-child{ grid-row:1 / span 2; display:flex; flex-direction:column; }
+      #cvid .vfeat > div:first-child .vthumb{ flex:1 1 auto; padding-top:0; min-height:260px; }
       #cvid .vfeat .vidcap{ margin-top:7px; }
-      @media(max-width:720px){ #cvid .vfeat{ grid-template-columns:1fr; } #cvid .vfeat > div:first-child{ grid-row:auto; } }
+      @media(max-width:720px){ #cvid .vfeat{ grid-template-columns:1fr; } #cvid .vfeat > div:first-child{ grid-row:auto; display:block; } #cvid .vfeat > div:first-child .vthumb{ padding-top:56.25%; flex:none; min-height:0; } }
       #cvid .vidgrid .feat{ grid-column:1 / -1; }
       #cvid .vidgrid .feat .vidcap{ font-size:13px; }
       #cvid .ytwrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(135deg,#171427,#0f0d1c); }
