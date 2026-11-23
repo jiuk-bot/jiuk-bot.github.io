@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>윤지욱 · 마케팅 케이스 (시각화)</title>
+<title>윤지욱 | 퍼포먼스 크리에이티브 포트폴리오</title>
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
 
@@ -522,8 +522,8 @@ main{ min-width:0; }
   <header class="hero">
     <div class="hero-grid">
       <div class="hero-copy hero-anim d1">
-        <div class="kicker"><span class="tick"></span>커머스 Paid 광고 · 직접 제작 × 전환 데이터 분석</div>
-        <h1>광고를 직접 만들고,<br><span class="glow">구매 전환</span>까지 개선합니다.</h1>
+        <div class="kicker"><span class="tick"></span>커머스 광고 제작·운영</div>
+        <h1>광고를 직접 만들고,<br><span class="glow">구매로 이어지는 경로</span>를 개선했습니다.</h1>
         <p class="lead">광고 영상·이미지를 직접 기획·제작하고, A/B·포맷·CTA 실험과 GA4 전환 분석까지 수행해 <b>구매 전환</b>을 끌어올렸습니다.</p>
       </div>
       <figure class="hero-ad hero-anim d2">
@@ -539,9 +539,9 @@ main{ min-width:0; }
       </div>
     </div>
     <div class="readout hero-anim d4">
-      <div class="rd"><div class="cap">짐보관 AI영상 A/B</div><div class="val num"><span class="kpi">CTR</span>+<span class="n" data-to="42.7">42.7</span><span class="u">%</span></div><div class="delta num">6.7% → 9.56% (절대 CTR)</div></div>
-      <div class="rd"><div class="cap">의료 마케팅</div><div class="val num"><span class="kpi">ROAS</span><span class="n" data-to="3">3</span><span class="u">배</span></div><div class="delta num">광고 집행 최적화 · ROAS 3배 상승</div></div>
-      <div class="rd"><div class="cap">고객군 재정의·소구 변경</div><div class="val num" style="white-space:nowrap"><span class="kpi">핵심고객 유입</span>+<span class="n" data-to="30">30</span><span class="u">%p</span></div><div class="delta num">40% → 70% · 임대인 비율</div></div>
+      <div class="rd"><div class="cap">짐보관 AI영상 A/B</div><div class="val num"><span class="kpi">CTR</span>+<span class="n" data-to="42.7">42.7</span><span class="u">%</span></div><div class="delta num">클릭률 6.7% → 9.56%</div></div>
+      <div class="rd"><div class="cap">의료 마케팅 · 구글 메인</div><div class="val num"><span class="kpi">ROAS</span><span class="n" data-to="336">336</span><span class="u">%</span></div><div class="delta num">103% → 336% (약 3.3배)</div></div>
+      <div class="rd"><div class="cap">고객군 재정의</div><div class="val num" style="white-space:nowrap"><span class="kpi">임대인 비중</span><span class="n" data-to="70">70</span><span class="u">%</span></div><div class="delta num">전체 리드 중 40% → 70%</div></div>
     </div>
     </div>
   </header>
@@ -717,6 +717,16 @@ main{ min-width:0; }
       #c6b .imgab .fa figcaption{ color:#ff9b9b; } #c6b .imgab .fb figcaption{ color:var(--signal); }
       #c6b .imgab .fb img{ border-color:rgba(124,92,255,.45); }
       #c6b .imgab .ar{ display:flex; align-items:center; justify-content:center; color:var(--signal); font-weight:800; font-size:18px; }
+      .phonewrap{ display:grid; grid-template-columns:auto 1fr; gap:28px; align-items:center; }
+      .phone-mock{ width:260px; border:11px solid #202030; border-radius:34px; overflow:hidden; background:#0b0a12; box-shadow:0 26px 60px -24px rgba(0,0,0,.7); position:relative; }
+      .phone-mock::before{ content:""; position:absolute; top:0; left:50%; transform:translateX(-50%); width:46%; height:20px; background:#202030; border-radius:0 0 14px 14px; z-index:2; }
+      .phone-mock img{ width:100%; display:block; }
+      .phone-side{ display:flex; flex-direction:column; gap:12px; }
+      .phone-side .ps-row{ font-size:14px; line-height:1.6; color:var(--mute); border-left:2px solid var(--line); padding-left:14px; }
+      .phone-side .ps-row b{ color:var(--ink); }
+      .phone-side .ps-row .ps-b{ color:var(--signal); font-weight:700; }
+      .phone-side .ps-row.note{ font-size:12px; border-left-color:transparent; padding-left:0; color:var(--dim); }
+      @media(max-width:720px){ .phonewrap{ grid-template-columns:1fr; gap:20px; } .phone-mock{ margin:0 auto; } }
       @media(max-width:600px){ #c6b .imgab{ grid-template-columns:1fr; } #c6b .imgab .ar{ transform:rotate(90deg); } #c6b .imgab img{ height:300px; } }
       /* 4종 토너먼트 */
       #ccom .tngrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
@@ -735,12 +745,12 @@ main{ min-width:0; }
       #ccom .tl .tlo{ font-size:12px; font-weight:800; color:var(--cyan); background:rgba(110,231,255,.08); border:1px solid rgba(110,231,255,.28); border-radius:999px; padding:5px 11px; margin-top:auto; }
       #ccom .tl .tla{ display:flex; align-items:center; color:var(--signal); font-size:17px; font-weight:800; padding:0 5px; flex:0 0 auto; }
       @media(max-width:720px){ #ccom .tl{ flex-direction:column; } #ccom .tl .tla{ justify-content:center; transform:rotate(90deg); padding:5px 0; } #ccom .tl .tlo{ margin-top:4px; } }
-      /* 같은 행 카드끼리 러닝을 하단에 자연 정렬 (내용은 자연 높이 유지) */
+      /* 같은 행 카드끼리 배운 점을 하단에 자연 정렬 (내용은 자연 높이 유지) */
       #ccom .abgrid{ align-items:stretch; }
       /* 카드 상단(포맷+기간) */
       #ccom .abcard .abhead{ display:flex; align-items:center; justify-content:space-between; gap:8px; }
       #ccom .abcard .per{ font-size:12px; font-weight:800; color:var(--mute); font-variant-numeric:tabular-nums; }
-      /* 문제·가설·러닝: 라벨 열 + 텍스트 2단 정렬 */
+      /* 문제·가설·배운 점: 라벨 열 + 텍스트 2단 정렬 */
       #ccom .abcard .qa{ position:relative; padding-left:54px; font-size:14px; line-height:1.62; color:var(--mute); }
       #ccom .abcard .qa .lab{ position:absolute; left:0; top:1px; width:43px; box-sizing:border-box; text-align:center; font-size:10.5px; font-weight:800; letter-spacing:.02em; padding:4px 0; border-radius:7px; }
       #ccom .abcard .qa.p .lab{ background:rgba(255,107,157,.1); color:#ff9b9b; border:1px solid rgba(255,107,157,.3); }
@@ -766,7 +776,7 @@ main{ min-width:0; }
         </div>
       </div>
 
-      <p class="lead"><b>소재 A/B테스트</b> — 각 소재의 <b>문제·가설·러닝을 수치로</b> 남긴 기여도 100% 아카이브입니다.</p>
+      <p class="lead"><b>소재 A/B테스트</b> — 각 소재의 <b>문제·가설·배운 점을 수치로</b> 남긴 기여도 100% 아카이브입니다.</p>
 
       <div class="body">
         <div class="mstrip c3">
@@ -788,7 +798,7 @@ main{ min-width:0; }
             <div class="tla">→</div>
             <div class="tlc"><div class="tln">5</div><div class="tlt">전환 타이밍</div><div class="tld">결제까지 3.89일 → 그 안에 리뷰 리마케팅으로 재도달</div><div class="tlo">CVR 62%</div></div>
           </div>
-          <p style="margin-top:18px">대표 3개 사례를 먼저 보여드리고, 나머지 실험은 아래 <b>전체 실험 보기</b>에서 확인할 수 있습니다. 각 사례는 <span class="g">문제 → 가설 → 소재(As-is→To-be) → 실행 → 러닝</span> 순입니다.</p>
+          <p style="margin-top:18px">대표 3개 사례를 먼저 보여드리고, 나머지 실험은 아래 <b>전체 실험 보기</b>에서 확인할 수 있습니다. 각 사례는 <span class="g">문제 → 가설 → 소재(As-is→To-be) → 실행 → 배운 점</span> 순입니다.</p>
         </div>
 
         <div class="sec">
@@ -815,7 +825,7 @@ main{ min-width:0; }
               </table>
               <p class="note" style="margin:8px 0 0">※ 길이·훅·편집이 함께 바뀐 소재 교체(기간 전후 비교) — 단일 변수 A/B는 아님</p>
               <div class="abx">실행 : 20초 → <b>12초</b> 압축 · 앞 3초에 Hook·텍스트 요약 배치 <span class="raw">(평균 시청 7초 이탈 구간 대응)</span></div>
-              <div class="qa l"><span class="lab">러닝</span> 영상 '길이'가 아니라 <b>인트로 Hook 설계</b>가 CTR을 만든다 — 30%만 시청해도 메시지가 전달되면 전환이 따라온다</div>
+              <div class="qa l"><span class="lab">배운 점</span> 영상 '길이'가 아니라 <b>인트로 Hook 설계</b>가 CTR을 만든다 — 30%만 시청해도 메시지가 전달되면 전환이 따라온다</div>
             </div>
 
             <div class="abcard" style="order:2">
@@ -831,7 +841,7 @@ main{ min-width:0; }
               </div>
               <div class="res"><span class="r">전환 <b>+25%</b></span><span class="r">CTR 일부 하락</span></div>
               <div class="abx">실행 : 자극형 인트로 → '퇴근 후 집' 현실 공감형으로 교체 (2025.04 vs 05)</div>
-              <div class="qa l"><span class="lab">러닝</span> 광범위 후킹으로 트래픽을 넓히기보다 <b>타겟 적합도를 높인 소재</b>가 유효 — CTR이 일부 하락해도 유입 품질이 개선되면 <b>클릭 수 손실 &lt; 전환 이득</b>으로 순증한다</div>
+              <div class="qa l"><span class="lab">배운 점</span> 광범위 후킹으로 트래픽을 넓히기보다 <b>타겟 적합도를 높인 소재</b>가 유효 — CTR이 일부 하락해도 유입 품질이 개선되면 <b>클릭 수 손실 &lt; 전환 이득</b>으로 순증한다</div>
             </div>
 
             <div class="abcard" style="order:3">
@@ -847,7 +857,7 @@ main{ min-width:0; }
               </div>
               <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">신규고객 <b>+63%</b></span></div>
               <div class="abx">실행 : 참여자·유사 2%·픽셀 세분화 타겟에 실고객 리뷰 소재로 재도달 · 2025.05 1개월 집행</div>
-              <div class="qa l"><span class="lab">러닝</span> 리마케팅은 같은 소재 반복이 아니라 <b>구매 신뢰도를 높이는 단계 설계</b>가 전환을 만든다</div>
+              <div class="qa l"><span class="lab">배운 점</span> 리마케팅은 같은 소재 반복이 아니라 <b>구매 신뢰도를 높이는 단계 설계</b>가 전환을 만든다</div>
             </div>
 
             <div class="abcard extra">
@@ -864,7 +874,7 @@ main{ min-width:0; }
               </div>
               <div class="res"><span class="r">B(밈+가격) 최다 클릭</span><span class="r">CPC META &lt; 당근</span></div>
               <div class="abx">B(밈+가격강조)가 4종 중 <b>클릭 최다</b> · 같은 소재도 <b>META가 당근보다 CPC 약 16% 우수</b></div>
-              <div class="qa l"><span class="lab">러닝</span> <b>'가격 강조'가 최대 후킹</b> + 같은 소재도 META가 당근보다 CPC 약 16% 우수 → 이후 <b>B 소재·META 집중</b></div>
+              <div class="qa l"><span class="lab">배운 점</span> <b>'가격 강조'가 최대 후킹</b> + 같은 소재도 META가 당근보다 CPC 약 16% 우수 → 이후 <b>B 소재·META 집중</b></div>
             </div>
 
             <div class="abcard extra">
@@ -880,7 +890,7 @@ main{ min-width:0; }
               </div>
               <div class="res"><span class="r">전환 <b>+67.7%</b></span><span class="r">CPA <b>−38.6%</b></span><span class="r">CTR <b>+16.9%</b></span></div>
               <div class="abx">실행 : '상가공실 임대인' 핵심 타겟에 도달하는 공감 영상으로 교체 <span class="raw">(동일 비용 지출 기준 · 핵심 고객군 유입 비중 40%→70%)</span></div>
-              <div class="qa l"><span class="lab">러닝</span> 클릭 최적화가 아니라 <b>'핵심 고객군 유입 비중' 최적화</b> — 계약율이 10배 높은 '상가공실 임대인'에 정확히 닿는 것이 CPA를 결정한다</div>
+              <div class="qa l"><span class="lab">배운 점</span> 클릭 최적화가 아니라 <b>'핵심 고객군 유입 비중' 최적화</b> — 계약율이 10배 높은 '상가공실 임대인'에 정확히 닿는 것이 CPA를 결정한다</div>
             </div>
 
             <div class="abcard extra">
@@ -896,7 +906,7 @@ main{ min-width:0; }
               </div>
               <div class="res"><span class="r">CTR <b>3.06%</b> (+36.6%)</span><span class="r">전환 <b>+26.7%</b></span><span class="r">CPA <b>−20.9%</b></span></div>
               <div class="abx">텍스트 없는 단순 현장 영상 → <b>Hook → 신뢰 → 핵심가치</b> 구조로 재구성</div>
-              <div class="qa l"><span class="lab">러닝</span> B2B도 결국 <b>Hook과 메시지 구조</b>가 CTR을 가른다 (+36.6%)</div>
+              <div class="qa l"><span class="lab">배운 점</span> B2B도 결국 <b>Hook과 메시지 구조</b>가 CTR을 가른다 (+36.6%)</div>
             </div>
 
             <div class="abcard extra">
@@ -912,7 +922,7 @@ main{ min-width:0; }
               </div>
               <div class="res"><span class="r">CTR <b>3.37%</b> (+12.3%)</span><span class="r">전환 <b>+17.6%</b></span><span class="r">CPA <b>−14.7%</b></span></div>
               <div class="abx">영상 이탈이 큰 구간 → <b>한눈에 읽히는 텍스트 중심 이미지</b>로 포맷 전환</div>
-              <div class="qa l"><span class="lab">러닝</span> 전달할 정보량이 많을수록 <b>소재에는 핵심만</b> — 상세 정보는 랜딩페이지 퍼널로 넘기는 구조가 <b>최종 전환 성과 개선에 유리</b>할 수 있다</div>
+              <div class="qa l"><span class="lab">배운 점</span> 전달할 정보량이 많을수록 <b>소재에는 핵심만</b> — 상세 정보는 랜딩페이지 퍼널로 넘기는 구조가 <b>최종 전환 성과 개선에 유리</b>할 수 있다</div>
             </div>
 
           </div>
@@ -1220,12 +1230,12 @@ main{ min-width:0; }
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>실험 설계 — 소구포인트 × 후킹 2단계 A/B</div>
-          <p style="margin-bottom:4px">단순 제작이 아니라 <b>소재를 실험 단위로 설계</b>했습니다. 소구포인트별로 소재를 만들어 비교하고, 고효율 소구를 축으로 후킹을 다시 비교합니다.</p>
+          <div class="sh"><span class="bar"></span>실험 설계 — 광고 메시지 × 후킹 2단계 A/B</div>
+          <p style="margin-bottom:4px">단순 제작이 아니라 <b>소재를 실험 단위로 설계</b>했습니다. 광고 메시지별로 소재를 만들어 비교하고, 고효율 소구를 축으로 후킹을 다시 비교합니다.</p>
           <div class="pipe">
-            <div class="pstep"><span class="pnum">1</span><div class="pico"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="ptitle">소구포인트별 제작</div><div class="pdesc">가격·신뢰·사후관리 등 포인트별 소재</div></div>
+            <div class="pstep"><span class="pnum">1</span><div class="pico"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="ptitle">광고 메시지별 제작</div><div class="pdesc">가격·신뢰·사후관리 등 포인트별 소재</div></div>
             <div class="parrow">▶</div>
-            <div class="pstep"><span class="pnum">2</span><div class="pico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1.2"/><rect x="14" y="4" width="7" height="16" rx="1.2"/></svg></div><div class="ptitle">소구포인트 A/B</div><div class="pdesc">어떤 소구가 유효한지 검증</div></div>
+            <div class="pstep"><span class="pnum">2</span><div class="pico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="7" height="16" rx="1.2"/><rect x="14" y="4" width="7" height="16" rx="1.2"/></svg></div><div class="ptitle">광고 메시지 A/B</div><div class="pdesc">어떤 소구가 유효한지 검증</div></div>
             <div class="parrow">▶</div>
             <div class="pstep"><span class="pnum">3</span><div class="pico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 7-7"/><path d="M17 8h4v4"/></svg></div><div class="ptitle">고효율 소구 선정</div><div class="pdesc">효율 우수 소구를 주축으로</div></div>
             <div class="parrow">▶</div>
@@ -1313,7 +1323,7 @@ main{ min-width:0; }
       <div class="body">
 
         <div class="mstrip c3">
-          <div class="m"><div class="cap">스타틴즈 캠페인</div><div class="val num"><span class="kpi">CPI</span>−41<span class="u">%</span></div><div class="sub">캠페인 기간 중 개선</div></div>
+          <div class="m"><div class="cap">스타틴즈 캠페인</div><div class="val num"><span class="kpi">앱 실행당 비용</span>−41<span class="u">%</span></div><div class="sub">캠페인 기간 중 개선</div></div>
           <div class="m"><div class="cap">신규매체 콴다</div><div class="val num"><span class="kpi">VTR</span>99<span class="u">%</span></div><div class="sub num">5채널 1위 · CPV −67%</div></div>
           <div class="m"><div class="cap">브랜드 캠페인</div><div class="val num"><span class="kpi">앱실행</span>1.7만<span class="u">건</span></div><div class="sub neu num">집행 5억 · 5채널</div></div>
         </div>
@@ -1419,9 +1429,9 @@ main{ min-width:0; }
       <div class="body">
 
         <div class="mstrip c3">
-          <div class="m"><div class="cap">패밀리뱅킹 캠페인</div><div class="val num"><span class="kpi">CPI</span>−29<span class="u">%</span></div><div class="sub">앱실행 단가 개선</div></div>
+          <div class="m"><div class="cap">패밀리뱅킹 캠페인</div><div class="val num"><span class="kpi">앱 실행당 비용</span>−29<span class="u">%</span></div><div class="sub">앱실행 단가 개선</div></div>
           <div class="m"><div class="cap">토스 예산 재배분</div><div class="val num"><span class="kpi">예산</span>+50<span class="u">%</span></div><div class="sub num">1억 → 1.5억 (전환 효율 집중)</div></div>
-          <div class="m"><div class="cap">자녀 금융 DMP 타겟</div><div class="val num"><span class="kpi">앱단가</span>−69<span class="u">%</span></div><div class="sub num">전체 평균 대비</div></div>
+          <div class="m"><div class="cap">자녀 금융 DMP 타겟</div><div class="val num"><span class="kpi">앱 실행당 비용</span>−69<span class="u">%</span></div><div class="sub num">전체 평균 대비</div></div>
         </div>
 
         <div class="sec">
@@ -1591,14 +1601,16 @@ main{ min-width:0; }
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 했나 — 즉시결제 도입·LP 개선 (전환율 최적화)</div>
-          <div class="vcap">실제 화면 — 문의 경유 예약(기존) vs 즉시결제 랜딩(개선)</div>
+          <div class="vcap">실제 화면 — 기존 예약 흐름(지점 문의 경유, 즉시 결제 불가)</div>
           <div class="viz">
-            <div class="imgab">
-              <figure class="fa"><img src="assets/cases/hobby_asis.png" alt="기존 예약 화면 — 하단 예약하기가 지점 문의로 연결(즉시 결제 불가)"><figcaption>AS-IS · 게임룸 예약 — 하단 <b>예약하기</b>가 지점 문의로 연결(즉시 결제 불가)</figcaption></figure>
-              <span class="ar">→</span>
-              <figure class="fb"><img src="assets/cases/hobby_tobe.png" alt="개선 랜딩 — 한 화면에서 즉시 결제 예약"><figcaption>TO-BE · BOXFUL 랜딩 — 한 화면에서 <b>바로 예약·결제</b>(문의 단계 제거)</figcaption></figure>
+            <div class="phonewrap">
+              <div class="phone-mock"><img src="assets/cases/hobby_asis.png" alt="기존 취미공간 예약 화면 — 하단 예약하기가 지점 문의로 연결되어 즉시 결제 불가"></div>
+              <div class="phone-side">
+                <div class="ps-row"><span class="ps-b">하단 ‘예약하기’</span> → 지점 문의로 연결되어 <b>즉시 결제가 불가</b>했습니다.</div>
+                <div class="ps-row"><b>개선:</b> ① 지점 문의 경유 단계 제거 ② 예약 페이지를 홈 메인에 아이콘 노출 ③ 랜딩에서 <b>즉시 결제 버튼</b>으로 전환</div>
+                <div class="ps-row note">개선 랜딩(BOXFUL 즉시결제) 화면은 상단 대표작 썸네일에서 확인할 수 있습니다.</div>
+              </div>
             </div>
-            <p class="note" style="margin-top:8px">바뀐 점: ① 지점 문의 경유 단계 제거 ② 예약 페이지를 홈 메인에 아이콘 노출 ③ 랜딩에서 즉시 결제 버튼으로 전환</p>
           </div>
           <div class="viz">
             <div class="flowrow">
@@ -1635,10 +1647,10 @@ main{ min-width:0; }
 <section class="case reveal" id="c2">
       <div class="case-top">
         <div class="ch"><span class="idx num">CASE 06</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
-        <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
+        <h2>광고 API 연동 성과 대시보드 직접 구축</h2>
         <div class="tags">
           <span class="tag">구글애즈·메타·틱톡 API</span>
-          <span class="tag">AI 바이브코딩</span>
+          <span class="tag">AI 직접 개발</span>
           <span class="tag role">1인 · 100%</span>
         </div>
       </div>
@@ -1698,7 +1710,7 @@ main{ min-width:0; }
           </div>
 
           <div class="stepflow">
-            <div class="sc"><span class="scn">1</span><div class="sct"><b>API 연동 대시보드</b>구글애즈·메타·틱톡 성과를 API로 연동·자동 가공, 바이브코딩으로 직접 개발</div></div>
+            <div class="sc"><span class="scn">1</span><div class="sct"><b>API 연동 대시보드</b>구글애즈·메타·틱톡 성과를 API로 연동·자동 가공, 직접 개발으로 직접 개발</div></div>
             <div class="sc"><span class="scn">2</span><div class="sct"><b>한 화면 통합</b>실시간 성과 조회·A/B 플래닝·코호트·KPI를 한 화면에서 관리</div></div>
             <div class="sc"><span class="scn">3</span><div class="sct"><b>운영 히스토리 챗봇</b>"언제·무엇을·왜 했는지"를 <em>자연어로 즉시 질의응답</em></div></div>
             <div class="sc"><span class="scn">4</span><div class="sct"><b>실시간 KPI 체크</b>달성율을 실시간으로 보며 일·주·월 계획을 유동 조정</div></div>
