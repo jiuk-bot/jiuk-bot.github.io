@@ -558,8 +558,18 @@ body::after{
       #ccom .abcard .qa, #ccom .abcard .res, #ccom .abcard .abx{ grid-column:2; }
       #ccom .abcard.extra{ display:none; order:5; }
       #ccom .abgrid.show-all .abcard.extra{ display:grid; }
-      #ccom .ab-toggle{ display:block; margin:22px auto 0; background:var(--panel); border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14px; padding:12px 24px; border-radius:12px; cursor:pointer; transition:border-color .2s,color .2s; }
-      #ccom .ab-toggle:hover{ border-color:var(--signal); color:var(--signal); }
+      .ab-toggle{ display:block; margin:22px auto 0; background:var(--panel); border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14px; padding:12px 24px; border-radius:12px; cursor:pointer; transition:border-color .2s,color .2s; }
+      .ab-toggle:hover{ border-color:var(--signal); color:var(--signal); }
+      .moredetail{ display:none; }
+      .moredetail.show{ display:block; }
+      .ifun{ display:flex; align-items:stretch; gap:8px; flex-wrap:wrap; }
+      .ifun .fn{ flex:1; min-width:108px; border:1px solid var(--line); border-radius:12px; padding:12px 10px; background:var(--panel); text-align:center; }
+      .ifun .fn.hot{ border-color:var(--signal-d); background:rgba(124,92,255,.08); }
+      .ifun .fn b{ display:block; font-size:14px; color:var(--ink); margin:5px 0 2px; }
+      .ifun .fn small{ display:block; font-size:10.5px; color:var(--mute); line-height:1.4; }
+      .ifun .fns{ display:inline-flex; width:20px; height:20px; align-items:center; justify-content:center; border-radius:50%; background:var(--signal-d); color:#fff; font-size:11px; font-weight:700; }
+      .ifun .fnar{ align-self:center; color:var(--signal); font-weight:700; font-size:16px; }
+      @media(max-width:600px){ .ifun{ flex-direction:column; } .ifun .fnar{ transform:rotate(90deg); } }
       #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
       #ccom .abcard .fmt{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; padding:4px 11px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
       #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
@@ -859,6 +869,20 @@ body::after{
           <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
           <p class="quote">"임플란트는 <b>오프라인 내원이 필수인 고관여 상품</b>이다. 그러니 <b>'리드 CPA'가 아니라 '지역별 내원율·CAC·ROAS'</b>로 성과를 봐야 <b>진짜 효율</b>이 보인다"는 관점을 세움.</p>
 
+          <div class="vcap">광고가 책임지는 구간 재정의 — '리드'가 아니라 '내원·시술'까지</div>
+          <div class="viz">
+            <div class="ifun">
+              <div class="fn"><span class="fns">1</span><b>리드</b><small>상담 신청 유입</small></div>
+              <div class="fnar">→</div>
+              <div class="fn"><span class="fns">2</span><b>상담</b><small>전화·방문 상담</small></div>
+              <div class="fnar">→</div>
+              <div class="fn hot"><span class="fns">3</span><b>내원</b><small>실제 병원 방문 · 진짜 전환점</small></div>
+              <div class="fnar">→</div>
+              <div class="fn"><span class="fns">4</span><b>시술</b><small>매출 발생</small></div>
+            </div>
+            <p class="vnote">리드 수가 아니라 <b>내원·시술까지 책임지는 구조</b>로 광고를 재정의 — 성과를 '리드 CPA'가 아닌 <b>지역별 내원율·CAC·ROAS</b>로 측정한 이유입니다.</p>
+          </div>
+
           <div class="vcap">지역별 내원율 — 치과 인근일수록 압도적 (최대 15배 격차 → '전환 효율' 설득 근거)</div>
           <div class="viz">
             <div class="vbars">
@@ -902,6 +926,8 @@ body::after{
             </div>
           </div>
 
+          <button class="ab-toggle" onclick="var g=this.nextElementSibling;g.classList.toggle('show');this.textContent=g.classList.contains('show')?'상세 분석 접기 \u25B4':'상세 분석 더 보기 — 관심사 교차·ML 학습·적정 예산·변경 빈도 (+4) \u25BE';">상세 분석 더 보기 — 관심사 교차·ML 학습·적정 예산·변경 빈도 (+4) ▾</button>
+          <div class="moredetail">
           <div class="vcap">계정별 관심사 타겟 실험 — 2개 구글애즈 계정에 다른 관심사 + 서로 교차 적용</div>
           <div class="viz">
             <div class="ba">
@@ -940,6 +966,7 @@ body::after{
               <div class="cell good"><div class="t">변경 자제 계정</div><div class="v"><span class="num">전환 +10%</span><small>변경 최소화 · ML이 학습을 끝냄</small></div></div>
             </div>
             <p class="vnote">같은 시기 두 계정을 비교하니, 하루 변경이 많은 쪽은 전환 <b>−44%</b>·아낀 쪽은 <b>+10%</b>. 디멘드젠은 손이 많이 가야 좋아지는 게 아니라, <b>변경을 멈추고 머신러닝이 학습을 완료하게 두는 것</b>이 성과의 핵심임을 데이터로 확인했습니다.</p>
+          </div>
           </div>
         </div>
 
