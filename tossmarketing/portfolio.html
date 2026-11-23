@@ -526,15 +526,15 @@ body::after{
     <aside class="railwrap">
       <div class="rail-h">CASE INDEX</div>
       <nav class="rail">
-        <a href="#ccom"><span class="rn">★</span><span>커머스·리드 소재 A/B 아카이브</span></a>
+        <a href="#ccom"><span class="rn">★</span><span>소재 기획·A/B 실험 대표 3선</span></a>
+        <a href="#c1"><span class="rn">01</span><span>임플란트 리드 확보 캠페인</span></a>
         <a href="#cvid"><span class="rn">▶</span><span>AI 영상 크리에이티브</span></a>
-        <a href="#c1"><span class="rn">01</span><span>치과 임플란트 다매체 소재</span></a>
-        <a href="#c2"><span class="rn">02</span><span>AI 성과 대시보드</span></a>
-        <a href="#c4"><span class="rn">03</span><span>KB 스타틴즈 5채널</span></a>
-        <a href="#c5"><span class="rn">04</span><span>KB 패밀리뱅킹</span></a>
-        <a href="#c6"><span class="rn">05</span><span>공유창고 · 짐보관 퍼포먼스</span></a>
-        <a href="#c6b"><span class="rn">06</span><span>공유창고 · 취미공간 CRO</span></a>
-        <a href="#c7"><span class="rn">07</span><span>어스텀 창업·대표</span></a>
+        <a href="#c4"><span class="rn">02</span><span>KB 스타틴즈 5채널</span></a>
+        <a href="#c5"><span class="rn">03</span><span>KB 패밀리뱅킹</span></a>
+        <a href="#c6"><span class="rn">04</span><span>공유창고 퍼포먼스</span></a>
+        <a href="#c6b"><span class="rn">05</span><span>취미공간 CRO</span></a>
+        <a href="#c2"><span class="rn">06</span><span>AI 성과 대시보드</span></a>
+        <a href="#c7"><span class="rn">07</span><span>창업 경험 및 기타</span></a>
       </nav>
     </aside>
 
@@ -813,50 +813,144 @@ body::after{
       </div>
     </section>
 
-    <!-- ===================== GALLERY · AI 영상 크리에이티브 ===================== -->
-    <style>
-      #cvid .gal-badge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#C9A6FF; background:rgba(124,92,255,.14); border:1px solid rgba(124,92,255,.3); padding:3px 10px; border-radius:999px; }
-      #cvid .pgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:4px; }
-      #cvid .pcard{ border:1px solid var(--line); border-radius:12px; padding:14px; background:var(--panel); display:flex; flex-direction:column; gap:8px; }
-      #cvid .pcard .pt{ font-size:12px; font-weight:800; color:var(--ink); }
-      #cvid .pcard .pt small{ display:block; font-weight:600; color:var(--dim); font-size:10.5px; margin-top:1px; }
-      #cvid .pcard .prompt{ font-size:11px; line-height:1.5; color:var(--mute); background:rgba(124,92,255,.05); border:1px dashed rgba(124,92,255,.28); border-radius:8px; padding:9px 10px; font-family:ui-monospace,Menlo,monospace; }
-      #cvid .pcard .sub-ko{ font-size:12px; font-weight:700; color:var(--signal); }
-      #cvid .pcard .sub-ko::before{ content:'자막 '; font-size:10px; font-weight:800; color:var(--dim); }
-      #cvid .vidgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:6px; }
-      #cvid .vidgrid .feat{ grid-column:1 / -1; }
-      #cvid .vidgrid .feat .vidcap{ font-size:13px; }
-      #cvid .ytwrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(135deg,#171427,#0f0d1c); }
-      #cvid .ytwrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
-      #cvid .vidcap{ font-size:12px; font-weight:700; color:var(--mute); margin-top:8px; }
-      #cvid .vidcap b{ color:var(--signal); }
-      #cvid .pipe{ display:flex; align-items:stretch; margin-top:10px; }
-      #cvid .pstep{ flex:1; min-width:0; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 10px 14px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:6px; position:relative; transition:transform .3s,border-color .3s,box-shadow .3s; }
-      #cvid .pstep:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.55); box-shadow:0 24px 50px -30px rgba(124,92,255,.6); }
-      #cvid .pstep .pnum{ position:absolute; top:-11px; left:50%; transform:translateX(-50%); width:23px; height:23px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px -2px rgba(124,92,255,.7); }
-      #cvid .pstep .pico{ margin-top:3px; height:30px; display:flex; align-items:center; justify-content:center; color:var(--signal); }
-      #cvid .pstep .pico svg{ width:26px; height:26px; stroke:currentColor; stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
-      #cvid .pstep .ptitle{ font-size:12.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; }
-      #cvid .pstep .pdesc{ font-size:10.5px; color:var(--dim); line-height:1.45; }
-      #cvid .parrow{ display:flex; align-items:center; justify-content:center; flex:0 0 22px; color:var(--signal); font-size:15px; }
-      #cvid .vthumb{ display:block; position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0f0d1c; text-decoration:none; }
-      #cvid .vthumb .th{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s; }
-      #cvid .vthumb:hover .th{ transform:scale(1.05); }
-      #cvid .vthumb .pbtn{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%; background:rgba(12,10,22,.58); border:1.5px solid rgba(255,255,255,.85); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:.25s; }
-      #cvid .vthumb:hover .pbtn{ background:var(--signal-d); border-color:transparent; transform:translate(-50%,-50%) scale(1.08); }
-      #cvid .vbtnrow{ margin-top:18px; }
-      #cvid .psolve{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:6px; }
-      #cvid .ps{ border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--panel); }
-      #cvid .ps .ps-p,#cvid .ps .ps-s{ padding:11px 13px; font-size:12px; line-height:1.55; color:var(--mute); display:flex; gap:8px; align-items:flex-start; }
-      #cvid .ps .ps-p{ border-bottom:1px solid var(--line); }
-      #cvid .ps b{ color:var(--ink); }
-      #cvid .ps .tg{ flex:0 0 auto; font-size:10px; font-weight:800; padding:2px 7px; border-radius:6px; margin-top:1px; }
-      #cvid .ps .tg.p{ background:rgba(255,120,120,.12); color:#ff9b9b; border:1px solid rgba(255,120,120,.32); }
-      #cvid .ps .tg.s{ background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.32); }
-      @media(max-width:720px){ #cvid .psolve{ grid-template-columns:1fr; } }
-      @media(max-width:720px){ #cvid .pgrid,#cvid .vidgrid{ grid-template-columns:1fr; } #cvid .pipe{ flex-direction:column; } #cvid .parrow{ flex-basis:22px; transform:rotate(90deg); } }
-    </style>
-    <section class="case reveal" id="cvid">
+<section class="case reveal" id="c1">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 01</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
+        <h2>임플란트 리드 확보 캠페인</h2>
+        <div class="tags">
+          <span class="tag">구글애즈·메타·틱톡·GA4</span>
+          <span class="tag role">3인 · 기여 70%</span>
+        </div>
+      </div>
+      <p class="lead">광고주는 <b>전환 볼륨(리드 수)</b>을 원했지만, <b>지역별 CAC를 데이터로 분해</b>해 <b>전환 효율 중심</b>으로 설득 — <b>ROAS +226%(103→336%)</b>, <b>취급고 +817%(약 9.2배)</b> 상승시켰습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c4">
+          <div class="m"><div class="cap">최근 6개월</div><div class="val num"><span class="kpi">취급고</span>9.2<span class="u">배</span></div><div class="sub num">0.6억 → 5.5억</div></div>
+          <div class="m"><div class="cap">의료 마케팅</div><div class="val num"><span class="kpi">ROAS</span>336<span class="u">%</span></div><div class="sub num">103% → 336% (3.3배)</div></div>
+          <div class="m"><div class="cap">리드→내원</div><div class="val num"><span class="kpi">내원율</span>7.1<span class="u">%</span></div><div class="sub num">0.2% → 7.1% (약 36배)</div></div>
+          <div class="m"><div class="cap">지역별 효율</div><div class="val num"><span class="kpi">CAC</span>−25<span class="u">%</span></div><div class="sub neu num">누적 리드 9만+건 규모</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
+          <p>치과 임플란트 병원의 신규 환자 유치. 온라인 광고로 상담 리드를 모으고, 그 리드가 실제 병원 내원 → 시술로 이어져야 비로소 매출이 되는 <b>고관여 오프라인 서비스</b>.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>광고주는 리드 볼륨(일 300개+)을, 내부적으로는 CPA 6만 이내를 둘 다 지켜야 했다 — 구글애즈 단독으론 둘이 <b>충돌</b>.</p>
+          <div class="vcap amb">볼륨 vs 효율 — 구글애즈 단독으로는 둘 다 벽</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell warn"><div class="t">광고주 요구</div><div class="v">일 리드 300개+<small>최대 500개까지 필요</small></div></div>
+              <div class="arrow clash">↯</div>
+              <div class="cell warn"><div class="t">내부 목표</div><div class="v">CPA ≤ 6만원<small>구글애즈 단독 = 일 70개가 한계</small></div></div>
+            </div>
+            <div class="meter" style="margin-top:18px">
+              <div class="mh"><span>구글애즈 단독 — 효율 유지 가능 구간</span><span class="gap">목표까지 −230개/일</span></div>
+              <div class="track"><div class="fill num" style="width:23%">일 70개</div><div class="goal num">목표 일 300개</div></div>
+            </div>
+            <p class="vnote">일 <b>70개</b>를 넘기는 순간 CPA가 <b>6만원</b>을 초과 — <b>볼륨과 효율이 동시에 벽에 부딪힘.</b></p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"임플란트는 <b>오프라인 내원이 필수인 고관여 상품</b>이다. 그러니 <b>'리드 CPA'가 아니라 '지역별 내원율·CAC·ROAS'</b>로 성과를 봐야 <b>진짜 효율</b>이 보인다"는 관점을 세움.</p>
+
+          <div class="vcap">지역별 내원율 — 치과 인근일수록 압도적 (최대 15배 격차 → '전환 효율' 설득 근거)</div>
+          <div class="viz">
+            <div class="vbars">
+              <div class="vbar hi"><div class="pv num">15%</div><div class="col" style="height:124px"></div><div class="lb">경기남부</div></div>
+              <div class="vbar lo"><div class="pv num">1%</div><div class="col" style="height:11px"></div><div class="lb">경북</div></div>
+            </div>
+            <p class="vnote">치과와 가까운 지역일수록 내원율이 압도적으로 높아(지역별 최대 15배 격차), 수량만 늘리는 건 비효율 — <b>고효율 지역 집중 + 저효율 매체(메타 ROAS 120%) OFF</b>가 답이었습니다.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <div class="stepflow">
+            <div class="sc"><span class="scn">1</span><div class="sct"><b>퍼널 역산·재정의</b>리드→상담→내원→시술까지 역산해 광고를 <em>'내원까지 책임지는 구조'</em>로 재정의</div></div>
+            <div class="sc"><span class="scn">2</span><div class="sct"><b>지역별 독립 측정</b>지역 단위로 캠페인을 분리해 지역별 성과를 독립적으로 측정</div></div>
+            <div class="sc"><span class="scn">3</span><div class="sct"><b>지역 CAC 추적</b>리드 CPA가 아닌 <em>지역별 내원율·CAC·ROAS</em>까지 데이터로 집계</div></div>
+            <div class="sc"><span class="scn">4</span><div class="sct"><b>고효율 지역 집중</b>ROAS 우수 지역 식별 + 저효율 지역·매체는 감액으로 예산 누수 차단</div></div>
+            <div class="sc"><span class="scn">5</span><div class="sct"><b>다매체 A/B</b>구글애즈·메타·틱톡 3매체 × 소재·오디언스를 A/B로 볼륨·품질 동시 관리</div></div>
+            <div class="sc"><span class="scn">6</span><div class="sct"><b>신규 매체 검증 확장</b>틱톡 시니어 타겟 규모를 데이터로 검증 후 확장</div></div>
+            <div class="sc"><span class="scn">7</span><div class="sct"><b>예산 증액 설득</b>고효율 지역에 광고비 증액을 데이터로 설득 → <em>취급고 확대</em></div></div>
+          </div>
+
+          <div class="vcap">단계적 매체 확장 — 구글애즈 단독 → 메타 → 구글애즈 2계정 → 틱톡 (일 리드 70 → 250)</div>
+          <p class="vnote" style="margin-top:0;margin-bottom:14px">한 번에 늘리지 않고 매체를 하나씩 더하며 <span class="g">단계적으로</span> 볼륨을 끌어올렸습니다. 각 단계는 앞 단계 데이터를 보고 결정했습니다.</p>
+          <div class="exp">
+            <div class="expr">
+              <div class="node"><div class="step">START</div><div class="med">구글애즈 단독</div><div class="big num">70<span>개/일</span></div><div class="cpa">CPA 6만 이내</div></div>
+              <div class="desc"><div class="dt">1단계 · 구글애즈 단독</div><p>내부 목표(CPA 6만원 이내)를 달성하면서 광고주 니즈인 일 리드 300개 달성에 어려움 존재. 당시 <b>일 리드 평균 70개</b>.</p></div>
+            </div>
+            <div class="expr">
+              <div class="node"><div class="step">+ META</div><div class="med">메타 확장</div><div class="big num">150<span>개/일</span></div><div class="cpa">CPA 4.5만</div></div>
+              <div class="desc"><div class="dt">2단계 · 메타 확장</div><p>추가 수량 확보를 위해 메타까지 매체를 확장. 일 리드 70 → 150개. 다만 내원율이 메타 2% &lt; 구글애즈 4%로, 볼륨은 늘되 <b>매체별 리드 품질 차이를 데이터로 확인</b>.</p></div>
+            </div>
+            <div class="expr">
+              <div class="node"><div class="step">+ 구글애즈 2계정</div><div class="med">계정 분리</div><div class="big num">200<span>개/일</span></div><div class="cpa">자가잠식 최소화</div></div>
+              <div class="desc"><div class="dt">3단계 · 구글애즈 2계정 분리</div><p>구글애즈 계정을 '연령 타겟 / 관심사 타겟'으로 분리 신설. 계정 간 자가잠식을 최소화하며 일 리드 150 → 200개. 광고주가 원한 <b>구글애즈 80 : 메타 20</b> 비율도 유지.</p></div>
+            </div>
+            <div class="expr">
+              <div class="node"><div class="step">+ TikTok</div><div class="med">틱톡 확장</div><div class="big num">250<span>개/일</span></div><div class="cpa">CPA 4만대</div></div>
+              <div class="desc"><div class="dt">4단계 · 틱톡 확장</div><p>마지막으로 KB국민은행에서 검증한 시니어(45+) 오디언스를 겨냥해 틱톡까지 확장. 일 리드 200 → 250개로 늘리며 CPA는 <b>4만대로 안정화</b>.</p></div>
+            </div>
+          </div>
+
+          <div class="vcap">계정별 관심사 타겟 실험 — 2개 구글애즈 계정에 다른 관심사 + 서로 교차 적용</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell"><div class="t">A 계정 관심사</div><div class="v">금융·자동차 구매층<small>전환 고객 관심사 기반</small></div></div>
+              <div class="arrow">⇄</div>
+              <div class="cell"><div class="t">B 계정 관심사</div><div class="v">보험·생활소비층<small>서로 교차 적용</small></div></div>
+            </div>
+            <p class="vnote">실제 전환된 고객의 관심사를 분석해 두 계정에 서로 다른 관심사 타겟을 설정하고, 한 계정의 관심사를 다른 계정에도 교차 적용 → 기존에 도달하지 못하던 신규 고객층까지 확대. <b>특정 지역 관심사 캠페인 CPA 26% 절감.</b></p>
+          </div>
+
+          <div class="vcap">캠페인별 머신러닝 학습 분석 — 노출 채널 교체율로 성과 변동 진단</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell good"><div class="t">평소 · 정상 학습</div><div class="v"><span class="num">채널 교체 ~40%/일</span><small>자연스러운 노출 채널 회전</small></div></div>
+              <div class="arrow clash">↯</div>
+              <div class="cell warn"><div class="t">이상 신호 발견</div><div class="v"><span class="num">70%+ 급변</span><small>타겟 도달이 크게 흔들림</small></div></div>
+            </div>
+            <p class="vnote">디멘드젠 캠페인의 유튜브 노출 채널 변화와 CPA 추이를 함께 분석 → 교체율이 평소(40%)보다 급등하면 <b>'머신러닝이 재학습 중인지 vs 타겟이 흐트러진 건지'</b>를 구분해 캠페인 재설정 시점을 판단. 예산 볼륨이 큰 소재일수록 교체 시 영향이 컸습니다.</p>
+          </div>
+
+          <div class="vcap">적정 일예산 실험 — 캠페인을 늘려도 예산은 '분할'될 뿐</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell"><div class="t">캠페인 1개</div><div class="v">일 예산 미소진<small>목표 CPA 입찰 = 소진 X</small></div></div>
+              <div class="arrow">→</div>
+              <div class="cell"><div class="t">캠페인 2개 병행</div><div class="v">총 예산 동일<small>기존 예산이 둘로 나뉨</small></div></div>
+            </div>
+            <p class="vnote">리드 확대를 위해 연령 캠페인에 관심사 캠페인을 추가했지만, 캠페인을 늘려도 전체 소진액은 늘지 않고 기존 예산이 분할될 뿐이었음(전환 최대화로 바꾸면 CPA 상승). → <b>CPA와 리드 확보량이 함께 최적화되는 '적정 일예산 지점'</b>을 찾는 것이 중요함을 확인.</p>
+          </div>
+
+          <div class="vcap">반직관적 발견 — '많이 만질수록'이 아니라 '덜 만질수록' ML이 안착</div>
+          <div class="viz">
+            <div class="ba">
+              <div class="cell warn"><div class="t">변경 폭주 계정</div><div class="v"><span class="num">전환 −44%</span><small>하루 변경 다수 · 학습 페이즈 무한 반복</small></div></div>
+              <div class="arrow">→</div>
+              <div class="cell good"><div class="t">변경 자제 계정</div><div class="v"><span class="num">전환 +10%</span><small>변경 최소화 · ML이 학습을 끝냄</small></div></div>
+            </div>
+            <p class="vnote">같은 시기 두 계정을 비교하니, 하루 변경이 많은 쪽은 전환 <b>−44%</b>·아낀 쪽은 <b>+10%</b>. 디멘드젠은 손이 많이 가야 좋아지는 게 아니라, <b>변경을 멈추고 머신러닝이 학습을 완료하게 두는 것</b>이 성과의 핵심임을 데이터로 확인했습니다.</p>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">리드 '수'가 아니라 <b>'내원당 단가'가 진짜 지표</b>다 — 같은 리드라도 지역에 따라 내원율이 <b>최대 15배</b> 갈려 ROAS가 완전히 달라진다. 그리고 디멘드젠은 <b>손을 많이 댈수록 좋아지는 게 아니라</b>, 변경을 멈추고 ML이 학습을 끝내게 둘 때 안착한다. 결국 <b>성과 → 신뢰 → 예산 증액</b>의 선순환은 '수량'이 아니라 '효율'을 증명할 때 열린다.</p>
+        </div>
+      </div>
+    </section>
+
+<section class="case reveal" id="cvid">
       <div class="case-top">
         <div class="ch"><span class="gal-badge">GALLERY</span><span class="org">AI 영상 크리에이티브 · 글로벌랩스 / 박스풀</span></div>
         <h2>AI 영상 크리에이티브 — 대본부터 생성·후처리·자막까지 직접</h2>
@@ -1008,221 +1102,9 @@ body::after{
       </div>
     </section>
 
-    <!-- ===================== CASE 1 ===================== -->
-    <section class="case reveal" id="c1">
+<section class="case reveal" id="c4">
       <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 03</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
-        <h2>임플란트 리드 확보 캠페인</h2>
-        <div class="tags">
-          <span class="tag">구글애즈·메타·틱톡·GA4</span>
-          <span class="tag role">3인 · 기여 70%</span>
-        </div>
-      </div>
-      <p class="lead">광고주는 <b>전환 볼륨(리드 수)</b>을 원했지만, <b>지역별 CAC를 데이터로 분해</b>해 <b>전환 효율 중심</b>으로 설득 — <b>ROAS +226%(103→336%)</b>, <b>취급고 +817%(약 9.2배)</b> 상승시켰습니다.</p>
-      <div class="body">
-
-        <div class="mstrip c4">
-          <div class="m"><div class="cap">최근 6개월</div><div class="val num"><span class="kpi">취급고</span>9.2<span class="u">배</span></div><div class="sub num">0.6억 → 5.5억</div></div>
-          <div class="m"><div class="cap">의료 마케팅</div><div class="val num"><span class="kpi">ROAS</span>336<span class="u">%</span></div><div class="sub num">103% → 336% (3.3배)</div></div>
-          <div class="m"><div class="cap">리드→내원</div><div class="val num"><span class="kpi">내원율</span>7.1<span class="u">%</span></div><div class="sub num">0.2% → 7.1% (약 36배)</div></div>
-          <div class="m"><div class="cap">지역별 효율</div><div class="val num"><span class="kpi">CAC</span>−25<span class="u">%</span></div><div class="sub neu num">누적 리드 9만+건 규모</div></div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
-          <p>치과 임플란트 병원의 신규 환자 유치. 온라인 광고로 상담 리드를 모으고, 그 리드가 실제 병원 내원 → 시술로 이어져야 비로소 매출이 되는 <b>고관여 오프라인 서비스</b>.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
-          <p>광고주는 리드 볼륨(일 300개+)을, 내부적으로는 CPA 6만 이내를 둘 다 지켜야 했다 — 구글애즈 단독으론 둘이 <b>충돌</b>.</p>
-          <div class="vcap amb">볼륨 vs 효율 — 구글애즈 단독으로는 둘 다 벽</div>
-          <div class="viz">
-            <div class="ba">
-              <div class="cell warn"><div class="t">광고주 요구</div><div class="v">일 리드 300개+<small>최대 500개까지 필요</small></div></div>
-              <div class="arrow clash">↯</div>
-              <div class="cell warn"><div class="t">내부 목표</div><div class="v">CPA ≤ 6만원<small>구글애즈 단독 = 일 70개가 한계</small></div></div>
-            </div>
-            <div class="meter" style="margin-top:18px">
-              <div class="mh"><span>구글애즈 단독 — 효율 유지 가능 구간</span><span class="gap">목표까지 −230개/일</span></div>
-              <div class="track"><div class="fill num" style="width:23%">일 70개</div><div class="goal num">목표 일 300개</div></div>
-            </div>
-            <p class="vnote">일 <b>70개</b>를 넘기는 순간 CPA가 <b>6만원</b>을 초과 — <b>볼륨과 효율이 동시에 벽에 부딪힘.</b></p>
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
-          <p class="quote">"임플란트는 <b>오프라인 내원이 필수인 고관여 상품</b>이다. 그러니 <b>'리드 CPA'가 아니라 '지역별 내원율·CAC·ROAS'</b>로 성과를 봐야 <b>진짜 효율</b>이 보인다"는 관점을 세움.</p>
-
-          <div class="vcap">지역별 내원율 — 치과 인근일수록 압도적 (최대 15배 격차 → '전환 효율' 설득 근거)</div>
-          <div class="viz">
-            <div class="vbars">
-              <div class="vbar hi"><div class="pv num">15%</div><div class="col" style="height:124px"></div><div class="lb">경기남부</div></div>
-              <div class="vbar lo"><div class="pv num">1%</div><div class="col" style="height:11px"></div><div class="lb">경북</div></div>
-            </div>
-            <p class="vnote">치과와 가까운 지역일수록 내원율이 압도적으로 높아(지역별 최대 15배 격차), 수량만 늘리는 건 비효율 — <b>고효율 지역 집중 + 저효율 매체(메타 ROAS 120%) OFF</b>가 답이었습니다.</p>
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
-          <div class="stepflow">
-            <div class="sc"><span class="scn">1</span><div class="sct"><b>퍼널 역산·재정의</b>리드→상담→내원→시술까지 역산해 광고를 <em>'내원까지 책임지는 구조'</em>로 재정의</div></div>
-            <div class="sc"><span class="scn">2</span><div class="sct"><b>지역별 독립 측정</b>지역 단위로 캠페인을 분리해 지역별 성과를 독립적으로 측정</div></div>
-            <div class="sc"><span class="scn">3</span><div class="sct"><b>지역 CAC 추적</b>리드 CPA가 아닌 <em>지역별 내원율·CAC·ROAS</em>까지 데이터로 집계</div></div>
-            <div class="sc"><span class="scn">4</span><div class="sct"><b>고효율 지역 집중</b>ROAS 우수 지역 식별 + 저효율 지역·매체는 감액으로 예산 누수 차단</div></div>
-            <div class="sc"><span class="scn">5</span><div class="sct"><b>다매체 A/B</b>구글애즈·메타·틱톡 3매체 × 소재·오디언스를 A/B로 볼륨·품질 동시 관리</div></div>
-            <div class="sc"><span class="scn">6</span><div class="sct"><b>신규 매체 검증 확장</b>틱톡 시니어 타겟 규모를 데이터로 검증 후 확장</div></div>
-            <div class="sc"><span class="scn">7</span><div class="sct"><b>예산 증액 설득</b>고효율 지역에 광고비 증액을 데이터로 설득 → <em>취급고 확대</em></div></div>
-          </div>
-
-          <div class="vcap">단계적 매체 확장 — 구글애즈 단독 → 메타 → 구글애즈 2계정 → 틱톡 (일 리드 70 → 250)</div>
-          <p class="vnote" style="margin-top:0;margin-bottom:14px">한 번에 늘리지 않고 매체를 하나씩 더하며 <span class="g">단계적으로</span> 볼륨을 끌어올렸습니다. 각 단계는 앞 단계 데이터를 보고 결정했습니다.</p>
-          <div class="exp">
-            <div class="expr">
-              <div class="node"><div class="step">START</div><div class="med">구글애즈 단독</div><div class="big num">70<span>개/일</span></div><div class="cpa">CPA 6만 이내</div></div>
-              <div class="desc"><div class="dt">1단계 · 구글애즈 단독</div><p>내부 목표(CPA 6만원 이내)를 달성하면서 광고주 니즈인 일 리드 300개 달성에 어려움 존재. 당시 <b>일 리드 평균 70개</b>.</p></div>
-            </div>
-            <div class="expr">
-              <div class="node"><div class="step">+ META</div><div class="med">메타 확장</div><div class="big num">150<span>개/일</span></div><div class="cpa">CPA 4.5만</div></div>
-              <div class="desc"><div class="dt">2단계 · 메타 확장</div><p>추가 수량 확보를 위해 메타까지 매체를 확장. 일 리드 70 → 150개. 다만 내원율이 메타 2% &lt; 구글애즈 4%로, 볼륨은 늘되 <b>매체별 리드 품질 차이를 데이터로 확인</b>.</p></div>
-            </div>
-            <div class="expr">
-              <div class="node"><div class="step">+ 구글애즈 2계정</div><div class="med">계정 분리</div><div class="big num">200<span>개/일</span></div><div class="cpa">자가잠식 최소화</div></div>
-              <div class="desc"><div class="dt">3단계 · 구글애즈 2계정 분리</div><p>구글애즈 계정을 '연령 타겟 / 관심사 타겟'으로 분리 신설. 계정 간 자가잠식을 최소화하며 일 리드 150 → 200개. 광고주가 원한 <b>구글애즈 80 : 메타 20</b> 비율도 유지.</p></div>
-            </div>
-            <div class="expr">
-              <div class="node"><div class="step">+ TikTok</div><div class="med">틱톡 확장</div><div class="big num">250<span>개/일</span></div><div class="cpa">CPA 4만대</div></div>
-              <div class="desc"><div class="dt">4단계 · 틱톡 확장</div><p>마지막으로 KB국민은행에서 검증한 시니어(45+) 오디언스를 겨냥해 틱톡까지 확장. 일 리드 200 → 250개로 늘리며 CPA는 <b>4만대로 안정화</b>.</p></div>
-            </div>
-          </div>
-
-          <div class="vcap">계정별 관심사 타겟 실험 — 2개 구글애즈 계정에 다른 관심사 + 서로 교차 적용</div>
-          <div class="viz">
-            <div class="ba">
-              <div class="cell"><div class="t">A 계정 관심사</div><div class="v">금융·자동차 구매층<small>전환 고객 관심사 기반</small></div></div>
-              <div class="arrow">⇄</div>
-              <div class="cell"><div class="t">B 계정 관심사</div><div class="v">보험·생활소비층<small>서로 교차 적용</small></div></div>
-            </div>
-            <p class="vnote">실제 전환된 고객의 관심사를 분석해 두 계정에 서로 다른 관심사 타겟을 설정하고, 한 계정의 관심사를 다른 계정에도 교차 적용 → 기존에 도달하지 못하던 신규 고객층까지 확대. <b>특정 지역 관심사 캠페인 CPA 26% 절감.</b></p>
-          </div>
-
-          <div class="vcap">캠페인별 머신러닝 학습 분석 — 노출 채널 교체율로 성과 변동 진단</div>
-          <div class="viz">
-            <div class="ba">
-              <div class="cell good"><div class="t">평소 · 정상 학습</div><div class="v"><span class="num">채널 교체 ~40%/일</span><small>자연스러운 노출 채널 회전</small></div></div>
-              <div class="arrow clash">↯</div>
-              <div class="cell warn"><div class="t">이상 신호 발견</div><div class="v"><span class="num">70%+ 급변</span><small>타겟 도달이 크게 흔들림</small></div></div>
-            </div>
-            <p class="vnote">디멘드젠 캠페인의 유튜브 노출 채널 변화와 CPA 추이를 함께 분석 → 교체율이 평소(40%)보다 급등하면 <b>'머신러닝이 재학습 중인지 vs 타겟이 흐트러진 건지'</b>를 구분해 캠페인 재설정 시점을 판단. 예산 볼륨이 큰 소재일수록 교체 시 영향이 컸습니다.</p>
-          </div>
-
-          <div class="vcap">적정 일예산 실험 — 캠페인을 늘려도 예산은 '분할'될 뿐</div>
-          <div class="viz">
-            <div class="ba">
-              <div class="cell"><div class="t">캠페인 1개</div><div class="v">일 예산 미소진<small>목표 CPA 입찰 = 소진 X</small></div></div>
-              <div class="arrow">→</div>
-              <div class="cell"><div class="t">캠페인 2개 병행</div><div class="v">총 예산 동일<small>기존 예산이 둘로 나뉨</small></div></div>
-            </div>
-            <p class="vnote">리드 확대를 위해 연령 캠페인에 관심사 캠페인을 추가했지만, 캠페인을 늘려도 전체 소진액은 늘지 않고 기존 예산이 분할될 뿐이었음(전환 최대화로 바꾸면 CPA 상승). → <b>CPA와 리드 확보량이 함께 최적화되는 '적정 일예산 지점'</b>을 찾는 것이 중요함을 확인.</p>
-          </div>
-
-          <div class="vcap">반직관적 발견 — '많이 만질수록'이 아니라 '덜 만질수록' ML이 안착</div>
-          <div class="viz">
-            <div class="ba">
-              <div class="cell warn"><div class="t">변경 폭주 계정</div><div class="v"><span class="num">전환 −44%</span><small>하루 변경 다수 · 학습 페이즈 무한 반복</small></div></div>
-              <div class="arrow">→</div>
-              <div class="cell good"><div class="t">변경 자제 계정</div><div class="v"><span class="num">전환 +10%</span><small>변경 최소화 · ML이 학습을 끝냄</small></div></div>
-            </div>
-            <p class="vnote">같은 시기 두 계정을 비교하니, 하루 변경이 많은 쪽은 전환 <b>−44%</b>·아낀 쪽은 <b>+10%</b>. 디멘드젠은 손이 많이 가야 좋아지는 게 아니라, <b>변경을 멈추고 머신러닝이 학습을 완료하게 두는 것</b>이 성과의 핵심임을 데이터로 확인했습니다.</p>
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">리드 '수'가 아니라 <b>'내원당 단가'가 진짜 지표</b>다 — 같은 리드라도 지역에 따라 내원율이 <b>최대 15배</b> 갈려 ROAS가 완전히 달라진다. 그리고 디멘드젠은 <b>손을 많이 댈수록 좋아지는 게 아니라</b>, 변경을 멈추고 ML이 학습을 끝내게 둘 때 안착한다. 결국 <b>성과 → 신뢰 → 예산 증액</b>의 선순환은 '수량'이 아니라 '효율'을 증명할 때 열린다.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CASE 2 ===================== -->
-    <section class="case reveal" id="c2">
-      <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 01</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
-        <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
-        <div class="tags">
-          <span class="tag">구글애즈·메타·틱톡 API</span>
-          <span class="tag">AI 바이브코딩</span>
-          <span class="tag role">1인 · 100%</span>
-        </div>
-      </div>
-      <p class="lead">운영이 막히면 도구를 직접 만듭니다 — 다매체·<b>월 5억+ 취급고</b>를 소수 인원으로 운영하는 <b>성과 대시보드를 직접 구축</b>했습니다.</p>
-      <div class="body">
-
-        <div class="mstrip c2">
-          <div class="m"><div class="cap">소수 인원 운영</div><div class="val num"><span class="kpi">취급고</span>5억+<span class="u">/월</span></div><div class="sub neu">3개 매체 통합 운영</div></div>
-          <div class="m"><div class="cap">대시보드 구축</div><div class="val"><span class="kpi">운영</span>자동화</div><div class="sub neu">데이터 가공 시간 최소화</div></div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떤 대상인가</div>
-          <p><b>3개 매체·월평균 5억+ 취급고</b>를 소수 인원으로 운영해야 하는 내부 운영 환경.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
-          <p>매일 반복되는 수작업 데이터 가공에 시간을 뺏겨 <b>의사결정이 느려지고</b>, 다매체·대규모 운영이 병목에 걸림.</p>
-          <div class="vcap">수작업 데이터 → 자동 대시보드 → 빠른 의사결정</div>
-          <div class="viz">
-            <div class="flow">
-              <div class="fn before"><div class="fi">🗂</div><div class="ft">수작업 데이터 가공</div><div class="fd">매일 반복 · 의사결정 지연</div></div>
-              <div class="far">→</div>
-              <div class="fn core"><div class="fi">⚙</div><div class="ft">자동 대시보드</div><div class="fd">구글애즈·메타·틱톡 API 연동<br>직접 구축</div></div>
-              <div class="far">→</div>
-              <div class="fn"><div class="fi">⚡</div><div class="ft">빠른 의사결정</div><div class="fd">실시간 KPI · 계획 유동 조정</div></div>
-            </div>
-            <div class="stackrow">
-              <span class="spill">실시간 성과 통합 조회</span>
-              <span class="spill">A/B 테스트 플래닝</span>
-              <span class="spill">코호트 분석</span>
-              <span class="spill">KPI 달성율 체크</span>
-              <span class="spill">운영 히스토리 챗봇</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
-          <p class="quote">"<b>수작업 데이터 가공을 없애야</b> 소수 인원 운영이 가능하다. 단순 조회 툴을 넘어, <b>운영 판단까지 돕는 도구를 직접 만들자</b>."</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
-          <div class="stepflow">
-            <div class="sc"><span class="scn">1</span><div class="sct"><b>API 연동 대시보드</b>구글애즈·메타·틱톡 성과를 API로 연동·자동 가공, 바이브코딩으로 직접 개발</div></div>
-            <div class="sc"><span class="scn">2</span><div class="sct"><b>한 화면 통합</b>실시간 성과 조회·A/B 플래닝·코호트·KPI를 한 화면에서 관리</div></div>
-            <div class="sc"><span class="scn">3</span><div class="sct"><b>운영 히스토리 챗봇</b>"언제·무엇을·왜 했는지"를 <em>자연어로 즉시 질의응답</em></div></div>
-            <div class="sc"><span class="scn">4</span><div class="sct"><b>실시간 KPI 체크</b>달성율을 실시간으로 보며 일·주·월 계획을 유동 조정</div></div>
-          </div>
-          <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">대시보드의 진짜 가치는 '숫자를 빨리 보는 것'이 아니라 <b>'언제·무엇을·왜 바꿨는지'라는 운영의 맥락을 쌓는 것</b>이다 — ML이 과거 변경에 반응하는 디멘드젠에선, 히스토리가 쌓여야 <b>'지금 흔들림이 내 변경 탓인지, ML 학습 탓인지'</b>를 판단할 수 있다. 도구가 없으면 직접 만들어 병목을 푼다.</p>
-        </div>
-
-        <div class="foot">
-          <a class="cta-live" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener"><span class="pulse"></span>실제 대시보드 체험하기</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================== CASE 4 ===================== -->
-    <section class="case reveal" id="c4">
-      <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 04</span><span class="org">블루오렌지 · 2025.09~2025.12</span></div>
+        <div class="ch"><span class="idx num">CASE 02</span><span class="org">블루오렌지 · 2025.09~2025.12</span></div>
         <h2>KB국민은행 '스타틴즈' 서비스 캠페인 (5채널)</h2>
         <div class="tags">
           <span class="tag">유튜브·인스타·토스·틱톡·콴다·KB DMP</span>
@@ -1312,10 +1194,9 @@ body::after{
       </div>
     </section>
 
-    <!-- ===================== CASE 5 ===================== -->
-    <section class="case reveal" id="c5">
+<section class="case reveal" id="c5">
       <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 05</span><span class="org">블루오렌지 · 2025.09~2025.12</span></div>
+        <div class="ch"><span class="idx num">CASE 03</span><span class="org">블루오렌지 · 2025.09~2025.12</span></div>
         <h2>KB국민은행 '패밀리뱅킹' 브랜드 캠페인</h2>
         <div class="tags">
           <span class="tag">유튜브·토스·인스타·KB DMP</span>
@@ -1400,10 +1281,9 @@ body::after{
       </div>
     </section>
 
-    <!-- ===================== CASE 6 ===================== -->
-    <section class="case reveal" id="c6">
+<section class="case reveal" id="c6">
       <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 06</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
+        <div class="ch"><span class="idx num">CASE 04</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
         <h2>B2C 짐보관 서비스 퍼포먼스 마케팅 — GA4 퍼널·소재 A/B·리마케팅</h2>
         <div class="tags">
           <span class="tag">GA4 · 퍼널 설계</span>
@@ -1473,10 +1353,9 @@ body::after{
       </div>
     </section>
 
-    <!-- ===================== CASE 7 (취미공간 CRO) ===================== -->
-    <section class="case reveal" id="c6b">
+<section class="case reveal" id="c6b">
       <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 07</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
+        <div class="ch"><span class="idx num">CASE 05</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
         <h2>취미공간 서비스 UI/UX 개선 — 랜딩·즉시결제 전환 최적화 (매출 16배↑)</h2>
         <div class="tags">
           <span class="tag">CRO · 랜딩/결제 퍼널</span>
@@ -1521,10 +1400,81 @@ body::after{
       </div>
     </section>
 
-    <!-- ===================== CASE 7 ===================== -->
-    <section class="case reveal" id="c7">
+<section class="case reveal" id="c2">
       <div class="case-top">
-        <div class="ch"><span class="idx num">CASE 08</span><span class="org">어스텀(Ustom) · 2022.05~2023.04</span></div>
+        <div class="ch"><span class="idx num">CASE 06</span><span class="org">글로벌랩스 · 2026.01~2026.09</span></div>
+        <h2>AI 마케팅 성과 대시보드 직접 구축 (바이브코딩)</h2>
+        <div class="tags">
+          <span class="tag">구글애즈·메타·틱톡 API</span>
+          <span class="tag">AI 바이브코딩</span>
+          <span class="tag role">1인 · 100%</span>
+        </div>
+      </div>
+      <p class="lead">운영이 막히면 도구를 직접 만듭니다 — 다매체·<b>월 5억+ 취급고</b>를 소수 인원으로 운영하는 <b>성과 대시보드를 직접 구축</b>했습니다.</p>
+      <div class="body">
+
+        <div class="mstrip c2">
+          <div class="m"><div class="cap">소수 인원 운영</div><div class="val num"><span class="kpi">취급고</span>5억+<span class="u">/월</span></div><div class="sub neu">3개 매체 통합 운영</div></div>
+          <div class="m"><div class="cap">대시보드 구축</div><div class="val"><span class="kpi">운영</span>자동화</div><div class="sub neu">데이터 가공 시간 최소화</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 대상인가</div>
+          <p><b>3개 매체·월평균 5억+ 취급고</b>를 소수 인원으로 운영해야 하는 내부 운영 환경.</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
+          <p>매일 반복되는 수작업 데이터 가공에 시간을 뺏겨 <b>의사결정이 느려지고</b>, 다매체·대규모 운영이 병목에 걸림.</p>
+          <div class="vcap">수작업 데이터 → 자동 대시보드 → 빠른 의사결정</div>
+          <div class="viz">
+            <div class="flow">
+              <div class="fn before"><div class="fi">🗂</div><div class="ft">수작업 데이터 가공</div><div class="fd">매일 반복 · 의사결정 지연</div></div>
+              <div class="far">→</div>
+              <div class="fn core"><div class="fi">⚙</div><div class="ft">자동 대시보드</div><div class="fd">구글애즈·메타·틱톡 API 연동<br>직접 구축</div></div>
+              <div class="far">→</div>
+              <div class="fn"><div class="fi">⚡</div><div class="ft">빠른 의사결정</div><div class="fd">실시간 KPI · 계획 유동 조정</div></div>
+            </div>
+            <div class="stackrow">
+              <span class="spill">실시간 성과 통합 조회</span>
+              <span class="spill">A/B 테스트 플래닝</span>
+              <span class="spill">코호트 분석</span>
+              <span class="spill">KPI 달성율 체크</span>
+              <span class="spill">운영 히스토리 챗봇</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
+          <p class="quote">"<b>수작업 데이터 가공을 없애야</b> 소수 인원 운영이 가능하다. 단순 조회 툴을 넘어, <b>운영 판단까지 돕는 도구를 직접 만들자</b>."</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
+          <div class="stepflow">
+            <div class="sc"><span class="scn">1</span><div class="sct"><b>API 연동 대시보드</b>구글애즈·메타·틱톡 성과를 API로 연동·자동 가공, 바이브코딩으로 직접 개발</div></div>
+            <div class="sc"><span class="scn">2</span><div class="sct"><b>한 화면 통합</b>실시간 성과 조회·A/B 플래닝·코호트·KPI를 한 화면에서 관리</div></div>
+            <div class="sc"><span class="scn">3</span><div class="sct"><b>운영 히스토리 챗봇</b>"언제·무엇을·왜 했는지"를 <em>자연어로 즉시 질의응답</em></div></div>
+            <div class="sc"><span class="scn">4</span><div class="sct"><b>실시간 KPI 체크</b>달성율을 실시간으로 보며 일·주·월 계획을 유동 조정</div></div>
+          </div>
+          <p class="note">원칙 : AI가 만든 산출물은 반드시 직접 검증·판단 후 반영</p>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
+          <p class="insight">대시보드의 진짜 가치는 '숫자를 빨리 보는 것'이 아니라 <b>'언제·무엇을·왜 바꿨는지'라는 운영의 맥락을 쌓는 것</b>이다 — ML이 과거 변경에 반응하는 디멘드젠에선, 히스토리가 쌓여야 <b>'지금 흔들림이 내 변경 탓인지, ML 학습 탓인지'</b>를 판단할 수 있다. 도구가 없으면 직접 만들어 병목을 푼다.</p>
+        </div>
+
+        <div class="foot">
+          <a class="cta-live" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener"><span class="pulse"></span>실제 대시보드 체험하기</a>
+        </div>
+      </div>
+    </section>
+
+<section class="case reveal" id="c7">
+      <div class="case-top">
+        <div class="ch"><span class="idx num">CASE 07</span><span class="org">어스텀(Ustom) · 2022.05~2023.04</span></div>
         <h2>어스텀(Ustom) 창업 · 대표</h2>
         <div class="tags">
           <span class="tag">서비스 기획·UI/UX·사업화</span>
