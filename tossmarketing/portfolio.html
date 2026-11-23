@@ -177,8 +177,11 @@ main{ min-width:0; }
   border-bottom:1px solid var(--line-soft);
   font-size:17px; line-height:1.76; color:var(--ink); font-weight:400; max-width:none;
 }
-.lead b{ color:var(--signal); font-weight:600; }
+.lead b{ color:var(--ink); font-weight:600; }
 .lead .amb{ color:var(--amber); font-weight:600; }
+/* 핵심어 강조 — 의미상 중요한 1~2개 짧은 구절에만 적용 (문단 전체 보라색 방지) */
+.key-phrase{ color:var(--signal); font-weight:700; }
+a .key-phrase, .key-phrase a{ text-decoration:underline; }
 
 .body{ padding:52px 56px 62px; }
 
@@ -529,8 +532,8 @@ main{ min-width:0; }
     <div class="hero-grid">
       <div class="hero-copy hero-anim d1">
         <div class="kicker"><span class="tick"></span>커머스 광고 제작·운영</div>
-        <h1>광고를 직접 만들고,<br><span class="glow">구매로 이어지는 경로</span>를 개선했습니다.</h1>
-        <p class="lead">광고 영상·이미지를 직접 기획·제작하고, A/B·포맷·CTA 실험과 GA4 전환 분석까지 수행해 <b>구매 전환</b>을 끌어올렸습니다.</p>
+        <h1>광고를 직접 만들고,<br><span class="glow">구매 전환까지</span> 개선합니다.</h1>
+        <p class="lead">영상·이미지 광고를 <strong class="key-phrase">직접 제작·집행</strong>했습니다. GA4로 유입부터 결제까지 분석했습니다.</p>
       </div>
       <div class="hero-actions hero-anim d3">
         <div class="hero-btns">
@@ -717,6 +720,13 @@ main{ min-width:0; }
       .phone-side .ps-row .ps-b{ color:var(--signal); font-weight:700; }
       .phone-side .ps-row.note{ font-size:12px; border-left-color:transparent; padding-left:0; color:var(--dim); }
       @media(max-width:720px){ .phonewrap{ grid-template-columns:1fr; gap:20px; } .phone-mock{ margin:0 auto; } }
+      .twophone{ display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap; }
+      .twophone .pcol{ margin:0; display:flex; flex-direction:column; align-items:center; gap:10px; max-width:220px; }
+      .twophone .phone-mock{ width:200px; }
+      .twophone figcaption{ font-size:12.5px; color:var(--mute); line-height:1.5; text-align:center; }
+      .twophone figcaption b{ color:var(--ink); font-weight:700; }
+      .twoarrow{ font-size:24px; font-weight:800; color:var(--signal); }
+      @media(max-width:600px){ .twoarrow{ transform:rotate(90deg); } }
       @media(max-width:600px){ #c6b .imgab{ grid-template-columns:1fr; } #c6b .imgab .ar{ transform:rotate(90deg); } #c6b .imgab img{ height:300px; } }
       /* 4종 토너먼트 */
       #ccom .tngrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
@@ -996,7 +1006,7 @@ main{ min-width:0; }
             <p class="vnote">리드 수가 아니라 <b>내원·시술까지 책임지는 구조</b>로 광고를 재정의 — 성과를 '리드 CPA'가 아닌 <b>지역별 내원율·CAC·ROAS</b>로 측정한 이유입니다.</p>
           </div>
 
-          <div class="vcap">지역별 리드 CPA 지수 — 경기가 가장 비쌈 (경북대구=100 기준 · 낮을수록 저비용)</div>
+          <div class="vcap">지역별 리드당 비용 지수 — 경기가 가장 비쌈 (경북대구=100 기준 · 낮을수록 저비용)</div>
           <div class="viz">
             <div class="idxbars">
               <div class="ib"><span class="ibl">경기남부</span><div class="ibtrack"><div class="ibfill" style="width:100%"></div></div><span class="ibv">200</span></div>
@@ -1008,6 +1018,16 @@ main{ min-width:0; }
             <p class="note" style="margin-top:8px">리드(DB)당 비용 상대지수 · 경북대구=100 · 2026-07 구글 메인 계정 (실제 원단위는 비공개)</p>
           </div>
 
+          <div class="vcap" style="margin-top:26px">지역별 내원당 비용 지수 — 리드당은 비싼 경기가 오히려 최저 (경기남부=100 기준 · 낮을수록 효율)</div>
+          <div class="viz">
+            <div class="idxbars">
+              <div class="ib"><span class="ibl">경기남부</span><div class="ibtrack"><div class="ibfill" style="width:16%"></div></div><span class="ibv">100</span></div>
+              <div class="ib"><span class="ibl">충청</span><div class="ibtrack"><div class="ibfill base" style="width:21%"></div></div><span class="ibv">132</span></div>
+              <div class="ib"><span class="ibl">경북대구</span><div class="ibtrack"><div class="ibfill base" style="width:100%"></div></div><span class="ibv">630</span></div>
+            </div>
+            <p class="note" style="margin-top:8px">내원(실제 방문)당 비용 상대지수 · 경기남부=100 · 리드당은 경기가 2배 비싸지만 내원율이 높아 내원당 비용은 최저 (전북·인천은 내원 데이터 제한으로 제외)</p>
+          </div>
+
           <div class="vcap" style="margin-top:26px">지역별 ROAS % — 경기 최고(305%), 인천·경북대구는 적자 (같은 지역 순서)</div>
           <div class="viz">
             <div class="idxbars">
@@ -1017,7 +1037,7 @@ main{ min-width:0; }
               <div class="ib"><span class="ibl">인천</span><div class="ibtrack"><div class="ibfill base" style="width:23%"></div></div><span class="ibv">73%</span></div>
               <div class="ib"><span class="ibl">경북대구</span><div class="ibtrack"><div class="ibfill base" style="width:18%"></div></div><span class="ibv">57%</span></div>
             </div>
-            <p class="note" style="margin-top:8px">광고비 대비 수납 ROAS · 2026-07 · 100% 미만 = 손익분기 이하</p>
+            <p class="note" style="margin-top:8px">광고비 대비 수납 ROAS · 2026-07 · <b>100% 미만 = 수납액이 광고비에 미달(적자)</b></p>
             <p class="vnote">리드 CPA만 보면 경기를 끊었겠지만, 내원율이 높아 <b>내원당 비용은 경기가 최저</b>(지수 100 vs 경북대구 약 630) → <b>ROAS는 경기가 최고(305%)</b>. 그래서 <b>적자 지역(인천·경북대구)을 OFF</b>하고 흑자(경기·충청)에 예산을 집중 이관했습니다.</p>
           </div>
         </div>
@@ -1523,67 +1543,52 @@ main{ min-width:0; }
 <section class="case reveal alt" id="c6">
       <div class="case-top">
         <div class="ch"><span class="idx num">CASE 04</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
-        <h2>B2C 짐보관 서비스 퍼포먼스 마케팅 — GA4 퍼널·소재 A/B·리마케팅</h2>
+        <h2>짐보관 구매 여정과 리뷰 광고</h2>
         <div class="tags">
-          <span class="tag">GA4 · 퍼널 설계</span>
-          <span class="tag">AI 영상 소재 A/B</span>
+          <span class="tag">GA4 · 구매 여정 분석</span>
+          <span class="tag">리뷰 리마케팅</span>
           <span class="tag role">2인 · 70%</span>
         </div>
       </div>
-      <p class="lead">짐보관 서비스의 <b>첫 유입부터 결제까지</b>를 GA4로 분해해 <b>퍼널을 설계</b>하고, <b>소재 A/B·리마케팅</b>으로 전환을 키웠습니다.</p>
+      <p class="lead">구매까지 걸리는 시간을 GA4로 보고, <strong class="key-phrase">고객 리뷰 광고</strong>의 노출 시점을 정했습니다.</p>
       <div class="body">
 
-        <div class="mstrip c3">
-          <div class="m"><div class="cap">구매 여정</div><div class="val num"><span class="kpi">결제소요</span>3.89<span class="u">일</span></div><div class="sub neu">GA4 전환경로 분석</div></div>
-          <div class="m"><div class="cap">AI 영상 A/B</div><div class="val num"><span class="kpi">CTR</span>9.56<span class="u">%</span></div><div class="sub num">+42.7% · 전환 +31.3%</div></div>
-          <div class="m"><div class="cap">리마케팅</div><div class="val num"><span class="kpi">CVR</span>62<span class="u">%</span></div><div class="sub num">신규고객 +63%</div></div>
-        </div>
-
         <div class="sec">
-          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
-          <p>박스풀 공유창고 — 짐보관·셀프스토리지 서비스. 온라인으로 고객을 유입시켜 <b>홈페이지 예약·결제까지 전환</b>시켜야 매출이 되는 구조.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
-          <p>유입은 있는데 <b>어디서 전환이 새는지</b>가 안 보였다 — GA4 기반 구매 여정 분석이 필요했다.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>어떻게 접근했나</div>
-          <p class="quote">"감이 아니라 <b>GA4로 '첫 유입 → 결제'까지의 경로와 소요 일수를 분해</b>하자. 그러면 <b>어디가 병목인지</b>가 숫자로 보이고, 거기를 고치는 것이 주요 전환 개선 요인이다."</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 했나 — GA4 구매 전환 퍼널 설계</div>
-          <p style="margin-bottom:10px">GA4로 <b>첫 유입부터 결제까지 평균 3.89일</b>(분석 기간 2024.12~2025.02), 매체별 전환 기여도를 분석해 4단계 퍼널을 설계했습니다.</p>
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 구매 여정 분석 → 리뷰 광고 타이밍 설계</div>
           <div class="viz">
             <div class="gtl">
               <div class="gtl-pt"><span class="gtl-dot"></span><div class="gtl-lab"><b>첫 유입</b><small>Day 0</small></div></div>
-              <div class="gtl-bar"><span class="gtl-band">리뷰 리마케팅 운영 · 2025.05</span></div>
-              <div class="gtl-pt"><span class="gtl-dot hot"></span><div class="gtl-lab"><b>결제</b><small>평균 3.89일</small></div></div>
+              <div class="gtl-bar"><span class="gtl-band">구매 여정 · 평균 <strong class="key-phrase">3.89일</strong></span></div>
+              <div class="gtl-pt"><span class="gtl-dot hot"></span><div class="gtl-lab"><b>결제</b><small>결제 지점</small></div></div>
             </div>
-            <p class="note">첫 유입 → 결제까지 <b>평균 3.89일</b>(GA4 · 2024.12~2025.02) — 한 번의 노출로 바로 사지 않는 <b>고관여 서비스</b>임을 데이터로 확인했습니다. 그래서 이 평균 소요 기간 안에 <b>리뷰 소재로 재도달</b>하도록 리마케팅 노출 시점을 설계했습니다.</p>
-            <div class="ifun" style="margin-top:24px">
-              <div class="fn"><span class="fns">1</span><b>포털검색 유입</b><small>SEO 블로그·검색광고 → 유입 8천+건</small></div>
+            <p class="note">가로축 = 첫 유입 → 결제까지의 구매 여정 · 평균 3.89일 (GA4 전환경로 분석 · 분석 기간 2024.12~2025.02). 한 번의 노출로 바로 결제하지 않는 고관여 서비스임을 확인했습니다.</p>
+            <p class="note">※ 리뷰 리마케팅 실제 집행은 2025.05 — 위 분석 기간과 별개 구간입니다 (일 단위 노출 구간 미확인으로 시간축에는 띠를 넣지 않았습니다).</p>
+            <div class="ifun" style="margin-top:20px">
+              <div class="fn"><span class="fns">1</span><b>포털검색 유입</b><small>SEO 블로그·검색광고</small></div>
               <div class="fnar">→</div>
-              <div class="fn"><span class="fns">2</span><b>Meta 리마케팅</b><small>평균 3.89일 고려한 리마인드</small></div>
+              <div class="fn"><span class="fns">2</span><b>Meta 리마케팅</b><small>평균 3.89일 안에 재도달</small></div>
               <div class="fnar">→</div>
               <div class="fn"><span class="fns">3</span><b>블로그 후기 신뢰</b><small>경쟁사 대비 차별점·리뷰</small></div>
               <div class="fnar">→</div>
-              <div class="fn hot"><span class="fns">4</span><b>결제 전환</b><small>예약 페이지 즉시 전환</small></div>
+              <div class="fn hot"><span class="fns">4</span><b>결제 전환</b><small>예약 페이지 전환</small></div>
             </div>
           </div>
+        </div>
 
-          <div class="vcap">결제 소요 3.89일 → 리마케팅 타이밍 설계</div>
-          <div class="viz">
-            <p class="vnote" style="margin-top:0">첫 유입에서 결제까지 평균 <b>3.89일</b>이라는 GA4 데이터(2024.12~2025.02)에 맞춰, 한 번의 노출보다 <b>그 기간 안의 재도달</b>에 맞춰 실고객 리뷰 소재를 운영했습니다 — 리마케팅 <b>CVR 62%·총 144건</b>(2025.05). <span class="note">소재 A/B 상세 수치는 상단 '소재 A/B 실험'에서 확인할 수 있습니다.</span></p>
-          </div>
+        <div class="mstrip c3">
+          <div class="m"><div class="cap">구매 여정</div><div class="val num"><span class="kpi">결제소요</span>3.89<span class="u">일</span></div><div class="sub neu">GA4 · 2024.12~2025.02</div></div>
+          <div class="m"><div class="cap">리뷰 리마케팅</div><div class="val num"><span class="kpi">CVR</span>62<span class="u">%</span></div><div class="sub neu">2025.05 · 총 144건</div></div>
+          <div class="m"><div class="cap">AI 영상 A/B</div><div class="val num"><span class="kpi">CTR</span>9.56<span class="u">%</span></div><div class="sub neu">상단 '소재 A/B'에서 상세</div></div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 상황이었나</div>
+          <p>박스풀 공유창고(짐보관·셀프스토리지) — 온라인 유입을 홈페이지 예약·결제까지 전환시켜야 매출이 되는데, 유입은 있어도 어디서 전환이 새는지 보이지 않았습니다. 그래서 GA4로 '첫 유입 → 결제' 경로와 소요 일수를 분해했습니다.</p>
         </div>
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">성과는 감이 아니라 <b>GA4 구매 여정 분석</b>에서 나온다 — 평균 결제 <b>3.89일</b>이라는 숫자가 '즉시 전환'이 아니라 <b>리마케팅</b>이 답임을 알려줬다. 클릭(CTR)이 아니라 <b>전환·구매 여정</b> 기준으로 소재·타이밍을 설계하는 게 핵심이다.</p>
+          <p class="insight">클릭(CTR)이 아니라 <b>구매 여정</b> 기준으로 소재와 노출 시점을 설계해야 한다 — 평균 결제 소요 일수가 '즉시 전환'이 아니라 리뷰 리마케팅이 맞는 설계임을 알려줬다.</p>
         </div>
       </div>
     </section>
@@ -1591,72 +1596,52 @@ main{ min-width:0; }
 <section class="case reveal" id="c6b">
       <div class="case-top">
         <div class="ch"><span class="idx num">CASE 05</span><span class="org">공유창고(박스풀) · 2024.07~2025.06</span></div>
-        <h2>취미공간 — 예약을 '지점 문의'에서 '페이지 내 즉시결제'로 바꿨습니다 (매출 +1,653%)</h2>
+        <h2>예약 페이지에 즉시결제를 도입했습니다</h2>
         <div class="tags">
           <span class="tag">전환율 최적화 · 랜딩/결제</span>
           <span class="tag">UI/UX 개선</span>
           <span class="tag role">2인 · 70%</span>
         </div>
       </div>
-      <p class="lead">조회는 쌓이는데 <b>결제가 0</b>이던 취미공간 예약 LP를 <b>'즉시 결제 불가' 병목</b>으로 진단 → 실시간 결제 도입·LP 재구성으로 <b>매출 +1,653%</b>.</p>
+      <p class="lead"><strong class="key-phrase">지점 문의</strong>를 거치던 예약을, 페이지 안에서 바로 결제할 수 있게 바꿨습니다.</p>
       <div class="body">
 
-        <div class="mstrip c2">
-          <div class="m"><div class="cap">예약 LP 개선</div><div class="val num"><span class="kpi">매출</span>+1,653<span class="u">%</span></div><div class="sub num">25.02 → 25.05 (병목 제거)</div></div>
-          <div class="m"><div class="cap">조회→실매출</div><div class="val num"><span class="kpi">즉시결제</span>전환<span class="u"> 발생</span></div><div class="sub neu">조회만 쌓이던 구조 → 실매출</div></div>
-        </div>
-
         <div class="sec">
-          <div class="sh"><span class="bar"></span>어떤 서비스인가</div>
-          <p>취미·엔터 <b>공간예약 서비스</b> — 고객이 홈페이지에서 공간을 <b>예약·결제</b>해야 매출이 되는 구조.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
-          <p>예약 페이지는 <b>조회는 많은데 결제가 0</b>이었다 — <b>고객센터 경유 '즉시 결제 불가'</b> 구조가 전환 병목이었다.</p>
-        </div>
-
-        <div class="sec">
-          <div class="sh"><span class="bar"></span>무엇을 했나 — 즉시결제 도입·LP 개선 (전환율 최적화)</div>
-          <div class="vcap">실제 화면 — 기존 예약 흐름(지점 문의 경유, 즉시 결제 불가)</div>
+          <div class="sh"><span class="bar"></span>무엇을 했나 — 결제 경로 전후 (전환율 최적화)</div>
           <div class="viz">
-            <div class="phonewrap">
-              <div class="phone-mock"><img src="assets/cases/hobby_asis.png" alt="기존 취미공간 예약 화면 — 하단 예약하기가 지점 문의로 연결되어 즉시 결제 불가"></div>
-              <div class="phone-side">
-                <div class="ps-row"><span class="ps-b">하단 ‘예약하기’</span> → 지점 문의로 연결되어 <b>즉시 결제가 불가</b>했습니다.</div>
-                <div class="ps-row"><b>개선</b><br>① 지점 문의 경유 단계 제거<br>② 예약 페이지를 홈 메인에 아이콘 노출<br>③ 랜딩에서 <b>즉시 결제 버튼</b>으로 전환</div>
-                <div class="ps-row note">개선 랜딩(BOXFUL 즉시결제) 화면은 상단 대표작 썸네일에서 확인할 수 있습니다.</div>
-              </div>
+            <div class="twophone">
+              <figure class="pcol">
+                <div class="phone-mock"><img src="assets/cases/hobby_asis.png" alt="기존 예약 화면 — 예약하기가 지점 문의로 연결"></div>
+                <figcaption><span class="flab bad">기존</span> 예약 → <b>지점 문의</b> 경유<br>(즉시 결제 불가)</figcaption>
+              </figure>
+              <div class="twoarrow">→</div>
+              <figure class="pcol">
+                <div class="phone-mock"><img src="assets/cases/hobby_tobe.png" alt="개선 예약 화면 — 페이지 내 즉시결제 버튼"></div>
+                <figcaption><span class="flab good">개선</span> 예약 → <b>페이지 내 결제</b><br>(랜딩 내 실시간 결제)</figcaption>
+              </figure>
             </div>
+            <p class="note">실제 화면 · 지점 문의 경유 단계 제거 + 예약 페이지를 홈 메인에 노출 + 랜딩에서 <strong class="key-phrase">페이지 내 즉시결제</strong>로 전환.</p>
           </div>
+
+          <div class="vcap">결과 — 매출 변화 (25.02 → 25.05)</div>
           <div class="viz">
-            <div class="flowrow">
-              <span class="flab bad">기존</span>
-              <div class="ifun">
-                <div class="fn"><b>예약 페이지</b><small>조회 유입</small></div>
-                <div class="fnar">→</div>
-                <div class="fn"><b>고객센터 경유</b><small>즉시 결제 불가</small></div>
-                <div class="fnar">→</div>
-                <div class="fn bad2"><b>결제 이탈</b><small>예약 0</small></div>
-              </div>
+            <div class="ba">
+              <div class="cell"><div class="t">기존 · 지점 문의 경유</div><div class="v">결제 0</div></div>
+              <div class="arrow">→</div>
+              <div class="cell good"><div class="t">개선 · 페이지 내 즉시결제</div><div class="v"><strong class="key-phrase">+1,653%</strong><small>매출 · 25.02→25.05 비교</small></div></div>
             </div>
-            <div class="flowrow" style="margin-top:12px">
-              <span class="flab good">개선</span>
-              <div class="ifun">
-                <div class="fn"><b>예약 페이지</b><small>조회 유입</small></div>
-                <div class="fnar">→</div>
-                <div class="fn hot"><b>즉시 결제 도입</b><small>실시간 결제</small></div>
-                <div class="fnar">→</div>
-                <div class="fn hot"><b>실매출 전환</b><small>매출 +1,653% (25.02→05)</small></div>
-              </div>
-            </div>
-            <p class="vnote" style="margin-top:12px">예약 페이지 조회수는 높은데 결제가 0 — GA4로 <b>'즉시 결제 불가' 구조를 병목으로 진단</b>하고, 실시간 결제 도입 + 전환 경로 단축을 제안·반영해 실매출 전환율을 끌어올렸습니다.</p>
+            <p class="vnote">조회는 쌓이는데 결제가 0이던 구조에서, 즉시결제 도입 뒤 실매출이 발생했습니다. ※ 같은 기간 랜딩 노출·유입 변화도 함께 있었으므로 결제 구조 변경을 '유일한' 원인으로 단정하지 않고, 주요 변경과 관찰된 결과로 표기합니다.</p>
           </div>
+        </div>
+
+        <div class="sec">
+          <div class="sh"><span class="bar"></span>어떤 상황이었나</div>
+          <p>취미·엔터 공간예약 서비스 — 예약 페이지 조회는 많은데 <b>결제가 0</b>이었습니다. 고객센터(지점 문의) 경유 구조라 즉시 결제가 불가능한 것이 전환 병목이었습니다.</p>
         </div>
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 배웠나</div>
-          <p class="insight">유입은 충분한데 결제가 0이던 원인은 광고가 아니라 <b>'지점 문의 경유' 결제 흐름(UX)</b>이었습니다. 랜딩·결제 구조 하나(페이지 내 즉시결제 도입)를 바꿔 결제 전환을 만들었습니다 — 매출 <b>+1,653%</b>(25.02→25.05).</p>
+          <p class="insight">유입이 충분한데 결제가 0이면, 원인은 광고가 아니라 <b>결제 흐름(UX)</b>일 수 있다 — 랜딩·결제 경로를 바꾸는 것이 광고 증액보다 전환에 더 크게 작용한 사례였다.</p>
         </div>
       </div>
     </section>
@@ -1801,7 +1786,11 @@ main{ min-width:0; }
 
   <!-- ============ CLOSING ============ -->
   <section class="closing reveal">
-    <h3>직접 만든 소재와 데이터로,<br><b>토스 커머스의 User Acquisition 지표</b>를 끌어올리고 싶습니다.</h3>
+    <h3>직접 만든 소재와 데이터로,<br><span class="key-phrase">구매 전환</span>을 끌어올리겠습니다.</h3>
+    <div class="hero-btns" style="justify-content:center;margin-top:30px">
+      <a class="btn-primary" href="https://jiuk-bot.github.io/tossmarketing/resume.html">이력서 보기 →</a>
+      <a class="btn-secondary" href="mailto:jiuk2038@gmail.com">jiuk2038@gmail.com</a>
+    </div>
   </section>
 </div>
 
