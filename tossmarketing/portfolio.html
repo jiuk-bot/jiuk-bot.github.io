@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#07070E;">
+<html lang="ko" style="background:#FBFAF8;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,21 +8,21 @@
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
 
 :root{
-  --void:#07070E;
-  --panel:#101019;
-  --panel2:#14141F;
-  --line:#2B2842;
-  --line-soft:#201E30;
-  --ink:#EDEBFA;
-  --mute:#9E99BC;
-  --dim:#615D83;
-  --signal:#B794F6;
-  --signal-d:#7C5CFF;
-  --amber:#5CC8FF;
-  --cyan:#6EE7FF;
-  --red:#FF6B9D;
-  --neon:linear-gradient(135deg,#7C5CFF 0%,#C06BFF 52%,#FF5CE1 100%);
-  --shadow:0 28px 70px -34px rgba(0,0,0,.85);
+  --void:#FBFAF8;
+  --panel:#FFFFFF;
+  --panel2:#F4F2ED;
+  --line:#E4E1D9;
+  --line-soft:#EDEBE4;
+  --ink:#1B1A22;
+  --mute:#6B6975;
+  --dim:#9B98A3;
+  --signal:#5B3FE0;
+  --signal-d:#4A2FD0;
+  --amber:#2563EB;
+  --cyan:#0E7490;
+  --red:#E11D6B;
+  --neon:linear-gradient(135deg,#5B3FE0 0%,#7C5CFF 100%);
+  --shadow:0 12px 34px -20px rgba(28,26,50,.18);
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -31,9 +31,9 @@ html{ scroll-behavior:smooth; }
 
 html,body{
   font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;
-  color:#EDEBFA;
+  color:#1B1A22;
   color:var(--ink);
-  background:#07070E;
+  background:#FBFAF8;
   background:var(--void);
   line-height:1.72;
   word-break:keep-all;
@@ -49,17 +49,15 @@ body::before{
   content:"";
   position:fixed; inset:-12%; z-index:0; pointer-events:none;
   background:
-    radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.26), transparent 62%),
-    radial-gradient(34% 46% at 92% 20%, rgba(255,92,225,.18), transparent 62%),
-    radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.16), transparent 64%);
-  filter:blur(26px);
-  animation:aurora 18s ease-in-out infinite alternate;
+    radial-gradient(42% 52% at 10% 2%, rgba(91,63,224,.05), transparent 60%),
+    radial-gradient(38% 48% at 96% 12%, rgba(91,63,224,.035), transparent 60%);
+  filter:none;
 }
 @keyframes aurora{ 0%{transform:translate(0,0) scale(1);} 100%{transform:translate(2.5%,-2%) scale(1.09);} }
 body::after{
   content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.028) 1px, transparent 1px);
-  background-size:26px 26px; opacity:.5;
+  background-image:radial-gradient(rgba(27,26,34,.028) 1px, transparent 1px);
+  background-size:28px 28px; opacity:.5;
 }
 
 .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
@@ -408,45 +406,38 @@ main{ min-width:0; }
   }
 }
 
-/* ============ NEON PREMIUM OVERLAY ============ */
-.statusbar{ background:rgba(10,10,18,.74); border-bottom:1px solid rgba(124,92,255,.16); }
-.logo b{ color:#C06BFF; }
-.pulse{ background:#C06BFF; box-shadow:0 0 10px rgba(192,107,255,.9); }
-.statusbar nav a.on{ background:rgba(124,92,255,.15); color:#fff; }
+/* ============ LIGHT EDITORIAL ============ */
+.statusbar{ background:rgba(255,255,255,.9); border-bottom:1px solid var(--line); }
+.logo b{ color:var(--signal); }
+.pulse{ background:var(--signal); box-shadow:none; }
+.statusbar nav a.on{ background:rgba(91,63,224,.1); color:var(--signal); }
 
 .hero h1{ font-weight:800; letter-spacing:-.045em; }
-.hero h1 .glow{
-  background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6,#9D7BFF);
-  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; color:transparent;
-  filter:drop-shadow(0 0 26px rgba(170,110,255,.5));
-  background-size:220% auto; animation:nshimmer 7s linear infinite;
-}
-@keyframes nshimmer{ to{ background-position:220% center; } }
-.kicker .tick{ background:linear-gradient(90deg,#7C5CFF,#FF5CE1); height:2px; opacity:.95; box-shadow:0 0 8px rgba(124,92,255,.6); }
+.hero h1 .glow{ color:var(--signal); -webkit-text-fill-color:currentColor; background:none; }
+.kicker .tick{ background:var(--signal); height:2px; opacity:1; box-shadow:none; }
 
-/* glass + neon panels */
-.readout,.case,.viz,.mstrip{ position:relative; -webkit-backdrop-filter:blur(8px) saturate(1.1); backdrop-filter:blur(8px) saturate(1.1); }
-.case{ background:rgba(16,16,26,.56); border:1px solid rgba(124,92,255,.16);
-  transition:transform .45s cubic-bezier(.22,.61,.36,1), box-shadow .45s ease, border-color .45s ease; }
-.case:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55);
-  box-shadow:0 44px 100px -44px rgba(124,92,255,.5), var(--shadow); }
-.case-top{ background:linear-gradient(180deg,rgba(124,92,255,.09),rgba(124,92,255,0)); border-bottom:1px solid rgba(124,92,255,.14); }
-.rd,.m{ background:rgba(18,18,30,.62); transition:box-shadow .35s ease; }
-.rd::before{ content:""; position:absolute; left:0; top:0; width:100%; height:2px; background:var(--neon); opacity:.6; }
-.rd:hover,.m:hover{ box-shadow:inset 0 0 0 1px rgba(124,92,255,.32), 0 0 40px -10px rgba(124,92,255,.45); }
-.rd .val .u,.m .val .u{ background:var(--neon); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+/* editorial surfaces — 유리/네온 제거, 흰 카드 + 얇은 선 */
+.readout,.case,.viz,.mstrip{ position:relative; -webkit-backdrop-filter:none; backdrop-filter:none; }
+.case{ background:var(--panel); border:1px solid var(--line);
+  transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease; }
+.case:hover{ transform:translateY(-3px); border-color:var(--line); box-shadow:var(--shadow); }
+.case-top{ background:transparent; border-bottom:1px solid var(--line); }
+.rd,.m{ background:var(--panel); transition:box-shadow .3s ease; }
+.rd::before{ display:none; }
+.rd:hover,.m:hover{ box-shadow:var(--shadow); }
+.rd .val .u,.m .val .u{ background:none; -webkit-text-fill-color:currentColor; color:var(--signal); }
 
-/* neon fills */
-.meter .track{ background:rgba(8,8,16,.85); border-color:rgba(124,92,255,.22); }
-.meter .fill{ background:linear-gradient(90deg,#7C5CFF,#C06BFF,#FF5CE1); color:#fff; box-shadow:0 0 24px rgba(160,100,255,.55); }
-.vbar.hi .col{ background:linear-gradient(180deg,#C06BFF,#7C5CFF)!important; box-shadow:0 0 28px rgba(140,90,255,.5); }
-.vbar.hi .pv{ color:#CBA7FF; }
-.sfun .rung{ box-shadow:0 0 22px -4px rgba(124,92,255,.42); }
+/* chart fills — 강조색 솔리드 */
+.meter .track{ background:var(--panel2); border-color:var(--line); }
+.meter .fill{ background:var(--signal); color:#fff; box-shadow:none; }
+.vbar.hi .col{ background:var(--signal)!important; box-shadow:none; }
+.vbar.hi .pv{ color:var(--signal); }
+.sfun .rung{ box-shadow:none; }
 
 /* accents */
-.sh .bar{ background:linear-gradient(90deg,#7C5CFF,#FF5CE1); height:2px; box-shadow:0 0 8px rgba(124,92,255,.6); }
-.quote{ border-left-color:#C06BFF; }
-.rail a:hover,.rail a.active{ border-left-color:#C06BFF; }
+.sh .bar{ background:var(--signal); height:2px; box-shadow:none; }
+.quote{ border-left-color:var(--signal); }
+.rail a:hover,.rail a.active{ border-left-color:var(--signal); }
 .cta-live{ border-color:rgba(124,92,255,.5); color:#C9A6FF; }
 .cta-live:hover{ background:var(--neon); color:#fff; border-color:transparent; box-shadow:0 0 34px rgba(124,92,255,.55); }
 .closing h3 b, .hero .lead b{ color:#C9A6FF; }
@@ -457,7 +448,7 @@ main{ min-width:0; }
 @media print {
   @page { size: A4 portrait; margin: 10mm 9mm; }
   html { zoom: 0.62; }                 /* 1280px 데스크톱 레이아웃을 A4 폭에 맞춰 축소 */
-  html, body { background:#07070E !important; }
+  html, body { background:#FBFAF8 !important; color:#1B1A22 !important; }
   *, *::before, *::after {
     -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important;
     -webkit-backdrop-filter:none !important; backdrop-filter:none !important;
@@ -490,12 +481,12 @@ main{ min-width:0; }
 }
 </style>
 </head>
-<body style="background:#07070E;color:#EDEBFA;">
+<body style="background:#FBFAF8;color:#1B1A22;">
 
-<nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
+<nav style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);-webkit-backdrop-filter:saturate(1.1) blur(14px);backdrop-filter:saturate(1.1) blur(14px);border-bottom:1px solid var(--line)">
   <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
-    <a href="https://jiuk-bot.github.io/tossmarketing/index.html" style="font-weight:800;font-size:17px;color:#EDEBFA;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
-    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="https://jiuk-bot.github.io/tossmarketing/index.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Home</a><a href="https://jiuk-bot.github.io/tossmarketing/portfolio.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">Portfolio</a><a href="https://jiuk-bot.github.io/tossmarketing/resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="https://jiuk-bot.github.io/tossmarketing/videos.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">성과분석 대시보드</a><a href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 소재 스튜디오</a></div>
+    <a href="https://jiuk-bot.github.io/tossmarketing/index.html" style="font-weight:800;font-size:17px;color:#1B1A22;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="https://jiuk-bot.github.io/tossmarketing/index.html" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Home</a><a href="https://jiuk-bot.github.io/tossmarketing/portfolio.html" style="color:#4A2FD0;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(91,63,224,.1)">Portfolio</a><a href="https://jiuk-bot.github.io/tossmarketing/resume.html" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="https://jiuk-bot.github.io/tossmarketing/videos.html" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">성과분석 대시보드</a><a href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener" style="color:#6B6975;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 소재 스튜디오</a></div>
   </div>
 </nav>
 
@@ -688,7 +679,7 @@ main{ min-width:0; }
       /* 실제 소재 이미지 As-is → To-be */
       #ccom .imgab{ display:grid; grid-template-columns:1fr auto 1fr; gap:9px; align-items:center; }
       #ccom .imgab figure{ margin:0; }
-      #ccom .imgab img{ width:100%; height:250px; object-fit:contain; background:#0b0a12; border:1px solid var(--line); border-radius:10px; display:block; }
+      #ccom .imgab img{ width:100%; height:250px; object-fit:contain; background:#F0EEE8; border:1px solid var(--line); border-radius:10px; display:block; }
       #ccom .imgab figcaption{ font-size:11px; font-weight:800; letter-spacing:.03em; margin-top:7px; line-height:1.4; color:var(--mute); }
       #ccom .imgab .fa figcaption{ color:#ff9b9b; } #ccom .imgab .fb figcaption{ color:var(--signal); }
       #ccom .imgab .fb img{ border-color:rgba(124,92,255,.45); }
@@ -696,7 +687,7 @@ main{ min-width:0; }
       /* 4종 토너먼트 */
       #ccom .tngrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:10px; }
       #ccom .tngrid figure{ margin:0; }
-      #ccom .tngrid img{ width:100%; aspect-ratio:4/5; height:auto; object-fit:contain; background:#0d0f14; border:1px solid var(--line); border-radius:8px; display:block; }
+      #ccom .tngrid img{ width:100%; aspect-ratio:4/5; height:auto; object-fit:contain; background:#F0EEE8; border:1px solid var(--line); border-radius:8px; display:block; }
       #ccom .tngrid figcaption{ font-size:11.5px; font-weight:800; text-align:center; margin-top:6px; color:var(--dim); }
       #ccom .tngrid .win img{ border-color:var(--signal); box-shadow:0 0 0 1.5px var(--signal); }
       #ccom .tngrid .win figcaption{ color:var(--signal); }
@@ -745,7 +736,7 @@ main{ min-width:0; }
 
       <div class="body">
         <div class="mstrip c3">
-          <div class="m"><div class="cap">짐보관 AI영상</div><div class="val num"><span class="kpi">CTR</span>+43<span class="u">%</span></div></div>
+          <div class="m"><div class="cap">짐보관 AI영상</div><div class="val num"><span class="kpi">CTR</span>+42.7<span class="u">%</span></div></div>
           <div class="m"><div class="cap">고객군 재정의</div><div class="val num"><span class="kpi">전환</span>+67.7<span class="u">%</span></div></div>
           <div class="m"><div class="cap">소구 변경</div><div class="val num"><span class="kpi">핵심고객 유입</span>+30<span class="u">%p</span></div></div>
         </div>
@@ -1088,7 +1079,7 @@ main{ min-width:0; }
       #cvid .pstep .ptitle{ font-size:12.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; }
       #cvid .pstep .pdesc{ font-size:10.5px; color:var(--dim); line-height:1.45; }
       #cvid .parrow{ display:flex; align-items:center; justify-content:center; flex:0 0 22px; color:var(--signal); font-size:15px; }
-      #cvid .vthumb{ display:block; position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0f0d1c; text-decoration:none; }
+      #cvid .vthumb{ display:block; position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#ECEAE4; text-decoration:none; }
       #cvid .vthumb .th{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s; }
       #cvid .vthumb:hover .th{ transform:scale(1.05); }
       #cvid .vthumb .pbtn{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%; background:rgba(12,10,22,.58); border:1.5px solid rgba(255,255,255,.85); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:.25s; }
