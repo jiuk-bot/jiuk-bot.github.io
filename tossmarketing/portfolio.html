@@ -154,7 +154,7 @@ main{ min-width:0; }
   border:1px solid var(--line-soft);
   border-radius:22px;
   overflow:hidden;
-  margin-bottom:72px;
+  margin-bottom:96px;
   scroll-margin-top:110px;
   box-shadow:var(--shadow);
 }
@@ -179,10 +179,10 @@ main{ min-width:0; }
 .lead b{ color:var(--signal); font-weight:600; }
 .lead .amb{ color:var(--amber); font-weight:600; }
 
-.body{ padding:48px 56px 56px; }
+.body{ padding:52px 56px 62px; }
 
 /* headline metric strip inside case */
-.mstrip{ display:grid; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:16px; overflow:hidden; margin-bottom:48px; }
+.mstrip{ display:grid; gap:1px; background:var(--line-soft); border:1px solid var(--line-soft); border-radius:16px; overflow:hidden; margin-bottom:60px; }
 .mstrip.c4{ grid-template-columns:repeat(4,1fr); }
 .mstrip.c3{ grid-template-columns:repeat(3,1fr); }
 .mstrip.c2{ grid-template-columns:repeat(2,1fr); }
@@ -194,7 +194,7 @@ main{ min-width:0; }
 .m .sub.neu{ color:var(--mute); }
 
 /* section */
-.sec{ margin-top:52px; }
+.sec{ margin-top:68px; }
 .sec:first-of-type{ margin-top:0; }
 .sh{ display:flex; align-items:center; gap:14px; font-size:14px; font-weight:600; letter-spacing:-.01em; color:var(--ink); margin-bottom:20px; }
 .sh .bar{ width:20px; height:1px; background:var(--signal); border-radius:2px; flex-shrink:0; }
@@ -227,7 +227,7 @@ main{ min-width:0; }
   font-size:13px; font-weight:500; color:var(--signal); font-variant-numeric:tabular-nums;
   border:0; width:28px; text-align:left; }
 
-.stepflow{ display:flex; flex-direction:column; gap:9px; margin:14px 0 6px; }
+.stepflow{ display:flex; flex-direction:column; gap:12px; margin:16px 0 6px; }
 .sc{ display:flex; gap:13px; align-items:flex-start; background:var(--panel); border:1px solid var(--line); border-left:3px solid var(--signal); border-radius:12px; padding:12px 15px; }
 .sc .scn{ flex:0 0 24px; width:24px; height:24px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-weight:800; font-size:12px; display:flex; align-items:center; justify-content:center; margin-top:1px; }
 .sc .sct{ font-size:13px; line-height:1.5; color:var(--mute); }
@@ -241,7 +241,7 @@ main{ min-width:0; }
 }
 .insight b{ color:var(--cyan); font-weight:600; }
 
-.vcap{ font-size:12.5px; font-weight:600; letter-spacing:.005em; color:var(--signal); margin:44px 0 18px; }
+.vcap{ font-size:12.5px; font-weight:600; letter-spacing:.005em; color:var(--signal); margin:58px 0 20px; }
 .vcap.amb{ color:var(--amber); }
 .vnote{ font-size:14px; color:var(--mute); line-height:1.7; margin-top:18px; max-width:72ch; }
 .vnote b{ color:var(--ink); font-weight:600; }
@@ -542,17 +542,6 @@ main{ min-width:0; }
     </div>
   </header>
 
-  <section class="selwork reveal" id="selected">
-    <div class="sw-head">
-      <span class="sw-eyebrow">SELECTED WORK</span>
-      <h2>사례 바로가기</h2>
-    </div>
-    <div class="quicklinks">
-      <a href="#ccom">짐보관 광고 비교 →</a>
-      <a href="#c6">GA4 구매 여정 →</a>
-      <a href="#c6b">취미공간 즉시결제 →</a>
-    </div>
-  </section>
 
   <div class="layout">
     <!-- left rail -->
@@ -581,7 +570,7 @@ main{ min-width:0; }
       #ccom .method .ms{ font-size:12px; font-weight:800; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:999px; padding:7px 14px; }
       #ccom .method .ms.me{ border-color:rgba(124,92,255,.5); color:#C9A6FF; background:rgba(124,92,255,.08); }
       #ccom .method .ma{ color:var(--signal); font-weight:800; }
-      #ccom .abgrid{ display:flex; flex-direction:column; gap:18px; margin-top:8px; }
+      #ccom .abgrid{ display:flex; flex-direction:column; gap:30px; margin-top:8px; }
       /* 카드 1개 = 전체 폭 가로 행 (이미지 왼쪽 · 텍스트 오른쪽) */
       #ccom .abcard{ border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:26px 30px; transition:transform .3s,border-color .3s,box-shadow .3s;
         display:grid; grid-template-columns:330px 1fr; column-gap:30px; row-gap:13px; align-items:start; }
@@ -744,7 +733,7 @@ main{ min-width:0; }
     <section class="case reveal" id="ccom">
       <div class="case-top">
         <div class="ch"><span class="abadge">ARCHIVE · 기여도 100%</span><span class="org">박스풀 공유창고·풀필먼트 / 다이나믹 서플라이 · 2024.07~2025.05</span></div>
-        <h2>커머스·리드 소재 A/B테스트</h2>
+        <h2>광고 소재 실험과 운영 비교</h2>
         <div class="tags">
           <span class="tag">영상·이미지 직접 제작</span>
           <span class="tag">소구×후킹 A/B</span>
@@ -802,13 +791,13 @@ main{ min-width:0; }
               </table>
               <p class="note" style="margin:8px 0 0">※ 길이·훅·편집이 함께 바뀐 소재 교체(기간 전후 비교) — 단일 변수 A/B는 아님</p>
               <div class="abx">실행 : 20초 → <b>12초</b> 압축 · 앞 3초에 Hook·텍스트 요약 배치 <span class="raw">(평균 시청 7초 이탈 구간 대응)</span></div>
-              <div class="qa l"><span class="lab">배운 점</span> 영상 '길이'가 아니라 <b>인트로 Hook 설계</b>가 CTR을 만든다 — 30%만 시청해도 메시지가 전달되면 전환이 따라온다</div>
+              <div class="qa l"><span class="lab">배운 점</span> 영상 길이보다 <b>앞 3초 구성</b>이 클릭률에 크게 작용했다 — 첫 3초에 서비스 설명을 배치한 12초 소재로 교체한 뒤 클릭률이 6.70%→9.56%로 올랐다(길이·훅·편집을 함께 변경).</div>
             </div>
 
             <div class="abcard" style="order:2">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.04~05</span></div>
               <h4>직장인 공감형 시나리오 소재</h4>
-              <div class="abhook">클릭을 양보하고 '전환'을 택한 소재</div>
+              <div class="abhook">직장인 일상 장면으로 바꾼 뒤 전환 수 +25%</div>
               <div class="qa p"><span class="lab">문제</span> 기존 자극형 소재는 <b>CTR은 높지만 CVR이 낮다</b> — 유입 대비 전환 효율이 받쳐주지 못함</div>
               <div class="qa h"><span class="lab">가설</span> 자극적 인트로 대신 <b>'퇴근 후 복잡한 집'</b> 현실을 제시하면 타겟이 자기 상황으로 인식해 전환된다</div>
               <div class="imgab">
@@ -983,21 +972,21 @@ main{ min-width:0; }
             <p class="vnote">리드 수가 아니라 <b>내원·시술까지 책임지는 구조</b>로 광고를 재정의 — 성과를 '리드 CPA'가 아닌 <b>지역별 내원율·CAC·ROAS</b>로 측정한 이유입니다.</p>
           </div>
 
-          <div class="vcap">지역별 내원율 — 치과 인근일수록 압도적 (최대 15배 격차 → '전환 효율' 설득 근거)</div>
+          <div class="vcap">지역별 내원율 — 치과 인근 지역일수록 높음 (경기남부 15% vs 경북 1%, 관찰 기간 기준)</div>
           <div class="viz">
             <div class="idxbars">
               <div class="ib"><span class="ibl">경기남부</span><div class="ibtrack"><div class="ibfill" style="width:100%">내원율 15%</div></div></div>
               <div class="ib"><span class="ibl">경북</span><div class="ibtrack"><div class="ibfill base" style="width:7%">1%</div></div></div>
             </div>
             <p class="note" style="margin-top:8px">리드→내원 전환율 · 치과 접근성 높은 지역 순 (지역별 최대 15배 격차)</p>
-            <p class="vnote">경기남부는 리드(DB) 단가는 더 비싸지만 내원율이 압도적으로 높아 <b>내원당 비용 효율은 최고</b>였습니다 — 리드 '수'가 아닌 '내원 효율'로 보면 역전. 그래서 저효율 지역·매체(메타 ROAS 120%)를 감액하고 <b>고효율 경기남부로 예산을 집중 이관</b>했습니다.</p>
+            <p class="vnote">경기남부는 리드(DB) 단가는 더 비싸지만 내원율이 뚜렷하게 높아 <b>내원당 비용 효율은 최고</b>였습니다 — 리드 '수'가 아닌 '내원 효율'로 보면 역전. 그래서 저효율 지역·매체(메타 ROAS 120%)를 감액하고 <b>고효율 경기남부로 예산을 집중 이관</b>했습니다.</p>
           </div>
         </div>
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 했나 — 실행 과정</div>
           <div class="stepflow">
-            <div class="sc"><span class="scn">1</span><div class="sct"><b>퍼널 역산·재정의</b>리드→상담→내원→시술까지 역산해 광고를 <em>'내원까지 책임지는 구조'</em>로 재정의</div></div>
+            <div class="sc"><span class="scn">1</span><div class="sct"><b>퍼널 역산·재정의</b>리드→상담→내원→시술까지 역산해 광고를 <em>'리드가 아니라 내원·시술까지 추적하는 구조'</em>로 재정의</div></div>
             <div class="sc"><span class="scn">2</span><div class="sct"><b>지역별 독립 측정</b>지역 단위로 캠페인을 분리해 지역별 성과를 독립적으로 측정</div></div>
             <div class="sc"><span class="scn">3</span><div class="sct"><b>지역 CAC 추적</b>리드 CPA가 아닌 <em>지역별 내원율·CAC·ROAS</em>까지 데이터로 집계</div></div>
             <div class="sc"><span class="scn">4</span><div class="sct"><b>고효율 지역 집중</b>ROAS 우수 지역 식별 + 저효율 지역·매체는 감액으로 예산 누수 차단</div></div>
@@ -1018,8 +1007,8 @@ main{ min-width:0; }
               <div class="desc"><div class="dt">2단계 · 메타 확장</div><p>볼륨 2배↑. 단 <b>내원율 메타 2% &lt; 구글 4%</b> — 매체별 리드 품질 차이를 데이터로 확인.</p></div>
             </div>
             <div class="expr">
-              <div class="node"><div class="step">+ 구글애즈 2계정</div><div class="med">계정 분리</div><div class="big num">200<span>개/일</span></div><div class="cpa">자가잠식 최소화</div></div>
-              <div class="desc"><div class="dt">3단계 · 구글애즈 2계정 분리</div><p>'연령/관심사' 2계정 분리로 자가잠식↓. <b>구글 80 : 메타 20</b> 비율 유지.</p></div>
+              <div class="node"><div class="step">+ 구글애즈 2계정</div><div class="med">계정 분리</div><div class="big num">200<span>개/일</span></div><div class="cpa">노출 중복 최소화</div></div>
+              <div class="desc"><div class="dt">3단계 · 구글애즈 2계정 분리</div><p>'연령/관심사' 2계정 분리로 계정 간 노출 중복↓. <b>구글 80 : 메타 20</b> 비율 유지.</p></div>
             </div>
             <div class="expr">
               <div class="node"><div class="step">+ TikTok</div><div class="med">틱톡 확장</div><div class="big num">250<span>개/일</span></div><div class="cpa">CPA 4만대</div></div>
@@ -1029,7 +1018,7 @@ main{ min-width:0; }
 
           <button class="ab-toggle" onclick="var g=this.nextElementSibling;g.classList.toggle('show');this.textContent=g.classList.contains('show')?'상세 분석 접기 \u25B4':'상세 분석 더 보기 — 실제 전환고객 색인·ML 학습·예산 재배분·변경 빈도 (+4) \u25BE';">상세 분석 더 보기 — 실제 전환고객 색인·ML 학습·예산 재배분·변경 빈도 (+4) ▾</button>
           <div class="moredetail">
-          <div class="vcap">실제 전환 고객 관심사 분석 — '시청 채널'이 아니라 '본질 관심사'로 타겟 재설계</div>
+          <div class="vcap">실제 전환 고객 관심사 분석 — '시청 채널'이 아니라 '전환 고객에서 지수가 높은 관심사'로 타겟 재설계</div>
           <div class="viz">
             <p class="vnote" style="margin-top:0">디멘드젠은 시그널이 부족하면 ML이 <b>시사·정치 채널로 자동 수렴</b>합니다 — 하지만 Google Audience Insights로 <b>실제 전환 고객</b>을 뜯어보니 본질은 <b>금융 활동·자산 보유 시니어</b>였습니다 (시청 채널 ≠ 잠재고객).</p>
             <div class="idxbars">
@@ -1038,7 +1027,7 @@ main{ min-width:0; }
               <div class="ib"><span class="ibl">자동차 구매</span><div class="ibtrack"><div class="ibfill" style="width:48%">14.1x</div></div></div>
             </div>
             <p class="note" style="margin-top:8px">전환 고객의 In-market 관심사 색인 (평균 대비 배수 · Google Audience Insights 실측)</p>
-            <p class="vnote">이 <b>실측 관심사</b>를 2개 구글애즈 계정에 다르게(금융·자동차 / 보험·생활소비) 설정하고 교차 적용 → 특정 지역 관심사 캠페인 <b>CPA −26%</b>. 중복 검증 결과 유입의 <b>78.8%가 신규 고객</b>이라, 자가잠식 없이 신규 풀을 확장했습니다.</p>
+            <p class="vnote">이 <b>실측 관심사</b>를 2개 구글애즈 계정에 다르게(금융·자동차 / 보험·생활소비) 설정하고 교차 적용 → 특정 지역 관심사 캠페인 <b>CPA −26%</b>. 중복 검증 결과 유입의 <b>78.8%가 기존 캠페인과 겹치지 않는 신규 유입</b>이었습니다(중복 검증 기준).</p>
           </div>
 
           <div class="vcap">캠페인별 머신러닝 학습 분석 — 노출 채널 교체율로 성과 변동 진단</div>
@@ -1051,20 +1040,20 @@ main{ min-width:0; }
             <p class="vnote">디멘드젠 캠페인의 유튜브 노출 채널 변화와 CPA 추이를 함께 분석 → 교체율이 평소(40%)보다 급등하면 <b>'머신러닝이 재학습 중인지 vs 타겟이 흐트러진 건지'</b>를 구분해 캠페인 재설정 시점을 판단. 예산 볼륨이 큰 소재일수록 교체 시 영향이 컸습니다.</p>
           </div>
 
-          <div class="vcap">예산 소진 실험 — 일예산의 32%만 소진된 원인 진단 → 미커버 시그널 투입</div>
+          <div class="vcap">예산 소진 실험 — 일예산의 32%만 소진된 원인 진단 → 기존에 쓰지 않던 관심사 신호 투입</div>
           <div class="viz">
             <div class="ba">
               <div class="cell"><div class="t">캠페인 1개</div><div class="v">일 예산 미소진<small>목표 CPA 입찰 = 소진 X</small></div></div>
               <div class="arrow">→</div>
               <div class="cell"><div class="t">캠페인 2개 병행</div><div class="v">총 예산 동일<small>기존 예산이 둘로 나뉨</small></div></div>
             </div>
-            <p class="vnote">경기남부 캠페인이 일예산의 <b>32%만 소진</b>(목표 CPA 입찰은 전환 가능 유저가 없으면 소진되지 않음). 원인을 추적하니 캠페인이 전부 <b>연령 타겟만(관심사 0개)</b>이라 ML이 시사·뉴스 풀로 자동 수렴·자가잠식하고 있었습니다. 해결 = <b>자기 데이터에 없던 미커버 관심사 시그널을 투입</b>(예산·tCPA·연령·지역·카피를 고정한 <b>단일 변수 실험</b>) → 신규 풀 진입. 캠페인을 늘리는 게 아니라 <b>시그널을 넓혀야</b> 소진과 효율이 함께 열렸습니다.</p>
+            <p class="vnote">경기남부 캠페인이 일예산의 <b>32%만 소진</b>(목표 CPA 입찰은 전환 가능 유저가 없으면 소진되지 않음). 원인을 추적하니 캠페인이 전부 <b>연령 타겟만(관심사 0개)</b>이라 ML이 시사·뉴스 풀로 자동 수렴하고 있었습니다(기존 캠페인끼리 노출이 겹침). 해결 = <b>기존에 쓰지 않던 관심사 신호를 투입</b>(예산·tCPA·연령·지역·카피를 고정한 <b>단일 변수 실험</b>) → 신규 풀 진입. 캠페인을 늘리는 게 아니라 <b>시그널을 넓혀야</b> 소진과 효율이 함께 열렸습니다.</p>
           </div>
 
           <div class="vcap">반직관적 발견 — '많이 만질수록'이 아니라 '덜 만질수록' ML 학습이 안정화</div>
           <div class="viz">
             <div class="ba">
-              <div class="cell warn"><div class="t">설정 변경 빈도 높음</div><div class="v"><span class="num">전환 −44%</span><small>하루 변경 다수 · 학습 페이즈 무한 반복</small></div></div>
+              <div class="cell warn"><div class="t">설정 변경 빈도 높음</div><div class="v"><span class="num">전환 −44%</span><small>하루 변경 다수 · 설정 변경이 잦아 학습이 자주 초기화(관찰)</small></div></div>
               <div class="arrow">→</div>
               <div class="cell good"><div class="t">변경 자제 계정</div><div class="v"><span class="num">전환 +10%</span><small>변경 최소화 · ML이 학습을 끝냄</small></div></div>
             </div>
@@ -1149,7 +1138,7 @@ main{ min-width:0; }
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>완성 영상 — 가로형 시리즈 (최신순 · 최신작일수록 고도화)</div>
+          <div class="sh"><span class="bar"></span>완성 영상 — 가로형 시리즈 (최신순)</div>
           <p style="margin-bottom:10px">7개월간 임플란트 가로형 AI 영상을 <b>30편+</b> 제작했고, 그중 대표작을 추렸습니다. <b>위로 올수록 최신작</b>이며, 퀄리티가 올라가는 과정을 그대로 확인할 수 있습니다.</p>
           <div class="vcap">대표 영상 3선 — 대표작 · 브랜드 시리즈 · 최신작</div>
           <div class="vfeat">
@@ -1313,7 +1302,7 @@ main{ min-width:0; }
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇이 문제였나</div>
           <p>10대라는 특수 타겟에 효율적으로 도달하면서 <b>앱실행 단가를 낮춰야</b> 했다.</p>
-          <div class="vcap amb">통념 vs 실측 — '틱톡=10대'를 데이터로 뒤집다</div>
+          <div class="vcap amb">틱톡 실제 연령 분포 — '10대 매체' 가정과 달랐던 실측</div>
           <div class="split">
             <div class="pane myth">
               <div class="pl">통념</div>
@@ -1757,8 +1746,6 @@ main{ min-width:0; }
   <section class="closing reveal">
     <h3>직접 만든 소재와 데이터로,<br><b>토스 커머스의 User Acquisition 지표</b>를 끌어올리고 싶습니다.</h3>
   </section>
-
-</div>
 
 <script>
 (function(){
