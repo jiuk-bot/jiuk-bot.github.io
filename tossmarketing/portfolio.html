@@ -364,6 +364,7 @@ main{ min-width:0; }
 @media (max-width:460px){ .mstrip.c3,.mstrip.c4{ grid-template-columns:1fr !important; } }
 @media (max-width:760px){
   .shell{ padding:0 22px 90px; }
+  nav a[href*="streamlit.app"], nav a[href*="videos.html"], nav a[href*="dashboard"]{ display:none !important; }
   .statusbar .in{ padding:14px 22px; }
   .statusbar .live{ display:none; }
   .case-top{ padding:34px 26px 30px; }
@@ -539,30 +540,33 @@ main{ min-width:0; }
   <section class="selwork reveal" id="selected">
     <div class="sw-head">
       <span class="sw-eyebrow">SELECTED WORK</span>
-      <h2>직접 만든 소재 · 데이터로 증명한 성과</h2>
-      <p>스크롤 전에 세 가지만 — 무엇을 직접 기획·제작했고, 어떤 데이터로 판단했으며, 어떤 결과를 만들었는지.</p>
+      <h2>직접 만든 광고 · 구매까지 이어진 성과</h2>
+      <p>소재 제작 → 구매 여정 분석·리마케팅 → 결제 흐름 개선. 커머스 User Acquisition을 직접 만들고 데이터로 끌어올린 3가지.</p>
     </div>
     <div class="sw-grid">
       <a class="sw-card" href="#ccom">
-        <span class="sw-tag">CREATIVE · 소재 A/B</span>
+        <div class="sw-thumb"><img src="assets/cases/jim_tobe.png" alt="직접 제작한 짐보관 12초 Hook 광고"></div>
+        <span class="sw-tag">① 짐보관 Paid 소재</span>
         <div class="sw-num">+42.7<span>%</span></div>
-        <div class="sw-k">짐보관 Hook 소재 CTR</div>
-        <p class="sw-d">20초 공감형 → 12초 Hook형. 광고 소재를 직접 기획·제작하고 A/B로 검증했습니다.</p>
-        <span class="sw-go">소재 A/B 실험 보기 →</span>
+        <div class="sw-k">CTR 6.7→9.56% · 20초→12초 Hook 직접 제작</div>
+        <div class="sw-role">역할 · 소구 설계 · 영상/이미지 직접 제작 · A/B</div>
+        <span class="sw-go">소재 A/B 보기 →</span>
       </a>
-      <a class="sw-card" href="#c1">
-        <span class="sw-tag">PERFORMANCE · 임플란트</span>
-        <div class="sw-num">3.3<span>배</span></div>
-        <div class="sw-k">ROAS 103% → 336%</div>
-        <p class="sw-d">지역별 내원율·CAC를 데이터로 분해해 전환 효율 중심으로 재설계했습니다.</p>
-        <span class="sw-go">임플란트 캠페인 보기 →</span>
+      <a class="sw-card" href="#c6">
+        <div class="sw-thumb"><img src="assets/cases/remk_review.png" alt="실고객 리뷰 기반 리마케팅 소재"></div>
+        <span class="sw-tag">② GA4 구매·리마케팅</span>
+        <div class="sw-num">CVR 62<span>%</span></div>
+        <div class="sw-k">결제까지 3.89일 → 기간 내 리뷰 리마케팅 재도달</div>
+        <div class="sw-role">역할 · GA4 구매여정 분석 · 리마케팅 타이밍·소재 설계</div>
+        <span class="sw-go">구매 전환 사례 보기 →</span>
       </a>
-      <a class="sw-card" href="#cvid">
-        <span class="sw-tag">AI VIDEO · 직접 제작</span>
-        <div class="sw-num">30<span>편+</span></div>
-        <div class="sw-k">AI 영상 대본~자막 직접 제작</div>
-        <p class="sw-d">소구포인트 × 후킹 A/B로 CTR을 개선했습니다. 기획부터 후보정까지 단독 수행.</p>
-        <span class="sw-go">AI 영상 보기 →</span>
+      <a class="sw-card" href="#c6b">
+        <div class="sw-thumb"><img src="assets/cases/hobby_tobe.png" alt="취미공간 즉시결제 랜딩"></div>
+        <span class="sw-tag">③ 취미공간 결제 개선</span>
+        <div class="sw-num">17.5<span>배</span></div>
+        <div class="sw-k">매출(+1,653%) · 문의 경유 → 즉시결제로 전환</div>
+        <div class="sw-role">역할 · 병목 진단(GA4) · 결제 흐름·랜딩 개선 제안</div>
+        <span class="sw-go">CRO 사례 보기 →</span>
       </a>
     </div>
   </section>
@@ -645,6 +649,9 @@ main{ min-width:0; }
       .sw-k{ font-size:13px; font-weight:700; color:var(--signal); }
       .sw-d{ font-size:12.5px; color:var(--mute); line-height:1.55; margin:10px 0 16px; flex:1; }
       .sw-go{ font-size:12.5px; font-weight:700; color:var(--ink); }
+      .sw-thumb{ aspect-ratio:16/10; border-radius:12px; overflow:hidden; margin-bottom:16px; border:1px solid var(--line); background:var(--panel2); }
+      .sw-thumb img{ width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+      .sw-role{ font-size:12px; color:var(--mute); font-weight:500; margin-top:7px; }
       .sw-card:hover .sw-go{ color:var(--signal); }
       @media(max-width:820px){ .sw-grid{ grid-template-columns:1fr; } .selwork{ padding-top:44px; } }
       #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
@@ -1554,6 +1561,15 @@ main{ min-width:0; }
 
         <div class="sec">
           <div class="sh"><span class="bar"></span>무엇을 했나 — 즉시결제 도입·LP 개선 (CRO)</div>
+          <div class="vcap">실제 화면 — 문의 경유 예약(기존) vs 즉시결제 랜딩(개선)</div>
+          <div class="viz">
+            <div class="imgab">
+              <figure class="fa"><img src="assets/cases/hobby_asis.png" alt="기존 예약 화면 — 하단 예약하기가 지점 문의로 연결(즉시 결제 불가)"><figcaption>AS-IS · 게임룸 예약 — 하단 <b>예약하기</b>가 지점 문의로 연결(즉시 결제 불가)</figcaption></figure>
+              <span class="ar">→</span>
+              <figure class="fb"><img src="assets/cases/hobby_tobe.png" alt="개선 랜딩 — 한 화면에서 즉시 결제 예약"><figcaption>TO-BE · BOXFUL 랜딩 — 한 화면에서 <b>바로 예약·결제</b>(문의 단계 제거)</figcaption></figure>
+            </div>
+            <p class="note" style="margin-top:8px">바뀐 점: ① 지점 문의 경유 단계 제거 ② 예약 페이지를 홈 메인에 아이콘 노출 ③ 랜딩에서 즉시 결제 버튼으로 전환</p>
+          </div>
           <div class="viz">
             <div class="flowrow">
               <span class="flab bad">기존</span>
