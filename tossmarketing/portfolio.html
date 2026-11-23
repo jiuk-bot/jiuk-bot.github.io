@@ -577,6 +577,13 @@ body::after{
       .flab.good{ color:var(--signal); background:rgba(124,92,255,.1); border:1px solid var(--signal-d); }
       .ifun .fn.bad2{ border-color:rgba(230,120,120,.4); background:rgba(230,120,120,.07); }
       @media(max-width:600px){ .flowrow{ flex-direction:column; align-items:stretch; } }
+      .idxbars{ display:flex; flex-direction:column; gap:10px; }
+      .idxbars .ib{ display:flex; align-items:center; gap:10px; }
+      .idxbars .ibl{ flex:0 0 112px; font-size:12px; font-weight:700; color:var(--mute); text-align:right; }
+      .idxbars .ibtrack{ flex:1; background:rgba(255,255,255,.04); border-radius:8px; overflow:hidden; height:30px; min-width:60px; }
+      .idxbars .ibfill{ height:100%; display:flex; align-items:center; justify-content:flex-end; padding:0 10px; font-size:12px; font-weight:800; color:#fff; background:linear-gradient(90deg,var(--signal-d),var(--signal)); border-radius:8px; }
+      .idxbars .ibfill.base{ background:rgba(158,153,188,.45); color:var(--ink); }
+      @media(max-width:600px){ .idxbars .ibl{ flex-basis:80px; font-size:11px; } }
       #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
       #ccom .abcard .fmt{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; padding:4px 11px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
       #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
@@ -1344,11 +1351,11 @@ body::after{
 
           <div class="vcap">③ 고효율 고객군 발굴 — 인스타 '자녀 금융 DMP' 타겟</div>
           <div class="viz">
-            <div class="ba">
-              <div class="cell"><div class="t">전체 평균</div><div class="v">기준 앱실행 단가</div></div>
-              <div class="arrow">→</div>
-              <div class="cell good"><div class="t">자녀 금융 DMP 타겟</div><div class="v"><span class="num">−69%</span><small>전체 평균 대비 앱실행 단가</small></div></div>
+            <div class="idxbars">
+              <div class="ib"><span class="ibl">전체 평균</span><div class="ibtrack"><div class="ibfill base" style="width:100%">100</div></div></div>
+              <div class="ib"><span class="ibl">자녀 금융 DMP</span><div class="ibtrack"><div class="ibfill" style="width:31%">31</div></div></div>
             </div>
+            <p class="note" style="margin-top:8px">앱실행 단가 상대 지수 (전체 평균 = 100 · 낮을수록 효율 ↑) · 인스타그램 기준</p>
             <p class="vnote">세부 타겟별 성과를 검증하던 중 인스타그램 내 <b>'자녀 금융 DMP' 타겟의 앱실행 단가가 전체 평균 대비 약 69% 낮음</b>을 발견 → 고효율 고객군으로 집중.</p>
           </div>
         </div>
