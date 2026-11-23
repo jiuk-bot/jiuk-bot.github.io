@@ -672,11 +672,11 @@ body::after{
             <div class="tla">→</div>
             <div class="tlc"><div class="tln">5</div><div class="tlt">전환 타이밍</div><div class="tld">결제까지 3.89일 → 그 안에 리뷰 리마케팅으로 재도달</div><div class="tlo">CVR 62%</div></div>
           </div>
-          <p style="margin-top:18px">아래 <b>7개 케이스</b>는 각각 <span class="g">문제 → 가설 → 소재(As-is → To-be) → 결과 → 러닝</span> 순으로 정리했습니다.</p>
+          <p style="margin-top:18px">대표 3개 사례를 먼저 보여드리고, 나머지 실험은 아래 <b>전체 실험 보기</b>에서 확인할 수 있습니다. 각 사례는 <span class="g">문제 → 가설 → 소재(As-is→To-be) → 실행 → 러닝</span> 순입니다.</p>
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>소재 A/B 케이스 7선</div>
+          <div class="sh"><span class="bar"></span>소재 A/B 실험 — 대표 3선</div>
           <div class="abgrid">
 
             <div class="abcard" style="order:1">
@@ -707,14 +707,14 @@ body::after{
                 <figure class="fb"><img src="assets/cases/office_tobe.png" alt="To-be 퇴근 후 집 공감형 소재"><figcaption>TO-BE · 퇴근 후 공감</figcaption></figure>
               </div>
               <div class="res"><span class="r">전환 <b>+25%</b></span><span class="r">CTR 일부 하락</span></div>
-              <div class="abx"><b>CTR은 감소했지만 전환 +25%</b> — 클릭 수가 아닌 전환 품질을 택한 소재 (2025.04 vs 05)</div>
-              <div class="qa l"><span class="lab">러닝</span> 광범위 후킹으로 트래픽을 넓히기보다 <b>타겟 적합도를 높인 소재</b>가 유효 — CTR은 일부 하락했지만 유입 품질이 개선돼 <b>CVR 기준 전환 +25%</b> 확보. <b>클릭 수 손실 &lt; 전환 이득</b>으로 순증</div>
+              <div class="abx">실행 : 자극형 인트로 → '퇴근 후 집' 현실 공감형으로 교체 (2025.04 vs 05)</div>
+              <div class="qa l"><span class="lab">러닝</span> 광범위 후킹으로 트래픽을 넓히기보다 <b>타겟 적합도를 높인 소재</b>가 유효 — CTR이 일부 하락해도 유입 품질이 개선되면 <b>클릭 수 손실 &lt; 전환 이득</b>으로 순증한다</div>
             </div>
 
             <div class="abcard" style="order:3">
               <div class="abhead"><span class="fmt">AI 영상</span><span class="per">2025.05</span></div>
               <h4>리마케팅 · 리뷰 기반 정보전달 소재</h4>
-              <div class="abhook">리마케팅은 반복이 아니라 '신뢰'를 다시 심는 것</div>
+              <div class="abhook">리마케팅은 반복 노출이 아니라 구매 신뢰도 강화</div>
               <div class="qa p"><span class="lab">문제</span> GA4상 결제까지 <b>평균 3.89일</b> — 첫 노출 한 번으론 전환이 안 되고, 자사·경쟁사 모두 리뷰 노출이 없어 소비자는 블로그로 리뷰를 찾음</div>
               <div class="qa h"><span class="lab">가설</span> 3.89일 안에 <b>실제 고객 리뷰</b>로 신뢰를 재주입하면 전환된다 (참여자+유사 2%+픽셀 세분화 타겟)</div>
               <div class="imgab">
@@ -723,8 +723,8 @@ body::after{
                 <figure class="fb"><img src="assets/cases/remk_review.png" alt="실고객 리뷰 정보형 리마케팅 소재"><figcaption>추가 · 리뷰 정보형</figcaption></figure>
               </div>
               <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">신규고객 <b>+63%</b></span></div>
-              <div class="abx">리뷰 기반 리타게팅으로 <b>CVR 62%</b> · 신규고객 <b>+63%</b> · 2025.05 1개월 집행</div>
-              <div class="qa l"><span class="lab">러닝</span> 리마케팅은 '같은 소재 반복'이 아니라 <b>'신뢰 단계'를 바꿔야</b> CVR이 나온다 (CVR 62%)</div>
+              <div class="abx">실행 : 참여자·유사 2%·픽셀 세분화 타겟에 실고객 리뷰 소재로 재도달 · 2025.05 1개월 집행</div>
+              <div class="qa l"><span class="lab">러닝</span> 리마케팅은 같은 소재 반복이 아니라 <b>구매 신뢰도를 높이는 단계 설계</b>가 전환을 만든다</div>
             </div>
 
             <div class="abcard extra">
@@ -950,6 +950,50 @@ body::after{
       </div>
     </section>
 
+    <style>
+      #cvid .gal-badge{ display:inline-block; font-size:11px; font-weight:800; letter-spacing:.12em; color:#C9A6FF; background:rgba(124,92,255,.14); border:1px solid rgba(124,92,255,.3); padding:3px 10px; border-radius:999px; }
+      #cvid .pgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:4px; }
+      #cvid .pcard{ border:1px solid var(--line); border-radius:12px; padding:14px; background:var(--panel); display:flex; flex-direction:column; gap:8px; }
+      #cvid .pcard .pt{ font-size:12px; font-weight:800; color:var(--ink); }
+      #cvid .pcard .pt small{ display:block; font-weight:600; color:var(--dim); font-size:10.5px; margin-top:1px; }
+      #cvid .pcard .prompt{ font-size:11px; line-height:1.5; color:var(--mute); background:rgba(124,92,255,.05); border:1px dashed rgba(124,92,255,.28); border-radius:8px; padding:9px 10px; font-family:ui-monospace,Menlo,monospace; }
+      #cvid .pcard .sub-ko{ font-size:12px; font-weight:700; color:var(--signal); }
+      #cvid .pcard .sub-ko::before{ content:'자막 '; font-size:10px; font-weight:800; color:var(--dim); }
+      #cvid .vidgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:6px; }
+      #cvid .vidgrid .feat{ grid-column:1 / -1; }
+      #cvid .vidgrid .feat .vidcap{ font-size:13px; }
+      #cvid .ytwrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(135deg,#171427,#0f0d1c); }
+      #cvid .ytwrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+      #cvid .vidcap{ font-size:12px; font-weight:700; color:var(--mute); margin-top:8px; }
+      #cvid .vidcap b{ color:var(--signal); }
+      #cvid .pipe{ display:flex; align-items:stretch; margin-top:10px; }
+      #cvid .pstep{ flex:1; min-width:0; background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:18px 10px 14px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:6px; position:relative; transition:transform .3s,border-color .3s,box-shadow .3s; }
+      #cvid .pstep:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.55); box-shadow:0 24px 50px -30px rgba(124,92,255,.6); }
+      #cvid .pstep .pnum{ position:absolute; top:-11px; left:50%; transform:translateX(-50%); width:23px; height:23px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:11px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 12px -2px rgba(124,92,255,.7); }
+      #cvid .pstep .pico{ margin-top:3px; height:30px; display:flex; align-items:center; justify-content:center; color:var(--signal); }
+      #cvid .pstep .pico svg{ width:26px; height:26px; stroke:currentColor; stroke-width:1.6; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+      #cvid .pstep .ptitle{ font-size:12.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; }
+      #cvid .pstep .pdesc{ font-size:10.5px; color:var(--dim); line-height:1.45; }
+      #cvid .parrow{ display:flex; align-items:center; justify-content:center; flex:0 0 22px; color:var(--signal); font-size:15px; }
+      #cvid .vthumb{ display:block; position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#0f0d1c; text-decoration:none; }
+      #cvid .vthumb .th{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+      #cvid .vthumb:hover .th{ transform:scale(1.05); }
+      #cvid .vthumb .pbtn{ position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:52px; height:52px; border-radius:50%; background:rgba(12,10,22,.58); border:1.5px solid rgba(255,255,255,.85); color:#fff; display:flex; align-items:center; justify-content:center; font-size:18px; transition:.25s; }
+      #cvid .vthumb:hover .pbtn{ background:var(--signal-d); border-color:transparent; transform:translate(-50%,-50%) scale(1.08); }
+      #cvid .vbtnrow{ margin-top:18px; }
+      #cvid .psolve{ display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:6px; }
+      #cvid .ps{ border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--panel); }
+      #cvid .ps.psx{ display:none; } #cvid .psolve.show-all .ps.psx{ display:block; }
+      #cvid .ps .ps-p,#cvid .ps .ps-s{ padding:11px 13px; font-size:12px; line-height:1.55; color:var(--mute); display:flex; gap:8px; align-items:flex-start; }
+      #cvid .ps .ps-p{ border-bottom:1px solid var(--line); }
+      #cvid .ps b{ color:var(--ink); }
+      #cvid .ps .tg{ flex:0 0 auto; font-size:10px; font-weight:800; padding:2px 7px; border-radius:6px; margin-top:1px; }
+      #cvid .ps .tg.p{ background:rgba(255,120,120,.12); color:#ff9b9b; border:1px solid rgba(255,120,120,.32); }
+      #cvid .ps .tg.s{ background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.32); }
+      @media(max-width:720px){ #cvid .psolve{ grid-template-columns:1fr; } }
+      @media(max-width:720px){ #cvid .pgrid,#cvid .vidgrid{ grid-template-columns:1fr; } #cvid .pipe{ flex-direction:column; } #cvid .parrow{ flex-basis:22px; transform:rotate(90deg); } }
+    </style>
+
 <section class="case reveal" id="cvid">
       <div class="case-top">
         <div class="ch"><span class="gal-badge">GALLERY</span><span class="org">AI 영상 크리에이티브 · 글로벌랩스 / 박스풀</span></div>
@@ -1003,27 +1047,28 @@ body::after{
         <div class="sec">
           <div class="sh"><span class="bar"></span>AI 영상 제작하며 겪은 문제와 해결</div>
           <div class="psolve">
-            <div class="ps">
+            <div class="ps psx">
               <div class="ps-p"><span class="tg p">문제</span>인물이 화면에 <b>작게 잡힐수록 이목구비가 뭉개지고 깨져</b> 보임</div>
               <div class="ps-s"><span class="tg s">해결</span>인물을 <b>클로즈업·대면 구도</b>로 배치하도록 프롬프트를 설계해 얼굴 디테일 확보</div>
             </div>
-            <div class="ps">
+            <div class="ps psx">
               <div class="ps-p"><span class="tg p">문제</span>나레이션에서 <b>특정 키워드 발음이 부정확</b>하게 생성됨</div>
               <div class="ps-s"><span class="tg s">해결</span><b>발음이 잘 되는 단어로 치환</b>하거나 표현을 바꿔 스크립트·프롬프트를 재작성</div>
             </div>
-            <div class="ps">
+            <div class="ps psx">
               <div class="ps-p"><span class="tg p">문제</span>AI 컷이 <b>길어질수록 부자연스러운 동작·장면</b>이 섞임</div>
               <div class="ps-s"><span class="tg s">해결</span><b>컷을 짧게 끊고 화면 구도를 바꿔</b> 여러 컷을 이어붙여 완성 → 가장 자연스럽고 완성도 ↑</div>
             </div>
-            <div class="ps">
+            <div class="ps" style="order:1">
               <div class="ps-p"><span class="tg p">문제</span>프롬프트 한 번으로는 <b>원하는 결과가 잘 안 나옴</b></div>
               <div class="ps-s"><span class="tg s">해결</span>프롬프트마다 <b>참고 이미지를 다량 생성</b>해 베스트 컷을 선별 (품질의 핵심)</div>
             </div>
-            <div class="ps">
+            <div class="ps" style="order:2">
               <div class="ps-p"><span class="tg p">문제</span>AI 영상에 <b>깨진 글자·가짜 텍스트</b>가 섞여 신뢰도·심의 리스크</div>
               <div class="ps-s"><span class="tg s">해결</span>프롬프트로 <b>"No text" 원천 차단 + 자막 직접 합성</b>해 화면 텍스트 0 오류로 통제</div>
             </div>
           </div>
+          <button class="ab-toggle" onclick="var g=this.previousElementSibling;g.classList.toggle('show-all');this.textContent=g.classList.contains('show-all')?'접기 \u25B4':'제작 노하우 더 보기 (+3) \u25BE';">제작 노하우 더 보기 (+3) ▾</button>
         </div>
 
         <div class="sec">
