@@ -941,54 +941,64 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
           <button class="ab-toggle" onclick="var g=this.previousElementSibling;g.classList.toggle('show-all');this.textContent=g.classList.contains('show-all')?'접기 \u25B4':'전체 실험 보기 (+4) \u25BE';">전체 실험 보기 (+4) ▾</button>
         </div>
 
+        <style>
+          #ccom .exp2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:6px; align-items:start; }
+          #ccom .exp2c{ border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:22px 24px; text-align:left; }
+          #ccom .e2t{ font-size:14px; font-weight:800; color:var(--signal); letter-spacing:-.01em; }
+          #ccom .e2n{ font-size:31px; font-weight:800; color:var(--cyan); font-variant-numeric:tabular-nums; margin:12px 0 4px; line-height:1.1; white-space:nowrap; }
+          #ccom .e2n .ar{ color:var(--mute); font-size:23px; font-weight:700; margin:0 3px; }
+          #ccom .e2l{ font-size:12px; font-weight:600; color:var(--mute); }
+          #ccom .e2d{ font-size:13px; color:var(--dim); line-height:1.6; margin:14px 0 0; }
+          #ccom .xlist{ margin-top:20px; border-top:1px solid var(--line-soft); }
+          #ccom .xli{ display:grid; grid-template-columns:168px 1fr; gap:18px; padding:14px 2px; border-bottom:1px solid var(--line-soft); align-items:baseline; }
+          #ccom .xln{ font-size:13.5px; font-weight:800; color:var(--signal); }
+          #ccom .xld{ font-size:13px; color:var(--mute); line-height:1.55; }
+          #ccom .xlink{ display:inline-block; margin-top:18px; font-size:12.5px; font-weight:700; color:var(--signal); text-decoration:none; border:1px solid var(--line); border-radius:999px; padding:8px 16px; transition:border-color .2s,color .2s; }
+          #ccom .xlink:hover{ border-color:var(--signal); }
+          #ccom .ssone{ border:1px solid var(--line); border-left:3px solid var(--cyan); border-radius:14px; background:var(--panel); padding:20px 24px; max-width:480px; }
+          #ccom .ssmeta{ font-size:11.5px; font-weight:700; color:var(--mute); letter-spacing:.02em; }
+          #ccom .ssbig{ font-size:22px; font-weight:800; color:var(--ink); margin:8px 0 10px; }
+          #ccom .ssbig b{ color:var(--cyan); }
+          #ccom .ssd{ font-size:13px; color:var(--dim); line-height:1.6; margin:0; }
+          #ccom .caselink{ display:inline-flex; align-items:center; gap:6px; font-size:13.5px; font-weight:700; color:var(--signal); text-decoration:none; margin-top:18px; }
+          #ccom .caselink:hover{ text-decoration:underline; }
+          @media(max-width:560px){ #ccom .exp2{ grid-template-columns:1fr; } #ccom .xli{ grid-template-columns:1fr; gap:4px; } }
+        </style>
         <div class="sec">
-          <div class="sh"><span class="bar"></span>광고 운영에서 확인한 다섯 가지 질문</div>
-          <div class="tl">
-            <div class="tlc">
-              <div class="tln">1</div>
-              <div class="tlt">어떤 메시지와<br>매체가 유효했나?</div>
-              <div class="tld">Meta와 당근에서 광고 4종을 비교했습니다.</div>
-              <div class="tldec">→ <strong class="key-phrase">가격 강조 소재를 Meta에 집중</strong></div>
+          <div class="sh"><span class="bar"></span>광고 실험에서 확인한 것</div>
+
+          <div class="exp2">
+            <div class="exp2c">
+              <div class="e2t">임대인 유입</div>
+              <div class="e2n">40%<span class="ar">→</span>70%</div>
+              <div class="e2l">전체 리드 중 임대인 비중</div>
+              <p class="e2d">상가 공실을 가진 임대인에 맞춰 광고 메시지를 바꿨습니다.</p>
             </div>
-            <div class="tlc">
-              <div class="tln">2</div>
-              <div class="tlt">원하는 고객이<br>들어왔나?</div>
-              <div class="tld">상가 공실을 가진 <strong class="key-phrase">임대인</strong>에 맞춰 광고 메시지를 바꿨습니다.</div>
-              <div class="tlo">임대인 40 → 70%</div>
-            </div>
-            <div class="tlc">
-              <div class="tln">3</div>
-              <div class="tlt">첫 3초에<br>무엇을 보여줄까?</div>
-              <div class="tld">평균 시청 시간 <strong class="key-phrase">7초</strong>를 보고 서비스 설명을 첫 3초에 배치했습니다.</div>
-              <div class="tlo">클릭률 6.70 → 9.56%</div>
-            </div>
-            <div class="tlc">
-              <div class="tln">4</div>
-              <div class="tlt">영상과 이미지 중<br>무엇이 나았나?</div>
-              <div class="tld">같은 메시지를 <strong class="key-phrase">영상과 이미지</strong>로 집행해 성과를 비교했습니다.</div>
-              <div class="tldec">→ 정보량 많은 B2B는 이미지 채택</div>
-            </div>
-            <div class="tlc">
-              <div class="tln">5</div>
-              <div class="tlt">언제 리뷰 광고를<br>보여줄까?</div>
-              <div class="tld">구매까지 <strong class="key-phrase">평균 3.89일</strong>이 걸린 점을 참고해 고객 리뷰 광고를 운영했습니다.</div>
+            <div class="exp2c">
+              <div class="e2t">첫 3초에 서비스 설명</div>
+              <div class="e2n">6.70%<span class="ar">→</span>9.56%</div>
+              <div class="e2l">광고 클릭률</div>
+              <p class="e2d">평균 시청 시간 7초를 보고 서비스 설명을 앞에 배치했습니다.</p>
             </div>
           </div>
-          <p class="note" style="margin-top:16px">대표 사례 3개 · 나머지는 위 <b>전체 실험 보기</b>에서 확인할 수 있습니다.</p>
+
+          <div class="xlist">
+            <div class="xli"><span class="xln">메시지·매체 비교</span><span class="xld">가격 강조 소재를 Meta에 집중했습니다.</span></div>
+            <div class="xli"><span class="xln">영상·이미지 비교</span><span class="xld">정보량이 많은 B2B 소재에 이미지를 채택했습니다.</span></div>
+            <div class="xli"><span class="xln">리뷰 광고 시점</span><span class="xld">구매까지 평균 3.89일을 참고해 고객 리뷰 광고를 운영했습니다.</span></div>
+          </div>
+
+          <a class="xlink" href="#ccom">전체 실험 보기 ↑</a>
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>스마트스토어 운영과 상품 상세페이지 제작</div>
-          <div class="commerce">
-            <div class="cc">
-              <div class="ct">뷰티 스마트스토어 · 다이나믹 서플라이</div>
-              <p>상품 상세페이지 <b>30건을 기획·디자인</b>하고 스토어 SEO를 운영했습니다. <span class="note">※ 같은 기간 월매출 +167%(비교 기간 미확정) — Paid 광고 성과와 구분되는 스토어·자연유입 지표</span></p>
-            </div>
-            <div class="cc">
-              <div class="ct">공유창고 · 예약 LP 결제 전환 최적화</div>
-              <p>예약 LP <b>'즉시 결제 불가' 병목 진단</b> → 즉시결제 도입으로 결제 전환 발생 → <b>매출 +1,653%</b> <span class="note">(상세는 아래 취미공간 사례)</span></p>
-            </div>
+          <div class="sh"><span class="bar"></span>스마트스토어 운영</div>
+          <div class="ssone">
+            <div class="ssmeta">뷰티 스마트스토어 · 다이나믹 서플라이</div>
+            <div class="ssbig">상품 상세페이지 <b>30건</b></div>
+            <p class="ssd">상품 상세페이지를 기획·디자인하고 스토어 SEO를 운영했습니다.</p>
           </div>
+          <div><a class="caselink" href="#c6b">취미공간 즉시결제 사례 보기 →</a></div>
         </div>
 
       </div>
@@ -1086,8 +1096,8 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
             <div class="rcmp">
               <div class="rcmp-h">
                 <span class="rh-reg">지역</span>
-                <span class="rh-c">리드당 비용 지수 ↓<small>경북대구=100</small></span>
-                <span class="rh-c">내원당 비용 지수 ↓<small>경기남부=100</small></span>
+                <span class="rh-c">CPL 지수 ↓<small>리드당 비용 · 경북대구=100</small></span>
+                <span class="rh-c">CAC 지수 ↓<small>내원당 비용 · 경기남부=100</small></span>
                 <span class="rh-r">ROAS ↑</span>
               </div>
               <div class="rcmp-row hot">
