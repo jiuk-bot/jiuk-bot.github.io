@@ -99,7 +99,7 @@ body::after{
 .hero .lead{ margin-top:36px; font-size:18px; color:var(--mute); max-width:56ch; line-height:1.78; font-weight:400; }
 .hero .contact{ margin-top:30px; font-size:14.5px; font-weight:600; color:var(--ink); letter-spacing:.01em; }
 .hero .contact span{ color:var(--dim); font-weight:500; margin:0 4px; }
-.hero-grid{ display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,.9fr); grid-template-areas:"copy ad" "actions ad"; column-gap:52px; row-gap:30px; align-items:start; }
+.hero-grid{ display:grid; grid-template-columns:1fr; grid-template-areas:"copy" "actions"; row-gap:26px; align-items:start; max-width:720px; }
 .hero-copy{ grid-area:copy; } .hero-actions{ grid-area:actions; } 
 .hero-ad{ grid-area:ad; justify-self:center; align-self:center; margin:0; width:100%; max-width:300px; }
 .hero-ad a{ display:block; } 
@@ -114,7 +114,7 @@ body::after{
 .btn-secondary:hover{ border-color:var(--signal); color:var(--signal); }
 .hero-tools{ margin-top:18px; font-size:12.5px; color:var(--mute); font-weight:500; }
 .hero-tools a{ color:var(--signal); font-weight:600; }
-@media(max-width:860px){ .hero-grid{ grid-template-columns:1fr; grid-template-areas:"copy" "ad" "actions"; row-gap:28px; } .hero-ad{ max-width:240px; } }
+@media(max-width:860px){ .hero-grid{ row-gap:22px; } }
 
 /* hero readout — the characteristic outcome, as instrument panels */
 .readout{
@@ -526,10 +526,6 @@ main{ min-width:0; }
         <h1>광고를 직접 만들고,<br><span class="glow">구매로 이어지는 경로</span>를 개선했습니다.</h1>
         <p class="lead">광고 영상·이미지를 직접 기획·제작하고, A/B·포맷·CTA 실험과 GA4 전환 분석까지 수행해 <b>구매 전환</b>을 끌어올렸습니다.</p>
       </div>
-      <figure class="hero-ad hero-anim d2">
-        <a href="#ccom" aria-label="직접 제작한 짐보관 12초 Hook 광고 보기"><img src="assets/cases/jim_tobe.png" alt="직접 제작한 짐보관 12초 Hook 광고 프레임"></a>
-        <figcaption>실제 제작 · 짐보관 12초 Hook 광고 <b>(CTR +42.7%)</b></figcaption>
-      </figure>
       <div class="hero-actions hero-anim d3">
         <div class="hero-btns">
           <a class="btn-primary" href="#ccom">직접 만든 광고 보기 →</a>
@@ -549,34 +545,12 @@ main{ min-width:0; }
   <section class="selwork reveal" id="selected">
     <div class="sw-head">
       <span class="sw-eyebrow">SELECTED WORK</span>
-      <h2>직접 만든 광고 · 구매까지 이어진 성과</h2>
-      <p>소재 제작 → 구매 여정 분석·리마케팅 → 결제 흐름 개선. 커머스 User Acquisition을 직접 만들고 데이터로 끌어올린 3가지.</p>
+      <h2>사례 바로가기</h2>
     </div>
-    <div class="sw-grid">
-      <a class="sw-card" href="#ccom">
-        <div class="sw-thumb"><img src="assets/cases/jim_tobe.png" alt="직접 제작한 짐보관 12초 Hook 광고"></div>
-        <span class="sw-tag">① 짐보관 Paid 소재</span>
-        <div class="sw-num">+42.7<span>%</span></div>
-        <div class="sw-k">CTR 6.7→9.56% · 20초→12초 Hook 직접 제작</div>
-        <div class="sw-role">역할 · 소구 설계 · 영상/이미지 직접 제작 · A/B</div>
-        <span class="sw-go">소재 A/B 보기 →</span>
-      </a>
-      <a class="sw-card" href="#c6">
-        <div class="sw-thumb"><img src="assets/cases/remk_review.png" alt="실고객 리뷰 기반 리마케팅 소재"></div>
-        <span class="sw-tag">② GA4 구매·리마케팅</span>
-        <div class="sw-num">CVR 62<span>%</span></div>
-        <div class="sw-k">결제까지 3.89일 → 기간 내 리뷰 리마케팅 재도달</div>
-        <div class="sw-role">역할 · GA4 구매여정 분석 · 리마케팅 타이밍·소재 설계</div>
-        <span class="sw-go">구매 전환 사례 보기 →</span>
-      </a>
-      <a class="sw-card" href="#c6b">
-        <div class="sw-thumb"><img src="assets/cases/hobby_tobe.png" alt="취미공간 즉시결제 랜딩"></div>
-        <span class="sw-tag">③ 취미공간 결제 개선</span>
-        <div class="sw-num">17.5<span>배</span></div>
-        <div class="sw-k">매출(+1,653%) · 문의 경유 → 즉시결제로 전환</div>
-        <div class="sw-role">역할 · 병목 진단(GA4) · 결제 흐름·랜딩 개선 제안</div>
-        <span class="sw-go">전환 개선 사례 보기 →</span>
-      </a>
+    <div class="quicklinks">
+      <a href="#ccom">짐보관 광고 비교 →</a>
+      <a href="#c6">GA4 구매 여정 →</a>
+      <a href="#c6b">취미공간 즉시결제 →</a>
     </div>
   </section>
 
@@ -649,6 +623,9 @@ main{ min-width:0; }
       .sw-eyebrow{ font-size:12px; font-weight:800; letter-spacing:.2em; color:var(--signal); }
       .sw-head h2{ font-size:clamp(25px,4vw,38px); font-weight:800; line-height:1.16; margin:10px 0 8px; letter-spacing:-.02em; color:var(--ink); }
       .sw-head p{ color:var(--mute); font-size:14.5px; max-width:620px; line-height:1.6; }
+      .quicklinks{ display:flex; flex-wrap:wrap; gap:12px; }
+      .quicklinks a{ display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border:1px solid var(--line); border-radius:12px; background:var(--panel); color:var(--ink); font-weight:700; font-size:14.5px; transition:border-color .2s,color .2s,transform .2s; }
+      .quicklinks a:hover{ border-color:var(--signal); color:var(--signal); transform:translateY(-2px); }
       .sw-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
       .sw-card{ display:flex; flex-direction:column; text-decoration:none; border:1px solid var(--line); border-radius:16px; padding:24px 22px; background:var(--panel); transition:border-color .2s, transform .2s; }
       .sw-card:hover{ border-color:var(--signal); transform:translateY(-3px); }
