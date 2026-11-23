@@ -521,6 +521,37 @@ body::after{
     </div>
   </header>
 
+  <section class="selwork reveal" id="selected">
+    <div class="sw-head">
+      <span class="sw-eyebrow">SELECTED WORK</span>
+      <h2>직접 만든 소재 · 데이터로 증명한 성과</h2>
+      <p>스크롤 전에 세 가지만 — 무엇을 직접 기획·제작했고, 어떤 데이터로 판단했으며, 어떤 결과를 만들었는지.</p>
+    </div>
+    <div class="sw-grid">
+      <a class="sw-card" href="#ccom">
+        <span class="sw-tag">CREATIVE · 소재 A/B</span>
+        <div class="sw-num">+42.7<span>%</span></div>
+        <div class="sw-k">짐보관 Hook 소재 CTR</div>
+        <p class="sw-d">20초 공감형 → 12초 Hook형. 광고 소재를 직접 기획·제작하고 A/B로 검증했습니다.</p>
+        <span class="sw-go">소재 A/B 실험 보기 →</span>
+      </a>
+      <a class="sw-card" href="#c1">
+        <span class="sw-tag">PERFORMANCE · 임플란트</span>
+        <div class="sw-num">3.3<span>배</span></div>
+        <div class="sw-k">ROAS 103% → 336%</div>
+        <p class="sw-d">지역별 내원율·CAC를 데이터로 분해해 전환 효율 중심으로 재설계했습니다.</p>
+        <span class="sw-go">임플란트 캠페인 보기 →</span>
+      </a>
+      <a class="sw-card" href="#cvid">
+        <span class="sw-tag">AI VIDEO · 직접 제작</span>
+        <div class="sw-num">10<span>편+</span></div>
+        <div class="sw-k">AI 영상 대본~자막 직접 제작</div>
+        <p class="sw-d">소구포인트 × 후킹 A/B로 CTR을 개선했습니다. 기획부터 후보정까지 단독 수행.</p>
+        <span class="sw-go">AI 영상 보기 →</span>
+      </a>
+    </div>
+  </section>
+
   <div class="layout">
     <!-- left rail -->
     <aside class="railwrap">
@@ -584,6 +615,22 @@ body::after{
       .idxbars .ibfill{ height:100%; display:flex; align-items:center; justify-content:flex-end; padding:0 10px; font-size:12px; font-weight:800; color:#fff; background:linear-gradient(90deg,var(--signal-d),var(--signal)); border-radius:8px; }
       .idxbars .ibfill.base{ background:rgba(158,153,188,.45); color:var(--ink); }
       @media(max-width:600px){ .idxbars .ibl{ flex-basis:80px; font-size:11px; } }
+      .selwork{ max-width:1100px; margin:0 auto; padding:66px 28px 6px; }
+      .sw-head{ margin-bottom:30px; }
+      .sw-eyebrow{ font-size:12px; font-weight:800; letter-spacing:.2em; color:var(--signal); }
+      .sw-head h2{ font-size:clamp(25px,4vw,38px); font-weight:800; line-height:1.16; margin:10px 0 8px; letter-spacing:-.02em; color:var(--ink); }
+      .sw-head p{ color:var(--mute); font-size:14.5px; max-width:620px; line-height:1.6; }
+      .sw-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+      .sw-card{ display:flex; flex-direction:column; text-decoration:none; border:1px solid var(--line); border-radius:16px; padding:24px 22px; background:var(--panel); transition:border-color .2s, transform .2s; }
+      .sw-card:hover{ border-color:var(--signal); transform:translateY(-3px); }
+      .sw-tag{ font-size:10.5px; font-weight:800; letter-spacing:.16em; color:var(--mute); }
+      .sw-num{ font-size:clamp(38px,5.5vw,56px); font-weight:800; line-height:1; color:var(--ink); margin:14px 0 6px; letter-spacing:-.03em; }
+      .sw-num span{ font-size:.4em; font-weight:700; color:var(--signal); margin-left:3px; }
+      .sw-k{ font-size:13px; font-weight:700; color:var(--signal); }
+      .sw-d{ font-size:12.5px; color:var(--mute); line-height:1.55; margin:10px 0 16px; flex:1; }
+      .sw-go{ font-size:12.5px; font-weight:700; color:var(--ink); }
+      .sw-card:hover .sw-go{ color:var(--signal); }
+      @media(max-width:820px){ .sw-grid{ grid-template-columns:1fr; } .selwork{ padding-top:44px; } }
       #ccom .abcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 60px -36px rgba(124,92,255,.6); }
       #ccom .abcard .fmt{ align-self:flex-start; font-size:11px; font-weight:800; letter-spacing:.04em; padding:4px 11px; border-radius:7px; background:rgba(124,92,255,.14); color:var(--signal); border:1px solid rgba(124,92,255,.3); }
       #ccom .abcard .fmt.img{ background:rgba(201,154,94,.1); color:var(--amber); border-color:rgba(201,154,94,.3); }
@@ -1001,6 +1048,9 @@ body::after{
       #cvid .pcard .sub-ko{ font-size:12px; font-weight:700; color:var(--signal); }
       #cvid .pcard .sub-ko::before{ content:'자막 '; font-size:10px; font-weight:800; color:var(--dim); }
       #cvid .vidgrid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:6px; }
+      #cvid .vfeat{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:6px; }
+      #cvid .vfeat .vidcap{ margin-top:7px; }
+      @media(max-width:720px){ #cvid .vfeat{ grid-template-columns:1fr; } }
       #cvid .vidgrid .feat{ grid-column:1 / -1; }
       #cvid .vidgrid .feat .vidcap{ font-size:13px; }
       #cvid .ytwrap{ position:relative; width:100%; padding-top:56.25%; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(135deg,#171427,#0f0d1c); }
@@ -1133,8 +1183,9 @@ body::after{
         <div class="sec">
           <div class="sh"><span class="bar"></span>완성 영상 — 가로형 시리즈 (최신순 · 최신작일수록 고도화)</div>
           <p style="margin-bottom:10px">7개월간 제작한 임플란트 가로형 AI 영상 광고입니다. <b>위로 올수록 최신작</b>이며, AI 영상 퀄리티가 올라가는 과정을 그대로 확인할 수 있습니다.</p>
-          <div class="vidgrid">
-            <div class="feat">
+          <div class="vcap">대표 영상 3선 — 대표작 · 브랜드 시리즈 · 최신작</div>
+          <div class="vfeat">
+            <div>
               <a class="vthumb" href="https://youtu.be/dzGux_ALcu0" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/dzGux_ALcu0/hqdefault.jpg" alt="26.05 인터뷰 (대표)" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">⭐ 26.05 · 인터뷰 · <b>대표 영상</b></div>
             </div>
@@ -1146,6 +1197,10 @@ body::after{
               <a class="vthumb" href="https://youtu.be/5zzOggCOYAo" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/5zzOggCOYAo/hqdefault.jpg" alt="지역구강건강" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.09 · 지역구강건강 <b style="color:var(--signal)">· 최신작</b></div>
             </div>
+          </div>
+          <button class="ab-toggle" onclick="var g=this.nextElementSibling;g.classList.toggle('show');this.textContent=g.classList.contains('show')?'전체 영상 접기 ▴':'전체 영상 더 보기 (+7) ▾';">전체 영상 더 보기 (+7) ▾</button>
+          <div class="moredetail">
+          <div class="vidgrid">
             <div>
               <a class="vthumb" href="https://youtu.be/0CqPuhEU3GA" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/0CqPuhEU3GA/hqdefault.jpg" alt="명의특집" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.08 · 명의특집</div>
@@ -1174,6 +1229,7 @@ body::after{
               <a class="vthumb" href="https://youtu.be/kGVvjXjE5J4" target="_blank" rel="noopener"><img class="th" src="https://img.youtube.com/vi/kGVvjXjE5J4/hqdefault.jpg" alt="임플란트 명의" loading="lazy"><span class="pbtn">▶</span></a>
               <div class="vidcap">26.02 · 임플란트 명의</div>
             </div>
+          </div>
           </div>
           <div class="vbtnrow">
             <a class="cta-live" href="https://jiuk-bot.github.io/tossmarketing/videos.html"><span class="pulse"></span>▶ AI 영상 10편 전체 재생 페이지 열기</a>
