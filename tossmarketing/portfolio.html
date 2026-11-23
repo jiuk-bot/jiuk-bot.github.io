@@ -457,6 +457,19 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
 .case:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55);
   box-shadow:0 44px 100px -44px rgba(124,92,255,.5), var(--shadow); }
 .case-top{ background:linear-gradient(180deg,rgba(124,92,255,.09),rgba(124,92,255,0)); border-bottom:1px solid rgba(124,92,255,.14); }
+
+/* ===== 케이스별 고유 액센트 — 다크·보라 테마 유지, 사례 식별용 ===== */
+#ccom{ --ca:#B794F6; } #c1{ --ca:#45C4D6; } #cvid{ --ca:#C06BFF; }
+#c4{ --ca:#E0A94B; } #c5{ --ca:#63C08A; } #c6{ --ca:#6E9BFF; }
+#c6b{ --ca:#E27BB0; } #c2{ --ca:#8A7BFF; } #c7{ --ca:#9AA6C0; }
+.case{ position:relative; }
+.case::before{ content:""; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg, var(--ca,var(--signal)), transparent 58%); z-index:4; }
+.case .ch .idx, .case .abadge, .case .gal-badge{ color:var(--ca,var(--signal)); }
+.case.reveal .case-top{ background:linear-gradient(180deg, color-mix(in srgb, var(--ca) 14%, transparent), transparent 150px); border-bottom:1px solid color-mix(in srgb, var(--ca) 24%, transparent); }
+.case.reveal{ border-color:color-mix(in srgb, var(--ca) 20%, var(--line-soft)); }
+.case:hover{ border-color:color-mix(in srgb, var(--ca) 55%, transparent) !important; box-shadow:0 44px 100px -44px color-mix(in srgb, var(--ca) 45%, transparent), var(--shadow); }
+.case .sh .bar{ background:var(--ca,var(--signal)); }
+
 .rd,.m{ background:rgba(18,18,30,.62); transition:box-shadow .35s ease; }
 .rd::before{ content:""; position:absolute; left:0; top:0; width:100%; height:2px; background:var(--neon); opacity:.6; }
 .rd:hover,.m:hover{ box-shadow:inset 0 0 0 1px rgba(124,92,255,.32), 0 0 40px -10px rgba(124,92,255,.45); }
