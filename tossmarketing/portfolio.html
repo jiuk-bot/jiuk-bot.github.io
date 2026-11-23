@@ -736,15 +736,17 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
       #ccom .tngrid .win img{ border-color:var(--signal); box-shadow:0 0 0 1.5px var(--signal); }
       #ccom .tngrid .win figcaption{ color:var(--signal); }
       /* 타임라인 (5단계 저니) */
-      #ccom .tl{ display:flex; align-items:stretch; gap:0; margin-top:6px; }
+      #ccom .tl{ display:flex; align-items:stretch; gap:10px; margin-top:6px; flex-wrap:wrap; }
       #ccom .tl .tlc{ flex:1; background:var(--panel2); border:1px solid var(--line-soft); border-radius:13px; padding:20px 12px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:10px; }
       #ccom .tl .tln{ width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,#7C5CFF,#C06BFF); color:#fff; font-size:15px; font-weight:800; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 16px -4px rgba(124,92,255,.7); }
       #ccom .tl .tlt{ font-size:14.5px; font-weight:800; color:var(--ink); letter-spacing:-.01em; line-height:1.3; }
       #ccom .tl .tld{ font-size:11.5px; color:var(--mute); line-height:1.55; text-align:center; }
       #ccom .tl .tld b{ color:var(--ink); font-weight:700; }
       #ccom .tl .tlo{ font-size:12px; font-weight:800; color:var(--cyan); background:rgba(110,231,255,.08); border:1px solid rgba(110,231,255,.28); border-radius:999px; padding:5px 11px; margin-top:auto; }
+      #ccom .tl .tldec{ font-size:11.5px; font-weight:700; color:var(--dim); margin-top:auto; line-height:1.45; }
+      #ccom .tl .tlc{ min-width:150px; }
       #ccom .tl .tla{ display:flex; align-items:center; color:var(--signal); font-size:17px; font-weight:800; padding:0 5px; flex:0 0 auto; }
-      @media(max-width:720px){ #ccom .tl{ flex-direction:column; } #ccom .tl .tla{ justify-content:center; transform:rotate(90deg); padding:5px 0; } #ccom .tl .tlo{ margin-top:4px; } }
+      @media(max-width:720px){ #ccom .tl{ flex-direction:column; } #ccom .tl .tlc{ min-width:0; } #ccom .tl .tlo,#ccom .tl .tldec{ margin-top:6px; } }
       /* 같은 행 카드끼리 배운 점을 하단에 자연 정렬 (내용은 자연 높이 유지) */
       #ccom .abgrid{ align-items:stretch; }
       /* 카드 상단(포맷+기간) */
@@ -914,19 +916,39 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
         </div>
 
         <div class="sec">
-          <div class="sh"><span class="bar"></span>5단계로 질문을 바꿔가며 실험했습니다</div>
+          <div class="sh"><span class="bar"></span>광고 운영에서 확인한 다섯 가지 질문</div>
           <div class="tl">
-            <div class="tlc"><div class="tln">1</div><div class="tlt">매체·소구 탐색</div><div class="tld">4종 소구를 META·당근에 동시 집행해 유효 소구·매체 선별</div><div class="tlo">가격·META</div></div>
-            <div class="tla">→</div>
-            <div class="tlc"><div class="tln">2</div><div class="tlt">타겟 품질</div><div class="tld">클릭만 늘던 자극 이미지 → 임대인 공감 영상으로 핵심 고객군 유입↑</div><div class="tlo">핵심고객 40→70%</div></div>
-            <div class="tla">→</div>
-            <div class="tlc"><div class="tln">3</div><div class="tlt">리텐션·Hook</div><div class="tld">20초 영상 평균 재생 7초 → 첫 3초에 서비스 설명 배치·12초로 축소</div><div class="tlo">CTR +42.7%</div></div>
-            <div class="tla">→</div>
-            <div class="tlc"><div class="tln">4</div><div class="tlt">포맷 실험</div><div class="tld">같은 메시지를 영상·이미지로 A/B → 상황별 최적 포맷 확인</div><div class="tlo">영상↔이미지</div></div>
-            <div class="tla">→</div>
-            <div class="tlc"><div class="tln">5</div><div class="tlt">전환 타이밍</div><div class="tld">결제까지 3.89일 → 그 안에 리뷰 리마케팅으로 재도달</div><div class="tlo">CVR 62%</div></div>
+            <div class="tlc">
+              <div class="tln">1</div>
+              <div class="tlt">어떤 메시지와<br>매체가 유효했나?</div>
+              <div class="tld">Meta와 당근에서 광고 4종을 비교했습니다.</div>
+              <div class="tldec">→ <strong class="key-phrase">가격 강조 소재를 Meta에 집중</strong></div>
+            </div>
+            <div class="tlc">
+              <div class="tln">2</div>
+              <div class="tlt">원하는 고객이<br>들어왔나?</div>
+              <div class="tld">상가 공실을 가진 <strong class="key-phrase">임대인</strong>에 맞춰 광고 메시지를 바꿨습니다.</div>
+              <div class="tlo">임대인 40 → 70%</div>
+            </div>
+            <div class="tlc">
+              <div class="tln">3</div>
+              <div class="tlt">첫 3초에<br>무엇을 보여줄까?</div>
+              <div class="tld">평균 시청 시간 <strong class="key-phrase">7초</strong>를 보고 서비스 설명을 첫 3초에 배치했습니다.</div>
+              <div class="tlo">클릭률 6.70 → 9.56%</div>
+            </div>
+            <div class="tlc">
+              <div class="tln">4</div>
+              <div class="tlt">영상과 이미지 중<br>무엇이 나았나?</div>
+              <div class="tld">같은 메시지를 <strong class="key-phrase">영상과 이미지</strong>로 집행해 성과를 비교했습니다.</div>
+              <div class="tldec">→ 정보량 많은 B2B는 이미지 채택</div>
+            </div>
+            <div class="tlc">
+              <div class="tln">5</div>
+              <div class="tlt">언제 리뷰 광고를<br>보여줄까?</div>
+              <div class="tld">구매까지 <strong class="key-phrase">평균 3.89일</strong>이 걸린 점을 참고해 고객 리뷰 광고를 운영했습니다.</div>
+            </div>
           </div>
-          <p style="margin-top:18px">대표 3개 사례를 먼저 보여드리고, 나머지 실험은 아래 <b>전체 실험 보기</b>에서 확인할 수 있습니다. 각 사례는 <span class="g">문제 → 가설 → 소재(As-is→To-be) → 실행 → 배운 점</span> 순입니다.</p>
+          <p class="note" style="margin-top:16px">대표 사례 3개 · 나머지는 위 <b>전체 실험 보기</b>에서 확인할 수 있습니다.</p>
         </div>
 
         <div class="sec">
@@ -1006,40 +1028,76 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
             <p class="vnote">리드 수가 아니라 <b>내원·시술까지 책임지는 구조</b>로 광고를 재정의 — 성과를 '리드 CPA'가 아닌 <b>지역별 내원율·CAC·ROAS</b>로 측정한 이유입니다.</p>
           </div>
 
-          <div class="vcap" style="color:var(--ink);font-size:14.5px;margin-bottom:16px">결론 — 경기남부는 리드 단가가 가장 높았지만, 내원당 비용은 가장 낮았습니다.</div>
-          <div class="vcap" style="margin-top:0">지역별 리드당 비용 지수 — 경기가 가장 비쌈 (경북대구=100 기준 · 낮을수록 저비용)</div>
+          <div class="vcap" style="color:var(--ink);font-size:14.5px;margin-bottom:16px">경기남부는 리드 단가가 가장 높았지만, 내원당 비용은 가장 낮았습니다.</div>
+          <style>
+            #c1 .rcmp{ border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:20px 22px; }
+            #c1 .rcmp-h, #c1 .rcmp-row{ display:grid; grid-template-columns:82px 1fr 1fr 52px; gap:14px; align-items:center; }
+            #c1 .rcmp-h{ padding-bottom:12px; border-bottom:1px solid var(--line-soft); margin-bottom:4px; }
+            #c1 .rcmp-h span{ font-size:11px; font-weight:700; color:var(--mute); line-height:1.3; }
+            #c1 .rcmp-h .rh-r{ text-align:right; }
+            #c1 .rcmp-h small{ display:block; font-weight:500; color:var(--dim); font-size:9.5px; margin-top:2px; letter-spacing:-.02em; }
+            #c1 .rcmp-row{ padding:8px 0; }
+            #c1 .rcmp-row + .rcmp-row{ border-top:1px solid var(--line-soft); }
+            #c1 .rr-reg{ font-size:12.5px; font-weight:700; color:var(--ink); }
+            #c1 .rcmp-row.hot .rr-reg{ color:var(--signal); }
+            #c1 .rr-bar{ display:flex; align-items:center; gap:9px; }
+            #c1 .rr-bar .rbt{ flex:1; height:15px; background:var(--panel2); border-radius:5px; overflow:hidden; }
+            #c1 .rr-bar .rbf{ display:block; height:100%; border-radius:5px; background:var(--line); }
+            #c1 .rr-bar .rbf.hi{ background:linear-gradient(90deg,var(--signal-d),var(--signal)); }
+            #c1 .rr-bar .rbf.na{ background:repeating-linear-gradient(45deg,var(--line),var(--line) 3px,transparent 3px,transparent 7px); }
+            #c1 .rr-bar b{ font-size:12.5px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; min-width:30px; text-align:right; }
+            #c1 .rr-roas{ font-size:13px; font-weight:800; color:var(--ink); text-align:right; font-variant-numeric:tabular-nums; }
+            #c1 .rcmp-f{ margin:14px 0 0; font-size:11px; color:var(--dim); border-top:1px solid var(--line-soft); padding-top:11px; }
+            @media(max-width:560px){
+              #c1 .rcmp-h, #c1 .rcmp-row{ grid-template-columns:62px 1fr 1fr 46px; gap:8px; }
+              #c1 .rr-bar .rbt{ display:none; }
+              #c1 .rr-bar b{ min-width:0; text-align:left; }
+              #c1 .rcmp-h span{ font-size:10px; }
+              #c1 .rcmp-h small{ font-size:9px; }
+            }
+          </style>
           <div class="viz">
-            <div class="idxbars">
-              <div class="ib"><span class="ibl">경기남부</span><div class="ibtrack"><div class="ibfill" style="width:100%"></div></div><span class="ibv">200</span></div>
-              <div class="ib"><span class="ibl">충청</span><div class="ibtrack"><div class="ibfill base" style="width:60%"></div></div><span class="ibv">120</span></div>
-              <div class="ib"><span class="ibl">전북강원</span><div class="ibtrack"><div class="ibfill base" style="width:50%"></div></div><span class="ibv">101</span></div>
-              <div class="ib"><span class="ibl">인천</span><div class="ibtrack"><div class="ibfill base" style="width:66%"></div></div><span class="ibv">133</span></div>
-              <div class="ib"><span class="ibl">경북대구</span><div class="ibtrack"><div class="ibfill base" style="width:50%"></div></div><span class="ibv">100</span></div>
+            <div class="rcmp">
+              <div class="rcmp-h">
+                <span class="rh-reg">지역</span>
+                <span class="rh-c">리드당 비용 지수 ↓<small>경북대구=100</small></span>
+                <span class="rh-c">내원당 비용 지수 ↓<small>경기남부=100</small></span>
+                <span class="rh-r">ROAS ↑</span>
+              </div>
+              <div class="rcmp-row hot">
+                <span class="rr-reg">경기남부</span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf hi" style="width:100%"></i></span><b>200</b></span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf hi" style="width:16%"></i></span><b>100</b></span>
+                <span class="rr-roas">305%</span>
+              </div>
+              <div class="rcmp-row">
+                <span class="rr-reg">충청</span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:60%"></i></span><b>120</b></span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:21%"></i></span><b>132</b></span>
+                <span class="rr-roas">247%</span>
+              </div>
+              <div class="rcmp-row">
+                <span class="rr-reg">전북강원</span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:50%"></i></span><b>101</b></span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf na" style="width:100%"></i></span><b>—</b></span>
+                <span class="rr-roas">98%</span>
+              </div>
+              <div class="rcmp-row">
+                <span class="rr-reg">인천</span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:66%"></i></span><b>133</b></span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf na" style="width:100%"></i></span><b>—</b></span>
+                <span class="rr-roas">73%</span>
+              </div>
+              <div class="rcmp-row">
+                <span class="rr-reg">경북대구</span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:50%"></i></span><b>100</b></span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:100%"></i></span><b>630</b></span>
+                <span class="rr-roas">57%</span>
+              </div>
+              <p class="rcmp-f">2026년 7월 · 구글 메인 계정 · 비용 지수는 낮을수록 비용이 적음 · ROAS 100% 미만 = 수납액이 광고비에 미달</p>
             </div>
-            <p class="note" style="margin-top:8px">리드(DB)당 비용 상대지수 · 경북대구=100 · 2026-07 구글 메인 계정 (실제 원단위는 비공개)</p>
-          </div>
-
-          <div class="vcap" style="margin-top:26px">지역별 내원당 비용 지수 — 리드당은 비싼 경기가 오히려 최저 (경기남부=100 기준 · 낮을수록 효율)</div>
-          <div class="viz">
-            <div class="idxbars">
-              <div class="ib"><span class="ibl">경기남부</span><div class="ibtrack"><div class="ibfill" style="width:16%"></div></div><span class="ibv">100</span></div>
-              <div class="ib"><span class="ibl">충청</span><div class="ibtrack"><div class="ibfill base" style="width:21%"></div></div><span class="ibv">132</span></div>
-              <div class="ib"><span class="ibl">경북대구</span><div class="ibtrack"><div class="ibfill base" style="width:100%"></div></div><span class="ibv">630</span></div>
-            </div>
-            <p class="note" style="margin-top:8px">내원(실제 방문)당 비용 상대지수 · 경기남부=100 · 리드당은 경기가 2배 비싸지만 내원율이 높아 내원당 비용은 최저 (전북·인천은 내원 데이터 제한으로 제외)</p>
-          </div>
-
-          <div class="vcap" style="margin-top:26px">지역별 ROAS % — 경기 최고(305%), 인천·경북대구는 적자 (같은 지역 순서)</div>
-          <div class="viz">
-            <div class="idxbars">
-              <div class="ib"><span class="ibl">경기남부</span><div class="ibtrack"><div class="ibfill" style="width:95%"></div></div><span class="ibv">305%</span></div>
-              <div class="ib"><span class="ibl">충청</span><div class="ibtrack"><div class="ibfill base" style="width:77%"></div></div><span class="ibv">247%</span></div>
-              <div class="ib"><span class="ibl">전북강원</span><div class="ibtrack"><div class="ibfill base" style="width:31%"></div></div><span class="ibv">98%</span></div>
-              <div class="ib"><span class="ibl">인천</span><div class="ibtrack"><div class="ibfill base" style="width:23%"></div></div><span class="ibv">73%</span></div>
-              <div class="ib"><span class="ibl">경북대구</span><div class="ibtrack"><div class="ibfill base" style="width:18%"></div></div><span class="ibv">57%</span></div>
-            </div>
-            <p class="note" style="margin-top:8px">광고비 대비 수납 ROAS · 2026-07 · <b>100% 미만 = 수납액이 광고비에 미달(적자)</b></p>
-            <p class="vnote">리드 CPA만 보면 경기를 끊었겠지만, 내원율이 높아 <b>내원당 비용은 경기가 최저</b>(지수 100 vs 경북대구 약 630)이고 ROAS도 경기가 최고(305%)였습니다. 그래서 <b>ROAS가 낮은 인천·경북대구는 감액·중단</b>하고, <strong class="key-phrase">경기남부·충청으로 예산을 이관</strong>했습니다.</p>
+            <p class="vnote" style="margin-top:16px">리드 CPA만 보면 경기를 끊었겠지만, 내원율이 높아 <b>내원당 비용은 경기가 최저</b>(지수 100 vs 경북대구 약 630)이고 ROAS도 경기가 최고(305%)였습니다. 그래서 ROAS가 낮은(수납액이 광고비에 미달) 인천·경북대구 집행을 중단하고, <strong class="key-phrase">경기남부·충청으로 예산을 옮겼습니다</strong>.</p>
+            <p class="note" style="margin-top:8px">※ 내원당 비용 지수는 내원율이 집계된 경기남부·충청·경북대구만 산출(전북강원·인천은 내원율 미집계로 "—"). 실제 원단위는 비공개.</p>
           </div>
         </div>
 
