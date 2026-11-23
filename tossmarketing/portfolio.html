@@ -620,6 +620,10 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
       #ccom .abgrid.show-all .abcard.extra{ display:grid; }
       .ab-toggle{ display:block; margin:22px auto 0; background:var(--panel); border:1px solid var(--line); color:var(--ink); font-weight:700; font-size:14px; padding:12px 24px; border-radius:12px; cursor:pointer; transition:border-color .2s,color .2s; }
       .ab-toggle:hover{ border-color:var(--signal); color:var(--signal); }
+      /* 아카이브 '전체 실험 보기' — 크게·보라 CTA로 강조 */
+      #ccom .ab-toggle{ font-size:17px; font-weight:800; padding:18px 52px; border-radius:14px; margin-top:34px; color:var(--signal); border:1.5px solid var(--signal-d); background:rgba(124,92,255,.07); }
+      #ccom .ab-toggle:hover{ background:rgba(124,92,255,.16); border-color:var(--signal); }
+      @media(max-width:560px){ #ccom .ab-toggle{ width:100%; padding:16px 20px; font-size:16px; } }
       .moredetail{ display:none; }
       .moredetail.show{ display:block; }
       .ifun{ display:flex; align-items:stretch; gap:8px; flex-wrap:wrap; }
@@ -867,7 +871,7 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
                 <span class="ar">→</span>
                 <figure class="fb"><img src="assets/cases/remk_review.png" alt="실고객 리뷰 정보형 리마케팅 소재"><figcaption>추가 · 리뷰 정보형</figcaption></figure>
               </div>
-              <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">전환 <b>144건</b></span><span class="r">신규고객 <b>81→132명</b></span></div>
+              <div class="res"><span class="r">CVR <b>62%</b></span><span class="r">신규고객 <b>+63%</b></span></div>
               <div class="abx">실행 : 구매를 고민하는 이용자(참여자·유사 2%·픽셀 세분화)에게 실제 고객 리뷰 광고를 보여줬습니다 · 2025.05 1개월 집행</div>
               <div class="qa l"><span class="lab">배운 점</span> 리마케팅은 같은 소재 반복보다 <b>구매 단계에 맞춘 소재(실고객 리뷰)</b>로 바꿨을 때 전환율이 더 높았다 (2025.05 · CVR 62%)</div>
             </div>
