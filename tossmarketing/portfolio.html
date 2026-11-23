@@ -658,8 +658,8 @@ main{ min-width:0; }
       .sw-k{ font-size:13px; font-weight:700; color:var(--signal); }
       .sw-d{ font-size:12.5px; color:var(--mute); line-height:1.55; margin:10px 0 16px; flex:1; }
       .sw-go{ font-size:12.5px; font-weight:700; color:var(--ink); }
-      .sw-thumb{ aspect-ratio:16/10; border-radius:12px; overflow:hidden; margin-bottom:16px; border:1px solid var(--line); background:var(--panel2); }
-      .sw-thumb img{ width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+      .sw-thumb{ border-radius:12px; overflow:hidden; margin-bottom:16px; border:1px solid var(--line); background:var(--panel2); }
+      .sw-thumb img{ width:100%; height:auto; display:block; }
       .sw-role{ font-size:12px; color:var(--mute); font-weight:500; margin-top:7px; }
       .cmptbl{ width:100%; border-collapse:collapse; margin-top:12px; font-size:12.5px; }
       .cmptbl th,.cmptbl td{ padding:8px 10px; text-align:left; border-bottom:1px solid var(--line); }
@@ -990,11 +990,12 @@ main{ min-width:0; }
 
           <div class="vcap">지역별 내원율 — 치과 인근일수록 압도적 (최대 15배 격차 → '전환 효율' 설득 근거)</div>
           <div class="viz">
-            <div class="vbars">
-              <div class="vbar hi"><div class="pv num">15%</div><div class="col" style="height:124px"></div><div class="lb">경기남부</div></div>
-              <div class="vbar lo"><div class="pv num">1%</div><div class="col" style="height:11px"></div><div class="lb">경북</div></div>
+            <div class="idxbars">
+              <div class="ib"><span class="ibl">경기남부</span><div class="ibtrack"><div class="ibfill" style="width:100%">내원율 15%</div></div></div>
+              <div class="ib"><span class="ibl">경북</span><div class="ibtrack"><div class="ibfill base" style="width:7%">1%</div></div></div>
             </div>
-            <p class="vnote">치과와 가까운 지역일수록 내원율이 압도적으로 높아(지역별 최대 15배 격차), 수량만 늘리는 건 비효율 — <b>고효율 지역 집중 + 저효율 매체(메타 ROAS 120%) OFF</b>가 답이었습니다.</p>
+            <p class="note" style="margin-top:8px">리드→내원 전환율 · 치과 접근성 높은 지역 순 (지역별 최대 15배 격차)</p>
+            <p class="vnote">경기남부는 리드(DB) 단가는 더 비싸지만 내원율이 압도적으로 높아 <b>내원당 비용 효율은 최고</b>였습니다 — 리드 '수'가 아닌 '내원 효율'로 보면 역전. 그래서 저효율 지역·매체(메타 ROAS 120%)를 감액하고 <b>고효율 경기남부로 예산을 집중 이관</b>했습니다.</p>
           </div>
         </div>
 
