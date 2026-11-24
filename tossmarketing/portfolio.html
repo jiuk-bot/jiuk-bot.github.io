@@ -1174,48 +1174,56 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
             </div>
           </div>
 
-          <button class="ab-toggle" onclick="var g=this.nextElementSibling;g.classList.toggle('show');this.textContent=g.classList.contains('show')?'상세 분석 접기 \u25B4':'상세 분석 더 보기 — 실제 전환고객 관심사 지수·ML 학습·예산 재배분·변경 빈도 (+4) \u25BE';">상세 분석 더 보기 — 실제 전환고객 관심사 지수·ML 학습·예산 재배분·변경 빈도 (+4) ▾</button>
+          <button class="ab-toggle" onclick="var g=this.nextElementSibling;g.classList.toggle('show');this.textContent=g.classList.contains('show')?'운영 상세 분석 접기 \u25B4':'운영 상세 분석 4개 보기 \u25BE';">운영 상세 분석 4개 보기 ▾</button>
           <div class="moredetail">
-          <div class="vcap">실제 전환 고객 관심사 분석 — '시청 채널'이 아니라 '전환 고객에서 지수가 높은 관심사'로 타깃 재설계</div>
+          <div class="vcap">① 전환 고객의 관심사를 타깃에 반영했습니다</div>
           <div class="viz">
-            <p class="vnote" style="margin-top:0"><b>노출 채널 구성을 확인</b>하고, Google Audience Insights로 전환 고객에서 지수가 높았던 관심사를 뽑아 <b>새 타깃에 적용</b>했습니다 (시청 채널 ≠ 잠재고객).</p>
+            <p class="vnote" style="margin-top:0">Google Audience Insights에서 전환 고객의 <b>관심사 지수</b>를 확인하고, 상위 관심사를 별도 캠페인에 적용했습니다.</p>
             <div class="idxbars">
-              <div class="ib"><span class="ibl">주택담보대출</span><div class="ibtrack"><div class="ibfill" style="width:100%">29.2x</div></div></div>
-              <div class="ib"><span class="ibl">기업 대출</span><div class="ibtrack"><div class="ibfill" style="width:59%">17.3x</div></div></div>
-              <div class="ib"><span class="ibl">자동차 구매</span><div class="ibtrack"><div class="ibfill" style="width:48%">14.1x</div></div></div>
+              <div class="ib"><span class="ibl">주택담보대출</span><div class="ibtrack"><div class="ibfill" style="width:100%">29.2배</div></div></div>
+              <div class="ib"><span class="ibl">기업 대출</span><div class="ibtrack"><div class="ibfill" style="width:59%">17.3배</div></div></div>
+              <div class="ib"><span class="ibl">자동차 구매</span><div class="ibtrack"><div class="ibfill" style="width:48%">14.1배</div></div></div>
             </div>
-            <p class="note" style="margin-top:8px">전환 고객의 In-market 관심사 지수 (평균 대비 배수 · Google Audience Insights 실측)</p>
-            <p class="vnote">관찰 → 조치: 전환 고객에서 지수가 높았던 관심사를 2개 구글애즈 계정에 다르게(금융·자동차 / 보험·생활소비) 설정해 교차 적용 → 특정 지역 관심사 캠페인 <b>CPA −26%</b>. 중복 검증 결과 유입 <b>연락처의 78.8%가 기존 캠페인 DB와 중복되지 않은 신규 연락처</b>였습니다.</p>
+            <p class="note" style="margin-top:8px">전환 고객의 In-market <b>관심사 지수</b>(평균 대비 배수) · Google Audience Insights 실측</p>
+            <table class="cmptbl" style="margin-top:14px">
+              <tr><th>충청 · 같은 기간 운영 비교</th><th>값</th><th>기준</th></tr>
+              <tr><td>전환당 비용</td><td class="hl">약 −26%</td><td>기존 연령 캠페인 대비 · 구글애즈 API 전환</td></tr>
+              <tr><td>신규 연락처 비중</td><td class="hl">78.8%</td><td>관심사 캠페인 고유 연락처 326개 중 기존 충청 캠페인과 미중복 · 별도 자료</td></tr>
+            </table>
+            <p class="vnote">판단: 시청 채널이 아니라 <strong class="key-phrase">전환 고객의 관심사 지수</strong>를 기준으로 타깃을 다시 짰습니다.</p>
           </div>
 
-          <div class="vcap">캠페인별 머신러닝 학습 분석 — 노출 채널 교체율로 성과 변동 진단</div>
+          <div class="vcap" style="border-top:1px solid var(--line-soft);padding-top:24px;margin-top:34px">② 노출 채널 교체율과 전환당 비용을 함께 확인했습니다</div>
           <div class="viz">
             <div class="ba">
-              <div class="cell good"><div class="t">평소 · 정상 학습</div><div class="v"><span class="num">채널 교체 ~40%/일</span><small>자연스러운 노출 채널 회전</small></div></div>
-              <div class="arrow clash">↯</div>
-              <div class="cell warn"><div class="t">이상 신호 발견</div><div class="v"><span class="num">70%+ 급변</span><small>타깃 도달이 크게 흔들림</small></div></div>
+              <div class="cell"><div class="t">평소 관찰값</div><div class="v"><span class="num">약 40%/일</span><small>노출 채널 교체율</small></div></div>
+              <div class="cell"><div class="t">급변 구간 관찰값</div><div class="v"><span class="num">70% 이상</span><small>교체율 급등</small></div></div>
             </div>
-            <p class="vnote">유튜브 노출 채널 교체율을 <b>CPA 추이와 함께</b> 보고, 교체율이 평소(약 40%)보다 급등하는 구간을 <b>캠페인 재설정 시점의 참고 지표</b>로 삼았습니다. 예산 볼륨이 큰 소재일수록 교체 시 영향이 컸습니다.</p>
+            <p class="note" style="margin-top:8px">유튜브 노출 채널(디멘드젠) 일 단위 교체율 관찰 · 분모·포함 채널 범위·비교 기간은 당시 운영 로그 기준(정확 수치 재확인 필요)</p>
+            <p class="vnote">판단: <strong class="key-phrase">채널 구성이 크게 바뀐 날의 CPA를 함께 확인</strong>해, 캠페인 설정을 조정할지 판단했습니다.</p>
           </div>
 
-          <div class="vcap">예산 소진 실험 — 일예산의 32%만 소진된 원인 진단 → 기존에 쓰지 않던 관심사 신호 투입</div>
+          <div class="vcap" style="border-top:1px solid var(--line-soft);padding-top:24px;margin-top:34px">③ 일예산 소진율 32%를 보고 신규 관심사를 적용했습니다</div>
           <div class="viz">
-            <div class="ba">
-              <div class="cell"><div class="t">캠페인 1개</div><div class="v">일 예산 미소진<small>목표 CPA 입찰 = 소진 X</small></div></div>
-              <div class="arrow">→</div>
-              <div class="cell"><div class="t">캠페인 2개 병행</div><div class="v">총 예산 동일<small>기존 예산이 둘로 나뉨</small></div></div>
+            <div class="ifun">
+              <div class="fn"><b>관찰</b><small>경기남부 메인 5개 캠페인 합산 일예산 소진율 32%</small></div>
+              <div class="fnar">→</div>
+              <div class="fn"><b>변경</b><small>대상 캠페인에 기존에 쓰지 않던 관심사 신호 추가</small></div>
+              <div class="fnar">→</div>
+              <div class="fn"><b>측정</b><small>채널 중복률·예산 소진율·전환당 비용 비교 설계</small></div>
             </div>
-            <p class="vnote">경기남부가 일예산의 <b>32%만 소진</b> — 캠페인이 전부 <b>연령 타깃만(관심사 0개)</b>이라 ML이 시사·뉴스 풀로 수렴한 게 원인. <b>기존에 안 쓰던 관심사 신호</b>를 투입(다른 변수는 고정한 단일 변수 실험)해 신규 풀에 진입했습니다. 캠페인을 늘리기보다 <b>시그널을 넓혀야</b> 소진·효율이 함께 열렸습니다.</p>
+            <p class="note" style="margin-top:8px">조건: 일예산·목표 CPA·연령·지역·광고 문구는 고정(단일 변수). 소진율 32%는 5개 캠페인 합산 집계, 변경은 대상 캠페인 단위.</p>
+            <p class="vnote"><strong class="key-phrase">시사·뉴스 채널 중복이 소진에 영향을 줬을 가능성</strong>을 보고 관심사를 추가했습니다. <span class="note">※ 변경 후 D+7 결과는 후속 자료 확인 시 반영(현재 미확정).</span></p>
           </div>
 
-          <div class="vcap">반직관적 발견 — '많이 만질수록'이 아니라 '덜 만질수록' ML 학습이 안정화</div>
+          <div class="vcap" style="border-top:1px solid var(--line-soft);padding-top:24px;margin-top:34px">④ 설정 변경 빈도가 다른 두 계정의 전환을 비교했습니다</div>
           <div class="viz">
             <div class="ba">
-              <div class="cell warn"><div class="t">설정 변경 빈도 높음</div><div class="v"><span class="num">전환 −44%</span><small>하루 변경 다수 · 설정 변경이 잦아 학습이 자주 초기화(관찰)</small></div></div>
-              <div class="arrow">→</div>
-              <div class="cell good"><div class="t">변경 자제 계정</div><div class="v"><span class="num">전환 +10%</span><small>변경 최소화 · ML이 학습을 끝냄</small></div></div>
+              <div class="cell warn"><div class="t">변경이 잦았던 계정</div><div class="v"><span class="num">전환 −44%</span><small>하루 설정 변경 다수</small></div></div>
+              <div class="cell good"><div class="t">변경을 줄인 계정</div><div class="v"><span class="num">전환 +10%</span><small>설정 변경 최소화</small></div></div>
             </div>
-            <p class="vnote">같은 시기 두 계정 비교 — 하루 변경이 많은 쪽 전환 <b>−44%</b>, 아낀 쪽 <b>+10%</b>(관찰). 디멘드젠은 <b>변경을 멈추고 ML이 학습을 끝내게 둘 때</b> 성과가 났습니다.</p>
+            <p class="note" style="margin-top:8px">같은 기간 두 계정 관찰 · 전환 = 구글애즈 API 전환 기준 · 변경 횟수 로그는 운영 기록 기준(정확 횟수 재확인 필요)</p>
+            <p class="vnote">판단: 이 차이를 바탕으로 <strong class="key-phrase">설정 변경 빈도가 성과 안정성에 영향을 주는지 후속 검증할 가설</strong>로 남겼습니다.</p>
           </div>
           </div>
         </div>
