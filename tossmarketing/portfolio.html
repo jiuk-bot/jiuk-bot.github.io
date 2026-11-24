@@ -1232,6 +1232,7 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
       #cvid .ps{ border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--panel); }
       #cvid .ps.psx{ display:none; } #cvid .psolve.show-all .ps.psx{ display:block; }
       #cvid .ps .ps-p,#cvid .ps .ps-s{ padding:11px 13px; font-size:12px; line-height:1.55; color:var(--mute); display:flex; gap:8px; align-items:flex-start; }
+      #cvid .ps .pst{ flex:1; min-width:0; }
       #cvid .ps .ps-p{ border-bottom:1px solid var(--line); }
       #cvid .ps b{ color:var(--ink); }
       #cvid .ps .tg{ flex:0 0 auto; font-size:10px; font-weight:800; padding:2px 7px; border-radius:6px; margin-top:1px; }
@@ -1371,24 +1372,24 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
           <div class="sh"><span class="bar"></span>AI 영상 제작하며 겪은 문제와 해결</div>
           <div class="psolve">
             <div class="ps psx">
-              <div class="ps-p"><span class="tg p">문제</span>인물이 화면에 <b>작게 잡힐수록 이목구비가 뭉개지고 깨져</b> 보임</div>
-              <div class="ps-s"><span class="tg s">해결</span>인물을 <b>클로즈업·대면 구도</b>로 배치하도록 프롬프트를 설계해 얼굴 디테일 확보</div>
+              <div class="ps-p"><span class="tg p">문제</span><span class="pst">인물이 화면에 <b>작게 잡힐수록 이목구비가 뭉개지고 깨져</b> 보임</span></div>
+              <div class="ps-s"><span class="tg s">해결</span><span class="pst">인물을 <b>클로즈업·대면 구도</b>로 배치하도록 프롬프트를 설계해 얼굴 디테일 확보</span></div>
             </div>
             <div class="ps psx">
-              <div class="ps-p"><span class="tg p">문제</span>내레이션에서 <b>특정 키워드 발음이 부정확</b>하게 생성됨</div>
-              <div class="ps-s"><span class="tg s">해결</span><b>발음이 잘 되는 단어로 치환</b>하거나 표현을 바꿔 스크립트·프롬프트를 재작성</div>
+              <div class="ps-p"><span class="tg p">문제</span><span class="pst">내레이션에서 <b>특정 키워드 발음이 부정확</b>하게 생성됨</span></div>
+              <div class="ps-s"><span class="tg s">해결</span><span class="pst"><b>발음이 잘 되는 단어로 치환</b>하거나 표현을 바꿔 스크립트·프롬프트를 재작성</span></div>
             </div>
             <div class="ps psx">
-              <div class="ps-p"><span class="tg p">문제</span>AI 컷이 <b>길어질수록 부자연스러운 동작·장면</b>이 섞임</div>
-              <div class="ps-s"><span class="tg s">해결</span><b>컷을 짧게 끊고 화면 구도를 바꿔</b> 여러 컷을 이어붙여 완성 → 가장 자연스럽고 완성도 ↑</div>
+              <div class="ps-p"><span class="tg p">문제</span><span class="pst">AI 컷이 <b>길어질수록 부자연스러운 동작·장면</b>이 섞임</span></div>
+              <div class="ps-s"><span class="tg s">해결</span><span class="pst"><b>컷을 짧게 끊고 화면 구도를 바꿔</b> 여러 컷을 이어붙여 완성 → 가장 자연스럽고 완성도 ↑</span></div>
             </div>
             <div class="ps" style="order:1">
-              <div class="ps-p"><span class="tg p">문제</span>프롬프트 한 번으로는 <b>원하는 결과가 잘 안 나옴</b></div>
-              <div class="ps-s"><span class="tg s">해결</span>프롬프트마다 <b>참고 이미지를 다량 생성</b>해 베스트 컷을 선별 (품질의 핵심)</div>
+              <div class="ps-p"><span class="tg p">문제</span><span class="pst">프롬프트 한 번으로는 <b>원하는 결과가 잘 안 나옴</b></span></div>
+              <div class="ps-s"><span class="tg s">해결</span><span class="pst">프롬프트마다 <b>참고 이미지를 다량 생성</b>해 베스트 컷을 선별 (품질의 핵심)</span></div>
             </div>
             <div class="ps" style="order:2">
-              <div class="ps-p"><span class="tg p">문제</span>AI 영상에 <b>깨진 글자·가짜 텍스트</b>가 섞여 신뢰도·심의 리스크</div>
-              <div class="ps-s"><span class="tg s">해결</span>프롬프트로 <b>"No text" 원천 차단 + 자막 직접 합성</b>해 화면 텍스트 0 오류로 통제</div>
+              <div class="ps-p"><span class="tg p">문제</span><span class="pst">AI 영상에 <b>깨진 글자·가짜 텍스트</b>가 섞여 신뢰도·심의 리스크</span></div>
+              <div class="ps-s"><span class="tg s">해결</span><span class="pst">프롬프트로 <b>"No text" 원천 차단 + 자막 직접 합성</b>해 화면 텍스트 0 오류로 통제</span></div>
             </div>
           </div>
           <button class="ab-toggle" onclick="var g=this.previousElementSibling;g.classList.toggle('show-all');this.textContent=g.classList.contains('show-all')?'접기 \u25B4':'제작 노하우 더 보기 (+3) \u25BE';">제작 노하우 더 보기 (+3) ▾</button>
