@@ -1068,7 +1068,7 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
             <p class="vnote">리드 수가 아니라 <b>상담 신청 이후 내원·시술까지 추적</b>해, 성과를 '리드 CPA'가 아닌 지역별 내원율·CAC·ROAS로 측정했습니다.</p>
           </div>
 
-          <div class="vcap" style="color:var(--ink);font-size:14.5px;margin-bottom:16px">경기남부는 리드 단가가 가장 높았지만, 내원당 비용은 가장 낮았습니다.</div>
+          <div class="vcap" style="color:var(--ink);font-size:14.5px;margin-bottom:16px">경기남부는 리드 단가가 경북대구의 2배였지만, 내원당 비용은 약 1/6이었습니다.</div>
           <style>
             #c1 .rcmp{ border:1px solid var(--line); border-radius:16px; background:var(--panel); padding:20px 22px; }
             #c1 .rcmp-h, #c1 .rcmp-row{ display:grid; grid-template-columns:82px 1fr 1fr 52px; gap:14px; align-items:center; }
@@ -1088,6 +1088,29 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
             #c1 .rr-bar b{ font-size:12.5px; font-weight:700; color:var(--ink); font-variant-numeric:tabular-nums; min-width:30px; text-align:right; }
             #c1 .rr-roas{ font-size:13px; font-weight:800; color:var(--ink); text-align:right; font-variant-numeric:tabular-nums; }
             #c1 .rcmp-f{ margin:14px 0 0; font-size:11px; color:var(--dim); border-top:1px solid var(--line-soft); padding-top:11px; }
+            #c1 .ccmp{ margin-top:14px; border-top:1px solid var(--line-soft); padding-top:12px; }
+            #c1 .ccmp-h{ font-size:12px; font-weight:800; color:var(--mute); margin-bottom:6px; }
+            #c1 .ccmp-row{ display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:baseline; padding:7px 0; }
+            #c1 .ccmp-row + .ccmp-row{ border-top:1px solid var(--line-soft); }
+            #c1 .ccv{ font-size:14px; font-weight:800; color:var(--signal); white-space:nowrap; }
+            #c1 .ccb{ font-size:12px; color:var(--mute); line-height:1.5; }
+            #c1 .axbars{ display:flex; flex-direction:column; gap:12px; margin-top:4px; }
+            #c1 .axrow{ display:grid; grid-template-columns:82px 1fr 68px; gap:12px; align-items:center; }
+            #c1 .axl{ font-size:12.5px; font-weight:700; color:var(--ink); }
+            #c1 .axtrack{ position:relative; height:18px; background:var(--panel2); border-radius:6px; }
+            #c1 .axfill{ height:100%; background:var(--line); border-radius:6px; }
+            #c1 .axfill.hi{ background:linear-gradient(90deg,var(--signal-d),var(--signal)); }
+            #c1 .axthresh{ position:absolute; top:-5px; bottom:-5px; width:2px; background:var(--signal); border-radius:2px; }
+            #c1 .axv{ font-size:12.5px; font-weight:800; color:var(--ink); text-align:right; font-variant-numeric:tabular-nums; }
+            #c1 .spbig{ font-size:15px; font-weight:700; color:var(--ink); margin-bottom:9px; }
+            #c1 .spbig b{ font-size:27px; color:var(--signal); font-weight:800; margin-left:5px; }
+            #c1 .sptrack{ height:16px; }
+            #c1 .kvlist{ margin-top:14px; }
+            #c1 .kv{ display:grid; grid-template-columns:84px 1fr; gap:14px; padding:8px 0; align-items:baseline; }
+            #c1 .kv + .kv{ border-top:1px solid var(--line-soft); }
+            #c1 .kvk{ font-size:12px; font-weight:800; color:var(--mute); }
+            #c1 .kvv{ font-size:13px; color:var(--ink); line-height:1.5; }
+            @media(max-width:560px){ #c1 .ccmp-row{ grid-template-columns:1fr; gap:3px; } #c1 .axrow{ grid-template-columns:66px 1fr 56px; gap:8px; } #c1 .kv{ grid-template-columns:1fr; gap:2px; } }
             @media(max-width:560px){
               #c1 .rcmp-h, #c1 .rcmp-row{ grid-template-columns:62px 1fr 1fr 46px; gap:8px; }
               #c1 .rr-bar .rbt{ display:none; }
@@ -1111,33 +1134,15 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
                 <span class="rr-roas">305%</span>
               </div>
               <div class="rcmp-row">
-                <span class="rr-reg">충청</span>
-                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:60%"></i></span><b>120</b></span>
-                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:24%"></i></span><b>146</b></span>
-                <span class="rr-roas">247%</span>
-              </div>
-              <div class="rcmp-row">
-                <span class="rr-reg">전북강원</span>
-                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:50%"></i></span><b>101</b></span>
-                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:65%"></i></span><b>400</b></span>
-                <span class="rr-roas">98%</span>
-              </div>
-              <div class="rcmp-row">
-                <span class="rr-reg">인천</span>
-                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:66%"></i></span><b>133</b></span>
-                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:100%"></i></span><b>615</b></span>
-                <span class="rr-roas">73%</span>
-              </div>
-              <div class="rcmp-row">
                 <span class="rr-reg">경북대구</span>
                 <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:50%"></i></span><b>100</b></span>
-                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:73%"></i></span><b>450</b></span>
+                <span class="rr-bar"><span class="rbt"><i class="rbf" style="width:100%"></i></span><b>630</b></span>
                 <span class="rr-roas">57%</span>
               </div>
-              <p class="rcmp-f">CPL·ROAS = 2026-07 / CAC = 4~5월 내원 실측 · 구글 메인 계정 · 비용 지수는 낮을수록 비용이 적음 · ROAS 100% 미만 = 수납액이 광고비에 미달</p>
+              <p class="rcmp-f">2026년 7월 · 구글 메인 계정 · 비용 지수는 낮을수록 비용이 적음 · ROAS 100% 미만 = 수납액이 광고비에 미달</p>
             </div>
-            <p class="vnote" style="margin-top:16px">ROAS가 낮은(수납액이 광고비에 미달) <b>인천·경북대구 집행을 중단</b>하고, <strong class="key-phrase">경기남부·충청으로 예산을 옮겼습니다</strong>.</p>
-            <p class="note" style="margin-top:8px">※ CAC(내원당 비용) 지수는 <b>전환 고객 전화번호를 내원 목록과 조인한 4~5월 내원 실측</b> 기준(경기남부=100)으로 전 지역 내원율을 보정한 값입니다(경기남부가 최저). CPL·ROAS는 2026-07 메인 계정 스냅샷이라 집계 창이 다릅니다. 경북대구는 내원 표본이 작아 범위가 있습니다(약 310~450). 실제 원단위는 비공개.</p>
+            <p class="vnote" style="margin-top:16px">이 격차를 근거로, ROAS가 낮은 지역(인천·경북대구)은 중단하고 <strong class="key-phrase">경기남부·충청에 예산을 집중</strong>했습니다.</p>
+            <p class="note" style="margin-top:8px">※ 예시로 경기남부·경북대구만 비교. CPL·CAC·ROAS 모두 2026-07 메인 계정 기준. 실제 원단위는 비공개.</p>
           </div>
         </div>
 
@@ -1178,42 +1183,41 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
           <div class="moredetail">
           <div class="vcap">① 전환 고객의 관심사를 타깃에 반영했습니다</div>
           <div class="viz">
-            <p class="vnote" style="margin-top:0">Google Audience Insights에서 전환 고객의 <b>관심사 지수</b>를 확인하고, 상위 관심사를 별도 캠페인에 적용했습니다.</p>
+            <p class="vnote" style="margin-top:0">전환 고객에서 지수가 높았던 관심사를 별도 캠페인에 적용했습니다.</p>
             <div class="idxbars">
               <div class="ib"><span class="ibl">주택담보대출</span><div class="ibtrack"><div class="ibfill" style="width:100%">29.2배</div></div></div>
               <div class="ib"><span class="ibl">기업 대출</span><div class="ibtrack"><div class="ibfill" style="width:59%">17.3배</div></div></div>
               <div class="ib"><span class="ibl">자동차 구매</span><div class="ibtrack"><div class="ibfill" style="width:48%">14.1배</div></div></div>
             </div>
-            <p class="note" style="margin-top:8px">전환 고객의 In-market <b>관심사 지수</b>(평균 대비 배수) · Google Audience Insights 실측</p>
-            <table class="cmptbl" style="margin-top:14px">
-              <tr><th>충청 · 같은 기간 운영 비교</th><th>값</th><th>기준</th></tr>
-              <tr><td>전환당 비용</td><td class="hl">약 −26%</td><td>기존 연령 캠페인 대비 · 구글애즈 API 전환</td></tr>
-              <tr><td>신규 연락처 비중</td><td class="hl">78.8%</td><td>관심사 캠페인 고유 연락처 326개 중 기존 충청 캠페인과 미중복 · 별도 자료</td></tr>
-            </table>
-            <p class="vnote">판단: 시청 채널이 아니라 <strong class="key-phrase">전환 고객의 관심사 지수</strong>를 기준으로 타깃을 다시 짰습니다.</p>
+            <p class="note" style="margin-top:8px">전환 고객의 관심사 지수 · 기준 집단 대비 배수 · Google Audience Insights</p>
+            <div class="ccmp">
+              <div class="ccmp-h">충청도 캠페인 비교</div>
+              <div class="ccmp-row"><span class="ccv">전환당 비용 약 26% 낮음</span><span class="ccb">같은 기간 기존 연령 캠페인 대비 · API 전환 기준</span></div>
+              <div class="ccmp-row"><span class="ccv">연락처 78.8% 미중복</span><span class="ccb">관심사 캠페인 고유 연락처 326개 중 기존 충청 캠페인과 겹치지 않은 비중</span></div>
+            </div>
+            <p class="note">※ 두 구글애즈 계정에 관심사를 다르게 적용(금융·자동차 / 보험·생활소비).</p>
           </div>
 
           <div class="vcap" style="border-top:1px solid var(--line-soft);padding-top:24px;margin-top:34px">② 노출 채널 교체율과 전환당 비용을 함께 확인했습니다</div>
           <div class="viz">
-            <div class="ba">
-              <div class="cell"><div class="t">평소 관찰값</div><div class="v"><span class="num">약 40%/일</span><small>노출 채널 교체율</small></div></div>
-              <div class="cell"><div class="t">급변 구간 관찰값</div><div class="v"><span class="num">70% 이상</span><small>교체율 급등</small></div></div>
+            <div class="axbars">
+              <div class="axrow"><span class="axl">평소 관찰</span><div class="axtrack"><div class="axfill" style="width:40%"></div></div><span class="axv">약 40%</span></div>
+              <div class="axrow"><span class="axl">교체율 급증</span><div class="axtrack"><div class="axfill hi" style="width:70%"></div><span class="axthresh" style="left:70%"></span></div><span class="axv">70% 이상</span></div>
             </div>
-            <p class="note" style="margin-top:8px">유튜브 노출 채널(디멘드젠) 일 단위 교체율 관찰 · 분모·포함 채널 범위·비교 기간은 당시 운영 로그 기준(정확 수치 재확인 필요)</p>
-            <p class="vnote">판단: <strong class="key-phrase">채널 구성이 크게 바뀐 날의 CPA를 함께 확인</strong>해, 캠페인 설정을 조정할지 판단했습니다.</p>
+            <p class="note" style="margin-top:10px">유튜브 노출 채널(디멘드젠) 일 단위 교체율 · 0~100% 축 · 분모·포함 채널 범위·집계 기간은 운영 로그 기준(정확 수치 재확인 필요)</p>
+            <p class="vnote">판단: <strong class="key-phrase">교체율이 크게 오른 날의 전환당 비용(CPA)을 함께 확인</strong>했습니다.</p>
           </div>
 
           <div class="vcap" style="border-top:1px solid var(--line-soft);padding-top:24px;margin-top:34px">③ 일예산 소진율 32%를 보고 신규 관심사를 적용했습니다</div>
           <div class="viz">
-            <div class="ifun">
-              <div class="fn"><b>관찰</b><small>경기남부 메인 5개 캠페인 합산 일예산 소진율 32%</small></div>
-              <div class="fnar">→</div>
-              <div class="fn"><b>변경</b><small>대상 캠페인에 기존에 쓰지 않던 관심사 신호 추가</small></div>
-              <div class="fnar">→</div>
-              <div class="fn"><b>측정</b><small>채널 중복률·예산 소진율·전환당 비용 비교 설계</small></div>
+            <div class="spbig">일예산 소진율 <b>32%</b></div>
+            <div class="axtrack sptrack"><div class="axfill hi" style="width:32%"></div></div>
+            <p class="note" style="margin-top:10px">구글 메인 계정 · 경기남부 5개 캠페인 합산 · 변경 전 관찰값</p>
+            <div class="kvlist">
+              <div class="kv"><span class="kvk">바꾼 설정</span><span class="kvv">대상 캠페인에 기존에 쓰지 않던 관심사 추가</span></div>
+              <div class="kv"><span class="kvk">비교 지표</span><span class="kvv">채널 중복률 · 예산 소진율 · 전환당 비용</span></div>
             </div>
-            <p class="note" style="margin-top:8px">조건: 일예산·목표 CPA·연령·지역·광고 문구는 고정(단일 변수). 소진율 32%는 5개 캠페인 합산 집계, 변경은 대상 캠페인 단위.</p>
-            <p class="vnote"><strong class="key-phrase">시사·뉴스 채널 중복이 소진에 영향을 줬을 가능성</strong>을 보고 관심사를 추가했습니다. <span class="note">※ 변경 후 D+7 결과는 후속 자료 확인 시 반영(현재 미확정).</span></p>
+            <p class="note">조건: 일예산·목표 CPA·연령·지역·광고 문구는 고정(단일 변수). ※ 변경 후 실측값은 후속 자료 확인 시 같은 집계로 비교(현재 미확정).</p>
           </div>
 
           <div class="vcap" style="border-top:1px solid var(--line-soft);padding-top:24px;margin-top:34px">④ 설정 변경 빈도가 다른 두 계정의 전환을 비교했습니다</div>
