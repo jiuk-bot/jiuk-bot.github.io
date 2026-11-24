@@ -750,12 +750,12 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
       .phone-side .ps-row .ps-b{ color:var(--signal); font-weight:700; }
       .phone-side .ps-row.note{ font-size:12px; border-left-color:transparent; padding-left:0; color:var(--dim); }
       @media(max-width:720px){ .phonewrap{ grid-template-columns:1fr; gap:20px; } .phone-mock{ margin:0 auto; } }
-      .twophone{ display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap; }
+      .twophone{ display:flex; align-items:flex-end; justify-content:center; gap:18px; flex-wrap:wrap; }
       .twophone .pcol{ margin:0; display:flex; flex-direction:column; align-items:center; gap:10px; max-width:220px; }
       .twophone .phone-mock{ width:200px; }
       .twophone figcaption{ font-size:12.5px; color:var(--mute); line-height:1.5; text-align:center; }
       .twophone figcaption b{ color:var(--ink); font-weight:700; }
-      .twoarrow{ font-size:24px; font-weight:800; color:var(--signal); }
+      .twoarrow{ font-size:24px; font-weight:800; color:var(--signal); align-self:center; }
       @media(max-width:600px){ .twoarrow{ transform:rotate(90deg); } }
       @media(max-width:600px){ #c6b .imgab{ grid-template-columns:1fr; } #c6b .imgab .ar{ transform:rotate(90deg); } #c6b .imgab img{ height:300px; } }
       /* 4종 토너먼트 */
@@ -1714,13 +1714,13 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
           <div class="viz">
             <div class="twophone">
               <figure class="pcol">
-                <div class="phone-mock"><img src="assets/cases/hobby_asis.png" alt="기존 예약 화면 — 예약하기가 지점 문의로 연결"></div>
-                <figcaption><span class="flab bad">기존</span> 예약 → <b>지점 문의</b> 경유<br>(즉시 결제 불가)</figcaption>
-              </figure>
-              <div class="twoarrow">→</div>
-              <figure class="pcol">
                 <div class="phone-mock"><img src="assets/cases/hobby_tobe.png" alt="개선 예약 화면 — 페이지 내 즉시결제 버튼"></div>
                 <figcaption><span class="flab good">개선</span> 예약 → <b>페이지 내 결제</b><br>(랜딩 내 실시간 결제)</figcaption>
+              </figure>
+              <div class="twoarrow">←</div>
+              <figure class="pcol">
+                <div class="phone-mock"><img src="assets/cases/hobby_asis.png" alt="기존 예약 화면 — 예약하기가 지점 문의로 연결"></div>
+                <figcaption><span class="flab bad">기존</span> 예약 → <b>지점 문의</b> 경유<br>(즉시 결제 불가)</figcaption>
               </figure>
             </div>
             <p class="note">실제 화면 · 지점 문의 경유 단계 제거 + 예약 페이지를 홈 메인에 노출 + 랜딩에서 <strong class="key-phrase">페이지 내 즉시결제</strong>로 전환.</p>
