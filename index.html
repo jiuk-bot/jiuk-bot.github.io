@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>윤지욱 · 광고 세일즈 · 어카운트 매니저 포트폴리오</title>
-<meta name="description" content="광고주를 데이터로 설득해 예산·매출을 키우고, 리드부터 계약 클로징까지 세일즈 풀사이클을 수행하는 어카운트 매니저 윤지욱입니다." />
-<link rel="stylesheet" href="assets/style.css" />
+<title>윤지욱 · 포트폴리오</title>
+<meta name="description" content="Paid 소재를 직접 기획·제작하고, 가설 검증 A/B로 지표를 끌어올리는 퍼포먼스 크리에이티브 마케터 윤지욱입니다. 영상·이미지 소재를 독립적으로 제작하고 소구×후킹 A/B로 CTR·전환을 개선한 기여도 100% 소재 케이스를 담았습니다." />
+<link rel="stylesheet" href="/assets/style.css" />
 <style>
   /* ===== HOME · 다크 네온 (내용 유지, 스타일만) ===== */
   :root{ --nk:#EDEBFA; --nmute:#9E99BC; }
@@ -56,6 +56,19 @@
   footer a{ color:#C9A6FF !important; }
   ::selection{ background:rgba(192,107,255,.4); color:#fff; }
   @media (prefers-reduced-motion:reduce){ body::before{ animation:none; } .hero h1 .hl{ animation:none; } }
+
+  /* ===== 핵심역량 2×2 비주얼 카드 (hi-list 대체) ===== */
+  .capgrid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:26px 0 22px; }
+  .capcard{ background:rgba(18,18,30,.55); border:1px solid rgba(124,92,255,.16); border-radius:16px; padding:18px 20px; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:transform .3s, border-color .3s, box-shadow .3s; }
+  .capcard:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 30px 70px -40px rgba(124,92,255,.5); }
+  .capcard .cap-top{ display:flex; align-items:center; gap:10px; margin-bottom:13px; }
+  .capcard .cap-ic{ font-size:21px; line-height:1; }
+  .capcard .cap-k{ font-size:12.5px; font-weight:800; letter-spacing:.01em; color:#C9A6FF; background:rgba(124,92,255,.14); border:1px solid rgba(124,92,255,.28); padding:4px 11px; border-radius:999px; }
+  .capcard .cap-v{ font-size:17px; font-weight:800; color:#EDEBFA; letter-spacing:-.015em; line-height:1.3; }
+  .capcard .cap-v b{ background:linear-gradient(135deg,#B794F6,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .capcard .cap-s{ margin-top:7px; font-size:12.5px; font-weight:500; color:#9E99BC; line-height:1.5; }
+  @media(max-width:640px){ .capgrid{ grid-template-columns:1fr; } }
+  @media(max-width:760px){ nav a[href*="streamlit.app"], nav a[href*="videos.html"], nav a[href*="dashboard"]{ display:none !important; } }
 </style>
 </head>
 <body>
@@ -63,51 +76,50 @@
 <nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
   <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
     <a href="index.html" style="font-weight:800;font-size:17px;color:#EDEBFA;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
-    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">Home</a><a href="portfolio.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="dashboard.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">광고주 대시보드</a></div>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">Home</a><a href="portfolio.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="videos.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">성과분석 대시보드</a><a href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 소재 스튜디오</a></div>
   </div>
 </nav>
 
 <!-- 히어로 -->
 <header class="hero">
   <div class="wrap">
-    <div class="applytag">광고 세일즈 · 어카운트 매니저(AM) 포트폴리오</div>
     <div class="hello">안녕하세요 👋</div>
-    <h1>광고주의 매출을,<br /><span class="hl">데이터로 키우는 어카운트 매니저입니다.</span></h1>
-    <p class="sub" style="margin-bottom:4px;"><b>셀러도, 광고 집행·대행도 해 본</b> — 광고주와 매체 양쪽을 아는 어카운트 매니저입니다.</p>
+    <h1>소재를 직접 만들고,<br /><span class="hl">가설로 지표를 바꾸는 마케터입니다.</span></h1>
+    <p class="sub" style="margin-bottom:4px;"><b>소구를 직접 설계하고, 영상·이미지를 직접 만들고, A/B로 직접 검증한</b> — 유려함보다 <b>끊임없는 시도로 지표를 움직이는</b> 퍼포먼스 크리에이티브 마케터입니다.</p>
     <ul class="hi-list">
       <li><span class="hil-k">커머스 운영</span> 뷰티 스마트스토어 직접 운영 → 월매출 <b>+167%</b></li>
       <li><span class="hil-k">퍼포먼스</span> 글로벌랩스 마케팅 팀장 · 데이터로 예산 증액 설득 → 6개월 <b>취급고 9.2배 · ROAS 3.3배</b></li>
-      <li><span class="hil-k">대형 캠페인</span> <img src="assets/logo-kb.jpeg" alt="KB국민은행" style="height:3.3em;vertical-align:middle;border-radius:8px;padding:3px 8px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);" /> 약 <b>8억</b> 캠페인 대행 → <b>신규 매체 발굴·제안</b></li>
+      <li><span class="hil-k">대형 캠페인</span> <img src="/assets/logo-kb.jpeg" alt="KB국민은행" style="height:3.3em;vertical-align:middle;border-radius:8px;padding:3px 8px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.35);" /> 약 <b>8억</b> 캠페인 대행 → <b>신규 매체 발굴·제안</b></li>
       <li><span class="hil-k">B2B 세일즈</span> 셀프스토리지 발굴 → 제안 → 발표 → <b>현장 계약 클로징 단독 완주</b></li>
     </ul>
-    <p class="sub"><b>광고주를 발굴</b>하고 <b>예산을 함께 키우는 AM</b>으로 기여하고 싶습니다.</p>
     <div class="btns">
       <a class="btn btn-primary" href="resume.html">▤ 이력서</a>
-      <a class="btn btn-primary" href="portfolio.html">❖ 포트폴리오 — 광고주 동반성장 케이스</a>
-      <a class="btn btn-primary" href="dashboard.html">◈ 광고주 성과관리 대시보드</a>
-      <a class="btn btn-primary" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">◉ 퍼포먼스 마케팅 성과분석 대시보드</a>
+      <a class="btn btn-primary" href="portfolio.html">❖ 포트폴리오 — 기여도 100% 소재 A/B 케이스</a>
+      <a class="btn btn-primary" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">◉ AI 성과분석 대시보드 (직접 구축)</a>
+      <a class="btn btn-primary" href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener">◈ AI 소재 A/B 스튜디오 (직접 구축)</a>
+      <a class="btn btn-primary" href="videos.html" style="grid-column:1 / -1;">▶ AI 크리에이티브 갤러리 — 직접 만든 영상 소재</a>
     </div>
 
     <div class="stats">
       <div class="stat">
-        <div class="cat">치과 임플란트 · Account Growth</div>
-        <div class="big num">취급고 +817%</div>
-        <div class="desc">6개월 만에 취급고<br>0.6억 → 5.5억으로 성장</div>
+        <div class="cat">소재 A/B · 직접 제작한 영상</div>
+        <div class="big num">CTR +42.7%</div>
+        <div class="desc">인트로 Hook·텍스트 소재로<br>CTR 6.7% → 9.56% 개선</div>
       </div>
       <div class="stat">
-        <div class="cat">치과 임플란트 · 광고주 설득</div>
-        <div class="big num">ROAS +226%</div>
-        <div class="desc">6개월 만에 ROAS<br>103% → 336%로 개선</div>
+        <div class="cat">소재 A/B · 짐보관 Hook 소재 교체</div>
+        <div class="big num">전환 +31.3%</div>
+        <div class="desc">20초→12초 Hook 소재로<br>전환 +31.3% · CPA −24%</div>
       </div>
       <div class="stat">
-        <div class="cat">KB국민은행 · 신규 매체 제안</div>
-        <div class="big num">앱실행 -41%</div>
-        <div class="desc">신규 매체 직접 발굴·제안<br>총 8억 집행 단독 운영</div>
+        <div class="cat">커머스 UA · 뷰티 스마트스토어</div>
+        <div class="big num">월매출 +167%</div>
+        <div class="desc">상세페이지 30건 직접 제작<br>SEO 기반 스토어 직접 운영</div>
       </div>
       <div class="stat">
-        <div class="cat">셀프스토리지 · B2B 가맹 세일즈</div>
-        <div class="big num">신규 1건 클로징</div>
-        <div class="desc">콜 100건 → 제안·발표부터 클로징까지 단독 완주<br>계약 규모 약 7,000만원 성사</div>
+        <div class="cat">리드 소재 A/B · 타겟 적중도</div>
+        <div class="big num">40% → 70%</div>
+        <div class="desc">자극 카피→공감형 소재 전환<br>전환 +67.7% · CPA −38.6%</div>
       </div>
     </div>
   </div>
@@ -120,36 +132,29 @@
     <h2 style="margin-bottom:22px;">무엇을 보고 싶으세요?</h2>
     <div class="cards">
       
-      <a class="card" href="portfolio.html">
-        <div class="ico">📂</div>
-        <h3>Portfolio — 광고주 동반성장 케이스</h3>
-        <p>서비스 → 과제 → 접근 → 실행 → 성과 → 인사이트로 정리한 6개 케이스 + 상세 비주얼. 글로벌랩스(양→질·매체확장), AI 대시보드 구축, KB 스타틴즈·패밀리뱅킹, 박스풀 B2B, 어스텀 창업.</p>
-        <span class="go">자세히 보기 →</span>
-      </a>
-      <a class="card" href="dashboard.html" style="border-color:#3182F6;">
-        <div class="ico">🖥️</div>
-        <h3>광고주 성과관리 대시보드</h3>
-        <p><b>광고주 성과 관리를 위해 직접 제작</b>. 여러 광고주의 7일 성과 하락 자동 감지 + 기간 비교 + 드릴다운 + 히스토리 인수인계 (가상 데이터).</p>
-        <span class="go">대시보드 열기 →</span>
-      </a>
-      
-      <a class="card" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">
-        <div class="ico">📊</div>
-        <h3>퍼포먼스 마케팅 성과분석 대시보드 (Live Demo)</h3>
-        <p><b>글로벌랩스 근무 시</b> 광고 캠페인 성과 분석을 위해 직접 개발·운영한 라이브 대시보드입니다 (가상 데이터 체험).</p>
-        <span class="go">새 탭에서 열기 →</span>
-      </a>
       <a class="card" href="resume.html">
         <div class="ico">🧾</div>
         <h3>이력서</h3>
-        <p>B2B 세일즈 풀퍼널, 광고주 예산 증액 설득(Account Growth), 신규 매체 제안, 프로모션 설계 경력을 광고 세일즈·AM 직무에 맞춰 정리.</p>
+        <p>소재 제작·A/B 성과 개선·다매체 운영 경험을 정리한 이력서입니다.</p>
         <span class="go">자세히 보기 →</span>
       </a>
-      <a class="card" href="mailto:jiuk2038@gmail.com" style="grid-column:1 / -1;">
-        <div class="ico">✉️</div>
-        <h3>Contact</h3>
-        <p>jiuk2038@gmail.com · 010-5540-2038 · 경기도 용인시</p>
-        <span class="go">메일 보내기 →</span>
+      <a class="card" href="portfolio.html">
+        <div class="ico">📂</div>
+        <h3>Portfolio — 기여도 100% 소재 A/B 케이스</h3>
+        <p>직접 만든 영상·이미지 소재를 <b>문제·가설·성과</b>로 정리한 A/B 케이스.</p>
+        <span class="go">자세히 보기 →</span>
+      </a>
+      <a class="card" href="https://jiuk-ai-creative-studio.streamlit.app" target="_blank" rel="noopener">
+        <div class="ico">⚙️</div>
+        <h3>AI 소재 A/B 스튜디오 (Live Demo)</h3>
+        <p><b>소재 A/B 결과를 기록·분석</b>하는 직접 구축 대시보드(Streamlit 라이브). 고효율 소재 공통점·컷별 프롬프트 생성까지.</p>
+        <span class="go">툴 체험하기 →</span>
+      </a>
+      <a class="card" href="videos.html">
+        <div class="ico">▶</div>
+        <h3>AI 크리에이티브 갤러리 — 직접 만든 영상</h3>
+        <p><b>대본·프롬프트·AI 보이스·자막·후보정까지 직접</b> 만든 영상 광고. 7개월 제작분을 최신순으로.</p>
+        <span class="go">영상 보기 →</span>
       </a>
     </div>
   </div>
@@ -157,7 +162,7 @@
 
 <footer>
   <div class="wrap">
-    <div>© 2026 윤지욱 (JIUK.YOON) · 광고 세일즈 · Account Manager</div>
+    <div>© 2026 윤지욱 (JIUK.YOON) · Performance Creative Marketer</div>
     <div><a href="https://github.com/jiuk-bot" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
   </div>
 </footer>
