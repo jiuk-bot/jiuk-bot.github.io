@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · 임플란트 랜딩페이지 갤러리</title>
+<meta name="description" content="임플란트 퍼포먼스 캠페인을 위해 직접 기획·제작한 랜딩페이지 모음. 소구 전략(견적할인·추가금폭로·치과매칭·가격·양심치과)과 매체(구글·메타·틱톡)별로 직접 만든 LP를 실시간 미리보기로 담았습니다." />
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+  :root{ --nk:#EDEBFA; --nmute:#9E99BC; }
+  html,body{ background:#07070E !important; color:var(--nk); }
+  body::before{ content:""; position:fixed; inset:-12%; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.26), transparent 62%),
+      radial-gradient(34% 46% at 92% 20%, rgba(255,92,225,.18), transparent 62%),
+      radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.16), transparent 64%);
+    filter:blur(26px); }
+  nav, header, section, footer{ position:relative; z-index:1; }
+
+  .lp-hero{ max-width:1040px; margin:0 auto; padding:54px 24px 10px; font-family:'Pretendard',-apple-system,system-ui,sans-serif; }
+  .lp-hero .eyebrow{ font-size:12.5px; font-weight:800; letter-spacing:.14em; color:#C9A6FF; }
+  .lp-hero h1{ font-size:34px; font-weight:800; letter-spacing:-.04em; margin:12px 0 10px; color:var(--nk); }
+  .lp-hero h1 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .lp-hero p{ font-size:15px; line-height:1.7; color:var(--nmute); max-width:720px; }
+  .lp-hero .note{ margin-top:14px; font-size:12.5px; color:#8f8bb0; background:rgba(124,92,255,.08); border:1px solid rgba(124,92,255,.22); border-radius:10px; padding:10px 14px; display:inline-block; }
+
+  .lp-stats{ max-width:1040px; margin:26px auto 0; padding:0 24px; display:flex; flex-wrap:wrap; gap:10px; font-family:'Pretendard',sans-serif; }
+  .lp-stats .s{ background:rgba(18,18,30,.6); border:1px solid rgba(124,92,255,.18); border-radius:12px; padding:12px 18px; }
+  .lp-stats .s b{ color:#C9A6FF; font-weight:800; }
+  .lp-stats .s span{ display:block; font-size:12px; color:var(--nmute); margin-top:3px; }
+
+  .lpgrid{ max-width:1040px; margin:34px auto 60px; padding:0 24px; display:flex; flex-wrap:wrap; gap:22px; justify-content:center; }
+  .lpcard{ width:300px; background:rgba(18,18,30,.55); border:1px solid rgba(124,92,255,.16); border-radius:16px; overflow:hidden; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:transform .35s, box-shadow .35s, border-color .35s; font-family:'Pretendard',sans-serif; display:flex; flex-direction:column; }
+  .lpcard:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55); box-shadow:0 40px 80px -42px rgba(124,92,255,.5); }
+  .lpframe{ position:relative; width:300px; height:390px; overflow:hidden; background:#fff; border-bottom:1px solid rgba(124,92,255,.16); display:block; text-decoration:none; }
+  .lpframe iframe{ position:absolute; top:0; left:0; width:400px; height:520px; border:0; transform:scale(.75); transform-origin:top left; pointer-events:none; }
+  .lpframe .veil{ position:absolute; inset:0; background:linear-gradient(to bottom, transparent 62%, rgba(7,7,14,.0) 100%); }
+  .lpframe .open{ position:absolute; right:10px; bottom:10px; font-size:12px; font-weight:800; color:#fff; background:rgba(12,10,22,.72); border:1px solid rgba(255,255,255,.4); padding:7px 13px; border-radius:999px; opacity:0; transform:translateY(6px); transition:.25s; }
+  .lpcard:hover .lpframe .open{ opacity:1; transform:translateY(0); }
+  .lpmeta{ padding:15px 17px 17px; display:flex; flex-direction:column; gap:7px; flex:1; }
+  .lpbadges{ display:flex; gap:6px; flex-wrap:wrap; }
+  .chip{ font-size:10.5px; font-weight:800; letter-spacing:.01em; padding:3px 9px; border-radius:999px; }
+  .chip.sogu{ color:#C9A6FF; background:rgba(124,92,255,.15); border:1px solid rgba(124,92,255,.3); }
+  .chip.g{ color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.3); }
+  .chip.m{ color:#8fb4ff; background:rgba(92,130,255,.12); border:1px solid rgba(92,130,255,.3); }
+  .chip.t{ color:#ff8fd6; background:rgba(255,92,200,.12); border:1px solid rgba(255,92,200,.3); }
+  .chip.n{ color:#b7f6c2; background:rgba(92,220,140,.1); border:1px solid rgba(92,220,140,.28); }
+  .lpmeta h3{ font-size:15.5px; font-weight:800; color:var(--nk); letter-spacing:-.015em; margin:2px 0 0; }
+  .lpmeta .head{ font-size:12.5px; font-weight:700; color:#C9A6FF; }
+  .lpmeta .desc{ font-size:12.5px; line-height:1.55; color:var(--nmute); }
+  .lpmeta .go{ margin-top:auto; font-size:12.5px; font-weight:800; color:#C9A6FF; text-decoration:none; }
+  .lpmeta .go:hover{ text-decoration:underline; }
+
+  @media(max-width:680px){ .lp-hero h1{ font-size:27px; } }
+</style>
+</head>
+<body>
+
+<nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
+  <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
+    <a href="index.html" style="font-weight:800;font-size:17px;color:#EDEBFA;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Home</a><a href="portfolio.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="videos.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="landing.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">랜딩페이지</a><a href="resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a></div>
+  </div>
+</nav>
+
+<header class="lp-hero">
+  <div class="eyebrow">LANDING PAGE GALLERY</div>
+  <h1>임플란트 랜딩페이지 —<br><span class="hl">소구 전략별 직접 제작</span></h1>
+  <p>임플란트 퍼포먼스 캠페인을 운영하며, 광고 클릭 뒤의 전환을 끌어올리기 위해 <b style="color:#C9A6FF">랜딩페이지를 직접 기획·제작</b>했습니다. 같은 상품도 <b style="color:#C9A6FF">소구(견적할인·추가금폭로·치과매칭·가격·양심치과)</b>와 <b style="color:#C9A6FF">매체(구글·메타·틱톡)</b>에 따라 메시지·구조를 다르게 설계해 A/B로 검증했습니다. 아래는 실제 운영한 대표 LP들입니다.</p>
+  <div class="note">※ 실제 캠페인에 사용한 페이지입니다. 갤러리 미리보기는 상담 폼 전송을 비활성화했습니다. 카드를 누르면 전체 페이지가 새 탭으로 열립니다.</div>
+</header>
+
+<section class="lp-stats">
+  <div class="s"><b>10종+</b><span>소구·매체별 LP 직접 제작</span></div>
+  <div class="s"><b>구글 · 메타 · 틱톡</b><span>매체별 맥락 맞춤 설계</span></div>
+  <div class="s"><b>지역 맞춤</b><span>경기·충청·대구경북 등 권역별 변형</span></div>
+  <div class="s"><b>코드까지 직접</b><span>HTML/CSS·폼 연동 직접 구현</span></div>
+</section>
+
+<section class="lpgrid" id="grid"></section>
+
+<footer style="max-width:1040px;margin:0 auto;padding:30px 24px 60px;font-family:'Pretendard',sans-serif;border-top:1px solid rgba(124,92,255,.14);color:var(--nmute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+  <div>© 2026 윤지욱 (JIUK.YOON) · 임플란트 랜딩페이지 갤러리</div>
+  <div><a href="portfolio.html" style="color:#C9A6FF">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com" style="color:#C9A6FF">Email</a></div>
+</footer>
+
+<script>
+  const LPS = [
+    { f:'quote-discount.html', sogu:'견적 할인 계산형', ch:'구글', chc:'g', head:'"내 견적으로 얼마나 할인될까?"', desc:'할인 계산이라는 능동적 동기로 리드를 유도한 소구.' },
+    { f:'no-hidden-fee.html',  sogu:'추가금 폭로형',   ch:'구글', chc:'g', head:'"추가금 없는 확정 견적"',      desc:'임플란트 고객의 핵심 불안(추가금)을 정면으로 해소.' },
+    { f:'clinic-match.html',   sogu:'치과 매칭형',     ch:'구글', chc:'g', head:'"내 조건에 맞는 치과 매칭"',   desc:'단순 견적을 넘어 매칭 서비스 가치를 소구.' },
+    { f:'clinic-intro.html',   sogu:'견적+치과 소개형', ch:'구글·경기남부', chc:'g', head:'"견적 + 치과 확인하기"', desc:'지역 치과 소개를 결합한 신뢰 기반 전환 구조.' },
+    { f:'price-v5.html',       sogu:'가격 소구 · 리드폼 v5', ch:'구글서브', chc:'g', head:'"30초 간편 상담신청"', desc:'폼 단계를 최소화해 전환율을 끌어올린 최신 개선본.' },
+    { f:'meta.html',           sogu:'메타 피드 전용',   ch:'메타', chc:'m', head:'"국산 맞춤형 · 추가금 없이"', desc:'메타 피드 맥락에 맞춘 비주얼·메시지 설계.' },
+    { f:'tiktok.html',         sogu:'틱톡 숏폼 연계',   ch:'틱톡', chc:'t', head:'"지원금 적용 무료 확인"',     desc:'숏폼 영상 → LP로 이어지는 흐름에 맞춘 즉시 전환형.' },
+    { f:'honest-dentist.html', sogu:'양심치과 브랜드형', ch:'전국공통', chc:'n', head:'"내 주변 양심 치과"',     desc:'가격 경쟁 대신 신뢰·브랜딩으로 차별화한 변형.' },
+    { f:'one-screen.html',     sogu:'원스크린 즉시전환', ch:'구글·경기', chc:'g', head:'"추가금 없이 확정가"',    desc:'한 스크린 안에서 바로 전환시키는 압축형 구조.' },
+    { f:'quiz.html',           sogu:'퀴즈 인터랙티브',  ch:'참여형', chc:'n', head:'"내 진짜 임플란트 견적은?"', desc:'진단형 퀴즈 참여로 몰입을 높여 리드로 연결.' },
+  ];
+  const grid = document.getElementById('grid');
+  grid.innerHTML = LPS.map(lp => `
+    <article class="lpcard">
+      <a class="lpframe" href="lp/${lp.f}" target="_blank" rel="noopener" aria-label="${lp.sogu} 전체 페이지 열기">
+        <iframe src="lp/${lp.f}" loading="lazy" scrolling="no" tabindex="-1" title="${lp.sogu} 미리보기"></iframe>
+        <div class="veil"></div><span class="open">크게 보기 ↗</span>
+      </a>
+      <div class="lpmeta">
+        <div class="lpbadges"><span class="chip sogu">${lp.sogu}</span><span class="chip ${lp.chc}">${lp.ch}</span></div>
+        <div class="head">${lp.head}</div>
+        <div class="desc">${lp.desc}</div>
+        <a class="go" href="lp/${lp.f}" target="_blank" rel="noopener">전체 페이지 보기 →</a>
+      </div>
+    </article>`).join('');
+</script>
+
+</body>
+</html>

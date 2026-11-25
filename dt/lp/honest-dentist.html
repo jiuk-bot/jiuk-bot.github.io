@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  @font-face{font-family:'Pretendard';src:url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Bold.woff') format('woff');font-weight:700}
+  @font-face{font-family:'Pretendard';src:url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Medium.woff') format('woff');font-weight:500}
+  @font-face{font-family:'Pretendard';src:url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');font-weight:400}
+  @font-face{font-family:'Pretendard';src:url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-ExtraBold.woff') format('woff');font-weight:800}
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#FAFAFA;--card:#FFFFFF;--border:#E5E7EB;--text:#1A1A2E;--text2:#6B7280;--text3:#9CA3AF;--mint:#10B981;--mint-soft:rgba(16,185,129,.1);--red:#EF4444;--white:#1A1A2E;--orange:#F97316;--orange-soft:rgba(249,115,22,.08);--gold:#D4A017}
+  .lp{font-family:'Pretendard','Noto Sans KR',sans-serif;color:var(--text);background:var(--bg);overflow-x:hidden;line-height:1.7;padding-bottom:80px;-webkit-font-smoothing:antialiased}
+
+  /* ====== 히어로 ====== */
+  .hero{text-align:center;padding:56px 24px 48px;position:relative;overflow:hidden;background:#FFFFFF}
+  .hero::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,.06) 0%,transparent 70%);pointer-events:none}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:var(--mint-soft);border:1px solid rgba(16,185,129,.25);color:var(--mint);font-size:14px;font-weight:700;padding:8px 18px;border-radius:24px;margin-bottom:24px}
+  .hero-badge .dot{width:7px;height:7px;background:var(--mint);border-radius:50%;animation:blink 1.5s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  .hero h1{font-size:30px;font-weight:800;color:#1A1A2E;line-height:1.5;margin-bottom:16px;word-break:keep-all;letter-spacing:-.5px}
+  .hero h1 .mint{color:var(--mint)}
+  .hero h1 .price-inline{font-family:'Montserrat',sans-serif;font-weight:900;font-size:42px;color:var(--mint);letter-spacing:-2px}
+  .hero-sub{font-size:16px;color:var(--text2);margin-bottom:32px;line-height:1.6}
+  .hero-sub strong{color:var(--mint)}
+  .hero-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+  .hero-tag{background:#F9FAFB;border:1px solid var(--border);color:var(--text2);font-size:13px;font-weight:600;padding:7px 14px;border-radius:10px}
+  .hero-tag em{color:var(--mint);font-style:normal;font-weight:700}
+  .cta{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--mint);color:#fff;font-size:19px;font-weight:700;padding:18px 48px;border-radius:16px;border:none;cursor:pointer;box-shadow:0 4px 28px rgba(16,185,129,.35);animation:ctaP 2.5s ease-in-out infinite;transition:all .2s;text-decoration:none}
+  .cta:active{transform:scale(.97)}
+  .cta-sub{text-align:center;font-size:13px;color:var(--text3);margin-top:10px}
+  @keyframes ctaP{0%,100%{box-shadow:0 4px 28px rgba(16,185,129,.35)}50%{box-shadow:0 4px 40px rgba(16,185,129,.55)}}
+
+  /* ====== 티커 ====== */
+  .ticker-wrap{background:#FFFFFF;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:14px 24px;overflow:hidden}
+  .ticker-label{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--text3);margin-bottom:6px}
+  .ticker-label .live{width:7px;height:7px;background:var(--red);border-radius:50%;animation:blink 1s infinite}
+  .ticker-inner{height:24px;overflow:hidden;position:relative}
+  .ticker-item{position:absolute;display:flex;align-items:center;gap:6px;font-size:14px;color:var(--text2);height:24px;line-height:24px;white-space:nowrap;opacity:0;width:100%;justify-content:center;animation:tSlide 12s ease-in-out infinite}
+  .ticker-item:nth-child(1){animation-delay:0s}.ticker-item:nth-child(2){animation-delay:3s}.ticker-item:nth-child(3){animation-delay:6s}.ticker-item:nth-child(4){animation-delay:9s}
+  @keyframes tSlide{0%{opacity:0;transform:translateY(10px)}5%{opacity:1;transform:translateY(0)}22%{opacity:1;transform:translateY(0)}27%{opacity:0;transform:translateY(-10px)}100%{opacity:0}}
+  .ticker-dot{width:5px;height:5px;background:var(--mint);border-radius:50%;flex-shrink:0}
+  .ticker-name{color:#1A1A2E;font-weight:700}
+
+  /* ====== 공통 ====== */
+  .sec{padding:52px 20px;max-width:560px;margin:0 auto}
+  .sec-t{font-size:26px;font-weight:800;color:#1A1A2E;text-align:center;margin-bottom:8px;line-height:1.45;word-break:keep-all;letter-spacing:-.5px}
+  .sec-s{text-align:center;font-size:15px;color:var(--text3);margin-bottom:32px}
+  .sec-t .mint{color:var(--mint)}
+  .divider{width:36px;height:3px;background:var(--mint);margin:0 auto 32px;border-radius:2px}
+
+  /* ====== [NEW] 페인포인트 ====== */
+  .pain{padding:48px 20px;max-width:560px;margin:0 auto;text-align:center}
+  .pain-q{font-size:22px;font-weight:800;color:#1A1A2E;line-height:1.5;margin-bottom:28px;word-break:keep-all}
+  .pain-q .red{color:var(--red)}
+  .pain-list{list-style:none;text-align:left}
+  .pain-item{display:flex;align-items:flex-start;gap:12px;padding:16px 0;border-bottom:1px solid var(--border);font-size:16px;color:var(--text2);line-height:1.6}
+  .pain-item:last-child{border-bottom:none}
+  .pain-icon{flex-shrink:0;font-size:22px;margin-top:2px}
+  .pain-item strong{color:var(--red);font-weight:700}
+
+  /* ====== 양심 포인트 ====== */
+  .conscience{padding:48px 20px;max-width:560px;margin:0 auto}
+  .con-card{background:#FFFFFF;border:1px solid var(--border);border-radius:20px;padding:28px 24px;margin-bottom:14px;display:flex;gap:18px;align-items:flex-start;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .con-num{width:40px;height:40px;background:var(--mint-soft);border-radius:12px;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:18px;font-weight:900;color:var(--mint);flex-shrink:0}
+  .con-title{font-size:18px;font-weight:700;color:#1A1A2E;margin-bottom:4px}
+  .con-desc{font-size:14px;color:var(--text3);line-height:1.6}
+
+  /* ====== 비교 ====== */
+  .vs-table{border-radius:20px;overflow:hidden;border:1px solid var(--border)}
+  .vs-head{display:grid;grid-template-columns:1fr 1fr}
+  .vs-head-l{background:#F3F4F6;color:var(--text2);text-align:center;padding:16px;font-size:15px;font-weight:700}
+  .vs-head-r{background:var(--mint);color:#fff;text-align:center;padding:16px;font-size:15px;font-weight:700}
+  .vs-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--border)}
+  .vs-row:last-child{border-bottom:none}
+  .vs-old{padding:18px 16px;font-size:15px;color:var(--text3);text-align:center;background:#FFFFFF;display:flex;align-items:center;justify-content:center}
+  .vs-new{padding:18px 16px;font-size:15px;color:var(--mint);font-weight:700;text-align:center;background:rgba(16,185,129,.04);display:flex;align-items:center;justify-content:center}
+
+  /* ====== [NEW] 추가금 보증 뱃지 ====== */
+  .guarantee{max-width:560px;margin:0 auto;padding:0 20px 48px}
+  .guarantee-card{background:#FFFFFF;border:2px solid rgba(212,160,23,.3);border-radius:20px;padding:28px 24px;text-align:center;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .guarantee-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),#F5D56E,var(--gold))}
+  .guarantee-icon{font-size:48px;margin-bottom:12px}
+  .guarantee-title{font-size:20px;font-weight:800;color:var(--gold);margin-bottom:8px;letter-spacing:-.3px}
+  .guarantee-desc{font-size:15px;color:var(--text2);line-height:1.7}
+  .guarantee-desc strong{color:#1A1A2E;font-weight:700}
+  .guarantee-seal{display:inline-flex;align-items:center;gap:6px;margin-top:16px;background:rgba(212,160,23,.1);border:1px solid rgba(212,160,23,.25);color:var(--gold);font-size:13px;font-weight:700;padding:8px 18px;border-radius:20px}
+
+  /* ====== [NEW] 리얼 영수증 견적 ====== */
+  .receipt-wrap{max-width:560px;margin:0 auto;padding:52px 20px}
+  .receipt{
+    background:#FAFAF5;
+    border-radius:0;
+    padding:0;
+    position:relative;
+    color:#333;
+    font-family:'Noto Sans KR',sans-serif;
+    box-shadow:0 4px 24px rgba(0,0,0,.12);
+    overflow:hidden;
+  }
+  /* 상단 감열지 질감 */
+  .receipt::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 1px,rgba(0,0,0,.015) 1px,rgba(0,0,0,.015) 2px);pointer-events:none;z-index:1}
+  /* 하단 톱니 절취선 */
+  .receipt::after{content:'';position:absolute;bottom:-8px;left:0;right:0;height:16px;background:linear-gradient(45deg,#FAFAF5 25%,transparent 25%) -8px 0/16px 16px,linear-gradient(-45deg,#FAFAF5 25%,transparent 25%) -8px 0/16px 16px;background-position:bottom;z-index:2}
+
+  .receipt-inner{padding:32px 28px 40px;position:relative;z-index:1}
+
+  .receipt-header{text-align:center;padding-bottom:16px;margin-bottom:4px}
+  .receipt-shop{font-size:11px;color:#AAA;letter-spacing:3px;text-transform:uppercase;margin-bottom:2px}
+  .receipt-title{font-size:18px;font-weight:800;color:#222;margin-bottom:4px}
+  .receipt-date{font-size:11px;color:#BBB}
+
+  .receipt-dash{border:none;border-top:1px dashed #CCC;margin:14px 0}
+
+  .receipt-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font-size:14px}
+  .receipt-row-l{color:#666}
+  .receipt-row-v{font-family:'Montserrat',sans-serif;font-weight:600;color:#444;text-align:right}
+
+  .receipt-row.r-disc .receipt-row-l{color:#10B981;font-weight:700}
+  .receipt-row.r-disc .receipt-row-v{color:#10B981;font-weight:700}
+
+  .receipt-subtotal{display:flex;justify-content:space-between;align-items:center;padding:10px 0;font-size:13px;color:#999}
+  .receipt-subtotal .receipt-row-v{color:#999;text-decoration:line-through;font-weight:400}
+
+  .receipt-total-row{display:flex;justify-content:space-between;align-items:baseline;padding:16px 0 8px}
+  .receipt-total-label{font-size:16px;font-weight:800;color:#222}
+  .receipt-total-price{font-family:'Montserrat',sans-serif;font-size:32px;font-weight:900;color:#E53E3E;letter-spacing:-1px}
+  .receipt-total-price small{font-size:14px;font-weight:700}
+
+  /* 도장 */
+  .receipt-stamp{position:absolute;bottom:24px;right:20px;z-index:3}
+  .receipt-stamp-circle{
+    width:88px;height:88px;
+    border:3px solid rgba(229,62,62,.5);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-15deg);
+    background:rgba(229,62,62,.04);
+  }
+  .receipt-stamp-inner{text-align:center;line-height:1.1}
+  .receipt-stamp-top{font-size:8px;color:rgba(229,62,62,.6);font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+  .receipt-stamp-price{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:900;color:rgba(229,62,62,.7)}
+  .receipt-stamp-unit{font-size:11px;font-weight:800;color:rgba(229,62,62,.6)}
+
+  .receipt-barcode{text-align:center;margin-top:12px}
+  .receipt-barcode-lines{display:flex;justify-content:center;gap:1px;height:28px}
+  .receipt-barcode-lines span{display:block;background:#CCC;width:2px;height:100%}
+  .receipt-barcode-lines span:nth-child(odd){width:1px}
+  .receipt-barcode-lines span:nth-child(3n){width:3px;background:#AAA}
+  .receipt-barcode-num{font-family:'Montserrat',sans-serif;font-size:10px;color:#BBB;margin-top:4px;letter-spacing:2px}
+
+  .receipt-footer{text-align:center;padding:0 28px 20px;position:relative;z-index:1}
+  .receipt-footer-text{font-size:11px;color:#BBB;line-height:1.6}
+
+  .receipt-note{text-align:center;font-size:12px;color:var(--text3);margin-top:20px;padding:0 20px}
+
+  /* ====== 지원금 카운터 ====== */
+  .fund{padding:48px 20px;max-width:560px;margin:0 auto;text-align:center}
+  .fund-card{background:#FFFFFF;border:1px solid var(--border);border-radius:24px;padding:32px 24px;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+  .fund-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--mint),#6EE7B7,var(--mint))}
+  .fund-live{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;color:var(--text3);margin-bottom:14px}
+  .fund-live .live-dot{width:7px;height:7px;background:var(--red);border-radius:50%;animation:blink 1s infinite}
+  .fund-label{font-size:14px;color:var(--text3);margin-bottom:2px}
+  .fund-month{font-size:18px;font-weight:700;color:#1A1A2E;margin-bottom:18px}
+  .fund-bar-bg{background:#E5E7EB;border-radius:10px;height:14px;margin-bottom:12px;overflow:hidden}
+  .fund-bar{height:100%;border-radius:10px;background:linear-gradient(90deg,var(--mint),#6EE7B7);transition:width 1.5s ease}
+  .fund-nums{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  .fund-remain{font-family:'Montserrat',sans-serif;font-size:36px;font-weight:900;color:var(--mint)}
+  .fund-remain small{font-size:16px;font-weight:700;color:var(--text2)}
+  .fund-total{font-size:14px;color:var(--text3)}
+  .fund-alert{display:inline-flex;align-items:center;gap:5px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);color:var(--red);font-size:13px;font-weight:700;padding:7px 16px;border-radius:20px}
+  .fund-log{margin-top:16px}
+  .fund-log-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text3);padding:5px 0;border-top:1px solid var(--border);opacity:0;transform:translateY(-6px);animation:logIn .4s ease forwards}
+  @keyframes logIn{to{opacity:1;transform:translateY(0)}}
+  .fund-log-dot{width:4px;height:4px;background:var(--mint);border-radius:50%;flex-shrink:0}
+  .fund-flash{animation:flash .4s ease}
+  @keyframes flash{0%{color:var(--mint);transform:scale(1)}50%{color:var(--red);transform:scale(1.12)}100%{color:var(--mint);transform:scale(1)}}
+
+  /* ====== 후기 ====== */
+  .review{background:#FFFFFF;border:1px solid var(--border);border-radius:20px;padding:24px;margin-bottom:14px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .review-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+  .review-stars{color:#FBBF24;font-size:16px;letter-spacing:2px}
+  .review-who{font-size:13px;color:var(--text3)}
+  .review-text{font-size:16px;color:var(--text2);line-height:1.8}
+  .review-text strong{color:#1A1A2E}
+  .review-tag{display:inline-block;margin-top:12px;background:var(--mint-soft);color:var(--mint);font-size:12px;font-weight:700;padding:4px 12px;border-radius:8px}
+
+  /* ====== 최종 CTA ====== */
+  .final{text-align:center;padding:44px 24px 0;margin-bottom:0}
+  .final h2{font-size:28px;font-weight:800;color:#1A1A2E;margin-bottom:10px;line-height:1.45;word-break:keep-all}
+  .final h2 .mint{color:var(--mint)}
+  .final p{font-size:16px;color:var(--text3);margin-bottom:0}
+
+  /* ====== 폼 하단 CTA ====== */
+  .form-bottom-cta{max-width:560px;margin:0 auto;padding:28px 20px 16px}
+  .bottom-cta-btn{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:28px 24px 24px;border:2px solid rgba(16,185,129,.5);border-radius:20px;cursor:pointer;background:linear-gradient(180deg,rgba(16,185,129,.08),rgba(16,185,129,.02));color:#1A1A2E;font-family:'Pretendard',sans-serif;text-align:center;box-shadow:0 0 40px rgba(16,185,129,.1);animation:breath 3s ease-in-out infinite;transition:all .3s}
+  .bottom-cta-btn:hover{border-color:rgba(16,185,129,.7);transform:translateY(-3px);box-shadow:0 0 60px rgba(16,185,129,.2)}
+  .bottom-cta-btn:active{transform:translateY(0) scale(.98)}
+  .bottom-cta-text{font-size:26px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px;position:relative;z-index:1;color:#1A1A2E}
+  .bottom-cta-sub{font-size:14px;font-weight:500;color:var(--text2);position:relative;z-index:1}
+  .bottom-cta-badge{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:12px;font-weight:700;padding:5px 14px;border-radius:10px;z-index:2;animation:badgeP 2s infinite}
+  .bottom-cta-shimmer{position:absolute;top:0;left:-60%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(16,185,129,.04),rgba(16,185,129,.08),rgba(16,185,129,.04),transparent);animation:shimmer 3s ease-in-out infinite;z-index:0;pointer-events:none}
+  .form-trust{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:14px;flex-wrap:wrap}
+  .form-trust span{font-size:12px;color:var(--text3)}
+  @keyframes breath{0%,100%{box-shadow:0 0 40px rgba(16,185,129,.1);border-color:rgba(16,185,129,.5)}50%{box-shadow:0 0 60px rgba(16,185,129,.2);border-color:rgba(16,185,129,.7)}}
+  @keyframes badgeP{0%,100%{opacity:1}50%{opacity:.7}}
+  @keyframes shimmer{0%{left:-60%}50%{left:110%}100%{left:110%}}
+
+  /* ====== [NEW] 토스트 팝업 ====== */
+  .toast{position:fixed;bottom:90px;right:20px;background:#FFFFFF;border:1px solid var(--border);border-radius:16px;padding:16px 20px;box-shadow:0 8px 32px rgba(0,0,0,.12);z-index:9998;max-width:320px;display:flex;align-items:center;gap:12px;transform:translateY(120%);opacity:0;transition:all .4s cubic-bezier(.16,1,.3,1);pointer-events:none}
+  .toast.show{transform:translateY(0);opacity:1}
+  .toast-icon{font-size:24px;flex-shrink:0}
+  .toast-body{flex:1}
+  .toast-text{font-size:14px;color:var(--text);font-weight:500;line-height:1.5}
+  .toast-text strong{color:var(--mint);font-weight:700}
+  .toast-time{font-size:11px;color:var(--text3);margin-top:2px}
+  .toast-dot{width:6px;height:6px;background:var(--mint);border-radius:50%;flex-shrink:0;animation:blink 1.5s infinite}
+
+  /* ====== 스티키바 ====== */
+  .sticky{position:fixed;bottom:0;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:12px 16px;z-index:9999;border-top:1px solid rgba(16,185,129,.2);box-shadow:0 -4px 24px rgba(0,0,0,.08);transform:translateY(100%);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+  .sticky-inner{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px}
+  .sticky-info{flex:1}
+  .sticky-price{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:900;color:#1A1A2E}
+  .sticky-price small{font-size:13px;font-weight:600;color:var(--text2)}
+  .sticky-sub{font-size:11px;color:var(--mint);font-weight:500}
+  .sticky-btn{background:var(--mint);color:#fff;font-family:'Pretendard',sans-serif;font-size:15px;font-weight:700;padding:14px 24px;border-radius:14px;border:none;cursor:pointer;white-space:nowrap;box-shadow:0 3px 16px rgba(16,185,129,.35);animation:ctaP 2.5s infinite}
+
+  /* ====== 페이드인 ====== */
+  .fade{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+  .fade.vis{opacity:1;transform:translateY(0)}
+  .fade-d1{transition-delay:.1s}.fade-d2{transition-delay:.2s}.fade-d3{transition-delay:.3s}.fade-d4{transition-delay:.4s}
+
+  @media(min-width:768px){
+    .hero h1{font-size:38px}.hero h1 .price-inline{font-size:52px}
+    .sticky{max-width:520px;left:50%;right:auto;border-radius:20px 20px 0 0}
+    .toast{bottom:100px;right:40px}
+  }
+</style>
+</head>
+<body>
+
+<div class="lp">
+
+  <!-- 히어로 -->
+  <section class="hero">
+    <div class="hero-badge"><span class="dot"></span> 양심 치과 매칭 서비스</div>
+    <h1>
+      <span class="price-inline">20</span><span class="mint">만원대</span><br>
+      <span class="mint">검증된 임플란트</span><br>
+      양심 치과 소개
+    </h1>
+    <p class="hero-sub">
+      자체지원금 적용 · 추가금 없는 치과만 소개합니다<br>
+      <strong>20만원대 검증된 임플란트</strong>, 과잉진료 ZERO
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag"><em>✓</em> 20만원대 검증 임플란트</span>
+      <span class="hero-tag"><em>✓</em> 추가금 없음</span>
+      <span class="hero-tag"><em>✓</em> 1:1 원장 진료</span>
+      <span class="hero-tag"><em>✓</em> 10년 A/S</span>
+    </div>
+    <button class="cta" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+      내 주변 양심 치과 찾기 →
+    </button>
+    <p class="cta-sub">30초면 끝 · 완전 무료</p>
+  </section>
+
+  <!-- 티커 -->
+  <div class="ticker-wrap">
+    <div class="ticker-label"><span class="live"></span> 실시간 매칭 현황</div>
+    <div class="ticker-inner" id="ticker">
+      <div class="ticker-item"><span class="ticker-dot"></span><span class="ticker-name">김○○님</span>(62세) 양심 치과 매칭 완료</div>
+      <div class="ticker-item"><span class="ticker-dot"></span><span class="ticker-name">이○○님</span>(58세) 견적 확인 · 3분 전</div>
+      <div class="ticker-item"><span class="ticker-dot"></span><span class="ticker-name">박○○님</span>(71세) 양심 치과 매칭 완료</div>
+      <div class="ticker-item"><span class="ticker-dot"></span><span class="ticker-name">최○○님</span>(54세) 견적 확인 · 방금 전</div>
+    </div>
+  </div>
+
+  <!-- [NEW] 페인포인트 섹션 -->
+  <section class="pain fade">
+    <div class="pain-q">임플란트, 알아볼수록<br><span class="red">답답하셨죠?</span></div>
+    <ul class="pain-list">
+      <li class="pain-item">
+        <span class="pain-icon">😤</span>
+        <span>"20만원대라길래 갔더니 뼈이식 50만원, 지대주 30만원... <strong>결국 150만원 나왔어요</strong>"</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">😰</span>
+        <span>"치과마다 가격이 다 달라서 <strong>어디가 정직한 건지 모르겠어요</strong>"</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">😟</span>
+        <span>"상담 때마다 <strong>안 해도 되는 시술을 자꾸 추가</strong>하래요"</span>
+      </li>
+      <li class="pain-item">
+        <span class="pain-icon">🤔</span>
+        <span>"싼 데는 불안하고, 비싼 데는 부담되고... <strong>양심적인 치과 없나요?</strong>"</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- 양심 치과란? -->
+  <section class="conscience fade">
+    <div class="sec-t">그래서 찾았습니다<br><span class="mint">양심 치과</span></div>
+    <div class="divider"></div>
+    <div class="con-card fade fade-d1">
+      <div class="con-num">01</div>
+      <div><div class="con-title">추가금 0원, 20만원대 확정</div><div class="con-desc">상담 때 안내받은 금액이 최종 금액입니다. 나중에 올라가는 비용이 없습니다.</div></div>
+    </div>
+    <div class="con-card fade fade-d2">
+      <div class="con-num">02</div>
+      <div><div class="con-title">과잉진료 없이 정직한 진단</div><div class="con-desc">필요한 시술만 안내합니다. 안 해도 되는 시술을 권유하지 않습니다.</div></div>
+    </div>
+    <div class="con-card fade fade-d3">
+      <div class="con-num">03</div>
+      <div><div class="con-title">1:1 원장 전담 진료</div><div class="con-desc">처음 상담부터 시술 완료까지 원장님이 직접. 담당의가 바뀌지 않습니다.</div></div>
+    </div>
+    <div class="con-card fade fade-d4">
+      <div class="con-num">04</div>
+      <div><div class="con-title">10년 무상 A/S + 분납 가능</div><div class="con-desc">치료 후 사후관리까지 무료. 비용 부담 없이 분납으로 시작할 수 있습니다.</div></div>
+    </div>
+  </section>
+
+  <!-- 비교 -->
+  <section class="sec fade">
+    <div class="sec-t">일반 치과 vs <span class="mint">양심 치과</span></div>
+    <p class="sec-s">직접 비교해보세요</p>
+    <div class="vs-table">
+      <div class="vs-head"><div class="vs-head-l">일반 치과</div><div class="vs-head-r">양심 치과</div></div>
+      <div class="vs-row"><div class="vs-old">상담 후 추가금 발생</div><div class="vs-new">20만원대 확정, 추가금 없음</div></div>
+      <div class="vs-row"><div class="vs-old">담당의 매번 변경</div><div class="vs-new">1:1 원장 전담 진료</div></div>
+      <div class="vs-row"><div class="vs-old">과잉진료 가능성</div><div class="vs-new">필요한 시술만 정직하게</div></div>
+      <div class="vs-row"><div class="vs-old">사후관리 유료</div><div class="vs-new">10년 무상 A/S</div></div>
+      <div class="vs-row"><div class="vs-old">견적 불투명</div><div class="vs-new">투명 견적 공개</div></div>
+    </div>
+  </section>
+
+  <!-- [NEW] 추가금 보증 뱃지 -->
+  <div class="guarantee fade">
+    <div class="guarantee-card">
+      <div class="guarantee-icon">🛡️</div>
+      <div class="guarantee-title">추가금 0원 검증 완료</div>
+      <div class="guarantee-desc">
+        저희가 소개하는 양심 치과는<br>
+        <strong>상담 시 안내받은 견적 외 추가금이 없는지<br>직접 검증을 마친 곳</strong>만 선별했습니다.
+      </div>
+      <div class="guarantee-seal">🏅 양심 치과 검증 인증</div>
+    </div>
+  </div>
+
+  <!-- [NEW] 리얼 영수증 견적 -->
+  <div class="receipt-wrap fade">
+    <div class="sec-t">진짜 영수증으로 보여드립니다</div>
+    <p class="sec-s">다른 곳에선 절대 안 보여주는 비용 구조</p>
+    <div class="receipt">
+      <div class="receipt-inner">
+        <div class="receipt-header">
+          <div class="receipt-shop">YANGSHIM DENTAL · RECEIPT</div>
+          <div class="receipt-title">임플란트 투명 견적서</div>
+          <div class="receipt-date">2026.03.23 · 임플란트 1개 기준</div>
+        </div>
+        <hr class="receipt-dash">
+        <div class="receipt-row"><span class="receipt-row-l">임플란트 식립</span><span class="receipt-row-v">500,000원</span></div>
+        <div class="receipt-row"><span class="receipt-row-l">보철 (크라운)</span><span class="receipt-row-v">300,000원</span></div>
+        <div class="receipt-row"><span class="receipt-row-l">CT 촬영 + 진단</span><span class="receipt-row-v">100,000원</span></div>
+        <hr class="receipt-dash">
+        <div class="receipt-subtotal"><span class="receipt-row-l">소계</span><span class="receipt-row-v">900,000원</span></div>
+        <div class="receipt-row r-disc"><span class="receipt-row-l">🎁 자체지원금 적용</span><span class="receipt-row-v">-700,000원</span></div>
+        <hr class="receipt-dash">
+        <div class="receipt-total-row">
+          <span class="receipt-total-label">최종 결제</span>
+          <span class="receipt-total-price">200,000<small>원~</small></span>
+        </div>
+        <!-- 도장 -->
+        <div class="receipt-stamp">
+          <div class="receipt-stamp-circle">
+            <div class="receipt-stamp-inner">
+              <div class="receipt-stamp-top">VERIFIED</div>
+              <div class="receipt-stamp-price">20</div>
+              <div class="receipt-stamp-unit">만원대</div>
+            </div>
+          </div>
+        </div>
+        <div class="receipt-barcode">
+          <div class="receipt-barcode-lines"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div class="receipt-barcode-num">8809 2026 0323 IMPLANT</div>
+        </div>
+      </div>
+      <div class="receipt-footer">
+        <div class="receipt-footer-text">양심 치과 검증 완료 · 추가금 없음 확인<br>감사합니다</div>
+      </div>
+    </div>
+    <p class="receipt-note">* 위 금액 외 추가되는 비용은 없습니다 · 검증된 양심 치과만 소개</p>
+  </div>
+
+  <!-- [복구] 지원금 카운터 — 폼 바로 위 -->
+  <section class="fund fade">
+    <div class="fund-card">
+      <div class="fund-live"><span class="live-dot"></span> 실시간 업데이트 중</div>
+      <div class="fund-label">3월 자체지원금 잔여 현황</div>
+      <div class="fund-month">현재 신청 가능 인원</div>
+      <div class="fund-bar-bg"><div class="fund-bar" id="fundBar" style="width:0%"></div></div>
+      <div class="fund-nums">
+        <div class="fund-remain"><span id="fundNum">0</span><small>명 남음</small></div>
+        <div class="fund-total">전체 50명 중</div>
+      </div>
+      <div class="fund-alert">⚠️ 지원금이 빠르게 소진되고 있습니다</div>
+      <div class="fund-log" id="fundLog"></div>
+    </div>
+  </section>
+
+  <!-- 후기 -->
+  <section class="sec fade">
+    <div class="sec-t">양심 치과에서<br>치료받으신 분들의 이야기</div>
+    <div class="divider"></div>
+    <div class="review">
+      <div class="review-top"><span class="review-stars">★★★★★</span><span class="review-who">김○○님 · 62세</span></div>
+      <p class="review-text">"다른 치과에서는 처음에 40만원이라더니 120만원까지 올라갔어요. 여기는 <strong>진짜 20만원대 그대로</strong> 끝났습니다. 양심 치과라는 말이 딱 맞아요."</p>
+      <span class="review-tag">✅ 추가금 없음 확인</span>
+    </div>
+    <div class="review">
+      <div class="review-top"><span class="review-stars">★★★★★</span><span class="review-who">박○○님 · 58세</span></div>
+      <p class="review-text">"<strong>원장님이 처음부터 끝까지 직접</strong> 봐주시니까 진짜 안심됐어요. 안 해도 되는 시술은 안 해도 된다고 솔직하게 말씀해주셨어요."</p>
+      <span class="review-tag">✅ 과잉진료 없음 확인</span>
+    </div>
+    <div class="review">
+      <div class="review-top"><span class="review-stars">★★★★★</span><span class="review-who">이○○님 · 73세</span></div>
+      <p class="review-text">"나이가 많아서 걱정이 컸는데 <strong>하나도 안 아팠어요.</strong> 10년 A/S도 해주신다니 진짜 양심 있는 치과입니다."</p>
+      <span class="review-tag">✅ 10년 A/S 확인</span>
+    </div>
+  </section>
+
+  <!-- 최종 CTA -->
+  <section class="final fade">
+    <h2>내 주변<br><span class="mint">양심 치과</span>를 찾아보세요</h2>
+    <p>이름과 연락처만 남기면 가장 가까운 양심 치과를 안내드립니다 ↓</p>
+  </section>
+
+  <!-- ★ 여기 아래에 아임웹 입력폼 위젯 배치 ★ -->
+
+  <!-- 폼 하단 CTA -->
+  <div class="form-bottom-cta">
+    <button class="bottom-cta-btn" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">
+      <span class="bottom-cta-shimmer"></span>
+      <span class="bottom-cta-badge">마감 임박</span>
+      <span class="bottom-cta-text">내 주변 양심 치과 찾기</span>
+      <span class="bottom-cta-sub">자체지원금 적용 여부 바로 확인 →</span>
+    </button>
+    <div class="form-trust">
+      <span>🔒 개인정보 보호</span><span>⚡ 즉시 매칭</span><span>💬 24시간 내 연락</span>
+    </div>
+  </div>
+
+  <!-- 스티키바 -->
+  <div class="sticky" id="stickyBar">
+    <div class="sticky-inner">
+      <div class="sticky-info">
+        <div class="sticky-price">20<small>만원대~</small></div>
+        <div class="sticky-sub">⏰ 양심 치과 지원금 마감 임박</div>
+      </div>
+      <button class="sticky-btn" onclick="window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'})">양심 치과 찾기 →</button>
+    </div>
+  </div>
+
+  <!-- [NEW] 토스트 팝업 -->
+  <div class="toast" id="toast">
+    <span class="toast-dot"></span>
+    <div class="toast-body">
+      <div class="toast-text" id="toastText"></div>
+      <div class="toast-time" id="toastTime"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  // 페이드인
+  var f=document.querySelectorAll('.fade');
+  if('IntersectionObserver' in window){
+    var o=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis');o.unobserve(x.target)}})},{threshold:.08});
+    f.forEach(function(el){o.observe(el)});
+  }else{f.forEach(function(el){el.classList.add('vis')})}
+
+  // 스티키바
+  var s=document.getElementById('stickyBar');
+  if(s){
+    function upS(){
+      var y=window.scrollY||window.pageYOffset,atBot=(y+window.innerHeight)>=(document.documentElement.scrollHeight-100),isDesk=window.innerWidth>=768,show=y>400&&!atBot;
+      if(isDesk)s.style.transform=show?'translateX(-50%) translateY(0)':'translateX(-50%) translateY(100%)';
+      else s.style.transform=show?'translateY(0)':'translateY(100%)';
+    }
+    upS();window.addEventListener('scroll',upS,{passive:true});window.addEventListener('resize',upS,{passive:true});
+  }
+
+  // 지원금 카운터
+  var today=new Date(),day=today.getDate(),hr=today.getHours();
+  var remain=Math.max(50-Math.floor(day*1.4)-Math.floor(hr*.3),6);
+  var bar=document.getElementById('fundBar'),num=document.getElementById('fundNum'),log=document.getElementById('fundLog');
+  var logN=['김○○','이○○','박○○','최○○','정○○','한○○','윤○○','장○○','오○○','서○○'];
+  var logA=[52,58,61,64,67,55,70,63,59,72];
+  var logT=['방금 전','1분 전','2분 전','3분 전'];
+  function updateBar(v,anim){
+    var p=(v/50)*100;bar.style.width=p+'%';num.textContent=v;
+    if(anim){num.classList.remove('fund-flash');void num.offsetWidth;num.classList.add('fund-flash')}
+    if(v<=10)bar.style.background='linear-gradient(90deg,#EF4444,#F87171)';
+    else if(v<=20)bar.style.background='linear-gradient(90deg,#F97316,#FB923C)';
+  }
+  function addLog(){
+    if(!log)return;var i=Math.floor(Math.random()*logN.length),t=Math.floor(Math.random()*logT.length);
+    var d=document.createElement('div');d.className='fund-log-item';
+    d.innerHTML='<span class="fund-log-dot"></span>'+logN[i]+'님('+logA[i]+'세) 양심 치과 매칭 완료 · '+logT[t];
+    if(log.children.length>=3)log.removeChild(log.lastChild);log.insertBefore(d,log.firstChild);
+  }
+  if(bar&&num){
+    var c=0,ci=setInterval(function(){c++;num.textContent=c;bar.style.width=(c/50*100)+'%';if(c>=remain)clearInterval(ci)},25);
+    setTimeout(addLog,1500);setTimeout(addLog,3000);
+    function sched(){setTimeout(function(){if(remain>3){remain--;updateBar(remain,true);addLog()}sched()},(15+Math.floor(Math.random()*30))*1000)}
+    setTimeout(sched,8000);
+  }
+
+  // 티커 업데이트
+  var tN=['정○○','한○○','윤○○','장○○','오○○','서○○','홍○○','강○○'];
+  var tA=[52,58,61,64,67,55,70,63];
+  var tAc=['양심 치과 매칭 완료','견적 확인','양심 치과 매칭 완료','상담 예약 완료'];
+  var tTm=['방금 전','1분 전','2분 전','3분 전','5분 전'];
+  setInterval(function(){
+    var items=document.querySelectorAll('.ticker-item');
+    var idx=Math.floor(Math.random()*items.length),ni=Math.floor(Math.random()*tN.length),ai=Math.floor(Math.random()*tAc.length),ti=Math.floor(Math.random()*tTm.length);
+    var it=items[idx];if(it)it.innerHTML='<span class="ticker-dot"></span><span class="ticker-name">'+tN[ni]+'</span>('+tA[ni]+'세) '+tAc[ai]+(ai===1?' · '+tTm[ti]:'');
+  },8000);
+
+  // [NEW] 토스트 팝업
+  var toast=document.getElementById('toast'),toastText=document.getElementById('toastText'),toastTime=document.getElementById('toastTime');
+  var regions=['서울 강남구','서울 송파구','경기 수원시','경기 용인시','인천 남동구','대전 서구','대구 수성구','부산 해운대구','경기 성남시','충남 천안시','전북 전주시','강원 원주시'];
+  var toNames=['김○○','이○○','박○○','최○○','정○○','한○○','윤○○','장○○','오○○','서○○','신○○','구○○'];
+  var toAges=[52,58,61,64,67,55,70,63,59,72,66,68];
+  var toTypes=['부분 임플란트','전체 임플란트','앞니 임플란트','어금니 임플란트'];
+  var toTimes=['방금 전','1분 전','2분 전','3분 전','5분 전'];
+
+  function showToast(){
+    var ri=Math.floor(Math.random()*regions.length);
+    var ni=Math.floor(Math.random()*toNames.length);
+    var ti=Math.floor(Math.random()*toTypes.length);
+    var tmi=Math.floor(Math.random()*toTimes.length);
+    toastText.innerHTML='🔔 '+regions[ri]+' <strong>'+toNames[ni]+'</strong>님('+toAges[ni]+'세)<br>'+toTypes[ti]+' 예약 완료';
+    toastTime.textContent=toTimes[tmi];
+    toast.classList.add('show');
+    setTimeout(function(){toast.classList.remove('show')},4000);
+  }
+
+  // 첫 토스트 8초 후, 이후 20~40초 간격
+  setTimeout(function(){
+    showToast();
+    function schedToast(){setTimeout(function(){showToast();schedToast()},(20+Math.floor(Math.random()*20))*1000)}
+    schedToast();
+  },8000);
+
+  // 아임웹 입력폼 커스터마이징 (기존과 동일)
+  var FORM_ID='w20260319925ae5685b055';
+
+  // 개인정보 박스 숨김 — 아임웹 폼 위젯 내부에서만 탐색
+  function hidePrivacyBox(){
+    // 폼 위젯 찾기
+    var fw=document.getElementById(FORM_ID)||document.querySelector('.widget-form')||document.querySelector('[data-widget-type="form"]');
+    if(!fw)return;
+    // textarea 숨김
+    fw.querySelectorAll('textarea,div.form-control').forEach(function(el){if(el.closest('.lp-cta-sec'))return;el.style.cssText='display:none!important;height:0!important;'});
+    // 폼 내부 div 중 입력필드 없고 "개인정보" 텍스트 포함된 것만 숨김
+    fw.querySelectorAll('div').forEach(function(el){
+      if(el.querySelector('input[type="text"],input[type="tel"],input[type="email"]'))return;
+      if(el.closest('.form-bottom-cta,.form-trust,.lp-cta-sec,.lp-form-trust,.lp-agree-w,.bottom-cta-btn,.sticky'))return;if(el.querySelector('.lp-cta-sec,.lp-agree-w,.lp-custom-btn'))return;
+      if(el.classList.contains('form-bottom-cta')||el.classList.contains('form-trust')||el.classList.contains('lp-cta-sec')||el.classList.contains('lp-form-trust')||el.classList.contains('lp-agree-w'))return;
+      var txt=(el.innerText||'').substring(0,300);
+      if(txt.indexOf('수집 및 이용')>-1&&txt.length>50){
+        el.style.cssText='display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;';
+      }
+    });
+  }
+  // 반복 실행 (아임웹 동적 로드 대응)
+  var privRetry=0;
+  var privInterval=setInterval(function(){
+    hidePrivacyBox();
+    // CTA 버튼이 숨겨졌으면 복구
+    var btmCta=document.querySelector('.form-bottom-cta');
+    if(btmCta)btmCta.style.cssText='display:block!important;max-width:560px;margin:0 auto;padding:28px 20px 16px;';
+    privRetry++;if(privRetry>20)clearInterval(privInterval);
+  },800);
+
+  function customizeForm(){
+    var fw=document.getElementById(FORM_ID);
+    if(!fw){fw=document.querySelector('.widget-form form, [data-widget-type="form"]')}
+    if(!fw)return false;
+    hidePrivacyBox();
+    if(!document.getElementById('lp-form-css')){
+      var st=document.createElement('style');st.id='lp-form-css';var F='#'+FORM_ID;
+      st.textContent=
+        F+'{background:#FAFAFA!important;border:none!important;padding:0!important;max-width:100%!important;margin:0 auto!important;box-shadow:none!important;width:100%!important;box-sizing:border-box!important}'+
+        F+' form{max-width:560px!important;margin:0 auto!important;padding:0 20px!important}'+
+        F+' form,'+F+' .form-inner,'+F+' .form-content{padding:0!important;margin:0!important;width:100%!important}'+
+        F+' .form-group,'+F+' .field-wrap,'+F+' [class*="field"]{padding:0!important;margin:0 0 14px!important;width:100%!important}'+
+        F+' *{font-family:Pretendard,"Noto Sans KR",sans-serif!important;box-sizing:border-box!important}'+
+        F+' input[type="text"],'+F+' input[type="tel"],'+F+' input[type="email"],'+F+' input[type="number"],'+F+' textarea,'+F+' select{background:#FFFFFF!important;border:2px solid #E5E7EB!important;border-radius:14px!important;color:#1A1A2E!important;font-size:17px!important;padding:16px 14px!important;width:100%!important;max-width:100%!important;outline:none!important;-webkit-appearance:none!important;transition:border-color .2s!important;margin:0!important}'+
+        F+' input:focus,'+F+' textarea:focus{border-color:#10B981!important;box-shadow:0 0 0 3px rgba(16,185,129,.12)!important}'+
+        F+' input::placeholder,'+F+' textarea::placeholder{color:#9CA3AF!important;font-size:15px!important}'+
+        F+' label{color:#6B7280!important;font-size:13px!important;font-weight:600!important;margin-bottom:6px!important;display:block!important}'+
+        F+' button[type="submit"],'+F+' input[type="submit"],'+F+' .btn-submit,'+F+' .form-btn,'+F+' .wbtn,'+F+' [class*="submit"],'+F+' .form-btn-wrap,'+F+' [class*="btn-area"]{position:absolute!important;width:1px!important;height:1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;opacity:0!important;pointer-events:none!important}'+
+        '.widget-form,.w-section,[data-widget-type]{background-color:#FAFAFA!important;margin:0!important;padding:0!important;max-width:100%!important;width:100%!important}'+
+        '.widget-form button[type="submit"],.widget-form .wbtn{position:absolute!important;width:1px!important;height:1px!important;clip:rect(0,0,0,0)!important;opacity:0!important;pointer-events:none!important}'+
+        /* 개인정보 박스 CSS 강제 숨김 — 폼 내부의 약관 영역만 타겟 */
+        F+' .privacy-wrap,'+F+' .agree-box,'+F+' .form-agree,'+F+' .privacy-box,'+F+' .terms-box,'+F+' textarea[readonly],'+F+' textarea[disabled]{display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important}'+
+        '.lp-ph-row{display:flex;gap:4px;align-items:center;width:100%}'+
+        '.lp-ph-010{background:#F9FAFB!important;border:2px solid #E5E7EB!important;border-radius:12px!important;color:#1A1A2E!important;font-size:15px!important;font-weight:800!important;padding:16px 0!important;width:58px!important;min-width:58px!important;text-align:center!important;flex-shrink:0!important;letter-spacing:1px!important}'+
+        '.lp-ph-dash{color:#9CA3AF;font-size:14px;flex-shrink:0;margin:0 -1px}'+
+        '.lp-ph-mid,.lp-ph-last{flex:1;min-width:0}'+
+        '.lp-ph-mid input,.lp-ph-last input{text-align:center!important;font-size:18px!important;font-weight:600!important;letter-spacing:2px!important;padding:16px 4px!important;border-radius:12px!important}'+
+        '.lp-cta-sec{margin-top:24px;width:100%;text-align:center}'+
+        '.lp-custom-btn{position:relative;overflow:hidden;display:block;width:100%;padding:24px 16px 20px;border:2px solid rgba(16,185,129,.5);border-radius:20px;cursor:pointer;background:linear-gradient(180deg,rgba(16,185,129,.08),rgba(16,185,129,.02));color:#1A1A2E;font-family:Pretendard,sans-serif;text-align:center;box-shadow:0 0 40px rgba(16,185,129,.1);animation:breath 3s ease-in-out infinite}'+
+        '.lp-custom-btn:active{transform:scale(.98)}'+
+        '.lp-cb-text{font-size:22px;font-weight:800;margin-bottom:4px;position:relative;z-index:1;color:#1A1A2E}'+
+        '.lp-cb-sub{font-size:13px;color:#6B7280;position:relative;z-index:1}'+
+        '.lp-cb-badge{position:absolute;top:8px;right:8px;background:#EF4444;color:#fff;font-size:11px;font-weight:700;padding:4px 10px;border-radius:8px;z-index:2}'+
+        '.lp-cb-shimmer{position:absolute;top:0;left:-60%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(16,185,129,.04),rgba(16,185,129,.08),rgba(16,185,129,.04),transparent);animation:shimmer 3s ease-in-out infinite;z-index:0;pointer-events:none}'+
+        '.lp-form-err{display:none;text-align:center;color:#EF4444;font-size:14px;font-weight:600;margin-top:10px;padding:10px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:10px}'+
+        '.lp-form-trust{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:10px;flex-wrap:wrap}'+
+        '.lp-form-trust span{font-size:11px;color:#9CA3AF}'+
+        '.lp-agree-w{margin:14px 0 4px;display:flex;align-items:center;gap:7px;flex-wrap:nowrap}'+
+        '.lp-agree-l{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:#6B7280;white-space:nowrap;flex-wrap:nowrap}'+
+        '.lp-agree-cb{width:18px;height:18px;accent-color:#10B981;cursor:pointer}'+
+        '.lp-agree-tog{color:#10B981;font-size:12px;cursor:pointer;white-space:nowrap;word-break:keep-all}'+
+        '.lp-agree-det{display:none;margin:6px 0 12px;padding:14px;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:12px;font-size:12px;color:#9CA3AF;line-height:1.8}'+
+        '@keyframes shakeX{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}';
+      document.head.appendChild(st);
+    }
+    var allInp=fw.querySelectorAll('input'),phInp=[];
+    allInp.forEach(function(i){var n=(i.name||'').toLowerCase(),p=(i.placeholder||'').toLowerCase();if(n.indexOf('phone')>-1||n.indexOf('tel')>-1||n.indexOf('hp')>-1||p.indexOf('연락')>-1||p.indexOf('전화')>-1||p.indexOf('010')>-1||i.type==='tel')phInp.push(i)});
+    if(phInp.length>=3){
+      var p1=phInp[0],p2=phInp[1],p3=phInp[2],pc=p1.closest('.form-group')||p1.closest('[class*="field"]')||p1.parentNode;
+      var row=document.createElement('div');row.className='lp-ph-row';
+      var box=document.createElement('div');box.className='lp-ph-010';box.textContent='010';
+      p1.value='010';p1.readOnly=true;p1.type='hidden';
+      var d1=document.createElement('span');d1.className='lp-ph-dash';d1.textContent='-';
+      var d2=document.createElement('span');d2.className='lp-ph-dash';d2.textContent='-';
+      var mw=document.createElement('div');mw.className='lp-ph-mid';p2.placeholder='0000';p2.maxLength=4;p2.setAttribute('inputmode','numeric');mw.appendChild(p2);
+      var lw=document.createElement('div');lw.className='lp-ph-last';p3.placeholder='0000';p3.maxLength=4;p3.setAttribute('inputmode','numeric');lw.appendChild(p3);
+      row.appendChild(box);row.appendChild(d1);row.appendChild(mw);row.appendChild(d2);row.appendChild(lw);pc.appendChild(row);
+      p2.addEventListener('input',function(){if(this.value.length>=4)p3.focus()});
+    }
+    var allBtns=fw.querySelectorAll('button[type="submit"],input[type="submit"],.btn-submit,.form-btn,.wbtn,[class*="submit"]');
+    var origBtn=allBtns[0];
+    allBtns.forEach(function(b){b.style.cssText='position:absolute!important;width:1px!important;height:1px!important;clip:rect(0,0,0,0)!important;opacity:0!important;pointer-events:none!important'});
+    fw.querySelectorAll('.form-btn-wrap,.btn-area,[class*="btn-area"]').forEach(function(w){w.style.cssText='height:0!important;overflow:hidden!important;margin:0!important;padding:0!important'});
+    if(origBtn){
+      // 개인정보 약관 박스 숨김 — 안전한 방식
+      function hasInputField(el){return el.querySelector('input[type="text"],input[type="tel"],input[type="email"],input[type="number"]')}
+      // textarea는 약관 내용 → 무조건 숨김 (입력용 textarea는 임플란트 폼에 없음)
+      fw.querySelectorAll('textarea,div.form-control').forEach(function(el){if(el.closest('.lp-cta-sec'))return;el.style.cssText='display:none!important;height:0!important;overflow:hidden!important;'});
+      // 폼 직계 자식 중 입력필드가 없고 "개인정보" 텍스트가 있는 블록 숨김
+      var children=fw.querySelectorAll(':scope > div, :scope > section, :scope > fieldset');
+      if(!children.length){var form=fw.querySelector('form');if(form)children=form.querySelectorAll(':scope > div, :scope > section, :scope > fieldset')}
+      children.forEach(function(el){
+        if(hasInputField(el))return;
+        var txt=(el.textContent||'').substring(0,200);
+        if(txt.indexOf('개인정보')>-1||txt.indexOf('수집 및 이용')>-1||txt.indexOf('수집·이용')>-1||txt.indexOf('이용동의')>-1){
+          el.style.cssText='display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important;';
+        }
+      });
+      var cbs=fw.querySelectorAll('input[type="checkbox"]');cbs.forEach(function(c){if(!c.closest('.lp-cta-sec')){var lb=c.closest('label')||c.parentNode;if(lb&&lb!==fw)lb.style.cssText='display:none!important;'}});
+      var agreeW=document.createElement('div');agreeW.className='lp-agree-w';
+      agreeW.innerHTML='<label class="lp-agree-l"><input type="checkbox" class="lp-agree-cb" id="lpAgreeCb"><span>개인정보 수집 및 이용에 동의합니다</span></label><span class="lp-agree-tog" id="lpAgreeTog">[자세히]</span>';
+      var sec=document.createElement('div');sec.className='lp-cta-sec';
+      var btn=document.createElement('button');btn.type='button';btn.className='lp-custom-btn';
+      btn.innerHTML='<span class="lp-cb-badge">마감 임박</span><span class="lp-cb-shimmer"></span><div class="lp-cb-text">내 주변 양심 치과 찾기</div><div class="lp-cb-sub">자체지원금 적용 여부 바로 확인 →</div>';
+      var err=document.createElement('div');err.className='lp-form-err';err.id='lpFormErr';
+      var trust=document.createElement('div');trust.className='lp-form-trust';trust.innerHTML='<span>🔒 개인정보 보호</span><span>⚡ 즉시 매칭</span><span>💬 24시간 내 연락</span>';
+      btn.addEventListener('click',function(){
+        var vis=fw.querySelectorAll('input[type="text"]:not([type="hidden"]),input[type="tel"]:not([type="hidden"]),input:not([type])');
+        var empty=[];vis.forEach(function(i){if(i.readOnly||i.type==='hidden'||!i.offsetParent)return;if(!i.value.trim())empty.push(i)});
+        if(empty.length>0){empty.forEach(function(i){i.style.borderColor='#EF4444';i.style.boxShadow='0 0 0 3px rgba(239,68,68,.15)';setTimeout(function(){i.style.borderColor='';i.style.boxShadow=''},3000)});err.textContent='모든 항목을 입력해주세요';err.style.display='block';err.style.animation='shakeX .4s ease';empty[0].focus();setTimeout(function(){err.style.display='none'},4000);return}
+        var ac=document.getElementById('lpAgreeCb');if(ac&&!ac.checked){err.textContent='개인정보 수집 및 이용에 동의해주세요';err.style.display='block';return}
+        err.style.display='none';origBtn.style.pointerEvents='auto';origBtn.click();origBtn.style.pointerEvents='none';
+      });
+      sec.appendChild(agreeW);sec.appendChild(btn);sec.appendChild(err);sec.appendChild(trust);
+      origBtn.parentNode.insertBefore(sec,origBtn.nextSibling);
+
+
+      document.getElementById('lpAgreeTog').addEventListener('click',function(){clearInterval(privInterval);var pe=fw.querySelector('div.form-control')||fw.querySelector('textarea');if(!pe)return;var vis=window.getComputedStyle(pe).display!=='none';if(vis){pe.style.cssText='display:none!important;';this.textContent='[자세히]'}else{pe.style.cssText='display:block!important;border:1px solid #ddd!important;padding:10px!important;height:100px!important;overflow-y:auto!important;margin:6px 0 10px!important;font-size:11px!important;color:#6B7280!important;line-height:1.8!important;border-radius:10px!important;background:#f9fafb!important;';var pp=pe.parentNode;while(pp&&pp!==fw){if(window.getComputedStyle(pp).display==='none')pp.style.display='block';pp=pp.parentNode}this.textContent='[접기]'}});
+      document.getElementById('lpAgreeCb').addEventListener('change',function(){var ch=this.checked;cbs.forEach(function(c){c.checked=ch})});
+    }
+    return true;
+  }
+  var retry=0,ri=setInterval(function(){if(customizeForm()||retry>30)clearInterval(ri);retry++},500);
+})();
+</script>
+</body>
+</html>
