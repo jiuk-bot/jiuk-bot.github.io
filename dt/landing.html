@@ -80,6 +80,25 @@
 
 <section class="lpgrid" id="grid"></section>
 
+<style>
+  .dp{ max-width:860px; margin:40px auto 10px; padding:30px 24px 0; font-family:'Pretendard',sans-serif; border-top:1px solid rgba(124,92,255,.14); }
+  .dp .eyebrow{ font-size:12.5px; font-weight:800; letter-spacing:.14em; color:#C9A6FF; }
+  .dp h2{ font-size:26px; font-weight:800; letter-spacing:-.035em; color:var(--nk); margin:10px 0 8px; }
+  .dp h2 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .dp p{ font-size:14px; color:var(--nmute); line-height:1.65; max-width:620px; }
+  .dp-grid{ display:flex; flex-direction:column; align-items:center; gap:26px; margin:30px 0 40px; }
+  .dp-item{ width:100%; max-width:560px; background:#fff; border-radius:16px; overflow:hidden; border:1px solid rgba(124,92,255,.18); box-shadow:0 30px 70px -40px rgba(0,0,0,.8); }
+  .dp-item img{ display:block; width:100%; height:auto; }
+  .dp-item .cap{ padding:12px 16px; font-size:12.5px; font-weight:700; color:#5b6472; background:#f6f8fb; border-top:1px solid #e9edf3; }
+  .dp-empty{ text-align:center; color:var(--nmute); font-size:13.5px; border:1px dashed rgba(124,92,255,.3); border-radius:14px; padding:34px 20px; background:rgba(124,92,255,.05); }
+</style>
+<section class="dp" id="dp">
+  <div class="eyebrow">DETAIL PAGE</div>
+  <h2>상세페이지 — <span class="hl">직접 제작</span></h2>
+  <p>광고 클릭 후 전환을 설계한 상세페이지입니다. 소구·혜택·신뢰 요소를 단계적으로 배치해 상담 신청까지 연결했습니다.</p>
+  <div class="dp-grid" id="dpGrid"></div>
+</section>
+
 <footer style="max-width:1040px;margin:0 auto;padding:30px 24px 60px;font-family:'Pretendard',sans-serif;border-top:1px solid rgba(124,92,255,.14);color:var(--nmute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
   <div>© 2026 윤지욱 (JIUK.YOON) · 임플란트 랜딩페이지 갤러리</div>
   <div><a href="portfolio.html" style="color:#C9A6FF">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com" style="color:#C9A6FF">Email</a></div>
@@ -88,11 +107,8 @@
 <script>
   const LPS = [
     { f:'tiger.html',          sogu:'맞춤형 임플란트 · 실운영 LP', ch:'타이거치과', chc:'n', head:'"국산정품 맞춤형 임플란트 25만원"', desc:'디자인 이미지 + CPA 상담폼까지 직접 구성한 실제 운영 LP. 개수 무관 동일가·10년 무상관리 소구.' },
+    { f:'dz-main.html',        sogu:'디멘드젠 메인 · 개당 28만원', ch:'구글', chc:'g', head:'"국산정품 맞춤형 임플란트 개당 28만원"', desc:'추가금 0원·10년 무약 A/S를 전면에 내세운 디멘드젠 메인 LP. 숨은 추가금 우려를 정면 해소.' },
     { f:'price-gyeonggi.html', sogu:'가격 소구 · 추가금 0원', ch:'구글', chc:'g', head:'"국산정품 임플란트 · 추가금 0원"', desc:'식립 개수 무관 동일가·추가금 0원으로 가격 불안을 정면 해소한 최신 v4.' },
-    { f:'clinic-trust.html',   sogu:'양심치과 무료 매칭',   ch:'구글', chc:'g', head:'"검증된 치과만 무료 매칭"',     desc:'가격 경쟁 대신 신뢰·매칭 가치를 앞세운 브랜드형 소구.' },
-    { f:'price-consult.html',  sogu:'지역 한정 특별가',     ch:'구글', chc:'g', head:'"경기도 한정 특별가 · 초기부담 ZERO"', desc:'지역 한정·초기부담 0을 내세워 전환을 유도한 상담형 LP.' },
-    { f:'price-meta.html',     sogu:'메타 피드 전용',       ch:'메타', chc:'m', head:'"메타 맞춤 · 추가금 0원 가격 소구"', desc:'같은 가격 소구를 메타 피드 맥락에 맞춰 재구성한 버전.' },
-    { f:'clinic-tiktok.html',  sogu:'틱톡 실시간 매칭',     ch:'틱톡', chc:'t', head:'"LIVE 실시간 매칭 현황"',        desc:'틱톡 숏폼에서 이어지는 실시간 매칭 연출로 몰입을 높인 LP.' },
   ];
   const grid = document.getElementById('grid');
   grid.innerHTML = LPS.map(lp => `
@@ -108,6 +124,15 @@
         <a class="go" href="lp/${lp.f}" target="_blank" rel="noopener">전체 페이지 보기 →</a>
       </div>
     </article>`).join('');
+
+  // ===== 상세페이지 (이미지 받는 대로 아래 배열에 추가) =====
+  // 예: { img:'img/detail/상세1.png', cap:'가격소구 상세페이지' }
+  const DETAILS = [
+  ];
+  const dpGrid = document.getElementById('dpGrid');
+  dpGrid.innerHTML = DETAILS.length
+    ? DETAILS.map(d => `<figure class="dp-item"><img src="lp/${d.img}" loading="lazy" alt="${d.cap||'상세페이지'}">${d.cap?`<figcaption class="cap">${d.cap}</figcaption>`:''}</figure>`).join('')
+    : '<div class="dp-empty">제작한 상세페이지 이미지를 받는 대로 이곳에 나열합니다.</div>';
 </script>
 
 </body>
