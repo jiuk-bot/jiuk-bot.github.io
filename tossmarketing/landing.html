@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · 임플란트 랜딩페이지 갤러리</title>
+<meta name="description" content="임플란트 퍼포먼스 캠페인을 위해 직접 기획·제작한 랜딩페이지 모음. 소구 전략(견적할인·추가금폭로·치과매칭·가격·양심치과)과 매체(구글·메타·틱톡)별로 직접 만든 LP를 실시간 미리보기로 담았습니다." />
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+  :root{ --nk:#EDEBFA; --nmute:#9E99BC; }
+  html,body{ background:#07070E !important; color:var(--nk); }
+  body::before{ content:""; position:fixed; inset:-12%; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(38% 50% at 12% 6%, rgba(124,92,255,.26), transparent 62%),
+      radial-gradient(34% 46% at 92% 20%, rgba(255,92,225,.18), transparent 62%),
+      radial-gradient(46% 54% at 72% 104%, rgba(92,200,255,.16), transparent 64%);
+    filter:blur(26px); }
+  nav, header, section, footer{ position:relative; z-index:1; }
+
+  .lp-hero{ max-width:1040px; margin:0 auto; padding:54px 24px 10px; font-family:'Pretendard',-apple-system,system-ui,sans-serif; }
+  .lp-hero .eyebrow{ font-size:12.5px; font-weight:800; letter-spacing:.14em; color:#C9A6FF; }
+  .lp-hero h1{ font-size:34px; font-weight:800; letter-spacing:-.04em; margin:12px 0 10px; color:var(--nk); }
+  .lp-hero h1 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .lp-hero p{ font-size:15px; line-height:1.7; color:var(--nmute); max-width:720px; }
+  .lp-hero .note{ margin-top:14px; font-size:12.5px; color:#8f8bb0; background:rgba(124,92,255,.08); border:1px solid rgba(124,92,255,.22); border-radius:10px; padding:10px 14px; display:inline-block; }
+
+  .lp-stats{ max-width:1040px; margin:26px auto 0; padding:0 24px; display:flex; flex-wrap:wrap; gap:10px; font-family:'Pretendard',sans-serif; }
+  .lp-stats .s{ background:rgba(18,18,30,.6); border:1px solid rgba(124,92,255,.18); border-radius:12px; padding:12px 18px; }
+  .lp-stats .s b{ color:#C9A6FF; font-weight:800; }
+  .lp-stats .s span{ display:block; font-size:12px; color:var(--nmute); margin-top:3px; }
+
+  .lpgrid{ max-width:1040px; margin:34px auto 60px; padding:0 24px; display:flex; flex-wrap:wrap; gap:22px; justify-content:center; }
+  .lpcard{ width:300px; background:rgba(18,18,30,.55); border:1px solid rgba(124,92,255,.16); border-radius:16px; overflow:hidden; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); transition:transform .35s, box-shadow .35s, border-color .35s; font-family:'Pretendard',sans-serif; display:flex; flex-direction:column; }
+  .lpcard:hover{ transform:translateY(-5px); border-color:rgba(160,110,255,.55); box-shadow:0 40px 80px -42px rgba(124,92,255,.5); }
+  .lpframe{ position:relative; width:300px; height:390px; overflow:hidden; background:#fff; border-bottom:1px solid rgba(124,92,255,.16); display:block; text-decoration:none; }
+  .lpframe iframe{ position:absolute; top:0; left:0; width:400px; height:520px; border:0; transform:scale(.75); transform-origin:top left; pointer-events:none; }
+  .lpframe .veil{ position:absolute; inset:0; background:linear-gradient(to bottom, transparent 62%, rgba(7,7,14,.0) 100%); }
+  .lpframe .open{ position:absolute; right:10px; bottom:10px; font-size:12px; font-weight:800; color:#fff; background:rgba(12,10,22,.72); border:1px solid rgba(255,255,255,.4); padding:7px 13px; border-radius:999px; opacity:0; transform:translateY(6px); transition:.25s; }
+  .lpcard:hover .lpframe .open{ opacity:1; transform:translateY(0); }
+  .lpmeta{ padding:15px 17px 17px; display:flex; flex-direction:column; gap:7px; flex:1; }
+  .lpbadges{ display:flex; gap:6px; flex-wrap:wrap; }
+  .chip{ font-size:10.5px; font-weight:800; letter-spacing:.01em; padding:3px 9px; border-radius:999px; }
+  .chip.sogu{ color:#C9A6FF; background:rgba(124,92,255,.15); border:1px solid rgba(124,92,255,.3); }
+  .chip.g{ color:#8fd3ff; background:rgba(92,200,255,.12); border:1px solid rgba(92,200,255,.3); }
+  .chip.m{ color:#8fb4ff; background:rgba(92,130,255,.12); border:1px solid rgba(92,130,255,.3); }
+  .chip.t{ color:#ff8fd6; background:rgba(255,92,200,.12); border:1px solid rgba(255,92,200,.3); }
+  .chip.n{ color:#b7f6c2; background:rgba(92,220,140,.1); border:1px solid rgba(92,220,140,.28); }
+  .lpmeta h3{ font-size:15.5px; font-weight:800; color:var(--nk); letter-spacing:-.015em; margin:2px 0 0; }
+  .lpmeta .head{ font-size:12.5px; font-weight:700; color:#C9A6FF; }
+  .lpmeta .desc{ font-size:12.5px; line-height:1.55; color:var(--nmute); }
+  .lpmeta .go{ margin-top:auto; font-size:12.5px; font-weight:800; color:#C9A6FF; text-decoration:none; }
+  .lpmeta .go:hover{ text-decoration:underline; }
+
+  @media(max-width:680px){ .lp-hero h1{ font-size:27px; } }
+</style>
+</head>
+<body>
+
+<nav style="position:sticky;top:0;z-index:50;background:rgba(10,10,18,.74);-webkit-backdrop-filter:saturate(1.2) blur(14px);backdrop-filter:saturate(1.2) blur(14px);border-bottom:1px solid rgba(124,92,255,.16)">
+  <div style="max-width:1040px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:'Pretendard',-apple-system,system-ui,sans-serif">
+    <a href="index.html" style="font-weight:800;font-size:17px;color:#EDEBFA;text-decoration:none;letter-spacing:-.02em;white-space:nowrap">JIUK<span style="color:#C06BFF">.</span>YOON</a>
+    <div style="display:flex;gap:2px;align-items:center;font-size:14.5px;flex-wrap:wrap;justify-content:flex-end"><a href="index.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Home</a><a href="resume.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">이력서</a><a href="portfolio.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">Portfolio</a><a href="videos.html" style="color:#9E99BC;text-decoration:none;font-weight:600;padding:8px 12px;border-radius:10px">AI 영상 갤러리</a><a href="landing.html" style="color:#fff;text-decoration:none;font-weight:800;padding:8px 12px;border-radius:10px;background:rgba(124,92,255,.18)">랜딩페이지</a></div>
+  </div>
+</nav>
+
+<header class="lp-hero">
+  <div class="eyebrow">LANDING PAGE GALLERY</div>
+  <h1>임플란트 랜딩페이지 —<br><span class="hl">소구 전략별 직접 제작</span></h1>
+  <p>임플란트 퍼포먼스 캠페인을 운영하며, 광고 클릭 뒤의 전환을 끌어올리기 위해 <b style="color:#C9A6FF">랜딩페이지를 직접 기획·제작</b>했습니다. 같은 상품도 <b style="color:#C9A6FF">소구(가격·추가금 0원·양심치과 매칭·지역 한정)</b>와 <b style="color:#C9A6FF">매체(구글·메타·틱톡)</b>에 따라 메시지·구조를 다르게 설계해 A/B로 검증했습니다. 아래는 실제 운영한 대표 LP들입니다.</p>
+  <div class="note">※ 실제 캠페인에 사용한 페이지입니다. <b style="color:#C9A6FF">하단 CPA 버튼 → 상담 입력폼</b>까지 작동하며, 포트폴리오 공개용으로 실제 전송은 비활성화했습니다. 카드를 누르면 전체 페이지가 새 탭으로 열립니다.</div>
+</header>
+
+<section class="lp-stats">
+  <div class="s"><b>소구 × 매체별</b><span>LP 직접 기획·제작</span></div>
+  <div class="s"><b>구글 · 메타 · 틱톡</b><span>매체별 맥락 맞춤 설계</span></div>
+  <div class="s"><b>CPA 폼까지</b><span>버튼 → 입력폼 UX 직접 구현</span></div>
+  <div class="s"><b>코드까지 직접</b><span>HTML/CSS·이미지·폼 직접 구성</span></div>
+</section>
+
+<section class="lpgrid" id="grid"></section>
+
+<style>
+  .dp{ max-width:860px; margin:40px auto 10px; padding:30px 24px 0; font-family:'Pretendard',sans-serif; border-top:1px solid rgba(124,92,255,.14); }
+  .dp .eyebrow{ font-size:12.5px; font-weight:800; letter-spacing:.14em; color:#C9A6FF; }
+  .dp h2{ font-size:26px; font-weight:800; letter-spacing:-.035em; color:var(--nk); margin:10px 0 8px; }
+  .dp h2 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .dp p{ font-size:14px; color:var(--nmute); line-height:1.65; max-width:620px; }
+  .dp-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:30px 0 40px; align-items:start; }
+  .dp-card{ background:#fff; border-radius:14px; overflow:hidden; border:1px solid rgba(124,92,255,.18); box-shadow:0 20px 50px -34px rgba(0,0,0,.7); cursor:pointer; transition:transform .25s, box-shadow .25s, border-color .25s; }
+  .dp-card:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 34px 70px -40px rgba(124,92,255,.5); }
+  .dp-thumb{ position:relative; height:300px; overflow:hidden; background:#fff; }
+  .dp-thumb img{ width:100%; display:block; }
+  .dp-thumb::after{ content:"펼쳐보기 ＋"; position:absolute; left:0; right:0; bottom:0; padding:34px 14px 12px; font-size:12.5px; font-weight:800; color:#1f6feb; text-align:center; background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.97) 72%); pointer-events:none; }
+  .dp-cap{ padding:11px 14px; font-size:12.5px; font-weight:700; color:#5b6472; background:#f6f8fb; border-top:1px solid #e9edf3; }
+  .dp-card.open{ grid-column:1 / -1; cursor:default; }
+  .dp-card.open .dp-thumb{ height:auto; overflow:visible; }
+  .dp-card.open .dp-thumb img{ max-width:560px; margin:0 auto; }
+  .dp-card.open .dp-thumb::after{ content:"접기 －"; cursor:pointer; pointer-events:auto; position:sticky; }
+  .dp-empty{ text-align:center; color:var(--nmute); font-size:13.5px; border:1px dashed rgba(124,92,255,.3); border-radius:14px; padding:34px 20px; background:rgba(124,92,255,.05); grid-column:1 / -1; }
+  @media(max-width:860px){ .dp-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:560px){ .dp-grid{ grid-template-columns:1fr; } .dp-thumb{ height:240px; } }
+</style>
+<section class="dp" id="dp">
+  <div class="eyebrow">DETAIL PAGE</div>
+  <h2>상세페이지 — <span class="hl">직접 제작</span></h2>
+  <p>광고 클릭 후 전환을 설계한 상세페이지입니다. <b style="color:#C9A6FF">임플란트 제품</b>부터 직접 운영한 <b style="color:#C9A6FF">뷰티 커머스 스마트스토어</b>까지, 소구·혜택·신뢰 요소를 단계적으로 배치해 구매 전환까지 연결했습니다.</p>
+  <div class="dp-grid" id="dpGrid"></div>
+</section>
+
+<footer style="max-width:1040px;margin:0 auto;padding:30px 24px 60px;font-family:'Pretendard',sans-serif;border-top:1px solid rgba(124,92,255,.14);color:var(--nmute);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+  <div>© 2026 윤지욱 (JIUK.YOON) · 임플란트 랜딩페이지 갤러리</div>
+  <div><a href="portfolio.html" style="color:#C9A6FF">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com" style="color:#C9A6FF">Email</a></div>
+</footer>
+
+<script>
+  const LPS = [
+    { f:'tiger.html',          sogu:'맞춤형 임플란트 · 실운영 LP', ch:'타이거치과', chc:'n', head:'"국산정품 맞춤형 임플란트 25만원"', desc:'디자인 이미지 + CPA 상담폼까지 직접 구성한 실제 운영 LP. 개수 무관 동일가·10년 무상관리 소구.' },
+    { f:'dz-main.html',        sogu:'디멘드젠 메인 · 개당 28만원', ch:'구글', chc:'g', head:'"국산정품 맞춤형 임플란트 개당 28만원"', desc:'추가금 0원·10년 무약 A/S를 전면에 내세운 디멘드젠 메인 LP. 숨은 추가금 우려를 정면 해소.' },
+    { f:'price-gyeonggi.html', sogu:'가격 소구 · 추가금 0원', ch:'구글', chc:'g', head:'"국산정품 임플란트 · 추가금 0원"', desc:'식립 개수 무관 동일가·추가금 0원으로 가격 불안을 정면 해소한 최신 v4.' },
+  ];
+  const grid = document.getElementById('grid');
+  grid.innerHTML = LPS.map(lp => `
+    <article class="lpcard">
+      <a class="lpframe" href="lp/${lp.f}" target="_blank" rel="noopener" aria-label="${lp.sogu} 전체 페이지 열기">
+        <iframe src="lp/${lp.f}" loading="lazy" scrolling="no" tabindex="-1" title="${lp.sogu} 미리보기"></iframe>
+        <div class="veil"></div><span class="open">크게 보기 ↗</span>
+      </a>
+      <div class="lpmeta">
+        <div class="lpbadges"><span class="chip sogu">${lp.sogu}</span><span class="chip ${lp.chc}">${lp.ch}</span></div>
+        <div class="head">${lp.head}</div>
+        <div class="desc">${lp.desc}</div>
+        <a class="go" href="lp/${lp.f}" target="_blank" rel="noopener">전체 페이지 보기 →</a>
+      </div>
+    </article>`).join('');
+
+  // ===== 상세페이지 (이미지 받는 대로 아래 배열에 추가) =====
+  // 예: { img:'img/detail/상세1.png', cap:'가격소구 상세페이지' }
+  const DETAILS = [
+    { img:'img/detail/mast-ix.jpg',      cap:'MAST IX · 임플란트 제품 상세페이지' },
+    { img:'img/detail/beauty-01.jpg',    cap:'이지 세니지 패치 · 반영구/타투 애프터케어' },
+    { img:'img/detail/lip-brush.jpg',    cap:'퍼펙트 립 브러쉬 · SERENE' },
+    { img:'img/detail/eyebrow-ink.jpg',  cap:'아이브로우 그리드 잉크라인' },
+    { img:'img/detail/rubber-board.jpg', cap:'반영구 연습 고무판' },
+    { img:'img/detail/ink-cup.jpg',      cap:'반지형 잉크컵' },
+    { img:'img/detail/cotton.jpg',       cap:'화장솜' },
+  ];
+  const dpGrid = document.getElementById('dpGrid');
+  dpGrid.innerHTML = DETAILS.length
+    ? DETAILS.map(d => `<article class="dp-card">
+        <div class="dp-thumb"><img src="lp/${d.img}" loading="lazy" alt="${d.cap||'상세페이지'}"></div>
+        <div class="dp-cap">${d.cap||'상세페이지'}</div>
+      </article>`).join('')
+    : '<div class="dp-empty">제작한 상세페이지 이미지를 받는 대로 이곳에 나열합니다.</div>';
+  // 카드 클릭 → 펼치기/접기 토글
+  dpGrid.querySelectorAll('.dp-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      if (!wasOpen) card.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+</script>
+
+</body>
+</html>

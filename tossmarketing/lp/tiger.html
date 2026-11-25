@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>국산정품 맞춤형 임플란트 상담신청</title>
+<style>
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  html,body{ background:#000; font-family:'Pretendard','Noto Sans KR',-apple-system,system-ui,sans-serif; }
+  .lp{ max-width:480px; margin:0 auto; background:#000; position:relative; min-height:100vh; padding-bottom:104px; }
+  .lp-img{ display:block; width:100%; }
+  .lp-img img{ display:block; width:100%; height:auto; }
+
+  .cta-bar{ position:fixed; bottom:0; left:50%; transform:translateX(-50%); width:100%; max-width:480px;
+    padding:10px 16px calc(12px + env(safe-area-inset-bottom)); background:rgba(0,0,0,.82);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-top:1px solid rgba(255,255,255,.08); z-index:40; }
+
+  /* 버튼 위 민트 카피 (빤짝) */
+  .cta-copy{ text-align:center; font-size:13.5px; font-weight:800; letter-spacing:-.01em; color:#2fe6c0;
+    margin-bottom:8px; text-shadow:0 0 12px rgba(47,230,192,.55); animation:blink 1.1s steps(1,end) infinite; }
+  @keyframes blink{ 50%{ opacity:.25; } }
+
+  /* CPA 버튼 — 빤짝 샤인 스윕 + 펄스 */
+  .cta-btn{ position:relative; overflow:hidden; display:block; width:100%; padding:17px; border:0; border-radius:14px; cursor:pointer;
+    background:linear-gradient(135deg,#c79a4e,#a97d33); color:#fff; font-size:18px; font-weight:800; letter-spacing:-.02em;
+    box-shadow:0 0 22px -2px rgba(199,154,78,.6), 0 10px 24px -8px rgba(169,125,51,.55); animation:pulse 2.4s ease-in-out infinite; }
+  .cta-btn::after{ content:""; position:absolute; top:-30%; left:-70%; width:45%; height:160%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.65), transparent); transform:skewX(-20deg);
+    animation:shine 2.1s ease-in-out infinite; }
+  @keyframes shine{ 0%{ left:-70%; } 55%,100%{ left:130%; } }
+  @keyframes pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.025); } }
+  .cta-btn:active{ transform:scale(.98); }
+
+  .ov{ position:fixed; inset:0; background:rgba(28,20,10,.55); z-index:60; display:none; align-items:flex-end; justify-content:center; }
+  .ov.open{ display:flex; }
+  .sheet{ width:100%; max-width:480px; background:#fff; border-radius:20px 20px 0 0; padding:24px 22px calc(22px + env(safe-area-inset-bottom));
+    animation:up .28s cubic-bezier(.2,.8,.2,1); max-height:92vh; overflow:auto; }
+  @keyframes up{ from{ transform:translateY(100%); } to{ transform:translateY(0); } }
+  .sheet .sh-top{ display:flex; justify-content:space-between; align-items:flex-start; }
+  .sheet h2{ font-size:21px; font-weight:800; color:#2a2015; letter-spacing:-.03em; }
+  .sheet .sub{ font-size:13.5px; color:#9a8b78; margin:6px 0 20px; }
+  .sheet .x{ border:0; background:#f3ece3; width:34px; height:34px; border-radius:50%; font-size:18px; color:#9a8b78; cursor:pointer; flex:none; }
+  .field{ margin-bottom:14px; }
+  .field label{ display:block; font-size:13px; font-weight:700; color:#6b5c48; margin-bottom:7px; }
+  .field input{ width:100%; padding:15px 16px; border:1.5px solid #e5dccd; border-radius:12px; font-size:16px; color:#2a2015; outline:none; transition:border-color .15s; }
+  .field input:focus{ border-color:#c79a4e; }
+  .phone{ display:grid; grid-template-columns:1fr 14px 1fr 14px 1fr; align-items:center; }
+  .phone .dash{ text-align:center; color:#cfc3b2; font-weight:700; }
+  .phone input{ text-align:center; }
+  .agree{ display:flex; align-items:center; gap:9px; margin:4px 0 18px; font-size:13.5px; color:#6b5c48; }
+  .agree input{ width:19px; height:19px; accent-color:#c79a4e; flex:none; }
+  .agree .more{ margin-left:auto; font-size:12.5px; color:#a99c88; text-decoration:underline; cursor:pointer; background:none; border:0; }
+  .submit{ display:block; width:100%; padding:16px; border:0; border-radius:13px; cursor:pointer;
+    background:linear-gradient(135deg,#c79a4e,#a97d33); color:#fff; font-size:17px; font-weight:800; }
+  .err{ color:#d4553a; font-size:12.5px; margin:-8px 0 12px; display:none; }
+  .err.on{ display:block; }
+  .terms{ display:none; font-size:12px; line-height:1.7; color:#7b6c58; background:#faf5ee; border:1px solid #ecddcd; border-radius:10px; padding:13px 15px; margin:-8px 0 16px; max-height:150px; overflow:auto; }
+  .terms.on{ display:block; }
+  .done{ display:none; text-align:center; padding:26px 10px 14px; }
+  .done.on{ display:block; }
+  .done .ic{ width:64px; height:64px; margin:0 auto 16px; border-radius:50%; background:linear-gradient(135deg,#c79a4e,#a97d33); color:#fff; font-size:32px; display:flex; align-items:center; justify-content:center; }
+  .done h2{ font-size:21px; font-weight:800; color:#2a2015; margin-bottom:8px; }
+  .done p{ font-size:14px; color:#9a8b78; line-height:1.6; }
+  .pf-note{ position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:70; font-size:11px; font-weight:700; color:#fff; background:rgba(169,125,51,.92); padding:5px 12px; border-radius:999px; }
+</style>
+</head>
+<body>
+
+<div class="pf-note">포트폴리오 예시 · 실제 상담 접수 안 됨</div>
+
+<div class="lp">
+  <div class="lp-img"><img src="img/tiger-implant.png" alt="국산정품 맞춤형 임플란트 랜딩페이지" /></div>
+</div>
+
+<div class="cta-bar">
+  <div class="cta-copy">⏰ 지금 신청하면 상담 혜택 안내!</div>
+  <button class="cta-btn" id="ctaBtn">무료 상담 신청하기</button>
+</div>
+
+<div class="ov" id="ov">
+  <div class="sheet">
+    <div id="formWrap">
+      <div class="sh-top">
+        <div>
+          <h2>30초 간편 상담신청</h2>
+          <div class="sub">이름과 연락처만 남겨주세요. 비용·혜택을 안내해 드립니다.</div>
+        </div>
+        <button class="x" id="closeBtn" aria-label="닫기">×</button>
+      </div>
+      <div class="field"><label>이름</label><input type="text" id="name" placeholder="성함을 입력해 주세요" autocomplete="name" /></div>
+      <div class="err" id="nameErr">이름을 입력해 주세요.</div>
+      <div class="field"><label>연락처</label>
+        <div class="phone">
+          <input type="tel" id="p1" inputmode="numeric" maxlength="3" value="010" />
+          <span class="dash">-</span>
+          <input type="tel" id="p2" inputmode="numeric" maxlength="4" placeholder="0000" />
+          <span class="dash">-</span>
+          <input type="tel" id="p3" inputmode="numeric" maxlength="4" placeholder="0000" />
+        </div>
+      </div>
+      <div class="err" id="phoneErr">연락처를 정확히 입력해 주세요.</div>
+      <div class="agree">
+        <input type="checkbox" id="agree" />
+        <span>개인정보 수집·이용에 동의합니다</span>
+        <button class="more" id="termsToggle">자세히</button>
+      </div>
+      <div class="err" id="agreeErr">약관에 동의해 주세요.</div>
+      <div class="terms" id="terms">수집항목: 이름, 연락처 · 이용목적: 임플란트 상담 연결 및 안내 · 보유기간: 상담 종료 후 파기. 본 페이지는 포트폴리오 예시이며 실제 개인정보를 수집·저장하지 않습니다.</div>
+      <button class="submit" id="submitBtn">상담 신청하기</button>
+    </div>
+    <div class="done" id="done">
+      <div class="ic">✓</div>
+      <h2>상담 신청이 접수되었습니다</h2>
+      <p>입력하신 연락처로 순차 안내 예정입니다.<br><b>(포트폴리오 예시 — 실제 전송되지 않습니다)</b></p>
+      <button class="submit" id="doneClose" style="margin-top:22px;max-width:200px;margin-left:auto;margin-right:auto;background:#f3ece3;color:#6b5c48">닫기</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var ov=document.getElementById('ov');
+  var open=function(){ ov.classList.add('open'); document.body.style.overflow='hidden'; };
+  var close=function(){ ov.classList.remove('open'); document.body.style.overflow=''; };
+  document.getElementById('ctaBtn').addEventListener('click',open);
+  document.getElementById('closeBtn').addEventListener('click',close);
+  ov.addEventListener('click',function(e){ if(e.target===ov) close(); });
+  var p1=document.getElementById('p1'), p2=document.getElementById('p2'), p3=document.getElementById('p3');
+  var onlyNum=function(el,next){ el.addEventListener('input',function(){ this.value=this.value.replace(/\D/g,''); if(this.value.length>=this.maxLength&&next) next.focus(); }); };
+  onlyNum(p1,p2); onlyNum(p2,p3); onlyNum(p3,null);
+  document.getElementById('termsToggle').addEventListener('click',function(){ document.getElementById('terms').classList.toggle('on'); });
+  var show=function(id,on){ document.getElementById(id).classList.toggle('on',on); };
+  document.getElementById('submitBtn').addEventListener('click',function(){
+    var name=document.getElementById('name').value.trim();
+    var agree=document.getElementById('agree').checked;
+    var ok=true;
+    show('nameErr', !name); if(!name) ok=false;
+    var pv=(p2.value.length>=3 && p3.value.length===4); show('phoneErr', !pv); if(!pv) ok=false;
+    show('agreeErr', !agree); if(!agree) ok=false;
+    if(!ok) return;
+    document.getElementById('formWrap').style.display='none';
+    document.getElementById('done').classList.add('on');
+  });
+  document.getElementById('doneClose').addEventListener('click',close);
+})();
+</script>
+
+</body>
+</html>
