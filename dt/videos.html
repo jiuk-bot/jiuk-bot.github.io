@@ -115,12 +115,70 @@
       <div class="cap">26.02 · 임플란트 명의</div>
     </a>
   </div>
+
+  <!-- ===== 박스풀 캠페인 · AI 영상 × 성과 ===== -->
+  <style>
+    .bp-sec{ margin-top:66px; padding-top:40px; border-top:1px solid var(--line); }
+    .bp-sec .eyebrow{ color:#2fe6c0; }
+    .bp-sec h2{ font-size:clamp(22px,3.3vw,31px); font-weight:800; letter-spacing:-.035em; margin:10px 0 10px; }
+    .bp-sec h2 .hl{ background:linear-gradient(120deg,#2fe6c0,#7C5CFF,#C06BFF); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+    .bp-sec .lead{ color:var(--mute); }
+    .bp-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:30px; }
+    .bp-card{ background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden; -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); display:flex; flex-direction:column; transition:transform .25s, border-color .25s, box-shadow .25s; }
+    .bp-card:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 36px 80px -44px rgba(124,92,255,.5); }
+    .bp-vid{ position:relative; width:100%; aspect-ratio:16/9; background:#000; border-bottom:1px solid var(--line); }
+    .bp-vid video, .bp-vid img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; }
+    .bp-body{ padding:15px 17px 17px; display:flex; flex-direction:column; gap:9px; flex:1; }
+    .bp-title{ font-size:15.5px; font-weight:800; color:var(--k); letter-spacing:-.015em; line-height:1.35; }
+    .bp-strat{ font-size:12.5px; color:var(--mute); line-height:1.55; }
+    .bp-metrics{ display:flex; flex-wrap:wrap; gap:6px; margin-top:auto; }
+    .bp-m{ font-size:12px; font-weight:800; color:#0a1512; background:#2fe6c0; padding:4px 10px; border-radius:999px; letter-spacing:-.01em; }
+    .bp-m.sub{ color:#2fe6c0; background:rgba(47,230,192,.12); border:1px solid rgba(47,230,192,.35); }
+    .bp-yt{ font-size:12.5px; font-weight:800; color:#C9A6FF; text-decoration:none; }
+    .bp-yt:hover{ text-decoration:underline; }
+    @media(max-width:720px){ .bp-grid{ grid-template-columns:1fr; } }
+  </style>
+  <section class="bp-sec">
+    <div class="eyebrow">BOXPOOL · AI VIDEO × PERFORMANCE</div>
+    <h2>박스풀 공유창고·풀필먼트 캠페인 — <span class="hl">AI 영상 × 성과</span></h2>
+    <p class="lead">실제 운영한 META 캠페인입니다. AI 영상 소재를 직접 기획·제작하고 <b style="color:#2fe6c0">A/B 테스트로 전환·CPL을 개선</b>했습니다. 각 영상의 핵심 전략과 성과 수치를 함께 담았습니다.</p>
+    <div class="bp-grid" id="bpGrid"></div>
+  </section>
 </main>
 
 <footer>
   <div>© 2026 윤지욱 (JIUK.YOON) · Performance Creative Marketer</div>
   <div><a href="portfolio.html#cvid">← 포트폴리오</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
 </footer>
+
+<script>
+  const BOX = [
+    { v:'boxpool-02.mp4', p:'poster-02.jpg', t:'B2C 짐보관 홍보 캠페인', s:'20초→12초로 압축, 인트로 Hook+텍스트 요약으로 시청 이탈 전 메시지 전달.', m:['전환 +31.3%','CPL −24%','CTR 9.56% (+42.7%)'] },
+    { v:'boxpool-04-none', p:'poster-04.jpg', t:'B2B 셀러 리드 캠페인', s:'단일 소재 한계를 넘어 ‘해외 물류대행’ 메시지를 담은 AI 영상으로 A/B 테스트.', m:['전환 +26.7%','CPL −20.9%','CTR 3.06% (+36.6%)'] },
+    { v:'boxpool-06.mp4', p:'poster-06.jpg', t:'짐보관 참여 캠페인 · 리마케팅', s:'구매까지 평균 3.8일 내 재도달. 실고객 리뷰 기반 신뢰 콘텐츠로 전환 유도.', m:['전환 144건','CVR 62%'] },
+    { v:'boxpool-05.mp4', p:'poster-05.jpg', t:'짐보관 참여 캠페인 · 공감형', s:'‘공간부족’에 공감하는 직장인 타깃, 전·후 비교 연출로 전환 유도.', m:['전환 +25.4%','CPL −19.5%'] },
+    { v:'boxpool-03.mp4', p:'poster-03.jpg', t:'프랜차이즈 리드 캠페인 · AI영상 #02', s:'2종 소재 A/B 후 우수 소재로 전면 전환. 50% 재생 기준 성과 비교.', m:['영상재생 +31.1%','CPL −16.7%','CPC −1.6%'] },
+    { v:'boxpool-07.mp4', p:'poster-07.jpg', t:'엔터테인먼트 서비스 홍보영상', s:'‘짐보관’ 인식을 ‘공간 서비스업’으로 확장. 시선집중·의문형 카피 연출.', m:['CTR 2.27%','결과당 342원','전환 444명'] },
+    { v:'boxpool-08.mp4', p:'poster-08.jpg', t:'B2B 해외진출 셀러 리드 캠페인', s:'숏폼 Hook·택배 연상 인트로로 2초 이탈 방지. 박스풀 공식 유튜브 업로드.', m:['YouTube 577회','평균 50회 대비 11배↑'], yt:'https://youtube.com/shorts/-X_eHaPOxSQ' },
+    { v:'boxpool-01.mp4', p:'poster-01.jpg', t:'프랜차이즈 리드 캠페인 · AI영상 #01', s:'AI 영상 vs 이미지 소재 A/B 테스트를 기획·실행, 소재 전면 전환 의사결정 참여.', m:['META','A/B 테스트 설계'] },
+  ];
+  document.getElementById('bpGrid').innerHTML = BOX.map(b => {
+    const media = b.v.endsWith('-none')
+      ? `<img src="videos/${b.p}" loading="lazy" alt="${b.t}">`
+      : `<video controls preload="none" playsinline poster="videos/${b.p}" src="videos/${b.v}"></video>`;
+    const badges = b.m.map((x,i)=>`<span class="bp-m${i>=1&&(x.includes('CTR')||x.includes('평균')||x.includes('설계'))?' sub':''}">${x}</span>`).join('');
+    const yt = b.yt ? `<a class="bp-yt" href="${b.yt}" target="_blank" rel="noopener">▶ YouTube에서 보기 →</a>` : '';
+    return `<article class="bp-card">
+      <div class="bp-vid">${media}</div>
+      <div class="bp-body">
+        <div class="bp-title">${b.t}</div>
+        <div class="bp-strat">${b.s}</div>
+        <div class="bp-metrics">${badges}</div>
+        ${yt}
+      </div>
+    </article>`;
+  }).join('');
+</script>
 
 </body>
 </html>
