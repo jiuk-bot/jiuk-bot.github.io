@@ -86,11 +86,20 @@
   .dp h2{ font-size:26px; font-weight:800; letter-spacing:-.035em; color:var(--nk); margin:10px 0 8px; }
   .dp h2 .hl{ background:linear-gradient(120deg,#9D7BFF,#C06BFF,#FF6BD6); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
   .dp p{ font-size:14px; color:var(--nmute); line-height:1.65; max-width:620px; }
-  .dp-grid{ display:flex; flex-direction:column; align-items:center; gap:26px; margin:30px 0 40px; }
-  .dp-item{ width:100%; max-width:560px; background:#fff; border-radius:16px; overflow:hidden; border:1px solid rgba(124,92,255,.18); box-shadow:0 30px 70px -40px rgba(0,0,0,.8); }
-  .dp-item img{ display:block; width:100%; height:auto; }
-  .dp-item .cap{ padding:12px 16px; font-size:12.5px; font-weight:700; color:#5b6472; background:#f6f8fb; border-top:1px solid #e9edf3; }
-  .dp-empty{ text-align:center; color:var(--nmute); font-size:13.5px; border:1px dashed rgba(124,92,255,.3); border-radius:14px; padding:34px 20px; background:rgba(124,92,255,.05); }
+  .dp-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:30px 0 40px; align-items:start; }
+  .dp-card{ background:#fff; border-radius:14px; overflow:hidden; border:1px solid rgba(124,92,255,.18); box-shadow:0 20px 50px -34px rgba(0,0,0,.7); cursor:pointer; transition:transform .25s, box-shadow .25s, border-color .25s; }
+  .dp-card:hover{ transform:translateY(-4px); border-color:rgba(160,110,255,.5); box-shadow:0 34px 70px -40px rgba(124,92,255,.5); }
+  .dp-thumb{ position:relative; height:300px; overflow:hidden; background:#fff; }
+  .dp-thumb img{ width:100%; display:block; }
+  .dp-thumb::after{ content:"펼쳐보기 ＋"; position:absolute; left:0; right:0; bottom:0; padding:34px 14px 12px; font-size:12.5px; font-weight:800; color:#1f6feb; text-align:center; background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,.97) 72%); pointer-events:none; }
+  .dp-cap{ padding:11px 14px; font-size:12.5px; font-weight:700; color:#5b6472; background:#f6f8fb; border-top:1px solid #e9edf3; }
+  .dp-card.open{ grid-column:1 / -1; cursor:default; }
+  .dp-card.open .dp-thumb{ height:auto; overflow:visible; }
+  .dp-card.open .dp-thumb img{ max-width:560px; margin:0 auto; }
+  .dp-card.open .dp-thumb::after{ content:"접기 －"; cursor:pointer; pointer-events:auto; position:sticky; }
+  .dp-empty{ text-align:center; color:var(--nmute); font-size:13.5px; border:1px dashed rgba(124,92,255,.3); border-radius:14px; padding:34px 20px; background:rgba(124,92,255,.05); grid-column:1 / -1; }
+  @media(max-width:860px){ .dp-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media(max-width:560px){ .dp-grid{ grid-template-columns:1fr; } .dp-thumb{ height:240px; } }
 </style>
 <section class="dp" id="dp">
   <div class="eyebrow">DETAIL PAGE</div>
@@ -138,8 +147,19 @@
   ];
   const dpGrid = document.getElementById('dpGrid');
   dpGrid.innerHTML = DETAILS.length
-    ? DETAILS.map(d => `<figure class="dp-item"><img src="lp/${d.img}" loading="lazy" alt="${d.cap||'상세페이지'}">${d.cap?`<figcaption class="cap">${d.cap}</figcaption>`:''}</figure>`).join('')
+    ? DETAILS.map(d => `<article class="dp-card">
+        <div class="dp-thumb"><img src="lp/${d.img}" loading="lazy" alt="${d.cap||'상세페이지'}"></div>
+        <div class="dp-cap">${d.cap||'상세페이지'}</div>
+      </article>`).join('')
     : '<div class="dp-empty">제작한 상세페이지 이미지를 받는 대로 이곳에 나열합니다.</div>';
+  // 카드 클릭 → 펼치기/접기 토글
+  dpGrid.querySelectorAll('.dp-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const wasOpen = card.classList.contains('open');
+      card.classList.toggle('open');
+      if (!wasOpen) card.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
 </script>
 
 </body>
