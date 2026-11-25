@@ -834,28 +834,32 @@ a .key-phrase, .key-phrase a{ text-decoration:underline; }
           <div class="sh"><span class="bar"></span>SEO 상위노출 — 키워드 분석 기반 콘텐츠</div>
           <p><b>블랙키위·블로그연구소</b>로 월 검색량 기준 핵심 키워드를 선정하고, 형태소 반복 횟수·업로드 사진 최적화 등 <b>테크니컬 SEO</b>까지 D.I.A+ 로직에 맞춰 반영했습니다.</p>
           <style>
-            .seocap-h{ font-size:13px; font-weight:800; color:#C9A6FF; margin:16px 0 10px; }
+            .seocap-h{ font-size:13px; font-weight:800; color:#C9A6FF; margin:18px 0 11px; }
             .seocap-h b{ color:#FF8FD6; }
             .seocap-h .sub{ color:#9E99BC; font-weight:600; font-size:12px; }
-            .seocap-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
-            .seocap-grid figure{ margin:0; }
-            .seocap-grid img{ width:100%; height:auto; display:block; border:1px solid rgba(124,92,255,.22); border-radius:10px; background:#fff; }
-            .seocap-grid figcaption{ font-size:11.5px; color:#9E99BC; margin-top:6px; text-align:center; }
-            .seocap-grid figcaption b{ color:#C9A6FF; }
-            @media(max-width:560px){ .seocap-grid{ grid-template-columns:1fr 1fr; } }
+            .seocap-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+            .seocap{ display:flex; flex-direction:column; }
+            .seocap .pill{ background:linear-gradient(90deg,#3182F6,#2563EB); color:#fff; font-weight:800; font-size:13px; text-align:center; padding:9px 8px; border-radius:999px; margin-bottom:10px; box-shadow:0 6px 16px -6px rgba(49,130,246,.6); }
+            .seocap .shot{ position:relative; width:100%; aspect-ratio:3/4; overflow:hidden; border:1px solid rgba(124,92,255,.22); border-radius:12px; background:#fff; }
+            .seocap .shot img{ width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+            .seocap .rank{ position:absolute; top:12px; right:12px; width:54px; height:54px; border-radius:50%; background:#3182F6; color:#fff; font-weight:800; font-size:18px; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 18px -4px rgba(49,130,246,.75); border:2.5px solid #fff; }
+            .seocap .rank.top{ background:linear-gradient(135deg,#3182F6,#1b4fd6); }
+            .seocap-note{ font-size:11px; color:#8a8aa0; margin:12px 2px 0; }
+            @media(max-width:600px){ .seocap-grid{ grid-template-columns:1fr 1fr; } }
           </style>
           <div class="seocap-h">창업·B2B 셀러 리드 · 평균 <b>1.7위</b> <span class="sub">— 네이버 블로그 검색 노출</span></div>
           <div class="seocap-grid">
-            <figure><img src="seo/biz-1-startup.jpg" loading="lazy" alt="공유창고 창업 검색결과 박스풀 1위"><figcaption>공유창고 창업 <b>1위</b></figcaption></figure>
-            <figure><img src="seo/biz-2-selfstorage.jpg" loading="lazy" alt="셀프스토리지 창업 검색결과 박스풀 2위"><figcaption>셀프스토리지 창업 <b>2위</b></figcaption></figure>
-            <figure><img src="seo/biz-3-3pl.jpg" loading="lazy" alt="3PL물류대행 검색결과 박스풀 1위"><figcaption>3PL물류대행 <b>1위</b></figcaption></figure>
+            <div class="seocap"><div class="pill">공유창고 창업</div><div class="shot"><img src="seo/biz-1-startup.jpg" loading="lazy" alt="공유창고 창업 검색결과 박스풀 1위"><div class="rank top">1위</div></div></div>
+            <div class="seocap"><div class="pill">셀프스토리지 창업</div><div class="shot"><img src="seo/biz-2-selfstorage.jpg" loading="lazy" alt="셀프스토리지 창업 검색결과 박스풀 2위"><div class="rank">2위</div></div></div>
+            <div class="seocap"><div class="pill">3PL물류대행</div><div class="shot"><img src="seo/biz-3-3pl.jpg" loading="lazy" alt="3PL물류대행 검색결과 박스풀 1위"><div class="rank top">1위</div></div></div>
           </div>
           <div class="seocap-h">B2C 짐보관 · 평균 <b>2위</b> <span class="sub">— 네이버 블로그 검색 노출</span></div>
           <div class="seocap-grid">
-            <figure><img src="seo/b2c-1-document.jpg" loading="lazy" alt="서류보관 검색결과 박스풀 1위"><figcaption>서류보관 <b>1위</b></figcaption></figure>
-            <figure><img src="seo/b2c-2-jeju.jpg" loading="lazy" alt="제주도 캐리어 보관 검색결과 박스풀 1위"><figcaption>제주도 캐리어 보관 <b>1위</b></figcaption></figure>
-            <figure><img src="seo/b2c-3-camping.jpg" loading="lazy" alt="캠핑용품 보관 검색결과 박스풀 3위"><figcaption>캠핑용품 보관 <b>3위</b></figcaption></figure>
+            <div class="seocap"><div class="pill">서류보관</div><div class="shot"><img src="seo/b2c-1-document.jpg" loading="lazy" alt="서류보관 검색결과 박스풀 1위"><div class="rank top">1위</div></div></div>
+            <div class="seocap"><div class="pill">제주도 캐리어 보관</div><div class="shot"><img src="seo/b2c-2-jeju.jpg" loading="lazy" alt="제주도 캐리어 보관 검색결과 박스풀 1위"><div class="rank top">1위</div></div></div>
+            <div class="seocap"><div class="pill">캠핑용품 보관</div><div class="shot"><img src="seo/b2c-3-camping.jpg" loading="lazy" alt="캠핑용품 보관 검색결과 박스풀 3위"><div class="rank">3위</div></div></div>
           </div>
+          <div class="seocap-note">* 2025.06 네이버 블로그 검색 노출 기준</div>
         </div>
 
         <div class="sec">
