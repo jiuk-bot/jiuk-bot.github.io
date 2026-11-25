@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no">
+<link rel="stylesheet" as="style" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-surgery.jpg" fetchpriority="high">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{height:100%;background:#081530}
+  body{
+    min-height:100%;
+    background:#081530;
+    background-image:radial-gradient(ellipse at top,#15294D 0%,#081530 55%,#040B1C 100%);
+    font-family:'Pretendard Variable',Pretendard,-apple-system,BlinkMacSystemFont,system-ui,'Apple SD Gothic Neo','Noto Sans KR',sans-serif;
+    color:#EDE7DA;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    font-weight:450;
+    letter-spacing:-.02em;
+    overflow-x:hidden;
+  }
+  a[href^="tel"],a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important;background:transparent!important;pointer-events:none}
+
+  .lp{
+    max-width:960px;margin:0 auto;
+    min-height:100vh;min-height:100dvh;
+    display:flex;flex-direction:column;
+    align-items:center;
+    padding:0 0 24px;
+    position:relative;
+  }
+  .wrap{width:100%;display:flex;flex-direction:column;align-items:center}
+
+  /* 카운트다운 바 */
+  .urgency-bar{
+    width:100%;
+    background:linear-gradient(90deg,#A88444 0%,#D4B57A 50%,#A88444 100%);
+    color:#0A1F40;
+    text-align:center;
+    padding:11px 16px;
+    font-size:clamp(15px,3.6vw,20px);
+    font-weight:800;letter-spacing:-.01em;
+    box-shadow:0 2px 12px rgba(212,181,122,.25);
+    position:relative;overflow:hidden;
+  }
+  .urgency-bar .urg-dot{
+    display:inline-block;width:7px;height:7px;background:#E84040;border-radius:50%;
+    margin-right:7px;vertical-align:middle;
+    animation:urgBlink 1s infinite;box-shadow:0 0 8px #E84040;
+  }
+  @keyframes urgBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.85)}}
+  .urgency-bar .urg-time{
+    font-family:'Inter',sans-serif;font-feature-settings:'tnum' 1;
+    background:rgba(10,31,64,.92);color:#E8CC91;
+    padding:4px 11px;border-radius:5px;
+    margin-left:8px;letter-spacing:.04em;font-weight:700;
+  }
+
+  /* 히어로 */
+  .hero{
+    width:100%;position:relative;
+    padding:24px 14px 22px;
+    text-align:center;
+    overflow:hidden;
+    background:#0A1F40;
+    border-bottom:1px solid rgba(255,200,60,.18);
+  }
+  .hero-img{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    object-fit:cover;object-position:center center;
+    z-index:0;opacity:0;transition:opacity .4s;
+    filter:saturate(.68) brightness(.68) hue-rotate(-22deg) contrast(1.1);
+  }
+  .hero-overlay{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    background:linear-gradient(180deg,
+      rgba(8,21,48,.78) 0%,
+      rgba(8,21,48,.82) 35%,
+      rgba(8,21,48,.92) 65%,
+      #081530 92%);
+    z-index:1;
+  }
+  .hero .badge,.hero .headline{position:relative;z-index:2}
+
+  /* 뱃지 */
+  .badge{
+    display:inline-flex;align-items:center;gap:10px;
+    background:rgba(212,181,122,.1);
+    border:1.5px solid rgba(212,181,122,.45);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    color:#F0DAA8;
+    font-size:clamp(20px,4.8vw,28px);
+    font-weight:800;letter-spacing:.02em;
+    padding:11px 24px;border-radius:32px;margin-bottom:14px;
+    box-shadow:0 4px 18px rgba(0,0,0,.2);
+  }
+  .badge .dot{width:7px;height:7px;background:#D4B57A;border-radius:50%;animation:blink 1.6s infinite;box-shadow:0 0 9px #D4B57A}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* 헤드카피 */
+  .headline{width:100%;display:flex;flex-direction:column;align-items:center}
+  .headline .hl-small{
+    display:block;
+    font-size:clamp(34px,7.6vw,56px);
+    font-weight:700;color:#FFFFFF;
+    letter-spacing:-.025em;line-height:1.18;
+    text-shadow:0 2px 14px rgba(0,0,0,.5),0 0 24px rgba(255,255,255,.08);
+    margin-bottom:6px;
+  }
+  .headline .hl-main{
+    display:block;
+    font-size:clamp(72px,15vw,124px);
+    font-weight:900;color:#5B7FFF;
+    letter-spacing:-.05em;line-height:1.02;word-break:keep-all;
+    text-shadow:0 2px 18px rgba(91,127,255,.35);
+    background:linear-gradient(180deg,#9AB1FF 0%,#5B7FFF 45%,#3D5FE8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 2px 14px rgba(91,127,255,.3));
+  }
+
+  /* 강조 비주얼 (가격대) */
+  .hl-feature{
+    display:flex;align-items:baseline;justify-content:center;
+    gap:0;margin:10px 0 0;
+    white-space:nowrap;
+    max-width:100%;
+    padding:0 4px;
+  }
+  .hl-feature .feat-num{
+    font-family:'Inter','Pretendard Variable',sans-serif;
+    font-feature-settings:'tnum' 1,'lnum' 1;
+    font-size:clamp(96px,24vw,210px);
+    font-weight:800;
+    letter-spacing:-.08em;line-height:.88;
+    background:linear-gradient(180deg,#9AB1FF 0%,#5B7FFF 45%,#3D5FE8 80%,#2E47B8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 4px 16px rgba(91,127,255,.3));
+    padding-right:.06em;
+  }
+  .hl-feature .feat-label{
+    font-size:clamp(34px,8.4vw,72px);
+    font-weight:700;letter-spacing:-.06em;line-height:1;
+    background:linear-gradient(180deg,#9AB1FF 0%,#3D5FE8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    flex-shrink:0;
+  }
+  .hl-feature .feat-tail{
+    display:inline-block;
+    font-size:.58em;
+    font-weight:700;
+    letter-spacing:-.03em;
+    margin-left:.18em;
+    vertical-align:.22em;
+    background:linear-gradient(180deg,#9AB1FF 0%,#3D5FE8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+
+  /* 콘텐츠 영역 */
+  .content{width:100%;padding:12px 14px 0;display:flex;flex-direction:column;align-items:center;gap:10px}
+
+  /* USP 3분할 */
+  .usp{
+    width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;
+  }
+  .usp-card{
+    text-align:center;
+    background:linear-gradient(160deg,rgba(255,255,255,.05) 0%,rgba(255,200,60,.05) 100%);
+    border:1.5px solid rgba(255,200,60,.32);
+    border-radius:18px;padding:22px 4px 22px;
+    box-shadow:0 4px 18px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05);
+    backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+    position:relative;
+  }
+  .usp-icon{
+    font-size:clamp(38px,8vw,56px);
+    line-height:1;margin-bottom:12px;
+    filter:drop-shadow(0 2px 10px rgba(91,127,255,.35));
+  }
+  .usp-title{
+    font-size:clamp(20px,5.2vw,34px);
+    font-weight:800;
+    letter-spacing:-.04em;line-height:1.18;
+    word-break:keep-all;
+    margin-bottom:0;
+    background:linear-gradient(180deg,#9AB1FF 0%,#5B7FFF 50%,#3D5FE8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+    filter:drop-shadow(0 1px 6px rgba(91,127,255,.2));
+  }
+
+  /* 실시간 피드 */
+  .live-feed{
+    width:100%;
+    background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,rgba(255,200,60,.04) 100%);
+    border:1px solid rgba(255,200,60,.25);
+    border-radius:14px;padding:12px 16px;
+    box-shadow:0 4px 16px rgba(0,0,0,.25);
+  }
+  .feed-header{
+    display:flex;align-items:center;gap:7px;
+    font-size:clamp(12px,2.8vw,15px);
+    color:#5B7FFF;font-weight:700;
+    margin-bottom:6px;letter-spacing:.04em;
+  }
+  .feed-dot{width:7px;height:7px;background:#FF5A5A;border-radius:50%;animation:liveBlink 1.2s infinite;box-shadow:0 0 8px #FF5A5A}
+  @keyframes liveBlink{0%,100%{opacity:1}50%{opacity:.4}}
+  .feed-row{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:5px 0;
+    font-size:clamp(13px,3.1vw,17px);
+    color:#D4C8B0;font-weight:500;letter-spacing:-.01em;
+    transition:opacity .3s,transform .3s;
+  }
+  .feed-row:not(:last-child){border-bottom:1px solid rgba(255,200,60,.1)}
+  .feed-row strong{color:#F4E0B0;font-weight:700}
+  .feed-row .hl{color:#5B7FFF;font-weight:700}
+  .feed-row .time{color:#7A736A;font-size:clamp(11px,2.6vw,14px);flex-shrink:0;margin-left:8px;font-family:'Inter','Pretendard Variable',sans-serif}
+
+  /* 타이핑 */
+  .typing-bar{
+    width:100%;text-align:center;
+    font-size:clamp(15px,3.4vw,19px);
+    font-weight:600;color:#D4B57A;
+    min-height:22px;letter-spacing:-.01em;
+    margin-top:0;opacity:.95;
+  }
+  .typing-bar .cursor{animation:cursorBlink .7s infinite;color:#D4B57A;font-weight:300}
+  @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+
+  /* CTA */
+  .cta-wrap{width:100%}
+  .cta-btn{
+    display:block;width:100%;padding:18px 12px;
+    background:linear-gradient(135deg,#F0DAA8 0%,#D4B57A 45%,#C9A664 70%,#A88444 100%);
+    color:#0A1F40;
+    font-size:clamp(19px,4.6vw,26px);
+    font-weight:700;letter-spacing:-.02em;
+    border:none;border-radius:60px;cursor:pointer;
+    font-family:inherit;
+    box-shadow:0 10px 32px rgba(212,181,122,.35),inset 0 1px 0 rgba(255,255,255,.4),0 1px 4px rgba(0,0,0,.3);
+    text-align:center;position:relative;overflow:hidden;
+    transition:all .2s;
+    animation:ctaPulse 2.6s ease-in-out infinite;
+  }
+  @keyframes ctaPulse{
+    0%,100%{box-shadow:0 10px 32px rgba(212,181,122,.35),inset 0 1px 0 rgba(255,255,255,.4),0 1px 4px rgba(0,0,0,.3)}
+    50%{box-shadow:0 12px 40px rgba(212,181,122,.6),inset 0 1px 0 rgba(255,255,255,.5),0 1px 4px rgba(0,0,0,.3)}
+  }
+  .cta-btn:active{transform:scale(.97)}
+  .cta-btn .shimmer{
+    position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shimmer 3s ease-in-out infinite;pointer-events:none;
+  }
+  @keyframes shimmer{0%{left:-100%}50%{left:110%}100%{left:110%}}
+
+  /* 폼 팝업 */
+  .form-overlay{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(4,11,28,.7);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    z-index:9998;opacity:0;pointer-events:none;
+    transition:opacity .3s;
+  }
+  .form-overlay.open{opacity:1;pointer-events:auto}
+  .form-popup{
+    position:fixed;bottom:0;left:0;width:100%;
+    z-index:9999;
+    transform:translateY(100%);
+    transition:transform .35s cubic-bezier(.16,1,.3,1);
+  }
+  .form-popup.open{transform:translateY(0)}
+  .form-card{
+    position:relative;
+    max-width:720px;margin:0 auto;
+    background:linear-gradient(180deg,#0F2347 0%,#0A1B38 100%);
+    border-top:1px solid rgba(212,181,122,.25);
+    border-radius:26px 26px 0 0;
+    padding:28px 28px 32px;
+    box-shadow:0 -10px 50px rgba(0,0,0,.55);
+  }
+  .form-handle{width:44px;height:5px;background:rgba(212,181,122,.35);border-radius:3px;margin:0 auto 18px}
+  .form-close{
+    position:absolute;top:18px;right:20px;
+    width:38px;height:38px;border:none;
+    background:rgba(255,255,255,.05);border-radius:50%;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    font-size:22px;color:#B8B0A0;transition:all .2s;z-index:1;
+  }
+  .form-close:hover{background:rgba(255,255,255,.1);color:#FFFFFF}
+  .form-title{text-align:center;font-size:19px;font-weight:700;color:#F4E0B0;margin-bottom:3px;letter-spacing:-.025em}
+  .form-sub{text-align:center;font-size:14px;color:#B8B0A0;margin-bottom:12px;font-weight:500;letter-spacing:.01em}
+  .form-area{width:100%}
+  .form-inner-cta{width:100%;margin-top:10px;display:none}
+  .form-btn{
+    display:block;width:100%;padding:14px;
+    background:linear-gradient(135deg,#F0DAA8 0%,#D4B57A 45%,#C9A664 70%,#A88444 100%);
+    color:#0A1F40;
+    font-size:18px;font-weight:700;letter-spacing:-.02em;
+    border:none;border-radius:50px;cursor:pointer;
+    font-family:inherit;
+    box-shadow:0 8px 24px rgba(212,181,122,.32),inset 0 1px 0 rgba(255,255,255,.4);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .form-btn .shimmer{
+    position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shimmer 3s ease-in-out infinite;pointer-events:none;
+  }
+  .form-btn:active{transform:scale(.97)}
+
+  /* 약관 동의 모달 (v4 신규: 2단계 진입 패턴) */
+  .agree-overlay{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(4,11,28,.82);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    z-index:10000;opacity:0;pointer-events:none;
+    transition:opacity .25s;
+  }
+  .agree-overlay.open{opacity:1;pointer-events:auto}
+  .agree-modal{
+    position:fixed;top:50%;left:50%;
+    transform:translate(-50%,-45%) scale(.95);
+    width:calc(100% - 32px);max-width:480px;
+    z-index:10001;opacity:0;pointer-events:none;
+    transition:opacity .25s,transform .3s cubic-bezier(.16,1,.3,1);
+  }
+  .agree-modal.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+  .agree-card{
+    position:relative;
+    background:linear-gradient(180deg,#0F2347 0%,#0A1B38 100%);
+    border:1px solid rgba(212,181,122,.28);
+    border-radius:20px;
+    padding:30px 24px 24px;
+    box-shadow:0 24px 60px rgba(0,0,0,.6);
+    text-align:center;
+  }
+  .agree-title{
+    font-size:18px;font-weight:800;color:#F4E0B0;
+    letter-spacing:-.025em;line-height:1.4;margin-bottom:6px;
+  }
+  .agree-warn{
+    font-size:13px;font-weight:500;color:#B8B0A0;
+    line-height:1.5;margin-bottom:18px;
+  }
+  .agree-link{
+    display:flex;align-items:center;justify-content:flex-start;
+    gap:6px;font-size:14px;color:#EDE7DA;font-weight:600;
+    padding:0 4px;margin-bottom:14px;
+    text-align:left;letter-spacing:.01em;
+  }
+  .agree-link .agree-detail-toggle{
+    color:#D4B57A;text-decoration:underline;cursor:pointer;font-weight:700;
+  }
+  .agree-detail-box{
+    display:none;text-align:left;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(212,181,122,.18);
+    border-radius:10px;
+    padding:12px 14px;margin-bottom:14px;
+    font-size:12px;color:#B8B0A0;line-height:1.7;
+    max-height:160px;overflow-y:auto;letter-spacing:.01em;
+  }
+  .agree-detail-box.open{display:block}
+  .agree-btn{
+    display:block;width:100%;padding:16px;
+    background:linear-gradient(135deg,#F0DAA8 0%,#D4B57A 45%,#C9A664 70%,#A88444 100%);
+    color:#0A1F40;
+    font-size:17px;font-weight:800;letter-spacing:-.02em;
+    border:none;border-radius:50px;cursor:pointer;
+    font-family:inherit;
+    box-shadow:0 8px 24px rgba(212,181,122,.4),inset 0 1px 0 rgba(255,255,255,.4);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .agree-btn:active{transform:scale(.97)}
+  .agree-btn .shimmer{
+    position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shimmer 3s ease-in-out infinite;pointer-events:none;
+  }
+  .agree-close{
+    position:absolute;top:14px;right:14px;
+    width:32px;height:32px;border:none;
+    background:rgba(255,255,255,.06);border-radius:50%;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;color:#B8B0A0;transition:all .2s;z-index:1;
+  }
+  .agree-close:hover{background:rgba(255,255,255,.1);color:#FFFFFF}
+
+  /* 푸터 */
+  .footer-trust{
+    display:flex;align-items:center;justify-content:center;
+    gap:8px;flex-wrap:nowrap;margin-top:2px;white-space:nowrap;
+  }
+  .footer-trust span{font-size:11px;color:#7A736A;font-weight:500;letter-spacing:.01em;white-space:nowrap;flex-shrink:0}
+  @media(max-width:360px){
+    .footer-trust{gap:6px}
+    .footer-trust span{font-size:10px;letter-spacing:0}
+  }
+
+  /* 아임웹 오버라이드 */
+  .widget-form,.w-section,[data-widget-type="form"],[data-widget-type]{margin-top:0!important;margin-bottom:0!important;padding-top:0!important;padding-bottom:0!important}
+  .widget-form-wrap,.section-element,.se-component{margin:0!important;padding:0!important}
+  #wrap,.container,.content-container{width:100%!important}
+  .widget,[class*="widget-wrap"]{width:100%!important;max-width:100%!important;margin:0 auto!important;padding:0!important}
+
+  @media(min-width:768px){
+    .content{max-width:960px;padding:18px 40px 0}
+    .hero{padding:36px 40px 32px}
+    .usp-card{padding:22px 4px 22px}
+
+    /* PC: 폼 팝업을 화면 중앙 모달로 전환 (모바일은 바텀시트 유지) */
+    .form-popup{
+      bottom:auto!important;
+      top:50%;left:50%;
+      width:92%;max-width:520px;
+      transform:translate(-50%,-46%);
+      opacity:0;
+      transition:opacity .25s ease,transform .35s cubic-bezier(.16,1,.3,1);
+    }
+    .form-popup.open{
+      transform:translate(-50%,-50%);
+      opacity:1;
+    }
+    .form-card{
+      border-radius:22px;
+      padding:32px 32px 28px;
+      box-shadow:0 24px 60px rgba(0,0,0,.6);
+    }
+    .form-handle{display:none}
+  }
+
+  /* 스티키 CTA */
+  .sticky-cta{
+    position:fixed;bottom:0;left:0;right:0;
+    z-index:9990;
+    padding:12px 16px 16px;
+    background:rgba(8,21,48,.92);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-top:1px solid rgba(212,181,122,.18);
+    box-shadow:0 -6px 24px rgba(0,0,0,.4);
+    transform:translateY(100%);
+    transition:transform .3s cubic-bezier(.16,1,.3,1);
+  }
+  .sticky-cta.show{transform:translateY(0)}
+  .sticky-cta-inner{max-width:960px;margin:0 auto}
+  .sticky-cta-btn{
+    display:block;width:100%;padding:18px;
+    background:linear-gradient(135deg,#F0DAA8 0%,#D4B57A 45%,#C9A664 70%,#A88444 100%);
+    color:#0A1F40;
+    font-size:18px;font-weight:700;letter-spacing:-.02em;
+    border:none;border-radius:50px;cursor:pointer;
+    font-family:inherit;
+    box-shadow:0 6px 20px rgba(212,181,122,.35),inset 0 1px 0 rgba(255,255,255,.4);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .sticky-cta-btn:active{transform:scale(.97)}
+  .sticky-cta-btn .shimmer{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:shimmer 3s ease-in-out infinite;pointer-events:none}
+</style>
+</head>
+<body>
+
+<div class="lp"><div class="wrap">
+
+  <!-- 히어로 -->
+  <div class="hero">
+    <img src="img/hero-surgery.jpg" alt="" class="hero-img" fetchpriority="high" decoding="async" onload="this.style.opacity=1">
+    <div class="hero-overlay"></div>
+    <div class="badge"><span class="dot"></span> 양심치과 무료 매칭</div>
+    <div class="headline">
+      <h1>
+        <span class="hl-small">양심치과 소개</span>
+        <span class="hl-main">임플란트</span>
+      </h1>
+      <div class="hl-feature">
+        <span class="feat-num">20</span>
+        <span class="feat-label">만원<span class="feat-tail">대</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- USP 3분할 -->
+    <div class="usp">
+      <div class="usp-card">
+        <div class="usp-icon">&#128203;</div>
+        <div class="usp-title">무료<br>비교견적</div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">&#129309;</div>
+        <div class="usp-title">1:1<br>양심 매칭</div>
+      </div>
+      <div class="usp-card">
+        <div class="usp-icon">&#128142;</div>
+        <div class="usp-title">지원금<br>즉시 확인</div>
+      </div>
+    </div>
+
+    <!-- 실시간 매칭 피드 -->
+    <div class="live-feed">
+      <div class="feed-header"><span class="feed-dot"></span>LIVE 실시간 매칭 현황</div>
+      <div class="feed-row" id="feedRow1">
+        <span><strong>김OO</strong>(수원) 임플란트 2개 <span class="hl">매칭 완료</span></span>
+        <span class="time">방금 전</span>
+      </div>
+      <div class="feed-row" id="feedRow2">
+        <span><strong>이OO</strong>(성남) 임플란트 4개 <span class="hl">견적 안내</span></span>
+        <span class="time">3분 전</span>
+      </div>
+    </div>
+
+    <div class="typing-bar" id="typingBar"></div>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <button type="button" class="cta-btn" id="ctaBtn">
+        <span class="shimmer"></span>
+        무료상담 + 지원금 조회 &#8594;
+      </button>
+    </div>
+
+    <div class="footer-trust">
+      <span>&#128274; 개인정보 보호</span>
+      <span>&#9889; 즉시 확인</span>
+      <span>&#128172; 24시간 내 연락</span>
+    </div>
+
+  </div>
+</div></div>
+
+<!-- 폼 팝업 -->
+<div class="form-overlay" id="formOverlay"></div>
+<div class="form-popup" id="formPopup">
+  <div class="form-card">
+    <div class="form-handle"></div>
+    <button type="button" class="form-close" id="formClose">&times;</button>
+    <div class="form-title">30초 간편 상담신청</div>
+    <div class="form-sub">1단계 · 이름과 연락처만 남겨주세요</div>
+    <div class="form-area" id="formArea"></div>
+    <div class="form-inner-cta" id="formInnerCta">
+      <button type="button" class="form-btn" id="formBtn">
+        <span class="shimmer"></span>
+        무료상담 신청하기
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 약관 동의 모달 (v4 신규: 2단계 진입 패턴) -->
+<div class="agree-overlay" id="agreeOverlay"></div>
+<div class="agree-modal" id="agreeModal">
+  <div class="agree-card">
+    <button type="button" class="agree-close" id="agreeClose">&times;</button>
+    <div class="agree-title">상담을 위해 약관에 동의해주세요.</div>
+    <div class="agree-warn">(타인 번호 도용 시 법적 처벌을 받을 수 있습니다.)</div>
+    <div class="agree-link">
+      <span>개인정보취급방침동의</span>
+      <span class="agree-detail-toggle" id="agreeDetailToggle">[자세히보기]</span>
+    </div>
+    <div class="agree-detail-box" id="agreeDetailBox"></div>
+    <button type="button" class="agree-btn" id="agreeBtn">
+      <span class="shimmer"></span>
+      동의하고 상담 신청
+    </button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var FORM_ID='w202603102c2642e18942e';
+
+  // CTA → 폼 팝업
+  var ctaBtn=document.getElementById('ctaBtn');
+  var formOverlay=document.getElementById('formOverlay');
+  var formPopup=document.getElementById('formPopup');
+  function openForm(){
+    formOverlay.classList.add('open');formPopup.classList.add('open');
+    document.body.style.overflow='hidden';if(stickyCta)stickyCta.classList.remove('show');
+    setTimeout(function(){var n=formPopup.querySelector('input[type="text"]');if(n)n.focus({preventScroll:true})},350);
+  }
+  function closeForm(){
+    formOverlay.classList.remove('open');formPopup.classList.remove('open');
+    formPopup.style.bottom='';document.body.style.overflow='';if(stickyCta)stickyCta.classList.add('show');
+  }
+  ctaBtn.addEventListener('click',openForm);
+  // 모바일 키보드 대응 (visualViewport)
+  if(window.visualViewport){
+    var vv=window.visualViewport;
+    function adjustForKeyboard(){
+      if(!formPopup.classList.contains('open')){formPopup.style.bottom='';return}
+      var kb=window.innerHeight-vv.height-vv.offsetTop;
+      if(kb>80){formPopup.style.bottom=kb+'px'}
+      else{formPopup.style.bottom=''}
+    }
+    vv.addEventListener('resize',adjustForKeyboard);
+    vv.addEventListener('scroll',adjustForKeyboard);
+  }
+  formOverlay.addEventListener('click',closeForm);
+  document.getElementById('formClose').addEventListener('click',closeForm);
+
+  // 약관 모달 제어 (v4 신규: 2단계 진입 패턴)
+  var agreeOverlay=document.getElementById('agreeOverlay');
+  var agreeModal=document.getElementById('agreeModal');
+  function openAgree(){
+    agreeOverlay.classList.add('open');
+    agreeModal.classList.add('open');
+  }
+  function closeAgree(){
+    agreeOverlay.classList.remove('open');
+    agreeModal.classList.remove('open');
+    var box=document.getElementById('agreeDetailBox');if(box)box.classList.remove('open');
+    var tog=document.getElementById('agreeDetailToggle');if(tog)tog.textContent='[자세히보기]';
+  }
+  agreeOverlay.addEventListener('click',closeAgree);
+  document.getElementById('agreeClose').addEventListener('click',closeAgree);
+
+  // 아임웹 폼에 설정된 약관 텍스트 추출 — 모든 줄바꿈/문단간격 제거 후 한 흐름으로 출력
+  function injectPrivacyText(){
+    var box=document.getElementById('agreeDetailBox');
+    if(!box||box.dataset.lpInjected==='1')return;
+    var fw=document.getElementById(FORM_ID);if(!fw)return;
+    var src=fw.querySelector('textarea');
+    var txt='';
+    if(src&&(src.value||'').length>0){txt=src.value;}
+    else{var ctl=fw.querySelector('div.form-control');if(ctl)txt=ctl.innerText||ctl.textContent||'';}
+    if(txt){
+      // 줄바꿈/탭/연속 공백을 모두 단일 공백으로 압축 → 문단 띄어쓰기 완전 제거
+      txt=txt.replace(/\s+/g,' ').trim();
+      box.textContent=txt;
+      box.style.whiteSpace='normal';
+      box.dataset.lpInjected='1';
+    }
+  }
+  document.getElementById('agreeDetailToggle').addEventListener('click',function(){
+    injectPrivacyText();
+    var box=document.getElementById('agreeDetailBox');
+    if(box.classList.contains('open')){box.classList.remove('open');this.textContent='[자세히보기]';}
+    else{box.classList.add('open');this.textContent='[접기]';}
+  });
+
+  // 타이핑
+  var msgs=['검증된 양심치과만 소개합니다','무료 비교견적 받아보세요','지원금 적용 여부 즉시 확인'];
+  var typingBar=document.getElementById('typingBar');
+  var msgIdx=0,charIdx=0,del=false;
+  function typeLoop(){
+    var m=msgs[msgIdx];
+    if(!del){charIdx++;typingBar.innerHTML=m.substring(0,charIdx)+'<span class="cursor">|</span>';if(charIdx>=m.length){setTimeout(function(){del=true;typeLoop()},2000);return}setTimeout(typeLoop,80)}
+    else{charIdx--;typingBar.innerHTML=m.substring(0,charIdx)+'<span class="cursor">|</span>';if(charIdx<=0){del=false;msgIdx=(msgIdx+1)%msgs.length;setTimeout(typeLoop,400);return}setTimeout(typeLoop,40)}
+  }
+  typeLoop();
+
+  // 실시간 피드 (자동 갱신)
+  var names=['김','이','박','최','정','윤','장','한','오','서','홍','강','조','임'];
+  var cities=['서울','부산','대구','인천','광주','대전','수원','천안','전주','창원'];
+  var counts=[1,2,3,4,5,2,3,1,2,6];
+  var actions=['매칭 완료','견적 안내','상담 완료'];
+  var times=['방금 전','1분 전','2분 전','3분 전'];
+  var row1=document.getElementById('feedRow1'),row2=document.getElementById('feedRow2');
+  var feedIdx=0;
+  function replaceFeed(){
+    var t=feedIdx===0?row1:row2;
+    t.style.opacity='0';t.style.transform='translateY(-6px)';
+    setTimeout(function(){
+      var n=names[Math.floor(Math.random()*names.length)],
+          c=cities[Math.floor(Math.random()*cities.length)],
+          cnt=counts[Math.floor(Math.random()*counts.length)],
+          a=actions[Math.floor(Math.random()*actions.length)],
+          tm=times[Math.floor(Math.random()*times.length)];
+      t.innerHTML='<span><strong>'+n+'OO</strong>('+c+') 임플란트 '+cnt+'개 <span class="hl">'+a+'</span></span><span class="time">'+tm+'</span>';
+      t.style.opacity='1';t.style.transform='translateY(0)';
+    },250);
+    feedIdx=feedIdx===0?1:0;
+  }
+  function schedFeed(){setTimeout(function(){replaceFeed();schedFeed()},(5+Math.floor(Math.random()*6))*1000)}
+  setTimeout(schedFeed,4000);
+
+  // 아임웹 폼 이동
+  function moveForm(){
+    var fw=document.getElementById(FORM_ID);
+    if(fw){
+      var w=fw.closest('.widget-form')||fw.closest('[data-widget-type]')||fw.closest('.w-section')||fw;
+      var originalParent=w?w.parentNode:null;
+      var a=document.getElementById('formArea');
+      if(a&&w){
+        a.appendChild(w);
+        w.style.cssText='margin:0!important;padding:0!important;background:transparent!important';
+        if(originalParent&&originalParent!==a)originalParent.style.cssText='display:none!important;height:0!important;overflow:hidden!important';
+      }
+      return true;
+    }
+    return false;
+  }
+  var mr=0,mi=setInterval(function(){if(moveForm()||mr>30)clearInterval(mi);mr++},500);
+
+  // 개인정보 텍스트 숨기기
+  function hidePrivacy(){
+    var fw=document.getElementById(FORM_ID)||document.querySelector('.widget-form')||document.querySelector('[data-widget-type="form"]');
+    if(!fw)return;
+    fw.querySelectorAll('textarea').forEach(function(el){el.style.cssText='display:none!important'});
+    fw.querySelectorAll('div').forEach(function(el){
+      if(el.querySelector('input[type="text"],input[type="tel"],input[type="email"]'))return;
+      if(el.closest('.lp-agree-w'))return;
+      if(el.querySelector('.lp-agree-w'))return;
+      var txt=(el.innerText||'').substring(0,300);
+      if(txt.indexOf('수집 및 이용')>-1&&txt.length>50)el.style.cssText='display:none!important;height:0!important;overflow:hidden!important;margin:0!important;padding:0!important';
+    });
+  }
+  var pr=0,pi=setInterval(function(){hidePrivacy();pr++;if(pr>20)clearInterval(pi)},800);
+
+  // 폼 커스터마이징
+  function customizeForm(){
+    var fw=document.getElementById(FORM_ID);if(!fw)return false;
+    hidePrivacy();
+
+    if(!document.getElementById('gg2-form-css')){
+      var st=document.createElement('style');st.id='gg2-form-css';var F='#'+FORM_ID;
+      st.textContent=
+        F+','+F+' *{font-family:"Pretendard Variable",Pretendard,-apple-system,system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif!important}'+
+        F+'{background:transparent!important;border:none!important;padding:0!important;max-width:100%!important;margin:0!important;box-shadow:none!important;width:100%!important}'+
+        F+' form,'+F+' .form-inner,'+F+' .form-content{padding:0!important;margin:0!important;width:100%!important;background:transparent!important}'+
+        F+' .form-group,'+F+' .field-wrap,'+F+' [class*="field"]{margin-bottom:10px!important}'+
+        '.widget-form,.w-section,[data-widget-type]{background:transparent!important;margin:0!important;padding:0!important}'+
+        F+' input[type="text"],'+F+' input[type="tel"],'+F+' input[type="email"],'+F+' select{background:rgba(255,255,255,.04)!important;border:1px solid rgba(212,181,122,.25)!important;border-radius:12px!important;color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;caret-color:#FFFFFF!important;font-size:18px!important;font-weight:500!important;padding:17px 14px!important;width:100%!important;outline:none!important;-webkit-appearance:none!important;transition:border-color .2s,background .2s!important;margin:0!important;letter-spacing:.01em!important}'+
+        F+' input:focus{border-color:#D4B57A!important;box-shadow:0 0 0 3px rgba(212,181,122,.15)!important}'+
+        F+' input::placeholder{color:#7A736A!important;font-size:15px!important;font-weight:400!important}'+
+        F+' label{color:#B8B0A0!important;font-size:14px!important;font-weight:500!important;margin-bottom:6px!important;display:block!important;letter-spacing:.02em!important}'+
+        F+' button[type="submit"],'+F+' .wbtn,'+F+' [class*="submit"]{position:absolute!important;width:1px!important;height:1px!important;clip:rect(0,0,0,0)!important;opacity:0!important;pointer-events:none!important}'+
+        F+' textarea{display:none!important}'+
+        '.lp-ph-row{display:flex;gap:6px;align-items:center;width:100%}'+
+        '.lp-ph-010{background:rgba(212,181,122,.1)!important;border:1px solid rgba(212,181,122,.35)!important;border-radius:10px!important;color:#E8CC91!important;font-size:17px!important;font-weight:600!important;font-family:"Inter","Pretendard Variable",sans-serif!important;padding:13px 0!important;width:54px!important;min-width:62px!important;text-align:center!important;flex-shrink:0!important;letter-spacing:.04em!important}'+
+        '.lp-ph-dash{color:#5A5448;font-size:14px;flex-shrink:0}'+
+        '.lp-ph-mid,.lp-ph-last{flex:1;min-width:0;background:rgba(255,255,255,.06)!important;border:1.5px solid rgba(229,181,71,.3)!important;border-radius:10px!important;transition:border-color .2s,box-shadow .2s!important}'+'.lp-ph-mid:focus-within,.lp-ph-last:focus-within{border-color:#E5B547!important;box-shadow:0 0 0 3px rgba(229,181,71,.18)!important}'+
+        '.lp-ph-mid input,.lp-ph-last input{text-align:center!important;font-size:19px!important;font-weight:600!important;letter-spacing:.18em!important;padding:13px 4px!important;border:none!important;background:transparent!important;background-color:transparent!important;font-family:"Inter","Pretendard Variable",sans-serif!important;color:#FFFFFF!important;-webkit-text-fill-color:#FFFFFF!important;caret-color:#FFFFFF!important;outline:none!important;box-shadow:none!important;width:100%!important}'+
+        '.lp-agree-w{margin:8px 0 2px;display:flex;align-items:center;gap:9px;flex-wrap:nowrap}'+
+        '.lp-agree-l{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;color:#B8B0A0;white-space:nowrap;flex-wrap:nowrap;line-height:1;letter-spacing:.01em}'+
+        '.lp-agree-cb{-webkit-appearance:none!important;appearance:none!important;width:20px!important;height:20px!important;min-width:20px;min-height:20px;background:#FFFFFF!important;background-color:#FFFFFF!important;border:2px solid #D4B57A!important;border-radius:4px!important;cursor:pointer!important;flex-shrink:0;margin:0!important;padding:0!important;position:relative;top:1px}'+'.lp-agree-cb:checked{background:#FFFFFF!important;background-color:#FFFFFF!important;border-color:#5B7FFF!important}'+'.lp-agree-cb:checked::after{content:"✓";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#5B7FFF;font-weight:900;font-size:16px;line-height:1}'+
+        '.lp-agree-l span{line-height:20px}'+
+        '.lp-agree-tog{color:#D4B57A;font-size:13px;cursor:pointer;white-space:nowrap;word-break:keep-all;line-height:20px;font-weight:500}'+
+        '.lp-form-err{display:none;text-align:center;color:#FF9090;font-size:14px;font-weight:500;margin-top:10px;padding:11px;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;letter-spacing:.01em}'+
+        F+' input:-webkit-autofill,'+F+' input:-webkit-autofill:hover,'+F+' input:-webkit-autofill:focus,'+F+' input:-webkit-autofill:active{-webkit-text-fill-color:#FFFFFF!important;-webkit-box-shadow:0 0 0 1000px rgba(255,255,255,.06) inset!important;box-shadow:0 0 0 1000px rgba(255,255,255,.06) inset!important;caret-color:#FFFFFF!important;transition:background-color 9999s ease-in-out 0s!important;font-weight:600!important;color:#FFFFFF!important}'+
+        '@keyframes shakeX{0%,100%{transform:translateX(0)}20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-3px)}80%{transform:translateX(3px)}}';
+      document.head.appendChild(st);
+    }
+
+    var ai=fw.querySelectorAll('input'),pis=[];
+    ai.forEach(function(i){var n=(i.name||'').toLowerCase(),p=(i.placeholder||'').toLowerCase();if(n.indexOf('phone')>-1||n.indexOf('tel')>-1||n.indexOf('hp')>-1||p.indexOf('연락')>-1||p.indexOf('전화')>-1||p.indexOf('010')>-1||i.type==='tel')pis.push(i)});
+    if(pis.length>=3){
+      var p1=pis[0],p2=pis[1],p3=pis[2],pc=p1.closest('.form-group')||p1.closest('[class*="field"]')||p1.parentNode;
+      var row=document.createElement('div');row.className='lp-ph-row';
+      var box=document.createElement('div');box.className='lp-ph-010';box.textContent='010';
+      p1.value='010';p1.readOnly=true;p1.type='hidden';
+      var d1=document.createElement('span');d1.className='lp-ph-dash';d1.textContent='-';
+      var d2=document.createElement('span');d2.className='lp-ph-dash';d2.textContent='-';
+      var mw=document.createElement('div');mw.className='lp-ph-mid';p2.placeholder='0000';p2.maxLength=4;p2.setAttribute('inputmode','numeric');mw.appendChild(p2);
+      var lw=document.createElement('div');lw.className='lp-ph-last';p3.placeholder='0000';p3.maxLength=4;p3.setAttribute('inputmode','numeric');lw.appendChild(p3);
+      row.appendChild(box);row.appendChild(d1);row.appendChild(mw);row.appendChild(d2);row.appendChild(lw);pc.appendChild(row);
+      p2.addEventListener('input',function(){if(this.value.length>=4)p3.focus()});
+    }
+
+    var sb=fw.querySelectorAll('button[type="submit"],input[type="submit"],.wbtn,[class*="submit"]'),ob=sb[0];
+    sb.forEach(function(b){b.style.cssText='position:absolute!important;width:1px!important;height:1px!important;clip:rect(0,0,0,0)!important;opacity:0!important;pointer-events:none!important'});
+
+    if(ob){
+      // 아임웹 폼 안의 동의 체크박스/라벨은 완전히 숨김 (모달에서 자동 체크함)
+      fw.querySelectorAll('input[type="checkbox"]').forEach(function(c){var lb=c.closest('label')||c.parentNode;if(lb&&lb!==fw)lb.style.cssText='display:none!important;';c.style.cssText='display:none!important';});
+
+      // 폼 내부 에러 표시 영역
+      var err=document.createElement('div');err.className='lp-form-err';err.id='gg2FormErr';
+      ob.parentNode.insertBefore(err,ob);
+
+      var innerCta=document.getElementById('formInnerCta');if(innerCta)innerCta.style.display='block';
+
+      // 1단계: 폼 내부 "무료상담 신청하기" → 입력 검증 후 약관 모달 오픈 (v4 핵심 변경)
+      var formBtn=document.getElementById('formBtn');
+      if(formBtn&&!formBtn.dataset.lpBound){
+        formBtn.dataset.lpBound='1';
+        formBtn.addEventListener('click',function(){
+          var vi=fw.querySelectorAll('input[type="text"]:not([type="hidden"]),input[type="tel"]:not([type="hidden"]),input:not([type])'),ef=[];
+          vi.forEach(function(i){if(i.readOnly||i.type==='hidden'||!i.offsetParent)return;if(!i.value.trim())ef.push(i)});
+          if(ef.length>0){
+            ef.forEach(function(i){i.style.borderColor='#FF9090';i.style.boxShadow='0 0 0 3px rgba(239,68,68,.15)';setTimeout(function(){i.style.borderColor='';i.style.boxShadow=''},3000)});
+            err.textContent='모든 항목을 입력해주세요';err.style.display='block';err.style.animation='shakeX .4s ease';
+            ef[0].focus();
+            setTimeout(function(){err.style.display='none'},4000);
+            return;
+          }
+          err.style.display='none';
+          openAgree();
+        });
+      }
+
+      // 2단계: 약관 모달 "동의하고 상담 신청" → 모든 체크박스 자동 체크 + 원본 submit
+      var agreeBtn=document.getElementById('agreeBtn');
+      if(agreeBtn&&!agreeBtn.dataset.lpBound){
+        agreeBtn.dataset.lpBound='1';
+        agreeBtn.addEventListener('click',function(){
+          var cbs=fw.querySelectorAll('input[type="checkbox"]');
+          cbs.forEach(function(c){c.checked=true;try{c.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}});
+          closeAgree();
+          ob.style.pointerEvents='auto';ob.click();ob.style.pointerEvents='none';
+        });
+      }
+    }
+    return true;
+  
+    // 모든 input 흰색 강제 (위젯 inline style 덮기 + autofill 대응)
+    function applyInputStyle(i){
+      if(!i||i.type==='hidden'||i.type==='checkbox'||i.type==='radio')return;
+      i.style.setProperty('color','#FFFFFF','important');
+      i.style.setProperty('-webkit-text-fill-color','#FFFFFF','important');
+      i.style.setProperty('caret-color','#FFFFFF','important');
+      i.style.setProperty('font-weight','600','important');
+      i.style.setProperty('background-color','rgba(255,255,255,.06)','important');
+      i.style.setProperty('background-image','none','important');
+    }
+    fw.querySelectorAll('input').forEach(function(i){
+      applyInputStyle(i);
+      i.addEventListener('focus',function(){applyInputStyle(this)});
+      i.addEventListener('blur',function(){applyInputStyle(this)});
+      i.addEventListener('input',function(){applyInputStyle(this)});
+      i.addEventListener('change',function(){applyInputStyle(this)});
+    });
+    // 자동 적용 재시도 (위젯 동적 변경 대응)
+    var styleRetry=0;
+    var styleInterval=setInterval(function(){
+      fw.querySelectorAll('input').forEach(applyInputStyle);
+      styleRetry++;if(styleRetry>30)clearInterval(styleInterval);
+    },500);
+  }
+  // 입력 색상/배경 강제 (위젯 inline style 덮기 + autofill 차단)
+  function forceAllInputs(){
+    var fw=document.getElementById(FORM_ID);if(!fw)return;
+    fw.querySelectorAll('input').forEach(function(i){
+      if(!i||i.type==='hidden'||i.type==='checkbox'||i.type==='radio')return;
+      i.style.setProperty('color','#FFFFFF','important');
+      i.style.setProperty('-webkit-text-fill-color','#FFFFFF','important');
+      i.style.setProperty('caret-color','#FFFFFF','important');
+      i.style.setProperty('font-weight','600','important');
+      // 010 박스 옆 input은 wrapper가 배경 처리하므로 transparent
+      if(i.closest('.lp-ph-mid')||i.closest('.lp-ph-last')){
+        i.style.setProperty('background','transparent','important');
+        i.style.setProperty('background-color','transparent','important');
+        i.style.setProperty('background-image','none','important');
+        i.style.setProperty('border','none','important');
+        i.style.setProperty('box-shadow','none','important');
+      }else{
+        i.style.setProperty('background','rgba(255,255,255,.06)','important');
+        i.style.setProperty('background-color','rgba(255,255,255,.06)','important');
+        i.style.setProperty('background-image','none','important');
+      }
+      i.style.setProperty('-webkit-appearance','none','important');
+      i.style.setProperty('appearance','none','important');
+    });
+  }
+  setInterval(forceAllInputs,150);
+  document.addEventListener('focusin',function(e){if(e.target&&e.target.tagName==='INPUT')forceAllInputs()});
+  document.addEventListener('input',function(e){if(e.target&&e.target.tagName==='INPUT')forceAllInputs()});
+  document.addEventListener('change',function(e){if(e.target&&e.target.tagName==='INPUT')forceAllInputs()});
+
+  var fr=0,fi=setInterval(function(){if(customizeForm()||fr>30)clearInterval(fi);fr++},500);
+
+  // 스티키 CTA
+  var stickyCta=document.getElementById('stickyCta');
+  var stickyBtn=document.getElementById('stickyCtaBtn');
+  if(stickyCta&&stickyBtn){
+    stickyBtn.addEventListener('click',openForm);
+    function updateSticky(){
+      var y=window.scrollY||window.pageYOffset;
+      var atBot=(y+window.innerHeight)>=(document.documentElement.scrollHeight-120);
+      stickyCta.classList.toggle('show',!atBot);
+    }
+    updateSticky();
+    window.addEventListener('scroll',updateSticky,{passive:true});
+  }
+})();
+</script>
+
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <button type="button" class="sticky-cta-btn" id="stickyCtaBtn">
+      <span class="shimmer"></span>
+      무료상담 + 지원금 조회 →
+    </button>
+  </div>
+</div>
+
+<div style="position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;font:700 11px/1 'Pretendard',sans-serif;color:#fff;background:rgba(31,111,235,.92);padding:6px 13px;border-radius:999px">포트폴리오 예시 · 실제 상담 접수 안 됨</div>
+<script>
+(function(){
+  function thanks(){
+    var o=document.createElement('div');
+    o.style.cssText='position:fixed;inset:0;z-index:99998;background:rgba(10,14,24,.6);display:flex;align-items:center;justify-content:center;padding:24px';
+    o.innerHTML='<div style="background:#fff;border-radius:18px;max-width:340px;width:100%;padding:30px 24px;text-align:center;font-family:Pretendard,sans-serif">'+
+      '<div style="width:60px;height:60px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,#1f6feb,#2b55d8);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center">&#10003;</div>'+
+      '<div style="font-size:19px;font-weight:800;color:#1a2030;margin-bottom:8px">상담 신청이 접수되었습니다</div>'+
+      '<div style="font-size:13px;color:#8a92a2;line-height:1.6">포트폴리오 예시 페이지입니다.<br>실제로 전송되지 않습니다.</div>'+
+      '<button style="margin-top:20px;border:0;background:#eef1f5;color:#5b6472;font-weight:800;padding:12px 28px;border-radius:12px;cursor:pointer">닫기</button></div>';
+    o.addEventListener('click',function(e){ if(e.target===o||e.target.tagName==='BUTTON') o.remove(); });
+    document.body.appendChild(o);
+  }
+  document.addEventListener('click',function(e){
+    var fid=document.getElementById('agreeBtn')?'#agreeBtn':'#formBtn';var t=e.target.closest&&e.target.closest(fid);
+    if(t){ e.preventDefault(); e.stopImmediatePropagation(); thanks(); }
+  },true);
+})();
+</script>
+</body>
+
+</html>

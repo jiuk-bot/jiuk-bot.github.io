@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="form-source" content="GL(H)_경기남부">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Noto+Serif+KR:wght@500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/hero-surgery.jpg" fetchpriority="high">
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
-  html{background:#03081A}
+  html{height:100%;background:#03081A}
   body{
+    min-height:100%;
     background:#03081A;
     background-image:
       radial-gradient(ellipse at top,#0A152E 0%,#040A1C 55%,#02050F 100%);
@@ -21,173 +22,166 @@
 
   .lp{
     max-width:960px;margin:0 auto;
+    min-height:100vh;min-height:100dvh;
     display:flex;flex-direction:column;
     align-items:center;
-    padding:0;
+    padding:0 0 20px;
     position:relative;
   }
   .wrap{width:100%;display:flex;flex-direction:column;align-items:center}
 
-  /* 본문 영역 (사용자가 이미지로 대체할 자리) */
-  .content{
-    width:100%;
-    padding:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:0;
+  /* 히어로 */
+  .hero{
+    width:100%;position:relative;
+    padding:8px 10px 14px;
+    text-align:center;
+    overflow:hidden;
+    background:#06102A;
+    border-bottom:1px solid rgba(255,255,255,.04);
+  }
+  .hero-img{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    object-fit:cover;object-position:center 30%;
+    z-index:0;opacity:0;transition:opacity .4s;
+    filter:saturate(.68) brightness(.68) hue-rotate(-22deg) contrast(1.1);
+  }
+  .hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;background:
+      linear-gradient(180deg,
+        rgba(3,8,26,.32) 0%,
+        rgba(3,8,26,.5) 35%,
+        rgba(3,8,26,.7) 58%,
+        rgba(3,8,26,.92) 80%,
+        #03081A 95%),
+      radial-gradient(ellipse at center 35%,rgba(3,8,26,.05) 0%,rgba(3,8,26,.4) 78%);z-index:1;}
+  .hero .badge,.hero .headline{position:relative;z-index:2}
+
+  /* 뱃지 */
+  .badge{
+    display:inline-flex;align-items:center;gap:9px;
+    background:rgba(91,127,255,.12);
+    border:1.5px solid rgba(91,127,255,.45);
+    backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+    color:#7B96FF;
+    font-size:clamp(18px,4.2vw,26px);
+    font-weight:900;letter-spacing:-.3px;
+    padding:10px 22px;border-radius:32px;margin-bottom:8px;
+    box-shadow:0 4px 18px rgba(0,0,0,.25);
+  }
+  .badge .dot{width:8px;height:8px;background:#5B7FFF;border-radius:50%;animation:blink 1.5s infinite;box-shadow:0 0 10px #5B7FFF}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+  /* 헤드카피 */
+  .headline{width:100%;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .headline .hl-small{
+    display:block;
+    font-size:clamp(20px,4.6vw,32px);
+    font-weight:500;color:#E8EEF8;
+    letter-spacing:.2px;line-height:1.3;
+    text-shadow:0 2px 10px rgba(0,0,0,.55);
+    margin-bottom:0;
+  }
+  .headline .hl-main{
+    display:block;
+    font-family:'Noto Serif KR',serif;
+    font-size:clamp(40px,11.6vw,94px);
+    font-weight:700;color:#FFFFFF;
+    letter-spacing:.5px;line-height:1.08;
+    text-shadow:0 2px 14px rgba(0,0,0,.6);
+    width:100%;padding:0 2px;
+    white-space:nowrap;
+  }
+  .headline .price-row{
+    display:flex;align-items:baseline;justify-content:center;
+    gap:6px;margin:8px 0 0;
+    white-space:nowrap;
+  }
+  .headline .price{
+    font-family:'Montserrat',sans-serif;
+    font-size:clamp(108px,28vw,220px);
+    font-weight:800;
+    color:#5B7FFF;letter-spacing:.005em;line-height:.95;
+    text-shadow:0 4px 28px rgba(91,127,255,.45);
+    background:linear-gradient(180deg,#7B96FF 0%,#5B7FFF 55%,#3D5FE8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .headline .price-unit{
+    font-family:'Noto Sans KR',sans-serif;
+    font-size:clamp(54px,13vw,98px);
+    font-weight:800;color:#5B7FFF;letter-spacing:.01em;
+    background:linear-gradient(180deg,#7B96FF 0%,#5B7FFF 55%,#3D5FE8 100%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent;
   }
 
-  /* 맨 상단 큰 헤드라인 카피 */
-  .top-headline{
-    position:relative;
-    z-index:600;
-    width:100%;
-    max-width:960px;
-    margin:0 auto;
-    text-align:center;
-    padding:30px 18px 26px;
-    background:radial-gradient(ellipse 120% 100% at 50% 0%,#0B1733 0%,#03081A 76%);
+  /* 콘텐츠 영역 */
+  .content{width:100%;padding:6px 14px 0;display:flex;flex-direction:column;align-items:center;gap:6px}
+
+  /* 포인트 카드 */
+  .points{width:100%;display:flex;flex-direction:column;gap:14px}
+  .point{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    background:#0E1A33;
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:18px;padding:22px 22px;
+    box-shadow:0 4px 18px rgba(0,0,0,.35);
   }
-  .th-box{
-    display:inline-block;
-    font-size:clamp(22px,5.9vw,38px);
-    font-weight:900;
-    color:#FFFFFF;
-    letter-spacing:-.5px;
-    line-height:1.25;
-    padding:15px 28px 17px;
-    border-radius:18px;
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(91,127,255,.28);
-    box-shadow:0 6px 22px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05);
+  .point-info{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px}
+  .point-title{
+    font-size:clamp(26px,6.4vw,42px);
+    font-weight:700;color:#FFFFFF;
+    margin-bottom:0;letter-spacing:.3px;line-height:1.25;
     word-break:keep-all;
   }
-  .th-box .hl{
-    background:linear-gradient(135deg,#FFEC5C 0%,#FFB23D 100%);
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
-    filter:drop-shadow(0 0 14px rgba(255,200,60,.35));
+  .point-title .em{color:#FFFFFF}
+  .point-desc{
+    font-size:clamp(16px,3.8vw,24px);
+    font-weight:400;color:#9AA4BA;
+    letter-spacing:.2px;line-height:1.45;word-break:keep-all;
+  }
+  .point-icon{
+    font-size:clamp(68px,13vw,98px);
+    flex-shrink:0;
+    width:clamp(96px,20vw,140px);height:clamp(96px,20vw,140px);
+    display:flex;align-items:center;justify-content:center;
+    background:transparent;
+    border:none;
+    border-radius:14px;
   }
 
-  /* 네비게이션 CPA (스크롤 따라다니는 하단 fixed) */
-  .nav-cta{
-    position:fixed;bottom:0;left:0;width:100%;
-    z-index:500;
-    padding:14px 16px 18px;
-    display:flex;justify-content:center;
-    pointer-events:none;
+  /* 타이핑 애니메이션 */
+  .typing-bar{
+    width:100%;text-align:center;
+    font-size:clamp(17px,4vw,24px);
+    font-weight:800;color:#C6FF3D;
+    min-height:26px;letter-spacing:.3px;
+    margin-top:4px;
+    text-shadow:0 0 14px rgba(198,255,61,.6),0 0 28px rgba(198,255,61,.3);
   }
+  .typing-bar .cursor{animation:cursorBlink .7s infinite}
+  @keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
 
-  /* CTA 박스 — 어두운 그레이 둥근 사각형 */
-  .cta-box{
-    pointer-events:auto;
-    background:rgba(30,32,38,.92);
-    -webkit-backdrop-filter:blur(10px);
-    backdrop-filter:blur(10px);
-    border:1px solid rgba(255,255,255,.06);
-    border-radius:24px;
-    padding:12px 14px 14px;
-    box-shadow:0 10px 32px rgba(0,0,0,.45);
-    width:max-content;
-    max-width:calc(100% - 24px);
-    display:flex;flex-direction:column;align-items:center;
-    /* 박스가 카피 폭 따라 자연스럽게 늘었다 줄었다 */
-    transition:width .45s cubic-bezier(.4,0,.2,1),
-               padding .35s cubic-bezier(.4,0,.2,1),
-               max-width .45s cubic-bezier(.4,0,.2,1);
-  }
-
-  /* 상단 카피 영역 (실시간 회전) */
-  .cta-copy{
-    color:#FFFFFF;
-    font-size:clamp(15px,3.8vw,19px);
-    font-weight:800;
-    letter-spacing:-.3px;
-    line-height:1.3;
-    text-align:center;
-    padding:6px 14px 10px;
-    white-space:nowrap;
-    overflow:hidden;
-    opacity:1;
-    /* 등장/사라짐 부드럽게 */
-    transition:opacity .35s ease, transform .35s ease, max-width .45s cubic-bezier(.4,0,.2,1);
-    max-width:100%;
-  }
-  .cta-copy.hiding{
-    opacity:0;
-    transform:translateY(-4px);
-  }
-  /* 메인 키워드 강조 — 레몬색 */
-  .cta-copy .hl{
-    color:#FFE94A;
-    font-weight:900;
-    text-shadow:0 0 10px rgba(255,233,74,.35);
-  }
-  .cta-copy .emoji{
-    display:inline-block;
-    margin-right:4px;
-    filter:drop-shadow(0 1px 2px rgba(0,0,0,.4));
-  }
-
-  /* CTA 버튼 — 흰색/파란색 깜빡임 효과 */
+  /* CTA 버튼 */
+  .cta-wrap{width:100%}
   .cta-btn{
-    display:block;
-    width:max-content;min-width:320px;
-    max-width:100%;
-    padding:22px 52px;
-    font-size:clamp(24px,6.4vw,34px);
-    font-weight:900;letter-spacing:-.3px;
-    border:none;border-radius:70px;cursor:pointer;
+    display:block;width:100%;padding:16px;
+    background:linear-gradient(135deg,#7B96FF 0%,#5B7FFF 50%,#3D5FE8 100%);
+    color:#FFFFFF;
+    font-size:clamp(20px,4.8vw,28px);
+    font-weight:700;letter-spacing:-.2px;
+    border:none;border-radius:60px;cursor:pointer;
     font-family:'Noto Sans KR',sans-serif;
+    box-shadow:0 8px 28px rgba(91,127,255,.4),0 2px 8px rgba(0,0,0,.3);
     text-align:center;position:relative;overflow:hidden;
-    transition:transform .15s, width .45s cubic-bezier(.4,0,.2,1);
-    /* 깜빡임 애니메이션 */
-    animation:ctaBlink 1.2s steps(1,end) infinite;
-    white-space:nowrap;
-    /* 모바일 즉시 반응 — 300ms 클릭 지연 제거 */
-    touch-action:manipulation;
-    -webkit-tap-highlight-color:transparent;
-    user-select:none;-webkit-user-select:none;
-    pointer-events:auto;
+    transition:all .2s;
   }
   .cta-btn:active{transform:scale(.97)}
-
-  @keyframes ctaBlink{
-    0%, 49%{
-      background:#3D5FE8;
-      color:#FFFFFF;
-      box-shadow:0 6px 22px rgba(91,127,255,.5),0 2px 6px rgba(0,0,0,.3);
-      border:3px solid #3D5FE8;
-    }
-    50%, 100%{
-      background:#FFFFFF;
-      color:#3D5FE8;
-      box-shadow:0 6px 22px rgba(255,255,255,.18),0 2px 6px rgba(0,0,0,.3);
-      border:3px solid #FFFFFF;
-    }
+  .cta-btn .shimmer{
+    position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shimmer 3s ease-in-out infinite;pointer-events:none;
   }
-
-  /* PC 전용 — CTA 박스/버튼 키워 흰 여백 채우기 */
-  @media(min-width:768px){
-    .nav-cta{padding:20px 24px 26px}
-    .cta-box{
-      padding:18px 28px 22px;
-      border-radius:32px;
-      max-width:780px;
-    }
-    .cta-copy{
-      font-size:26px;
-      padding:10px 22px 16px;
-    }
-    .cta-btn{
-      min-width:560px;
-      padding:28px 72px;
-      font-size:38px;
-      border-radius:90px;
-    }
-  }
+  @keyframes shimmer{0%{left:-100%}50%{left:110%}100%{left:110%}}
 
   /* 폼 팝업 (바텀시트) */
   .form-overlay{
@@ -238,16 +232,21 @@
   .form-btn{
     display:block;width:100%;padding:14px;
     background:linear-gradient(135deg,#7B96FF 0%,#5B7FFF 50%,#3D5FE8 100%);
-    color:#FFFFFF;
+    color:#0A1F40;
     font-size:18px;font-weight:900;letter-spacing:-.5px;
     border:none;border-radius:50px;cursor:pointer;
     font-family:'Noto Sans KR',sans-serif;
     box-shadow:0 8px 24px rgba(91,127,255,.35);
     text-align:center;position:relative;overflow:hidden;
   }
+  .form-btn .shimmer{
+    position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shimmer 3s ease-in-out infinite;pointer-events:none;
+  }
   .form-btn:active{transform:scale(.97)}
 
-  /* 약관 동의 모달 (CPA 2단계) */
+  /* 약관 동의 모달 (v4 신규) */
   .agree-overlay{
     position:fixed;top:0;left:0;width:100%;height:100%;
     background:rgba(4,11,28,.78);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
@@ -306,6 +305,11 @@
     text-align:center;position:relative;overflow:hidden;
   }
   .agree-btn:active{transform:scale(.97)}
+  .agree-btn .shimmer{
+    position:absolute;top:0;left:-100%;width:60%;height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);
+    animation:shimmer 3s ease-in-out infinite;pointer-events:none;
+  }
   .agree-close{
     position:absolute;top:14px;right:14px;
     width:30px;height:30px;border:none;
@@ -314,37 +318,116 @@
     font-size:18px;color:#6B7280;
   }
 
+  /* 하단 */
+  .footer-trust{
+    display:flex;align-items:center;justify-content:center;
+    gap:12px;flex-wrap:wrap;margin-top:0;
+  }
+  .footer-trust span{font-size:13px;color:#8A95AB;font-weight:500}
+
   /* 아임웹 오버라이드 */
   .widget-form,.w-section,[data-widget-type="form"],[data-widget-type]{margin-top:0!important;margin-bottom:0!important;padding-top:0!important;padding-bottom:0!important}
   .widget-form-wrap,.section-element,.se-component{margin:0!important;padding:0!important}
-  #wrap,.container,.content-container{width:100%!important;background-color:#03081A!important}
+  #wrap,.container,.content-container{width:100%!important}
   .widget,[class*="widget-wrap"]{width:100%!important;max-width:100%!important;margin:0 auto!important;padding:0!important}
 
-  /* 본문 하단 흰색 영역 제거 (아임웹 기본 흰 배경 → 다크 통일) */
-  html{background:#03081A!important}
-  .w-section,.se-component,.section-element,[data-widget-type]{background-color:transparent!important}
-  /* 아임웹 자동 사업자정보/대표자 푸터 숨김 */
-  footer,#footer,[class*="footer"],[id*="footer"],[class*="copyright"],[class*="shopInfo"],[class*="company-info"],[class*="businessInfo"]{display:none!important}
+  @media(min-width:768px){
+    .content{max-width:960px;padding:10px 40px 0}
+    .hero{padding:14px 40px 18px}
+    .point{padding:28px 32px}
+    .points{gap:18px}
+  }
 
+  /* 스티키 CTA */
+  .sticky-cta{
+    position:fixed;bottom:0;left:0;right:0;
+    z-index:9990;
+    padding:12px 16px 16px;
+    background:rgba(3,8,26,.95);
+    backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+    border-top:1px solid rgba(255,255,255,.05);
+    box-shadow:0 -6px 24px rgba(0,0,0,.5);
+    transform:translateY(100%);
+    transition:transform .3s cubic-bezier(.16,1,.3,1);
+  }
+  .sticky-cta.show{transform:translateY(0)}
+  .sticky-cta-inner{max-width:960px;margin:0 auto}
+  .sticky-cta-btn{
+    display:block;width:100%;padding:18px;
+    background:linear-gradient(135deg,#7B96FF 0%,#5B7FFF 50%,#3D5FE8 100%);
+    color:#0A1F40;
+    font-size:20px;font-weight:900;letter-spacing:-.5px;
+    border:none;border-radius:50px;cursor:pointer;
+    font-family:'Noto Sans KR',sans-serif;
+    box-shadow:0 6px 20px rgba(91,127,255,.4);
+    text-align:center;position:relative;overflow:hidden;
+  }
+  .sticky-cta-btn:active{transform:scale(.97)}
+  .sticky-cta-btn .shimmer{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:shimmer 3s ease-in-out infinite;pointer-events:none}
 </style>
 </head>
 <body>
 
-<!-- 네비게이션 CPA (상단 sticky) -->
-<div class="nav-cta">
-  <div class="cta-box" id="ctaBox">
-    <div class="cta-copy" id="ctaCopy">지금 신청하고, 무료상담 받으세요!</div>
-    <button type="button" class="cta-btn" id="ctaBtn">
-      임플란트 혜택신청
-    </button>
-  </div>
-</div>
-
 <div class="lp"><div class="wrap">
 
-  <!-- 본문 영역 (사용자가 이미지로 대체) -->
+  <!-- 히어로 -->
+  <div class="hero">
+    <img src="img/hero-surgery.jpg" alt="" class="hero-img" fetchpriority="high" decoding="async" onload="this.style.opacity=1">
+    <div class="hero-overlay"></div>
+    <div class="headline">
+      <h1>
+        <span class="hl-small">식립개수 상관없이!</span>
+        <span class="hl-main">국산정품 임플란트</span>
+      </h1>
+      <div class="price-row">
+        <span class="price">28</span>
+        <span class="price-unit">만원</span>
+      </div>
+    </div>
+  </div>
+
   <div class="content">
-    <!-- 여기에 사용자가 LP 이미지 직접 삽입 -->
+
+    <div class="points">
+      <div class="point">
+        <div class="point-info">
+          <div class="point-title">추가금 0원</div>
+          <div class="point-desc">표시 가격 외 추가 비용 없음</div>
+        </div>
+        <div class="point-icon">&#128176;</div>
+      </div>
+      <div class="point">
+        <div class="point-info">
+          <div class="point-title">과잉진료 NO</div>
+          <div class="point-desc">필요한 치료만 정확하게</div>
+        </div>
+        <div class="point-icon">&#9878;&#65039;</div>
+      </div>
+      <div class="point">
+        <div class="point-info">
+          <div class="point-title">10년 무상 A/S</div>
+          <div class="point-desc">치료 후 책임지는 사후관리</div>
+        </div>
+        <div class="point-icon">&#128737;&#65039;</div>
+      </div>
+    </div>
+
+    <div class="typing-bar" id="typingBar"></div>
+
+    <!-- CTA 버튼 -->
+    <div class="cta-wrap">
+      <button type="button" class="cta-btn" id="ctaBtn">
+        <span class="shimmer"></span>
+        무료 상담 신청하기 &#8594;
+      </button>
+    </div>
+
+    <div class="footer-trust">
+      <span>&#128274; 개인정보 보호</span>
+      <span>&#9889; 즉시 확인</span>
+      <span>&#128172; 24시간 내 연락</span>
+    </div>
+
   </div>
 </div></div>
 
@@ -361,13 +444,14 @@
     </div>
     <div class="form-inner-cta" id="formInnerCta">
       <button type="button" class="form-btn" id="formBtn">
-        임플란트 혜택신청
+        <span class="shimmer"></span>
+        무료 상담 받기
       </button>
     </div>
   </div>
 </div>
 
-<!-- 약관 동의 모달 (CPA 2단계) -->
+<!-- 약관 동의 모달 (v4 신규: 2단계 진입 패턴) -->
 <div class="agree-overlay" id="agreeOverlay"></div>
 <div class="agree-modal" id="agreeModal">
   <div class="agree-card">
@@ -380,6 +464,7 @@
     </div>
     <div class="agree-detail-box" id="agreeDetailBox"></div>
     <button type="button" class="agree-btn" id="agreeBtn">
+      <span class="shimmer"></span>
       동의하고 상담 신청
     </button>
   </div>
@@ -387,28 +472,7 @@
 
 <script>
 (function(){
-  // 서브계정 (GL(H)_경기남부) — 0506 LP 패턴: 구글 Apps Script 직접 POST
-  var FORM_ID='';
-  var FORM_SOURCE='GL(H)_경기남부';
-  var userSubmitted=false;
-  function getFW(){
-    return document.querySelector('._widget_data[data-widget-type="form"]')
-        || document.querySelector('[data-widget-type="form"]')
-        || document.querySelector('.form-widget')
-        || document.querySelector('.widget-form');
-  }
-  // 구글시트 직접 전송 (Apps Script)
-  function sendToGoogleSheet(name,phone){
-    var nf=document.getElementById('lp_gs_name');
-    var pf=document.getElementById('lp_gs_phone');
-    var sf=document.getElementById('lp_gs_source');
-    var gf=document.getElementById('lp_gs_form');
-    if(!nf||!pf||!sf||!gf)return;
-    nf.value=name;
-    pf.value=phone;
-    sf.value=FORM_SOURCE;
-    gf.submit();
-  }
+  var FORM_ID='w202602052340a9ba8a410';
 
   // CTA 버튼 → 폼 팝업 토글
   var ctaBtn=document.getElementById('ctaBtn');
@@ -418,7 +482,7 @@
   function openForm(){
     formOverlay.classList.add('open');
     formPopup.classList.add('open');
-    document.body.style.overflow='hidden';
+    document.body.style.overflow='hidden';if(stickyCta)stickyCta.classList.remove('show');
     setTimeout(function(){
       var nameInp=formPopup.querySelector('input[type="text"]');
       if(nameInp)nameInp.focus({preventScroll:true});
@@ -427,12 +491,12 @@
   function closeForm(){
     formOverlay.classList.remove('open');
     formPopup.classList.remove('open');
-    formPopup.style.bottom='';document.body.style.overflow='';
+    formPopup.style.bottom='';document.body.style.overflow='';if(stickyCta)stickyCta.classList.add('show');
   }
 
   ctaBtn.addEventListener('click',openForm);
 
-  // 모바일 키보드 대응
+  // 모바일 키보드 대응 (visualViewport + active input scroll)
   var formCard=formPopup.querySelector('.form-card');
   function ensureInputVisible(inp){
     if(!inp)return;
@@ -459,6 +523,7 @@
     vv.addEventListener('resize',adjustForKeyboard);
     vv.addEventListener('scroll',adjustForKeyboard);
   }
+  // 폼 안 input focus 시 키보드 위로 자동 스크롤
   document.addEventListener('focusin',function(e){
     if(!formPopup.classList.contains('open'))return;
     var t=e.target;if(!t||(t.tagName!=='INPUT'&&t.tagName!=='TEXTAREA'))return;
@@ -469,7 +534,7 @@
   formOverlay.addEventListener('click',closeForm);
   document.getElementById('formClose').addEventListener('click',closeForm);
 
-  // 약관 모달 제어
+  // 약관 모달 제어 (v4 신규)
   var agreeOverlay=document.getElementById('agreeOverlay');
   var agreeModal=document.getElementById('agreeModal');
   function openAgree(){
@@ -487,11 +552,11 @@
   agreeOverlay.addEventListener('click',closeAgree);
   document.getElementById('agreeClose').addEventListener('click',closeAgree);
 
-  // 아임웹 폼에 설정된 약관 텍스트 추출 (문단 띄어쓰기 제거 — 한 단락으로)
+  // 아임웹 폼에 설정된 약관 텍스트 그대로 추출 (사용자 설정 원본 보존)
   function injectPrivacyText(){
     var box=document.getElementById('agreeDetailBox');
     if(!box||box.dataset.lpInjected==='1')return;
-    var fw=getFW();if(!fw)return;
+    var fw=document.getElementById(FORM_ID);if(!fw)return;
     var src=fw.querySelector('textarea');
     var txt='';
     if(src&&(src.value||'').length>0){
@@ -501,10 +566,8 @@
       if(ctl)txt=ctl.innerText||ctl.textContent||'';
     }
     if(txt){
-      // 문단 띄어쓰기 / 줄바꿈 모두 단일 공백으로 (한 단락 출력)
-      txt=txt.replace(/\s+/g,' ').trim();
       box.textContent=txt;
-      box.style.whiteSpace='normal';
+      box.style.whiteSpace='pre-wrap';
       box.dataset.lpInjected='1';
     }
   }
@@ -516,9 +579,29 @@
     else{box.classList.add('open');this.textContent='[접기]';}
   });
 
+  // 타이핑 애니메이션
+  var msgs=['지금 선착순 혜택 받으세요!','국산정품 임플란트 28만원','이번 달 한정 확정가 안내'];
+  var typingBar=document.getElementById('typingBar');
+  var msgIdx=0,charIdx=0,deleting=false;
+  function typeLoop(){
+    var msg=msgs[msgIdx];
+    if(!deleting){
+      charIdx++;
+      typingBar.innerHTML=msg.substring(0,charIdx)+'<span class="cursor">|</span>';
+      if(charIdx>=msg.length){setTimeout(function(){deleting=true;typeLoop()},2000);return}
+      setTimeout(typeLoop,80);
+    }else{
+      charIdx--;
+      typingBar.innerHTML=msg.substring(0,charIdx)+'<span class="cursor">|</span>';
+      if(charIdx<=0){deleting=false;msgIdx=(msgIdx+1)%msgs.length;setTimeout(typeLoop,400);return}
+      setTimeout(typeLoop,40);
+    }
+  }
+  typeLoop();
+
   // 아임웹 폼 이동
   function moveForm(){
-    var fw=getFW();
+    var fw=document.getElementById(FORM_ID);
     if(fw){
       var widget=fw.closest('.widget-form')||fw.closest('[data-widget-type]')||fw.closest('.w-section')||fw;
       var area=document.getElementById('formArea');
@@ -532,9 +615,9 @@
   }
   var mr=0,mi=setInterval(function(){if(moveForm()||mr>30)clearInterval(mi);mr++},500);
 
-  // 개인정보 텍스트 + 체크박스 숨기기
+  // 개인정보 텍스트 + 체크박스 숨기기 (폼 안에는 절대 노출 안 함)
   function hidePrivacy(){
-    var fw=getFW();
+    var fw=document.getElementById(FORM_ID)||document.querySelector('.widget-form')||document.querySelector('[data-widget-type="form"]');
     if(!fw)return;
     fw.querySelectorAll('textarea').forEach(function(el){el.style.cssText='display:none!important'});
     fw.querySelectorAll('input[type="checkbox"]').forEach(function(c){
@@ -552,13 +635,11 @@
 
   // 폼 커스터마이징
   function customizeForm(){
-    var fw=getFW();if(!fw)return false;
+    var fw=document.getElementById(FORM_ID);if(!fw)return false;
     hidePrivacy();
 
     if(!document.getElementById('ic-form-css')){
-      // 서브 LP: 아임웹 위젯 ID 또는 data-widget-type 셀렉터
-      var fwId=fw.id?'#'+fw.id:'[data-widget-type="form"]';
-      var st=document.createElement('style');st.id='ic-form-css';var F=fwId;
+      var st=document.createElement('style');st.id='ic-form-css';var F='#'+FORM_ID;
       st.textContent=
         F+','+F+' *{font-family:"Noto Sans KR",sans-serif!important}'+
         F+'{background:transparent!important;border:none!important;padding:0!important;max-width:100%!important;margin:0!important;box-shadow:none!important;width:100%!important}'+
@@ -600,19 +681,21 @@
       p2.addEventListener('input',function(){if(this.value.length>=4)p3.focus()});
     }
 
-    // 원본 submit 버튼 숨기기
+    // 원본 submit 버튼 숨기기 (실제 제출용으로 보관)
     var sb=fw.querySelectorAll('button[type="submit"],input[type="submit"],.wbtn,[class*="submit"]'),ob=sb[0];
     sb.forEach(function(b){b.style.cssText='position:absolute!important;width:1px!important;height:1px!important;clip:rect(0,0,0,0)!important;opacity:0!important;pointer-events:none!important'});
 
     if(ob){
+      // 폼 내부 에러 표시 영역
       var existingErr=fw.querySelector('.lp-form-err');
       var err=existingErr||document.createElement('div');
       if(!existingErr){err.className='lp-form-err';err.id='icFormErr';ob.parentNode.insertBefore(err,ob);}
 
+      // 폼 내부 CTA(무료 상담 받기) 노출
       var innerCta=document.getElementById('formInnerCta');
       if(innerCta)innerCta.style.display='block';
 
-      // 폼 내부 CTA 클릭 → 검증 후 약관 모달 오픈 (CPA 2단계)
+      // 폼 내부 CTA 클릭 → 검증 후 약관 모달 오픈 (v4 핵심 변경)
       var formBtn=document.getElementById('formBtn');
       if(formBtn&&!formBtn.dataset.lpBound){
         formBtn.dataset.lpBound='1';
@@ -626,77 +709,29 @@
             setTimeout(function(){err.style.display='none'},4000);
             return;
           }
-          // 전화번호 형식 검증 (가운데/끝 4자리 칸)
-          var midInp=fw.querySelector('.lp-ph-mid input');
-          var lastInp=fw.querySelector('.lp-ph-last input');
-          if(midInp&&lastInp){
-            var pm=midInp.value.trim(),pl=lastInp.value.trim();
-            var phoneBad=(pm.charAt(0)==='0')||(pm.length!==4)||(pl.length!==4);
-            if(phoneBad){
-              [midInp,lastInp].forEach(function(i){var w=i.closest('.lp-ph-mid')||i.closest('.lp-ph-last')||i;w.style.borderColor='#FF8A8A';w.style.boxShadow='0 0 0 3px rgba(239,68,68,.18)';setTimeout(function(){w.style.borderColor='';w.style.boxShadow=''},3000)});
-              err.textContent='전화번호를 다시 확인해주세요';err.style.display='block';err.style.animation='shakeX .4s ease';
-              midInp.focus();
-              setTimeout(function(){err.style.display='none'},4000);
-              return;
-            }
-          }
-          // 전화번호 검증: 중간/끝 각 4자리 숫자 + 중간이 0으로 시작 금지
-          var midInp=fw.querySelector('.lp-ph-mid input');
-          var lastInp=fw.querySelector('.lp-ph-last input');
-          var midV=midInp?midInp.value.trim():'';
-          var lastV=lastInp?lastInp.value.trim():'';
-          var midBad=!/^\d{4}$/.test(midV)||midV.charAt(0)==='0';
-          var lastBad=!/^\d{4}$/.test(lastV);
-          if(midBad||lastBad){
-            [midBad&&midInp&&midInp.closest('.lp-ph-mid'),lastBad&&lastInp&&lastInp.closest('.lp-ph-last')].forEach(function(w){
-              if(!w)return;w.style.borderColor='#FF8A8A';w.style.boxShadow='0 0 0 3px rgba(239,68,68,.18)';
-              setTimeout(function(){w.style.borderColor='';w.style.boxShadow='';},3000);
-            });
-            err.textContent='전화번호를 확인해주세요';err.style.display='block';err.style.animation='shakeX .4s ease';
-            if(midBad&&midInp)midInp.focus();else if(lastInp)lastInp.focus();
-            setTimeout(function(){err.style.display='none';},4000);
-            return;
-          }
           err.style.display='none';
           openAgree();
         });
       }
 
-      // 약관 모달 "동의하고 상담 신청" → 구글시트 직접 전송 + 원본 submit
+      // 약관 모달 "동의하고 상담 신청" → 원본 submit + 모든 체크박스 체크
       var agreeBtn=document.getElementById('agreeBtn');
       if(agreeBtn&&!agreeBtn.dataset.lpBound){
         agreeBtn.dataset.lpBound='1';
         agreeBtn.addEventListener('click',function(){
-          var fw2=getFW();
-          if(!fw2)return;
-          // 이름 / 폰번 추출
-          var nameInp=fw2.querySelector('input[name*="input_"]')||fw2.querySelector('input[type="text"]:not([type="hidden"])');
-          var t2=fw2.querySelector('input[name*="phonenumber2_"]')||fw2.querySelectorAll('input')[1];
-          var t3=fw2.querySelector('input[name*="phonenumber3_"]')||fw2.querySelectorAll('input')[2];
-          var name=nameInp?nameInp.value.trim():'';
-          var p2v=t2?t2.value.trim():'';
-          var p3v=t3?t3.value.trim():'';
-          // 모든 체크박스 강제 체크
-          fw2.querySelectorAll('input[type="checkbox"]').forEach(function(c){
-            c.checked=true;
-            try{c.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}
-          });
-          // 구글시트 직접 전송
-          sendToGoogleSheet(name,'010-'+p2v+'-'+p3v);
-          userSubmitted=true;
+          var cbs=fw.querySelectorAll('input[type="checkbox"]');
+          cbs.forEach(function(c){c.checked=true;try{c.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){}});
           closeAgree();
-          // 아임웹 원본 submit (백업 / 성공 모달 트리거용)
-          var ob2=fw2.querySelector('button[type="submit"],input[type="submit"],.wbtn,[class*="submit"]');
-          if(ob2){setTimeout(function(){ob2.style.pointerEvents='auto';ob2.click();ob2.style.pointerEvents='none';},250);}
+          ob.style.pointerEvents='auto';ob.click();ob.style.pointerEvents='none';
         });
       }
     }
     return true;
   }
 
-  // 입력 색상/배경 강제
+  // 입력 색상/배경 강제 (위젯 inline style 덮기 + autofill 차단)
   function forceAllInputs(){
-    var fw=getFW();if(!fw)return;
+    var fw=document.getElementById(FORM_ID);if(!fw)return;
     fw.querySelectorAll('input').forEach(function(i){
       if(!i||i.type==='hidden'||i.type==='checkbox'||i.type==='radio')return;
       i.style.setProperty('color','#FFFFFF','important');
@@ -725,79 +760,51 @@
 
   var fr=0,fi=setInterval(function(){if(customizeForm()||fr>30)clearInterval(fi);fr++},500);
 
-  // 카피 실시간 회전 (메인 키워드 레몬색 강조 + 이모티콘)
-  var copies=[
-    '<span class="hl">경기도 임플란트 명소</span>',
-    '<span class="emoji">🔥</span>지금 신청하고, <span class="hl">무료상담</span> 받으세요!',
-    '<span class="emoji">⏱</span><span class="hl">30초</span> 안에 임플란트 비용 확인',
-    '<span class="emoji">💰</span><span class="hl">50만원 지원금</span> 한정 안내',
-    '<span class="emoji">📋</span>본인 부담금 <span class="hl">정확히</span> 알려드려요',
-    '<span class="emoji">🎁</span>상담만 받아도 OK! <span class="hl">부담 0원</span>',
-    '<span class="emoji">✅</span><span class="hl">추가금 0원</span> · 10년 무상 A/S',
-    '<span class="emoji">⚡</span>오늘만 받는 <span class="hl">특별 혜택</span>',
-    '<span class="emoji">🦷</span>국산정품 <span class="hl">28만원</span>부터',
-  ];
-  // 카피별 노출 시간(ms) — '화제의 경기도 임플란트 치과'를 가장 오래
-  var copyDwell=copies.map(function(c){
-    return c.indexOf('경기도 임플란트 명소')>-1 ? 6000 : 2800;
-  });
-  var copyEl=document.getElementById('ctaCopy');
-  var copyIdx=0;
-  function rotateCopy(){
-    if(!copyEl)return;
-    // 사라짐 (박스 같이 작아짐)
-    copyEl.classList.add('hiding');
-    setTimeout(function(){
-      copyIdx=(copyIdx+1)%copies.length;
-      copyEl.innerHTML=copies[copyIdx];
-      // 등장 (박스 같이 커짐)
-      copyEl.classList.remove('hiding');
-      // 다음 카피는 현재 카피의 노출 시간 경과 후 전환
-      setTimeout(rotateCopy,copyDwell[copyIdx]);
-    },380);
-  }
-  // 초기 카피도 HTML로 렌더 + 첫 카피('화제의…') 노출 시간만큼 대기 후 회전 시작
-  if(copyEl){copyEl.innerHTML=copies[0];setTimeout(rotateCopy,copyDwell[0]);}
-
-  // 상단 헤드라인을 페이지 최상단으로 강제 이동 (아임웹 이미지 위젯보다 위로)
-  function liftHeadline(){
-    var h=document.querySelector('.top-headline');
-    if(h && document.body.firstElementChild!==h){
-      document.body.insertBefore(h,document.body.firstChild);
+  // 스티키 CTA
+  var stickyCta=document.getElementById('stickyCta');
+  var stickyBtn=document.getElementById('stickyCtaBtn');
+  if(stickyCta&&stickyBtn){
+    stickyBtn.addEventListener('click',openForm);
+    function updateSticky(){
+      var y=window.scrollY||window.pageYOffset;
+      var atBot=(y+window.innerHeight)>=(document.documentElement.scrollHeight-120);
+      stickyCta.classList.toggle('show',!atBot);
     }
+    updateSticky();
+    window.addEventListener('scroll',updateSticky,{passive:true});
   }
-  liftHeadline();
-  var _lh=0,_lhi=setInterval(function(){liftHeadline();if(++_lh>30)clearInterval(_lhi);},500);
-
-  // 아임웹 자동 사업자정보/대표자 이메일 푸터 숨김 (텍스트 기반 — 마크업 셀렉터로 못 잡는 경우 보강)
-  function hideBizInfo(){
-    document.querySelectorAll('footer,[class*="footer"],[id*="footer"],[class*="copyright"]').forEach(function(el){
-      if(el.closest('.lp')||el.closest('.form-popup')||el.closest('.nav-cta'))return;
-      el.style.setProperty('display','none','important');
-    });
-    var nodes=document.querySelectorAll('div,section,p,ul,table,address');
-    for(var i=0;i<nodes.length;i++){
-      var el=nodes[i];
-      if(el.closest('.lp')||el.closest('.form-popup')||el.closest('.nav-cta'))continue;
-      if(el.children.length>20)continue;
-      var t=el.innerText||'';
-      if(t.length<600 && /대표자|사업자등록번호|통신판매업|개인정보관리책임|대표이사/.test(t)){
-        el.style.setProperty('display','none','important');
-      }
-    }
-  }
-  hideBizInfo();
-  var _bi=0,_bii=setInterval(function(){hideBizInfo();if(++_bi>30)clearInterval(_bii);},700);
 })();
 </script>
 
-<!-- 구글 Apps Script 직접 전송용 hidden form -->
-<iframe name="lp_gs_iframe" id="lp_gs_iframe" style="display:none"></iframe>
-<form id="lp_gs_form" target="lp_gs_iframe" method="POST" action="#" onsubmit="return false" style="display:none">
-  <input name="name" id="lp_gs_name">
-  <input name="phone" id="lp_gs_phone">
-  <input name="source" id="lp_gs_source">
-</form>
+<div class="sticky-cta" id="stickyCta">
+  <div class="sticky-cta-inner">
+    <button type="button" class="sticky-cta-btn" id="stickyCtaBtn">
+      <span class="shimmer"></span>
+      무료 상담 신청하기 →
+    </button>
+  </div>
+</div>
 
+<div style="position:fixed;top:8px;left:50%;transform:translateX(-50%);z-index:99999;font:700 11px/1 'Pretendard',sans-serif;color:#fff;background:rgba(31,111,235,.92);padding:6px 13px;border-radius:999px">포트폴리오 예시 · 실제 상담 접수 안 됨</div>
+<script>
+(function(){
+  function thanks(){
+    var o=document.createElement('div');
+    o.style.cssText='position:fixed;inset:0;z-index:99998;background:rgba(10,14,24,.6);display:flex;align-items:center;justify-content:center;padding:24px';
+    o.innerHTML='<div style="background:#fff;border-radius:18px;max-width:340px;width:100%;padding:30px 24px;text-align:center;font-family:Pretendard,sans-serif">'+
+      '<div style="width:60px;height:60px;margin:0 auto 16px;border-radius:50%;background:linear-gradient(135deg,#1f6feb,#2b55d8);color:#fff;font-size:30px;display:flex;align-items:center;justify-content:center">&#10003;</div>'+
+      '<div style="font-size:19px;font-weight:800;color:#1a2030;margin-bottom:8px">상담 신청이 접수되었습니다</div>'+
+      '<div style="font-size:13px;color:#8a92a2;line-height:1.6">포트폴리오 예시 페이지입니다.<br>실제로 전송되지 않습니다.</div>'+
+      '<button style="margin-top:20px;border:0;background:#eef1f5;color:#5b6472;font-weight:800;padding:12px 28px;border-radius:12px;cursor:pointer">닫기</button></div>';
+    o.addEventListener('click',function(e){ if(e.target===o||e.target.tagName==='BUTTON') o.remove(); });
+    document.body.appendChild(o);
+  }
+  document.addEventListener('click',function(e){
+    var fid=document.getElementById('agreeBtn')?'#agreeBtn':'#formBtn';var t=e.target.closest&&e.target.closest(fid);
+    if(t){ e.preventDefault(); e.stopImmediatePropagation(); thanks(); }
+  },true);
+})();
+</script>
 </body>
+
 </html>
